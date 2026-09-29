@@ -16,6 +16,7 @@ import argparse
 import io
 import json
 import math
+import re
 import os
 import sys
 import urllib.request
@@ -31,6 +32,8 @@ FILES = {
     "player_box": "player_box/parquet/player_box_{s}.parquet",
     "teams": "cfb_teams/parquet/cfb_teams_{s}.parquet",
     "rosters": "cfb_rosters/parquet/cfb_rosters_{s}.parquet",
+    # full season schedule incl. upcoming games (the data repo's copy only has finals)
+    "full_schedule": "https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-raw/main/cfb/schedules/csv/cfb_schedule_{s}.csv",
 }
 
 # stat_1..stat_5 layout used by some player_box rows that lack named columns
@@ -47,17 +50,19 @@ POS_GROUP = {"RB": "RB", "FB": "RB", "TE": "TE", "WR": "WR"}
 
 
 def load(name, season, cache):
-    url = f"{BASE}/{FILES[name].format(s=season)}"
+    rel = FILES[name].format(s=season)
+    url = rel if rel.startswith("http") else f"{BASE}/{rel}"
+    reader = pd.read_csv if url.endswith(".csv") else pd.read_parquet
     path = os.path.join(cache, os.path.basename(url)) if cache else None
     if path and os.path.exists(path):
-        return pd.read_parquet(path)
+        return reader(path)
     with urllib.request.urlopen(url, timeout=120) as r:
         raw = r.read()
     if path:
         os.makedirs(cache, exist_ok=True)
         with open(path, "wb") as f:
             f.write(raw)
-    return pd.read_parquet(io.BytesIO(raw))
+    return reader(io.BytesIO(raw))
 
 
 def num(s):
@@ -121,6 +126,88 @@ def solve_srs(games, teams):
     x = np.linalg.solve(A.T @ A + lam * np.eye(2 * n), A.T @ y)
     osrs, dsrs = x[:n], x[n:]
     return {t: (osrs[i] + dsrs[i], osrs[i], dsrs[i]) for t, i in idx.items()}
+
+
+def overall_record(records):
+    """Pull the overall W-L out of ESPN's records blob (used for FCS opponents)."""
+    m = re.search(r"'summary':\s*'(\d+-\d+(?:-\d+)?)'", str(records))
+    return m.group(1) if m else ""
+
+
+def current_poll(full):
+    """team_id -> current AP rank. ESPN tags every unplayed game with each team's
+    current poll rank, so each team's next unplayed game gives the latest poll
+    (this also covers teams on a bye). Falls back to the latest game played."""
+    reg = full[full["season_type"] == 2]
+    rows = []
+    for p in ("home", "away"):
+        d = reg[["week", "status_type_completed", f"{p}_id", f"{p}_current_rank"]].copy()
+        d.columns = ["week", "done", "team_id", "rank"]
+        rows.append(d)
+    r = pd.concat(rows)
+    r["rank"] = num(r["rank"])
+    upcoming = r[~r["done"].astype(bool)].sort_values("week").groupby("team_id").first()["rank"]
+    if upcoming.empty:
+        upcoming = r.sort_values("week").groupby("team_id").last()["rank"]
+    return {int(t): int(k) for t, k in upcoming.items() if pd.notna(k) and 1 <= k <= 25}
+
+
+def week_games(full, id_to_name, team_rows, poll):
+    """Games for the current week: the first regular-season week that still has
+    an unplayed game (or the final week once everything is complete)."""
+    reg = full[full["season_type"] == 2].copy()
+    if reg.empty:
+        return None, []
+    open_weeks = reg.loc[~reg["status_type_completed"].astype(bool), "week"]
+    week = int(open_weeks.min()) if len(open_weeks) else int(reg["week"].max())
+    wk = reg[reg["week"] == week].sort_values(["start_date", "game_id"])
+
+    def side(r, pfx):
+        tid = int(r[f"{pfx}_id"])
+        key = id_to_name.get(tid)
+        rank = poll.get(tid)
+        if key:
+            rec = team_rows[key]["record"]
+            record = f"{rec['w']}-{rec['l']}" + (f"-{rec['t']}" if rec["t"] else "")
+            conf = team_rows[key]["conference"]
+            name = key
+        else:
+            record = overall_record(r.get(f"{pfx}_records"))
+            conf = "FCS"
+            name = r.get(f"{pfx}_location") or r.get(f"{pfx}_short_display_name") or r.get(f"{pfx}_display_name")
+        score = num(pd.Series([r.get(f"{pfx}_score")])).iloc[0]
+        return {
+            "name": str(name),
+            "key": key,  # matches a key in "teams", or null for non-FBS teams
+            "rank": rank,
+            "record": record,
+            "conference": conf,
+            "score": int(score) if pd.notna(score) and bool(r["status_type_completed"]) else None,
+        }
+
+    games = []
+    for _, r in wk.iterrows():
+        tv = r.get("broadcast_name") if isinstance(r.get("broadcast_name"), str) else r.get("broadcast")
+        games.append({
+            "id": str(int(r["game_id"])),
+            "week": week,
+            "start": r["start_date"],
+            "timeTbd": not bool(r.get("time_valid", True)),
+            "neutral": bool(r.get("neutral_site", False)),
+            "conferenceGame": bool(r.get("conference_competition", False)),
+            "status": r.get("status_type_name", ""),
+            "statusDetail": r.get("status_type_short_detail", "") if isinstance(r.get("status_type_short_detail"), str) else "",
+            "completed": bool(r["status_type_completed"]),
+            "venue": r.get("venue_full_name") if isinstance(r.get("venue_full_name"), str) else "",
+            "city": ", ".join(x for x in [r.get("venue_address_city"), r.get("venue_address_state")] if isinstance(x, str)),
+            "tv": tv if isinstance(tv, str) else "",
+            "note": r.get("notes_headline") if isinstance(r.get("notes_headline"), str) else "",
+            "away": side(r, "away"),
+            "home": side(r, "home"),
+        })
+    # keep games involving at least one FBS team (the FBS schedule already does)
+    games = [x for x in games if x["away"]["key"] or x["home"]["key"]]
+    return week, games
 
 
 def gauge_max(series):
@@ -232,6 +319,7 @@ def build(season, cache):
         return df.sort_values(["reg", "ypg"], ascending=[False, False]).head(n)
 
     team_rows = {}
+    id_to_name = {}
     meta = fbs.set_index("team_id")
     for t in per.index:
         m = meta.loc[t]
@@ -264,6 +352,7 @@ def build(season, cache):
                      "yr": r1(r.yds / r.rec), "rec": r2(r.rec / r.gp)} for r in cdx.itertuples()]
 
         s, o, d = srs[t]
+        id_to_name[int(t)] = name
         team_rows[name] = {
             "team": name,
             "conference": m["conference_short_name"] if isinstance(m["conference_short_name"], str) else "",
@@ -284,6 +373,11 @@ def build(season, cache):
         }
 
     last_week = int(g["week"].max())
+    full = load("full_schedule", season, cache)
+    poll = current_poll(full)
+    for tid, name in id_to_name.items():
+        team_rows[name]["apRank"] = poll.get(tid)
+    cur_week, games = week_games(full, id_to_name, team_rows, poll)
     out = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "season": season,
@@ -292,6 +386,9 @@ def build(season, cache):
         "source": "sportsdataverse/cfbfastR-cfb-data (ESPN box scores)",
         "teamNames": sorted(team_rows, key=str.lower),
         "teams": team_rows,
+        "currentWeek": cur_week,
+        "pollName": "AP Top 25",
+        "weekGames": games,
         "leagueAverage": {"rushTdG": r1(per["rushTdG"].mean()), "passTdG": r1(per["passTdG"].mean()),
                           "ppg": r1(per["pf"].mean())},
         "gaugeRanges": {

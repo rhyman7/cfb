@@ -6,8 +6,21 @@ any two **FBS** teams — record, SoS/SRS/OSRS/DSRS, rush/pass yards-per-game
 gauges with FBS rank, TD and points per game, top passers/rushers/receivers,
 and how each defense performs against RBs, receiving RBs, TEs and WRs.
 
-Same layout and code as the NFL site; the only front-end changes are CFB
-labels, "in FBS" ranks, conference-grouped team pickers, and a conference tag.
+## Pages
+
+- **`index.html` — This week's games.** The current week's slate grouped by
+  day, with kickoff time, TV, venue, records, SRS and AP Top 25 ranks. Filter
+  by conference, Top 25, or team name. Click a game to open its matchup.
+- **`matchup.html?game=<ESPN game id>` — One game.** Both teams' full stat
+  cards (away first) with the game details on top; prints on one page.
+  Non-FBS opponents show a short note instead of stats.
+- **`dashboard.html` — Compare any two teams.** The original dashboard
+  (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
+
+The "current week" is the first regular-season week that still has an
+unplayed game, so after Sunday's rebuild the slate shows the coming week.
+AP ranks come from ESPN's schedule (each team's current poll rank on its
+next game, so teams on a bye are covered).
 
 ## Scope
 
@@ -22,7 +35,10 @@ times a day. The build script downloads them straight from
 `raw.githubusercontent.com`, so no API key is needed.
 
 Files used (`cfb/…/<name>_2026.parquet`): `cfb_schedule`, `team_box`,
-`player_box`, `cfb_teams`, `cfb_rosters`.
+`player_box`, `cfb_teams`, `cfb_rosters`. The upcoming schedule and AP ranks
+come from the sibling repo
+[`sportsdataverse/cfbfastR-cfb-raw`](https://github.com/sportsdataverse/cfbfastR-cfb-raw)
+(`cfb/schedules/csv/cfb_schedule_2026.csv`).
 
 ## Weekly update
 

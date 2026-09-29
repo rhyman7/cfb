@@ -587,5 +587,128 @@ footer {
   }
 }
 
+
+/* ---------- Navigation ---------- */
+.home-link { color: inherit; text-decoration: none; }
+.topnav { display: flex; gap: 6px; margin-right: auto; margin-left: 28px; }
+.topnav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+.topnav a:hover { color: var(--text); border-color: var(--border); }
+.topnav a.active { color: var(--text); background: var(--accent-soft); border-color: var(--accent); }
+
+/* ---------- AP rank tag ---------- */
+.ap-rank {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 700;
+  color: #fbbf24;
+  margin-right: 6px;
+  vertical-align: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Week slate ---------- */
+.week-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.week-title { margin: 0 0 4px; font-size: 1.5rem; }
+.week-sub { margin: 0; color: var(--text-dim); font-size: 0.85rem; }
+.week-filters { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.week-filters input[type="search"], .week-filters select {
+  background: var(--panel-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.88rem;
+}
+.week-filters input[type="search"] { width: 180px; }
+.ranked-toggle { color: var(--text-dim); font-size: 0.85rem; display: flex; gap: 6px; align-items: center; cursor: pointer; }
+
+.day-group { margin-bottom: 26px; }
+.day-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+.day-count {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 12px;
+}
+.game-card {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.12s, transform 0.12s;
+}
+.game-card:hover, .game-card:focus-visible { border-color: var(--accent); transform: translateY(-1px); outline: none; }
+.game-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 8px; }
+.game-time { font-weight: 600; color: var(--text); }
+.game-tv { padding: 1px 6px; border: 1px solid var(--border); border-radius: 5px; }
+.gs-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: 8px; }
+.gs-name { font-weight: 650; font-size: 0.98rem; }
+.gs-rec { grid-column: 1; font-size: 0.72rem; color: var(--text-dim); }
+.gs-srs, .gs-score { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 0.75rem; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.gs-score { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.gs-row.won .gs-name, .gs-row.won .gs-score { color: var(--good); }
+.gs-at { font-size: 0.7rem; color: var(--text-dim); margin: 4px 0; }
+.game-venue { margin-top: 8px; font-size: 0.72rem; color: var(--text-dim); }
+.game-note { margin-top: 4px; font-size: 0.72rem; color: #fbbf24; }
+
+/* ---------- Matchup page ---------- */
+.matchup-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.back-link { color: var(--text-dim); text-decoration: none; font-size: 0.88rem; }
+.back-link:hover { color: var(--text); }
+.matchup-header { text-align: center; margin-bottom: 22px; }
+.mh-week { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+.mh-title { margin: 6px 0; font-size: 1.7rem; }
+.mh-at { color: var(--text-dim); font-weight: 500; margin: 0 10px; font-size: 0.8em; }
+.mh-sub { margin: 0; color: var(--text-dim); font-size: 0.88rem; }
+
+@media (max-width: 820px) {
+  .topbar { flex-wrap: wrap; gap: 10px; }
+  .topnav { margin-left: 0; order: 3; width: 100%; }
+  .week-filters input[type="search"] { width: 100%; }
+  .week-filters { width: 100%; }
+  .mh-title { font-size: 1.3rem; }
+}
+
+@media print {
+  .ap-rank { color: #92400e !important; }
+  .matchup-header { margin-bottom: 8px; }
+  .mh-title { font-size: 1.2rem; margin: 2px 0; color: #111318; }
+  .mh-week, .mh-sub, .mh-at { color: #5b6472 !important; }
+  .topnav { display: none !important; }
+}
+
 /* CFB: conference tag next to the record */
 .record .conf { font-size: 0.8em; opacity: 0.7; margin-left: 6px; }

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CFB Matchup Dashboard</title>
+<title>Matchup · CFB Matchup Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-page="week">
+<body data-page="matchup">
 <header class="topbar">
   <h1><a href="index.html" class="home-link">CFB Matchup Dashboard</a></h1>
   <nav class="topnav no-print">
-    <a href="index.html" class="active">This Week's Games</a>
+    <a href="index.html">This Week's Games</a>
     <a href="dashboard.html">Compare Any Two Teams</a>
   </nav>
   <div class="topbar-meta">
@@ -19,18 +19,12 @@
 </header>
 
 <main id="app">
-  <section class="week-head">
-    <div>
-      <h2 id="weekTitle" class="week-title">This Week's Matchups</h2>
-      <p id="weekSub" class="week-sub"></p>
-    </div>
-    <div class="week-filters">
-      <input id="teamSearch" type="search" placeholder="Find a team" aria-label="Find a team">
-      <select id="confFilter" aria-label="Conference"></select>
-      <label class="ranked-toggle"><input id="rankedOnly" type="checkbox"> Top 25 only</label>
-    </div>
-  </section>
-  <div id="gameList"><div class="empty-note">Loading games...</div></div>
+  <div class="matchup-bar no-print">
+    <a class="back-link" href="index.html">← All games this week</a>
+    <button id="printBothBtn" class="print-btn" type="button">🖨 Print Matchup</button>
+  </div>
+  <section id="matchupHeader" class="matchup-header"></section>
+  <section id="teamCards"></section>
 </main>
 
 <footer class="no-print">

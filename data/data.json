@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T21:12:26.324658+00:00",
+ "generatedAt": "2026-09-29T23:09:33.863292+00:00",
  "season": 2026,
  "throughWeek": 4,
  "gamesCounted": 331,
@@ -313,7 +313,8 @@
      "yds": 182.5,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "UAB": {
    "team": "UAB",
@@ -477,7 +478,8 @@
      "yds": 86.0,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "South Alabama": {
    "team": "South Alabama",
@@ -641,7 +643,8 @@
      "yds": 131.2,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Arkansas": {
    "team": "Arkansas",
@@ -811,7 +814,8 @@
      "yds": 111.2,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Arizona State": {
    "team": "Arizona State",
@@ -981,7 +985,8 @@
      "yds": 123.3,
      "td": 1.33
     }
-   }
+   },
+   "apRank": null
   },
   "Arizona": {
    "team": "Arizona",
@@ -1145,7 +1150,8 @@
      "yds": 181.8,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Sacramento State": {
    "team": "Sacramento State",
@@ -1315,7 +1321,8 @@
      "yds": 149.2,
      "td": 0.8
     }
-   }
+   },
+   "apRank": null
   },
   "San Diego State": {
    "team": "San Diego State",
@@ -1491,7 +1498,8 @@
      "yds": 187.8,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "San José State": {
    "team": "San José State",
@@ -1641,7 +1649,8 @@
      "yds": 185.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Stanford": {
    "team": "Stanford",
@@ -1805,7 +1814,8 @@
      "yds": 221.2,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "California": {
    "team": "California",
@@ -1975,7 +1985,8 @@
      "yds": 133.5,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "UCLA": {
    "team": "UCLA",
@@ -2139,7 +2150,8 @@
      "yds": 152.5,
      "td": 0.75
     }
-   }
+   },
+   "apRank": 23
   },
   "USC": {
    "team": "USC",
@@ -2303,7 +2315,8 @@
      "yds": 146.0,
      "td": 1.6
     }
-   }
+   },
+   "apRank": 18
   },
   "Colorado State": {
    "team": "Colorado State",
@@ -2479,7 +2492,8 @@
      "yds": 169.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Colorado": {
    "team": "Colorado",
@@ -2655,7 +2669,8 @@
      "yds": 186.0,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "UConn": {
    "team": "UConn",
@@ -2819,7 +2834,8 @@
      "yds": 226.8,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Delaware": {
    "team": "Delaware",
@@ -2995,7 +3011,8 @@
      "yds": 209.5,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Florida State": {
    "team": "Florida State",
@@ -3159,7 +3176,8 @@
      "yds": 217.5,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "Jacksonville State": {
    "team": "Jacksonville State",
@@ -3335,7 +3353,8 @@
      "yds": 100.4,
      "td": 0.8
     }
-   }
+   },
+   "apRank": null
   },
   "Florida": {
    "team": "Florida",
@@ -3505,7 +3524,8 @@
      "yds": 210.8,
      "td": 1.25
     }
-   }
+   },
+   "apRank": 8
   },
   "South Florida": {
    "team": "South Florida",
@@ -3669,7 +3689,8 @@
      "yds": 160.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Georgia Tech": {
    "team": "Georgia Tech",
@@ -3833,7 +3854,8 @@
      "yds": 149.2,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Georgia": {
    "team": "Georgia",
@@ -4015,7 +4037,8 @@
      "yds": 124.0,
      "td": 0.25
     }
-   }
+   },
+   "apRank": 2
   },
   "Hawai'i": {
    "team": "Hawai'i",
@@ -4185,7 +4208,8 @@
      "yds": 148.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Iowa State": {
    "team": "Iowa State",
@@ -4349,7 +4373,8 @@
      "yds": 107.0,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Boise State": {
    "team": "Boise State",
@@ -4507,7 +4532,8 @@
      "yds": 176.8,
      "td": 1.25
     }
-   }
+   },
+   "apRank": 22
   },
   "Northwestern": {
    "team": "Northwestern",
@@ -4665,7 +4691,8 @@
      "yds": 198.3,
      "td": 0.67
     }
-   }
+   },
+   "apRank": null
   },
   "Indiana": {
    "team": "Indiana",
@@ -4835,7 +4862,8 @@
      "yds": 87.2,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 6
   },
   "Notre Dame": {
    "team": "Notre Dame",
@@ -5005,7 +5033,8 @@
      "yds": 118.8,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 3
   },
   "Kentucky": {
    "team": "Kentucky",
@@ -5169,7 +5198,8 @@
      "yds": 194.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": 24
   },
   "Louisville": {
    "team": "Louisville",
@@ -5339,7 +5369,8 @@
      "yds": 166.2,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Western Kentucky": {
    "team": "Western Kentucky",
@@ -5509,7 +5540,8 @@
      "yds": 167.8,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "LSU": {
    "team": "LSU",
@@ -5679,7 +5711,8 @@
      "yds": 140.0,
      "td": 0.75
     }
-   }
+   },
+   "apRank": 11
   },
   "Boston College": {
    "team": "Boston College",
@@ -5837,7 +5870,8 @@
      "yds": 132.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Massachusetts": {
    "team": "Massachusetts",
@@ -6001,7 +6035,8 @@
      "yds": 161.2,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Maryland": {
    "team": "Maryland",
@@ -6171,7 +6206,8 @@
      "yds": 98.8,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Michigan State": {
    "team": "Michigan State",
@@ -6335,7 +6371,8 @@
      "yds": 161.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Michigan": {
    "team": "Michigan",
@@ -6499,7 +6536,8 @@
      "yds": 89.5,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Minnesota": {
    "team": "Minnesota",
@@ -6669,7 +6707,8 @@
      "yds": 129.8,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Missouri": {
    "team": "Missouri",
@@ -6845,7 +6884,8 @@
      "yds": 165.2,
      "td": 1.75
     }
-   }
+   },
+   "apRank": 25
   },
   "Ole Miss": {
    "team": "Ole Miss",
@@ -7009,7 +7049,8 @@
      "yds": 141.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": 9
   },
   "Duke": {
    "team": "Duke",
@@ -7185,7 +7226,8 @@
      "yds": 150.2,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "East Carolina": {
    "team": "East Carolina",
@@ -7361,7 +7403,8 @@
      "yds": 155.5,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "NC State": {
    "team": "NC State",
@@ -7531,7 +7574,8 @@
      "yds": 146.5,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "North Carolina": {
    "team": "North Carolina",
@@ -7695,7 +7739,8 @@
      "yds": 110.7,
      "td": 0.0
     }
-   }
+   },
+   "apRank": null
   },
   "Wake Forest": {
    "team": "Wake Forest",
@@ -7859,7 +7904,8 @@
      "yds": 186.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Nebraska": {
    "team": "Nebraska",
@@ -8029,7 +8075,8 @@
      "yds": 88.2,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Rutgers": {
    "team": "Rutgers",
@@ -8205,7 +8252,8 @@
      "yds": 155.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "New Mexico State": {
    "team": "New Mexico State",
@@ -8375,7 +8423,8 @@
      "yds": 184.2,
      "td": 0.0
     }
-   }
+   },
+   "apRank": null
   },
   "New Mexico": {
    "team": "New Mexico",
@@ -8545,7 +8594,8 @@
      "yds": 108.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Syracuse": {
    "team": "Syracuse",
@@ -8721,7 +8771,8 @@
      "yds": 71.7,
      "td": 0.67
     }
-   }
+   },
+   "apRank": null
   },
   "Bowling Green": {
    "team": "Bowling Green",
@@ -8885,7 +8936,8 @@
      "yds": 121.0,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Miami (OH)": {
    "team": "Miami (OH)",
@@ -9049,7 +9101,8 @@
      "yds": 197.5,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Ohio State": {
    "team": "Ohio State",
@@ -9219,7 +9272,8 @@
      "yds": 121.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 5
   },
   "Ohio": {
    "team": "Ohio",
@@ -9389,7 +9443,8 @@
      "yds": 113.5,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Oklahoma State": {
    "team": "Oklahoma State",
@@ -9553,7 +9608,8 @@
      "yds": 140.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": 19
   },
   "Oklahoma": {
    "team": "Oklahoma",
@@ -9723,7 +9779,8 @@
      "yds": 61.0,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Tulsa": {
    "team": "Tulsa",
@@ -9899,7 +9956,8 @@
      "yds": 186.8,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Oregon State": {
    "team": "Oregon State",
@@ -10075,7 +10133,8 @@
      "yds": 161.8,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Penn State": {
    "team": "Penn State",
@@ -10245,7 +10304,8 @@
      "yds": 49.2,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Temple": {
    "team": "Temple",
@@ -10409,7 +10469,8 @@
      "yds": 172.5,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Pittsburgh": {
    "team": "Pittsburgh",
@@ -10579,7 +10640,8 @@
      "yds": 150.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Clemson": {
    "team": "Clemson",
@@ -10743,7 +10805,8 @@
      "yds": 162.0,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Memphis": {
    "team": "Memphis",
@@ -10907,7 +10970,8 @@
      "yds": 184.2,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Vanderbilt": {
    "team": "Vanderbilt",
@@ -11077,7 +11141,8 @@
      "yds": 139.5,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "Baylor": {
    "team": "Baylor",
@@ -11247,7 +11312,8 @@
      "yds": 156.5,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Rice": {
    "team": "Rice",
@@ -11411,7 +11477,8 @@
      "yds": 175.2,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Texas A&M": {
    "team": "Texas A&M",
@@ -11575,7 +11642,8 @@
      "yds": 173.8,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Houston": {
    "team": "Houston",
@@ -11739,7 +11807,8 @@
      "yds": 165.2,
      "td": 1.0
     }
-   }
+   },
+   "apRank": 20
   },
   "North Texas": {
    "team": "North Texas",
@@ -11909,7 +11978,8 @@
      "yds": 151.2,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "Texas": {
    "team": "Texas",
@@ -12073,7 +12143,8 @@
      "yds": 122.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 1
   },
   "BYU": {
    "team": "BYU",
@@ -12237,7 +12308,8 @@
      "yds": 111.3,
      "td": 0.33
     }
-   }
+   },
+   "apRank": 10
   },
   "Utah": {
    "team": "Utah",
@@ -12401,7 +12473,8 @@
      "yds": 126.0,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 13
   },
   "James Madison": {
    "team": "James Madison",
@@ -12577,7 +12650,8 @@
      "yds": 139.2,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Virginia": {
    "team": "Virginia",
@@ -12747,7 +12821,8 @@
      "yds": 101.0,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Virginia Tech": {
    "team": "Virginia Tech",
@@ -12911,7 +12986,8 @@
      "yds": 157.2,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Washington": {
    "team": "Washington",
@@ -13075,7 +13151,8 @@
      "yds": 138.8,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Washington State": {
    "team": "Washington State",
@@ -13233,7 +13310,8 @@
      "yds": 170.0,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Wisconsin": {
    "team": "Wisconsin",
@@ -13391,7 +13469,8 @@
      "yds": 93.5,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Marshall": {
    "team": "Marshall",
@@ -13561,7 +13640,8 @@
      "yds": 244.5,
      "td": 2.25
     }
-   }
+   },
+   "apRank": null
   },
   "West Virginia": {
    "team": "West Virginia",
@@ -13731,7 +13811,8 @@
      "yds": 205.8,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "Fresno State": {
    "team": "Fresno State",
@@ -13901,7 +13982,8 @@
      "yds": 205.0,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Georgia Southern": {
    "team": "Georgia Southern",
@@ -14071,7 +14153,8 @@
      "yds": 144.8,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Old Dominion": {
    "team": "Old Dominion",
@@ -14235,7 +14318,8 @@
      "yds": 119.8,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Louisiana": {
    "team": "Louisiana",
@@ -14405,7 +14489,8 @@
      "yds": 95.8,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Coastal Carolina": {
    "team": "Coastal Carolina",
@@ -14569,7 +14654,8 @@
      "yds": 167.0,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "Texas State": {
    "team": "Texas State",
@@ -14733,7 +14819,8 @@
      "yds": 292.0,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Utah State": {
    "team": "Utah State",
@@ -14897,7 +14984,8 @@
      "yds": 203.5,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Alabama": {
    "team": "Alabama",
@@ -15061,7 +15149,8 @@
      "yds": 161.0,
      "td": 0.75
     }
-   }
+   },
+   "apRank": 7
   },
   "Kennesaw State": {
    "team": "Kennesaw State",
@@ -15231,7 +15320,8 @@
      "yds": 145.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Mississippi State": {
    "team": "Mississippi State",
@@ -15401,7 +15491,8 @@
      "yds": 158.5,
      "td": 0.75
     }
-   }
+   },
+   "apRank": 16
   },
   "Army": {
    "team": "Army",
@@ -15577,7 +15668,8 @@
      "yds": 137.7,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Illinois": {
    "team": "Illinois",
@@ -15735,7 +15827,8 @@
      "yds": 177.0,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "Air Force": {
    "team": "Air Force",
@@ -15905,7 +15998,8 @@
      "yds": 115.3,
      "td": 0.67
     }
-   }
+   },
+   "apRank": null
   },
   "Akron": {
    "team": "Akron",
@@ -16081,7 +16175,8 @@
      "yds": 230.2,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "App State": {
    "team": "App State",
@@ -16251,7 +16346,8 @@
      "yds": 178.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Arkansas State": {
    "team": "Arkansas State",
@@ -16409,7 +16505,8 @@
      "yds": 152.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Ball State": {
    "team": "Ball State",
@@ -16573,7 +16670,8 @@
      "yds": 198.5,
      "td": 2.0
     }
-   }
+   },
+   "apRank": null
   },
   "Buffalo": {
    "team": "Buffalo",
@@ -16737,7 +16835,8 @@
      "yds": 206.5,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "UCF": {
    "team": "UCF",
@@ -16901,7 +17000,8 @@
      "yds": 145.5,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Central Michigan": {
    "team": "Central Michigan",
@@ -17071,7 +17171,8 @@
      "yds": 137.8,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Cincinnati": {
    "team": "Cincinnati",
@@ -17247,7 +17348,8 @@
      "yds": 191.2,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Eastern Michigan": {
    "team": "Eastern Michigan",
@@ -17411,7 +17513,8 @@
      "yds": 180.4,
      "td": 1.4
     }
-   }
+   },
+   "apRank": null
   },
   "Florida Atlantic": {
    "team": "Florida Atlantic",
@@ -17581,7 +17684,8 @@
      "yds": 193.2,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Florida International": {
    "team": "Florida International",
@@ -17751,7 +17855,8 @@
      "yds": 133.0,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Georgia State": {
    "team": "Georgia State",
@@ -17933,7 +18038,8 @@
      "yds": 158.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Iowa": {
    "team": "Iowa",
@@ -18103,7 +18209,8 @@
      "yds": 121.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 14
   },
   "Kansas": {
    "team": "Kansas",
@@ -18267,7 +18374,8 @@
      "yds": 151.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Kansas State": {
    "team": "Kansas State",
@@ -18437,7 +18545,8 @@
      "yds": 87.5,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Kent State": {
    "team": "Kent State",
@@ -18619,7 +18728,8 @@
      "yds": 226.2,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "Liberty": {
    "team": "Liberty",
@@ -18795,7 +18905,8 @@
      "yds": 122.0,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Louisiana Tech": {
    "team": "Louisiana Tech",
@@ -18971,7 +19082,8 @@
      "yds": 173.3,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Miami": {
    "team": "Miami",
@@ -19141,7 +19253,8 @@
      "yds": 131.8,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 4
   },
   "Middle Tennessee": {
    "team": "Middle Tennessee",
@@ -19299,7 +19412,8 @@
      "yds": 141.5,
      "td": 0.5
     }
-   }
+   },
+   "apRank": null
   },
   "Navy": {
    "team": "Navy",
@@ -19463,7 +19577,8 @@
      "yds": 229.0,
      "td": 2.33
     }
-   }
+   },
+   "apRank": null
   },
   "Charlotte": {
    "team": "Charlotte",
@@ -19633,7 +19748,8 @@
      "yds": 193.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "UL Monroe": {
    "team": "UL Monroe",
@@ -19803,7 +19919,8 @@
      "yds": 211.2,
      "td": 2.0
     }
-   }
+   },
+   "apRank": null
   },
   "UNLV": {
    "team": "UNLV",
@@ -19967,7 +20084,8 @@
      "yds": 172.8,
      "td": 0.25
     }
-   }
+   },
+   "apRank": null
   },
   "Nevada": {
    "team": "Nevada",
@@ -20143,7 +20261,8 @@
      "yds": 108.8,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "North Dakota State": {
    "team": "North Dakota State",
@@ -20313,7 +20432,8 @@
      "yds": 101.0,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Northern Illinois": {
    "team": "Northern Illinois",
@@ -20483,7 +20603,8 @@
      "yds": 185.8,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Oregon": {
    "team": "Oregon",
@@ -20665,7 +20786,8 @@
      "yds": 186.0,
      "td": 1.0
     }
-   }
+   },
+   "apRank": 15
   },
   "Purdue": {
    "team": "Purdue",
@@ -20835,7 +20957,8 @@
      "yds": 193.8,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Sam Houston": {
    "team": "Sam Houston",
@@ -20999,7 +21122,8 @@
      "yds": 101.5,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "SMU": {
    "team": "SMU",
@@ -21175,7 +21299,8 @@
      "yds": 119.2,
      "td": 0.5
     }
-   }
+   },
+   "apRank": 21
   },
   "Southern Miss": {
    "team": "Southern Miss",
@@ -21357,7 +21482,8 @@
      "yds": 112.0,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "South Carolina": {
    "team": "South Carolina",
@@ -21527,7 +21653,8 @@
      "yds": 160.5,
      "td": 2.0
     }
-   }
+   },
+   "apRank": null
   },
   "Missouri State": {
    "team": "Missouri State",
@@ -21697,7 +21824,8 @@
      "yds": 179.2,
      "td": 1.5
     }
-   }
+   },
+   "apRank": null
   },
   "TCU": {
    "team": "TCU",
@@ -21861,7 +21989,8 @@
      "yds": 104.0,
      "td": 0.0
     }
-   }
+   },
+   "apRank": null
   },
   "Tennessee": {
    "team": "Tennessee",
@@ -22031,7 +22160,8 @@
      "yds": 114.0,
      "td": 0.0
     }
-   }
+   },
+   "apRank": 17
   },
   "UTSA": {
    "team": "UTSA",
@@ -22201,7 +22331,8 @@
      "yds": 198.8,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "UTEP": {
    "team": "UTEP",
@@ -22371,7 +22502,8 @@
      "yds": 163.8,
      "td": 2.0
     }
-   }
+   },
+   "apRank": null
   },
   "Texas Tech": {
    "team": "Texas Tech",
@@ -22541,7 +22673,8 @@
      "yds": 185.8,
      "td": 1.5
     }
-   }
+   },
+   "apRank": 12
   },
   "Toledo": {
    "team": "Toledo",
@@ -22711,7 +22844,8 @@
      "yds": 138.5,
      "td": 0.75
     }
-   }
+   },
+   "apRank": null
   },
   "Troy": {
    "team": "Troy",
@@ -22881,7 +23015,8 @@
      "yds": 170.5,
      "td": 1.75
     }
-   }
+   },
+   "apRank": null
   },
   "Tulane": {
    "team": "Tulane",
@@ -23051,7 +23186,8 @@
      "yds": 165.2,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   },
   "Western Michigan": {
    "team": "Western Michigan",
@@ -23215,7 +23351,8 @@
      "yds": 133.2,
      "td": 1.0
     }
-   }
+   },
+   "apRank": null
   },
   "Wyoming": {
    "team": "Wyoming",
@@ -23379,9 +23516,1843 @@
      "yds": 136.8,
      "td": 1.25
     }
-   }
+   },
+   "apRank": null
   }
  },
+ "currentWeek": 5,
+ "pollName": "AP Top 25",
+ "weekGames": [
+  {
+   "id": "401871049",
+   "week": 5,
+   "start": "2026-10-02T00:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/1 - 8:00 PM EDT",
+   "completed": false,
+   "venue": "Aggie Memorial Stadium",
+   "city": "Las Cruces, NM",
+   "tv": "CBSSN",
+   "note": "",
+   "away": {
+    "name": "Western Kentucky",
+    "key": "Western Kentucky",
+    "rank": null,
+    "record": "1-3",
+    "conference": "CUSA",
+    "score": null
+   },
+   "home": {
+    "name": "New Mexico State",
+    "key": "New Mexico State",
+    "rank": null,
+    "record": "1-3",
+    "conference": "CUSA",
+    "score": null
+   }
+  },
+  {
+   "id": "401862786",
+   "week": 5,
+   "start": "2026-10-02T01:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/1 - 9:00 PM EDT",
+   "completed": false,
+   "venue": "H. A. Chapman Stadium",
+   "city": "Tulsa, OK",
+   "tv": "ESPN",
+   "note": "",
+   "away": {
+    "name": "North Texas",
+    "key": "North Texas",
+    "rank": null,
+    "record": "2-2",
+    "conference": "American",
+    "score": null
+   },
+   "home": {
+    "name": "Tulsa",
+    "key": "Tulsa",
+    "rank": null,
+    "record": "3-1",
+    "conference": "American",
+    "score": null
+   }
+  },
+  {
+   "id": "401858245",
+   "week": 5,
+   "start": "2026-10-02T23:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/2 - 7:00 PM EDT",
+   "completed": false,
+   "venue": "Lane Stadium",
+   "city": "Blacksburg, VA",
+   "tv": "ESPN",
+   "note": "",
+   "away": {
+    "name": "Pittsburgh",
+    "key": "Pittsburgh",
+    "rank": null,
+    "record": "4-0",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "Virginia Tech",
+    "key": "Virginia Tech",
+    "rank": null,
+    "record": "4-0",
+    "conference": "ACC",
+    "score": null
+   }
+  },
+  {
+   "id": "401871050",
+   "week": 5,
+   "start": "2026-10-02T23:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/2 - 7:00 PM EDT",
+   "completed": false,
+   "venue": "Delaware Stadium",
+   "city": "Newark, DE",
+   "tv": "CBSSN",
+   "note": "",
+   "away": {
+    "name": "Liberty",
+    "key": "Liberty",
+    "rank": null,
+    "record": "3-1",
+    "conference": "CUSA",
+    "score": null
+   },
+   "home": {
+    "name": "Delaware",
+    "key": "Delaware",
+    "rank": null,
+    "record": "2-2",
+    "conference": "CUSA",
+    "score": null
+   }
+  },
+  {
+   "id": "401858476",
+   "week": 5,
+   "start": "2026-10-03T00:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/2 - 8:00 PM EDT",
+   "completed": false,
+   "venue": "Ryan Field",
+   "city": "Evanston, IL",
+   "tv": "FOX",
+   "note": "",
+   "away": {
+    "name": "Penn State",
+    "key": "Penn State",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "Northwestern",
+    "key": "Northwestern",
+    "rank": null,
+    "record": "2-1",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401856707",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Davis Wade Stadium",
+   "city": "Starkville, MS",
+   "tv": "ABC",
+   "note": "",
+   "away": {
+    "name": "Alabama",
+    "key": "Alabama",
+    "rank": 7,
+    "record": "4-0",
+    "conference": "SEC",
+    "score": null
+   },
+   "home": {
+    "name": "Mississippi State",
+    "key": "Mississippi State",
+    "rank": 16,
+    "record": "4-0",
+    "conference": "SEC",
+    "score": null
+   }
+  },
+  {
+   "id": "401856807",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "David Booth Kansas Memorial Stadium",
+   "city": "Lawrence, KS",
+   "tv": "ESPNU",
+   "note": "",
+   "away": {
+    "name": "Middle Tennessee",
+    "key": "Middle Tennessee",
+    "rank": null,
+    "record": "2-2",
+    "conference": "CUSA",
+    "score": null
+   },
+   "home": {
+    "name": "Kansas",
+    "key": "Kansas",
+    "rank": null,
+    "record": "1-2",
+    "conference": "Big 12",
+    "score": null
+   }
+  },
+  {
+   "id": "401856819",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "TDECU Stadium",
+   "city": "Houston, TX",
+   "tv": "ESPN2",
+   "note": "",
+   "away": {
+    "name": "UCF",
+    "key": "UCF",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big 12",
+    "score": null
+   },
+   "home": {
+    "name": "Houston",
+    "key": "Houston",
+    "rank": 20,
+    "record": "3-1",
+    "conference": "Big 12",
+    "score": null
+   }
+  },
+  {
+   "id": "401856822",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Jack Trice Stadium",
+   "city": "Ames, IA",
+   "tv": "TNT",
+   "note": "",
+   "away": {
+    "name": "West Virginia",
+    "key": "West Virginia",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big 12",
+    "score": null
+   },
+   "home": {
+    "name": "Iowa State",
+    "key": "Iowa State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Big 12",
+    "score": null
+   }
+  },
+  {
+   "id": "401858246",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Gerald J. Ford Stadium",
+   "city": "Dallas, TX",
+   "tv": "CW",
+   "note": "",
+   "away": {
+    "name": "Boston College",
+    "key": "Boston College",
+    "rank": null,
+    "record": "2-2",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "SMU",
+    "key": "SMU",
+    "rank": 21,
+    "record": "3-1",
+    "conference": "ACC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858250",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Kenan Stadium",
+   "city": "Chapel Hill, NC",
+   "tv": "ESPN",
+   "note": "",
+   "away": {
+    "name": "Notre Dame",
+    "key": "Notre Dame",
+    "rank": 3,
+    "record": "4-0",
+    "conference": "FBS Indep.",
+    "score": null
+   },
+   "home": {
+    "name": "North Carolina",
+    "key": "North Carolina",
+    "rank": null,
+    "record": "2-1",
+    "conference": "ACC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858251",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Allegacy Federal Credit Union Stadium",
+   "city": "Winston-Salem, NC",
+   "tv": "ACC Network",
+   "note": "",
+   "away": {
+    "name": "Stanford",
+    "key": "Stanford",
+    "rank": null,
+    "record": "2-2",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "Wake Forest",
+    "key": "Wake Forest",
+    "rank": null,
+    "record": "3-1",
+    "conference": "ACC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858252",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Pratt & Whitney Stadium",
+   "city": "East Hartford, CT",
+   "tv": "CBSSN",
+   "note": "",
+   "away": {
+    "name": "Syracuse",
+    "key": "Syracuse",
+    "rank": null,
+    "record": "1-2",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "UConn",
+    "key": "UConn",
+    "rank": null,
+    "record": "2-2",
+    "conference": "FBS Indep.",
+    "score": null
+   }
+  },
+  {
+   "id": "401858474",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Huntington Bank Stadium",
+   "city": "Minneapolis, MN",
+   "tv": "FOX",
+   "note": "",
+   "away": {
+    "name": "Michigan",
+    "key": "Michigan",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "Minnesota",
+    "key": "Minnesota",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401862791",
+   "week": 5,
+   "start": "2026-10-03T16:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:00 PM EDT",
+   "completed": false,
+   "venue": "Falcon Stadium",
+   "city": "USAF Academy, CO",
+   "tv": "CBS",
+   "note": "",
+   "away": {
+    "name": "Navy",
+    "key": "Navy",
+    "rank": null,
+    "record": "1-2",
+    "conference": "American",
+    "score": null
+   },
+   "home": {
+    "name": "Air Force",
+    "key": "Air Force",
+    "rank": null,
+    "record": "2-1",
+    "conference": "Mountain West",
+    "score": null
+   }
+  },
+  {
+   "id": "401858479",
+   "week": 5,
+   "start": "2026-10-03T16:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:30 PM EDT",
+   "completed": false,
+   "venue": "Camp Randall Stadium",
+   "city": "Madison, WI",
+   "tv": "BTN",
+   "note": "",
+   "away": {
+    "name": "Michigan State",
+    "key": "Michigan State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "Wisconsin",
+    "key": "Wisconsin",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401856705",
+   "week": 5,
+   "start": "2026-10-03T16:45Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 12:45 PM EDT",
+   "completed": false,
+   "venue": "Sanford Stadium",
+   "city": "Athens, GA",
+   "tv": "SEC Network",
+   "note": "",
+   "away": {
+    "name": "Vanderbilt",
+    "key": "Vanderbilt",
+    "rank": null,
+    "record": "3-1",
+    "conference": "SEC",
+    "score": null
+   },
+   "home": {
+    "name": "Georgia",
+    "key": "Georgia",
+    "rank": 2,
+    "record": "4-0",
+    "conference": "SEC",
+    "score": null
+   }
+  },
+  {
+   "id": "401866432",
+   "week": 5,
+   "start": "2026-10-03T17:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 1:00 PM EDT",
+   "completed": false,
+   "venue": "Broadview Stadium",
+   "city": "Buffalo, NY",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Western Michigan",
+    "key": "Western Michigan",
+    "rank": null,
+    "record": "2-2",
+    "conference": "MAC",
+    "score": null
+   },
+   "home": {
+    "name": "Buffalo",
+    "key": "Buffalo",
+    "rank": null,
+    "record": "2-2",
+    "conference": "MAC",
+    "score": null
+   }
+  },
+  {
+   "id": "401866431",
+   "week": 5,
+   "start": "2026-10-03T18:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 2:00 PM EDT",
+   "completed": false,
+   "venue": "Scheumann Stadium",
+   "city": "Muncie, IN",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Toledo",
+    "key": "Toledo",
+    "rank": null,
+    "record": "3-1",
+    "conference": "MAC",
+    "score": null
+   },
+   "home": {
+    "name": "Ball State",
+    "key": "Ball State",
+    "rank": null,
+    "record": "1-3",
+    "conference": "MAC",
+    "score": null
+   }
+  },
+  {
+   "id": "401856708",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Memorial Stadium",
+   "city": "Columbia, MO",
+   "tv": "ABC",
+   "note": "",
+   "away": {
+    "name": "Florida",
+    "key": "Florida",
+    "rank": 8,
+    "record": "4-0",
+    "conference": "SEC",
+    "score": null
+   },
+   "home": {
+    "name": "Missouri",
+    "key": "Missouri",
+    "rank": 25,
+    "record": "3-1",
+    "conference": "SEC",
+    "score": null
+   }
+  },
+  {
+   "id": "401856710",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Neyland Stadium",
+   "city": "Knoxville, TN",
+   "tv": "ESPN",
+   "note": "",
+   "away": {
+    "name": "Auburn",
+    "key": "Auburn",
+    "rank": null,
+    "record": "3-1",
+    "conference": "SEC",
+    "score": null
+   },
+   "home": {
+    "name": "Tennessee",
+    "key": "Tennessee",
+    "rank": 17,
+    "record": "3-1",
+    "conference": "SEC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858247",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Allegiant Stadium",
+   "city": "Las Vegas, NV",
+   "tv": "CBSSN",
+   "note": "",
+   "away": {
+    "name": "California",
+    "key": "California",
+    "rank": null,
+    "record": "2-2",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "UNLV",
+    "key": "UNLV",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Mountain West",
+    "score": null
+   }
+  },
+  {
+   "id": "401858248",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Carter-Finley Stadium",
+   "city": "Raleigh, NC",
+   "tv": "ACC Network",
+   "note": "",
+   "away": {
+    "name": "Louisville",
+    "key": "Louisville",
+    "rank": null,
+    "record": "2-2",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "NC State",
+    "key": "NC State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "ACC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858253",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Doak Campbell Stadium",
+   "city": "Tallahassee, FL",
+   "tv": "ESPN2",
+   "note": "",
+   "away": {
+    "name": "Virginia",
+    "key": "Virginia",
+    "rank": null,
+    "record": "3-1",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "Florida State",
+    "key": "Florida State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "ACC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858473",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Kinnick Stadium",
+   "city": "Iowa City, IA",
+   "tv": "CBS",
+   "note": "",
+   "away": {
+    "name": "Ohio State",
+    "key": "Ohio State",
+    "rank": 5,
+    "record": "3-1",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "Iowa",
+    "key": "Iowa",
+    "rank": 14,
+    "record": "4-0",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401862787",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Jerry Richardson Stadium",
+   "city": "Charlotte, NC",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Memphis",
+    "key": "Memphis",
+    "rank": null,
+    "record": "3-1",
+    "conference": "American",
+    "score": null
+   },
+   "home": {
+    "name": "Charlotte",
+    "key": "Charlotte",
+    "rank": null,
+    "record": "0-4",
+    "conference": "American",
+    "score": null
+   }
+  },
+  {
+   "id": "401862793",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Protective Stadium",
+   "city": "Birmingham, AL",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Samford",
+    "key": null,
+    "rank": null,
+    "record": "1-3",
+    "conference": "FCS",
+    "score": null
+   },
+   "home": {
+    "name": "UAB",
+    "key": "UAB",
+    "rank": null,
+    "record": "2-2",
+    "conference": "American",
+    "score": null
+   }
+  },
+  {
+   "id": "401864515",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Fargodome",
+   "city": "Fargo, ND",
+   "tv": "CW",
+   "note": "",
+   "away": {
+    "name": "Wyoming",
+    "key": "Wyoming",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Mountain West",
+    "score": null
+   },
+   "home": {
+    "name": "North Dakota State",
+    "key": "North Dakota State",
+    "rank": null,
+    "record": "4-0",
+    "conference": "Mountain West",
+    "score": null
+   }
+  },
+  {
+   "id": "401866430",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Kelly/Shorts Stadium",
+   "city": "Mount Pleasant, MI",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Akron",
+    "key": "Akron",
+    "rank": null,
+    "record": "1-3",
+    "conference": "MAC",
+    "score": null
+   },
+   "home": {
+    "name": "Central Michigan",
+    "key": "Central Michigan",
+    "rank": null,
+    "record": "2-2",
+    "conference": "MAC",
+    "score": null
+   }
+  },
+  {
+   "id": "401866433",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Warren McGuirk Alumni Stadium",
+   "city": "Amherst, MA",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Eastern Michigan",
+    "key": "Eastern Michigan",
+    "rank": null,
+    "record": "2-3",
+    "conference": "MAC",
+    "score": null
+   },
+   "home": {
+    "name": "Massachusetts",
+    "key": "Massachusetts",
+    "rank": null,
+    "record": "4-0",
+    "conference": "MAC",
+    "score": null
+   }
+  },
+  {
+   "id": "401866434",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Zoeller Field at Dix Stadium",
+   "city": "Kent, OH",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Ohio",
+    "key": "Ohio",
+    "rank": null,
+    "record": "2-2",
+    "conference": "MAC",
+    "score": null
+   },
+   "home": {
+    "name": "Kent State",
+    "key": "Kent State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "MAC",
+    "score": null
+   }
+  },
+  {
+   "id": "401866477",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Yager Stadium",
+   "city": "Oxford, OH",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Bowling Green",
+    "key": "Bowling Green",
+    "rank": null,
+    "record": "0-4",
+    "conference": "MAC",
+    "score": null
+   },
+   "home": {
+    "name": "Miami (OH)",
+    "key": "Miami (OH)",
+    "rank": null,
+    "record": "2-2",
+    "conference": "MAC",
+    "score": null
+   }
+  },
+  {
+   "id": "401869956",
+   "week": 5,
+   "start": "2026-10-03T19:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:30 PM EDT",
+   "completed": false,
+   "venue": "Center Parc Stadium",
+   "city": "Atlanta, GA",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Old Dominion",
+    "key": "Old Dominion",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Sun Belt",
+    "score": null
+   },
+   "home": {
+    "name": "Georgia State",
+    "key": "Georgia State",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Sun Belt",
+    "score": null
+   }
+  },
+  {
+   "id": "401869962",
+   "week": 5,
+   "start": "2026-10-03T19:45Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 3:45 PM EDT",
+   "completed": false,
+   "venue": "Bridgeforth Stadium",
+   "city": "Harrisonburg, VA",
+   "tv": "ESPNU",
+   "note": "",
+   "away": {
+    "name": "Marshall",
+    "key": "Marshall",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Sun Belt",
+    "score": null
+   },
+   "home": {
+    "name": "James Madison",
+    "key": "James Madison",
+    "rank": null,
+    "record": "4-0",
+    "conference": "Sun Belt",
+    "score": null
+   }
+  },
+  {
+   "id": "401858475",
+   "week": 5,
+   "start": "2026-10-03T20:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 4:00 PM EDT",
+   "completed": false,
+   "venue": "Memorial Stadium (Lincoln, NE)",
+   "city": "Lincoln, NE",
+   "tv": "FS1",
+   "note": "",
+   "away": {
+    "name": "Maryland",
+    "key": "Maryland",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "Nebraska",
+    "key": "Nebraska",
+    "rank": null,
+    "record": "4-0",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401864514",
+   "week": 5,
+   "start": "2026-10-03T20:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 4:00 PM EDT",
+   "completed": false,
+   "venue": "University Stadium (NM)",
+   "city": "Albuquerque, NM",
+   "tv": "MW+",
+   "note": "",
+   "away": {
+    "name": "UTEP",
+    "key": "UTEP",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Mountain West",
+    "score": null
+   },
+   "home": {
+    "name": "New Mexico",
+    "key": "New Mexico",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Mountain West",
+    "score": null
+   }
+  },
+  {
+   "id": "401856709",
+   "week": 5,
+   "start": "2026-10-03T20:15Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 4:15 PM EDT",
+   "completed": false,
+   "venue": "Williams-Brice Stadium",
+   "city": "Columbia, SC",
+   "tv": "SEC Network",
+   "note": "",
+   "away": {
+    "name": "Kentucky",
+    "key": "Kentucky",
+    "rank": 24,
+    "record": "3-1",
+    "conference": "SEC",
+    "score": null
+   },
+   "home": {
+    "name": "South Carolina",
+    "key": "South Carolina",
+    "rank": null,
+    "record": "2-2",
+    "conference": "SEC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858472",
+   "week": 5,
+   "start": "2026-10-03T20:15Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 4:15 PM EDT",
+   "completed": false,
+   "venue": "Gies Memorial Stadium",
+   "city": "Champaign, IL",
+   "tv": "BTN",
+   "note": "",
+   "away": {
+    "name": "Purdue",
+    "key": "Purdue",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "Illinois",
+    "key": "Illinois",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401860899",
+   "week": 5,
+   "start": "2026-10-03T22:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 6:00 PM EDT",
+   "completed": false,
+   "venue": "Canvas Stadium",
+   "city": "Fort Collins, CO",
+   "tv": "USA Net",
+   "note": "",
+   "away": {
+    "name": "Oregon State",
+    "key": "Oregon State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Pac-12",
+    "score": null
+   },
+   "home": {
+    "name": "Colorado State",
+    "key": "Colorado State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Pac-12",
+    "score": null
+   }
+  },
+  {
+   "id": "401862790",
+   "week": 5,
+   "start": "2026-10-03T22:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 6:00 PM EDT",
+   "completed": false,
+   "venue": "Flagler Credit Union Stadium",
+   "city": "Boca Raton, FL",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Texas Southern",
+    "key": null,
+    "rank": null,
+    "record": "1-3",
+    "conference": "FCS",
+    "score": null
+   },
+   "home": {
+    "name": "Florida Atlantic",
+    "key": "Florida Atlantic",
+    "rank": null,
+    "record": "3-1",
+    "conference": "American",
+    "score": null
+   }
+  },
+  {
+   "id": "401856711",
+   "week": 5,
+   "start": "2026-10-03T23:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:00 PM EDT",
+   "completed": false,
+   "venue": "Kyle Field",
+   "city": "College Station, TX",
+   "tv": "ESPN2",
+   "note": "",
+   "away": {
+    "name": "Arkansas",
+    "key": "Arkansas",
+    "rank": null,
+    "record": "2-2",
+    "conference": "SEC",
+    "score": null
+   },
+   "home": {
+    "name": "Texas A&M",
+    "key": "Texas A&M",
+    "rank": null,
+    "record": "2-2",
+    "conference": "SEC",
+    "score": null
+   }
+  },
+  {
+   "id": "401856818",
+   "week": 5,
+   "start": "2026-10-03T23:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:00 PM EDT",
+   "completed": false,
+   "venue": "Amon G. Carter Stadium",
+   "city": "Fort Worth, TX",
+   "tv": "ESPN",
+   "note": "",
+   "away": {
+    "name": "BYU",
+    "key": "BYU",
+    "rank": 10,
+    "record": "3-0",
+    "conference": "Big 12",
+    "score": null
+   },
+   "home": {
+    "name": "TCU",
+    "key": "TCU",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Big 12",
+    "score": null
+   }
+  },
+  {
+   "id": "401862788",
+   "week": 5,
+   "start": "2026-10-03T23:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:00 PM EDT",
+   "completed": false,
+   "venue": "Rice Stadium",
+   "city": "Houston, TX",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "UTSA",
+    "key": "UTSA",
+    "rank": null,
+    "record": "3-1",
+    "conference": "American",
+    "score": null
+   },
+   "home": {
+    "name": "Rice",
+    "key": "Rice",
+    "rank": null,
+    "record": "1-3",
+    "conference": "American",
+    "score": null
+   }
+  },
+  {
+   "id": "401869942",
+   "week": 5,
+   "start": "2026-10-03T23:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:00 PM EDT",
+   "completed": false,
+   "venue": "Brooks Stadium (SC)",
+   "city": "Conway, SC",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Georgia Southern",
+    "key": "Georgia Southern",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Sun Belt",
+    "score": null
+   },
+   "home": {
+    "name": "Coastal Carolina",
+    "key": "Coastal Carolina",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Sun Belt",
+    "score": null
+   }
+  },
+  {
+   "id": "401871089",
+   "week": 5,
+   "start": "2026-10-03T23:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:00 PM EDT",
+   "completed": false,
+   "venue": "Hancock Whitney Stadium",
+   "city": "Mobile, AL",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "UL Monroe",
+    "key": "UL Monroe",
+    "rank": null,
+    "record": "0-4",
+    "conference": "Sun Belt",
+    "score": null
+   },
+   "home": {
+    "name": "South Alabama",
+    "key": "South Alabama",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Sun Belt",
+    "score": null
+   }
+  },
+  {
+   "id": "401856821",
+   "week": 5,
+   "start": "2026-10-03T23:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:30 PM EDT",
+   "completed": false,
+   "venue": "Folsom Field",
+   "city": "Boulder, CO",
+   "tv": "FOX",
+   "note": "",
+   "away": {
+    "name": "Texas Tech",
+    "key": "Texas Tech",
+    "rank": 12,
+    "record": "4-0",
+    "conference": "Big 12",
+    "score": null
+   },
+   "home": {
+    "name": "Colorado",
+    "key": "Colorado",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Big 12",
+    "score": null
+   }
+  },
+  {
+   "id": "401858249",
+   "week": 5,
+   "start": "2026-10-03T23:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:30 PM EDT",
+   "completed": false,
+   "venue": "Memorial Stadium (Clemson, SC)",
+   "city": "Clemson, SC",
+   "tv": "ABC",
+   "note": "",
+   "away": {
+    "name": "Miami",
+    "key": "Miami",
+    "rank": 4,
+    "record": "4-0",
+    "conference": "ACC",
+    "score": null
+   },
+   "home": {
+    "name": "Clemson",
+    "key": "Clemson",
+    "rank": null,
+    "record": "3-1",
+    "conference": "ACC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858478",
+   "week": 5,
+   "start": "2026-10-03T23:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:30 PM EDT",
+   "completed": false,
+   "venue": "Los Angeles Memorial Coliseum",
+   "city": "Los Angeles, CA",
+   "tv": "NBC",
+   "note": "",
+   "away": {
+    "name": "Washington",
+    "key": "Washington",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "USC",
+    "key": "USC",
+    "rank": 18,
+    "record": "4-1",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401860898",
+   "week": 5,
+   "start": "2026-10-03T23:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:30 PM EDT",
+   "completed": false,
+   "venue": "Albertsons Stadium",
+   "city": "Boise, ID",
+   "tv": "CBSSN",
+   "note": "",
+   "away": {
+    "name": "Utah State",
+    "key": "Utah State",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Pac-12",
+    "score": null
+   },
+   "home": {
+    "name": "Boise State",
+    "key": "Boise State",
+    "rank": 22,
+    "record": "3-1",
+    "conference": "Pac-12",
+    "score": null
+   }
+  },
+  {
+   "id": "401862792",
+   "week": 5,
+   "start": "2026-10-03T23:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:30 PM EDT",
+   "completed": false,
+   "venue": "Raymond James Stadium",
+   "city": "Tampa, FL",
+   "tv": "ESPNU",
+   "note": "",
+   "away": {
+    "name": "Temple",
+    "key": "Temple",
+    "rank": null,
+    "record": "1-3",
+    "conference": "American",
+    "score": null
+   },
+   "home": {
+    "name": "South Florida",
+    "key": "South Florida",
+    "rank": null,
+    "record": "4-0",
+    "conference": "American",
+    "score": null
+   }
+  },
+  {
+   "id": "401869842",
+   "week": 5,
+   "start": "2026-10-03T23:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:30 PM EDT",
+   "completed": false,
+   "venue": "Joe Aillet Stadium",
+   "city": "Ruston, LA",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Army",
+    "key": "Army",
+    "rank": null,
+    "record": "2-1",
+    "conference": "American",
+    "score": null
+   },
+   "home": {
+    "name": "Louisiana Tech",
+    "key": "Louisiana Tech",
+    "rank": null,
+    "record": "1-2",
+    "conference": "Sun Belt",
+    "score": null
+   }
+  },
+  {
+   "id": "401856706",
+   "week": 5,
+   "start": "2026-10-03T23:45Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": false,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 7:45 PM EDT",
+   "completed": false,
+   "venue": "Tiger Stadium (LA)",
+   "city": "Baton Rouge, LA",
+   "tv": "SEC Network",
+   "note": "",
+   "away": {
+    "name": "McNeese",
+    "key": null,
+    "rank": null,
+    "record": "2-3",
+    "conference": "FCS",
+    "score": null
+   },
+   "home": {
+    "name": "LSU",
+    "key": "LSU",
+    "rank": 11,
+    "record": "3-1",
+    "conference": "SEC",
+    "score": null
+   }
+  },
+  {
+   "id": "401858477",
+   "week": 5,
+   "start": "2026-10-04T00:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 8:00 PM EDT",
+   "completed": false,
+   "venue": "SHI Stadium",
+   "city": "Piscataway, NJ",
+   "tv": "BTN",
+   "note": "",
+   "away": {
+    "name": "Indiana",
+    "key": "Indiana",
+    "rank": 6,
+    "record": "4-0",
+    "conference": "Big Ten",
+    "score": null
+   },
+   "home": {
+    "name": "Rutgers",
+    "key": "Rutgers",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Big Ten",
+    "score": null
+   }
+  },
+  {
+   "id": "401869932",
+   "week": 5,
+   "start": "2026-10-04T00:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 8:00 PM EDT",
+   "completed": false,
+   "venue": "Our Lady of Lourdes Stadium",
+   "city": "Lafayette, LA",
+   "tv": "ESPN+",
+   "note": "",
+   "away": {
+    "name": "Arkansas State",
+    "key": "Arkansas State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Sun Belt",
+    "score": null
+   },
+   "home": {
+    "name": "Louisiana",
+    "key": "Louisiana",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Sun Belt",
+    "score": null
+   }
+  },
+  {
+   "id": "401860921",
+   "week": 5,
+   "start": "2026-10-04T01:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 9:30 PM EDT",
+   "completed": false,
+   "venue": "Martin Stadium",
+   "city": "Pullman, WA",
+   "tv": "USA Net",
+   "note": "",
+   "away": {
+    "name": "Fresno State",
+    "key": "Fresno State",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Pac-12",
+    "score": null
+   },
+   "home": {
+    "name": "Washington State",
+    "key": "Washington State",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Pac-12",
+    "score": null
+   }
+  },
+  {
+   "id": "401856817",
+   "week": 5,
+   "start": "2026-10-04T02:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 10:30 PM EDT",
+   "completed": false,
+   "venue": "Mountain America Stadium",
+   "city": "Tempe, AZ",
+   "tv": "ESPN",
+   "note": "",
+   "away": {
+    "name": "Baylor",
+    "key": "Baylor",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big 12",
+    "score": null
+   },
+   "home": {
+    "name": "Arizona State",
+    "key": "Arizona State",
+    "rank": null,
+    "record": "2-1",
+    "conference": "Big 12",
+    "score": null
+   }
+  },
+  {
+   "id": "401860900",
+   "week": 5,
+   "start": "2026-10-04T02:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 10:30 PM EDT",
+   "completed": false,
+   "venue": "Snapdragon Stadium",
+   "city": "San Diego, CA",
+   "tv": "CW",
+   "note": "",
+   "away": {
+    "name": "Texas State",
+    "key": "Texas State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Pac-12",
+    "score": null
+   },
+   "home": {
+    "name": "San Diego State",
+    "key": "San Diego State",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Pac-12",
+    "score": null
+   }
+  },
+  {
+   "id": "401856820",
+   "week": 5,
+   "start": "2026-10-04T03:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 11:00 PM EDT",
+   "completed": false,
+   "venue": "Casino Del Sol Stadium",
+   "city": "Tucson, AZ",
+   "tv": "FOX",
+   "note": "",
+   "away": {
+    "name": "Cincinnati",
+    "key": "Cincinnati",
+    "rank": null,
+    "record": "4-0",
+    "conference": "Big 12",
+    "score": null
+   },
+   "home": {
+    "name": "Arizona",
+    "key": "Arizona",
+    "rank": null,
+    "record": "3-1",
+    "conference": "Big 12",
+    "score": null
+   }
+  },
+  {
+   "id": "401864513",
+   "week": 5,
+   "start": "2026-10-04T03:59Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "10/3 - 11:59 PM EDT",
+   "completed": false,
+   "venue": "Clarence T.C. Ching Athletics Complex",
+   "city": "Honolulu, HI",
+   "tv": "MW+",
+   "note": "",
+   "away": {
+    "name": "San José State",
+    "key": "San José State",
+    "rank": null,
+    "record": "2-2",
+    "conference": "Mountain West",
+    "score": null
+   },
+   "home": {
+    "name": "Hawai'i",
+    "key": "Hawai'i",
+    "rank": null,
+    "record": "1-3",
+    "conference": "Mountain West",
+    "score": null
+   }
+  }
+ ],
  "leagueAverage": {
   "rushTdG": 1.9,
   "passTdG": 1.8,

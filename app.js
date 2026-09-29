@@ -1,10 +1,8 @@
 let DATA = null;
 
-const team1Select = document.getElementById("team1Select");
-const team2Select = document.getElementById("team2Select");
+// Which page this is: "week" (index.html), "matchup" (matchup.html) or "dashboard"
+const PAGE = document.body.dataset.page || "dashboard";
 const teamCards = document.getElementById("teamCards");
-const lastUpdated = document.getElementById("lastUpdated");
-const printBothBtn = document.getElementById("printBothBtn");
 
 init();
 
@@ -13,32 +11,197 @@ async function init() {
     const res = await fetch("data/data.json", { cache: "no-store" });
     DATA = await res.json();
   } catch (err) {
-    teamCards.innerHTML = `<div class="empty-note">Couldn't load data/data.json. Run scripts/build_data.py first.</div>`;
+    document.getElementById("app").innerHTML =
+      `<div class="empty-note">Couldn't load data/data.json. Run scripts/build_data.py first.</div>`;
+    return;
+  }
+  setMeta();
+  if (PAGE === "week") initWeek();
+  else if (PAGE === "matchup") initMatchup();
+  else initDashboard();
+}
+
+function setMeta() {
+  const lastUpdated = document.getElementById("lastUpdated");
+  const gen = new Date(DATA.generatedAt);
+  if (lastUpdated) {
+    lastUpdated.textContent = "Data as of " + gen.toLocaleDateString(undefined, {
+      year: "numeric", month: "short", day: "numeric"
+    }) + " " + gen.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" }) +
+      (DATA.throughWeek ? " · stats through Week " + DATA.throughWeek : "");
+  }
+  const src = document.getElementById("sourceNote");
+  if (src && DATA.source) {
+    src.textContent = "Source: " + DATA.source + "." +
+      (DATA.pollName ? " Rankings: " + DATA.pollName + "." : "");
+  }
+}
+
+function rankTag(rank) {
+  return rank ? `<span class="ap-rank" title="${escapeHtml(DATA.pollName || "AP Top 25")}">#${rank}</span>` : "";
+}
+
+/* ---------------- Week slate (index.html) ---------------- */
+
+function initWeek() {
+  const games = DATA.weekGames || [];
+  document.getElementById("weekTitle").textContent =
+    DATA.currentWeek ? `Week ${DATA.currentWeek} Matchups` : "This Week's Matchups";
+  document.getElementById("weekSub").textContent =
+    `${games.length} game${games.length === 1 ? "" : "s"} · team stats through Week ${DATA.throughWeek}` +
+    " · tap a game for the full matchup";
+
+  const confSel = document.getElementById("confFilter");
+  const confs = new Set();
+  games.forEach(g => [g.away, g.home].forEach(s => s.conference && confs.add(s.conference)));
+  confSel.innerHTML = `<option value="">All conferences</option>` +
+    [...confs].sort().map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
+
+  const rankedOnly = document.getElementById("rankedOnly");
+  const search = document.getElementById("teamSearch");
+  [confSel, rankedOnly, search].forEach(el => el.addEventListener("input", () => renderWeek(games)));
+  renderWeek(games);
+}
+
+function renderWeek(games) {
+  const conf = document.getElementById("confFilter").value;
+  const ranked = document.getElementById("rankedOnly").checked;
+  const q = document.getElementById("teamSearch").value.trim().toLowerCase();
+  const list = document.getElementById("gameList");
+
+  const shown = games.filter(g => {
+    const sides = [g.away, g.home];
+    if (conf && !sides.some(s => s.conference === conf)) return false;
+    if (ranked && !sides.some(s => s.rank)) return false;
+    if (q && !sides.some(s => s.name.toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  if (!shown.length) {
+    list.innerHTML = `<div class="empty-note">No games match those filters.</div>`;
     return;
   }
 
+  // group by local calendar day
+  const groups = [];
+  shown.forEach(g => {
+    const d = new Date(g.start);
+    const label = d.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
+    let grp = groups[groups.length - 1];
+    if (!grp || grp.label !== label) groups.push(grp = { label, games: [] });
+    grp.games.push(g);
+  });
+
+  list.innerHTML = groups.map(grp => `
+    <section class="day-group">
+      <h2 class="day-label">${escapeHtml(grp.label)} <span class="day-count">${grp.games.length}</span></h2>
+      <div class="game-grid">${grp.games.map(gameCard).join("")}</div>
+    </section>`).join("");
+}
+
+function kickoff(g) {
+  if (g.completed) return "Final";
+  if (g.timeTbd) return "TBD";
+  return new Date(g.start).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+}
+
+function gameSide(s, g, other) {
+  const t = s.key && DATA.teams[s.key];
+  const srs = t ? `<span class="gs-srs" title="SRS">SRS ${t.record.srs > 0 ? "+" : ""}${t.record.srs}</span>` : "";
+  const won = g.completed && s.score != null && other.score != null && s.score > other.score;
+  return `<div class="gs-row${won ? " won" : ""}">
+    <span class="gs-name">${rankTag(s.rank)}${escapeHtml(s.name)}</span>
+    <span class="gs-rec">${escapeHtml(s.record)}${s.conference ? " · " + escapeHtml(s.conference) : ""}</span>
+    ${g.completed && s.score != null ? `<span class="gs-score">${s.score}</span>` : srs}
+  </div>`;
+}
+
+function gameCard(g) {
+  const note = g.note ? `<div class="game-note">${escapeHtml(g.note)}</div>` : "";
+  return `<a class="game-card" href="matchup.html?game=${encodeURIComponent(g.id)}">
+    <div class="game-meta">
+      <span class="game-time">${escapeHtml(kickoff(g))}</span>
+      ${g.tv ? `<span class="game-tv">${escapeHtml(g.tv)}</span>` : ""}
+    </div>
+    ${gameSide(g.away, g, g.home)}
+    <div class="gs-at">${g.neutral ? "vs" : "@"}</div>
+    ${gameSide(g.home, g, g.away)}
+    <div class="game-venue">${escapeHtml([g.venue, g.city].filter(Boolean).join(" · "))}${g.neutral ? " (neutral)" : ""}</div>
+    ${note}
+  </a>`;
+}
+
+/* ---------------- Single matchup (matchup.html) ---------------- */
+
+function initMatchup() {
+  const params = new URLSearchParams(location.search);
+  const id = params.get("game");
+  const g = (DATA.weekGames || []).find(x => x.id === id);
+  const head = document.getElementById("matchupHeader");
+  document.getElementById("printBothBtn").addEventListener("click", () => window.print());
+
+  if (!g) {
+    head.innerHTML = `<h1 class="mh-title">Game not found</h1>
+      <p class="mh-sub">This link may be from an earlier week. Pick a game from this week's slate or compare any two teams.</p>`;
+    teamCards.innerHTML = "";
+    return;
+  }
+
+  const name = s => `${s.rank ? "#" + s.rank + " " : ""}${s.name}`;
+  document.title = `${name(g.away)} ${g.neutral ? "vs" : "at"} ${name(g.home)} · CFB Matchup`;
+  const when = g.timeTbd
+    ? new Date(g.start).toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" }) + " · Time TBD"
+    : new Date(g.start).toLocaleString(undefined, { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  const status = g.completed && g.away.score != null
+    ? `Final: ${g.away.name} ${g.away.score}, ${g.home.name} ${g.home.score}` : when;
+
+  head.innerHTML = `
+    <div class="mh-week">Week ${g.week}${g.conferenceGame ? " · Conference game" : ""}${g.note ? " · " + escapeHtml(g.note) : ""}</div>
+    <h1 class="mh-title">${rankTag(g.away.rank)}${escapeHtml(g.away.name)}
+      <span class="mh-at">${g.neutral ? "vs" : "@"}</span>
+      ${rankTag(g.home.rank)}${escapeHtml(g.home.name)}</h1>
+    <p class="mh-sub">${escapeHtml(status)}${g.tv ? " · " + escapeHtml(g.tv) : ""}${g.venue ? " · " + escapeHtml(g.venue) : ""}${g.city ? ", " + escapeHtml(g.city) : ""}${g.neutral ? " (neutral site)" : ""}</p>`;
+
+  teamCards.innerHTML = [g.away, g.home]
+    .map(s => s.key && DATA.teams[s.key] ? renderTeamCard(DATA.teams[s.key]) : nonFbsCard(s)).join("");
+}
+
+function nonFbsCard(s) {
+  return `<div class="team-card" data-team="${escapeHtml(s.name)}">
+    <div class="team-card-header">
+      <div class="team-name-block">
+        <h2>${escapeHtml(s.name)}</h2>
+        <div class="record"><b>${escapeHtml(s.record || "")}</b> <span class="conf">${escapeHtml(s.conference || "FCS")}</span></div>
+      </div>
+    </div>
+    <div class="empty-note">Stats are only tracked for FBS teams, so there's no breakdown for ${escapeHtml(s.name)}.</div>
+  </div>`;
+}
+
+/* ---------------- Compare any two teams (dashboard.html) ---------------- */
+
+function initDashboard() {
+  const team1Select = document.getElementById("team1Select");
+  const team2Select = document.getElementById("team2Select");
   populateSelect(team1Select, DATA.teamNames);
   populateSelect(team2Select, DATA.teamNames);
 
-  const saved1 = localStorage.getItem("cfb_team1");
-  const saved2 = localStorage.getItem("cfb_team2");
+  const params = new URLSearchParams(location.search);
+  const saved1 = params.get("team1") || localStorage.getItem("cfb_team1");
+  const saved2 = params.get("team2") || localStorage.getItem("cfb_team2");
   // default matchup: the two highest-rated teams by SRS
   const bySrs = DATA.teamNames.slice().sort((a, b) => DATA.teams[b].record.srs - DATA.teams[a].record.srs);
   team1Select.value = saved1 && DATA.teams[saved1] ? saved1 : bySrs[0];
   team2Select.value = saved2 && DATA.teams[saved2] ? saved2 : bySrs[1];
 
+  const render = () => {
+    const t1 = team1Select.value, t2 = team2Select.value;
+    try { localStorage.setItem("cfb_team1", t1); localStorage.setItem("cfb_team2", t2); } catch (e) {}
+    teamCards.innerHTML = [t1, t2].map(name => renderTeamCard(DATA.teams[name])).join("");
+  };
   team1Select.addEventListener("change", render);
   team2Select.addEventListener("change", render);
-  printBothBtn.addEventListener("click", () => window.print());
-
-  const gen = new Date(DATA.generatedAt);
-  lastUpdated.textContent = "Data as of " + gen.toLocaleDateString(undefined, {
-    year: "numeric", month: "short", day: "numeric"
-  }) + " " + gen.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" }) +
-    (DATA.throughWeek ? " · through Week " + DATA.throughWeek : "");
-  const src = document.getElementById("sourceNote");
-  if (src && DATA.source) src.textContent = "Source: " + DATA.source + ".";
-
+  document.getElementById("printBothBtn").addEventListener("click", () => window.print());
   render();
 }
 
@@ -48,19 +211,13 @@ function populateSelect(select, names) {
     const c = (DATA.teams[n] && DATA.teams[n].conference) || "Other";
     (byConf[c] = byConf[c] || []).push(n);
   });
-  const opt = n => `<option value="${escapeHtml(n)}">${escapeHtml(n)}</option>`;
+  const opt = n => {
+    const r = DATA.teams[n] && DATA.teams[n].apRank;
+    return `<option value="${escapeHtml(n)}">${r ? "#" + r + " " : ""}${escapeHtml(n)}</option>`;
+  };
   const confs = Object.keys(byConf).sort().map(c =>
     `<optgroup label="${escapeHtml(c)}">${byConf[c].map(opt).join("")}</optgroup>`).join("");
   select.innerHTML = confs;
-}
-
-function render() {
-  const t1 = team1Select.value;
-  const t2 = team2Select.value;
-  localStorage.setItem("cfb_team1", t1);
-  localStorage.setItem("cfb_team2", t2);
-
-  teamCards.innerHTML = [t1, t2].map(name => renderTeamCard(DATA.teams[name])).join("");
 }
 
 function renderTeamCard(t) {
@@ -72,7 +229,7 @@ function renderTeamCard(t) {
   <div class="team-card" data-team="${escapeHtml(t.team)}">
     <div class="team-card-header">
       <div class="team-name-block">
-        <h2>${escapeHtml(t.team)}</h2>
+        <h2>${rankTag(t.apRank)}${escapeHtml(t.team)}</h2>
         <div class="record"><b>${t.record.w}-${t.record.l}${t.record.t ? "-" + t.record.t : ""}</b>${t.conference ? ` <span class="conf">${escapeHtml(t.conference)}</span>` : ""}</div>
       </div>
       <div class="rating-badges">
