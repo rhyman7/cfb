@@ -18,7 +18,7 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
 
 The "current week" is the first regular-season week that still has an
-unplayed game, so after Sunday's rebuild the slate shows the coming week.
+unplayed game, so after Monday's rebuild the slate shows the coming week.
 AP ranks come from ESPN's schedule (each team's current poll rank on its
 next game, so teams on a bye are covered).
 
@@ -42,7 +42,7 @@ come from the sibling repo
 
 ## Weekly update
 
-A weekly scheduled task (Sunday morning ET) runs:
+A weekly scheduled task (Mondays 7:47 AM ET, after the new AP poll and the weekend's final stats reach the data source) runs:
 
 ```bash
 pip install -r requirements.txt
