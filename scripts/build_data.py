@@ -32,6 +32,8 @@ FILES = {
     "player_box": "player_box/parquet/player_box_{s}.parquet",
     "teams": "cfb_teams/parquet/cfb_teams_{s}.parquet",
     "rosters": "cfb_rosters/parquet/cfb_rosters_{s}.parquet",
+    # betting lines + other pregame context for every FBS-vs-FBS game, incl. upcoming ones
+    "matchup_line": "cfb_matchup_line/parquet/cfb_matchup_line_{s}.parquet",
     # full season schedule incl. upcoming games (the data repo's copy only has finals)
     "full_schedule": "https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-raw/main/cfb/schedules/csv/cfb_schedule_{s}.csv",
 }
@@ -152,7 +154,12 @@ def current_poll(full):
     return {int(t): int(k) for t, k in upcoming.items() if pd.notna(k) and 1 <= k <= 25}
 
 
-def week_games(full, id_to_name, team_rows, poll):
+def half(x):
+    """Round a consensus line (e.g. -24.25) to the nearest half point."""
+    return None if x is None or pd.isna(x) else round(float(x) * 2) / 2
+
+
+def week_games(full, id_to_name, team_rows, poll, lines, qbs):
     """Games for the current week: the first regular-season week that still has
     an unplayed game (or the final week once everything is complete)."""
     reg = full[full["season_type"] == 2].copy()
@@ -183,11 +190,14 @@ def week_games(full, id_to_name, team_rows, poll):
             "record": record,
             "conference": conf,
             "score": int(score) if pd.notna(score) and bool(r["status_type_completed"]) else None,
+            "abbr": team_rows[key]["abbr"] if key else str(r.get(f"{pfx}_abbreviation") or name),
+            "qb": qbs.get(tid),
         }
 
     games = []
     for _, r in wk.iterrows():
         tv = r.get("broadcast_name") if isinstance(r.get("broadcast_name"), str) else r.get("broadcast")
+        ln = lines.get(int(r["game_id"]), {})
         games.append({
             "id": str(int(r["game_id"])),
             "week": week,
@@ -202,6 +212,10 @@ def week_games(full, id_to_name, team_rows, poll):
             "city": ", ".join(x for x in [r.get("venue_address_city"), r.get("venue_address_state")] if isinstance(x, str)),
             "tv": tv if isinstance(tv, str) else "",
             "note": r.get("notes_headline") if isinstance(r.get("notes_headline"), str) else "",
+            "indoor": bool(r.get("venue_indoor")) if pd.notna(r.get("venue_indoor")) else None,
+            # home team's spread: negative = home favored
+            "spread": half(ln.get("spread")),
+            "total": half(ln.get("over_under")),
             "away": side(r, "away"),
             "home": side(r, "home"),
         })
@@ -356,6 +370,7 @@ def build(season, cache):
         team_rows[name] = {
             "team": name,
             "conference": m["conference_short_name"] if isinstance(m["conference_short_name"], str) else "",
+            "abbr": m["abbreviation"] if isinstance(m["abbreviation"], str) else name,
             "record": {"w": int(p.w), "l": int(p.l), "t": int(p.t), "sos": r1(sos[t]),
                        "srs": r1(s), "osrs": r1(o), "dsrs": r1(d)},
             "offense": {"ppg": r1(p.pf), "rushYdsG": r1(p.rushYdsG), "rushYdsGRank": int(p.offRushRk),
@@ -377,7 +392,13 @@ def build(season, cache):
     poll = current_poll(full)
     for tid, name in id_to_name.items():
         team_rows[name]["apRank"] = poll.get(tid)
-    cur_week, games = week_games(full, id_to_name, team_rows, poll)
+    # QB = the team's leading passer (most attempts) in its most recent game
+    qb_src = passing.merge(g[["game_id", "week"]], on="game_id").sort_values(["team_id", "week", "att"])
+    qbs = {int(t): str(d.iloc[-1]["athlete_name"]) for t, d in qb_src.groupby("team_id") if len(d)}
+    ml = load("matchup_line", season, cache)
+    lines = {int(r.game_id): {"spread": r.spread, "over_under": r.over_under}
+             for r in ml[ml["season_type"].astype(str).isin(["2", "regular"])].itertuples()}
+    cur_week, games = week_games(full, id_to_name, team_rows, poll, lines, qbs)
     out = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "season": season,

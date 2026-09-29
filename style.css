@@ -710,5 +710,102 @@ footer {
   .topnav { display: none !important; }
 }
 
+/* ---------- Matchup page: game header + head to head (ported from the NFL site) ---------- */
+.section-title {
+  margin: 28px 0 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+.matchup-header { text-align: left; margin-bottom: 0; }
+.matchup-header .mh-week { text-align: center; margin-bottom: 8px; }
+.game-hero {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.hero-team { text-align: center; }
+.hero-side { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+.hero-name { font-size: 1.45rem; font-weight: 700; margin: 4px 0; }
+.hero-rec { color: var(--text-dim); }
+.hero-rec b { color: var(--text); font-size: 1.1rem; }
+.hero-qb, .hero-srs { font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; }
+.hero-srs .pos { color: var(--good); font-weight: 700; }
+.hero-srs .neg { color: var(--neg); font-weight: 700; }
+.hero-mid { text-align: center; max-width: 280px; }
+.hero-at { font-size: 1.6rem; font-weight: 700; color: var(--text-dim); }
+.hero-info { font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; }
+.hero-line { font-size: 0.85rem; margin-top: 8px; font-weight: 600; }
+@media (max-width: 700px) {
+  .game-hero { grid-template-columns: 1fr; }
+  .hero-mid { max-width: none; }
+}
+.edge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 820px) { .edge-grid { grid-template-columns: 1fr; } }
+.edge-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+.edge-panel h4 { margin: 0 0 10px; font-size: 0.95rem; }
+.off-txt { color: var(--off); }
+.def-txt { color: var(--def); }
+.edge-table td { padding: 7px 6px; }
+.edge-table td.lbl { color: var(--text-dim); font-size: 0.8rem; }
+.edge-table .rk { color: var(--text-dim); font-size: 0.72rem; margin-left: 2px; }
+.edge-table td.edge { text-align: right; }
+.edge-chip {
+  display: inline-block;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.edge-chip.off { color: var(--off); border-color: var(--off); }
+.edge-chip.def { color: var(--def); border-color: var(--def); }
+.edge-chip.even { color: var(--text-dim); }
+@media (max-width: 480px) {
+  .edge-panel { padding: 12px 10px; }
+  .edge-table td, .edge-table th { padding: 6px 3px; }
+  .edge-table .rk { display: block; margin: 0; }
+}
+.edge-key { color: var(--text-dim); font-size: 0.75rem; margin: 8px 0 0; }
+.empty-note a { color: var(--accent); }
+
+@media print {
+  .game-hero, .edge-panel { background: #ffffff; border: 1px solid #b8bfcc; break-inside: avoid; }
+  .hero-name, .edge-panel h4 { color: #111318 !important; }
+  .hero-side, .hero-rec, .hero-qb, .hero-srs, .hero-info, .hero-at, .edge-key,
+  .edge-table td.lbl, .edge-table .rk, .edge-table th { color: #5b6472 !important; }
+  .hero-line, .edge-table b { color: #111318 !important; }
+  .edge-grid { grid-template-columns: 1fr 1fr !important; }
+  .section-title { color: #5b6472 !important; }
+  #teamCards .section-title { display: none; }
+
+  /* Matchup page: header + head to head + both cards on one landscape page */
+  body[data-page="matchup"] .topbar { display: none; }
+  body[data-page="matchup"] #matchupHeader,
+  body[data-page="matchup"] #edges { zoom: 0.74; }
+  body[data-page="matchup"] .matchup-header .mh-week { margin-bottom: 4px; }
+  body[data-page="matchup"] .game-hero { padding: 10px 16px; gap: 10px; }
+  body[data-page="matchup"] .section-title { margin: 10px 0 6px; }
+  body[data-page="matchup"] .edge-panel { padding: 8px 12px; }
+  body[data-page="matchup"] .edge-panel h4 { margin-bottom: 4px; }
+  body[data-page="matchup"] .edge-table td { padding: 3px 6px; }
+  body[data-page="matchup"] .edge-key { margin-top: 4px; }
+  body[data-page="matchup"] #edges { margin-bottom: 10px; }
+}
+
 /* CFB: conference tag next to the record */
 .record .conf { font-size: 0.8em; opacity: 0.7; margin-left: 6px; }

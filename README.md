@@ -11,8 +11,12 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 - **`index.html` — This week's games.** The current week's slate grouped by
   day, with kickoff time, TV, venue, records, SRS and AP Top 25 ranks. Filter
   by conference, Top 25, or team name. Click a game to open its matchup.
-- **`matchup.html?game=<ESPN game id>` — One game.** Both teams' full stat
-  cards (away first) with the game details on top; prints on one page.
+- **`matchup.html?game=<ESPN game id>` — One game.** A game header (records,
+  AP rank, QB, SRS, kickoff, venue, indoors/outdoors, spread, O/U), a Head to
+  Head section comparing each offense with the other defense (FBS ranks, with
+  an edge called when one side ranks 26+ spots better — the same share of the
+  field as the NFL site's 6 of 32), then both teams' full stat cards. Prints
+  on one landscape page.
   Non-FBS opponents show a short note instead of stats.
 - **`dashboard.html` — Compare any two teams.** The original dashboard
   (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
@@ -35,7 +39,8 @@ times a day. The build script downloads them straight from
 `raw.githubusercontent.com`, so no API key is needed.
 
 Files used (`cfb/…/<name>_2026.parquet`): `cfb_schedule`, `team_box`,
-`player_box`, `cfb_teams`, `cfb_rosters`. The upcoming schedule and AP ranks
+`player_box`, `cfb_teams`, `cfb_rosters`, and `cfb_matchup_line` (consensus
+spread and O/U, rounded to the half point). The upcoming schedule and AP ranks
 come from the sibling repo
 [`sportsdataverse/cfbfastR-cfb-raw`](https://github.com/sportsdataverse/cfbfastR-cfb-raw)
 (`cfb/schedules/csv/cfb_schedule_2026.csv`).

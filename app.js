@@ -138,32 +138,140 @@ function initMatchup() {
   const id = params.get("game");
   const g = (DATA.weekGames || []).find(x => x.id === id);
   const head = document.getElementById("matchupHeader");
+  const edges = document.getElementById("edges");
   document.getElementById("printBothBtn").addEventListener("click", () => window.print());
 
   if (!g) {
-    head.innerHTML = `<h1 class="mh-title">Game not found</h1>
-      <p class="mh-sub">This link may be from an earlier week. Pick a game from this week's slate or compare any two teams.</p>`;
+    head.innerHTML = `<div class="empty-note">That game isn't on this week's schedule anymore. <a href="index.html">See this week's matchups</a> or <a href="dashboard.html">compare any two teams</a>.</div>`;
     teamCards.innerHTML = "";
     return;
   }
 
-  const name = s => `${s.rank ? "#" + s.rank + " " : ""}${s.name}`;
-  document.title = `${name(g.away)} ${g.neutral ? "vs" : "at"} ${name(g.home)} · CFB Matchup`;
-  const when = g.timeTbd
-    ? new Date(g.start).toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" }) + " · Time TBD"
-    : new Date(g.start).toLocaleString(undefined, { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
-  const status = g.completed && g.away.score != null
-    ? `Final: ${g.away.name} ${g.away.score}, ${g.home.name} ${g.home.score}` : when;
+  const away = g.away.key ? DATA.teams[g.away.key] : null;
+  const home = g.home.key ? DATA.teams[g.home.key] : null;
+  const tag = s => `${s.rank ? "#" + s.rank + " " : ""}${s.abbr || s.name}`;
+  document.title = `${tag(g.away)} ${g.neutral ? "vs" : "@"} ${tag(g.home)} · CFB Matchup Dashboard`;
 
-  head.innerHTML = `
-    <div class="mh-week">Week ${g.week}${g.conferenceGame ? " · Conference game" : ""}${g.note ? " · " + escapeHtml(g.note) : ""}</div>
-    <h1 class="mh-title">${rankTag(g.away.rank)}${escapeHtml(g.away.name)}
-      <span class="mh-at">${g.neutral ? "vs" : "@"}</span>
-      ${rankTag(g.home.rank)}${escapeHtml(g.home.name)}</h1>
-    <p class="mh-sub">${escapeHtml(status)}${g.tv ? " · " + escapeHtml(g.tv) : ""}${g.venue ? " · " + escapeHtml(g.venue) : ""}${g.city ? ", " + escapeHtml(g.city) : ""}${g.neutral ? " (neutral site)" : ""}</p>`;
+  head.innerHTML = renderHero(g, away, home);
 
-  teamCards.innerHTML = [g.away, g.home]
+  if (away && home) {
+    const n = Object.keys(DATA.teams).length;
+    const gap = edgeGap();
+    edges.innerHTML = `
+      <h3 class="section-title">Head to Head</h3>
+      <div class="edge-grid">
+        ${edgePanel(away, home)}
+        ${edgePanel(home, away)}
+      </div>
+      <p class="edge-key">Ranks are out of ${n} FBS teams. The edge goes to whichever side ranks at least ${gap} spots better; INT compares interceptions thrown by the offense with interceptions made by the defense.</p>`;
+  } else {
+    const other = away ? g.home : g.away;
+    edges.innerHTML = `<h3 class="section-title">Head to Head</h3>
+      <div class="empty-note">No head-to-head comparison: ${escapeHtml(other.name)} isn't an FBS team, so its stats aren't tracked.</div>`;
+  }
+
+  teamCards.innerHTML = `<h3 class="section-title">Full Team Stats</h3>` + [g.away, g.home]
     .map(s => s.key && DATA.teams[s.key] ? renderTeamCard(DATA.teams[s.key]) : nonFbsCard(s)).join("");
+}
+
+// Spread is from the home team's side: negative = home favored.
+function fmtSpread(g) {
+  if (g.spread === null || g.spread === undefined) return null;
+  if (g.spread === 0) return "Pick'em";
+  const fav = g.spread < 0 ? g.home : g.away;
+  return `${fav.abbr || fav.name} -${Math.abs(g.spread)}`;
+}
+
+function renderHero(g, away, home) {
+  const final = g.completed && g.away.score != null && g.home.score != null;
+  const d = new Date(g.start);
+  const day = d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  const time = final ? "Final" : g.timeTbd ? "Time TBD"
+    : d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit", timeZoneName: "short" });
+  const roof = g.indoor === true ? "Indoors" : g.indoor === false ? "Outdoors" : null;
+  const info = [
+    `${day} · ${time}`,
+    [g.venue, g.city, roof].filter(Boolean).join(" · "),
+    g.neutral ? "Neutral site" : null,
+  ].filter(Boolean);
+  const line = [
+    fmtSpread(g) ? `Spread: ${fmtSpread(g)}` : null,
+    g.total ? `O/U ${g.total}` : null,
+    g.conferenceGame ? "Conference game" : null,
+  ].filter(Boolean);
+
+  return `
+  <div class="mh-week">Week ${g.week}${g.note ? " · " + escapeHtml(g.note) : ""}</div>
+  <div class="game-hero">
+    ${heroTeam(g.away, away, g.neutral ? "Team 1" : "Away", final ? g.away.score : null)}
+    <div class="hero-mid">
+      <div class="hero-at">${g.neutral ? "vs" : "@"}</div>
+      ${info.map(i => `<div class="hero-info">${escapeHtml(i)}</div>`).join("")}
+      ${line.length ? `<div class="hero-line">${escapeHtml(line.join(" · "))}</div>` : ""}
+      ${g.tv ? `<div class="hero-info">TV: ${escapeHtml(g.tv)}</div>` : ""}
+    </div>
+    ${heroTeam(g.home, home, g.neutral ? "Team 2" : "Home", final ? g.home.score : null)}
+  </div>`;
+}
+
+function heroTeam(s, t, side, score) {
+  const srs = t ? `<div class="hero-srs">SRS <span class="${t.record.srs > 0 ? "pos" : t.record.srs < 0 ? "neg" : ""}">${t.record.srs}</span></div>` : "";
+  return `
+    <div class="hero-team">
+      <div class="hero-side">${side}</div>
+      <div class="hero-name">${rankTag(s.rank)}${escapeHtml(s.name)}</div>
+      <div class="hero-rec">${escapeHtml(s.record || "")}${s.conference ? " · " + escapeHtml(s.conference) : ""}${score !== null ? ` · <b>${score}</b>` : ""}</div>
+      ${s.qb ? `<div class="hero-qb">QB: ${escapeHtml(s.qb)}</div>` : ""}
+      ${srs}
+    </div>`;
+}
+
+// The NFL site calls an edge at 6 of 32 spots; keep the same share of the FBS field.
+function edgeGap() {
+  return Math.max(1, Math.round(Object.keys(DATA.teams).length * 6 / 32));
+}
+
+// Rank a value among all FBS teams. higherIsBetter decides direction; ties share the lower rank.
+function leagueRank(getter, value, higherIsBetter) {
+  const all = Object.values(DATA.teams).map(getter);
+  return 1 + all.filter(v => (higherIsBetter ? v > value : v < value)).length;
+}
+
+const EDGE_ROWS = [
+  // label, offense getter, defense getter, offense higher-better, defense higher-better
+  ["Points / G", t => t.offense.ppg, t => t.defense.papg, true, false],
+  ["Rush Yds / G", t => t.offense.rushYdsG, t => t.defense.rushYdsG, true, false],
+  ["Rush TD / G", t => t.offense.rushTdG, t => t.defense.rushTdG, true, false],
+  ["Pass Yds / G", t => t.offense.passYdsG, t => t.defense.passYdsG, true, false],
+  ["Pass TD / G", t => t.offense.passTdG, t => t.defense.passTdG, true, false],
+  ["INT / G", t => t.offense.int, t => t.defense.int, false, true],
+];
+
+function edgePanel(offTeam, defTeam) {
+  const gap = edgeGap();
+  const rows = EDGE_ROWS.map(([label, offGet, defGet, offHi, defHi]) => {
+    const ov = offGet(offTeam), dv = defGet(defTeam);
+    const or = leagueRank(offGet, ov, offHi), dr = leagueRank(defGet, dv, defHi);
+    const diff = dr - or;
+    const edge = diff >= gap ? `<span class="edge-chip off">Offense</span>`
+      : diff <= -gap ? `<span class="edge-chip def">Defense</span>`
+      : `<span class="edge-chip even">Even</span>`;
+    return `<tr>
+      <td class="lbl">${label}</td>
+      <td class="num"><b>${ov}</b> <span class="rk">#${or}</span></td>
+      <td class="num"><b>${dv}</b> <span class="rk">#${dr}</span></td>
+      <td class="edge">${edge}</td>
+    </tr>`;
+  }).join("");
+
+  return `
+  <div class="edge-panel">
+    <h4><span class="off-txt">${escapeHtml(offTeam.abbr)} offense</span> vs <span class="def-txt">${escapeHtml(defTeam.abbr)} defense</span></h4>
+    <table class="edge-table">
+      <thead><tr><th></th><th class="num">${escapeHtml(offTeam.abbr)} O</th><th class="num">${escapeHtml(defTeam.abbr)} D</th><th class="num">Edge</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
 }
 
 function nonFbsCard(s) {

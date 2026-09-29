@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T23:09:33.863292+00:00",
+ "generatedAt": "2026-09-29T23:33:04.222163+00:00",
  "season": 2026,
  "throughWeek": 4,
  "gamesCounted": 331,
@@ -148,6 +148,7 @@
   "Auburn": {
    "team": "Auburn",
    "conference": "SEC",
+   "abbr": "AUB",
    "record": {
     "w": 3,
     "l": 1,
@@ -319,6 +320,7 @@
   "UAB": {
    "team": "UAB",
    "conference": "American",
+   "abbr": "UAB",
    "record": {
     "w": 2,
     "l": 2,
@@ -484,6 +486,7 @@
   "South Alabama": {
    "team": "South Alabama",
    "conference": "Sun Belt",
+   "abbr": "USA",
    "record": {
     "w": 2,
     "l": 2,
@@ -649,6 +652,7 @@
   "Arkansas": {
    "team": "Arkansas",
    "conference": "SEC",
+   "abbr": "ARK",
    "record": {
     "w": 2,
     "l": 2,
@@ -820,6 +824,7 @@
   "Arizona State": {
    "team": "Arizona State",
    "conference": "Big 12",
+   "abbr": "ASU",
    "record": {
     "w": 2,
     "l": 1,
@@ -991,6 +996,7 @@
   "Arizona": {
    "team": "Arizona",
    "conference": "Big 12",
+   "abbr": "ARIZ",
    "record": {
     "w": 3,
     "l": 1,
@@ -1156,6 +1162,7 @@
   "Sacramento State": {
    "team": "Sacramento State",
    "conference": "MAC",
+   "abbr": "SAC",
    "record": {
     "w": 1,
     "l": 4,
@@ -1327,6 +1334,7 @@
   "San Diego State": {
    "team": "San Diego State",
    "conference": "Pac-12",
+   "abbr": "SDSU",
    "record": {
     "w": 1,
     "l": 3,
@@ -1504,6 +1512,7 @@
   "San José State": {
    "team": "San José State",
    "conference": "Mountain West",
+   "abbr": "SJSU",
    "record": {
     "w": 2,
     "l": 2,
@@ -1655,6 +1664,7 @@
   "Stanford": {
    "team": "Stanford",
    "conference": "ACC",
+   "abbr": "STAN",
    "record": {
     "w": 2,
     "l": 2,
@@ -1820,6 +1830,7 @@
   "California": {
    "team": "California",
    "conference": "ACC",
+   "abbr": "CAL",
    "record": {
     "w": 2,
     "l": 2,
@@ -1991,6 +2002,7 @@
   "UCLA": {
    "team": "UCLA",
    "conference": "Big Ten",
+   "abbr": "UCLA",
    "record": {
     "w": 4,
     "l": 0,
@@ -2156,6 +2168,7 @@
   "USC": {
    "team": "USC",
    "conference": "Big Ten",
+   "abbr": "USC",
    "record": {
     "w": 4,
     "l": 1,
@@ -2321,6 +2334,7 @@
   "Colorado State": {
    "team": "Colorado State",
    "conference": "Pac-12",
+   "abbr": "CSU",
    "record": {
     "w": 2,
     "l": 2,
@@ -2498,6 +2512,7 @@
   "Colorado": {
    "team": "Colorado",
    "conference": "Big 12",
+   "abbr": "COLO",
    "record": {
     "w": 2,
     "l": 2,
@@ -2675,6 +2690,7 @@
   "UConn": {
    "team": "UConn",
    "conference": "FBS Indep.",
+   "abbr": "CONN",
    "record": {
     "w": 2,
     "l": 2,
@@ -2840,6 +2856,7 @@
   "Delaware": {
    "team": "Delaware",
    "conference": "CUSA",
+   "abbr": "DEL",
    "record": {
     "w": 2,
     "l": 2,
@@ -3017,6 +3034,7 @@
   "Florida State": {
    "team": "Florida State",
    "conference": "ACC",
+   "abbr": "FSU",
    "record": {
     "w": 2,
     "l": 2,
@@ -3182,6 +3200,7 @@
   "Jacksonville State": {
    "team": "Jacksonville State",
    "conference": "CUSA",
+   "abbr": "JVST",
    "record": {
     "w": 3,
     "l": 2,
@@ -3359,6 +3378,7 @@
   "Florida": {
    "team": "Florida",
    "conference": "SEC",
+   "abbr": "FLA",
    "record": {
     "w": 4,
     "l": 0,
@@ -3530,6 +3550,7 @@
   "South Florida": {
    "team": "South Florida",
    "conference": "American",
+   "abbr": "USF",
    "record": {
     "w": 4,
     "l": 0,
@@ -3695,6 +3716,7 @@
   "Georgia Tech": {
    "team": "Georgia Tech",
    "conference": "ACC",
+   "abbr": "GT",
    "record": {
     "w": 1,
     "l": 3,
@@ -3860,6 +3882,7 @@
   "Georgia": {
    "team": "Georgia",
    "conference": "SEC",
+   "abbr": "UGA",
    "record": {
     "w": 4,
     "l": 0,
@@ -4043,6 +4066,7 @@
   "Hawai'i": {
    "team": "Hawai'i",
    "conference": "Mountain West",
+   "abbr": "HAW",
    "record": {
     "w": 1,
     "l": 3,
@@ -4214,6 +4238,7 @@
   "Iowa State": {
    "team": "Iowa State",
    "conference": "Big 12",
+   "abbr": "ISU",
    "record": {
     "w": 2,
     "l": 2,
@@ -4379,6 +4404,7 @@
   "Boise State": {
    "team": "Boise State",
    "conference": "Pac-12",
+   "abbr": "BOIS",
    "record": {
     "w": 3,
     "l": 1,
@@ -4538,6 +4564,7 @@
   "Northwestern": {
    "team": "Northwestern",
    "conference": "Big Ten",
+   "abbr": "NU",
    "record": {
     "w": 2,
     "l": 1,
@@ -4697,6 +4724,7 @@
   "Indiana": {
    "team": "Indiana",
    "conference": "Big Ten",
+   "abbr": "IU",
    "record": {
     "w": 4,
     "l": 0,
@@ -4868,6 +4896,7 @@
   "Notre Dame": {
    "team": "Notre Dame",
    "conference": "FBS Indep.",
+   "abbr": "ND",
    "record": {
     "w": 4,
     "l": 0,
@@ -5039,6 +5068,7 @@
   "Kentucky": {
    "team": "Kentucky",
    "conference": "SEC",
+   "abbr": "UK",
    "record": {
     "w": 3,
     "l": 1,
@@ -5204,6 +5234,7 @@
   "Louisville": {
    "team": "Louisville",
    "conference": "ACC",
+   "abbr": "LOU",
    "record": {
     "w": 2,
     "l": 2,
@@ -5375,6 +5406,7 @@
   "Western Kentucky": {
    "team": "Western Kentucky",
    "conference": "CUSA",
+   "abbr": "WKU",
    "record": {
     "w": 1,
     "l": 3,
@@ -5546,6 +5578,7 @@
   "LSU": {
    "team": "LSU",
    "conference": "SEC",
+   "abbr": "LSU",
    "record": {
     "w": 3,
     "l": 1,
@@ -5717,6 +5750,7 @@
   "Boston College": {
    "team": "Boston College",
    "conference": "ACC",
+   "abbr": "BC",
    "record": {
     "w": 2,
     "l": 2,
@@ -5876,6 +5910,7 @@
   "Massachusetts": {
    "team": "Massachusetts",
    "conference": "MAC",
+   "abbr": "MASS",
    "record": {
     "w": 4,
     "l": 0,
@@ -6041,6 +6076,7 @@
   "Maryland": {
    "team": "Maryland",
    "conference": "Big Ten",
+   "abbr": "MD",
    "record": {
     "w": 2,
     "l": 2,
@@ -6212,6 +6248,7 @@
   "Michigan State": {
    "team": "Michigan State",
    "conference": "Big Ten",
+   "abbr": "MSU",
    "record": {
     "w": 2,
     "l": 2,
@@ -6377,6 +6414,7 @@
   "Michigan": {
    "team": "Michigan",
    "conference": "Big Ten",
+   "abbr": "MICH",
    "record": {
     "w": 3,
     "l": 1,
@@ -6542,6 +6580,7 @@
   "Minnesota": {
    "team": "Minnesota",
    "conference": "Big Ten",
+   "abbr": "MINN",
    "record": {
     "w": 3,
     "l": 1,
@@ -6713,6 +6752,7 @@
   "Missouri": {
    "team": "Missouri",
    "conference": "SEC",
+   "abbr": "MIZ",
    "record": {
     "w": 3,
     "l": 1,
@@ -6890,6 +6930,7 @@
   "Ole Miss": {
    "team": "Ole Miss",
    "conference": "SEC",
+   "abbr": "MISS",
    "record": {
     "w": 3,
     "l": 1,
@@ -7055,6 +7096,7 @@
   "Duke": {
    "team": "Duke",
    "conference": "ACC",
+   "abbr": "DUKE",
    "record": {
     "w": 4,
     "l": 0,
@@ -7232,6 +7274,7 @@
   "East Carolina": {
    "team": "East Carolina",
    "conference": "American",
+   "abbr": "ECU",
    "record": {
     "w": 2,
     "l": 2,
@@ -7409,6 +7452,7 @@
   "NC State": {
    "team": "NC State",
    "conference": "ACC",
+   "abbr": "NCSU",
    "record": {
     "w": 2,
     "l": 2,
@@ -7580,6 +7624,7 @@
   "North Carolina": {
    "team": "North Carolina",
    "conference": "ACC",
+   "abbr": "UNC",
    "record": {
     "w": 2,
     "l": 1,
@@ -7745,6 +7790,7 @@
   "Wake Forest": {
    "team": "Wake Forest",
    "conference": "ACC",
+   "abbr": "WAKE",
    "record": {
     "w": 3,
     "l": 1,
@@ -7910,6 +7956,7 @@
   "Nebraska": {
    "team": "Nebraska",
    "conference": "Big Ten",
+   "abbr": "NEB",
    "record": {
     "w": 4,
     "l": 0,
@@ -8081,6 +8128,7 @@
   "Rutgers": {
    "team": "Rutgers",
    "conference": "Big Ten",
+   "abbr": "RUTG",
    "record": {
     "w": 1,
     "l": 3,
@@ -8258,6 +8306,7 @@
   "New Mexico State": {
    "team": "New Mexico State",
    "conference": "CUSA",
+   "abbr": "NMSU",
    "record": {
     "w": 1,
     "l": 3,
@@ -8429,6 +8478,7 @@
   "New Mexico": {
    "team": "New Mexico",
    "conference": "Mountain West",
+   "abbr": "UNM",
    "record": {
     "w": 3,
     "l": 1,
@@ -8600,6 +8650,7 @@
   "Syracuse": {
    "team": "Syracuse",
    "conference": "ACC",
+   "abbr": "SYR",
    "record": {
     "w": 1,
     "l": 2,
@@ -8777,6 +8828,7 @@
   "Bowling Green": {
    "team": "Bowling Green",
    "conference": "MAC",
+   "abbr": "BGSU",
    "record": {
     "w": 0,
     "l": 4,
@@ -8942,6 +8994,7 @@
   "Miami (OH)": {
    "team": "Miami (OH)",
    "conference": "MAC",
+   "abbr": "M-OH",
    "record": {
     "w": 2,
     "l": 2,
@@ -9107,6 +9160,7 @@
   "Ohio State": {
    "team": "Ohio State",
    "conference": "Big Ten",
+   "abbr": "OSU",
    "record": {
     "w": 3,
     "l": 1,
@@ -9278,6 +9332,7 @@
   "Ohio": {
    "team": "Ohio",
    "conference": "MAC",
+   "abbr": "OHIO",
    "record": {
     "w": 2,
     "l": 2,
@@ -9449,6 +9504,7 @@
   "Oklahoma State": {
    "team": "Oklahoma State",
    "conference": "Big 12",
+   "abbr": "OKST",
    "record": {
     "w": 3,
     "l": 1,
@@ -9614,6 +9670,7 @@
   "Oklahoma": {
    "team": "Oklahoma",
    "conference": "SEC",
+   "abbr": "OU",
    "record": {
     "w": 2,
     "l": 2,
@@ -9785,6 +9842,7 @@
   "Tulsa": {
    "team": "Tulsa",
    "conference": "American",
+   "abbr": "TLSA",
    "record": {
     "w": 3,
     "l": 1,
@@ -9962,6 +10020,7 @@
   "Oregon State": {
    "team": "Oregon State",
    "conference": "Pac-12",
+   "abbr": "ORST",
    "record": {
     "w": 2,
     "l": 2,
@@ -10139,6 +10198,7 @@
   "Penn State": {
    "team": "Penn State",
    "conference": "Big Ten",
+   "abbr": "PSU",
    "record": {
     "w": 3,
     "l": 1,
@@ -10310,6 +10370,7 @@
   "Temple": {
    "team": "Temple",
    "conference": "American",
+   "abbr": "TEM",
    "record": {
     "w": 1,
     "l": 3,
@@ -10475,6 +10536,7 @@
   "Pittsburgh": {
    "team": "Pittsburgh",
    "conference": "ACC",
+   "abbr": "PITT",
    "record": {
     "w": 4,
     "l": 0,
@@ -10646,6 +10708,7 @@
   "Clemson": {
    "team": "Clemson",
    "conference": "ACC",
+   "abbr": "CLEM",
    "record": {
     "w": 3,
     "l": 1,
@@ -10811,6 +10874,7 @@
   "Memphis": {
    "team": "Memphis",
    "conference": "American",
+   "abbr": "MEM",
    "record": {
     "w": 3,
     "l": 1,
@@ -10976,6 +11040,7 @@
   "Vanderbilt": {
    "team": "Vanderbilt",
    "conference": "SEC",
+   "abbr": "VAN",
    "record": {
     "w": 3,
     "l": 1,
@@ -11147,6 +11212,7 @@
   "Baylor": {
    "team": "Baylor",
    "conference": "Big 12",
+   "abbr": "BAY",
    "record": {
     "w": 3,
     "l": 1,
@@ -11318,6 +11384,7 @@
   "Rice": {
    "team": "Rice",
    "conference": "American",
+   "abbr": "RICE",
    "record": {
     "w": 1,
     "l": 3,
@@ -11483,6 +11550,7 @@
   "Texas A&M": {
    "team": "Texas A&M",
    "conference": "SEC",
+   "abbr": "TA&M",
    "record": {
     "w": 2,
     "l": 2,
@@ -11648,6 +11716,7 @@
   "Houston": {
    "team": "Houston",
    "conference": "Big 12",
+   "abbr": "HOU",
    "record": {
     "w": 3,
     "l": 1,
@@ -11813,6 +11882,7 @@
   "North Texas": {
    "team": "North Texas",
    "conference": "American",
+   "abbr": "UNT",
    "record": {
     "w": 2,
     "l": 2,
@@ -11984,6 +12054,7 @@
   "Texas": {
    "team": "Texas",
    "conference": "SEC",
+   "abbr": "TEX",
    "record": {
     "w": 4,
     "l": 0,
@@ -12149,6 +12220,7 @@
   "BYU": {
    "team": "BYU",
    "conference": "Big 12",
+   "abbr": "BYU",
    "record": {
     "w": 3,
     "l": 0,
@@ -12314,6 +12386,7 @@
   "Utah": {
    "team": "Utah",
    "conference": "Big 12",
+   "abbr": "UTAH",
    "record": {
     "w": 4,
     "l": 0,
@@ -12479,6 +12552,7 @@
   "James Madison": {
    "team": "James Madison",
    "conference": "Sun Belt",
+   "abbr": "JMU",
    "record": {
     "w": 4,
     "l": 0,
@@ -12656,6 +12730,7 @@
   "Virginia": {
    "team": "Virginia",
    "conference": "ACC",
+   "abbr": "UVA",
    "record": {
     "w": 3,
     "l": 1,
@@ -12827,6 +12902,7 @@
   "Virginia Tech": {
    "team": "Virginia Tech",
    "conference": "ACC",
+   "abbr": "VT",
    "record": {
     "w": 4,
     "l": 0,
@@ -12992,6 +13068,7 @@
   "Washington": {
    "team": "Washington",
    "conference": "Big Ten",
+   "abbr": "WASH",
    "record": {
     "w": 3,
     "l": 1,
@@ -13157,6 +13234,7 @@
   "Washington State": {
    "team": "Washington State",
    "conference": "Pac-12",
+   "abbr": "WSU",
    "record": {
     "w": 1,
     "l": 3,
@@ -13316,6 +13394,7 @@
   "Wisconsin": {
    "team": "Wisconsin",
    "conference": "Big Ten",
+   "abbr": "WIS",
    "record": {
     "w": 3,
     "l": 1,
@@ -13475,6 +13554,7 @@
   "Marshall": {
    "team": "Marshall",
    "conference": "Sun Belt",
+   "abbr": "MRSH",
    "record": {
     "w": 3,
     "l": 1,
@@ -13646,6 +13726,7 @@
   "West Virginia": {
    "team": "West Virginia",
    "conference": "Big 12",
+   "abbr": "WVU",
    "record": {
     "w": 3,
     "l": 1,
@@ -13817,6 +13898,7 @@
   "Fresno State": {
    "team": "Fresno State",
    "conference": "Pac-12",
+   "abbr": "FRES",
    "record": {
     "w": 3,
     "l": 1,
@@ -13988,6 +14070,7 @@
   "Georgia Southern": {
    "team": "Georgia Southern",
    "conference": "Sun Belt",
+   "abbr": "GASO",
    "record": {
     "w": 1,
     "l": 3,
@@ -14159,6 +14242,7 @@
   "Old Dominion": {
    "team": "Old Dominion",
    "conference": "Sun Belt",
+   "abbr": "ODU",
    "record": {
     "w": 1,
     "l": 3,
@@ -14324,6 +14408,7 @@
   "Louisiana": {
    "team": "Louisiana",
    "conference": "Sun Belt",
+   "abbr": "UL",
    "record": {
     "w": 3,
     "l": 1,
@@ -14495,6 +14580,7 @@
   "Coastal Carolina": {
    "team": "Coastal Carolina",
    "conference": "Sun Belt",
+   "abbr": "CCU",
    "record": {
     "w": 1,
     "l": 3,
@@ -14660,6 +14746,7 @@
   "Texas State": {
    "team": "Texas State",
    "conference": "Pac-12",
+   "abbr": "TXST",
    "record": {
     "w": 2,
     "l": 2,
@@ -14825,6 +14912,7 @@
   "Utah State": {
    "team": "Utah State",
    "conference": "Pac-12",
+   "abbr": "USU",
    "record": {
     "w": 1,
     "l": 3,
@@ -14990,6 +15078,7 @@
   "Alabama": {
    "team": "Alabama",
    "conference": "SEC",
+   "abbr": "ALA",
    "record": {
     "w": 4,
     "l": 0,
@@ -15155,6 +15244,7 @@
   "Kennesaw State": {
    "team": "Kennesaw State",
    "conference": "CUSA",
+   "abbr": "KENN",
    "record": {
     "w": 1,
     "l": 3,
@@ -15326,6 +15416,7 @@
   "Mississippi State": {
    "team": "Mississippi State",
    "conference": "SEC",
+   "abbr": "MSST",
    "record": {
     "w": 4,
     "l": 0,
@@ -15497,6 +15588,7 @@
   "Army": {
    "team": "Army",
    "conference": "American",
+   "abbr": "ARMY",
    "record": {
     "w": 2,
     "l": 1,
@@ -15674,6 +15766,7 @@
   "Illinois": {
    "team": "Illinois",
    "conference": "Big Ten",
+   "abbr": "ILL",
    "record": {
     "w": 2,
     "l": 2,
@@ -15833,6 +15926,7 @@
   "Air Force": {
    "team": "Air Force",
    "conference": "Mountain West",
+   "abbr": "AFA",
    "record": {
     "w": 2,
     "l": 1,
@@ -16004,6 +16098,7 @@
   "Akron": {
    "team": "Akron",
    "conference": "MAC",
+   "abbr": "AKR",
    "record": {
     "w": 1,
     "l": 3,
@@ -16181,6 +16276,7 @@
   "App State": {
    "team": "App State",
    "conference": "Sun Belt",
+   "abbr": "APP",
    "record": {
     "w": 3,
     "l": 1,
@@ -16352,6 +16448,7 @@
   "Arkansas State": {
    "team": "Arkansas State",
    "conference": "Sun Belt",
+   "abbr": "ARST",
    "record": {
     "w": 2,
     "l": 2,
@@ -16511,6 +16608,7 @@
   "Ball State": {
    "team": "Ball State",
    "conference": "MAC",
+   "abbr": "BALL",
    "record": {
     "w": 1,
     "l": 3,
@@ -16676,6 +16774,7 @@
   "Buffalo": {
    "team": "Buffalo",
    "conference": "MAC",
+   "abbr": "BUFF",
    "record": {
     "w": 2,
     "l": 2,
@@ -16841,6 +16940,7 @@
   "UCF": {
    "team": "UCF",
    "conference": "Big 12",
+   "abbr": "UCF",
    "record": {
     "w": 3,
     "l": 1,
@@ -17006,6 +17106,7 @@
   "Central Michigan": {
    "team": "Central Michigan",
    "conference": "MAC",
+   "abbr": "CMU",
    "record": {
     "w": 2,
     "l": 2,
@@ -17177,6 +17278,7 @@
   "Cincinnati": {
    "team": "Cincinnati",
    "conference": "Big 12",
+   "abbr": "CIN",
    "record": {
     "w": 4,
     "l": 0,
@@ -17354,6 +17456,7 @@
   "Eastern Michigan": {
    "team": "Eastern Michigan",
    "conference": "MAC",
+   "abbr": "EMU",
    "record": {
     "w": 2,
     "l": 3,
@@ -17519,6 +17622,7 @@
   "Florida Atlantic": {
    "team": "Florida Atlantic",
    "conference": "American",
+   "abbr": "FAU",
    "record": {
     "w": 3,
     "l": 1,
@@ -17690,6 +17794,7 @@
   "Florida International": {
    "team": "Florida International",
    "conference": "CUSA",
+   "abbr": "FIU",
    "record": {
     "w": 2,
     "l": 2,
@@ -17861,6 +17966,7 @@
   "Georgia State": {
    "team": "Georgia State",
    "conference": "Sun Belt",
+   "abbr": "GAST",
    "record": {
     "w": 3,
     "l": 1,
@@ -18044,6 +18150,7 @@
   "Iowa": {
    "team": "Iowa",
    "conference": "Big Ten",
+   "abbr": "IOWA",
    "record": {
     "w": 4,
     "l": 0,
@@ -18215,6 +18322,7 @@
   "Kansas": {
    "team": "Kansas",
    "conference": "Big 12",
+   "abbr": "KU",
    "record": {
     "w": 1,
     "l": 2,
@@ -18380,6 +18488,7 @@
   "Kansas State": {
    "team": "Kansas State",
    "conference": "Big 12",
+   "abbr": "KSU",
    "record": {
     "w": 3,
     "l": 1,
@@ -18551,6 +18660,7 @@
   "Kent State": {
    "team": "Kent State",
    "conference": "MAC",
+   "abbr": "KENT",
    "record": {
     "w": 2,
     "l": 2,
@@ -18734,6 +18844,7 @@
   "Liberty": {
    "team": "Liberty",
    "conference": "CUSA",
+   "abbr": "LIB",
    "record": {
     "w": 3,
     "l": 1,
@@ -18911,6 +19022,7 @@
   "Louisiana Tech": {
    "team": "Louisiana Tech",
    "conference": "Sun Belt",
+   "abbr": "LT",
    "record": {
     "w": 1,
     "l": 2,
@@ -19088,6 +19200,7 @@
   "Miami": {
    "team": "Miami",
    "conference": "ACC",
+   "abbr": "MIA",
    "record": {
     "w": 4,
     "l": 0,
@@ -19259,6 +19372,7 @@
   "Middle Tennessee": {
    "team": "Middle Tennessee",
    "conference": "CUSA",
+   "abbr": "MTSU",
    "record": {
     "w": 2,
     "l": 2,
@@ -19418,6 +19532,7 @@
   "Navy": {
    "team": "Navy",
    "conference": "American",
+   "abbr": "NAVY",
    "record": {
     "w": 1,
     "l": 2,
@@ -19583,6 +19698,7 @@
   "Charlotte": {
    "team": "Charlotte",
    "conference": "American",
+   "abbr": "CLT",
    "record": {
     "w": 0,
     "l": 4,
@@ -19754,6 +19870,7 @@
   "UL Monroe": {
    "team": "UL Monroe",
    "conference": "Sun Belt",
+   "abbr": "ULM",
    "record": {
     "w": 0,
     "l": 4,
@@ -19925,6 +20042,7 @@
   "UNLV": {
    "team": "UNLV",
    "conference": "Mountain West",
+   "abbr": "UNLV",
    "record": {
     "w": 2,
     "l": 2,
@@ -20090,6 +20208,7 @@
   "Nevada": {
    "team": "Nevada",
    "conference": "Mountain West",
+   "abbr": "NEV",
    "record": {
     "w": 1,
     "l": 3,
@@ -20267,6 +20386,7 @@
   "North Dakota State": {
    "team": "North Dakota State",
    "conference": "Mountain West",
+   "abbr": "NDSU",
    "record": {
     "w": 4,
     "l": 0,
@@ -20438,6 +20558,7 @@
   "Northern Illinois": {
    "team": "Northern Illinois",
    "conference": "Mountain West",
+   "abbr": "NIU",
    "record": {
     "w": 0,
     "l": 4,
@@ -20609,6 +20730,7 @@
   "Oregon": {
    "team": "Oregon",
    "conference": "Big Ten",
+   "abbr": "ORE",
    "record": {
     "w": 3,
     "l": 1,
@@ -20792,6 +20914,7 @@
   "Purdue": {
    "team": "Purdue",
    "conference": "Big Ten",
+   "abbr": "PUR",
    "record": {
     "w": 1,
     "l": 3,
@@ -20963,6 +21086,7 @@
   "Sam Houston": {
    "team": "Sam Houston",
    "conference": "CUSA",
+   "abbr": "SHSU",
    "record": {
     "w": 1,
     "l": 3,
@@ -21128,6 +21252,7 @@
   "SMU": {
    "team": "SMU",
    "conference": "ACC",
+   "abbr": "SMU",
    "record": {
     "w": 3,
     "l": 1,
@@ -21305,6 +21430,7 @@
   "Southern Miss": {
    "team": "Southern Miss",
    "conference": "Sun Belt",
+   "abbr": "USM",
    "record": {
     "w": 1,
     "l": 3,
@@ -21488,6 +21614,7 @@
   "South Carolina": {
    "team": "South Carolina",
    "conference": "SEC",
+   "abbr": "SC",
    "record": {
     "w": 2,
     "l": 2,
@@ -21659,6 +21786,7 @@
   "Missouri State": {
    "team": "Missouri State",
    "conference": "CUSA",
+   "abbr": "MOST",
    "record": {
     "w": 1,
     "l": 3,
@@ -21830,6 +21958,7 @@
   "TCU": {
    "team": "TCU",
    "conference": "Big 12",
+   "abbr": "TCU",
    "record": {
     "w": 2,
     "l": 2,
@@ -21995,6 +22124,7 @@
   "Tennessee": {
    "team": "Tennessee",
    "conference": "SEC",
+   "abbr": "TENN",
    "record": {
     "w": 3,
     "l": 1,
@@ -22166,6 +22296,7 @@
   "UTSA": {
    "team": "UTSA",
    "conference": "American",
+   "abbr": "UTSA",
    "record": {
     "w": 3,
     "l": 1,
@@ -22337,6 +22468,7 @@
   "UTEP": {
    "team": "UTEP",
    "conference": "Mountain West",
+   "abbr": "UTEP",
    "record": {
     "w": 1,
     "l": 3,
@@ -22508,6 +22640,7 @@
   "Texas Tech": {
    "team": "Texas Tech",
    "conference": "Big 12",
+   "abbr": "TTU",
    "record": {
     "w": 4,
     "l": 0,
@@ -22679,6 +22812,7 @@
   "Toledo": {
    "team": "Toledo",
    "conference": "MAC",
+   "abbr": "TOL",
    "record": {
     "w": 3,
     "l": 1,
@@ -22850,6 +22984,7 @@
   "Troy": {
    "team": "Troy",
    "conference": "Sun Belt",
+   "abbr": "TROY",
    "record": {
     "w": 2,
     "l": 2,
@@ -23021,6 +23156,7 @@
   "Tulane": {
    "team": "Tulane",
    "conference": "American",
+   "abbr": "TULN",
    "record": {
     "w": 2,
     "l": 2,
@@ -23192,6 +23328,7 @@
   "Western Michigan": {
    "team": "Western Michigan",
    "conference": "MAC",
+   "abbr": "WMU",
    "record": {
     "w": 2,
     "l": 2,
@@ -23357,6 +23494,7 @@
   "Wyoming": {
    "team": "Wyoming",
    "conference": "Mountain West",
+   "abbr": "WYO",
    "record": {
     "w": 2,
     "l": 2,
@@ -23537,13 +23675,18 @@
    "city": "Las Cruces, NM",
    "tv": "CBSSN",
    "note": "",
+   "indoor": false,
+   "spread": -2.5,
+   "total": 57.5,
    "away": {
     "name": "Western Kentucky",
     "key": "Western Kentucky",
     "rank": null,
     "record": "1-3",
     "conference": "CUSA",
-    "score": null
+    "score": null,
+    "abbr": "WKU",
+    "qb": "Rodney Tisdale Jr."
    },
    "home": {
     "name": "New Mexico State",
@@ -23551,7 +23694,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "CUSA",
-    "score": null
+    "score": null,
+    "abbr": "NMSU",
+    "qb": "Trey Hedden"
    }
   },
   {
@@ -23568,13 +23713,18 @@
    "city": "Tulsa, OK",
    "tv": "ESPN",
    "note": "",
+   "indoor": false,
+   "spread": -1.0,
+   "total": 57.5,
    "away": {
     "name": "North Texas",
     "key": "North Texas",
     "rank": null,
     "record": "2-2",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "UNT",
+    "qb": "Tayven Jackson"
    },
    "home": {
     "name": "Tulsa",
@@ -23582,7 +23732,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "TLSA",
+    "qb": "Dexter Williams II"
    }
   },
   {
@@ -23599,13 +23751,18 @@
    "city": "Blacksburg, VA",
    "tv": "ESPN",
    "note": "",
+   "indoor": false,
+   "spread": -3.5,
+   "total": 55.0,
    "away": {
     "name": "Pittsburgh",
     "key": "Pittsburgh",
     "rank": null,
     "record": "4-0",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "PITT",
+    "qb": "Mason Heintschel"
    },
    "home": {
     "name": "Virginia Tech",
@@ -23613,7 +23770,9 @@
     "rank": null,
     "record": "4-0",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "VT",
+    "qb": "Ethan Grunkemeyer"
    }
   },
   {
@@ -23630,13 +23789,18 @@
    "city": "Newark, DE",
    "tv": "CBSSN",
    "note": "",
+   "indoor": false,
+   "spread": 7.0,
+   "total": 50.0,
    "away": {
     "name": "Liberty",
     "key": "Liberty",
     "rank": null,
     "record": "3-1",
     "conference": "CUSA",
-    "score": null
+    "score": null,
+    "abbr": "LIB",
+    "qb": "Deshawn Purdie"
    },
    "home": {
     "name": "Delaware",
@@ -23644,7 +23808,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "CUSA",
-    "score": null
+    "score": null,
+    "abbr": "DEL",
+    "qb": "Braden Streeter"
    }
   },
   {
@@ -23661,13 +23827,18 @@
    "city": "Evanston, IL",
    "tv": "FOX",
    "note": "",
+   "indoor": false,
+   "spread": 3.0,
+   "total": 45.5,
    "away": {
     "name": "Penn State",
     "key": "Penn State",
     "rank": null,
     "record": "3-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "PSU",
+    "qb": "Rocco Becht"
    },
    "home": {
     "name": "Northwestern",
@@ -23675,7 +23846,9 @@
     "rank": null,
     "record": "2-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "NU",
+    "qb": "Aidan Chiles"
    }
   },
   {
@@ -23692,13 +23865,18 @@
    "city": "Starkville, MS",
    "tv": "ABC",
    "note": "",
+   "indoor": false,
+   "spread": 6.0,
+   "total": 60.0,
    "away": {
     "name": "Alabama",
     "key": "Alabama",
     "rank": 7,
     "record": "4-0",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "ALA",
+    "qb": "Keelon Russell"
    },
    "home": {
     "name": "Mississippi State",
@@ -23706,7 +23884,9 @@
     "rank": 16,
     "record": "4-0",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "MSST",
+    "qb": "Kamario Taylor"
    }
   },
   {
@@ -23723,13 +23903,18 @@
    "city": "Lawrence, KS",
    "tv": "ESPNU",
    "note": "",
+   "indoor": false,
+   "spread": -18.5,
+   "total": 50.0,
    "away": {
     "name": "Middle Tennessee",
     "key": "Middle Tennessee",
     "rank": null,
     "record": "2-2",
     "conference": "CUSA",
-    "score": null
+    "score": null,
+    "abbr": "MTSU",
+    "qb": "Roman Gagliano"
    },
    "home": {
     "name": "Kansas",
@@ -23737,7 +23922,9 @@
     "rank": null,
     "record": "1-2",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "KU",
+    "qb": "Isaiah Marshall"
    }
   },
   {
@@ -23754,13 +23941,18 @@
    "city": "Houston, TX",
    "tv": "ESPN2",
    "note": "",
+   "indoor": false,
+   "spread": -12.5,
+   "total": 51.0,
    "away": {
     "name": "UCF",
     "key": "UCF",
     "rank": null,
     "record": "3-1",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "UCF",
+    "qb": "Keyone Jenkins"
    },
    "home": {
     "name": "Houston",
@@ -23768,7 +23960,9 @@
     "rank": 20,
     "record": "3-1",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "HOU",
+    "qb": "Conner Weigman"
    }
   },
   {
@@ -23785,13 +23979,18 @@
    "city": "Ames, IA",
    "tv": "TNT",
    "note": "",
+   "indoor": false,
+   "spread": -3.0,
+   "total": 53.0,
    "away": {
     "name": "West Virginia",
     "key": "West Virginia",
     "rank": null,
     "record": "3-1",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "WVU",
+    "qb": "Michael Hawkins Jr."
    },
    "home": {
     "name": "Iowa State",
@@ -23799,7 +23998,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "ISU",
+    "qb": "Jaylen Raynor"
    }
   },
   {
@@ -23816,13 +24017,18 @@
    "city": "Dallas, TX",
    "tv": "CW",
    "note": "",
+   "indoor": false,
+   "spread": -21.0,
+   "total": 55.5,
    "away": {
     "name": "Boston College",
     "key": "Boston College",
     "rank": null,
     "record": "2-2",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "BC",
+    "qb": "Mason McKenzie"
    },
    "home": {
     "name": "SMU",
@@ -23830,7 +24036,9 @@
     "rank": 21,
     "record": "3-1",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "SMU",
+    "qb": "Kevin Jennings"
    }
   },
   {
@@ -23847,13 +24055,18 @@
    "city": "Chapel Hill, NC",
    "tv": "ESPN",
    "note": "",
+   "indoor": false,
+   "spread": 21.0,
+   "total": 47.0,
    "away": {
     "name": "Notre Dame",
     "key": "Notre Dame",
     "rank": 3,
     "record": "4-0",
     "conference": "FBS Indep.",
-    "score": null
+    "score": null,
+    "abbr": "ND",
+    "qb": "CJ Carr"
    },
    "home": {
     "name": "North Carolina",
@@ -23861,7 +24074,9 @@
     "rank": null,
     "record": "2-1",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "UNC",
+    "qb": "Billy Edwards Jr."
    }
   },
   {
@@ -23878,13 +24093,18 @@
    "city": "Winston-Salem, NC",
    "tv": "ACC Network",
    "note": "",
+   "indoor": false,
+   "spread": -12.5,
+   "total": 53.5,
    "away": {
     "name": "Stanford",
     "key": "Stanford",
     "rank": null,
     "record": "2-2",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "STAN",
+    "qb": "Davis Warren"
    },
    "home": {
     "name": "Wake Forest",
@@ -23892,7 +24112,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "WAKE",
+    "qb": "Gio Lopez"
    }
   },
   {
@@ -23909,13 +24131,18 @@
    "city": "East Hartford, CT",
    "tv": "CBSSN",
    "note": "",
+   "indoor": false,
+   "spread": 6.5,
+   "total": 50.5,
    "away": {
     "name": "Syracuse",
     "key": "Syracuse",
     "rank": null,
     "record": "1-2",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "SYR",
+    "qb": "Steve Angeli"
    },
    "home": {
     "name": "UConn",
@@ -23923,7 +24150,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "FBS Indep.",
-    "score": null
+    "score": null,
+    "abbr": "CONN",
+    "qb": "Kalieb Osborne"
    }
   },
   {
@@ -23940,13 +24169,18 @@
    "city": "Minneapolis, MN",
    "tv": "FOX",
    "note": "",
+   "indoor": false,
+   "spread": 5.5,
+   "total": 43.0,
    "away": {
     "name": "Michigan",
     "key": "Michigan",
     "rank": null,
     "record": "3-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "MICH",
+    "qb": "Bryce Underwood"
    },
    "home": {
     "name": "Minnesota",
@@ -23954,7 +24188,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "MINN",
+    "qb": "Drake Lindsey"
    }
   },
   {
@@ -23971,13 +24207,18 @@
    "city": "USAF Academy, CO",
    "tv": "CBS",
    "note": "",
+   "indoor": false,
+   "spread": -3.0,
+   "total": 46.0,
    "away": {
     "name": "Navy",
     "key": "Navy",
     "rank": null,
     "record": "1-2",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "NAVY",
+    "qb": "Jackson Gutierrez"
    },
    "home": {
     "name": "Air Force",
@@ -23985,7 +24226,9 @@
     "rank": null,
     "record": "2-1",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "AFA",
+    "qb": "Liam Szarka"
    }
   },
   {
@@ -24002,13 +24245,18 @@
    "city": "Madison, WI",
    "tv": "BTN",
    "note": "",
+   "indoor": false,
+   "spread": -10.0,
+   "total": 43.5,
    "away": {
     "name": "Michigan State",
     "key": "Michigan State",
     "rank": null,
     "record": "2-2",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "MSU",
+    "qb": "Alessio Milivojevic"
    },
    "home": {
     "name": "Wisconsin",
@@ -24016,7 +24264,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "WIS",
+    "qb": "Colton Joseph"
    }
   },
   {
@@ -24033,13 +24283,18 @@
    "city": "Athens, GA",
    "tv": "SEC Network",
    "note": "",
+   "indoor": false,
+   "spread": -24.0,
+   "total": 50.5,
    "away": {
     "name": "Vanderbilt",
     "key": "Vanderbilt",
     "rank": null,
     "record": "3-1",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "VAN",
+    "qb": "Jared Curtis"
    },
    "home": {
     "name": "Georgia",
@@ -24047,7 +24302,9 @@
     "rank": 2,
     "record": "4-0",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "UGA",
+    "qb": "Gunner Stockton"
    }
   },
   {
@@ -24064,13 +24321,18 @@
    "city": "Buffalo, NY",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": 13.5,
+   "total": 47.0,
    "away": {
     "name": "Western Michigan",
     "key": "Western Michigan",
     "rank": null,
     "record": "2-2",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "WMU",
+    "qb": "Broc Lowry"
    },
    "home": {
     "name": "Buffalo",
@@ -24078,7 +24340,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "BUFF",
+    "qb": "Jason Wright"
    }
   },
   {
@@ -24095,13 +24359,18 @@
    "city": "Muncie, IN",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": 19.5,
+   "total": 52.5,
    "away": {
     "name": "Toledo",
     "key": "Toledo",
     "rank": null,
     "record": "3-1",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "TOL",
+    "qb": "John Alan Richter"
    },
    "home": {
     "name": "Ball State",
@@ -24109,7 +24378,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "BALL",
+    "qb": "Tyler Mizzell"
    }
   },
   {
@@ -24126,13 +24397,18 @@
    "city": "Columbia, MO",
    "tv": "ABC",
    "note": "",
+   "indoor": false,
+   "spread": 5.5,
+   "total": 57.0,
    "away": {
     "name": "Florida",
     "key": "Florida",
     "rank": 8,
     "record": "4-0",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "FLA",
+    "qb": "Aaron Philo"
    },
    "home": {
     "name": "Missouri",
@@ -24140,7 +24416,9 @@
     "rank": 25,
     "record": "3-1",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "MIZ",
+    "qb": "Austin Simmons"
    }
   },
   {
@@ -24157,13 +24435,18 @@
    "city": "Knoxville, TN",
    "tv": "ESPN",
    "note": "",
+   "indoor": false,
+   "spread": -7.0,
+   "total": 54.0,
    "away": {
     "name": "Auburn",
     "key": "Auburn",
     "rank": null,
     "record": "3-1",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "AUB",
+    "qb": "Byrum Brown"
    },
    "home": {
     "name": "Tennessee",
@@ -24171,7 +24454,9 @@
     "rank": 17,
     "record": "3-1",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "TENN",
+    "qb": "Faizon Brandon"
    }
   },
   {
@@ -24188,13 +24473,18 @@
    "city": "Las Vegas, NV",
    "tv": "CBSSN",
    "note": "",
+   "indoor": true,
+   "spread": -3.0,
+   "total": 53.0,
    "away": {
     "name": "California",
     "key": "California",
     "rank": null,
     "record": "2-2",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "CAL",
+    "qb": "Jaron-Keawe Sagapolutele"
    },
    "home": {
     "name": "UNLV",
@@ -24202,7 +24492,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "UNLV",
+    "qb": "Jackson Arnold"
    }
   },
   {
@@ -24219,13 +24511,18 @@
    "city": "Raleigh, NC",
    "tv": "ACC Network",
    "note": "",
+   "indoor": false,
+   "spread": 4.0,
+   "total": 58.5,
    "away": {
     "name": "Louisville",
     "key": "Louisville",
     "rank": null,
     "record": "2-2",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "LOU",
+    "qb": "Lincoln Kienholz"
    },
    "home": {
     "name": "NC State",
@@ -24233,7 +24530,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "NCSU",
+    "qb": "CJ Bailey"
    }
   },
   {
@@ -24250,13 +24549,18 @@
    "city": "Tallahassee, FL",
    "tv": "ESPN2",
    "note": "",
+   "indoor": false,
+   "spread": 3.0,
+   "total": 51.5,
    "away": {
     "name": "Virginia",
     "key": "Virginia",
     "rank": null,
     "record": "3-1",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "UVA",
+    "qb": "Beau Pribula"
    },
    "home": {
     "name": "Florida State",
@@ -24264,7 +24568,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "FSU",
+    "qb": "Ashton Daniels"
    }
   },
   {
@@ -24281,13 +24587,18 @@
    "city": "Iowa City, IA",
    "tv": "CBS",
    "note": "",
+   "indoor": false,
+   "spread": 14.0,
+   "total": 45.5,
    "away": {
     "name": "Ohio State",
     "key": "Ohio State",
     "rank": 5,
     "record": "3-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "OSU",
+    "qb": "Julian Sayin"
    },
    "home": {
     "name": "Iowa",
@@ -24295,7 +24606,9 @@
     "rank": 14,
     "record": "4-0",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "IOWA",
+    "qb": "Hank Brown"
    }
   },
   {
@@ -24312,13 +24625,18 @@
    "city": "Charlotte, NC",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": 20.0,
+   "total": 53.5,
    "away": {
     "name": "Memphis",
     "key": "Memphis",
     "rank": null,
     "record": "3-1",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "MEM",
+    "qb": "Marcus Stokes"
    },
    "home": {
     "name": "Charlotte",
@@ -24326,7 +24644,9 @@
     "rank": null,
     "record": "0-4",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "CLT",
+    "qb": "Cole Gonzales"
    }
   },
   {
@@ -24343,13 +24663,18 @@
    "city": "Birmingham, AL",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": null,
+   "total": null,
    "away": {
     "name": "Samford",
     "key": null,
     "rank": null,
     "record": "1-3",
     "conference": "FCS",
-    "score": null
+    "score": null,
+    "abbr": "SAM",
+    "qb": null
    },
    "home": {
     "name": "UAB",
@@ -24357,7 +24682,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "UAB",
+    "qb": "Ryder Burton"
    }
   },
   {
@@ -24374,13 +24701,18 @@
    "city": "Fargo, ND",
    "tv": "CW",
    "note": "",
+   "indoor": true,
+   "spread": -18.0,
+   "total": 45.5,
    "away": {
     "name": "Wyoming",
     "key": "Wyoming",
     "rank": null,
     "record": "2-2",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "WYO",
+    "qb": "Tyler Hughes"
    },
    "home": {
     "name": "North Dakota State",
@@ -24388,7 +24720,9 @@
     "rank": null,
     "record": "4-0",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "NDSU",
+    "qb": "Nathan Hayes"
    }
   },
   {
@@ -24405,13 +24739,18 @@
    "city": "Mount Pleasant, MI",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": -6.5,
+   "total": 47.0,
    "away": {
     "name": "Akron",
     "key": "Akron",
     "rank": null,
     "record": "1-3",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "AKR",
+    "qb": "Brayden Roggow"
    },
    "home": {
     "name": "Central Michigan",
@@ -24419,7 +24758,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "CMU",
+    "qb": "Jadyn Glasser"
    }
   },
   {
@@ -24436,13 +24777,18 @@
    "city": "Amherst, MA",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": -6.5,
+   "total": 48.5,
    "away": {
     "name": "Eastern Michigan",
     "key": "Eastern Michigan",
     "rank": null,
     "record": "2-3",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "EMU",
+    "qb": "Noah Kim"
    },
    "home": {
     "name": "Massachusetts",
@@ -24450,7 +24796,9 @@
     "rank": null,
     "record": "4-0",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "MASS",
+    "qb": "William Watson III"
    }
   },
   {
@@ -24467,13 +24815,18 @@
    "city": "Kent, OH",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": 3.0,
+   "total": 51.0,
    "away": {
     "name": "Ohio",
     "key": "Ohio",
     "rank": null,
     "record": "2-2",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "OHIO",
+    "qb": "Matt Vezza"
    },
    "home": {
     "name": "Kent State",
@@ -24481,7 +24834,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "KENT",
+    "qb": "Dru DeShields"
    }
   },
   {
@@ -24498,13 +24853,18 @@
    "city": "Oxford, OH",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": -13.0,
+   "total": 43.5,
    "away": {
     "name": "Bowling Green",
     "key": "Bowling Green",
     "rank": null,
     "record": "0-4",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "BGSU",
+    "qb": "Jay Kastantin"
    },
    "home": {
     "name": "Miami (OH)",
@@ -24512,7 +24872,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "MAC",
-    "score": null
+    "score": null,
+    "abbr": "M-OH",
+    "qb": "David McComb"
    }
   },
   {
@@ -24529,13 +24891,18 @@
    "city": "Atlanta, GA",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": -1.5,
+   "total": 52.0,
    "away": {
     "name": "Old Dominion",
     "key": "Old Dominion",
     "rank": null,
     "record": "1-3",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "ODU",
+    "qb": "Ryan Huff"
    },
    "home": {
     "name": "Georgia State",
@@ -24543,7 +24910,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "GAST",
+    "qb": "Cameran Brown"
    }
   },
   {
@@ -24560,13 +24929,18 @@
    "city": "Harrisonburg, VA",
    "tv": "ESPNU",
    "note": "",
+   "indoor": false,
+   "spread": -18.5,
+   "total": 55.5,
    "away": {
     "name": "Marshall",
     "key": "Marshall",
     "rank": null,
     "record": "3-1",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "MRSH",
+    "qb": "Carlos Del Rio-Wilson"
    },
    "home": {
     "name": "James Madison",
@@ -24574,7 +24948,9 @@
     "rank": null,
     "record": "4-0",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "JMU",
+    "qb": "Camden Coleman"
    }
   },
   {
@@ -24591,13 +24967,18 @@
    "city": "Lincoln, NE",
    "tv": "FS1",
    "note": "",
+   "indoor": false,
+   "spread": -14.5,
+   "total": 52.5,
    "away": {
     "name": "Maryland",
     "key": "Maryland",
     "rank": null,
     "record": "2-2",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "MD",
+    "qb": "Malik Washington"
    },
    "home": {
     "name": "Nebraska",
@@ -24605,7 +24986,9 @@
     "rank": null,
     "record": "4-0",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "NEB",
+    "qb": "Anthony Colandrea"
    }
   },
   {
@@ -24622,13 +25005,18 @@
    "city": "Albuquerque, NM",
    "tv": "MW+",
    "note": "",
+   "indoor": false,
+   "spread": -23.0,
+   "total": 49.0,
    "away": {
     "name": "UTEP",
     "key": "UTEP",
     "rank": null,
     "record": "1-3",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "UTEP",
+    "qb": "EJ Colson Jr."
    },
    "home": {
     "name": "New Mexico",
@@ -24636,7 +25024,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "UNM",
+    "qb": "Toa Fa'avae"
    }
   },
   {
@@ -24653,13 +25043,18 @@
    "city": "Columbia, SC",
    "tv": "SEC Network",
    "note": "",
+   "indoor": false,
+   "spread": -3.0,
+   "total": 53.5,
    "away": {
     "name": "Kentucky",
     "key": "Kentucky",
     "rank": 24,
     "record": "3-1",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "UK",
+    "qb": "Kenny Minchey"
    },
    "home": {
     "name": "South Carolina",
@@ -24667,7 +25062,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "SC",
+    "qb": "LaNorris Sellers"
    }
   },
   {
@@ -24684,13 +25081,18 @@
    "city": "Champaign, IL",
    "tv": "BTN",
    "note": "",
+   "indoor": false,
+   "spread": -10.0,
+   "total": 61.5,
    "away": {
     "name": "Purdue",
     "key": "Purdue",
     "rank": null,
     "record": "1-3",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "PUR",
+    "qb": "Ryan Browne"
    },
    "home": {
     "name": "Illinois",
@@ -24698,7 +25100,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "ILL",
+    "qb": "Katin Houser"
    }
   },
   {
@@ -24715,13 +25119,18 @@
    "city": "Fort Collins, CO",
    "tv": "USA Net",
    "note": "",
+   "indoor": false,
+   "spread": 6.0,
+   "total": 62.0,
    "away": {
     "name": "Oregon State",
     "key": "Oregon State",
     "rank": null,
     "record": "2-2",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "ORST",
+    "qb": "Braden Atkinson"
    },
    "home": {
     "name": "Colorado State",
@@ -24729,7 +25138,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "CSU",
+    "qb": "K'saan Farrar"
    }
   },
   {
@@ -24746,13 +25157,18 @@
    "city": "Boca Raton, FL",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": null,
+   "total": null,
    "away": {
     "name": "Texas Southern",
     "key": null,
     "rank": null,
     "record": "1-3",
     "conference": "FCS",
-    "score": null
+    "score": null,
+    "abbr": "TXSO",
+    "qb": "Cam'Ron McCoy"
    },
    "home": {
     "name": "Florida Atlantic",
@@ -24760,7 +25176,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "FAU",
+    "qb": "Caden Veltkamp"
    }
   },
   {
@@ -24777,13 +25195,18 @@
    "city": "College Station, TX",
    "tv": "ESPN2",
    "note": "",
+   "indoor": false,
+   "spread": -14.0,
+   "total": 51.0,
    "away": {
     "name": "Arkansas",
     "key": "Arkansas",
     "rank": null,
     "record": "2-2",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "ARK",
+    "qb": "KJ Jackson"
    },
    "home": {
     "name": "Texas A&M",
@@ -24791,7 +25214,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "TA&M",
+    "qb": "Marcel Reed"
    }
   },
   {
@@ -24808,13 +25233,18 @@
    "city": "Fort Worth, TX",
    "tv": "ESPN",
    "note": "",
+   "indoor": false,
+   "spread": 6.5,
+   "total": 48.0,
    "away": {
     "name": "BYU",
     "key": "BYU",
     "rank": 10,
     "record": "3-0",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "BYU",
+    "qb": "Bear Bachmeier"
    },
    "home": {
     "name": "TCU",
@@ -24822,7 +25252,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "TCU",
+    "qb": "Jaden Craig"
    }
   },
   {
@@ -24839,13 +25271,18 @@
    "city": "Houston, TX",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": 11.5,
+   "total": 56.0,
    "away": {
     "name": "UTSA",
     "key": "UTSA",
     "rank": null,
     "record": "3-1",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "UTSA",
+    "qb": "Owen McCown"
    },
    "home": {
     "name": "Rice",
@@ -24853,7 +25290,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "RICE",
+    "qb": "Jacurri Brown"
    }
   },
   {
@@ -24870,13 +25309,18 @@
    "city": "Conway, SC",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": 2.5,
+   "total": 54.0,
    "away": {
     "name": "Georgia Southern",
     "key": "Georgia Southern",
     "rank": null,
     "record": "1-3",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "GASO",
+    "qb": "Max Johnson"
    },
    "home": {
     "name": "Coastal Carolina",
@@ -24884,7 +25328,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "CCU",
+    "qb": "Deuce Bailey"
    }
   },
   {
@@ -24901,13 +25347,18 @@
    "city": "Mobile, AL",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": -14.0,
+   "total": 57.0,
    "away": {
     "name": "UL Monroe",
     "key": "UL Monroe",
     "rank": null,
     "record": "0-4",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "ULM",
+    "qb": "Aidan Armenta"
    },
    "home": {
     "name": "South Alabama",
@@ -24915,7 +25366,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "USA",
+    "qb": "Jared Hollins"
    }
   },
   {
@@ -24932,13 +25385,18 @@
    "city": "Boulder, CO",
    "tv": "FOX",
    "note": "",
+   "indoor": false,
+   "spread": 13.5,
+   "total": 50.0,
    "away": {
     "name": "Texas Tech",
     "key": "Texas Tech",
     "rank": 12,
     "record": "4-0",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "TTU",
+    "qb": "Will Hammond"
    },
    "home": {
     "name": "Colorado",
@@ -24946,7 +25404,9 @@
     "rank": null,
     "record": "2-2",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "COLO",
+    "qb": "Isaac Wilson"
    }
   },
   {
@@ -24963,13 +25423,18 @@
    "city": "Clemson, SC",
    "tv": "ABC",
    "note": "",
+   "indoor": false,
+   "spread": 16.5,
+   "total": 48.0,
    "away": {
     "name": "Miami",
     "key": "Miami",
     "rank": 4,
     "record": "4-0",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "MIA",
+    "qb": "Darian Mensah"
    },
    "home": {
     "name": "Clemson",
@@ -24977,7 +25442,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "ACC",
-    "score": null
+    "score": null,
+    "abbr": "CLEM",
+    "qb": "Tait Reynolds"
    }
   },
   {
@@ -24994,13 +25461,18 @@
    "city": "Los Angeles, CA",
    "tv": "NBC",
    "note": "",
+   "indoor": false,
+   "spread": -9.5,
+   "total": 58.0,
    "away": {
     "name": "Washington",
     "key": "Washington",
     "rank": null,
     "record": "3-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "WASH",
+    "qb": "Demond Williams Jr."
    },
    "home": {
     "name": "USC",
@@ -25008,7 +25480,9 @@
     "rank": 18,
     "record": "4-1",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "USC",
+    "qb": "Jayden Maiava"
    }
   },
   {
@@ -25025,13 +25499,18 @@
    "city": "Boise, ID",
    "tv": "CBSSN",
    "note": "",
+   "indoor": false,
+   "spread": -20.5,
+   "total": 51.5,
    "away": {
     "name": "Utah State",
     "key": "Utah State",
     "rank": null,
     "record": "1-3",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "USU",
+    "qb": "Grady Brosterhous"
    },
    "home": {
     "name": "Boise State",
@@ -25039,7 +25518,9 @@
     "rank": 22,
     "record": "3-1",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "BOIS",
+    "qb": "Maddux Madsen"
    }
   },
   {
@@ -25056,13 +25537,18 @@
    "city": "Tampa, FL",
    "tv": "ESPNU",
    "note": "",
+   "indoor": false,
+   "spread": -6.0,
+   "total": 49.0,
    "away": {
     "name": "Temple",
     "key": "Temple",
     "rank": null,
     "record": "1-3",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "TEM",
+    "qb": "Ajani Sheppard"
    },
    "home": {
     "name": "South Florida",
@@ -25070,7 +25556,9 @@
     "rank": null,
     "record": "4-0",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "USF",
+    "qb": "Michael Van Buren Jr."
    }
   },
   {
@@ -25087,13 +25575,18 @@
    "city": "Ruston, LA",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": 2.5,
+   "total": 46.0,
    "away": {
     "name": "Army",
     "key": "Army",
     "rank": null,
     "record": "2-1",
     "conference": "American",
-    "score": null
+    "score": null,
+    "abbr": "ARMY",
+    "qb": "Cale Hellums"
    },
    "home": {
     "name": "Louisiana Tech",
@@ -25101,7 +25594,9 @@
     "rank": null,
     "record": "1-2",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "LT",
+    "qb": "Trey Kukuk"
    }
   },
   {
@@ -25118,13 +25613,18 @@
    "city": "Baton Rouge, LA",
    "tv": "SEC Network",
    "note": "",
+   "indoor": false,
+   "spread": null,
+   "total": null,
    "away": {
     "name": "McNeese",
     "key": null,
     "rank": null,
     "record": "2-3",
     "conference": "FCS",
-    "score": null
+    "score": null,
+    "abbr": "MCN",
+    "qb": null
    },
    "home": {
     "name": "LSU",
@@ -25132,7 +25632,9 @@
     "rank": 11,
     "record": "3-1",
     "conference": "SEC",
-    "score": null
+    "score": null,
+    "abbr": "LSU",
+    "qb": "Sam Leavitt"
    }
   },
   {
@@ -25149,13 +25651,18 @@
    "city": "Piscataway, NJ",
    "tv": "BTN",
    "note": "",
+   "indoor": false,
+   "spread": 24.5,
+   "total": 56.0,
    "away": {
     "name": "Indiana",
     "key": "Indiana",
     "rank": 6,
     "record": "4-0",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "IU",
+    "qb": "Josh Hoover"
    },
    "home": {
     "name": "Rutgers",
@@ -25163,7 +25670,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "Big Ten",
-    "score": null
+    "score": null,
+    "abbr": "RUTG",
+    "qb": "Dylan Lonergan"
    }
   },
   {
@@ -25180,13 +25689,18 @@
    "city": "Lafayette, LA",
    "tv": "ESPN+",
    "note": "",
+   "indoor": false,
+   "spread": -6.5,
+   "total": 48.0,
    "away": {
     "name": "Arkansas State",
     "key": "Arkansas State",
     "rank": null,
     "record": "2-2",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "ARST",
+    "qb": "Trey Owens"
    },
    "home": {
     "name": "Louisiana",
@@ -25194,7 +25708,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "Sun Belt",
-    "score": null
+    "score": null,
+    "abbr": "UL",
+    "qb": "Lunch Winfield"
    }
   },
   {
@@ -25211,13 +25727,18 @@
    "city": "Pullman, WA",
    "tv": "USA Net",
    "note": "",
+   "indoor": false,
+   "spread": -2.5,
+   "total": 46.0,
    "away": {
     "name": "Fresno State",
     "key": "Fresno State",
     "rank": null,
     "record": "3-1",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "FRES",
+    "qb": "Jayden Mandal"
    },
    "home": {
     "name": "Washington State",
@@ -25225,7 +25746,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "WSU",
+    "qb": "Caden Pinnick"
    }
   },
   {
@@ -25242,13 +25765,18 @@
    "city": "Tempe, AZ",
    "tv": "ESPN",
    "note": "",
+   "indoor": false,
+   "spread": -4.0,
+   "total": 49.5,
    "away": {
     "name": "Baylor",
     "key": "Baylor",
     "rank": null,
     "record": "3-1",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "BAY",
+    "qb": "DJ Lagway"
    },
    "home": {
     "name": "Arizona State",
@@ -25256,7 +25784,9 @@
     "rank": null,
     "record": "2-1",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "ASU",
+    "qb": "Cutter Boley"
    }
   },
   {
@@ -25273,13 +25803,18 @@
    "city": "San Diego, CA",
    "tv": "CW",
    "note": "",
+   "indoor": false,
+   "spread": 4.0,
+   "total": 59.0,
    "away": {
     "name": "Texas State",
     "key": "Texas State",
     "rank": null,
     "record": "2-2",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "TXST",
+    "qb": "Brad Jackson"
    },
    "home": {
     "name": "San Diego State",
@@ -25287,7 +25822,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "Pac-12",
-    "score": null
+    "score": null,
+    "abbr": "SDSU",
+    "qb": "Jayden Denegal"
    }
   },
   {
@@ -25304,13 +25841,18 @@
    "city": "Tucson, AZ",
    "tv": "FOX",
    "note": "",
+   "indoor": false,
+   "spread": -7.0,
+   "total": 55.0,
    "away": {
     "name": "Cincinnati",
     "key": "Cincinnati",
     "rank": null,
     "record": "4-0",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "CIN",
+    "qb": "JC French IV"
    },
    "home": {
     "name": "Arizona",
@@ -25318,7 +25860,9 @@
     "rank": null,
     "record": "3-1",
     "conference": "Big 12",
-    "score": null
+    "score": null,
+    "abbr": "ARIZ",
+    "qb": "Noah Fifita"
    }
   },
   {
@@ -25335,13 +25879,18 @@
    "city": "Honolulu, HI",
    "tv": "MW+",
    "note": "",
+   "indoor": false,
+   "spread": -3.0,
+   "total": 51.5,
    "away": {
     "name": "San José State",
     "key": "San José State",
     "rank": null,
     "record": "2-2",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "SJSU",
+    "qb": "Luke Weaver"
    },
    "home": {
     "name": "Hawai'i",
@@ -25349,7 +25898,9 @@
     "rank": null,
     "record": "1-3",
     "conference": "Mountain West",
-    "score": null
+    "score": null,
+    "abbr": "HAW",
+    "qb": "Micah Alejado"
    }
   }
  ],
