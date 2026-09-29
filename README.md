@@ -1,0 +1,60 @@
+# CFB Matchup Dashboard
+
+College football version of the [NFL Matchup Dashboard](https://github.com/rhyman7/nfl-dashboard):
+a static GitHub Pages site showing a side-by-side offense/defense breakdown for
+any two **FBS** teams — record, SoS/SRS/OSRS/DSRS, rush/pass yards-per-game
+gauges with FBS rank, TD and points per game, top passers/rushers/receivers,
+and how each defense performs against RBs, receiving RBs, TEs and WRs.
+
+Same layout and code as the NFL site; the only front-end changes are CFB
+labels, "in FBS" ranks, conference-grouped team pickers, and a conference tag.
+
+## Scope
+
+- All FBS teams (138 in 2026)
+- 2026 **regular season** only (bowls/CFP excluded), completed games only
+
+## Data source
+
+[`sportsdataverse/cfbfastR-cfb-data`](https://github.com/sportsdataverse/cfbfastR-cfb-data)
+— ESPN-derived game box scores committed as parquet files and refreshed several
+times a day. The build script downloads them straight from
+`raw.githubusercontent.com`, so no API key is needed.
+
+Files used (`cfb/…/<name>_2026.parquet`): `cfb_schedule`, `team_box`,
+`player_box`, `cfb_teams`, `cfb_rosters`.
+
+## Weekly update
+
+A weekly scheduled task (Sunday morning ET) runs:
+
+```bash
+pip install -r requirements.txt
+python scripts/build_data.py
+git add data/data.json && git commit -m "Weekly data update" && git push
+```
+
+GitHub Pages redeploys within a minute or two of the push.
+
+Run the same commands yourself any time to refresh manually, and preview with
+`python -m http.server 8000` → http://localhost:8000.
+
+## How the numbers are derived
+
+- **Record / PPG / PA/G** — from final scores of regular-season games,
+  including games against FCS opponents.
+- **Offense/Defense Yds/G & ranks** — team box score rushing yards and net
+  passing yards per game (defense = what opponents gained). Rank 1 = most
+  yards on offense, fewest allowed on defense, among all FBS teams.
+- **Rush/Pass TD/G** — summed from player box scores.
+- **SRS / OSRS / DSRS** — least-squares Simple Rating System on points, using
+  FBS-vs-FBS games only (no home-field term, light regularization so early
+  weeks stay stable). SRS = OSRS + DSRS. **SoS** = average SRS of FBS opponents.
+  Expect these to be noisy for the first several weeks.
+- **Player tables** — top 6 passers/rushers and 7 receivers per team, sorted
+  by yards per game played; players who have appeared in fewer than half the
+  team's games are listed after the regulars.
+- **Def vs position** — per game, yards and TDs the defense allowed to
+  opposing RBs (rushing), RBs (receiving), TEs and WRs, using roster positions
+  (FB counted as RB). Rank 1 = fewest yards allowed.
+- **League averages** — mean across FBS teams of Rush TD/G, Pass TD/G and PPG.

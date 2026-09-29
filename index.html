@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFB Matchup Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>CFB Matchup Dashboard</h1>
+  <div class="topbar-meta">
+    <span id="lastUpdated">Loading...</span>
+  </div>
+</header>
+
+<main id="app">
+  <section class="matchup-picker">
+    <div class="picker">
+      <label for="team1Select">Team 1</label>
+      <select id="team1Select"></select>
+    </div>
+    <div class="vs">VS</div>
+    <div class="picker">
+      <label for="team2Select">Team 2</label>
+      <select id="team2Select"></select>
+    </div>
+    <button id="printBothBtn" class="print-btn" type="button">🖨 Print Matchup</button>
+  </section>
+
+  <section id="teamCards"></section>
+</main>
+
+<footer class="no-print">
+  <p>All FBS teams · 2026 regular season · updated weekly. <span id="sourceNote"></span></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
