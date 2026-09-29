@@ -796,13 +796,21 @@ footer {
   /* Matchup page: header + head to head + both cards on one landscape page */
   body[data-page="matchup"] .topbar { display: none; }
   body[data-page="matchup"] #matchupHeader,
-  body[data-page="matchup"] #edges { zoom: 0.74; }
+  body[data-page="matchup"] #edges { zoom: 0.64; }
+  /* wider layout at a smaller scale: same page width, shorter cards */
+  body[data-page="matchup"] #teamCards { width: 1880px; zoom: 0.526; }
   body[data-page="matchup"] .matchup-header .mh-week { margin-bottom: 4px; }
-  body[data-page="matchup"] .game-hero { padding: 10px 16px; gap: 10px; }
+  body[data-page="matchup"] .game-hero { padding: 6px 16px; gap: 10px; }
+  body[data-page="matchup"] .hero-name { font-size: 1.25rem; margin: 1px 0; }
+  body[data-page="matchup"] .hero-at { font-size: 1.2rem; line-height: 1.1; }
+  body[data-page="matchup"] .hero-info, body[data-page="matchup"] .hero-line { margin-top: 1px; }
+  body[data-page="matchup"] .hero-qb, body[data-page="matchup"] .hero-srs { display: inline-block; margin: 1px 5px 0; }
   body[data-page="matchup"] .section-title { margin: 10px 0 6px; }
   body[data-page="matchup"] .edge-panel { padding: 8px 12px; }
   body[data-page="matchup"] .edge-panel h4 { margin-bottom: 4px; }
-  body[data-page="matchup"] .edge-table td { padding: 3px 6px; }
+  body[data-page="matchup"] .edge-table td { padding: 1px 6px; }
+  body[data-page="matchup"] .edge-table th { padding: 2px 6px; }
+  body[data-page="matchup"] .edge-chip { padding: 1px 8px; }
   body[data-page="matchup"] .edge-key { margin-top: 4px; }
   body[data-page="matchup"] #edges { margin-bottom: 10px; }
 }
