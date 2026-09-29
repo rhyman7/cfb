@@ -440,7 +440,13 @@ footer {
 
 /* ---------------- Print ---------------- */
 @media print {
+  /* Default print (Print Matchup / Ctrl+P): both teams side by side on one
+     landscape page. Single-team print uses the "single" named page below. */
   @page {
+    size: letter landscape;
+    margin: 0.35in;
+  }
+  @page single {
     size: letter portrait;
     margin: 0.4in;
   }
@@ -484,6 +490,39 @@ footer {
     break-before: avoid;
     page-break-before: avoid;
   }
+
+  /* One-page matchup: lay the two cards out at a fixed width, then scale the
+     whole block down to the landscape page (10.3in ≈ 989px wide). */
+  body:not(.print-single) .topbar {
+    padding: 0 0 4px;
+    margin-bottom: 6px;
+  }
+  body:not(.print-single) #teamCards {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px !important;
+    width: 1720px;
+    zoom: 0.575;
+  }
+  /* keep every column on the page: wrap long names, tighten cells */
+  body:not(.print-single) .table-block { overflow: visible; }
+  body:not(.print-single) th,
+  body:not(.print-single) td { padding: 3px 3px; }
+  body:not(.print-single) td:first-child {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  body:not(.print-single) .team-card,
+  body:not(.print-single) .team-card:first-child {
+    break-before: avoid;
+    page-break-before: avoid;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Single-team print: one portrait page per card, as before */
+  body.print-single, body.print-single main { page: single; }
+  body.print-single .team-card { break-before: avoid; page-break-before: avoid; }
 
   .team-card-header,
   .rating-badges,

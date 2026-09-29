@@ -265,6 +265,7 @@ function gaugeSvg(value, min, max, color) {
 }
 
 function printOneTeam(teamName) {
+  document.body.classList.add("print-single");
   const cards = document.querySelectorAll(".team-card");
   cards.forEach(c => {
     if (c.dataset.team !== teamName) c.classList.add("print-hide");
@@ -274,6 +275,7 @@ function printOneTeam(teamName) {
 
 window.addEventListener("afterprint", () => {
   document.querySelectorAll(".team-card.print-hide").forEach(c => c.classList.remove("print-hide"));
+  document.body.classList.remove("print-single");
 });
 
 function escapeHtml(str) {
