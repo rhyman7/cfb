@@ -1,7 +1,7 @@
 Weekly update for my CFB Matchup Dashboard — https://rhyman7.github.io/cfb/ (repo: github.com/rhyman7/cfb, branch main, served by GitHub Pages from the repo root).
 
 ## Goal
-Refresh `data/data.json` with current 2026 FBS regular-season stats and push it to main so the live site updates. The site has three pages: `index.html` (this week's games), `matchup.html` (one game) and `dashboard.html` (compare any two teams). Do not change the HTML files, `app.js`, `style.css` or `scripts/build_data.py` unless a step below says to. The page reads only `data/data.json`, so its shape must stay the same.
+Refresh `data/data.json` with current 2026 FBS regular-season stats and push it to main so the live site updates. The site has three pages: `index.html` (this week's games), `matchup.html` (one game) and `dashboard.html` (compare any two teams). Do not change the HTML files, `app.js`, `live.js`, `style.css` or `scripts/build_data.py` unless a step below says to. (Live scores and box scores are fetched by the browser from ESPN at game time; this task never touches them.) The page reads only `data/data.json`, so its shape must stay the same.
 
 **Scope:** all FBS teams, 2026 regular season only (ESPN season_type 2 — includes conference championship games and Army–Navy; excludes bowls and the CFP), completed games only. The build script already enforces this; build from scratch each run and never carry over anything from a previous run or season.
 

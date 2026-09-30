@@ -21,6 +21,15 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 - **`dashboard.html` — Compare any two teams.** The original dashboard
   (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
 
+**Live scores.** On game days the slate and matchup pages fetch live
+scores straight from ESPN's public site API in the viewer's browser
+(`live.js`): the slate shows scores, quarter/clock, possession and a "Live
+now" group; the matchup page adds a box score (line score, team stats,
+player stats, scoring plays) under the game header. Both refresh every 30
+seconds while a game is live and do nothing before the pre-game window. The
+box score is left out of the printout. The feed is unofficial, so if it fails
+the pages fall back to the weekly data and show a short note.
+
 The "current week" is the first regular-season week that still has an
 unplayed game, so after Monday's rebuild the slate shows the coming week.
 AP ranks come from ESPN's schedule (each team's current poll rank on its

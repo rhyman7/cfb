@@ -37,6 +37,10 @@ function setMeta() {
   }
 }
 
+// Live game state from ESPN, filled in by live.js: { [gameId]: {state, detail, away, home, ...} }
+const LIVE = {};
+function liveFor(g) { return LIVE[g.id] || null; }
+
 function rankTag(rank) {
   return rank ? `<span class="ap-rank" title="${escapeHtml(DATA.pollName || "AP Top 25")}">#${rank}</span>` : "";
 }
@@ -61,6 +65,7 @@ function initWeek() {
   const search = document.getElementById("teamSearch");
   [confSel, rankedOnly, search].forEach(el => el.addEventListener("input", () => renderWeek(games)));
   renderWeek(games);
+  if (typeof startLiveWeek === "function") startLiveWeek(games, () => renderWeek(games));
 }
 
 function renderWeek(games) {
@@ -82,50 +87,66 @@ function renderWeek(games) {
     return;
   }
 
-  // group by local calendar day
+  // live games get their own group at the top
   const groups = [];
-  shown.forEach(g => {
+  const live = shown.filter(g => (liveFor(g) || {}).state === "in");
+  if (live.length) groups.push({ label: "Live now", live: true, games: live });
+  shown.filter(g => !live.includes(g)).forEach(g => {
     const d = new Date(g.start);
     const label = d.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
     let grp = groups[groups.length - 1];
-    if (!grp || grp.label !== label) groups.push(grp = { label, games: [] });
+    if (!grp || grp.live || grp.label !== label) groups.push(grp = { label, games: [] });
     grp.games.push(g);
   });
 
   list.innerHTML = groups.map(grp => `
     <section class="day-group">
-      <h2 class="day-label">${escapeHtml(grp.label)} <span class="day-count">${grp.games.length}</span></h2>
+      <h2 class="day-label${grp.live ? " live" : ""}">${grp.live ? '<span class="live-dot"></span>' : ""}${escapeHtml(grp.label)} <span class="day-count">${grp.games.length}</span></h2>
       <div class="game-grid">${grp.games.map(gameCard).join("")}</div>
     </section>`).join("");
 }
 
 function kickoff(g) {
+  const L = liveFor(g);
+  if (L && L.state === "in") return L.detail || "Live";
+  if (L && L.state === "post") return L.detail || "Final";
   if (g.completed) return "Final";
   if (g.timeTbd) return "TBD";
   return new Date(g.start).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
 }
 
-function gameSide(s, g, other) {
+function gameSide(s, g, other, sideKey) {
   const t = s.key && DATA.teams[s.key];
   const srs = t ? `<span class="gs-srs" title="SRS">SRS ${t.record.srs > 0 ? "+" : ""}${t.record.srs}</span>` : "";
-  const won = g.completed && s.score != null && other.score != null && s.score > other.score;
+  const L = liveFor(g);
+  const otherKey = sideKey === "away" ? "home" : "away";
+  let score = g.completed ? s.score : null, otherScore = g.completed ? other.score : null, done = g.completed;
+  if (L && (L.state === "in" || L.state === "post") && L[sideKey]) {
+    score = L[sideKey].score; otherScore = L[otherKey] ? L[otherKey].score : null; done = L.state === "post";
+  }
+  const won = done && score != null && otherScore != null && score > otherScore;
+  const poss = L && L.state === "in" && L.possession === sideKey ? `<span class="poss" title="Has the ball">●</span>` : "";
   return `<div class="gs-row${won ? " won" : ""}">
-    <span class="gs-name">${rankTag(s.rank)}${escapeHtml(s.name)}</span>
+    <span class="gs-name">${rankTag(s.rank)}${escapeHtml(s.name)}${poss}</span>
     <span class="gs-rec">${escapeHtml(s.record)}${s.conference ? " · " + escapeHtml(s.conference) : ""}</span>
-    ${g.completed && s.score != null ? `<span class="gs-score">${s.score}</span>` : srs}
+    ${score != null ? `<span class="gs-score">${score}</span>` : srs}
   </div>`;
 }
 
 function gameCard(g) {
   const note = g.note ? `<div class="game-note">${escapeHtml(g.note)}</div>` : "";
-  return `<a class="game-card" href="matchup.html?game=${encodeURIComponent(g.id)}">
+  const L = liveFor(g);
+  const isLive = L && L.state === "in";
+  const sit = isLive && L.downDistance ? `<div class="game-sit">${escapeHtml(L.downDistance)}</div>` : "";
+  return `<a class="game-card${isLive ? " live" : ""}" href="matchup.html?game=${encodeURIComponent(g.id)}">
     <div class="game-meta">
-      <span class="game-time">${escapeHtml(kickoff(g))}</span>
+      <span class="game-time">${isLive ? '<span class="live-badge">Live</span> ' : ""}${escapeHtml(kickoff(g))}</span>
       ${g.tv ? `<span class="game-tv">${escapeHtml(g.tv)}</span>` : ""}
     </div>
-    ${gameSide(g.away, g, g.home)}
+    ${gameSide(g.away, g, g.home, "away")}
     <div class="gs-at">${g.neutral ? "vs" : "@"}</div>
-    ${gameSide(g.home, g, g.away)}
+    ${gameSide(g.home, g, g.away, "home")}
+    ${sit}
     <div class="game-venue">${escapeHtml([g.venue, g.city].filter(Boolean).join(" · "))}${g.neutral ? " (neutral)" : ""}</div>
     ${note}
   </a>`;
@@ -153,6 +174,7 @@ function initMatchup() {
   document.title = `${tag(g.away)} ${g.neutral ? "vs" : "@"} ${tag(g.home)} · CFB Matchup Dashboard`;
 
   head.innerHTML = renderHero(g, away, home);
+  if (typeof startLiveMatchup === "function") startLiveMatchup(g);
 
   if (away && home) {
     const n = Object.keys(DATA.teams).length;
@@ -203,22 +225,24 @@ function renderHero(g, away, home) {
   return `
   <div class="mh-week">Week ${g.week}${g.note ? " · " + escapeHtml(g.note) : ""}</div>
   <div class="game-hero">
-    ${heroTeam(g.away, away, g.neutral ? "Team 1" : "Away", final ? g.away.score : null)}
+    ${heroTeam(g.away, away, g.neutral ? "Team 1" : "Away", final ? g.away.score : null, "away")}
     <div class="hero-mid">
+      <div class="hero-live" id="heroLive" hidden></div>
       <div class="hero-at">${g.neutral ? "vs" : "@"}</div>
       ${info.map(i => `<div class="hero-info">${escapeHtml(i)}</div>`).join("")}
       ${line.length ? `<div class="hero-line">${escapeHtml(line.join(" · "))}</div>` : ""}
       ${g.tv ? `<div class="hero-info">TV: ${escapeHtml(g.tv)}</div>` : ""}
     </div>
-    ${heroTeam(g.home, home, g.neutral ? "Team 2" : "Home", final ? g.home.score : null)}
+    ${heroTeam(g.home, home, g.neutral ? "Team 2" : "Home", final ? g.home.score : null, "home")}
   </div>`;
 }
 
-function heroTeam(s, t, side, score) {
+function heroTeam(s, t, side, score, sideKey) {
   const srs = t ? `<div class="hero-srs">SRS <span class="${t.record.srs > 0 ? "pos" : t.record.srs < 0 ? "neg" : ""}">${t.record.srs}</span></div>` : "";
   return `
-    <div class="hero-team">
+    <div class="hero-team" data-side="${sideKey}">
       <div class="hero-side">${side}</div>
+      <div class="hero-score" hidden></div>
       <div class="hero-name">${rankTag(s.rank)}${escapeHtml(s.name)}</div>
       <div class="hero-rec">${escapeHtml(s.record || "")}${s.conference ? " · " + escapeHtml(s.conference) : ""}${score !== null ? ` · <b>${score}</b>` : ""}</div>
       ${s.qb ? `<div class="hero-qb">QB: ${escapeHtml(s.qb)}</div>` : ""}
