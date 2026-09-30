@@ -1,5 +1,7 @@
 # CFB Matchup Dashboard
 
+**Live site: https://rhyman7.github.io/cfb/**
+
 College football version of the [NFL Matchup Dashboard](https://github.com/rhyman7/nfl-dashboard):
 a static GitHub Pages site showing a side-by-side offense/defense breakdown for
 any two **FBS** teams — record, SoS/SRS/OSRS/DSRS, rush/pass yards-per-game
