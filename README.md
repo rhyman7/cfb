@@ -21,7 +21,9 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   AP rank, QB, SRS, kickoff, venue, indoors/outdoors, spread, O/U), a Head to
   Head section comparing each offense with the other defense (FBS ranks, with
   an edge called when one side ranks 26+ spots better — the same share of the
-  field as the NFL site's 6 of 32), then both teams' full stat cards. Prints
+  field as the NFL site's 6 of 32), then both teams' full stat cards. The header shows the kickoff forecast
+  (outdoor games) between the venue and the spread/O-U, and uses the same
+  current ESPN line as the slate. Prints
   on one landscape page.
   Non-FBS opponents show a short note instead of stats.
 - **`print.html` — Print all.** The slate's "Print all" button opens every

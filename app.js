@@ -244,6 +244,14 @@ function initMatchup() {
   const parts = renderMatchupParts(g);
   head.innerHTML = parts.head;
   if (typeof startLiveMatchup === "function") startLiveMatchup(g);
+  // Fill the forecast and the current line into the header in place (live.js may be updating it too).
+  const refreshExtras = () => {
+    const wx = document.getElementById("heroWx"), ln = document.getElementById("heroLine");
+    if (wx) { const t = heroWxText(g); wx.textContent = t || ""; wx.hidden = !t; }
+    if (ln) { const t = heroLineText(g); ln.textContent = t || ""; ln.hidden = !t; }
+  };
+  if (typeof refreshLines === "function" && DATA.currentWeek) refreshLines(new Set([g.id]), refreshExtras);
+  if (typeof startWeather === "function") startWeather([g], refreshExtras);
   document.getElementById("edges").innerHTML = parts.edges;
   teamCards.innerHTML = parts.cards;
 }
@@ -329,11 +337,7 @@ function renderHero(g, away, home) {
     [g.venue, g.city, roof].filter(Boolean).join(" · "),
     g.neutral ? "Neutral site" : null,
   ].filter(Boolean);
-  const line = [
-    fmtSpread(g) ? `Spread: ${fmtSpread(g)}` : null,
-    g.total ? `O/U ${g.total}` : null,
-    g.conferenceGame ? "Conference game" : null,
-  ].filter(Boolean);
+  const lineText = heroLineText(g), wxText = heroWxText(g);
 
   return `
   <div class="mh-week">Week ${g.week}${g.note ? " · " + escapeHtml(g.note) : ""}</div>
@@ -343,11 +347,32 @@ function renderHero(g, away, home) {
       <div class="hero-live" id="heroLive" hidden></div>
       <div class="hero-at">${g.neutral ? "vs" : "@"}</div>
       ${info.map(i => `<div class="hero-info">${escapeHtml(i)}</div>`).join("")}
-      ${line.length ? `<div class="hero-line">${escapeHtml(line.join(" · "))}</div>` : ""}
+      <div class="hero-info hero-wx" id="heroWx"${wxText ? "" : " hidden"}>${escapeHtml(wxText || "")}</div>
+      <div class="hero-line" id="heroLine"${lineText ? "" : " hidden"}>${escapeHtml(lineText || "")}</div>
+      ${g.conferenceGame ? `<div class="hero-info">Conference game</div>` : ""}
       ${g.tv ? `<div class="hero-info">TV: ${escapeHtml(g.tv)}</div>` : ""}
     </div>
     ${heroTeam(g.home, home, g.neutral ? "Team 2" : "Home", final ? g.home.score : null, "home")}
   </div>`;
+}
+
+// "Spread: UGA -7.5 · O/U 52.5" from the current line (see lineFor).
+function heroLineText(g) {
+  const ln = lineFor(g);
+  if (!ln) return "";
+  const favSide = ln.fav ? g[ln.fav] : null;
+  const spread = ln.pick ? "Pick'em" : favSide ? `${favSide.abbr || favSide.name} -${ln.spread}` : null;
+  return [spread ? `Spread: ${spread}` : null, ln.total != null ? `O/U ${ln.total}` : null].filter(Boolean).join(" · ");
+}
+
+// Forecast line for the matchup header; blank once the game is over.
+function heroWxText(g) {
+  if (g.completed || g.indoor === true) return "";   // venue line already says "Indoors"
+  const w = WX[g.id];
+  if (!w) return "";
+  return [`${w.icon} ${w.text}`, w.daily ? `High ${w.temp}°` : `${w.temp}° at kickoff`,
+    w.pop != null ? `${w.pop}% chance of rain` : null, w.wind != null ? `Wind ${w.wind} mph` : null]
+    .filter(Boolean).join(" · ");
 }
 
 function heroTeam(s, t, side, score, sideKey) {
