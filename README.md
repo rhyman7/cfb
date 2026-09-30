@@ -26,6 +26,11 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   Each matchup page still has its own Print Matchup button.
 - **`dashboard.html` — Compare any two teams.** The original dashboard
   (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
+- **`ratings.html` — Ratings explained.** Plain-language definitions of SoS,
+  OSRS, DSRS and SRS, how to use them in a matchup, and how this site
+  calculates them. Its example uses the current top-SRS team from
+  `data/data.json`; the rest of the page is static. Linked from the main
+  page's top nav.
 
 **Live scores.** On game days the slate and matchup pages fetch live
 scores straight from ESPN's public site API in the viewer's browser

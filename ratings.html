@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings Explained · CFB Matchup Dashboard</title>
+<link rel="stylesheet" href="style.css?v=202609292100">
+<style>
+  .rx { max-width: 820px; margin: 0 auto; line-height: 1.6; }
+  .rx h2 { font-size: 1.6rem; margin: 4px 0 6px; }
+  .rx .lede { color: var(--text-dim); margin: 0 0 24px; }
+  .rx h3 { margin: 0 0 4px; font-size: 1.1rem; }
+  .rx .abbr { color: var(--accent); font-weight: 700; letter-spacing: 0.03em; }
+  .rx .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .rx .card p { margin: 6px 0 0; }
+  .rx .read { color: var(--text-dim); font-size: 0.92rem; }
+  .rx .formula {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.9rem;
+  }
+  .rx .section { margin-top: 30px; }
+  .rx .section h3 { font-size: 1.2rem; margin-bottom: 8px; }
+  .rx ul { padding-left: 20px; margin: 6px 0; }
+  .rx li { margin: 4px 0; }
+  .rx .example { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0 8px; }
+  .rx .example div {
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+  .rx .example .lbl { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
+  .rx .example .val { font-size: 1.3rem; font-weight: 700; }
+  .rx .pos { color: var(--good); }
+  .rx .neg { color: var(--neg); }
+  @media (max-width: 600px) { .rx .example { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body data-page="ratings">
+<header class="topbar">
+  <h1><a href="index.html" class="home-link">CFB Matchup Dashboard</a></h1>
+  <nav class="topnav no-print">
+    <a href="index.html">This Week's Games</a>
+    <a href="dashboard.html">Compare Any Two Teams</a>
+    <a href="ratings.html" class="active">Ratings Explained</a>
+  </nav>
+  <div class="topbar-meta"></div>
+</header>
+
+<main id="app">
+  <article class="rx">
+    <h2>What SoS, OSRS, DSRS and SRS mean</h2>
+    <p class="lede">These four numbers appear on every team card and game. All of them are in
+      <b>points per game compared with an average FBS team</b>, so 0 is average, positive is
+      better than average and negative is worse.</p>
+
+    <div class="card">
+      <h3><span class="abbr">SRS</span> · Simple Rating System</h3>
+      <p>The team's overall strength. It is based on points scored and allowed, adjusted for
+        how good every opponent was. An SRS of +14 means the team is about 14 points better
+        than an average FBS team on a neutral field.</p>
+      <p class="read"><span class="formula">SRS = OSRS + DSRS</span></p>
+    </div>
+
+    <div class="card">
+      <h3><span class="abbr">OSRS</span> · Offensive SRS</h3>
+      <p>The offense's share of SRS. It measures how many more points per game the team scores
+        than an average team would, after accounting for the defenses it has faced. Higher means
+        a better offense.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="abbr">DSRS</span> · Defensive SRS</h3>
+      <p>The defense's share of SRS. It measures how many fewer points per game the team allows
+        than an average team would, after accounting for the offenses it has faced. The sign is
+        flipped so that <b>higher is better</b>: +7 means the defense gives up about 7 fewer
+        points than average.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="abbr">SoS</span> · Strength of Schedule</h3>
+      <p>The average SRS of the FBS opponents the team has played so far. Positive means a
+        tougher-than-average schedule, negative means an easier one. It describes games already
+        played, not the rest of the season.</p>
+    </div>
+
+    <div class="section" id="exampleWrap" hidden>
+      <h3>Example: this week's top-rated team</h3>
+      <p id="exampleName"></p>
+      <div class="example" id="exampleGrid"></div>
+      <p class="read" id="exampleText"></p>
+    </div>
+
+    <div class="section">
+      <h3>Using them in a matchup</h3>
+      <ul>
+        <li><b>Rough point spread:</b> subtract one team's SRS from the other's. A +20 team
+          against a +8 team projects as about a 12-point favorite on a neutral field. Add a few
+          points for the home team, since the ratings themselves don't include home field.</li>
+        <li><b>Where the edge is:</b> compare one team's OSRS with the other team's DSRS. A strong
+          offense facing a weak defense is where points are likely to come from.</li>
+        <li><b>Grain of salt:</b> check SoS. A big SRS built on an easy schedule rests on less
+          evidence than the same SRS against strong opponents.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>How this site calculates them</h3>
+      <ul>
+        <li>Only 2026 regular-season games between two FBS teams count. Games against FCS
+          opponents are left out of the ratings and out of SoS.</li>
+        <li>Every team's offense and defense rating is solved at the same time so that, across all
+          games, <i>points scored ≈ average + the offense's OSRS − the opponent's DSRS</i>.</li>
+        <li>Margins are not capped, and there is no home-field adjustment.</li>
+        <li>A small stabilizing term keeps the numbers from swinging wildly early in the season,
+          when teams have few common opponents. It pulls ratings slightly toward 0.</li>
+        <li>Ratings are rebuilt from scratch with every weekly update, so a team's SoS and SRS can
+          change even in a week it doesn't play, as its past opponents' ratings change.</li>
+      </ul>
+      <p class="read">Early in the season, with only a few games per team, treat all four numbers
+        as rough. They become more reliable as more games are played.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="no-print">
+  <p>All FBS teams · 2026 regular season · updated weekly.</p>
+</footer>
+
+<script>
+(function () {
+  function fmt(v) { return (v > 0 ? "+" : "") + v.toFixed(1); }
+  function cls(v) { return v > 0 ? "pos" : v < 0 ? "neg" : ""; }
+  fetch("data/data.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (d) {
+      var names = Object.keys(d.teams || {});
+      if (!names.length) return;
+      names.sort(function (a, b) { return d.teams[b].record.srs - d.teams[a].record.srs; });
+      var name = names[0], r = d.teams[name].record;
+      var rec = r.w + "-" + r.l + (r.t ? "-" + r.t : "");
+      document.getElementById("exampleName").textContent = name + " (" + rec + ")";
+      document.getElementById("exampleGrid").innerHTML = [["SRS", r.srs], ["OSRS", r.osrs], ["DSRS", r.dsrs], ["SoS", r.sos]]
+        .map(function (p) { return '<div><span class="lbl">' + p[0] + '</span><span class="val ' + cls(p[1]) + '">' + fmt(p[1]) + "</span></div>"; })
+        .join("");
+      var side = r.osrs >= r.dsrs ? "offense" : "defense";
+      document.getElementById("exampleText").textContent =
+        name + " rates about " + Math.abs(r.srs).toFixed(1) + " points per game " + (r.srs >= 0 ? "better" : "worse") +
+        " than an average FBS team: " + fmt(r.osrs) + " from its offense and " + fmt(r.dsrs) +
+        " from its defense, so most of its edge comes from the " + side + ". Its opponents so far average " +
+        fmt(r.sos) + ", a " + (r.sos >= 0 ? "tougher" : "softer") + "-than-average schedule.";
+      document.getElementById("exampleWrap").hidden = false;
+    })
+    .catch(function () { /* example is optional; the definitions stand on their own */ });
+})();
+</script>
+</body>
+</html>
