@@ -38,6 +38,19 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   `data/data.json`; the rest of the page is static. Linked from the main
   page's top nav.
 
+**Player game logs.** On every team card, each player name in the Passing,
+Rushing and Receiving tables is clickable. Hovering (on a computer) shows a
+tooltip with that player's week-by-week stats for that table and the opponent;
+clicking or tapping opens a panel with the full game log (result, then the
+passing, rushing and receiving columns the player has stats in). Close it with
+Esc, the ✕ button or a click outside. On phones a tap opens the panel directly
+and wide tables scroll sideways inside it. Neither shows up when printing. A log
+only includes games played for the team on that card, so it matches the table
+averages. The logs live in `gameLogs` in `data/data.json`, keyed
+`ABBR|athlete_id`; each player row carries a `log` key pointing to its entry,
+and zero-value stats are left out of each game. The ESPN box scores have no
+targets, so receiving shows receptions, yards, TDs and Y/R.
+
 **Live scores.** On game days the slate and matchup pages fetch live
 scores straight from ESPN's public site API in the viewer's browser
 (`live.js`): the slate shows scores, quarter/clock, possession and a "Live
@@ -114,4 +127,7 @@ Run the same commands yourself any time to refresh manually, and preview with
 - **Def vs position** — per game, yards and TDs the defense allowed to
   opposing RBs (rushing), RBs (receiving), TEs and WRs, using roster positions
   (FB counted as RB). Rank 1 = fewest yards allowed.
+- **Game logs** — one entry per regular-season game the player appears in
+  for that team (any of passing, rushing or receiving), with week, opponent
+  abbreviation (`@` for road games; neutral sites show `vs`) and final score.
 - **League averages** — mean across FBS teams of Rush TD/G, Pass TD/G and PPG.

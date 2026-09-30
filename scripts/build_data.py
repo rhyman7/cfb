@@ -332,9 +332,45 @@ def build(season, cache):
         df = df.assign(ypg=df["yds"] / df["gp"], reg=df["gp"] >= team_gp / 2.0)
         return df.sort_values(["reg", "ypg"], ascending=[False, False]).head(n)
 
+    # --- per-game logs for every player shown in a table (keyed "ABBR|athlete_id") ---
+    # Only games the player played for this team, so the log matches the table averages.
+    meta = fbs.set_index("team_id")
+    results = {}  # (game_id, team_id) -> week, opponent, home/away, result
+    for r in g.itertuples():
+        for tid, oid, us, them, away in ((r.home_id, r.away_id, r.home_score, r.away_score, False),
+                                         (r.away_id, r.home_id, r.away_score, r.home_score, True)):
+            opp_abbr = getattr(r, "home_abbreviation" if away else "away_abbreviation")
+            res = "W" if us > them else "L" if us < them else "T"
+            results[(r.game_id, tid)] = {
+                "w": int(r.week), "opp": str(opp_abbr) if isinstance(opp_abbr, str) else "?",
+                "at": away and not bool(r.neutral_site), "res": f"{res} {int(us)}-{int(them)}"}
+
+    def per_game(df, cols):
+        return df.groupby(["team_id", "athlete_id", "game_id"])[list(cols)].sum().rename(columns=cols)
+
+    pg = pd.concat([
+        per_game(passing, {"cmp": "cmp", "att": "att", "passingYards": "pYds",
+                           "passingTouchdowns": "pTd", "interceptions": "int"}),
+        per_game(rushing, {"rushingAttempts": "car", "rushingYards": "rYds", "rushingTouchdowns": "rTd"}),
+        per_game(receiving, {"receptions": "rec", "receivingYards": "recYds", "receivingTouchdowns": "recTd"}),
+    ], axis=1).fillna(0)
+    pg_by_player = {k: d.droplevel([0, 1]) for k, d in pg.groupby(level=[0, 1])}
+    game_logs = {}
+
+    def add_log(team_id, athlete_id):
+        key = f"{meta.loc[team_id, 'abbreviation']}|{int(athlete_id)}"
+        if key not in game_logs:
+            log = []
+            for gid, s in pg_by_player.get((team_id, athlete_id), pd.DataFrame()).iterrows():
+                e = {k: v for k, v in results[(gid, team_id)].items() if v or k != "at"}  # "at" only when away
+                # stat fields that are 0 are left out to keep the file small; the site reads them as 0
+                e.update({k: int(v) for k, v in s.items() if v})
+                log.append(e)
+            game_logs[key] = sorted(log, key=lambda e: e["w"])
+        return key
+
     team_rows = {}
     id_to_name = {}
-    meta = fbs.set_index("team_id")
     for t in per.index:
         m = meta.loc[t]
         name = m["school"] if isinstance(m["school"], str) and m["school"] else m["short_display_name"]
@@ -347,7 +383,7 @@ def build(season, cache):
             att=("att", "sum")).reset_index()
         pdx = top(pdx[pdx["att"] > 0], 6, p.gp)
         pass_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                      "int": r2(r.it / r.gp)} for r in pdx.itertuples()]
+                      "int": r2(r.it / r.gp), "log": add_log(t, r.athlete_id)} for r in pdx.itertuples()]
 
         rdx = rushing[rushing["team_id"] == t].groupby("athlete_id").agg(
             player=("athlete_name", "last"), gp=("game_id", "nunique"),
@@ -355,7 +391,7 @@ def build(season, cache):
             att=("rushingAttempts", "sum")).reset_index()
         rdx = top(rdx[rdx["att"] > 0], 6, p.gp)
         rush_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                      "ya": r1(r.yds / r.att), "ag": r1(r.att / r.gp)} for r in rdx.itertuples()]
+                      "ya": r1(r.yds / r.att), "ag": r1(r.att / r.gp), "log": add_log(t, r.athlete_id)} for r in rdx.itertuples()]
 
         cdx = receiving[receiving["team_id"] == t].groupby("athlete_id").agg(
             player=("athlete_name", "last"), gp=("game_id", "nunique"),
@@ -363,7 +399,7 @@ def build(season, cache):
             rec=("receptions", "sum")).reset_index()
         cdx = top(cdx[cdx["rec"] > 0], 7, p.gp)
         rec_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                     "yr": r1(r.yds / r.rec), "rec": r2(r.rec / r.gp)} for r in cdx.itertuples()]
+                     "yr": r1(r.yds / r.rec), "rec": r2(r.rec / r.gp), "log": add_log(t, r.athlete_id)} for r in cdx.itertuples()]
 
         s, o, d = srs[t]
         id_to_name[int(t)] = name
@@ -410,6 +446,7 @@ def build(season, cache):
         "currentWeek": cur_week,
         "pollName": "AP Top 25",
         "weekGames": games,
+        "gameLogs": game_logs,
         "leagueAverage": {"rushTdG": r1(per["rushTdG"].mean()), "passTdG": r1(per["passTdG"].mean()),
                           "ppg": r1(per["pf"].mean())},
         "gaugeRanges": {
@@ -422,6 +459,19 @@ def build(season, cache):
     return out
 
 
+def write_json(data, path):
+    """Write data.json indented, except gameLogs: one compact line per player log,
+    which keeps the file a fraction of the size of indenting every game entry."""
+    logs = data.get("gameLogs") or {}
+    marker = "__GAME_LOGS__"
+    text = json.dumps({**data, "gameLogs": marker}, indent=1, ensure_ascii=False)
+    body = ",\n".join(f"  {json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False, separators=(',', ':'))}"
+                      for k, v in logs.items())
+    text = text.replace(json.dumps(marker), "{\n" + body + "\n }" if logs else "{}", 1)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, default=2026)
@@ -430,8 +480,7 @@ def main():
     a = ap.parse_args()
     data = build(a.season, a.cache)
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
-    with open(a.out, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=1, ensure_ascii=False)
+    write_json(data, a.out)
     print(f"Wrote {a.out}: {len(data['teams'])} teams, {data['gamesCounted']} games, "
           f"through week {data['throughWeek']}")
 

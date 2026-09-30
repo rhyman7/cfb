@@ -647,8 +647,15 @@ function playerTable(title, rows, cols) {
     return `<div class="table-block"><h4>${title}</h4><div class="empty-note">No data</div></div>`;
   }
   const head = cols.map(([label, , type]) => `<th class="${type === "num" ? "num" : ""}">${label}</th>`).join("");
+  const kind = title.toLowerCase();
   const body = rows.map(r => {
-    const cells = cols.map(([, key, type]) => `<td class="${type === "num" ? "num" : ""}">${escapeHtml(String(r[key]))}</td>`).join("");
+    const cells = cols.map(([, key, type]) => {
+      const txt = escapeHtml(String(r[key]));
+      const val = key === "player" && r.log && DATA.gameLogs && DATA.gameLogs[r.log]
+        ? `<button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-name="${txt}">${txt}</button>`
+        : txt;
+      return `<td class="${type === "num" ? "num" : ""}">${val}</td>`;
+    }).join("");
     return `<tr>${cells}</tr>`;
   }).join("");
   return `<div class="table-block">
@@ -716,6 +723,142 @@ window.addEventListener("afterprint", () => {
   document.querySelectorAll(".team-card.print-hide").forEach(c => c.classList.remove("print-hide"));
   document.body.classList.remove("print-single");
 });
+
+/* ---------------- Player game logs: hover tooltip + click panel ---------------- */
+// DATA.gameLogs["ABBR|athlete_id"] = [{ w, opp, at, res, cmp, att, pYds, pTd, int, car, rYds,
+// rTd, rec, recYds, recTd }], one entry per game played for that team; stats left out are 0,
+// and "at" is only present (true) for road games.
+
+const LOG_GROUPS = {
+  passing: [["C/Att", e => `${e.cmp || 0}/${e.att || 0}`], ["Yds", e => e.pYds || 0], ["TD", e => e.pTd || 0], ["Int", e => e.int || 0]],
+  rushing: [["Att", e => e.car || 0], ["Yds", e => e.rYds || 0], ["TD", e => e.rTd || 0],
+    ["Y/A", e => e.car ? ((e.rYds || 0) / e.car).toFixed(1) : "—"]],
+  receiving: [["Rec", e => e.rec || 0], ["Yds", e => e.recYds || 0], ["TD", e => e.recTd || 0],
+    ["Y/R", e => e.rec ? ((e.recYds || 0) / e.rec).toFixed(1) : "—"]],
+};
+const GROUP_LABEL = { passing: "Passing", rushing: "Rushing", receiving: "Receiving" };
+const hasGroup = {
+  passing: e => e.att > 0,
+  rushing: e => e.car > 0 || !!e.rYds || !!e.rTd,
+  receiving: e => e.rec > 0 || !!e.recYds || !!e.recTd,
+};
+
+function oppText(e) { return `${e.at ? "@" : "vs"} ${e.opp}`; }
+function teamOfLog(key) {
+  const abbr = key.split("|")[0];
+  return Object.values(DATA.teams).find(t => t.abbr === abbr) || null;
+}
+function gamesText(n) { return `${n} game${n === 1 ? "" : "s"}`; }
+
+function tooltipHtml(name, kind, log) {
+  const cols = LOG_GROUPS[kind] || [];
+  const head = `<th>Wk</th><th>Opp</th>${cols.map(([l]) => `<th class="num">${l}</th>`).join("")}`;
+  const body = log.map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>${cols.map(([, f]) => `<td class="num">${f(e)}</td>`).join("")}</tr>`).join("");
+  return `<div class="ptip-head"><b>${name}</b><span>${GROUP_LABEL[kind] || ""} · ${gamesText(log.length)}</span></div>
+    <table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
+    <div class="ptip-foot">Click for full game log</div>`;
+}
+
+function panelHtml(name, key, log) {
+  const t = teamOfLog(key);
+  const groups = ["passing", "rushing", "receiving"].filter(g => log.some(hasGroup[g]));
+  const gh = groups.map(g => `<th colspan="${LOG_GROUPS[g].length}" class="grp gstart">${GROUP_LABEL[g]}</th>`).join("");
+  const sub = groups.map(g => LOG_GROUPS[g].map(([l], i) => `<th class="num${i === 0 ? " gstart" : ""}">${l}</th>`).join("")).join("");
+  const body = log.map(e => {
+    const rc = e.res && e.res[0] === "W" ? "pos" : e.res && e.res[0] === "L" ? "neg" : "";
+    return `<tr>
+    <td>${e.w}</td><td>${escapeHtml(oppText(e))}</td><td class="res ${rc}">${escapeHtml(e.res || "")}</td>
+    ${groups.map(g => LOG_GROUPS[g].map(([, f], i) => `<td class="num${i === 0 ? " gstart" : ""}">${f(e)}</td>`).join("")).join("")}</tr>`;
+  }).join("");
+  return `<div class="plog-card" role="dialog" aria-modal="true" aria-labelledby="plogTitle">
+    <div class="plog-top">
+      <div>
+        <h3 id="plogTitle">${name}</h3>
+        <div class="plog-sub">${t ? escapeHtml(t.team) + " · " : ""}${gamesText(log.length)}</div>
+      </div>
+      <button type="button" class="plog-close" aria-label="Close">✕</button>
+    </div>
+    <div class="plog-scroll">
+      <table>
+        <thead>
+          <tr><th colspan="3"></th>${gh}</tr>
+          <tr><th>Wk</th><th>Opp</th><th>Result</th>${sub}</tr>
+        </thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>
+    <div class="plog-note">Regular-season games played for ${t ? escapeHtml(t.team) : "this team"} only.</div>
+  </div>`;
+}
+
+(function setupPlayerLogs() {
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let tip = null, panel = null, lastFocus = null, quiet = false;
+
+  function hideTip() { if (tip) tip.hidden = true; }
+  function showTip(btn) {
+    const log = DATA && DATA.gameLogs && DATA.gameLogs[btn.dataset.log];
+    if (!log || (panel && !panel.hidden)) return;
+    if (!tip) { tip = document.createElement("div"); tip.className = "ptip no-print"; document.body.appendChild(tip); }
+    tip.innerHTML = tooltipHtml(escapeHtml(btn.dataset.name), btn.dataset.kind, log);
+    tip.hidden = false;
+    // next to the name: to its right if it fits, otherwise below (or above near the bottom)
+    const r = btn.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    let left, top;
+    if (r.right + 10 + w <= vw - 8) {
+      left = r.right + 10;
+      top = Math.min(r.top - 8, vh - h - 8);
+    } else {
+      left = Math.min(r.left, vw - w - 8);
+      top = r.bottom + 6 + h > vh - 8 ? r.top - h - 6 : r.bottom + 6;
+    }
+    tip.style.left = Math.max(8, left) + "px";
+    tip.style.top = Math.max(8, top) + "px";
+  }
+  function closePanel() {
+    if (!panel || panel.hidden) return;
+    panel.hidden = true;
+    document.body.classList.remove("plog-open");
+    if (lastFocus) { quiet = true; lastFocus.focus(); quiet = false; }
+  }
+  function openPanel(btn) {
+    const log = DATA && DATA.gameLogs && DATA.gameLogs[btn.dataset.log];
+    if (!log) return;
+    hideTip();
+    if (!panel) {
+      panel = document.createElement("div");
+      panel.className = "plog no-print";
+      panel.addEventListener("click", e => { if (e.target === panel || e.target.closest(".plog-close")) closePanel(); });
+      document.body.appendChild(panel);
+    }
+    lastFocus = btn;
+    panel.innerHTML = panelHtml(escapeHtml(btn.dataset.name), btn.dataset.log, log);
+    panel.hidden = false;
+    document.body.classList.add("plog-open");
+    panel.querySelector(".plog-close").focus();
+  }
+
+  document.addEventListener("click", e => {
+    const btn = e.target.closest && e.target.closest(".plink");
+    if (btn) openPanel(btn);
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { closePanel(); hideTip(); } });
+  if (canHover) {
+    document.addEventListener("mouseover", e => {
+      const btn = e.target.closest && e.target.closest(".plink");
+      if (btn) showTip(btn);
+    });
+    document.addEventListener("mouseout", e => {
+      const btn = e.target.closest && e.target.closest(".plink");
+      if (btn && !btn.contains(e.relatedTarget)) hideTip();
+    });
+    document.addEventListener("focusin", e => { const b = e.target.closest && e.target.closest(".plink"); if (b && !quiet) showTip(b); });
+    document.addEventListener("focusout", e => { if (e.target.closest && e.target.closest(".plink")) hideTip(); });
+  }
+  window.addEventListener("scroll", hideTip, { passive: true });
+  window.addEventListener("beforeprint", () => { hideTip(); closePanel(); });
+})();
 
 function escapeHtml(str) {
   return String(str)
