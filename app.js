@@ -140,8 +140,14 @@ function kickoff(g) {
 }
 
 function gameSide(s, g, other, sideKey) {
-  const t = s.key && DATA.teams[s.key];
-  const srs = t ? `<span class="gs-srs" title="SRS">SRS ${t.record.srs > 0 ? "+" : ""}${t.record.srs}</span>` : "";
+  // Before kickoff: favored team shows the spread, the other team shows the O/U.
+  const ln = lineFor(g);
+  let lineTag = "";
+  if (ln) {
+    if (ln.pick && sideKey === "away") lineTag = `<span class="gs-srs gs-line" title="Spread">PK</span>`;
+    else if (ln.fav === sideKey) lineTag = `<span class="gs-srs gs-line" title="Spread">-${ln.spread}</span>`;
+    else if (ln.total != null) lineTag = `<span class="gs-srs gs-line" title="Over/under">O/U ${ln.total}</span>`;
+  }
   const L = liveFor(g);
   const otherKey = sideKey === "away" ? "home" : "away";
   let score = g.completed ? s.score : null, otherScore = g.completed ? other.score : null, done = g.completed;
@@ -153,7 +159,7 @@ function gameSide(s, g, other, sideKey) {
   return `<div class="gs-row${won ? " won" : ""}">
     <span class="gs-name">${rankTag(s.rank)}${escapeHtml(s.name)}${poss}</span>
     <span class="gs-rec">${escapeHtml(s.record)}${s.conference ? " · " + escapeHtml(s.conference) : ""}</span>
-    ${score != null ? `<span class="gs-score">${score}</span>` : srs}
+    ${score != null ? `<span class="gs-score">${score}</span>` : lineTag}
   </div>`;
 }
 
@@ -177,13 +183,36 @@ function gameCard(g) {
   </a>`;
 }
 
-// Spread + O/U and the kickoff forecast, shown until the game kicks off.
+// Current line for a card: ESPN's (live.js) when it names one of the two teams,
+// otherwise the weekly line from data.json. Spread is a positive number of points
+// the favorite gives; fav is "away" or "home".
+function lineFor(g) {
+  let fav = null, spread = null, pick = false;
+  const cur = LINES[g.id];
+  if (cur && cur.details) {
+    if (/^(even|pk|pick)/i.test(cur.details)) pick = true;
+    else {
+      const m = cur.details.match(/^(.+?)\s+-(\d+(?:\.\d+)?)$/);
+      if (m) {
+        const ab = m[1].trim().toUpperCase();
+        if (ab === String(g.away.abbr || "").toUpperCase()) fav = "away";
+        else if (ab === String(g.home.abbr || "").toUpperCase()) fav = "home";
+        if (fav) spread = parseFloat(m[2]);
+      }
+    }
+  }
+  if (!pick && !fav && g.spread != null) {
+    if (g.spread === 0) pick = true;
+    else { fav = g.spread < 0 ? "home" : "away"; spread = Math.abs(g.spread); }
+  }
+  const total = cur && cur.total != null ? cur.total : (g.total || null);
+  if (!pick && !fav && total == null) return null;
+  return { fav, spread, pick, total };
+}
+
+// Kickoff forecast, shown until the game starts.
 function gameExtra(g, L) {
   if (g.completed || (L && (L.state === "in" || L.state === "post"))) return "";
-  const cur = LINES[g.id];
-  const spread = cur && cur.details ? (/^even$/i.test(cur.details) ? "Pick'em" : cur.details) : fmtSpread(g);
-  const total = cur && cur.total != null ? cur.total : g.total;
-  const line = [spread, total ? `O/U ${total}` : null].filter(Boolean).join(" · ");
   const w = WX[g.id];
   let wx = "";
   if (g.indoor === true) wx = `<span class="game-wx" title="Indoor stadium">🏟 Indoors</span>`;
@@ -191,11 +220,7 @@ function gameExtra(g, L) {
     const bits = [w.daily ? `${w.temp}° high` : `${w.temp}°`, w.pop != null ? `${w.pop}% rain` : null, w.wind != null ? `${w.wind} mph` : null].filter(Boolean);
     wx = `<span class="game-wx" title="${escapeHtml((w.daily ? "Forecast for game day: " : "Forecast at kickoff: ") + w.text)}">${w.icon} ${escapeHtml(bits.join(" · "))}</span>`;
   }
-  if (!line && !wx) return "";
-  return `<div class="game-extra">
-    <span class="game-line" title="Spread · over/under">${line ? escapeHtml(line) : "No line yet"}</span>
-    ${wx}
-  </div>`;
+  return wx ? `<div class="game-extra">${wx}</div>` : "";
 }
 
 /* ---------------- Single matchup (matchup.html) ---------------- */

@@ -11,10 +11,12 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 ## Pages
 
 - **`index.html` — This week's games.** The current week's slate grouped by
-  day, with kickoff time, TV, venue, records, SRS and AP Top 25 ranks. Filter
+  day, with kickoff time, TV, venue, records and AP Top 25 ranks. Filter
   by conference, Top 25, or team name. Click a game to open its matchup.
-  Before kickoff each card also shows the spread and O/U and a game-time
-  forecast (see below).
+  Before kickoff, the favored team's row shows the spread (e.g. -6), the
+  other team's row shows the O/U (PK on the first row for a pick'em), and a
+  game-time forecast sits under the teams (see below). Once a game starts,
+  the scores take that spot.
 - **`matchup.html?game=<ESPN game id>` — One game.** A game header (records,
   AP rank, QB, SRS, kickoff, venue, indoors/outdoors, spread, O/U), a Head to
   Head section comparing each offense with the other defense (FBS ranks, with
