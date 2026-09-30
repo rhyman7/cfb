@@ -110,7 +110,7 @@ main {
   align-self: flex-start;
 }
 
-#teamCards {
+#teamCards, .m-cards {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -497,7 +497,8 @@ footer {
     padding: 0 0 4px;
     margin-bottom: 6px;
   }
-  body:not(.print-single) #teamCards {
+  body:not(.print-single) #teamCards,
+  body:not(.print-single) .m-cards {
     display: grid !important;
     grid-template-columns: 1fr 1fr;
     gap: 28px !important;
@@ -520,8 +521,14 @@ footer {
     page-break-inside: avoid;
   }
 
+  /* Print all: one matchup per landscape page */
+  .print-matchup { break-after: page; page-break-after: always; }
+  .print-matchup:last-child { break-after: auto; page-break-after: auto; }
+  .print-all-bar { display: none !important; }
+
   /* Single-team print: one portrait page per card, as before */
   body.print-single, body.print-single main { page: single; }
+  body.print-single .m-head, body.print-single .m-edges { display: none !important; }
   body.print-single .team-card { break-before: avoid; page-break-before: avoid; }
 
   .team-card-header,
@@ -791,28 +798,28 @@ footer {
   .hero-line, .edge-table b { color: #111318 !important; }
   .edge-grid { grid-template-columns: 1fr 1fr !important; }
   .section-title { color: #5b6472 !important; }
-  #teamCards .section-title { display: none; }
+  #teamCards .section-title, .m-cards .section-title { display: none; }
 
   /* Matchup page: header + head to head + both cards on one landscape page */
-  body[data-page="matchup"] .topbar { display: none; }
-  body[data-page="matchup"] #matchupHeader,
-  body[data-page="matchup"] #edges { zoom: 0.64; }
+  body.mprint:not(.print-single) .topbar { display: none; }
+  body.mprint:not(.print-single) .m-head,
+  body.mprint:not(.print-single) .m-edges { zoom: 0.64; }
   /* wider layout at a smaller scale: same page width, shorter cards */
-  body[data-page="matchup"] #teamCards { width: 1880px; zoom: 0.526; }
-  body[data-page="matchup"] .matchup-header .mh-week { margin-bottom: 4px; }
-  body[data-page="matchup"] .game-hero { padding: 6px 16px; gap: 10px; }
-  body[data-page="matchup"] .hero-name { font-size: 1.25rem; margin: 1px 0; }
-  body[data-page="matchup"] .hero-at { font-size: 1.2rem; line-height: 1.1; }
-  body[data-page="matchup"] .hero-info, body[data-page="matchup"] .hero-line { margin-top: 1px; }
-  body[data-page="matchup"] .hero-qb, body[data-page="matchup"] .hero-srs { display: inline-block; margin: 1px 5px 0; }
-  body[data-page="matchup"] .section-title { margin: 10px 0 6px; }
-  body[data-page="matchup"] .edge-panel { padding: 8px 12px; }
-  body[data-page="matchup"] .edge-panel h4 { margin-bottom: 4px; }
-  body[data-page="matchup"] .edge-table td { padding: 1px 6px; }
-  body[data-page="matchup"] .edge-table th { padding: 2px 6px; }
-  body[data-page="matchup"] .edge-chip { padding: 1px 8px; }
-  body[data-page="matchup"] .edge-key { margin-top: 4px; }
-  body[data-page="matchup"] #edges { margin-bottom: 10px; }
+  body.mprint:not(.print-single) .m-cards { width: 1880px; zoom: 0.526; }
+  body.mprint:not(.print-single) .matchup-header .mh-week { margin-bottom: 4px; }
+  body.mprint:not(.print-single) .game-hero { padding: 6px 16px; gap: 10px; }
+  body.mprint:not(.print-single) .hero-name { font-size: 1.25rem; margin: 1px 0; }
+  body.mprint:not(.print-single) .hero-at { font-size: 1.2rem; line-height: 1.1; }
+  body.mprint:not(.print-single) .hero-info, body.mprint:not(.print-single) .hero-line { margin-top: 1px; }
+  body.mprint:not(.print-single) .hero-qb, body.mprint:not(.print-single) .hero-srs { display: inline-block; margin: 1px 5px 0; }
+  body.mprint:not(.print-single) .section-title { margin: 10px 0 6px; }
+  body.mprint:not(.print-single) .edge-panel { padding: 8px 12px; }
+  body.mprint:not(.print-single) .edge-panel h4 { margin-bottom: 4px; }
+  body.mprint:not(.print-single) .edge-table td { padding: 1px 6px; }
+  body.mprint:not(.print-single) .edge-table th { padding: 2px 6px; }
+  body.mprint:not(.print-single) .edge-chip { padding: 1px 8px; }
+  body.mprint:not(.print-single) .edge-key { margin-top: 4px; }
+  body.mprint:not(.print-single) .m-edges { margin-bottom: 10px; }
 }
 
 /* ---------- Live scores & box score ---------- */
@@ -873,6 +880,15 @@ footer {
   .live-badge { background: #111318; color: #fff; }
   .game-sit { color: #5b6472; }
   .hero-score { color: #111318; }
+}
+
+/* ---------- Print all page ---------- */
+.print-status { color: var(--text-dim); font-size: 0.88rem; }
+.print-matchup { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px dashed var(--border); }
+.print-matchup:last-child { border-bottom: none; }
+.print-btn:disabled { opacity: 0.5; cursor: default; }
+@media print {
+  .print-matchup { margin: 0; padding: 0; border: none; }
 }
 
 /* CFB: conference tag next to the record */

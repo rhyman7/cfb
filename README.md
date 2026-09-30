@@ -18,6 +18,10 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   field as the NFL site's 6 of 32), then both teams' full stat cards. Prints
   on one landscape page.
   Non-FBS opponents show a short note instead of stats.
+- **`print.html` — Print all.** The slate's "Print all" button opens every
+  game currently shown (respecting the conference / Top 25 / search
+  filters), one matchup per landscape page, and brings up the print dialog.
+  Each matchup page still has its own Print Matchup button.
 - **`dashboard.html` — Compare any two teams.** The original dashboard
   (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
 

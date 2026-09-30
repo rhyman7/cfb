@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matchup · CFB Matchup Dashboard</title>
+<title>Print all matchups · CFB Matchup Dashboard</title>
 <link rel="stylesheet" href="style.css?v=202609292100">
 </head>
-<body data-page="matchup" class="mprint">
+<body data-page="printall" class="mprint">
 <header class="topbar">
   <h1><a href="index.html" class="home-link">CFB Matchup Dashboard</a></h1>
   <nav class="topnav no-print">
@@ -19,21 +19,14 @@
 </header>
 
 <main id="app">
-  <div class="matchup-bar no-print">
+  <div class="matchup-bar print-all-bar no-print">
     <a class="back-link" href="index.html">← All games this week</a>
-    <button id="printBothBtn" class="print-btn" type="button">🖨 Print Matchup</button>
+    <span id="printStatus" class="print-status">Preparing matchups…</span>
+    <button id="printAllBtn" class="print-btn" type="button" disabled>🖨 Print</button>
   </div>
-  <section id="matchupHeader" class="matchup-header m-head"></section>
-  <section id="boxscore" class="boxscore no-print" hidden></section>
-  <section id="edges" class="m-edges"></section>
-  <section id="teamCards" class="m-cards"></section>
+  <div id="printAll"></div>
 </main>
 
-<footer class="no-print">
-  <p>All FBS teams · 2026 regular season · updated weekly. <span id="sourceNote"></span></p>
-</footer>
-
 <script src="app.js?v=202609292100"></script>
-<script src="live.js?v=202609292100"></script>
 </body>
 </html>

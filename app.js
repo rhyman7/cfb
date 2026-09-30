@@ -18,6 +18,7 @@ async function init() {
   setMeta();
   if (PAGE === "week") initWeek();
   else if (PAGE === "matchup") initMatchup();
+  else if (PAGE === "printall") initPrintAll();
   else initDashboard();
 }
 
@@ -82,6 +83,7 @@ function renderWeek(games) {
     return true;
   });
 
+  updatePrintAll(shown, games.length);
   if (!shown.length) {
     list.innerHTML = `<div class="empty-note">No games match those filters.</div>`;
     return;
@@ -104,6 +106,23 @@ function renderWeek(games) {
       <h2 class="day-label${grp.live ? " live" : ""}">${grp.live ? '<span class="live-dot"></span>' : ""}${escapeHtml(grp.label)} <span class="day-count">${grp.games.length}</span></h2>
       <div class="game-grid">${grp.games.map(gameCard).join("")}</div>
     </section>`).join("");
+}
+
+// "Print all" prints whatever the filters are showing, in kickoff order.
+let PRINT_IDS = [];
+function updatePrintAll(shown, total) {
+  const btn = document.getElementById("printAllBtn");
+  if (!btn) return;
+  PRINT_IDS = shown.map(g => g.id);
+  btn.disabled = !shown.length;
+  btn.textContent = shown.length === total ? `🖨 Print all (${total})` : `🖨 Print ${shown.length} shown`;
+  if (!btn.dataset.wired) {
+    btn.dataset.wired = "1";
+    btn.addEventListener("click", () => {
+      const all = (DATA.weekGames || []).length === PRINT_IDS.length;
+      window.open("print.html" + (all ? "" : "?games=" + PRINT_IDS.join(",")), "_blank");
+    });
+  }
 }
 
 function kickoff(g) {
@@ -159,7 +178,6 @@ function initMatchup() {
   const id = params.get("game");
   const g = (DATA.weekGames || []).find(x => x.id === id);
   const head = document.getElementById("matchupHeader");
-  const edges = document.getElementById("edges");
   document.getElementById("printBothBtn").addEventListener("click", () => window.print());
 
   if (!g) {
@@ -168,18 +186,25 @@ function initMatchup() {
     return;
   }
 
-  const away = g.away.key ? DATA.teams[g.away.key] : null;
-  const home = g.home.key ? DATA.teams[g.home.key] : null;
   const tag = s => `${s.rank ? "#" + s.rank + " " : ""}${s.abbr || s.name}`;
   document.title = `${tag(g.away)} ${g.neutral ? "vs" : "@"} ${tag(g.home)} · CFB Matchup Dashboard`;
 
-  head.innerHTML = renderHero(g, away, home);
+  const parts = renderMatchupParts(g);
+  head.innerHTML = parts.head;
   if (typeof startLiveMatchup === "function") startLiveMatchup(g);
+  document.getElementById("edges").innerHTML = parts.edges;
+  teamCards.innerHTML = parts.cards;
+}
 
+// Header, Head to Head and team cards for one game (used by the matchup page and Print all).
+function renderMatchupParts(g) {
+  const away = g.away.key ? DATA.teams[g.away.key] : null;
+  const home = g.home.key ? DATA.teams[g.home.key] : null;
+  let edges;
   if (away && home) {
     const n = Object.keys(DATA.teams).length;
     const gap = edgeGap();
-    edges.innerHTML = `
+    edges = `
       <h3 class="section-title">Head to Head</h3>
       <div class="edge-grid">
         ${edgePanel(away, home)}
@@ -188,12 +213,48 @@ function initMatchup() {
       <p class="edge-key">Ranks are out of ${n} FBS teams. The edge goes to whichever side ranks at least ${gap} spots better; INT compares interceptions thrown by the offense with interceptions made by the defense.</p>`;
   } else {
     const other = away ? g.home : g.away;
-    edges.innerHTML = `<h3 class="section-title">Head to Head</h3>
+    edges = `<h3 class="section-title">Head to Head</h3>
       <div class="empty-note">No head-to-head comparison: ${escapeHtml(other.name)} isn't an FBS team, so its stats aren't tracked.</div>`;
   }
-
-  teamCards.innerHTML = `<h3 class="section-title">Full Team Stats</h3>` + [g.away, g.home]
+  const cards = `<h3 class="section-title">Full Team Stats</h3>` + [g.away, g.home]
     .map(s => s.key && DATA.teams[s.key] ? renderTeamCard(DATA.teams[s.key]) : nonFbsCard(s)).join("");
+  return { head: renderHero(g, away, home), edges, cards };
+}
+
+/* ---------------- Print all (print.html) ---------------- */
+
+function initPrintAll() {
+  const all = DATA.weekGames || [];
+  const ids = (new URLSearchParams(location.search).get("games") || "").split(",").filter(Boolean);
+  const games = ids.length ? ids.map(id => all.find(g => g.id === id)).filter(Boolean) : all;
+  const wrap = document.getElementById("printAll");
+  const status = document.getElementById("printStatus");
+  document.title = `Week ${DATA.currentWeek} matchups (${games.length}) · CFB Matchup Dashboard`;
+
+  if (!games.length) {
+    status.textContent = "No games to print.";
+    return;
+  }
+  wrap.innerHTML = games.map(g => {
+    const p = renderMatchupParts(g);
+    return `<section class="print-matchup">
+      <div class="matchup-header m-head">${p.head}</div>
+      <div class="m-edges">${p.edges}</div>
+      <div class="m-cards">${p.cards}</div>
+    </section>`;
+  }).join("");
+  // per-team Print buttons don't belong on this page
+  wrap.querySelectorAll(".print-btn-single").forEach(b => b.remove());
+
+  const n = games.length;
+  status.textContent = `${n} matchup${n === 1 ? "" : "s"} ready · ${n} landscape page${n === 1 ? "" : "s"}`;
+  const btn = document.getElementById("printAllBtn");
+  btn.disabled = false;
+  btn.addEventListener("click", () => window.print());
+  // open the print dialog automatically once everything has laid out
+  if (new URLSearchParams(location.search).get("auto") !== "0") {
+    requestAnimationFrame(() => setTimeout(() => window.print(), 400));
+  }
 }
 
 // Spread is from the home team's side: negative = home favored.
