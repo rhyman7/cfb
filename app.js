@@ -98,11 +98,23 @@ function renderWeek(games) {
   const groups = [];
   const live = shown.filter(g => (liveFor(g) || {}).state === "in");
   if (live.length) groups.push({ label: "Live now", live: true, games: live });
+  // Thursday/Friday games are grouped by day; every other day is split by kickoff hour.
+  const byLabel = new Map();
   shown.filter(g => !live.includes(g)).forEach(g => {
     const d = new Date(g.start);
-    const label = d.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
-    let grp = groups[groups.length - 1];
-    if (!grp || grp.live || grp.label !== label) groups.push(grp = { label, games: [] });
+    let label = d.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
+    const dow = d.getDay();
+    if (dow !== 4 && dow !== 5) {
+      if (g.timeTbd) {
+        label += " · Time TBD";
+      } else {
+        const hour = new Date(d);
+        hour.setMinutes(0, 0, 0);
+        label += " · " + hour.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+      }
+    }
+    let grp = byLabel.get(label);
+    if (!grp) { byLabel.set(label, grp = { label, games: [] }); groups.push(grp); }
     grp.games.push(g);
   });
 
