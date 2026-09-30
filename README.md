@@ -13,6 +13,8 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 - **`index.html` — This week's games.** The current week's slate grouped by
   day, with kickoff time, TV, venue, records, SRS and AP Top 25 ranks. Filter
   by conference, Top 25, or team name. Click a game to open its matchup.
+  Before kickoff each card also shows the spread and O/U and a game-time
+  forecast (see below).
 - **`matchup.html?game=<ESPN game id>` — One game.** A game header (records,
   AP rank, QB, SRS, kickoff, venue, indoors/outdoors, spread, O/U), a Head to
   Head section comparing each offense with the other defense (FBS ranks, with
@@ -40,6 +42,16 @@ player stats, scoring plays) under the game header. Both refresh every 30
 seconds while a game is live and do nothing before the pre-game window. The
 box score is left out of the printout. The feed is unofficial, so if it fails
 the pages fall back to the weekly data and show a short note.
+
+**Lines and forecast on the slate.** On page load the slate asks ESPN's
+scoreboard for each game's current spread and O/U; games without ESPN odds
+keep the weekly consensus line from `data/data.json`. The forecast comes from
+[Open-Meteo](https://open-meteo.com/) (free, no key) in the viewer's browser
+(`weather.js`): each venue city is geocoded once and cached in the browser,
+then the hour nearest kickoff is shown (temperature, chance of rain, wind), or
+the day's high for games with no kickoff time yet. Indoor stadiums show
+"Indoors". Forecasts only reach 16 days out, and if either service is down
+the card simply leaves that part out.
 
 The "current week" is the first regular-season week that still has an
 unplayed game, so after Monday's rebuild the slate shows the coming week.

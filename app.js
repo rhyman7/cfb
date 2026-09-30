@@ -42,6 +42,10 @@ function setMeta() {
 const LIVE = {};
 function liveFor(g) { return LIVE[g.id] || null; }
 
+// Latest betting line from ESPN (live.js) and kickoff forecast (weather.js), filled in after load.
+const LINES = {};   // { [gameId]: { details: "UGA -7.5", total: 52.5 } }
+const WX = {};      // { [gameId]: { icon, text, temp, pop, wind, daily } } or { indoor: true }
+
 function rankTag(rank) {
   return rank ? `<span class="ap-rank" title="${escapeHtml(DATA.pollName || "AP Top 25")}">#${rank}</span>` : "";
 }
@@ -67,6 +71,7 @@ function initWeek() {
   [confSel, rankedOnly, search].forEach(el => el.addEventListener("input", () => renderWeek(games)));
   renderWeek(games);
   if (typeof startLiveWeek === "function") startLiveWeek(games, () => renderWeek(games));
+  if (typeof startWeather === "function") startWeather(games, () => renderWeek(games));
 }
 
 function renderWeek(games) {
@@ -166,9 +171,31 @@ function gameCard(g) {
     <div class="gs-at">${g.neutral ? "vs" : "@"}</div>
     ${gameSide(g.home, g, g.away, "home")}
     ${sit}
+    ${gameExtra(g, L)}
     <div class="game-venue">${escapeHtml([g.venue, g.city].filter(Boolean).join(" · "))}${g.neutral ? " (neutral)" : ""}</div>
     ${note}
   </a>`;
+}
+
+// Spread + O/U and the kickoff forecast, shown until the game kicks off.
+function gameExtra(g, L) {
+  if (g.completed || (L && (L.state === "in" || L.state === "post"))) return "";
+  const cur = LINES[g.id];
+  const spread = cur && cur.details ? (/^even$/i.test(cur.details) ? "Pick'em" : cur.details) : fmtSpread(g);
+  const total = cur && cur.total != null ? cur.total : g.total;
+  const line = [spread, total ? `O/U ${total}` : null].filter(Boolean).join(" · ");
+  const w = WX[g.id];
+  let wx = "";
+  if (g.indoor === true) wx = `<span class="game-wx" title="Indoor stadium">🏟 Indoors</span>`;
+  else if (w) {
+    const bits = [w.daily ? `${w.temp}° high` : `${w.temp}°`, w.pop != null ? `${w.pop}% rain` : null, w.wind != null ? `${w.wind} mph` : null].filter(Boolean);
+    wx = `<span class="game-wx" title="${escapeHtml((w.daily ? "Forecast for game day: " : "Forecast at kickoff: ") + w.text)}">${w.icon} ${escapeHtml(bits.join(" · "))}</span>`;
+  }
+  if (!line && !wx) return "";
+  return `<div class="game-extra">
+    <span class="game-line" title="Spread · over/under">${line ? escapeHtml(line) : "No line yet"}</span>
+    ${wx}
+  </div>`;
 }
 
 /* ---------------- Single matchup (matchup.html) ---------------- */

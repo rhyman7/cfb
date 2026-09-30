@@ -90,6 +90,24 @@ function startLiveWeek(games, rerender) {
 
   const schedule = ms => { clearTimeout(timer); timer = setTimeout(() => whenVisible(tick), ms); };
 
+  // Once per page load: pull ESPN's current spread and O/U for this week's games.
+  // If it fails or a game has no odds, the card keeps the line from data.json.
+  espnJson(`scoreboard?groups=80&seasontype=2&week=${DATA.currentWeek}&limit=400`).then(sb => {
+    let changed = false;
+    (sb.events || []).forEach(ev => {
+      const id = String(ev.id);
+      if (!ids.has(id)) return;
+      const odds = (((ev.competitions || [])[0] || {}).odds || [])[0];
+      if (!odds) return;
+      const total = typeof odds.overUnder === "number" ? odds.overUnder : parseFloat(odds.overUnder);
+      const details = typeof odds.details === "string" ? odds.details.trim() : "";
+      if (!details && !Number.isFinite(total)) return;
+      LINES[id] = { details: details || null, total: Number.isFinite(total) ? total : null };
+      changed = true;
+    });
+    if (changed) rerender();
+  }).catch(() => {});
+
   async function tick() {
     const now = Date.now();
     if (!needsFetch(now)) {
