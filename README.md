@@ -30,6 +30,16 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   game currently shown (respecting the conference / Top 25 / search
   filters), one matchup per landscape page, and brings up the print dialog.
   Each matchup page still has its own Print Matchup button.
+- **`edges.html` — Weekly Edges.** A game board for the week's games sorted
+  by kickoff (current spread and O/U, implied team totals, line move since the
+  week's first update, and the net EPA edge: which team's offense EPA/play minus
+  defense EPA/play allowed is better, and by how much), with conference and
+  Top 25 filters. Below it, prop matchup tables (QB pass yds, RB rush yds, WR
+  rec yds, TE rec yds) list players in FBS-vs-FBS games whose opponent allows
+  more than the FBS average for that stat: the player's average, what the
+  opponent allows (and its rank), **Matchup** = opponent allowed ÷ FBS average,
+  and **Adj** = average × Matchup. Top 10 each by Adj, regulars only (at least
+  half the team's games). Names open the game log.
 - **`dashboard.html` — Compare any two teams.** The original dashboard
   (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
 - **`ratings.html` — Ratings explained.** Plain-language definitions of SoS,
@@ -49,7 +59,53 @@ only includes games played for the team on that card, so it matches the table
 averages. The logs live in `gameLogs` in `data/data.json`, keyed
 `ABBR|athlete_id`; each player row carries a `log` key pointing to its entry,
 and zero-value stats are left out of each game. The ESPN box scores have no
-targets, so receiving shows receptions, yards, TDs and Y/R.
+targets, so the log table shows receptions, yards, TDs and Y/R; targets from
+play-by-play are in the log data for the prop check.
+
+**Player search.** Every page's top bar has a search box: type two letters,
+pick a player (name, position, team; arrow keys and Enter work) and his game
+log opens.
+
+**Prop check.** The game log panel has a prop tool: pick a stat (pass yds,
+pass TD, completions, pass attempts, INTs, rush yds, carries, rush TD, rec
+yds, receptions, targets, rush + rec yds, pass + rush yds, any TD), type a
+line, and it shows "Over X: N of M games (P%)", pushes, the average, the last
+3 results and each game marked O/U. The line starts just under his season
+average. Only stats that fit the player's position and stats are offered.
+Under it is what this week's opponent allows for that stat, from its defense
+and Def vs Position numbers. Each player row carries `pos` (from
+`cfb_rosters`, or `game_rosters` for players it's missing). Targets come
+from play-by-play (`tgt` in the logs), since the box scores don't have them;
+play-by-play receptions match the box score in about 97% of player-games.
+
+**Betting Trends.** The matchup and Compare pages show each team's record
+against the spread (overall, as favorite, as underdog, home, away) and
+over/under, plus a game-by-game list, from each completed game's cfbfastR
+consensus line rounded to the half point (the same lines the site shows).
+Percentages leave out pushes; neutral-site games count toward overall, Fav
+and Dog but not Home or Away. Games without a line (all FBS-vs-FCS games) are
+skipped. The data is `betting` on each team. It's left out of printouts.
+
+**Implied totals and line movement.** The matchup header, the week's game
+cards and Weekly Edges show implied team totals from the current spread and
+O/U: favorite = (total + spread) ÷ 2. Each week game carries `lineOpen`, the
+consensus line from the week's first build; the build keeps it when it reruns
+for the same week, and the pages show "Line move since <day>: spread A → B ·
+O/U X → Y" by comparing it with the latest build's consensus line (same
+source at both ends, so a difference between ESPN and the consensus never
+shows up as a move).
+
+**EPA and success rate.** Head to Head adds EPA per play and success rate
+(share of plays with positive EPA) for each offense and defense, from
+cfbfastR play-by-play: run and pass plays (sacks count as pass plays) in
+completed regular-season games, leaving out QB kneels and plays wiped out by
+a penalty. Offense rank 1 = highest; defense rank 1 = lowest allowed. The
+data is `eff` on each team. These rows print with the rest of Head to Head.
+
+**Not available for college.** The NFL site's injury tags have no college
+equivalent: cfbfastR has no injury or availability report for any
+conference (only an Active/Inactive flag on past game rosters), so there are
+no injury tags. Referee tendencies and fantasy points aren't on this site.
 
 **Live scores.** On game days the slate and matchup pages fetch live
 scores straight from ESPN's public site API in the viewer's browser
@@ -88,8 +144,13 @@ times a day. The build script downloads them straight from
 `raw.githubusercontent.com`, so no API key is needed.
 
 Files used (`cfb/…/<name>_2026.parquet`): `cfb_schedule`, `team_box`,
-`player_box`, `cfb_teams`, `cfb_rosters`, and `cfb_matchup_line` (consensus
-spread and O/U, rounded to the half point). The upcoming schedule and AP ranks
+`player_box`, `cfb_teams`, `cfb_rosters`, `cfb_matchup_line` (consensus
+spread and O/U, rounded to the half point), `play_by_play` (EPA, success
+rate, targets) and `game_rosters` (positions for players `cfb_rosters` is
+missing; on 2026-09-29 the source's `cfb_rosters` briefly covered only 4
+teams). `play_by_play` and `game_rosters` are optional: if either can't be
+downloaded, the build prints a note and leaves out EPA / targets, or uses
+`cfb_rosters` alone. The upcoming schedule and AP ranks
 come from the sibling repo
 [`sportsdataverse/cfbfastR-cfb-raw`](https://github.com/sportsdataverse/cfbfastR-cfb-raw)
 (`cfb/schedules/csv/cfb_schedule_2026.csv`).
@@ -103,6 +164,10 @@ pip install -r requirements.txt
 python scripts/build_data.py
 git add data/data.json && git commit -m "Weekly data update" && git push
 ```
+
+Run the build with the default `--out` (the repo's `data/data.json`) so it can
+keep this week's `lineOpen`. Because `lineOpen` is set at the week's first
+build, line moves only show up after a later rebuild in the same week.
 
 GitHub Pages redeploys within a minute or two of the push.
 
@@ -130,4 +195,7 @@ Run the same commands yourself any time to refresh manually, and preview with
 - **Game logs** — one entry per regular-season game the player appears in
   for that team (any of passing, rushing or receiving), with week, opponent
   abbreviation (`@` for road games; neutral sites show `vs`) and final score.
+- **Betting, EPA, lineOpen** — see the feature notes above. Everything is built
+  from scratch from the current season's files each run except `lineOpen`,
+  which is carried over from the existing `data/data.json` for the same week.
 - **League averages** — mean across FBS teams of Rush TD/G, Pass TD/G and PPG.

@@ -1,6 +1,7 @@
 let DATA = null;
 
-// Which page this is: "week" (index.html), "matchup" (matchup.html) or "dashboard"
+// Which page this is: "week" (index.html), "matchup" (matchup.html), "edges" (edges.html),
+// "printall" (print.html), "ratings" (ratings.html) or "dashboard"
 const PAGE = document.body.dataset.page || "dashboard";
 const teamCards = document.getElementById("teamCards");
 
@@ -16,9 +17,12 @@ async function init() {
     return;
   }
   setMeta();
+  try { initPlayerSearch(); } catch (e) { /* search is optional */ }
   if (PAGE === "week") initWeek();
   else if (PAGE === "matchup") initMatchup();
   else if (PAGE === "printall") initPrintAll();
+  else if (PAGE === "edges") initEdges();
+  else if (PAGE === "ratings") { /* static page: only the player search */ }
   else initDashboard();
 }
 
@@ -232,7 +236,9 @@ function gameExtra(g, L) {
     const bits = [w.daily ? `${w.temp}° high` : `${w.temp}°`, w.pop != null ? `${w.pop}% rain` : null, w.wind != null ? `${w.wind} mph` : null].filter(Boolean);
     wx = `<span class="game-wx" title="${escapeHtml((w.daily ? "Forecast for game day: " : "Forecast at kickoff: ") + w.text)}">${w.icon} ${escapeHtml(bits.join(" · "))}</span>`;
   }
-  return wx ? `<div class="game-extra">${wx}</div>` : "";
+  const it = impliedTotals(g);
+  const imp = it ? `<span class="game-implied" title="Implied team totals from the spread and O/U">Implied ${escapeHtml(g.away.abbr)} ${it.away} · ${escapeHtml(g.home.abbr)} ${it.home}</span>` : "";
+  return wx || imp ? `<div class="game-extra">${wx}${imp}</div>` : "";
 }
 
 /* ---------------- Single matchup (matchup.html) ---------------- */
@@ -261,6 +267,10 @@ function initMatchup() {
     const wx = document.getElementById("heroWx"), ln = document.getElementById("heroLine");
     if (wx) { const t = heroWxText(g); wx.textContent = t || ""; wx.hidden = !t; }
     if (ln) { const t = heroLineText(g); ln.textContent = t || ""; ln.hidden = !t; }
+    for (const [elId, fn] of [["heroImplied", impliedText], ["heroMove", lineMoveText]]) {
+      const el = document.getElementById(elId);
+      if (el) { const t = fn(g); el.textContent = t || ""; el.hidden = !t; }
+    }
   };
   if (typeof refreshLines === "function" && DATA.currentWeek) refreshLines(new Set([g.id]), refreshExtras);
   if (typeof startWeather === "function") startWeather([g], refreshExtras);
@@ -282,7 +292,7 @@ function renderMatchupParts(g) {
         ${edgePanel(away, home)}
         ${edgePanel(home, away)}
       </div>
-      <p class="edge-key">Ranks are out of ${n} FBS teams. The edge goes to whichever side ranks at least ${gap} spots better; INT compares interceptions thrown by the offense with interceptions made by the defense.</p>`;
+      <p class="edge-key">Ranks are out of ${n} FBS teams. The edge goes to whichever side ranks at least ${gap} spots better; INT compares interceptions thrown by the offense with interceptions made by the defense.${hasEff() ? " EPA / play (expected points added per play) and Success % (share of plays with positive EPA) use every run and pass play from cfbfastR play-by-play; for a defense they're what it allowed, so lower is better." : ""}</p>`;
   } else {
     const other = away ? g.home : g.away;
     edges = `<h3 class="section-title">Head to Head</h3>
@@ -290,7 +300,7 @@ function renderMatchupParts(g) {
   }
   const cards = `<h3 class="section-title">Full Team Stats</h3>` + [g.away, g.home]
     .map(s => s.key && DATA.teams[s.key] ? renderTeamCard(DATA.teams[s.key]) : nonFbsCard(s)).join("");
-  return { head: renderHero(g, away, home), edges, cards };
+  return { head: renderHero(g, away, home), edges: edges + renderBetting(away, home), cards };
 }
 
 /* ---------------- Print all (print.html) ---------------- */
@@ -361,6 +371,8 @@ function renderHero(g, away, home) {
       ${info.map(i => `<div class="hero-info">${escapeHtml(i)}</div>`).join("")}
       <div class="hero-info hero-wx" id="heroWx"${wxText ? "" : " hidden"}>${escapeHtml(wxText || "")}</div>
       <div class="hero-line" id="heroLine"${lineText ? "" : " hidden"}>${escapeHtml(lineText || "")}</div>
+      <div class="hero-info hero-implied" id="heroImplied"${impliedText(g) ? "" : " hidden"}>${escapeHtml(impliedText(g))}</div>
+      <div class="hero-info hero-move" id="heroMove"${lineMoveText(g) ? "" : " hidden"}>${escapeHtml(lineMoveText(g))}</div>
       ${g.conferenceGame ? `<div class="hero-info">Conference game</div>` : ""}
       ${g.tv ? `<div class="hero-info">TV: ${escapeHtml(g.tv)}</div>` : ""}
     </div>
@@ -421,9 +433,17 @@ const EDGE_ROWS = [
   ["INT / G", t => t.offense.int, t => t.defense.int, false, true],
 ];
 
+// EPA / play and success rate, from play-by-play (t.eff); shown when every team has them.
+const EFF_ROWS = [
+  ["EPA / play", t => t.eff.off.epa, t => t.eff.def.epa, true, false, v => v.toFixed(3)],
+  ["Success %", t => t.eff.off.sr, t => t.eff.def.sr, true, false, v => v.toFixed(1)],
+];
+function hasEff() { return Object.values(DATA.teams).every(t => t.eff); }
+function edgeRows() { return hasEff() ? EDGE_ROWS.slice(0, 1).concat(EFF_ROWS, EDGE_ROWS.slice(1)) : EDGE_ROWS; }
+
 function edgePanel(offTeam, defTeam) {
   const gap = edgeGap();
-  const rows = EDGE_ROWS.map(([label, offGet, defGet, offHi, defHi]) => {
+  const rows = edgeRows().map(([label, offGet, defGet, offHi, defHi, fmt]) => {
     const ov = offGet(offTeam), dv = defGet(defTeam);
     const or = leagueRank(offGet, ov, offHi), dr = leagueRank(defGet, dv, defHi);
     const diff = dr - or;
@@ -432,8 +452,8 @@ function edgePanel(offTeam, defTeam) {
       : `<span class="edge-chip even">Even</span>`;
     return `<tr>
       <td class="lbl">${label}</td>
-      <td class="num"><b>${ov}</b> <span class="rk">#${or}</span></td>
-      <td class="num"><b>${dv}</b> <span class="rk">#${dr}</span></td>
+      <td class="num"><b>${fmt ? fmt(ov) : ov}</b> <span class="rk">#${or}</span></td>
+      <td class="num"><b>${fmt ? fmt(dv) : dv}</b> <span class="rk">#${dr}</span></td>
       <td class="edge">${edge}</td>
     </tr>`;
   }).join("");
@@ -479,7 +499,8 @@ function initDashboard() {
   const render = () => {
     const t1 = team1Select.value, t2 = team2Select.value;
     try { localStorage.setItem("cfb_team1", t1); localStorage.setItem("cfb_team2", t2); } catch (e) {}
-    teamCards.innerHTML = [t1, t2].map(name => renderTeamCard(DATA.teams[name])).join("");
+    teamCards.innerHTML = [t1, t2].map(name => renderTeamCard(DATA.teams[name])).join("")
+      + renderBetting(DATA.teams[t1], DATA.teams[t2]);
   };
   team1Select.addEventListener("change", render);
   team2Select.addEventListener("change", render);
@@ -652,7 +673,7 @@ function playerTable(title, rows, cols) {
     const cells = cols.map(([, key, type]) => {
       const txt = escapeHtml(String(r[key]));
       const val = key === "player" && r.log && DATA.gameLogs && DATA.gameLogs[r.log]
-        ? `<button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-name="${txt}">${txt}</button>`
+        ? `<button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>`
         : txt;
       return `<td class="${type === "num" ? "num" : ""}">${val}</td>`;
     }).join("");
@@ -756,37 +777,39 @@ function tooltipHtml(name, kind, log) {
   const body = log.map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>${cols.map(([, f]) => `<td class="num">${f(e)}</td>`).join("")}</tr>`).join("");
   return `<div class="ptip-head"><b>${name}</b><span>${GROUP_LABEL[kind] || ""} · ${gamesText(log.length)}</span></div>
     <table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
-    <div class="ptip-foot">Click for full game log</div>`;
+    <div class="ptip-foot">Click for full game log and prop check</div>`;
 }
 
-function panelHtml(name, key, log) {
+function panelHtml(name, key, log, kind, pos) {
   const t = teamOfLog(key);
   const groups = ["passing", "rushing", "receiving"].filter(g => log.some(hasGroup[g]));
+  if (kind && LOG_GROUPS[kind] && !groups.includes(kind)) groups.push(kind);
   const gh = groups.map(g => `<th colspan="${LOG_GROUPS[g].length}" class="grp gstart">${GROUP_LABEL[g]}</th>`).join("");
   const sub = groups.map(g => LOG_GROUPS[g].map(([l], i) => `<th class="num${i === 0 ? " gstart" : ""}">${l}</th>`).join("")).join("");
   const body = log.map(e => {
     const rc = e.res && e.res[0] === "W" ? "pos" : e.res && e.res[0] === "L" ? "neg" : "";
     return `<tr>
     <td>${e.w}</td><td>${escapeHtml(oppText(e))}</td><td class="res ${rc}">${escapeHtml(e.res || "")}</td>
-    ${groups.map(g => LOG_GROUPS[g].map(([, f], i) => `<td class="num${i === 0 ? " gstart" : ""}">${f(e)}</td>`).join("")).join("")}</tr>`;
+    ${groups.map(g => LOG_GROUPS[g].map(([, f], i) => `<td class="num${i === 0 ? " gstart" : ""}">${f(e)}</td>`).join("")).join("")}<td class="num prop-cell gstart"></td></tr>`;
   }).join("");
   return `<div class="plog-card" role="dialog" aria-modal="true" aria-labelledby="plogTitle">
     <div class="plog-top">
       <div>
         <h3 id="plogTitle">${name}</h3>
-        <div class="plog-sub">${t ? escapeHtml(t.team) + " · " : ""}${gamesText(log.length)}</div>
+        <div class="plog-sub">${pos ? escapeHtml(pos) + " · " : ""}${t ? escapeHtml(t.team) + " · " : ""}${gamesText(log.length)}</div>
       </div>
       <button type="button" class="plog-close" aria-label="Close">✕</button>
     </div>
     <div class="plog-scroll">
       <table>
         <thead>
-          <tr><th colspan="3"></th>${gh}</tr>
-          <tr><th>Wk</th><th>Opp</th><th>Result</th>${sub}</tr>
+          <tr><th colspan="3"></th>${gh}<th class="grp gstart">Prop</th></tr>
+          <tr><th>Wk</th><th>Opp</th><th>Result</th>${sub}<th class="num gstart prop-head"></th></tr>
         </thead>
         <tbody>${body}</tbody>
       </table>
     </div>
+    ${propToolHtml(groups, kind, pos)}
     <div class="plog-note">Regular-season games played for ${t ? escapeHtml(t.team) : "this team"} only.</div>
   </div>`;
 }
@@ -833,11 +856,24 @@ function panelHtml(name, key, log) {
       document.body.appendChild(panel);
     }
     lastFocus = btn;
-    panel.innerHTML = panelHtml(escapeHtml(btn.dataset.name), btn.dataset.log, log);
+    const pos = btn.dataset.pos || "";
+    panel.innerHTML = panelHtml(escapeHtml(btn.dataset.name), btn.dataset.log, log, btn.dataset.kind, pos);
+    const card = panel.querySelector(".plog-card");
+    const statSel = card.querySelector(".prop-stat"), ctx = card.querySelector(".prop-ctx");
+    const refresh = () => { updateProp(card, log); ctx.innerHTML = oppContext(btn.dataset.log, statSel.value, pos); };
+    statSel.addEventListener("change", refresh);
+    card.querySelector(".prop-line").addEventListener("input", () => updateProp(card, log));
+    refresh();
     panel.hidden = false;
     document.body.classList.add("plog-open");
     panel.querySelector(".plog-close").focus();
   }
+
+  // Used by the player search: open a player's log without a table button.
+  window.openPlayerLog = (p, returnFocus) => openPanel({
+    dataset: { log: p.key, name: p.name, kind: p.kind, pos: p.pos },
+    focus: () => returnFocus && returnFocus.focus(),
+  });
 
   document.addEventListener("click", e => {
     const btn = e.target.closest && e.target.closest(".plink");
@@ -859,6 +895,418 @@ function panelHtml(name, key, log) {
   window.addEventListener("scroll", hideTip, { passive: true });
   window.addEventListener("beforeprint", () => { hideTip(); closePanel(); });
 })();
+
+/* ---------------- Implied team totals and line movement ---------------- */
+
+// Implied totals from the current spread and O/U (see lineFor): favorite = (total + spread) / 2.
+function impliedTotals(g) {
+  const ln = lineFor(g);
+  if (!ln || ln.total == null || (!ln.pick && !ln.fav)) return null;
+  const half = ln.pick ? 0 : ln.spread / 2;
+  const fav = ln.total / 2 + half, dog = ln.total / 2 - half;
+  const away = ln.fav === "away" ? fav : ln.fav === "home" ? dog : fav;
+  const home = ln.fav === "home" ? fav : ln.fav === "away" ? dog : fav;
+  return { away: +away.toFixed(1), home: +home.toFixed(1) };
+}
+function impliedText(g) {
+  if (g.completed) return "";
+  const it = impliedTotals(g);
+  return it ? `Implied: ${g.away.abbr} ${it.away} · ${g.home.abbr} ${it.home}` : "";
+}
+
+// Weekly consensus spread (home side, negative = home favored) as "ABBR -7" / "PK".
+function spreadLabel(g, homeSpread) {
+  if (homeSpread == null) return "—";
+  if (homeSpread === 0) return "PK";
+  return homeSpread < 0 ? `${g.home.abbr} ${homeSpread}` : `${g.away.abbr} -${homeSpread}`;
+}
+// Line movement: the consensus line at this week's first build (g.lineOpen) against the
+// consensus line at the latest build (g.spread / g.total), so both ends come from the same source.
+function lineMove(g) {
+  const o = g.lineOpen;
+  if (!o || g.completed) return null;
+  const hasSpread = o.spread != null && g.spread != null, hasTotal = o.total != null && g.total != null;
+  if (!hasSpread && !hasTotal) return null;  // no line to compare
+  const moved = [];
+  if (o.spread != null && g.spread != null && Math.abs(o.spread - g.spread) >= 0.5) moved.push(`spread ${spreadLabel(g, o.spread)} → ${spreadLabel(g, g.spread)}`);
+  if (o.total != null && g.total != null && Math.abs(o.total - g.total) >= 0.5) moved.push(`O/U ${o.total} → ${g.total}`);
+  const when = o.at ? new Date(o.at + "T12:00:00").toLocaleDateString(undefined, { weekday: "short" }) : "earlier";
+  return { when, moved };
+}
+function lineMoveText(g) {
+  const m = lineMove(g);
+  if (!m) return "";
+  return m.moved.length ? `Line move since ${m.when}: ${m.moved.join(" · ")}` : `No line move since ${m.when}`;
+}
+
+/* ---------------- Betting trends (ATS and over/under) ---------------- */
+// t.betting = { ats, fav, dog, home, away: {w,l,p}, ou: {o,u,p}, games: [{ w, opp, at, line, score, ats, total, ou }] }
+// line is the team's own line from the cfbfastR matchup line (negative = favored).
+
+function renderBetting(a, b) {
+  const teams = [a, b].filter(t => t && t.betting);
+  if (!teams.length) return "";
+  return `<div class="bet-section no-print">
+    <h3 class="section-title">Betting Trends</h3>
+    <div class="edge-grid">${teams.map(bettingPanel).join("")}</div>
+    <p class="edge-key">Against the spread (ATS) and over/under records use each completed game's consensus line from the cfbfastR matchup lines, rounded to the half point. W-L-P = wins, losses and pushes; percentages leave out pushes. Neutral-site games count in ATS, Fav and Dog but not Home or Away. Games against FCS teams have no line and are left out. Small samples early in the season can mislead.</p>
+  </div>`;
+}
+
+function fmtLine(x) {
+  if (x === null || x === undefined) return "—";
+  return x === 0 ? "PK" : x > 0 ? `+${x}` : `${x}`;
+}
+function wlp(r) { return `${r.w}-${r.l}${r.p ? "-" + r.p : ""}`; }
+function pctOf(n, d) { return d ? ` <span class="rk">${Math.round((100 * n) / d)}%</span>` : ""; }
+function resTag(r) { return `<span class="tag ${r === "O" ? "W" : r === "U" ? "L" : r}">${r}</span>`; }
+
+function bettingPanel(t) {
+  const b = t.betting;
+  const chip = (label, r) => `<div class="bet-chip"><span class="lbl">${label}</span><b>${wlp(r)}</b>${pctOf(r.w, r.w + r.l)}</div>`;
+  const ouChip = `<div class="bet-chip"><span class="lbl">O/U</span><b>${b.ou.o}-${b.ou.u}${b.ou.p ? "-" + b.ou.p : ""}</b>${pctOf(b.ou.o, b.ou.o + b.ou.u)}</div>`;
+  const rows = b.games.slice().reverse().map(g => `<tr>
+    <td>${g.w}</td><td>${g.at ? "@" : "vs"} ${escapeHtml(g.opp)}</td><td class="num">${fmtLine(g.line)}</td>
+    <td class="num">${escapeHtml(g.score)}</td><td class="num">${resTag(g.ats)}</td>
+    <td class="num">${g.total != null ? g.total : "—"}</td><td class="num">${g.ou ? resTag(g.ou) : "—"}</td></tr>`).join("");
+  return `<div class="edge-panel bet-panel">
+    <h4>${rankTag(t.apRank)}${escapeHtml(t.team)}</h4>
+    <div class="bet-chips">${chip("ATS", b.ats)}${chip("Fav", b.fav)}${chip("Dog", b.dog)}${chip("Home", b.home)}${chip("Away", b.away)}${ouChip}</div>
+    ${b.games.length ? `<table class="edge-table bet-table">
+      <thead><tr><th>Wk</th><th>Opp</th><th class="num">Line</th><th class="num">Score</th><th class="num">ATS</th><th class="num">Total</th><th class="num">O/U</th></tr></thead>
+      <tbody>${rows}</tbody></table>` : `<div class="empty-note">No games with a line yet.</div>`}
+  </div>`;
+}
+
+/* ---------------- Prop check (inside the game log panel) ---------------- */
+
+// [key, label, group, value in one game]. group decides which players get the option.
+const PROP_STATS = [
+  ["pYds", "Pass Yds", "passing", e => e.pYds || 0],
+  ["pTd", "Pass TD", "passing", e => e.pTd || 0],
+  ["cmp", "Completions", "passing", e => e.cmp || 0],
+  ["att", "Pass Attempts", "passing", e => e.att || 0],
+  ["int", "Interceptions", "passing", e => e.int || 0],
+  ["rYds", "Rush Yds", "rushing", e => e.rYds || 0],
+  ["car", "Carries", "rushing", e => e.car || 0],
+  ["rTd", "Rush TD", "rushing", e => e.rTd || 0],
+  ["recYds", "Rec Yds", "receiving", e => e.recYds || 0],
+  ["rec", "Receptions", "receiving", e => e.rec || 0],
+  ["tgt", "Targets", "targets", e => e.tgt || 0],
+  ["rrYds", "Rush + Rec Yds", "rushrec", e => (e.rYds || 0) + (e.recYds || 0)],
+  ["prYds", "Pass + Rush Yds", "passrush", e => (e.pYds || 0) + (e.rYds || 0)],
+  ["tds", "Any TD (rush/rec)", "anytd", e => (e.rTd || 0) + (e.recTd || 0)],
+];
+const DEFAULT_PROP = { passing: "pYds", rushing: "rYds", receiving: "recYds" };
+
+function propOptions(groups) {
+  const has = g => groups.includes(g);
+  return PROP_STATS.filter(([, , grp]) => has(grp)
+    || (grp === "targets" && has("receiving") && DATA.hasTargets)
+    || (grp === "rushrec" && has("rushing") && has("receiving"))
+    || (grp === "passrush" && has("passing") && has("rushing"))
+    || (grp === "anytd" && (has("rushing") || has("receiving"))));
+}
+
+// Stat groups a prop can use for this position (plus the table the player was opened from),
+// so a QB's one trick-play catch doesn't add receiving props.
+const PROP_GROUPS_BY_POS = { QB: ["passing", "rushing"], RB: ["rushing", "receiving"], FB: ["rushing", "receiving"],
+  WR: ["receiving", "rushing"], TE: ["receiving", "rushing"] };
+function propGroups(groups, pos, kind) {
+  const ok = PROP_GROUPS_BY_POS[(pos || "").toUpperCase()];
+  return ok ? groups.filter(g => ok.includes(g) || g === kind) : groups;
+}
+
+function propToolHtml(groups, kind, pos) {
+  const opts = propOptions(propGroups(groups, pos, kind));
+  if (!opts.length) return "";
+  const def = DEFAULT_PROP[kind] && opts.some(o => o[0] === DEFAULT_PROP[kind]) ? DEFAULT_PROP[kind] : opts[0][0];
+  return `<div class="prop-tool">
+    <div class="prop-inputs">
+      <label>Prop <select class="prop-stat">${opts.map(([k, l]) => `<option value="${k}"${k === def ? " selected" : ""}>${l}</option>`).join("")}</select></label>
+      <label>Line <input class="prop-line" type="number" inputmode="decimal" step="0.5" min="0"></label>
+    </div>
+    <div class="prop-result" aria-live="polite"></div>
+    <div class="prop-ctx"></div>
+  </div>`;
+}
+
+// A line just under the season average: the highest x.5 below it.
+function suggestLine(avg) {
+  let x = Math.floor(avg - 0.5) + 0.5;
+  if (x >= avg) x -= 1;
+  return Math.max(0.5, x);
+}
+
+function updateProp(card, log) {
+  const sel = card.querySelector(".prop-stat");
+  if (!sel) return;
+  const key = sel.value;
+  const stat = PROP_STATS.find(s => s[0] === key);
+  const lineEl = card.querySelector(".prop-line");
+  const vals = log.map(stat[3]);
+  const avg = vals.reduce((a, v) => a + v, 0) / (vals.length || 1);
+  if (lineEl.dataset.stat !== key) {  // new stat: suggest a line just under the season average
+    lineEl.value = suggestLine(avg);
+    lineEl.dataset.stat = key;
+  }
+  const line = parseFloat(lineEl.value);
+  const rows = card.querySelectorAll(".plog-scroll tbody tr");
+  let over = 0, under = 0, push = 0;
+  vals.forEach((v, i) => {
+    const r = isNaN(line) ? "" : v > line ? "O" : v < line ? "U" : "P";
+    if (r === "O") over++; else if (r === "U") under++; else if (r === "P") push++;
+    const cell = rows[i] && rows[i].querySelector(".prop-cell");
+    if (cell) cell.innerHTML = `${v}${r ? " " + resTag(r) : ""}`;
+    if (rows[i]) { rows[i].classList.toggle("prop-over", r === "O"); rows[i].classList.toggle("prop-under", r === "U"); }
+  });
+  card.querySelector(".prop-head").textContent = stat[1];
+  const res = card.querySelector(".prop-result");
+  if (isNaN(line)) { res.textContent = "Enter a line to see how often he's cleared it."; return; }
+  const n = over + under;
+  const last = vals.slice(-3).map(v => (v > line ? "O" : v < line ? "U" : "P"));
+  res.innerHTML = `Over ${line}: <b>${over} of ${vals.length} game${vals.length === 1 ? "" : "s"}</b>${n ? ` (${Math.round((100 * over) / n)}%)` : ""}`
+    + `${push ? ` · ${push} push${push === 1 ? "" : "es"}` : ""} · Avg ${avg.toFixed(1)}`
+    + ` · Last ${last.length}: ${last.map(resTag).join(" ")}`;
+}
+
+// This week's game for an FBS team (by team name), or null.
+function weekGameFor(teamName) {
+  return (DATA.weekGames || []).find(g => g.away.key === teamName || g.home.key === teamName) || null;
+}
+
+// What this week's opponent allows for the chosen stat, from its defense and Def vs Position numbers.
+function oppContext(logKey, statKey, pos) {
+  const team = teamOfLog(logKey);
+  if (!team) return "";
+  const g = weekGameFor(team.team);
+  if (!g) return `${escapeHtml(team.abbr)} has no game in Week ${DATA.currentWeek}.`;
+  const isAway = g.away.key === team.team;
+  const oppSide = isAway ? g.home : g.away;
+  const where = `${isAway && !g.neutral ? "@" : "vs"} ${escapeHtml(oppSide.abbr)}`;
+  const opp = oppSide.key ? DATA.teams[oppSide.key] : null;
+  if (!opp) return `Next: ${where} — ${escapeHtml(oppSide.name)} isn't FBS, so there are no defensive numbers for it.`;
+  const n = Object.keys(DATA.teams).length;
+  const d = opp.defense, dv = opp.defVsPosition;
+  const P = (pos || "").toUpperCase();
+  const isRb = P === "RB" || P === "FB";
+  const rk = (getter, v, hi) => leagueRank(getter, v, !!hi);
+  const dvp = k => dv && dv[k];
+  const recKey = P === "TE" ? "te" : isRb ? "recRb" : P === "WR" ? "wr" : null;
+  const recLbl = { te: "TEs", recRb: "RBs", wr: "WRs" }[recKey];
+  let what, note = `Ranks out of ${n} FBS teams; #1 = allows the fewest.`;
+  switch (statKey) {
+    case "pYds": case "cmp": case "att":
+      what = `${d.passYdsG} pass yds/G (#${d.passYdsGRank})`; break;
+    case "pTd":
+      what = `${d.passTdG} pass TD/G (#${rk(t => t.defense.passTdG, d.passTdG)})`; break;
+    case "int":
+      what = `${d.int} INT/G made (#${rk(t => t.defense.int, d.int, true)})`;
+      note = `Rank out of ${n} FBS teams; #1 = most interceptions.`; break;
+    case "prYds":
+      what = `${d.passYdsG} pass yds/G (#${d.passYdsGRank}) and ${d.rushYdsG} rush yds/G (#${d.rushYdsGRank})`; break;
+    case "rYds": case "car":
+      what = isRb && dvp("rb") ? `${dv.rb.yds} rush yds/G to RBs (#${dv.rb.rank})` : `${d.rushYdsG} rush yds/G (#${d.rushYdsGRank})`; break;
+    case "rTd":
+      what = isRb && dvp("rb") ? `${dv.rb.td} rush TD/G to RBs (#${rk(t => t.defVsPosition.rb ? t.defVsPosition.rb.td : 0, dv.rb.td)})`
+        : `${d.rushTdG} rush TD/G (#${rk(t => t.defense.rushTdG, d.rushTdG)})`; break;
+    case "rrYds":
+      what = isRb && dvp("rb") && dvp("recRb") ? `${dv.rb.yds} rush + ${dv.recRb.yds} rec yds/G to RBs (#${dv.rb.rank} / #${dv.recRb.rank})`
+        : `${d.rushYdsG} rush yds/G (#${d.rushYdsGRank}) and ${d.passYdsG} pass yds/G (#${d.passYdsGRank})`; break;
+    case "tds": {
+      const ks = isRb ? ["rb", "recRb"] : recKey ? [recKey] : [];
+      if (ks.length && ks.every(dvp)) {
+        const v = +ks.reduce((a, k) => a + dv[k].td, 0).toFixed(2);
+        const get = t => ks.reduce((a, k) => a + (t.defVsPosition[k] ? t.defVsPosition[k].td : 0), 0);
+        what = `${v} ${isRb ? "rush + rec" : "rec"} TD/G to ${isRb ? "RBs" : recLbl} (#${rk(get, get(opp))})`;
+      } else what = `${d.rushTdG} rush TD/G and ${d.passTdG} pass TD/G`;
+      break;
+    }
+    default:  // recYds, rec, tgt
+      what = recKey && dvp(recKey) ? `${dv[recKey].yds} rec yds/G to ${recLbl} (#${dv[recKey].rank})` : `${d.passYdsG} pass yds/G (#${d.passYdsGRank})`;
+  }
+  return `Next: ${where} — ${escapeHtml(opp.abbr)} allows ${what}. <span class="rk">${note}</span>`;
+}
+
+/* ---------------- Player search (top bar, every page) ---------------- */
+
+let PLAYER_INDEX = null;  // log key -> { key, name, pos, team, abbr, kind }
+const PRIMARY_KIND = { QB: "passing", RB: "rushing", FB: "rushing", WR: "receiving", TE: "receiving" };
+function playerIndex() {
+  if (PLAYER_INDEX) return PLAYER_INDEX;
+  PLAYER_INDEX = {};
+  for (const t of Object.values(DATA.teams)) {
+    for (const kind of ["passing", "rushing", "receiving"]) {
+      for (const r of t[kind] || []) {
+        if (!r.log || !DATA.gameLogs[r.log]) continue;
+        const p = PLAYER_INDEX[r.log];
+        if (!p) PLAYER_INDEX[r.log] = { key: r.log, name: r.player, pos: r.pos || "", team: t.team, abbr: t.abbr, kind };
+        else if (PRIMARY_KIND[p.pos] === kind) p.kind = kind;
+      }
+    }
+  }
+  return PLAYER_INDEX;
+}
+
+function initPlayerSearch() {
+  const bar = document.querySelector(".topbar");
+  if (!bar || bar.querySelector(".psearch") || !DATA.gameLogs) return;
+  const wrap = document.createElement("div");
+  wrap.className = "psearch no-print";
+  wrap.innerHTML = `<input type="search" placeholder="Search players" aria-label="Search players" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="psearchList">
+    <ul class="psearch-list" id="psearchList" role="listbox" hidden></ul>`;
+  bar.appendChild(wrap);
+  const input = wrap.querySelector("input"), list = wrap.querySelector("ul");
+  let hits = [], active = -1;
+  const norm = x => x.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[.'’-]/g, "");
+  const close = () => { list.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; };
+  const render = () => {
+    list.innerHTML = hits.map((p, i) => `<li role="option" id="ps-opt-${i}" data-i="${i}" class="${i === active ? "active" : ""}" aria-selected="${i === active}">
+      <span class="ps-name">${escapeHtml(p.name)}</span><span class="ps-meta">${escapeHtml([p.pos, p.abbr].filter(Boolean).join(" · "))}</span></li>`).join("")
+      || `<li class="ps-empty">No players found</li>`;
+    list.hidden = false; input.setAttribute("aria-expanded", "true");
+    if (active >= 0) {
+      input.setAttribute("aria-activedescendant", `ps-opt-${active}`);
+      const li = list.querySelector(`[data-i="${active}"]`);
+      if (li) li.scrollIntoView({ block: "nearest" });
+    }
+  };
+  const pick = i => {
+    const p = hits[i];
+    if (!p) return;
+    close(); input.value = "";
+    if (window.openPlayerLog) window.openPlayerLog(p, input);
+  };
+  input.addEventListener("input", () => {
+    const q = norm(input.value.trim());
+    if (q.length < 2) { close(); return; }
+    const score = p => { const n = norm(p.name); return n.startsWith(q) ? 0 : n.split(" ").some(w => w.startsWith(q)) ? 1 : n.includes(q) ? 2 : 9; };
+    hits = Object.values(playerIndex()).map(p => [score(p), p]).filter(([s]) => s < 9)
+      .sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name)).slice(0, 10).map(([, p]) => p);
+    active = hits.length ? 0 : -1;
+    render();
+  });
+  input.addEventListener("keydown", e => {
+    if (list.hidden) return;
+    if (e.key === "ArrowDown") { active = Math.min(hits.length - 1, active + 1); render(); e.preventDefault(); }
+    else if (e.key === "ArrowUp") { active = Math.max(0, active - 1); render(); e.preventDefault(); }
+    else if (e.key === "Enter") { pick(active); e.preventDefault(); }
+    else if (e.key === "Escape") { close(); e.stopPropagation(); }
+  });
+  list.addEventListener("mousedown", e => { const li = e.target.closest("li[data-i]"); if (li) { e.preventDefault(); pick(+li.dataset.i); } });
+  input.addEventListener("blur", () => setTimeout(close, 120));
+}
+
+/* ---------------- Weekly Edges (edges.html) ---------------- */
+
+function initEdges() {
+  const all = (DATA.weekGames || []).slice().sort((a, b) => new Date(a.start) - new Date(b.start) || a.id.localeCompare(b.id));
+  document.getElementById("edgesTitle").textContent = DATA.currentWeek ? `Week ${DATA.currentWeek} Edges` : "Weekly Edges";
+  document.getElementById("edgesSub").textContent =
+    `${all.length} game${all.length === 1 ? "" : "s"} · team stats through Week ${DATA.throughWeek}`;
+  const confSel = document.getElementById("confFilter"), ranked = document.getElementById("rankedOnly");
+  const confs = new Set();
+  all.forEach(g => [g.away, g.home].forEach(s => s.conference && confs.add(s.conference)));
+  confSel.innerHTML = `<option value="">All conferences</option>` +
+    [...confs].sort().map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
+  const draw = () => {
+    const conf = confSel.value, top = ranked.checked;
+    const shown = all.filter(g => (!conf || [g.away, g.home].some(s => s.conference === conf)) && (!top || [g.away, g.home].some(s => s.rank)));
+    document.getElementById("gameBoard").innerHTML = gameBoard(shown);
+    document.getElementById("propBoards").innerHTML = propBoards(shown);
+    document.getElementById("boardCount").textContent = shown.length === all.length ? "" : `${shown.length} of ${all.length} games shown`;
+  };
+  [confSel, ranked].forEach(el => el.addEventListener("input", draw));
+  draw();
+  if (typeof refreshLines === "function" && DATA.currentWeek) refreshLines(new Set(all.map(g => g.id)), draw);
+}
+
+function netEpa(t) { return t && t.eff ? t.eff.off.epa - t.eff.def.epa : null; }
+
+function gameBoard(games) {
+  if (!games.length) return `<div class="empty-note">No games match those filters.</div>`;
+  const rows = games.map(g => {
+    const a = g.away.key ? DATA.teams[g.away.key] : null, h = g.home.key ? DATA.teams[g.home.key] : null;
+    const ln = lineFor(g), it = impliedTotals(g);
+    const spread = !ln ? "—" : ln.pick ? "PK" : ln.fav ? `${g[ln.fav].abbr} -${ln.spread}` : "—";
+    const m = lineMove(g);
+    const move = !m ? "—" : m.moved.length ? m.moved.join(" · ") : `None since ${m.when}`;
+    const na = netEpa(a), nh = netEpa(h);
+    let epa = `<span class="rk">—</span>`;
+    if (na != null && nh != null) {
+      const better = na >= nh ? g.away : g.home;
+      epa = `${escapeHtml(better.abbr)} <b>+${Math.abs(na - nh).toFixed(2)}</b>`;
+    }
+    const d = new Date(g.start);
+    const when = g.completed ? "Final" : d.toLocaleDateString(undefined, { weekday: "short" }) + " " +
+      (g.timeTbd ? "TBD" : d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" }));
+    const side = s => `${rankTag(s.rank)}${escapeHtml(s.abbr)}`;
+    return `<tr>
+      <td>${escapeHtml(when)}</td>
+      <td><a class="board-link" href="matchup.html?game=${encodeURIComponent(g.id)}">${side(g.away)} ${g.neutral ? "vs" : "@"} ${side(g.home)}</a></td>
+      <td class="num">${escapeHtml(spread)}</td>
+      <td class="num">${ln && ln.total != null ? ln.total : "—"}</td>
+      <td class="num">${it && !g.completed ? `${escapeHtml(g.away.abbr)} ${it.away} · ${escapeHtml(g.home.abbr)} ${it.home}` : "—"}</td>
+      <td class="move">${escapeHtml(move)}</td>
+      <td class="num">${epa}</td>
+    </tr>`;
+  }).join("");
+  return `<table class="board-table">
+    <thead><tr><th>Kickoff</th><th>Game</th><th class="num">Spread</th><th class="num">O/U</th><th class="num">Implied</th><th>Line move</th><th class="num" title="Offense EPA/play minus defense EPA/play allowed; the better team and the gap between them">Net EPA edge</th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
+}
+
+// [title, player table, positions, stat group in the log, opponent-allowed getter, rank getter, what]
+const PROP_BOARDS = [
+  ["QB · Pass Yds", "passing", ["QB"], "passing", t => t.defense.passYdsG, t => t.defense.passYdsGRank, "pass yds/G"],
+  ["RB · Rush Yds", "rushing", ["RB", "FB"], "rushing", t => t.defVsPosition.rb && t.defVsPosition.rb.yds, t => t.defVsPosition.rb && t.defVsPosition.rb.rank, "rush yds/G to RBs"],
+  ["WR · Rec Yds", "receiving", ["WR"], "receiving", t => t.defVsPosition.wr && t.defVsPosition.wr.yds, t => t.defVsPosition.wr && t.defVsPosition.wr.rank, "rec yds/G to WRs"],
+  ["TE · Rec Yds", "receiving", ["TE"], "receiving", t => t.defVsPosition.te && t.defVsPosition.te.yds, t => t.defVsPosition.te && t.defVsPosition.te.rank, "rec yds/G to TEs"],
+];
+
+function propBoards(games) {
+  const opp = {};  // team name -> { t: opponent team, at }
+  for (const g of games) {
+    if (g.completed || !g.away.key || !g.home.key || !DATA.teams[g.away.key] || !DATA.teams[g.home.key]) continue;  // FBS vs FBS, not played yet
+    opp[g.away.key] = { t: DATA.teams[g.home.key], at: !g.neutral };
+    opp[g.home.key] = { t: DATA.teams[g.away.key], at: false };
+  }
+  const teams = Object.values(DATA.teams);
+  const n = teams.length;
+  return PROP_BOARDS.map(([title, table, positions, grp, allowed, allowedRank, what]) => {
+    const vals = teams.map(allowed).filter(v => v != null);
+    const lg = vals.reduce((a, v) => a + v, 0) / (vals.length || 1);
+    const rows = [];
+    for (const t of teams) {
+      const o = opp[t.team];
+      if (!o || allowed(o.t) == null) continue;
+      const f = lg ? allowed(o.t) / lg : 1;
+      if (f <= 1) continue;
+      const teamGames = t.record.w + t.record.l + t.record.t;
+      for (const r of t[table] || []) {
+        if (!positions.includes((r.pos || "").toUpperCase())) continue;
+        const log = DATA.gameLogs[r.log] || [];
+        if (log.filter(hasGroup[grp]).length < teamGames / 2) continue;  // regulars only
+        rows.push({ r, t, o, f, adj: r.ydsG * f });
+      }
+    }
+    rows.sort((x, y) => y.adj - x.adj);
+    const body = rows.slice(0, 10).map(({ r, t, o, f, adj }) => `<tr>
+      <td><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${table}" data-pos="${escapeHtml(r.pos || "")}" data-name="${escapeHtml(r.player)}">${escapeHtml(r.player)}</button></td>
+      <td>${escapeHtml(t.abbr)} ${o.at ? "@" : "vs"} ${escapeHtml(o.t.abbr)}</td>
+      <td class="num">${r.ydsG}</td>
+      <td class="num">${allowed(o.t)} <span class="rk">#${allowedRank(o.t)}</span></td>
+      <td class="num"><span class="tag W">×${f.toFixed(2)}</span></td>
+      <td class="num"><b>${adj.toFixed(1)}</b></td>
+    </tr>`).join("");
+    return `<div class="table-block">
+      <h4>${escapeHtml(title)}</h4>
+      ${body ? `<table><thead><tr><th>Player</th><th>Game</th><th class="num">Avg</th><th class="num" title="${escapeHtml(`Opponent allows ${what}; rank out of ${n}, #1 = fewest`)}">Opp allows</th><th class="num">Matchup</th><th class="num">Adj</th></tr></thead><tbody>${body}</tbody></table>`
+        : `<div class="empty-note">No favorable matchups in the games shown.</div>`}
+      <p class="bet-note">FBS average allowed: ${lg.toFixed(1)} ${escapeHtml(what)}.</p>
+    </div>`;
+  }).join("");
+}
 
 function escapeHtml(str) {
   return String(str)

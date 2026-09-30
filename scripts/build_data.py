@@ -5,6 +5,10 @@ scores, committed as parquet and refreshed several times a day). Everything is
 downloaded from raw.githubusercontent.com — no API key needed.
 
 Scope: all FBS teams, 2026 regular season (season_type 2), completed games.
+Everything is rebuilt from scratch from the current season's files each run,
+with one exception: `lineOpen` on this week's games (the line at the week's
+first build) is carried over from the existing output file when it covers the
+same season and week, so the site can show how far the line has moved.
 
 Usage:
     pip install -r requirements.txt
@@ -21,6 +25,7 @@ import os
 import sys
 import urllib.request
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
@@ -32,6 +37,10 @@ FILES = {
     "player_box": "player_box/parquet/player_box_{s}.parquet",
     "teams": "cfb_teams/parquet/cfb_teams_{s}.parquet",
     "rosters": "cfb_rosters/parquet/cfb_rosters_{s}.parquet",
+    # per-game ESPN rosters: position fallback for players missing from cfb_rosters
+    "game_rosters": "game_rosters/parquet/game_rosters_{s}.parquet",
+    # play-by-play: EPA per play, success rate, and receiver targets
+    "pbp": "pbp/parquet/play_by_play_{s}.parquet",
     # betting lines + other pregame context for every FBS-vs-FBS game, incl. upcoming ones
     "matchup_line": "cfb_matchup_line/parquet/cfb_matchup_line_{s}.parquet",
     # full season schedule incl. upcoming games (the data repo's copy only has finals)
@@ -50,6 +59,12 @@ STAT_LAYOUT = {
 
 POS_GROUP = {"RB": "RB", "FB": "RB", "TE": "TE", "WR": "WR"}
 
+# ESPN college football position ids (as used in game_rosters' position_href) -> abbreviation,
+# taken from cfb_rosters' own position_id / position_abbreviation pairs.
+ESPN_POS = {1: "WR", 4: "C", 7: "TE", 8: "QB", 9: "RB", 10: "FB", 12: "NT", 22: "PK", 23: "P",
+            29: "CB", 30: "LB", 31: "DE", 32: "DT", 35: "DB", 36: "S", 37: "DL", 45: "OL",
+            46: "OT", 73: "G", 76: "PR", 78: "LS", 264: "EDGE"}
+
 
 def load(name, season, cache):
     rel = FILES[name].format(s=season)
@@ -65,6 +80,52 @@ def load(name, season, cache):
         with open(path, "wb") as f:
             f.write(raw)
     return reader(io.BytesIO(raw))
+
+
+def load_optional(name, season, cache, notes):
+    try:
+        return load(name, season, cache)
+    except Exception as e:  # noqa: BLE001 - a missing optional file only drops that feature
+        notes.append(f"{name}: {e}")
+        return None
+
+
+def positions(rosters, game_rosters):
+    """athlete_id -> position abbreviation. cfb_rosters is used for every player it lists;
+    game_rosters (ESPN position ids, most common across the player's games) fills in players
+    cfb_rosters is missing. Returns (roster frame for Def vs Position, full position map, count
+    of athletes filled from game_rosters)."""
+    r = rosters[["athlete_id", "team_id", "position_abbreviation"]].copy()
+    r["athlete_id"] = num(r["athlete_id"])
+    on_roster = set(r["athlete_id"].dropna())
+    extra = pd.DataFrame(columns=["athlete_id", "team_id", "position_abbreviation"])
+    if game_rosters is not None and len(game_rosters):
+        gr = game_rosters[["athlete_id", "team_id", "position_href"]].copy()
+        gr["athlete_id"] = num(gr["athlete_id"])
+        pid = num(gr["position_href"].astype("string").str.extract(r"positions/(\d+)")[0])
+        # learn any extra ids from the roster file itself, then fall back to the fixed table
+        learned = {}
+        if "position_id" in rosters.columns:
+            for i, a in rosters[["position_id", "position_abbreviation"]].dropna().drop_duplicates().itertuples(index=False):
+                try:
+                    learned[int(i)] = str(a)
+                except (TypeError, ValueError):
+                    pass
+        idmap = {**ESPN_POS, **learned}
+        gr["position_abbreviation"] = pid.map(lambda x: idmap.get(int(x)) if pd.notna(x) else None)
+        gr = gr.dropna(subset=["athlete_id", "position_abbreviation"])
+        gr = gr[~gr["athlete_id"].isin(on_roster)]
+        if len(gr):
+            extra = (gr.groupby("athlete_id")
+                       .agg(team_id=("team_id", "first"),
+                            position_abbreviation=("position_abbreviation", lambda x: x.mode().iat[0]))
+                       .reset_index())
+    both = pd.concat([r, extra], ignore_index=True).dropna(subset=["athlete_id"])
+    both["athlete_id"] = both["athlete_id"].astype("int64")
+    pos_all = {}
+    for a, p in both[["athlete_id", "position_abbreviation"]].dropna().itertuples(index=False):
+        pos_all.setdefault(int(a), str(p))
+    return both, pos_all, int(extra["athlete_id"].nunique())
 
 
 def num(s):
@@ -224,16 +285,121 @@ def week_games(full, id_to_name, team_rows, poll, lines, qbs):
     return week, games
 
 
+def betting_trends(g, lines, results, fbs_ids):
+    """Record against the spread and over/under per FBS team, from each completed game's
+    cfbfastR matchup line (rounded to the half point, as the site shows lines). The
+    matchup line is the home team's spread (negative = home favored); a team's own line
+    is negative when it was favored. Games without a line are skipped. Neutral-site games
+    count toward overall / favorite / underdog but not home / away."""
+    def tally():
+        return {"w": 0, "l": 0, "p": 0}
+
+    out = {t: {"ats": tally(), "fav": tally(), "dog": tally(), "home": tally(), "away": tally(),
+               "ou": {"o": 0, "u": 0, "p": 0}, "games": []} for t in fbs_ids}
+    for r in g.sort_values(["week", "game_date", "game_id"]).itertuples():
+        ln = lines.get(int(r.game_id), {})
+        spread = half(ln.get("spread"))
+        if spread is None:
+            continue
+        total = half(ln.get("over_under"))
+        neutral = bool(r.neutral_site)
+        for tid, side, us, them in ((r.home_id, "home", r.home_score, r.away_score),
+                                    (r.away_id, "away", r.away_score, r.home_score)):
+            if tid not in out:
+                continue
+            line = spread if side == "home" else -spread
+            line = 0.0 if line == 0 else line
+            margin = us - them + line
+            res = "W" if margin > 0 else "L" if margin < 0 else "P"
+            key = res.lower()
+            b = out[tid]
+            b["ats"][key] += 1
+            if line < 0:
+                b["fav"][key] += 1
+            elif line > 0:
+                b["dog"][key] += 1
+            if not neutral:
+                b[side][key] += 1
+            info = results[(r.game_id, tid)]
+            e = {"w": int(r.week), "opp": info["opp"], "at": bool(info["at"]), "line": line,
+                 "score": f"{int(us)}-{int(them)}", "ats": res}
+            if total is not None:
+                pts = us + them
+                ou = "O" if pts > total else "U" if pts < total else "P"
+                b["ou"][ou.lower()] += 1
+                e.update({"total": total, "ou": ou})
+            b["games"].append(e)
+    return out
+
+
+def efficiency(pbp, game_ids, fbs_ids):
+    """EPA per play and success rate for each FBS offense and defense, from play-by-play:
+    rush and pass plays (sacks count as pass plays) in completed regular-season games,
+    leaving out QB kneels and plays wiped out by a penalty. Success = EPA > 0.
+    Ranks: offense highest = #1, defense lowest allowed = #1, among FBS teams."""
+    d = pbp[pbp["game_id"].isin(game_ids) & (pbp["rush"].astype(bool) | pbp["pass"].astype(bool))
+            & ~pbp["kneel_down"].astype(bool) & ~pbp["penalty_no_play"].astype(bool) & pbp["EPA"].notna()]
+    d = d.assign(succ=d["EPA_success"].astype(bool).astype(float))
+
+    def side(col):
+        gb = d.groupby(col)
+        f = pd.DataFrame({"epa": gb["EPA"].mean(), "sr": gb["succ"].mean() * 100, "plays": gb.size(),
+                          "passEpa": d[d["pass"].astype(bool)].groupby(col)["EPA"].mean(),
+                          "rushEpa": d[d["rush"].astype(bool)].groupby(col)["EPA"].mean()})
+        return f[f.index.isin(fbs_ids)]
+
+    o, df_ = side("pos_team_id"), side("def_pos_team_id")
+    o["epaRank"], o["srRank"] = rank(o["epa"], False), rank(o["sr"], False)
+    df_["epaRank"], df_["srRank"] = rank(df_["epa"], True), rank(df_["sr"], True)
+    r3 = lambda x: None if pd.isna(x) else round(float(x), 3)  # noqa: E731
+    out = {}
+    for t in o.index.intersection(df_.index):
+        out[int(t)] = {k: {"epa": r3(f.loc[t, "epa"]), "sr": r1(f.loc[t, "sr"]), "passEpa": r3(f.loc[t, "passEpa"]),
+                           "rushEpa": r3(f.loc[t, "rushEpa"]), "plays": int(f.loc[t, "plays"]),
+                           "epaRank": int(f.loc[t, "epaRank"]), "srRank": int(f.loc[t, "srRank"])}
+                       for k, f in (("off", o), ("def", df_))}
+    return out
+
+
+def carry_line_open(games, week, season, prev_path):
+    """lineOpen = the line at this week's first build. Kept from the existing output file
+    when it covers the same season and week (its lineOpen, or, for a file written before
+    lineOpen existed, that build's own spread/total); otherwise today's line."""
+    prev = {}
+    try:
+        with open(prev_path, encoding="utf-8") as f:
+            old = json.load(f)
+        if old.get("season") == season and old.get("currentWeek") == week:
+            at = str(old.get("generatedAt", ""))[:10]
+            try:
+                at = datetime.fromisoformat(old["generatedAt"]).astimezone(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+            except (KeyError, ValueError, TypeError):
+                pass
+            for x in old.get("weekGames", []):
+                lo = x.get("lineOpen") or {"spread": x.get("spread"), "total": x.get("total"), "at": at}
+                if lo.get("spread") is not None or lo.get("total") is not None:
+                    prev[x["id"]] = lo
+    except (OSError, ValueError):
+        pass
+    today = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+    for x in games:
+        x["lineOpen"] = prev.get(x["id"]) or {"spread": x["spread"], "total": x["total"], "at": today}
+    return sum(1 for x in games if x["id"] in prev)
+
+
 def gauge_max(series):
     return int(math.ceil(float(series.max()) / 5.0) * 5)
 
 
-def build(season, cache):
+def build(season, cache, prev_path=None):
     sched = load("schedule", season, cache)
     tbox = load("team_box", season, cache)
     pbox = load("player_box", season, cache)
     teams = load("teams", season, cache)
     rosters = load("rosters", season, cache)
+    notes = []
+    game_rosters = load_optional("game_rosters", season, cache, notes)
+    pbp = load_optional("pbp", season, cache, notes)
 
     # --- games in scope: regular season, final ---
     g = sched[(sched["season_type"] == 2) & (sched["status"] == "STATUS_FINAL")].copy()
@@ -303,7 +469,11 @@ def build(season, cache):
         sos[t] = float(np.mean([srs[o][0] for o in opps])) if len(opps) else 0.0
 
     # --- positions for Def vs Position ---
-    pos = rosters[["athlete_id", "team_id", "position_abbreviation"]].copy()
+    roster_pos, pos_all, filled = positions(rosters, game_rosters)
+    if filled:
+        notes.append(f"positions for {filled} players filled from game_rosters "
+                     f"(cfb_rosters lists {int(rosters['team_id'].nunique())} teams)")
+    pos = roster_pos.copy()
     pos["grp"] = pos["position_abbreviation"].map(POS_GROUP)
     pos = pos.dropna(subset=["grp"]).drop_duplicates("athlete_id")[["athlete_id", "grp"]]
 
@@ -354,6 +524,14 @@ def build(season, cache):
         per_game(rushing, {"rushingAttempts": "car", "rushingYards": "rYds", "rushingTouchdowns": "rTd"}),
         per_game(receiving, {"receptions": "rec", "receivingYards": "recYds", "receivingTouchdowns": "recTd"}),
     ], axis=1).fillna(0)
+    if pbp is not None:
+        # targets aren't in the ESPN box scores; count them from play-by-play (receiver on a
+        # targeted pass). Only added to games the player already has a box-score line in.
+        tp = pbp[pbp["target"].astype(bool) & pbp["receiver_player_id"].notna() & pbp["game_id"].isin(game_ids)]
+        tgt = (tp.assign(athlete_id=tp["receiver_player_id"].astype("int64"))
+                 .groupby(["pos_team_id", "athlete_id", "game_id"]).size())
+        tgt.index = tgt.index.set_names(["team_id", "athlete_id", "game_id"])
+        pg["tgt"] = tgt.reindex(pg.index).fillna(0)
     pg_by_player = {k: d.droplevel([0, 1]) for k, d in pg.groupby(level=[0, 1])}
     game_logs = {}
 
@@ -383,7 +561,7 @@ def build(season, cache):
             att=("att", "sum")).reset_index()
         pdx = top(pdx[pdx["att"] > 0], 6, p.gp)
         pass_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                      "int": r2(r.it / r.gp), "log": add_log(t, r.athlete_id)} for r in pdx.itertuples()]
+                      "int": r2(r.it / r.gp), "pos": pos_all.get(int(r.athlete_id), ""), "log": add_log(t, r.athlete_id)} for r in pdx.itertuples()]
 
         rdx = rushing[rushing["team_id"] == t].groupby("athlete_id").agg(
             player=("athlete_name", "last"), gp=("game_id", "nunique"),
@@ -391,7 +569,7 @@ def build(season, cache):
             att=("rushingAttempts", "sum")).reset_index()
         rdx = top(rdx[rdx["att"] > 0], 6, p.gp)
         rush_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                      "ya": r1(r.yds / r.att), "ag": r1(r.att / r.gp), "log": add_log(t, r.athlete_id)} for r in rdx.itertuples()]
+                      "ya": r1(r.yds / r.att), "ag": r1(r.att / r.gp), "pos": pos_all.get(int(r.athlete_id), ""), "log": add_log(t, r.athlete_id)} for r in rdx.itertuples()]
 
         cdx = receiving[receiving["team_id"] == t].groupby("athlete_id").agg(
             player=("athlete_name", "last"), gp=("game_id", "nunique"),
@@ -399,7 +577,7 @@ def build(season, cache):
             rec=("receptions", "sum")).reset_index()
         cdx = top(cdx[cdx["rec"] > 0], 7, p.gp)
         rec_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                     "yr": r1(r.yds / r.rec), "rec": r2(r.rec / r.gp), "log": add_log(t, r.athlete_id)} for r in cdx.itertuples()]
+                     "yr": r1(r.yds / r.rec), "rec": r2(r.rec / r.gp), "pos": pos_all.get(int(r.athlete_id), ""), "log": add_log(t, r.athlete_id)} for r in cdx.itertuples()]
 
         s, o, d = srs[t]
         id_to_name[int(t)] = name
@@ -435,6 +613,18 @@ def build(season, cache):
     lines = {int(r.game_id): {"spread": r.spread, "over_under": r.over_under}
              for r in ml[ml["season_type"].astype(str).isin(["2", "regular"])].itertuples()}
     cur_week, games = week_games(full, id_to_name, team_rows, poll, lines, qbs)
+    kept = carry_line_open(games, cur_week, season, prev_path) if prev_path else 0
+    if kept:
+        notes.append(f"lineOpen kept for {kept} of {len(games)} Week {cur_week} games from the week's first build")
+
+    bet = betting_trends(g, lines, results, set(per.index))
+    eff = efficiency(pbp, game_ids, set(per.index)) if pbp is not None else {}
+    if pbp is None:
+        notes.append("no play-by-play: EPA and success rate left out")
+    for tid, name in id_to_name.items():
+        team_rows[name]["betting"] = bet.get(tid)
+        if eff:
+            team_rows[name]["eff"] = eff.get(tid)
     out = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "season": season,
@@ -447,6 +637,8 @@ def build(season, cache):
         "pollName": "AP Top 25",
         "weekGames": games,
         "gameLogs": game_logs,
+        "hasTargets": pbp is not None,
+        "notes": notes,
         "leagueAverage": {"rushTdG": r1(per["rushTdG"].mean()), "passTdG": r1(per["passTdG"].mean()),
                           "ppg": r1(per["pf"].mean())},
         "gaugeRanges": {
@@ -478,11 +670,13 @@ def main():
     ap.add_argument("--cache", default=None, help="optional folder to cache downloads")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "data", "data.json"))
     a = ap.parse_args()
-    data = build(a.season, a.cache)
+    data = build(a.season, a.cache, prev_path=a.out)
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     write_json(data, a.out)
     print(f"Wrote {a.out}: {len(data['teams'])} teams, {data['gamesCounted']} games, "
           f"through week {data['throughWeek']}")
+    for n in data.get("notes", []):
+        print("  note:", n)
 
 
 if __name__ == "__main__":
