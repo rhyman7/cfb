@@ -317,7 +317,8 @@ function teamStats(s, idToSide, awayAbbr, homeAbbr) {
   </div>`;
 }
 
-function playerStats(s, idToSide, abbrOf) {
+// showAll: list every player ESPN sends instead of the first few (finished games).
+function playerStats(s, idToSide, abbrOf, showAll) {
   const groups = (s.boxscore && s.boxscore.players) || [];
   const bySide = {};
   groups.forEach((p, i) => {
@@ -333,7 +334,7 @@ function playerStats(s, idToSide, abbrOf) {
         const i = keys.indexOf(k);
         return i >= 0 ? i : labels.indexOf(lab);
       });
-      const body = st.athletes.slice(0, max).map(a => {
+      const body = (showAll ? st.athletes : st.athletes.slice(0, max)).map(a => {
         const name = (a.athlete && (a.athlete.displayName || a.athlete.shortName)) || "";
         const cells = idx.map(i => `<td class="num">${i >= 0 && a.stats && a.stats[i] !== undefined ? escapeHtml(a.stats[i]) : "–"}</td>`).join("");
         return `<tr><td>${escapeHtml(name)}</td>${cells}</tr>`;
@@ -375,4 +376,33 @@ function scoringPlays(s, idToSide, abbrOf) {
       <tbody>${rows}</tbody>
     </table>
   </div>`;
+}
+
+/* ---------------- box score for a finished game (team games panel in app.js) ---------------- */
+
+const BOX_CACHE = {};   // ESPN game id -> Promise of the box score HTML
+
+function espnGameUrl(espnId) {
+  return `https://www.espn.com/college-football/boxscore/_/gameId/${encodeURIComponent(espnId)}`;
+}
+
+// Scoring by quarter, team stats, every passer/rusher/receiver and the scoring plays
+// for one finished game. Rejects when ESPN has no box score for it.
+function pastBoxScore(espnId) {
+  if (!BOX_CACHE[espnId]) {
+    BOX_CACHE[espnId] = espnJson(`summary?event=${encodeURIComponent(espnId)}`).then(s => {
+      const comp = s.header && s.header.competitions && s.header.competitions[0];
+      if (!comp) throw new Error("no header");
+      const L = parseCompetition(comp, comp.status);
+      if (!L.away || !L.home || L.state === "pre") throw new Error("no box score yet");
+      const awayAbbr = L.away.abbr, homeAbbr = L.home.abbr;
+      const idToSide = { [L.away.id]: "away", [L.home.id]: "home" };
+      const sideAbbr = side => side === "away" ? awayAbbr : side === "home" ? homeAbbr : "";
+      const top = [lineScore(null, L, awayAbbr, homeAbbr), teamStats(s, idToSide, awayAbbr, homeAbbr)].filter(Boolean);
+      const players = playerStats(s, idToSide, sideAbbr, true);
+      if (!players && top.length < 2) throw new Error("no box score");
+      return `<div class="box-grid">${top.join("")}</div>${players}${scoringPlays(s, idToSide, sideAbbr)}`;
+    }).catch(err => { delete BOX_CACHE[espnId]; throw err; });
+  }
+  return BOX_CACHE[espnId];
 }

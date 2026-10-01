@@ -27,9 +27,10 @@ Refresh `data/data.json` with current 2026 FBS regular-season stats and push it 
 7. Send me a short message: which week the stats now run through, which week's games the landing page shows (and how many), the ATS balance (W = L), any `note:` lines, and anything that fell back or looked off. Nothing else.
 
 ## data.json shape (keys the pages read; the script writes all of them)
-- Top level: `generatedAt`, `season`, `throughWeek`, `gamesCounted`, `source`, `teamNames`, `teams`, `currentWeek`, `pollName`, `weekGames`, `gameLogs`, `hasTargets`, `notes`, `leagueAverage`, `gaugeRanges`.
+- Top level: `generatedAt`, `season`, `throughWeek`, `gamesCounted`, `source`, `teamNames`, `teams`, `currentWeek`, `pollName`, `weekGames`, `gameLogs`, `teamGames`, `hasTargets`, `notes`, `leagueAverage`, `gaugeRanges`.
 - `teams[name]`: `team`, `conference`, `abbr`, `record` {w, l, t, sos, srs, osrs, dsrs}, `offense`, `defense`, `passing`/`rushing`/`receiving` rows (each with `player`, the table stats, `pos`, `log`), `defVsPosition` {rb, recRb, te, wr}, `apRank`, `betting` {ats, fav, dog, home, away: {w,l,p}, ou: {o,u,p}, games: [{w, opp, at, line, score, ats, total?, ou?}]} and `eff` {off, def: {epa, sr, passEpa, rushEpa, plays, epaRank, srRank}}.
 - `weekGames[]`: `id`, `week`, `start`, `timeTbd`, `neutral`, `conferenceGame`, `status`, `statusDetail`, `completed`, `venue`, `city`, `tv`, `note`, `indoor`, `spread` (home side, negative = home favored), `total`, `away`/`home` {name, key, rank, record, conference, score, abbr, qb}, `lineOpen` {spread, total, at}.
+- `teamGames[team name]`: one entry per completed game {w, opp, at?, res, espnId, pass {n, yds, td, cmp, att}, rush {n, yds, td, car}, rec {n, yds, td, rec}} — the team's leaders by yards; the site uses `espnId` to fetch the box score.
 - `gameLogs["ABBR|athlete_id"]`: one entry per game {w, opp, at?, res, cmp, att, pYds, pTd, int, car, rYds, rTd, rec, recYds, recTd, tgt}; zero stats are left out.
 
 ## If the site files are missing

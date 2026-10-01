@@ -405,7 +405,7 @@ function heroTeam(s, t, side, score, sideKey) {
     <div class="hero-team" data-side="${sideKey}">
       <div class="hero-side">${side}</div>
       <div class="hero-score" hidden></div>
-      <div class="hero-name">${rankTag(s.rank)}${escapeHtml(s.name)}</div>
+      <div class="hero-name">${rankTag(s.rank)}${t ? teamLink(t) : escapeHtml(s.name)}</div>
       <div class="hero-rec">${escapeHtml(s.record || "")}${s.conference ? " · " + escapeHtml(s.conference) : ""}${score !== null ? ` · <b>${score}</b>` : ""}</div>
       ${s.qb ? `<div class="hero-qb">QB: ${escapeHtml(s.qb)}</div>` : ""}
       ${srs}
@@ -532,7 +532,7 @@ function renderTeamCard(t) {
   <div class="team-card" data-team="${escapeHtml(t.team)}">
     <div class="team-card-header">
       <div class="team-name-block">
-        <h2>${rankTag(t.apRank)}${escapeHtml(t.team)}</h2>
+        <h2>${rankTag(t.apRank)}${teamLink(t)}</h2>
         <div class="record"><b>${t.record.w}-${t.record.l}${t.record.t ? "-" + t.record.t : ""}</b>${t.conference ? ` <span class="conf">${escapeHtml(t.conference)}</span>` : ""}</div>
       </div>
       <div class="rating-badges">
@@ -1308,6 +1308,170 @@ function propBoards(games) {
     </div>`;
   }).join("");
 }
+
+/* ---------------- Team games: hover tooltip + click panel with box scores ---------------- */
+// DATA.teamGames[team name] = [{ w, opp, at, res, espnId, pass: { n, yds, td, cmp, att }, rush: { n, yds, td, car },
+// rec: { n, yds, td, rec } }], one entry per completed game. pass / rush / rec are that
+// team's leaders by yards in the game. The box score comes from ESPN (pastBoxScore in live.js).
+
+// A team name that opens the team's game list. Plain text when the data has no games.
+function teamGamesOf(t) { return (t && DATA.teamGames && DATA.teamGames[t.team]) || []; }
+function recordText(t) { return `${t.record.w}-${t.record.l}${t.record.t ? "-" + t.record.t : ""}`; }
+function teamLink(t) {
+  const name = escapeHtml(t.team);
+  return teamGamesOf(t).length ? `<button type="button" class="tlink" data-team="${name}">${name}</button>` : name;
+}
+
+function shortName(n) {
+  const p = String(n).trim().split(/\s+/);
+  return p.length > 1 ? `${p[0][0]}. ${p.slice(1).join(" ")}` : String(n);
+}
+const TG_LEADERS = [
+  ["pass", "High passer", "Pass", l => `${l.cmp}/${l.att}`],
+  ["rush", "High rusher", "Rush", l => `${l.car} car`],
+  ["rec", "High receiver", "Rec", l => `${l.rec} rec`],
+];
+function resClass(res) { return res && res[0] === "W" ? "pos" : res && res[0] === "L" ? "neg" : ""; }
+
+function teamTipHtml(t) {
+  const body = teamGamesOf(t).map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>
+    <td class="res ${resClass(e.res)}">${escapeHtml(e.res || "")}</td>
+    ${TG_LEADERS.map(([k]) => `<td>${e[k] ? `${escapeHtml(shortName(e[k].n))} <b>${e[k].yds}</b>` : "—"}</td>`).join("")}</tr>`).join("");
+  return `<div class="ptip-head"><b>${escapeHtml(t.team)}</b><span>${recordText(t)}</span></div>
+    <table><thead><tr><th>Wk</th><th>Opp</th><th>Result</th>${TG_LEADERS.map(([, , l]) => `<th>${l}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table>
+    <div class="ptip-foot">Click for all games and box scores</div>`;
+}
+
+function teamGamesHtml(t) {
+  const cell = (e, [k, label, , extra]) => {
+    const l = e[k];
+    if (!l) return `<td class="gstart tg-lead" data-label="${label}">—</td>`;
+    return `<td class="gstart tg-lead" data-label="${label}"><div class="tg-name">${escapeHtml(l.n)}</div>
+      <div class="tg-line">${extra(l)} · <b>${l.yds}</b> yds${l.td ? ` · ${l.td} TD` : ""}</div></td>`;
+  };
+  const body = teamGamesOf(t).map((e, i) => `<tr class="tg-row" data-i="${i}">
+    <td>${e.w}</td><td>${escapeHtml(oppText(e))}</td><td class="res ${resClass(e.res)}">${escapeHtml(e.res || "")}</td>
+    ${TG_LEADERS.map(c => cell(e, c)).join("")}
+    <td class="gstart tg-go"><button type="button" class="tg-open" data-i="${i}" aria-label="Box score, week ${e.w} ${escapeHtml(oppText(e))}">Box score ›</button></td></tr>`).join("");
+  return `<table class="tg-table">
+    <thead><tr><th>Wk</th><th>Opp</th><th>Result</th>${TG_LEADERS.map(([, l]) => `<th class="gstart">${l}</th>`).join("")}<th class="gstart"></th></tr></thead>
+    <tbody>${body}</tbody></table>`;
+}
+
+(function setupTeamGames() {
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let tip = null, panel = null, lastFocus = null, quiet = false, team = null, showing = 0;
+
+  const teamOf = btn => (DATA && DATA.teams && DATA.teams[btn.dataset.team]) || null;
+  function hideTip() { if (tip) tip.hidden = true; }
+  function showTip(btn) {
+    const t = teamOf(btn);
+    if (!t || !teamGamesOf(t).length || (panel && !panel.hidden)) return;
+    if (!tip) { tip = document.createElement("div"); tip.className = "ptip ttip no-print"; document.body.appendChild(tip); }
+    tip.innerHTML = teamTipHtml(t);
+    tip.hidden = false;
+    const r = btn.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = r.left + r.width / 2 - w / 2, top = r.bottom + 6;
+    if (left + w > window.innerWidth - 8) left = window.innerWidth - w - 8;
+    if (top + h > window.innerHeight - 8) top = r.top - h - 6;
+    tip.style.left = Math.max(8, left) + "px";
+    tip.style.top = Math.max(8, top) + "px";
+  }
+  function closePanel() {
+    if (!panel || panel.hidden) return;
+    panel.hidden = true;
+    showing++;
+    document.body.classList.remove("plog-open");
+    if (lastFocus) { quiet = true; lastFocus.focus(); quiet = false; }
+  }
+  function frame(title, sub, back, body, note) {
+    panel.innerHTML = `<div class="plog-card tg-card" role="dialog" aria-modal="true" aria-labelledby="tgTitle">
+      <div class="plog-top">
+        <div>
+          ${back ? `<button type="button" class="tg-back">← All ${escapeHtml(team.team)} games</button>` : ""}
+          <h3 id="tgTitle">${title}</h3>
+          <div class="plog-sub">${sub}</div>
+        </div>
+        <button type="button" class="plog-close" aria-label="Close">✕</button>
+      </div>
+      <div class="plog-scroll tg-body">${body}</div>
+      <div class="plog-note">${note}</div>
+    </div>`;
+    panel.querySelector(".tg-body").scrollTop = 0;
+  }
+  function showList(focusRow) {
+    showing++;
+    const n = teamGamesOf(team).length;
+    frame(escapeHtml(team.team), `${recordText(team)} · ${n} game${n === 1 ? "" : "s"} · Pick a game to see its box score`, false,
+      teamGamesHtml(team),
+      `High passer, rusher and receiver are ${escapeHtml(team.abbr)}'s leaders by yards in each game. Completed games through Week ${DATA.throughWeek}.`);
+    const target = focusRow != null && panel.querySelector(`.tg-open[data-i="${focusRow}"]`);
+    (target || panel.querySelector(".plog-close")).focus();
+  }
+  function showBox(i) {
+    const e = teamGamesOf(team)[i];
+    if (!e) return;
+    const mine = ++showing;
+    const espn = e.espnId && typeof espnGameUrl === "function"
+      ? ` <a href="${espnGameUrl(e.espnId)}" target="_blank" rel="noopener">Open this game on ESPN ↗</a>` : "";
+    frame(`Week ${e.w} · ${escapeHtml(team.abbr)} ${escapeHtml(oppText(e))}`,
+      `<span class="res ${resClass(e.res)}">${escapeHtml(e.res || "")}</span> · ${escapeHtml(team.team)}`, true,
+      `<div class="empty-note tg-wait">Loading the box score…</div>`, `Box score from ESPN.${espn}`);
+    panel.querySelector(".tg-back").dataset.i = i;
+    panel.querySelector(".tg-back").focus();
+    const body = panel.querySelector(".tg-body");
+    const fail = () => {
+      if (mine !== showing) return;
+      const leaders = TG_LEADERS.filter(([k]) => e[k]).map(([k, label, , extra]) =>
+        `<li>${label}: <b>${escapeHtml(e[k].n)}</b> — ${extra(e[k])}, ${e[k].yds} yds${e[k].td ? `, ${e[k].td} TD` : ""}</li>`).join("");
+      body.innerHTML = `<div class="empty-note">The box score for this game isn't available right now.${espn}</div>
+        ${leaders ? `<ul class="tg-fallback">${leaders}</ul>` : ""}`;
+    };
+    if (!e.espnId || typeof pastBoxScore !== "function") { fail(); return; }
+    pastBoxScore(e.espnId).then(html => { if (mine === showing) body.innerHTML = html; }, fail);
+  }
+  function openPanel(btn) {
+    const t = teamOf(btn);
+    if (!t || !teamGamesOf(t).length) return;
+    hideTip();
+    if (!panel) {
+      panel = document.createElement("div");
+      panel.className = "plog tgames no-print";
+      panel.addEventListener("click", e => {
+        if (e.target === panel || e.target.closest(".plog-close")) { closePanel(); return; }
+        const back = e.target.closest(".tg-back");
+        if (back) { showList(back.dataset.i); return; }
+        const row = e.target.closest(".tg-row");
+        if (row) showBox(+row.dataset.i);
+      });
+      document.body.appendChild(panel);
+    }
+    lastFocus = btn;
+    team = t;
+    panel.hidden = false;
+    document.body.classList.add("plog-open");
+    showList();
+  }
+
+  document.addEventListener("click", e => {
+    const btn = e.target.closest(".tlink");
+    if (btn) openPanel(btn);
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { closePanel(); hideTip(); } });
+  if (canHover) {
+    document.addEventListener("mouseover", e => {
+      const btn = e.target.closest(".tlink");
+      if (btn) showTip(btn);
+    });
+    document.addEventListener("mouseout", e => {
+      const btn = e.target.closest(".tlink");
+      if (btn && !btn.contains(e.relatedTarget)) hideTip();
+    });
+    document.addEventListener("focusin", e => { const b = e.target.closest && e.target.closest(".tlink"); if (b && !quiet) showTip(b); });
+    document.addEventListener("focusout", e => { if (e.target.closest && e.target.closest(".tlink")) hideTip(); });
+  }
+  window.addEventListener("scroll", hideTip, { passive: true });
+})();
 
 function escapeHtml(str) {
   return String(str)

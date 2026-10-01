@@ -995,6 +995,64 @@ body.plog-open { overflow: hidden; }
   .ptip, .plog { display: none !important; }
 }
 
+/* ---------------- Team games: tooltip + panel with box scores (app.js) ---------------- */
+.tlink {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+  text-decoration: underline dotted var(--text-dim);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.tlink:hover, .tlink:focus-visible { color: var(--accent); text-decoration-color: var(--accent); outline: none; }
+@media print { .tlink { text-decoration: none; color: inherit; } }
+.ttip td { white-space: nowrap; }
+.ttip td.res.pos, .tg-card .res.pos { color: var(--good); }
+.ttip td.res.neg, .tg-card .res.neg { color: var(--neg); }
+.tg-card .plog-scroll { padding-bottom: 4px; }
+.tg-table { width: 100%; }
+.tg-table td { vertical-align: top; }
+.tg-table td:nth-child(-n+3) { white-space: nowrap; }
+.tg-row { cursor: pointer; }
+.tg-row:hover td, .tg-row:focus-within td { background: var(--panel-alt); }
+.tg-name { font-weight: 600; }
+.tg-line { color: var(--text-dim); font-size: 0.76rem; white-space: nowrap; }
+.tg-line b { color: var(--text); }
+.tg-open, .tg-back {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tg-open:hover, .tg-open:focus-visible, .tg-back:hover, .tg-back:focus-visible { text-decoration: underline; outline: none; }
+.tg-back { display: block; margin-bottom: 6px; }
+.tg-card .plog-note a, .tg-card .empty-note a { color: var(--accent); }
+.tg-fallback { margin: 10px 0 4px; padding-left: 18px; font-size: 0.85rem; color: var(--text-dim); }
+.tg-fallback b { color: var(--text); }
+.tg-wait { padding: 24px 0; }
+/* phones: one block per game instead of a wide table */
+@media (max-width: 640px) {
+  .tg-table thead { display: none; }
+  .tg-table, .tg-table tbody { display: block; }
+  .tg-row { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 10px; padding: 10px 0; border-top: 1px solid var(--border); }
+  .tg-row:first-child { border-top: 0; padding-top: 2px; }
+  .tg-row td { display: block; padding: 0; border: 0 !important; background: none !important; }
+  .tg-row td:first-child::before { content: "Wk "; color: var(--text-dim); }
+  .tg-row td:nth-child(2) { font-weight: 600; }
+  .tg-row td.tg-lead { grid-column: 1 / -1; display: grid; grid-template-columns: 6.6em 1fr; column-gap: 8px; }
+  .tg-row td.tg-lead::before { content: attr(data-label); grid-row: 1 / span 2; color: var(--text-dim); font-size: 0.76rem; padding-top: 2px; }
+  .tg-row td.tg-go { grid-column: 1 / -1; }
+}
+
 /* ---------------- Betting trends, prop check, player search, lines, Weekly Edges ---------------- */
 .bet-section { margin-top: 8px; }
 .bet-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }

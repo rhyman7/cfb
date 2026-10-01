@@ -62,6 +62,15 @@ and zero-value stats are left out of each game. The ESPN box scores have no
 targets, so the log table shows receptions, yards, TDs and Y/R; targets from
 play-by-play are in the log data for the prop check.
 
+**Team games and box scores.** FBS team names in the matchup header and on every
+team card are clickable. Hovering (on a computer) shows the team's games this
+season: week, opponent, result, and the team's high passer, rusher and receiver by
+yards. Clicking or tapping opens a panel with the same list; pick a game to see
+its box score (scoring by quarter, team stats, every passer, rusher and receiver,
+scoring plays), which the browser fetches from ESPN using the game's id. If ESPN
+can't be reached the panel says so and links to the game on ESPN. The lists live
+in `teamGames` in `data/data.json`, keyed by team name, one compact line per team.
+
 **Player search.** Every page's top bar has a search box: type two letters,
 pick a player (name, position, team; arrow keys and Enter work) and his game
 log opens.

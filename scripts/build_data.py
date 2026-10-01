@@ -617,6 +617,11 @@ def build(season, cache, prev_path=None):
     if kept:
         notes.append(f"lineOpen kept for {kept} of {len(games)} Week {cur_week} games from the week's first build")
 
+    # each team's games so far with the game's top passer, rusher and receiver
+    athlete_names = {int(i): str(n) for i, n in pd.concat([passing, rushing, receiving])
+                     .dropna(subset=["athlete_id"]).groupby("athlete_id")["athlete_name"].last().items()}
+    team_games = team_game_list(results, pg, athlete_names, id_to_name)
+
     bet = betting_trends(g, lines, results, set(per.index))
     eff = efficiency(pbp, game_ids, set(per.index)) if pbp is not None else {}
     if pbp is None:
@@ -637,6 +642,7 @@ def build(season, cache, prev_path=None):
         "pollName": "AP Top 25",
         "weekGames": games,
         "gameLogs": game_logs,
+        "teamGames": team_games,
         "hasTargets": pbp is not None,
         "notes": notes,
         "leagueAverage": {"rushTdG": r1(per["rushTdG"].mean()), "passTdG": r1(per["passTdG"].mean()),
@@ -651,15 +657,49 @@ def build(season, cache, prev_path=None):
     return out
 
 
+def team_game_list(results, pg, names, team_names):
+    """Each FBS team's completed games in order: opponent, result, the ESPN game id (for the
+    box score the site fetches) and that team's top passer, rusher and receiver by yards.
+
+    results: (game_id, team_id) -> {w, opp, at, res}. pg: per-player game stats indexed by
+    (team_id, athlete_id, game_id). Returns {team name: [{w, opp, at?, res, espnId, pass,
+    rush, rec}]}; pass = {n, yds, td, cmp, att}, rush = {n, yds, td, car}, rec = {n, yds,
+    td, rec}. A leader is left out when the box score has nobody with an attempt, carry
+    or catch for that team."""
+    LEADERS = (("pass", "att", "pYds", "pTd", {"cmp": "cmp", "att": "att"}),
+               ("rush", "car", "rYds", "rTd", {"car": "car"}),
+               ("rec", "rec", "recYds", "recTd", {"rec": "rec"}))
+    by_team_game = {k: d for k, d in pg.groupby(level=[0, 2])}
+    out = {}
+    for (gid, tid), res in sorted(results.items(), key=lambda kv: (kv[1]["w"], kv[0][0])):
+        name = team_names.get(int(tid))
+        if not name:
+            continue
+        entry = {k: v for k, v in res.items() if v or k != "at"}  # "at" only when away
+        entry["espnId"] = str(int(gid))
+        rows = by_team_game.get((tid, gid))
+        if rows is not None:
+            for key, need, yds, td, extra in LEADERS:
+                d = rows[rows[need] > 0]
+                if d.empty:
+                    continue
+                top = d.sort_values([yds, td], ascending=False).iloc[0]
+                entry[key] = {"n": names.get(int(top.name[1]), "?"), "yds": int(top[yds]), "td": int(top[td]),
+                              **{k: int(top[col]) for k, col in extra.items()}}
+        out.setdefault(name, []).append(entry)
+    return out
+
+
 def write_json(data, path):
-    """Write data.json indented, except gameLogs: one compact line per player log,
-    which keeps the file a fraction of the size of indenting every game entry."""
-    logs = data.get("gameLogs") or {}
-    marker = "__GAME_LOGS__"
-    text = json.dumps({**data, "gameLogs": marker}, indent=1, ensure_ascii=False)
-    body = ",\n".join(f"  {json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False, separators=(',', ':'))}"
-                      for k, v in logs.items())
-    text = text.replace(json.dumps(marker), "{\n" + body + "\n }" if logs else "{}", 1)
+    """Write data.json indented, except gameLogs and teamGames: one compact line per
+    player log / per team, which keeps the file a fraction of the size of indenting
+    every game entry."""
+    compact = {k: data[k] for k in ("gameLogs", "teamGames") if k in data}
+    text = json.dumps({**data, **{k: f"__{k}__" for k in compact}}, indent=1, ensure_ascii=False)
+    for name, rows in compact.items():
+        body = ",\n".join(f"  {json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False, separators=(',', ':'))}"
+                          for k, v in rows.items())
+        text = text.replace(json.dumps(f"__{name}__"), "{\n" + body + "\n }" if rows else "{}", 1)
     with open(path, "w", encoding="utf-8") as f:
         f.write(text)
 
