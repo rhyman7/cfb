@@ -558,10 +558,10 @@ def build(season, cache, prev_path=None):
         pdx = passing[passing["team_id"] == t].groupby("athlete_id").agg(
             player=("athlete_name", "last"), gp=("game_id", "nunique"),
             yds=("passingYards", "sum"), td=("passingTouchdowns", "sum"), it=("interceptions", "sum"),
-            att=("att", "sum")).reset_index()
+            att=("att", "sum"), cmp=("cmp", "sum")).reset_index()
         pdx = top(pdx[pdx["att"] > 0], 6, p.gp)
         pass_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                      "int": r2(r.it / r.gp), "pos": pos_all.get(int(r.athlete_id), ""), "log": add_log(t, r.athlete_id)} for r in pdx.itertuples()]
+                      "int": r2(r.it / r.gp), "cmp": r1(r.cmp / r.gp), "pos": pos_all.get(int(r.athlete_id), ""), "log": add_log(t, r.athlete_id)} for r in pdx.itertuples()]
 
         rdx = rushing[rushing["team_id"] == t].groupby("athlete_id").agg(
             player=("athlete_name", "last"), gp=("game_id", "nunique"),

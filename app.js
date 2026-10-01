@@ -607,6 +607,7 @@ function renderTeamCard(t) {
         ["Yds/G", "ydsG", "num"],
         ["TD", "td", "num"],
         ["Int", "int", "num"],
+        ["Cmp/G", "cmp", "num"],
       ])}
       ${playerTable("Rushing", t.rushing, [
         ["Player", "player", "text"],
@@ -671,7 +672,7 @@ function playerTable(title, rows, cols) {
   const kind = title.toLowerCase();
   const body = rows.map(r => {
     const cells = cols.map(([, key, type]) => {
-      const txt = escapeHtml(String(r[key]));
+      const txt = escapeHtml(String(r[key] ?? "—"));
       const val = key === "player" && r.log && DATA.gameLogs && DATA.gameLogs[r.log]
         ? `<button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>`
         : txt;
