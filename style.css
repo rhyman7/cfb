@@ -1112,3 +1112,26 @@ body.plog-open { overflow: hidden; }
   .psearch, .bet-section { display: none !important; }
 }
 .board-count:empty { display: none; }
+
+/* ---------- Search in nav bar + link to the other league (right column) ---------- */
+.topnav { flex-wrap: wrap; align-items: center; }
+.topnav .psearch { justify-self: auto; width: 200px; }
+.league-link {
+  justify-self: end;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  white-space: nowrap;
+}
+.league-link:hover { background: var(--accent-soft); }
+.league-link::after { content: " \2192"; }
+@media (max-width: 820px) {
+  .topnav .psearch { width: 100%; }
+  .league-link { justify-self: center; }
+}
+@media print { .league-link { display: none !important; } }
+.topbar h1 { white-space: nowrap; }

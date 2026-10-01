@@ -257,7 +257,7 @@ function initMatchup() {
   }
 
   const tag = s => `${s.rank ? "#" + s.rank + " " : ""}${s.abbr || s.name}`;
-  document.title = `${tag(g.away)} ${g.neutral ? "vs" : "@"} ${tag(g.home)} · CFB Matchup Dashboard`;
+  document.title = `${tag(g.away)} ${g.neutral ? "vs" : "@"} ${tag(g.home)} · CFB Matchups`;
 
   const parts = renderMatchupParts(g);
   head.innerHTML = parts.head;
@@ -311,7 +311,7 @@ function initPrintAll() {
   const games = ids.length ? ids.map(id => all.find(g => g.id === id)).filter(Boolean) : all;
   const wrap = document.getElementById("printAll");
   const status = document.getElementById("printStatus");
-  document.title = `Week ${DATA.currentWeek} matchups (${games.length}) · CFB Matchup Dashboard`;
+  document.title = `Week ${DATA.currentWeek} matchups (${games.length}) · CFB Matchups`;
 
   if (!games.length) {
     status.textContent = "No games to print.";
@@ -1155,7 +1155,7 @@ function initPlayerSearch() {
   wrap.className = "psearch no-print";
   wrap.innerHTML = `<input type="search" placeholder="Search players" aria-label="Search players" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="psearchList">
     <ul class="psearch-list" id="psearchList" role="listbox" hidden></ul>`;
-  bar.appendChild(wrap);
+  (bar.querySelector(".topnav") || bar).appendChild(wrap);
   const input = wrap.querySelector("input"), list = wrap.querySelector("ul");
   let hits = [], active = -1;
   const norm = x => x.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[.'’-]/g, "");
