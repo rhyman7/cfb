@@ -21,6 +21,7 @@
   --tc: #3a3f47;
   --tc-on: #f2f1ee;
   --tc-on2: #f2f1ee;
+  --tc-on2s: #f2f1ee;
   --tc-ink: #f2f1ee;
   --tc-inkp: #111318;
 }
@@ -222,6 +223,7 @@ a.pdf-btn[hidden] { display: none; }
 .ou-pre, .imp-pre { display: none; }
 .game-sit { color: var(--text); }
 .poss { margin-left: 6px; font-size: 0.6em; vertical-align: 0.2em; }
+.hero-score .poss { margin-left: 8px; font-size: 0.875rem; vertical-align: middle; }
 .bye-note { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.875rem; }
 
 /* ---------- Matchup page: scorebug ---------- */
@@ -255,9 +257,9 @@ a.pdf-btn[hidden] { display: none; }
   grid-template-areas: "side side" "score name" "rec rec";
   text-align: right;
 }
-.hero-side { grid-area: side; font-size: 0.8125rem; font-weight: 600; }
-.hero-name { grid-area: name; font-size: 2.875rem; line-height: 0.95; font-stretch: 62%; font-weight: 800; text-wrap: balance; }
-.hero-rec { grid-area: rec; font-size: 0.875rem; font-weight: 500; }
+.hero-side { grid-area: side; font-size: 0.8125rem; font-weight: 600; color: var(--tc-on2s); }
+.hero-name { grid-area: name; min-width: 0; font-size: 2.875rem; line-height: 0.95; font-stretch: 62%; font-weight: 800; text-wrap: balance; overflow-wrap: break-word; }
+.hero-rec { grid-area: rec; font-size: 0.875rem; font-weight: 500; color: var(--tc-on2s); }
 .hero-score { grid-area: score; font-size: 3.75rem; line-height: 0.9; font-stretch: 62%; font-weight: 800; }
 .hero-score[hidden] { display: none; }
 .hero-score.lost { opacity: 0.6; }
@@ -666,10 +668,31 @@ body.plog-open { overflow: hidden; }
 .bet-note { margin: 8px 0 0; font-size: 0.78rem; color: var(--text-dim); }
 
 /* ---------- Smaller screens ---------- */
+/* The scorebug three across on a narrower window: names and scores scale with the window,
+   so a long name and a live score both fit inside the team's block. */
+@media screen and (min-width: 901px) and (max-width: 1240px) {
+  .hero-team { gap: 6px 12px; padding: 24px 22px; }
+  .hero-name { font-size: clamp(1.75rem, 3.4vw, 2.875rem); }
+  .hero-score { font-size: clamp(2.5rem, 4.6vw, 3.75rem); }
+}
+
 @media (max-width: 900px) {
   .edge-grid, .box-grid { grid-template-columns: minmax(0, 1fr); }
   .stat-columns, .tables-row { grid-template-columns: minmax(0, 1fr); }
   .center-col { flex-direction: row; justify-content: space-around; }
+}
+
+/* Below this the blocks are too narrow for a name beside a score: stack the scorebug.
+   Screen only, so the printed page keeps its three-across header. */
+@media screen and (max-width: 900px) {
+  .game-hero { grid-template-columns: minmax(0, 1fr); }
+  .hero-team, .hero-team[data-side="home"] {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "side side" "name score" "rec rec";
+    padding: 18px 22px;
+    text-align: left;
+  }
+  .hero-mid { padding: 18px 16px; }
 }
 
 @media (max-width: 820px) {
@@ -724,16 +747,9 @@ body.plog-open { overflow: hidden; }
 }
 
 @media (max-width: 700px) {
-  .game-hero { grid-template-columns: minmax(0, 1fr); }
-  .hero-team, .hero-team[data-side="home"] {
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas: "side side" "name score" "rec rec";
-    padding: 18px 18px;
-    text-align: left;
-  }
+  .hero-team, .hero-team[data-side="home"] { padding: 18px 18px; }
   .hero-name { font-size: 2.125rem; }
   .hero-score { font-size: 2.75rem; }
-  .hero-mid { padding: 18px 16px; }
   .hero-facts { flex-direction: column; gap: 2px; }
   .section-title { margin-top: 32px; }
   .team-card { padding: 18px 16px 20px; }
