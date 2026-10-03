@@ -495,7 +495,7 @@ function nonFbsCard(s) {
   return `<div class="team-card" data-team="${escapeHtml(s.name)}" style="${teamVars(s.name)}">
     <div class="team-card-header">
       <div class="team-name-block">
-        ${slabHtml(s.abbr || s.name, s.name, true)}
+        ${slabHtml(s.abbr || s.name, s.name)}
         <h2>${escapeHtml(s.name)}</h2>
         <div class="record"><b>${escapeHtml(s.record || "")}</b> <span class="conf">${escapeHtml(s.conference || "FCS")}</span></div>
       </div>
@@ -556,7 +556,7 @@ function renderTeamCard(t) {
   <div class="team-card" data-team="${escapeHtml(t.team)}" style="${teamVars(t.team)}">
     <div class="team-card-header">
       <div class="team-name-block">
-        ${slabHtml(t.abbr, t.team, true)}
+        ${slabHtml(t.abbr, t.team)}
         <h2>${rankTag(t.apRank)}${teamLink(t)}</h2>
         <div class="record"><b>${t.record.w}-${t.record.l}${t.record.t ? "-" + t.record.t : ""}</b>${t.conference ? ` <span class="conf">${escapeHtml(t.conference)}</span>` : ""}</div>
       </div>

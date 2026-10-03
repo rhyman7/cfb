@@ -141,7 +141,7 @@ a.pdf-btn[hidden] { display: none; }
   height: 32px;
   border-radius: 5px;
   background: var(--tc);
-  color: var(--tc-on);
+  color: var(--tc-on2);
   font-size: 1.0625rem;
   line-height: 1;
   font-stretch: 62%;
@@ -151,7 +151,6 @@ a.pdf-btn[hidden] { display: none; }
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
-.slab.two { color: var(--tc-on2); }
 .slab.long { font-size: 0.875rem; letter-spacing: 0; }
 .tc { color: var(--tc-ink); }
 

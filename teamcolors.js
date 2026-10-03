@@ -316,7 +316,7 @@ function tcReadable(hex, bg, floor, dir) {
 
 const TC_CACHE = {};
 // bg: the block's fill. on: black or white lettering on it. on2: the secondary color as
-// lettering on it. ink: the team color as text, bars and dials on the dark page.
+// lettering on it (the blocks use this). ink: the team color as text, bars and dials on the dark page.
 // inkp: the same for print.
 function teamColors(key) {
   if (TC_CACHE[key]) return TC_CACHE[key];
@@ -336,8 +336,8 @@ function teamVars(key) {
   const c = teamColors(key);
   return `--tc:${c.bg};--tc-on:${c.on};--tc-on2:${c.on2};--tc-ink:${c.ink};--tc-inkp:${c.inkp}`;
 }
-// The team's block: its abbreviation on its color. two = letter it in the secondary color.
-function slabHtml(abbr, key, two) {
+// The team's block: its abbreviation, lettered in the secondary color, on its primary color.
+function slabHtml(abbr, key) {
   const a = String(abbr || "");
-  return `<span class="slab${two ? " two" : ""}${a.length > 4 ? " long" : ""}" style="${teamVars(key)}">${a.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</span>`;
+  return `<span class="slab${a.length > 4 ? " long" : ""}" style="${teamVars(key)}">${a.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</span>`;
 }
