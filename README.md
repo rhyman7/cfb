@@ -13,10 +13,15 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 - **`index.html` — This week's games.** The current week's slate grouped by
   day, with kickoff time, TV, venue, records and AP Top 25 ranks. Filter
   by conference, Top 25, or team name. Click a game to open its matchup.
-  Before kickoff, the favored team's row shows the spread (e.g. -6), the
-  other team's row shows the O/U (PK on the first row for a pick'em), and a
-  game-time forecast sits under the teams (see below). Once a game starts,
-  the scores take that spot.
+  The slate is a board with one row per game: both teams (a block in the
+  team's color, record and conference), the spread, the total, implied team
+  totals and the venue, in fixed columns so the lines read straight down. A
+  spread or total that has moved shows what it opened at underneath, and the
+  venue line carries the game-time forecast (see below). Once a game starts,
+  scores join the teams and the implied column shows the game's status.
+  Team colors come from `teamcolors.js` (every FBS and FCS team's primary and
+  secondary color, from ESPN's team list); the type is Archivo, loaded from
+  Google Fonts.
 - **`matchup.html?game=<ESPN game id>` — One game.** A game header (records,
   AP rank, QB, SRS, kickoff, venue, indoors/outdoors, spread, O/U), a Head to
   Head section comparing each offense with the other defense (FBS ranks, with
@@ -95,8 +100,8 @@ Percentages leave out pushes; neutral-site games count toward overall, Fav
 and Dog but not Home or Away. Games without a line (all FBS-vs-FCS games) are
 skipped. The data is `betting` on each team. It's left out of printouts.
 
-**Implied totals and line movement.** The matchup header, the week's game
-cards and Weekly Edges show implied team totals from the current spread and
+**Implied totals and line movement.** The matchup header, the week
+board and Weekly Edges show implied team totals from the current spread and
 O/U: favorite = (total + spread) ÷ 2. Each week game carries `lineOpen`, the
 consensus line from the week's first build; the build keeps it when it reruns
 for the same week, and the pages show "Line move since <day>: spread A → B ·

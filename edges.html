@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weekly Edges · CFB Matchups</title>
-<link rel="stylesheet" href="style.css?v=202610011909">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="style.css?v=202610031700">
 </head>
 <body data-page="edges">
 <header class="topbar">
@@ -31,20 +34,21 @@
     </div>
   </section>
 
-  <h3 class="section-title">Game Board</h3>
+  <h3 class="section-title">Game board</h3>
   <div id="gameBoard" class="table-block board-block"><div class="empty-note">Loading...</div></div>
   <p class="edge-key">Sorted by kickoff. Spread and O/U are the current line (ESPN when available, otherwise the weekly cfbfastR consensus); implied team totals come from them, favorite = (O/U + spread) ÷ 2. Line move compares the weekly consensus line at this week's first update with the latest update. Net EPA = offense EPA/play minus defense EPA/play allowed (from cfbfastR play-by-play); the column names the team with the better net number and the gap between the two. Non-FBS teams have no stats, so their games show dashes there.</p>
 
-  <h3 class="section-title">Prop Matchups</h3>
+  <h3 class="section-title">Prop matchups</h3>
   <p class="edge-key edge-intro">FBS-vs-FBS games only. Players facing defenses that allow more than the FBS average for their position. <b>Matchup</b> = what this opponent allows per game ÷ the FBS average; <b>Adj</b> = the player's average × Matchup. Top 10 by Adj; only players who've appeared (with that stat) in at least half their team's games. It's a starting point for props, not a projection. Click a name for his game log and prop check.</p>
   <div id="propBoards" class="prop-boards"></div>
 </main>
 
 <footer class="no-print">
-  <p>All FBS teams · 2026 regular season · updated weekly. <span id="sourceNote"></span></p>
+  <p>All FBS teams, 2026 regular season, updated weekly. <span id="sourceNote"></span></p>
 </footer>
 
-<script src="app.js?v=202610011909"></script>
-<script src="live.js?v=202610011909"></script>
+<script src="teamcolors.js?v=202610031700"></script>
+<script src="app.js?v=202610031700"></script>
+<script src="live.js?v=202610031700"></script>
 </body>
 </html>

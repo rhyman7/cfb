@@ -209,7 +209,7 @@ function startLiveMatchup(g) {
       }
     } catch (err) {
       if (!g.completed && inGameWindow(g, now) && box.hidden) {
-        box.innerHTML = `<h3 class="section-title">Box Score</h3><div class="empty-note">The live box score isn't available right now.</div>`;
+        box.innerHTML = `<h3 class="section-title">Box score</h3><div class="empty-note">The live box score isn't available right now.</div>`;
         box.hidden = false;
       }
     }
@@ -231,13 +231,14 @@ function updateHeroLive(g, L) {
       const lead = L.state === "post" && other && other.score != null && L[side].score > other.score;
       el.innerHTML = `${L[side].score}${L.state === "in" && L.possession === side ? ' <span class="poss" title="Has the ball">●</span>' : ""}`;
       el.classList.toggle("won", lead);
+      el.classList.toggle("lost", L.state === "post" && other && other.score != null && L[side].score < other.score);
       el.hidden = false;
     });
   }
   if (!line) return;
   if (L.state === "in") {
     line.innerHTML = `<span class="live-badge">Live</span> ${escapeHtml(L.detail)}` +
-      (L.downDistance ? ` · ${escapeHtml(L.downDistance)}` : "");
+      (L.downDistance ? `, ${escapeHtml(L.downDistance)}` : "");
     line.hidden = false;
   } else if (L.state === "post") {
     line.innerHTML = `<span class="final-badge">${escapeHtml(L.detail || "Final")}</span>`;
@@ -263,11 +264,11 @@ function renderBoxScore(g, L, s) {
   const scoring = scoringPlays(s, idToSide, abbrOf);
 
   return `
-    <h3 class="section-title">Box Score ${status}</h3>
+    <h3 class="section-title">Box score ${status}</h3>
     <div class="box-grid">${parts.join("")}</div>
     ${players}
     ${scoring}
-    <p class="edge-key">Live data from ESPN${L.state === "in" ? " · updates every 30 seconds" : ""}. Season stats below are as of Week ${DATA.throughWeek}.</p>`;
+    <p class="edge-key">Live data from ESPN${L.state === "in" ? ", updates every 30 seconds" : ""}. Season stats below are as of Week ${DATA.throughWeek}.</p>`;
 }
 
 function lineScore(g, L, awayAbbr, homeAbbr) {
