@@ -4,13 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ratings Explained · CFB Matchups</title>
-<link rel="stylesheet" href="style.css?v=202610011909">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="style.css?v=202610031730">
 <style>
   .rx { max-width: 820px; margin: 0 auto; line-height: 1.6; }
-  .rx h2 { font-size: 1.6rem; margin: 4px 0 6px; }
+  .rx h2 { font-size: 2.5rem; line-height: 1.05; font-stretch: 62%; font-weight: 800; margin: 4px 0 10px; }
   .rx .lede { color: var(--text-dim); margin: 0 0 24px; }
-  .rx h3 { margin: 0 0 4px; font-size: 1.1rem; }
-  .rx .abbr { color: var(--accent); font-weight: 700; letter-spacing: 0.03em; }
+  .rx h3 { margin: 0 0 4px; font-size: 1.1rem; font-weight: 600; }
+  .rx .abbr { margin-right: 8px; font-size: 1.375rem; font-stretch: 68%; font-weight: 700; }
   .rx .card {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -22,7 +25,6 @@
   .rx .read { color: var(--text-dim); font-size: 0.92rem; }
   .rx .formula {
     display: inline-block;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     background: var(--panel-alt);
     border: 1px solid var(--border);
     border-radius: 6px;
@@ -30,7 +32,7 @@
     font-size: 0.9rem;
   }
   .rx .section { margin-top: 30px; }
-  .rx .section h3 { font-size: 1.2rem; margin-bottom: 8px; }
+  .rx .section h3 { font-size: 1.625rem; line-height: 1.1; font-stretch: 62%; font-weight: 800; margin-bottom: 8px; }
   .rx ul { padding-left: 20px; margin: 6px 0; }
   .rx li { margin: 4px 0; }
   .rx .example { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0 8px; }
@@ -41,8 +43,8 @@
     padding: 10px;
     text-align: center;
   }
-  .rx .example .lbl { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
-  .rx .example .val { font-size: 1.3rem; font-weight: 700; }
+  .rx .example .lbl { display: block; font-size: 0.78rem; color: var(--text-dim); }
+  .rx .example .val { font-size: 1.625rem; font-stretch: 62%; font-weight: 800; }
   .rx .pos { color: var(--good); }
   .rx .neg { color: var(--neg); }
   @media (max-width: 600px) { .rx .example { grid-template-columns: repeat(2, 1fr); } }
@@ -68,7 +70,7 @@
       better than average and negative is worse.</p>
 
     <div class="card">
-      <h3><span class="abbr">SRS</span> · Simple Rating System</h3>
+      <h3><span class="abbr">SRS</span>Simple Rating System</h3>
       <p>The team's overall strength. It is based on points scored and allowed, adjusted for
         how good every opponent was. An SRS of +14 means the team is about 14 points better
         than an average FBS team on a neutral field.</p>
@@ -76,14 +78,14 @@
     </div>
 
     <div class="card">
-      <h3><span class="abbr">OSRS</span> · Offensive SRS</h3>
+      <h3><span class="abbr">OSRS</span>Offensive SRS</h3>
       <p>The offense's share of SRS. It measures how many more points per game the team scores
         than an average team would, after accounting for the defenses it has faced. Higher means
         a better offense.</p>
     </div>
 
     <div class="card">
-      <h3><span class="abbr">DSRS</span> · Defensive SRS</h3>
+      <h3><span class="abbr">DSRS</span>Defensive SRS</h3>
       <p>The defense's share of SRS. It measures how many fewer points per game the team allows
         than an average team would, after accounting for the offenses it has faced. The sign is
         flipped so that <b>higher is better</b>: +7 means the defense gives up about 7 fewer
@@ -91,7 +93,7 @@
     </div>
 
     <div class="card">
-      <h3><span class="abbr">SoS</span> · Strength of Schedule</h3>
+      <h3><span class="abbr">SoS</span>Strength of Schedule</h3>
       <p>The average SRS of the FBS opponents the team has played so far. Positive means a
         tougher-than-average schedule, negative means an easier one. It describes games already
         played, not the rest of the season.</p>
@@ -137,7 +139,7 @@
 </main>
 
 <footer class="no-print">
-  <p>All FBS teams · 2026 regular season · updated weekly.</p>
+  <p>All FBS teams, 2026 regular season, updated weekly.</p>
 </footer>
 
 <script>
@@ -167,6 +169,7 @@
     .catch(function () { /* example is optional; the definitions stand on their own */ });
 })();
 </script>
-<script src="app.js?v=202610011909"></script>
+<script src="teamcolors.js?v=202610031730"></script>
+<script src="app.js?v=202610031730"></script>
 </body>
 </html>

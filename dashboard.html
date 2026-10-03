@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compare Teams · CFB Matchups</title>
-<link rel="stylesheet" href="style.css?v=202610011909">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="style.css?v=202610031730">
 </head>
 <body data-page="dashboard">
 <header class="topbar">
@@ -24,22 +27,23 @@
       <label for="team1Select">Team 1</label>
       <select id="team1Select"></select>
     </div>
-    <div class="vs">VS</div>
+    <div class="vs">vs</div>
     <div class="picker">
       <label for="team2Select">Team 2</label>
       <select id="team2Select"></select>
     </div>
-    <button id="printBothBtn" class="print-btn" type="button">🖨 Print Matchup</button>
+    <button id="printBothBtn" class="print-btn" type="button">Print matchup</button>
   </section>
 
   <section id="teamCards"></section>
 </main>
 
 <footer class="no-print">
-  <p>All FBS teams · 2026 regular season · updated weekly. <span id="sourceNote"></span></p>
+  <p>All FBS teams, 2026 regular season, updated weekly. <span id="sourceNote"></span></p>
 </footer>
 
-<script src="app.js?v=202610011909"></script>
-<script src="live.js?v=202610011909"></script>
+<script src="teamcolors.js?v=202610031730"></script>
+<script src="app.js?v=202610031730"></script>
+<script src="live.js?v=202610031700"></script>
 </body>
 </html>

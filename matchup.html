@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matchup · CFB Matchups</title>
-<link rel="stylesheet" href="style.css?v=202610011909">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="style.css?v=202610031730">
 </head>
 <body data-page="matchup" class="mprint">
 <header class="topbar">
@@ -20,8 +23,8 @@
 
 <main id="app">
   <div class="matchup-bar no-print">
-    <a class="back-link" href="index.html">← All games this week</a>
-    <button id="printBothBtn" class="print-btn" type="button">🖨 Print Matchup</button>
+    <a class="back-link" href="index.html">All games this week</a>
+    <button id="printBothBtn" class="print-btn" type="button">Print matchup</button>
   </div>
   <section id="matchupHeader" class="matchup-header m-head"></section>
   <section id="boxscore" class="boxscore no-print" hidden></section>
@@ -30,11 +33,12 @@
 </main>
 
 <footer class="no-print">
-  <p>All FBS teams · 2026 regular season · updated weekly. <span id="sourceNote"></span> <a href="https://open-meteo.com/" rel="noopener">Weather data by Open-Meteo.com</a>.</p>
+  <p>All FBS teams, 2026 regular season, updated weekly. <span id="sourceNote"></span> <a href="https://open-meteo.com/" rel="noopener">Weather data by Open-Meteo.com</a>.</p>
 </footer>
 
-<script src="app.js?v=202610011909"></script>
-<script src="live.js?v=202610011909"></script>
+<script src="teamcolors.js?v=202610031730"></script>
+<script src="app.js?v=202610031730"></script>
+<script src="live.js?v=202610031700"></script>
 <script src="weather.js?v=202609301330"></script>
 </body>
 </html>
