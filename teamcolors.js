@@ -314,19 +314,52 @@ function tcReadable(hex, bg, floor, dir) {
   return tcContrast("#ffffff", bg) >= tcContrast(TC_DARK, bg) ? "#ffffff" : TC_DARK;
 }
 
+// The secondary color as lettering on the team's block. It is used exactly as listed
+// whenever it can be read there: 3:1 against the block for the big bold lettering (the
+// abbreviation, the name and the score), 4.5:1 for the small lines under the name. Grays
+// are held to 4.5:1 at any size, because a gray that only just clears 3:1 looks muddy on a color.
+// When the listed color falls short, its lightness moves the shorter way to the floor, same
+// hue, so gold stays gold and navy stays navy. It is never pushed so far that a bright color
+// reads as black or white; when that is the only way, or the secondary is itself black or
+// white, the lettering is plain white or dark instead.
+function tcLetter(sec, bg, big) {
+  let plain = tcContrast("#ffffff", bg) >= tcContrast(TC_DARK, bg) ? "#ffffff" : TC_DARK;
+  // a mid-tone block where neither quite reaches 4.5:1 gets true black, the most it can have
+  if (tcContrast(plain, bg) < 4.5 && tcContrast("#000000", bg) > tcContrast(plain, bg)) plain = "#000000";
+  if (!sec) return plain;
+  const [h, s, l] = tcHsl(sec), rgb = tcRgb(sec);
+  const neutral = Math.max(...rgb) - Math.min(...rgb) < 0.1;   // black, white or gray
+  const floor = big && (!neutral || l > 0.85) ? 3 : 4.5;
+  if (tcContrast(sec, bg) >= floor) return sec;
+  if (neutral && (l < 0.3 || l > 0.85)) return plain;
+  let best = null;
+  for (const d of [1, -1]) {
+    for (let step = 1; step <= 100; step++) {
+      const x = l + (d * step) / 100;
+      if (x < 0 || x > 1) break;
+      const c = tcHex(h, s, x);
+      if (tcContrast(c, bg) < floor) continue;
+      const washedOut = !neutral && l >= 0.25 && l <= 0.8 && (x < 0.2 || x > 0.9);
+      if (!washedOut && (!best || step < best.step)) best = { c, step };
+      break;
+    }
+  }
+  return best ? best.c : plain;
+}
+
 const TC_CACHE = {};
-// bg: the block's fill. on: black or white lettering on it. on2: the secondary color as
-// lettering on it (the blocks use this). ink: the team color as text, bars and dials on the dark page.
-// inkp: the same for print.
+// bg: the block's fill. on: black or white lettering on it. on2: the secondary color as the
+// block's big lettering; on2s: the same for the small lines on the block. ink: the team color
+// as text, bars and dials on the dark page. inkp: the same for print.
 function teamColors(key) {
   if (TC_CACHE[key]) return TC_CACHE[key];
   const [bg, sec] = TEAM_COLORS[key] || TC_FALLBACK;
   const on = tcContrast("#ffffff", bg) >= tcContrast(TC_DARK, bg) ? "#ffffff" : TC_DARK;
-  const on2 = sec ? tcReadable(sec, bg, 4.5, 0) : on;
+  const on2 = tcLetter(sec, bg, true), on2s = tcLetter(sec, bg, false);
   // a black or gray primary with a colorful secondary: the secondary carries the team on the page
   const base = tcHsl(bg)[1] < 0.15 && sec && tcHsl(sec)[1] > 0.3 ? sec : bg;
   return (TC_CACHE[key] = {
-    bg, on, on2,
+    bg, on, on2, on2s,
     ink: tcReadable(base, TC_PANEL, 4.6, 1),
     inkp: tcReadable(base, TC_PAPER, 4.5, -1),
   });
@@ -334,7 +367,7 @@ function teamColors(key) {
 // Inline custom properties for an element that shows one team.
 function teamVars(key) {
   const c = teamColors(key);
-  return `--tc:${c.bg};--tc-on:${c.on};--tc-on2:${c.on2};--tc-ink:${c.ink};--tc-inkp:${c.inkp}`;
+  return `--tc:${c.bg};--tc-on:${c.on};--tc-on2:${c.on2};--tc-on2s:${c.on2s};--tc-ink:${c.ink};--tc-inkp:${c.inkp}`;
 }
 // The team's block: its abbreviation, lettered in the secondary color, on its primary color.
 function slabHtml(abbr, key) {
