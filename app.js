@@ -6,6 +6,7 @@ let DATA = null;
 let SEASON = null;      // data/season.json: { season, weeks: [{ week, games, from, to, ids }] }
 let LIVE_WEEK = null;   // the week data.json is for
 let VIEW_WEEK = null;   // the week this page is showing
+let WEEK_MISSING = false;   // the chosen week's file couldn't be loaded
 
 // "current", "past" (finished: scores and box scores) or "upcoming" (schedule only).
 function weekMode() {
@@ -58,6 +59,7 @@ async function init() {
       if (!wk || wk.season !== DATA.season || !Array.isArray(wk.weekGames)) throw new Error("no week file");
       DATA.weekGames = wk.weekGames;
     } catch (e) {
+      WEEK_MISSING = true;
       DATA.weekGames = [];
     }
   }
@@ -165,7 +167,7 @@ function initWeek() {
   // that game's box score, or a later week's schedule as plain rows
   document.getElementById("weekSub").textContent =
     mode === "past" ? `${count}, final scores. Pick a game for its box score.`
-    : mode === "upcoming" ? `${count} on the schedule. Full matchups open when Week ${DATA.currentWeek} is the current week.`
+    : mode === "upcoming" ? (games.length ? `${count} on the schedule. Full matchups open when Week ${DATA.currentWeek} is the current week.` : "")
     : `${count}. Team stats through Week ${DATA.throughWeek}. Pick a game for the full matchup.`;
   if (mode !== "current") {
     document.getElementById("printAllBtn").hidden = true;   // Print all is this week's matchups
@@ -173,7 +175,9 @@ function initWeek() {
   }
   if (!games.length) {
     document.getElementById("gameList").innerHTML = mode === "current" ? `<div class="empty-note">No games this week.</div>`
-      : `<div class="empty-note">Week ${DATA.currentWeek} isn't available right now. <a href="index.html">See this week's games</a>.</div>`;
+      : WEEK_MISSING ? `<div class="empty-note">Week ${DATA.currentWeek} isn't available right now. <a href="index.html">See this week's games</a>.</div>`
+      // e.g. conference championship week before the teams are known
+      : `<div class="empty-note">Week ${DATA.currentWeek}'s matchups aren't set yet. <a href="index.html">See this week's games</a>.</div>`;
     return;
   }
 
