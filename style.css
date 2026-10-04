@@ -41,6 +41,7 @@ body {
 }
 
 button, input, select { font: inherit; }
+[hidden] { display: none !important; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 
@@ -74,9 +75,62 @@ a { color: inherit; }
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
 }
+.topnav > a { min-height: 40px; }
 .topnav a:hover { color: var(--text); }
 .topnav a.active { color: var(--text); border-bottom-color: var(--accent); }
 .topnav .nav-short { display: none; }
+
+/* Week strip: one link per week, right-aligned so the last week sits beside the player
+   search. It takes whatever room the top bar has left and scrolls sideways when short. */
+.navtools {
+  flex: 1 1 auto;      /* wraps to its own row, as one piece, when the first row is full */
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0 14px;
+  min-height: 44px;
+}
+.weeknav {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topnav.nav-tight .nav-full { display: none; }
+.topnav.nav-tight .nav-short { display: inline; }
+.weeknav::-webkit-scrollbar { display: none; }
+.wk-label {
+  flex: none;
+  margin-left: auto;   /* pushes the weeks to the right; unlike justify-content it still scrolls */
+  padding-right: 6px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.topnav .weeknav a {
+  position: relative;
+  flex: none;
+  justify-content: center;
+  min-width: 24px;
+  height: 26px;
+  padding: 0 3px;
+  border: 0;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.topnav .weeknav a.next { font-weight: 400; color: var(--text-dim); }
+.topnav .weeknav a.now { box-shadow: inset 0 0 0 1px var(--text-dim); }
+.topnav .weeknav a:hover { background: var(--panel-alt); color: var(--text); }
+.topnav .weeknav a.sel { background: var(--accent); color: var(--bg); box-shadow: none; }
+.wk-pre { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.navtools .psearch { flex: none; margin-left: 0; }
+
 .league-link {
   display: inline-flex;
   align-items: center;
@@ -217,6 +271,8 @@ a.pdf-btn[hidden] { display: none; }
 .gr-big { font-size: 1.25rem; line-height: 1.15; font-stretch: 68%; font-weight: 700; }
 .gr-move { color: var(--accent); }
 .game-row.done .gr-spread, .game-row.done .gr-total { color: var(--text-dim); }
+/* a later week's games (week strip) are a plain list, not links */
+.game-row.upcoming, .game-row.upcoming:hover { background: none; cursor: default; }
 .gr-implied, .gr-where { min-width: 0; font-size: 0.875rem; }
 .gr-note { color: var(--text); }
 .ou-pre, .imp-pre { display: none; }
@@ -678,7 +734,11 @@ body.plog-open { overflow: hidden; }
   .league-link { grid-column: 2; grid-row: 1; height: 44px; }
   .topnav { grid-column: 1 / -1; grid-row: 2; gap: 0 22px; min-height: 0; }
   .topnav a { height: 44px; }
-  .psearch { flex-basis: 100%; width: 100%; margin: 4px 0 12px; }
+  .navtools { flex: 1 0 100%; flex-wrap: wrap; }
+  .weeknav { flex: 1 0 100%; padding: 2px 0; }
+  .wk-label { margin-left: 0; }
+  .topnav .weeknav a { min-width: 36px; height: 36px; }
+  .psearch, .navtools .psearch { flex: 1 0 100%; width: 100%; margin: 4px 0 12px; }
   .psearch input { height: 44px; }
   .psearch-list { left: 0; right: auto; width: 100%; }
   main { padding: 22px 16px 40px; }

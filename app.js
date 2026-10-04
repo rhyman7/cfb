@@ -1,5 +1,32 @@
 let DATA = null;
 
+// The week strip. data.json is always this week (stats and games). The slate and the
+// matchup page can show another week: its games come from data/weeks/<N>.json and replace
+// DATA.weekGames / DATA.currentWeek, while the teams stay as they are in data.json.
+let SEASON = null;      // data/season.json: { season, weeks: [{ week, games, from, to, ids }] }
+let LIVE_WEEK = null;   // the week data.json is for
+let VIEW_WEEK = null;   // the week this page is showing
+
+// "current", "past" (finished: scores and box scores) or "upcoming" (schedule only).
+function weekMode() {
+  return VIEW_WEEK == null || VIEW_WEEK === LIVE_WEEK ? "current" : VIEW_WEEK < LIVE_WEEK ? "past" : "upcoming";
+}
+function weekHref(week) {
+  return week === LIVE_WEEK ? "index.html" : `index.html?week=${week}`;
+}
+// The week a link asks for: ?week=N on the slate, or the week a matchup's game id belongs to.
+function wantedWeek() {
+  const params = new URLSearchParams(location.search);
+  let w = null;
+  if (PAGE === "week") w = parseInt(params.get("week"), 10);
+  else if (PAGE === "matchup" && SEASON) {
+    const id = params.get("game");
+    const hit = !(DATA.weekGames || []).some(g => g.id === id) && SEASON.weeks.find(x => (x.ids || []).includes(id));
+    w = hit ? hit.week : null;
+  }
+  return Number.isFinite(w) ? w : null;
+}
+
 // Which page this is: "week" (index.html), "matchup" (matchup.html), "edges" (edges.html),
 // "printall" (print.html), "ratings" (ratings.html) or "dashboard"
 const PAGE = document.body.dataset.page || "dashboard";
@@ -9,21 +36,91 @@ init();
 
 async function init() {
   try {
-    const res = await fetch("data/data.json", { cache: "no-store" });
+    const [res, season] = await Promise.all([
+      fetch("data/data.json", { cache: "no-store" }),
+      fetch("data/season.json", { cache: "no-cache" }).then(r => (r.ok ? r.json() : null)).catch(() => null),
+    ]);
     DATA = await res.json();
+    SEASON = season && season.season === DATA.season && Array.isArray(season.weeks) ? season : null;
   } catch (err) {
     document.getElementById("app").innerHTML =
       `<div class="empty-note">Couldn't load data/data.json. Run scripts/build_data.py first.</div>`;
     return;
   }
+  LIVE_WEEK = VIEW_WEEK = DATA.currentWeek || null;
+  DATA.liveGames = DATA.weekGames || [];
+  const want = wantedWeek();
+  if (want != null && LIVE_WEEK != null && want !== LIVE_WEEK && SEASON && SEASON.weeks.some(w => w.week === want)) {
+    VIEW_WEEK = DATA.currentWeek = want;
+    try {
+      const r = await fetch(`data/weeks/${want}.json`, { cache: "no-cache" });
+      const wk = r.ok ? await r.json() : null;
+      if (!wk || wk.season !== DATA.season || !Array.isArray(wk.weekGames)) throw new Error("no week file");
+      DATA.weekGames = wk.weekGames;
+    } catch (e) {
+      DATA.weekGames = [];
+    }
+  }
   setMeta();
   try { initPlayerSearch(); } catch (e) { /* search is optional */ }
+  try { initWeekNav(); } catch (e) { /* so is the week strip */ }
   if (PAGE === "week") initWeek();
   else if (PAGE === "matchup") initMatchup();
   else if (PAGE === "printall") initPrintAll();
   else if (PAGE === "edges") initEdges();
   else if (PAGE === "ratings") { /* static page: only the player search */ }
   else initDashboard();
+}
+
+// The week strip in the top bar, just left of the player search: one link per week,
+// ending at the season's last week. Finished weeks open their scores, later weeks their schedule.
+function initWeekNav() {
+  const nav = document.querySelector(".topbar .topnav");
+  if (!nav || !SEASON || LIVE_WEEK == null || nav.querySelector(".weeknav")) return;
+  const page = document.body.dataset.page;
+  const shown = page === "week" || page === "matchup" ? VIEW_WEEK : null;
+  const day = d => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  const el = document.createElement("div");
+  el.className = "weeknav no-print";
+  el.setAttribute("role", "navigation");
+  el.setAttribute("aria-label", "Weeks");
+  el.innerHTML = `<span class="wk-label">Week</span>` + SEASON.weeks.map(w => {
+    const state = w.week === LIVE_WEEK ? "now" : w.week < LIVE_WEEK ? "past" : "next";
+    const what = state === "now" ? "this week" : state === "past" ? "final scores" : "schedule";
+    const dates = w.from && w.to ? `, ${w.from === w.to ? day(w.from) : day(w.from) + " to " + day(w.to)}` : "";
+    return `<a href="${weekHref(w.week)}" class="wk ${state}${w.week === shown ? " sel" : ""}"${w.week === shown ? ' aria-current="page"' : ""} title="${escapeHtml(`Week ${w.week}${dates}: ${what}`)}"><span class="wk-pre">Week </span>${w.week}</a>`;
+  }).join("");
+  // the strip and the search box travel together, so the last week stays beside the search
+  const tools = document.createElement("div");
+  tools.className = "navtools";
+  tools.appendChild(el);
+  const search = nav.querySelector(".psearch");
+  if (search) tools.appendChild(search);
+  nav.appendChild(tools);
+  // "This Week's Games" is only the page on screen when the board shows this week
+  if (page === "week" && VIEW_WEEK !== LIVE_WEEK) nav.querySelectorAll(":scope > a.active").forEach(a => a.classList.remove("active"));
+
+  // Keep everything on one row when it can be: if the strip had to drop to a second row,
+  // try the short page names. On phones the strip scrolls sideways, starting on the week in view.
+  const first = nav.querySelector(":scope > a");
+  const dropped = () => !!first && tools.offsetTop > first.offsetTop + 8;
+  const focus = el.querySelector(".sel") || el.querySelector(".now");
+  const fit = () => {
+    nav.classList.remove("nav-tight");
+    if (dropped()) {
+      nav.classList.add("nav-tight");
+      if (dropped()) nav.classList.remove("nav-tight");
+    }
+    if (focus) el.scrollLeft = focus.offsetLeft - (el.clientWidth - focus.offsetWidth) / 2;
+  };
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener("resize", fit);
+  el.addEventListener("wheel", e => {
+    if (el.scrollWidth <= el.clientWidth || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+    el.scrollLeft += e.deltaY;
+    e.preventDefault();
+  }, { passive: false });
 }
 
 function setMeta() {
@@ -61,11 +158,24 @@ function rankTag(rank) {
 
 function initWeek() {
   const games = DATA.weekGames || [];
+  const mode = weekMode(), count = `${games.length} game${games.length === 1 ? "" : "s"}`;
   document.getElementById("weekTitle").textContent =
     DATA.currentWeek ? `Week ${DATA.currentWeek}` : "This week";
+  // index.html?week=N (week strip): a finished week's final scores, where each row opens
+  // that game's box score, or a later week's schedule as plain rows
   document.getElementById("weekSub").textContent =
-    `${games.length} game${games.length === 1 ? "" : "s"}. Team stats through Week ${DATA.throughWeek}.` +
-    " Pick a game for the full matchup.";
+    mode === "past" ? `${count}, final scores. Pick a game for its box score.`
+    : mode === "upcoming" ? `${count} on the schedule. Full matchups open when Week ${DATA.currentWeek} is the current week.`
+    : `${count}. Team stats through Week ${DATA.throughWeek}. Pick a game for the full matchup.`;
+  if (mode !== "current") {
+    document.getElementById("printAllBtn").hidden = true;   // Print all is this week's matchups
+    document.title = `Week ${DATA.currentWeek} · CFB Matchups`;
+  }
+  if (!games.length) {
+    document.getElementById("gameList").innerHTML = mode === "current" ? `<div class="empty-note">No games this week.</div>`
+      : `<div class="empty-note">Week ${DATA.currentWeek} isn't available right now. <a href="index.html">See this week's games</a>.</div>`;
+    return;
+  }
 
   const confSel = document.getElementById("confFilter");
   const confs = new Set();
@@ -191,7 +301,8 @@ function gameRow(g, grp) {
   const isLive = !!L && L.state === "in";
   const done = !!g.completed || (!!L && L.state === "post");
   const started = isLive || done;
-  const ln = lineFor(g), it = impliedTotals(g), mv = started ? null : lineMove(g);
+  const mode = weekMode();
+  const ln = lineFor(g), it = impliedTotals(g), mv = started || mode !== "current" ? null : lineMove(g);
   const spread = spreadText(g) || "—";
   const total = ln && ln.total != null ? ln.total : "—";
 
@@ -204,6 +315,9 @@ function gameRow(g, grp) {
   } else {
     status = it ? `<span class="imp-pre">Implied </span>${escapeHtml(g.away.abbr)} ${it.away}, ${escapeHtml(g.home.abbr)} ${it.home}` : "";
   }
+  // a later week's games are just listed; this week's and finished ones open the game
+  const open = mode === "upcoming" && !started ? `<div class="game-row upcoming">`
+    : `<a class="game-row${isLive ? " live" : ""}${done ? " done" : ""}" href="matchup.html?game=${encodeURIComponent(g.id)}">`;
 
   // second line under the stadium: the city, kickoff time (when the group's label doesn't
   // give it) and TV, then the forecast (outdoor games, before kickoff) or "Indoors"
@@ -216,7 +330,7 @@ function gameRow(g, grp) {
     bits.push([w.daily ? `${w.temp}° high` : `${w.temp}°`, w.pop != null ? `${w.pop}% rain` : null, w.wind != null ? `${w.wind} mph wind` : null].filter(Boolean).join(", "));
   }
 
-  return `<a class="game-row${isLive ? " live" : ""}${done ? " done" : ""}" href="matchup.html?game=${encodeURIComponent(g.id)}">
+  return `${open}
     ${rowTeam(g, "away")}
     <div class="gr-at">${g.neutral ? "vs" : "at"}</div>
     ${rowTeam(g, "home")}
@@ -224,7 +338,7 @@ function gameRow(g, grp) {
     <div class="gr-total"><div class="gr-big"><span class="ou-pre">O/U </span>${total}</div>${mv && mv.total != null ? `<div class="gr-sub gr-move">opened ${mv.total}</div>` : ""}</div>
     <div class="gr-implied">${status}</div>
     <div class="gr-where"><div>${escapeHtml(g.venue || "")}</div><div class="gr-sub">${escapeHtml(bits.filter(Boolean).join(". "))}</div>${g.note ? `<div class="gr-sub gr-note">${escapeHtml(g.note)}</div>` : ""}</div>
-  </a>`;
+  </${open.startsWith("<a") ? "a" : "div"}>`;
 }
 
 // Current line for a card: ESPN's (live.js) when it names one of the two teams,
@@ -262,15 +376,36 @@ function initMatchup() {
   const g = (DATA.weekGames || []).find(x => x.id === id);
   const head = document.getElementById("matchupHeader");
   document.getElementById("printBothBtn").addEventListener("click", () => window.print());
+  const mode = weekMode();
+  if (mode !== "current") {
+    const back = document.querySelector(".back-link");
+    back.href = weekHref(VIEW_WEEK);
+    back.textContent = `Week ${VIEW_WEEK} games`;
+    document.getElementById("printBothBtn").hidden = true;   // printing is for this week's matchups
+    document.body.classList.remove("mprint");
+  }
 
   if (!g) {
-    head.innerHTML = `<div class="empty-note">That game isn't on this week's schedule anymore. <a href="index.html">See this week's matchups</a> or <a href="dashboard.html">compare any two teams</a>.</div>`;
+    head.innerHTML = `<div class="empty-note">That game isn't on ${mode === "current" ? "this week's schedule anymore" : "the Week " + VIEW_WEEK + " schedule"}. <a href="index.html">See this week's matchups</a> or <a href="dashboard.html">compare any two teams</a>.</div>`;
     teamCards.innerHTML = "";
     return;
   }
 
   const tag = s => `${s.rank ? "#" + s.rank + " " : ""}${s.abbr || s.name}`;
-  document.title = `${tag(g.away)} ${g.neutral ? "vs" : "@"} ${tag(g.home)} · CFB Matchups`;
+  document.title = `${tag(g.away)} ${g.neutral ? "vs" : "@"} ${tag(g.home)}${mode === "current" ? "" : ", Week " + VIEW_WEEK} · CFB Matchups`;
+
+  if (mode !== "current") {
+    // another week (week strip): the game header, then the box score (finished) or a pointer
+    // back (not played yet). The stats live on this week's matchups.
+    const team = s => (s.key ? DATA.teams[s.key] : null) || null;
+    head.innerHTML = renderHero(g, team(g.away), team(g.home));
+    const both = g.away.key && g.home.key && DATA.teams[g.away.key] && DATA.teams[g.home.key];
+    document.getElementById("edges").innerHTML = mode === "past" ? ""
+      : `<div class="empty-note">The full matchup opens when Week ${VIEW_WEEK} is the current week.${both ? ` <a href="dashboard.html?team1=${encodeURIComponent(g.away.key)}&team2=${encodeURIComponent(g.home.key)}">Compare these two teams now</a>.` : ""}</div>`;
+    teamCards.innerHTML = "";
+    if (mode === "past" && typeof startLiveMatchup === "function") startLiveMatchup(g);
+    return;
+  }
 
   const parts = renderMatchupParts(g);
   head.innerHTML = parts.head;
@@ -418,7 +553,8 @@ function heroWxText(g) {
 }
 
 function heroTeam(s, t, side, score, otherScore, sideKey) {
-  const rec = [[s.record, s.conference].filter(Boolean).join(", "), t ? `SRS ${dispNum(t.record.srs)}` : null].filter(Boolean).join(", ")
+  // the rating is this week's, so another week's header (week strip) leaves it out
+  const rec = [[s.record, s.conference].filter(Boolean).join(", "), t && weekMode() === "current" ? `SRS ${dispNum(t.record.srs)}` : null].filter(Boolean).join(", ")
     + (s.qb ? `. ${s.qb} at QB` : "");
   const lost = score !== null && otherScore !== null && score < otherScore;
   return `
@@ -1086,7 +1222,7 @@ function updateProp(card, log) {
 
 // This week's game for an FBS team (by team name), or null.
 function weekGameFor(teamName) {
-  return (DATA.weekGames || []).find(g => g.away.key === teamName || g.home.key === teamName) || null;
+  return (DATA.liveGames || DATA.weekGames || []).find(g => g.away.key === teamName || g.home.key === teamName) || null;
 }
 
 // What this week's opponent allows for the chosen stat, from its defense and Def vs Position numbers.
@@ -1094,7 +1230,7 @@ function oppContext(logKey, statKey, pos) {
   const team = teamOfLog(logKey);
   if (!team) return "";
   const g = weekGameFor(team.team);
-  if (!g) return `${escapeHtml(team.abbr)} has no game in Week ${DATA.currentWeek}.`;
+  if (!g) return `${escapeHtml(team.abbr)} has no game in Week ${LIVE_WEEK || DATA.currentWeek}.`;
   const isAway = g.away.key === team.team;
   const oppSide = isAway ? g.home : g.away;
   const where = `${isAway && !g.neutral ? "@" : "vs"} ${escapeHtml(oppSide.abbr)}`;

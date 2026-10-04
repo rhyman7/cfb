@@ -76,6 +76,21 @@ scoring plays), which the browser fetches from ESPN using the game's id. If ESPN
 can't be reached the panel says so and links to the game on ESPN. The lists live
 in `teamGames` in `data/data.json`, keyed by team name, one compact line per team.
 
+**Week strip.** Just left of the search box, the top bar lists every regular-season
+week, right-aligned so the last week sits beside the search. The current week is
+outlined and the week on screen is filled in. A finished week (`index.html?week=N`)
+shows that week's games with final scores, and each team's record and AP rank going
+into it; a row opens `matchup.html?game=<id>` with the game header and the full box
+score from ESPN, and nothing else. A later week shows the schedule so far (kickoff, TV,
+venue, records and any line) as plain rows that don't open anything. The conference,
+Top 25 and team filters work on every week. The stats, Head to Head, Weekly Edges and
+Print all stay on the current week. When the bar is too narrow for one row the page
+names shorten, then the strip and search drop to a second row; on phones the strip
+scrolls sideways. The weeks (and each week's game ids, so a matchup link finds its week)
+come from `data/season.json` and each week's games from `data/weeks/<N>.json` (same shape
+as `weekGames`); the site decides what is past or upcoming from `currentWeek` in
+`data.json`.
+
 **Player search.** Every page's top bar has a search box: type two letters,
 pick a player (name, position, team; arrow keys and Enter work) and his game
 log opens.
@@ -176,8 +191,11 @@ A weekly scheduled task (Mondays 7:47 AM ET, after the new AP poll and the weeke
 ```bash
 pip install -r requirements.txt
 python scripts/build_data.py
-git add data/data.json && git commit -m "Weekly data update" && git push
+git add data && git commit -m "Weekly data update" && git push
 ```
+
+The build writes `data/data.json` plus `data/season.json` and `data/weeks/<N>.json` for the
+week strip (it only rewrites the weeks that changed), so commit the whole `data` folder.
 
 Run the build with the default `--out` (the repo's `data/data.json`) so it can
 keep this week's `lineOpen`. Because `lineOpen` is set at the week's first
