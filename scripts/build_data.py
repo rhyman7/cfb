@@ -10,6 +10,12 @@ with one exception: `lineOpen` on this week's games (the line at the week's
 first build) is carried over from the existing output file when it covers the
 same season and week, so the site can show how far the line has moved.
 
+Next to data.json the build also writes the files behind the site's week strip:
+    data/season.json      every regular-season week: game count, first/last game day, game ids
+    data/weeks/<N>.json   that week's games, in the same shape as data.json's weekGames.
+                          Finished weeks carry the final scores, with each team's record
+                          and AP rank going into the week; later weeks are the schedule so far.
+
 Usage:
     pip install -r requirements.txt
     python scripts/build_data.py            # writes data/data.json
@@ -17,6 +23,7 @@ Usage:
 """
 
 import argparse
+import copy
 import io
 import json
 import math
@@ -197,10 +204,13 @@ def overall_record(records):
     return m.group(1) if m else ""
 
 
-def current_poll(full):
+def current_poll(full, week=None):
     """team_id -> current AP rank. ESPN tags every unplayed game with each team's
     current poll rank, so each team's next unplayed game gives the latest poll
-    (this also covers teams on a bye). Falls back to the latest game played."""
+    (this also covers teams on a bye). Falls back to the latest game played.
+
+    With `week`, the poll going into that week instead: a finished game keeps the rank
+    each team had at kickoff, so a team's first game in that week or later gives it."""
     reg = full[full["season_type"] == 2]
     rows = []
     for p in ("home", "away"):
@@ -209,7 +219,8 @@ def current_poll(full):
         rows.append(d)
     r = pd.concat(rows)
     r["rank"] = num(r["rank"])
-    upcoming = r[~r["done"].astype(bool)].sort_values("week").groupby("team_id").first()["rank"]
+    ahead = ~r["done"].astype(bool) if week is None else r["week"] >= week
+    upcoming = r[ahead].sort_values("week").groupby("team_id").first()["rank"]
     if upcoming.empty:
         upcoming = r.sort_values("week").groupby("team_id").last()["rank"]
     return {int(t): int(k) for t, k in upcoming.items() if pd.notna(k) and 1 <= k <= 25}
@@ -220,14 +231,18 @@ def half(x):
     return None if x is None or pd.isna(x) else round(float(x) * 2) / 2
 
 
-def week_games(full, id_to_name, team_rows, poll, lines, qbs):
+def week_games(full, id_to_name, team_rows, poll, lines, qbs, week=None, records=None):
     """Games for the current week: the first regular-season week that still has
-    an unplayed game (or the final week once everything is complete)."""
+    an unplayed game (or the final week once everything is complete).
+
+    With `week`, that week's games instead; `records` ({team name: "2-1"}) then replaces
+    the current records, for a finished week shown as it stood."""
     reg = full[full["season_type"] == 2].copy()
     if reg.empty:
         return None, []
-    open_weeks = reg.loc[~reg["status_type_completed"].astype(bool), "week"]
-    week = int(open_weeks.min()) if len(open_weeks) else int(reg["week"].max())
+    if week is None:
+        open_weeks = reg.loc[~reg["status_type_completed"].astype(bool), "week"]
+        week = int(open_weeks.min()) if len(open_weeks) else int(reg["week"].max())
     wk = reg[reg["week"] == week].sort_values(["start_date", "game_id"])
 
     def side(r, pfx):
@@ -237,10 +252,13 @@ def week_games(full, id_to_name, team_rows, poll, lines, qbs):
         if key:
             rec = team_rows[key]["record"]
             record = f"{rec['w']}-{rec['l']}" + (f"-{rec['t']}" if rec["t"] else "")
+            if records is not None:
+                record = records.get(key, "0-0")
             conf = team_rows[key]["conference"]
             name = key
         else:
-            record = overall_record(r.get(f"{pfx}_records"))
+            # ESPN only has a non-FBS team's record as of today, so leave it off a finished week
+            record = overall_record(r.get(f"{pfx}_records")) if records is None else ""
             conf = "FCS"
             name = r.get(f"{pfx}_location") or r.get(f"{pfx}_short_display_name") or r.get(f"{pfx}_display_name")
         score = num(pd.Series([r.get(f"{pfx}_score")])).iloc[0]
@@ -630,6 +648,26 @@ def build(season, cache, prev_path=None):
         team_rows[name]["betting"] = bet.get(tid)
         if eff:
             team_rows[name]["eff"] = eff.get(tid)
+    # --- every regular-season week's games, for the week strip (written by write_weeks) ---
+    reg_weeks = sorted(int(w) for w in full.loc[full["season_type"] == 2, "week"].unique())
+    weeks = {}
+    for w in reg_weeks:
+        if w == cur_week:
+            weeks[w] = copy.deepcopy(games)
+        elif w > cur_week:
+            weeks[w] = week_games(full, id_to_name, team_rows, poll, lines, qbs, week=w)[1]
+        else:
+            # a finished week as it stood: records and AP ranks going into it, no "at QB"
+            before = tg[tg["week"] < w]
+            wl = before.assign(w=before["pf"] > before["pa"], l=before["pf"] < before["pa"], t=before["pf"] == before["pa"]) \
+                       .groupby("team_id")[["w", "l", "t"]].sum()
+            records = {id_to_name[int(t)]: f"{int(r.w)}-{int(r.l)}" + (f"-{int(r.t)}" if r.t else "")
+                       for t, r in wl.iterrows() if int(t) in id_to_name}
+            weeks[w] = week_games(full, id_to_name, team_rows, current_poll(full, w), lines, {}, week=w, records=records)[1]
+        if w != cur_week:
+            for x in weeks[w]:
+                x["lineOpen"] = None  # only tracked for the current week
+
     out = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "season": season,
@@ -654,7 +692,7 @@ def build(season, cache, prev_path=None):
             "defPassYdsG": {"min": 0, "max": gauge_max(per["d_passYdsG"])},
         },
     }
-    return out
+    return out, weeks
 
 
 def team_game_list(results, pg, names, team_names):
@@ -704,17 +742,54 @@ def write_json(data, path):
         f.write(text)
 
 
+def write_if_changed(path, data):
+    """Write compact JSON unless the file already holds the same thing (ignoring
+    generatedAt), so a rerun only touches the weeks that changed."""
+    def strip(x):
+        return {k: v for k, v in x.items() if k != "generatedAt"}
+    try:
+        with open(path, encoding="utf-8") as f:
+            if strip(json.load(f)) == strip(json.loads(json.dumps(data))):
+                return False
+    except (OSError, ValueError):
+        pass
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace('{"week"', '\n{"week"').replace('{"id"', '\n{"id"') + "\n")
+    return True
+
+
+def write_weeks(weeks, data, out_dir):
+    """data/season.json and data/weeks/<N>.json for the site's week strip."""
+    eastern = ZoneInfo("America/New_York")
+    index, wrote = [], []
+    for week, games in sorted(weeks.items()):
+        days = sorted(datetime.fromisoformat(x["start"].replace("Z", "+00:00")).astimezone(eastern).strftime("%Y-%m-%d")
+                      for x in games)
+        index.append({"week": week, "games": len(games), "from": days[0] if days else None,
+                      "to": days[-1] if days else None, "ids": [x["id"] for x in games]})
+        doc = {"season": data["season"], "week": week, "generatedAt": data["generatedAt"], "weekGames": games}
+        if write_if_changed(os.path.join(out_dir, "weeks", f"{week}.json"), doc):
+            wrote.append(week)
+    write_if_changed(os.path.join(out_dir, "season.json"), {"season": data["season"], "weeks": index})
+    return wrote
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, default=2026)
     ap.add_argument("--cache", default=None, help="optional folder to cache downloads")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "data", "data.json"))
     a = ap.parse_args()
-    data = build(a.season, a.cache, prev_path=a.out)
-    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
+    data, weeks = build(a.season, a.cache, prev_path=a.out)
+    out_dir = os.path.dirname(os.path.abspath(a.out))
+    os.makedirs(out_dir, exist_ok=True)
     write_json(data, a.out)
     print(f"Wrote {a.out}: {len(data['teams'])} teams, {data['gamesCounted']} games, "
           f"through week {data['throughWeek']}")
+    wrote = write_weeks(weeks, data, out_dir)
+    print("Week files (data/season.json, data/weeks/): "
+          + ("updated " + ", ".join(f"Week {w}" for w in wrote) if wrote else "no changes"))
     for n in data.get("notes", []):
         print("  note:", n)
 
