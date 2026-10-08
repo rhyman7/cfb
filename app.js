@@ -436,7 +436,7 @@ function renderMatchupParts(g) {
         ${edgePanel(away, home)}
         ${edgePanel(home, away)}
       </div>
-      <p class="edge-key">Longer bar, better rank. Ranks are out of ${n} FBS teams. The edge goes to whichever side ranks at least ${gap} spots better; INT compares interceptions thrown by the offense with interceptions made by the defense.${hasEff() ? " EPA / play (expected points added per play) and Success % (share of plays with positive EPA) use every run and pass play from cfbfastR play-by-play; for a defense they're what it allowed, so lower is better." : ""}</p>`;
+      <p class="edge-key">Longer bar, better rank. Ranks are out of ${n} FBS teams. The edge goes to whichever side ranks at least ${gap} spots better; INT compares interceptions thrown by the offense with interceptions made by the defense.${hasRushYpa() ? " Rush Yds / Att is season rushing yards divided by rushing attempts, with sacks counted as rushes the way college box scores do." : ""}${hasEff() ? " EPA / play (expected points added per play) and Success % (share of plays with positive EPA) use every run and pass play from cfbfastR play-by-play; for a defense they're what it allowed, so lower is better." : ""}</p>`;
   } else {
     const other = away ? g.home : g.away;
     edges = `<h3 class="section-title">Head to head</h3>
@@ -581,10 +581,18 @@ function leagueRank(getter, value, higherIsBetter) {
   return 1 + all.filter(v => (higherIsBetter ? v > value : v < value)).length;
 }
 
+// Season rushing yards / rushing attempts, from the team box scores (which count sacks as
+// rushes); for a defense it's what opponents averaged. Shown once the data carries it.
+const RUSH_YPA_ROW = ["Rush Yds / Att", t => t.offense.rushYpa, t => t.defense.rushYpa, true, false, v => v.toFixed(2)];
+function hasRushYpa() {
+  return Object.values(DATA.teams).every(t => typeof t.offense.rushYpa === "number" && typeof t.defense.rushYpa === "number");
+}
+
 const EDGE_ROWS = [
-  // label, offense getter, defense getter, offense higher-better, defense higher-better
+  // label, offense getter, defense getter, offense higher-better, defense higher-better, number format
   ["Points / G", t => t.offense.ppg, t => t.defense.papg, true, false],
   ["Rush Yds / G", t => t.offense.rushYdsG, t => t.defense.rushYdsG, true, false],
+  RUSH_YPA_ROW,
   ["Rush TD / G", t => t.offense.rushTdG, t => t.defense.rushTdG, true, false],
   ["Pass Yds / G", t => t.offense.passYdsG, t => t.defense.passYdsG, true, false],
   ["Pass TD / G", t => t.offense.passTdG, t => t.defense.passTdG, true, false],
@@ -597,7 +605,10 @@ const EFF_ROWS = [
   ["Success %", t => t.eff.off.sr, t => t.eff.def.sr, true, false, v => v.toFixed(1)],
 ];
 function hasEff() { return Object.values(DATA.teams).every(t => t.eff); }
-function edgeRows() { return hasEff() ? EDGE_ROWS.slice(0, 1).concat(EFF_ROWS, EDGE_ROWS.slice(1)) : EDGE_ROWS; }
+function edgeRows() {
+  const rows = hasRushYpa() ? EDGE_ROWS : EDGE_ROWS.filter(r => r !== RUSH_YPA_ROW);
+  return hasEff() ? rows.slice(0, 1).concat(EFF_ROWS, rows.slice(1)) : rows;
+}
 
 // One offense against the other defense, stat by stat. Each side's bar grows from the
 // middle with its FBS rank (longer = better); the side with the edge shows in its color.

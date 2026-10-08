@@ -124,6 +124,13 @@ O/U X → Y" by comparing it with the latest build's consensus line (same
 source at both ends, so a difference between ESPN and the consensus never
 shows up as a move).
 
+**Rush yards per attempt.** Head to Head has a Rush Yds / Att row under Rush
+Yds / G: each offense's season rushing yards divided by its rushing attempts
+against what the other defense has allowed per attempt, from the team box
+scores (which count sacks as rushes, the way college stats do). Offense rank
+1 = highest; defense rank 1 = lowest allowed. The data is `rushYpa` in each
+team's `offense` and `defense`; the row is left out if the data doesn't have it.
+
 **EPA and success rate.** Head to Head adds EPA per play and success rate
 (share of plays with positive EPA) for each offense and defense, from
 cfbfastR play-by-play: run and pass plays (sacks count as pass plays) in
@@ -213,6 +220,9 @@ Run the same commands yourself any time to refresh manually, and preview with
 - **Offense/Defense Yds/G & ranks** — team box score rushing yards and net
   passing yards per game (defense = what opponents gained). Rank 1 = most
   yards on offense, fewest allowed on defense, among all FBS teams.
+- **Rush Yds/Att** — team box score rushing yards divided by rushing attempts
+  over the season (not an average of each game's figure); defense = what
+  opponents gained per attempt.
 - **Rush/Pass TD/G** — summed from player box scores.
 - **SRS / OSRS / DSRS** — least-squares Simple Rating System on points, using
   FBS-vs-FBS games only (no home-field term, light regularization so early
