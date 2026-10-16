@@ -40,6 +40,7 @@ import numpy as np
 import pandas as pd
 
 from epa_ratings import build_epa
+import situational
 
 BASE = "https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/cfb"
 FILES = {
@@ -708,6 +709,26 @@ def build(season, cache, prev_path=None):
         team_rows[name]["betting"] = bet.get(tid)
         if eff:
             team_rows[name]["eff"] = eff.get(tid)
+    # finishing drives, big plays, pass rush, pace and usage (scripts/situational.py)
+    extra = situational.build(pbp, game_ids, set(per.index), pg, results, athlete_names) if pbp is not None else {}
+    for tid, name in id_to_name.items():
+        x = extra.get(tid) or {}
+        row = team_rows[name]
+        row["situ"], row["pace"] = x.get("situ"), x.get("pace")
+        u = x.get("usage")
+        if u:
+            for r in u["targets"] + u["carries"]:
+                r["log"] = add_log(tid, r.pop("aid"))
+        row["usage"] = u
+        sh = x.get("shares") or {}
+        for r in row["receiving"]:
+            z = sh.get(int(r["log"].split("|", 1)[1]))
+            if z:
+                r["ts"], r["ts3"] = z["ts"], z["ts3"]
+        for r in row["rushing"]:
+            z = sh.get(int(r["log"].split("|", 1)[1]))
+            if z:
+                r["cs"] = z["cs"]
     # --- every regular-season week's games, for the week strip (written by write_weeks) ---
     reg_weeks = sorted(int(w) for w in full.loc[full["season_type"] == 2, "week"].unique())
     weeks = {}

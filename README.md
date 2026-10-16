@@ -259,3 +259,21 @@ Run the same commands yourself any time to refresh manually, and preview with
   from scratch from the current season's files each run except `lineOpen`,
   which is carried over from the existing `data/data.json` for the same week.
 - **League averages** — mean across FBS teams of Rush TD/G, Pass TD/G and PPG.
+
+### Finishing drives, big plays, pass rush, pace and usage
+
+Built by `scripts/situational.py` (called from `build_data.py`, from the play-by-play file) into
+each team's `situ`, `pace` and `usage` keys, plus `ts`/`ts3` on receiving rows and `cs` on
+rushing rows.
+
+- **Head to head** gains three groups under the existing rows: Finishing drives (points per trip
+  inside the 40 at 7 per TD and 3 per FG, 3rd down %), Big plays (explosive %: passes of 20+ yards
+  and runs of 10+) and Pass rush and havoc (sack rate per pass play; havoc rate = tackles for loss,
+  sacks, interceptions, fumbles and pass breakups per play). Same bars and edge rule as the rows above.
+- **Pace and tendency** under Head to head: plays per game and early-down pass rate.
+- **Usage** in each team card: target share with the last three games, and carry share. College
+  data has no snap counts.
+- **Weekly Edges**: combined plays per game and early-down pass rate on the game board; Tgt % (with
+  the last three games) on the receiving prop tables and Carry % on RB rush yds.
+
+These sections are screen-only: printouts keep the one-page layout.

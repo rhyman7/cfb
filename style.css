@@ -377,6 +377,46 @@ a.pdf-btn[hidden] { display: none; }
 .tb { display: block; height: 10px; border-radius: 2px; background: var(--mute); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .tb.on { background: var(--tc-ink); }
 .edge-key { max-width: 78ch; margin: 10px 0 0; font-size: 0.78rem; color: var(--text-dim); }
+.tape-group {
+  padding: 14px 0 4px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Pace and tendency (matchup page, under Head to Head) */
+.pace-panel {
+  margin-top: 16px;
+  padding: 16px 20px 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.pace-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 6px; }
+.pace-head h4 { margin: 0; font-size: 1.0625rem; font-weight: 600; }
+.pace-sum { font-size: 0.8125rem; color: var(--text-dim); }
+.pace-sum b { color: var(--text); }
+.pace-scroll { overflow-x: auto; }
+.pace-panel table { min-width: 420px; }
+.pace-team { display: inline-flex; align-items: center; gap: 10px; }
+.pace-team .slab { width: 44px; height: 26px; font-size: 0.9375rem; }
+.pace-team .slab.long { font-size: 0.75rem; }
+
+/* Usage (team card) */
+.usage-block { margin: 0 0 20px; }
+.usage-block > h4 { margin: 0 0 4px 8px; font-size: 0.9375rem; font-weight: 600; }
+.usage-block th, .usage-block td { padding: 7px 6px; }
+.share { display: inline-block; width: 64px; height: 8px; margin-right: 8px; vertical-align: 1px; border-radius: 2px; background: var(--track); }
+.share i { display: block; height: 8px; border-radius: 2px; background: var(--tc-ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.trend { color: var(--text-dim); white-space: nowrap; }
+.trend.up { color: #7cb6ff; }
+.trend.down { color: #ff9a5c; }
+.usage-carries { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 0 8px; }
+.usage-carries .lbl { font-size: 0.8125rem; color: var(--text-dim); }
+.usage-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.8125rem; }
+.usage-block .bet-note { margin-left: 8px; }
 .edge-table td { padding: 7px 6px; }
 .edge-table td.lbl { color: var(--text-dim); }
 
@@ -715,6 +755,12 @@ body.plog-open { overflow: hidden; }
 .board-block .ap-rank { margin-right: 0; }
 .board-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .board-block td.move { font-size: 0.8125rem; color: var(--text-dim); }
+.board-block td.move { white-space: normal; min-width: 120px; max-width: 190px; }
+.board-block td.proe-cell { white-space: nowrap; line-height: 1.35; }
+.share-cell b { display: block; }
+.share-cell .trend { display: block; font-size: 0.78rem; }
+.prop-boards td:first-child { white-space: normal; min-width: 96px; }
+.prop-boards th, .prop-boards td { padding-left: 5px; padding-right: 5px; }
 .board-count { font-size: 0.875rem; color: var(--text-dim); }
 .edge-intro { margin: -4px 0 12px; }
 .edge-intro b { color: var(--text); }
@@ -805,6 +851,7 @@ body.plog-open { overflow: hidden; }
   .bet-chips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .tape { grid-template-columns: 78px 58px minmax(0, 1fr) minmax(0, 1fr) 58px 34px; column-gap: 6px; font-size: 0.8125rem; }
   .tape .rk { display: block; }
+  .share { display: none; }
   .gauges { gap: 10px 16px; }
   .plog { padding: 8px; }
   .plog-card { max-height: calc(100vh - 16px); }
@@ -861,6 +908,8 @@ body.plog-open { overflow: hidden; }
 
   .no-print, .matchup-picker, footer, .print-btn, .topnav, .league-link, .psearch,
   .ptip, .plog, .boxscore, #boxscore, .live-note, .print-all-bar { display: none !important; }
+  /* the one-page layout has no room for the newer sections; they stay on screen only */
+  .tape-group, .tape-x, .edge-key-x, .pace-panel, .usage-block { display: none !important; }
 
   .topbar { display: block; min-height: 0; padding: 0 0 10px; margin-bottom: 12px; border-bottom: 2px solid #111318; }
   main { max-width: 100%; padding: 0; }
