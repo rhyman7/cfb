@@ -35,6 +35,20 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   game currently shown (respecting the conference / Top 25 / search
   filters), one matchup per landscape page, and brings up the print dialog.
   Each matchup page still has its own Print Matchup button.
+- **`epa.html` — EPA** (with `epa.js`), linked left of Weekly Edges.
+  Opponent-adjusted EPA: pick a game from the dropdown for Head to Head panels
+  (adjusted EPA / play, pass and rush EPA, early-down pass EPA, success rate, ranked
+  among FBS teams, edge at 26+ spots) and both teams' cards (raw vs. adjusted rank, QB
+  EPA / dropback, pace, neutral pass rate, regression flags). Below that: the EPA line
+  and total against the current market for every game, a sortable ratings table for
+  every FBS team, and a walk-forward check against closing lines. **Print all** prints
+  every game (one landscape page each), then the board and the ratings; **Download PDF**
+  is `pdf/epa.pdf`, built by the **Build EPA PDF** workflow (`scripts/build_pdfs.py`)
+  whenever the data or the page changes, and shown only when it's for the week on the
+  page. The ratings are `data/epa.json`, written by `scripts/build_data.py` with
+  `scripts/epa_ratings.py`: garbage time dropped by score (a lead over 43/37/27/21 points
+  in quarters 1–4), FCS opponents pooled into one team, a ridge regression on offense,
+  defense and home field (2.5 points; none at neutral sites).
 - **`edges.html` — Weekly Edges.** A game board for the week's games sorted
   by kickoff (current spread and O/U, implied team totals, line move since the
   week's first update, and the net EPA edge: which team's offense EPA/play minus

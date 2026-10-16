@@ -29,7 +29,7 @@ function wantedWeek() {
 }
 
 // Which page this is: "week" (index.html), "matchup" (matchup.html), "edges" (edges.html),
-// "printall" (print.html), "ratings" (ratings.html) or "dashboard"
+// "printall" (print.html), "ratings" (ratings.html), "epa" (epa.html, with epa.js) or "dashboard"
 const PAGE = document.body.dataset.page || "dashboard";
 const teamCards = document.getElementById("teamCards");
 
@@ -71,6 +71,7 @@ async function init() {
   else if (PAGE === "printall") initPrintAll();
   else if (PAGE === "edges") initEdges();
   else if (PAGE === "ratings") { /* static page: only the player search */ }
+  else if (PAGE === "epa") { if (typeof initEpa === "function") initEpa(); }
   else initDashboard();
 }
 

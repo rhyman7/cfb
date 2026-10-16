@@ -12,6 +12,8 @@ same season and week, so the site can show how far the line has moved.
 
 Next to data.json the build also writes the files behind the site's week strip:
     data/season.json      every regular-season week: game count, first/last game day, game ids
+    data/epa.json         opponent-adjusted EPA ratings for the EPA page (scripts/epa_ratings.py),
+                          written when play-by-play is available
     data/weeks/<N>.json   that week's games, in the same shape as data.json's weekGames.
                           Finished weeks carry the final scores, with each team's record
                           and AP rank going into the week; later weeks are the schedule so far.
@@ -36,6 +38,8 @@ from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
+
+from epa_ratings import build_epa
 
 BASE = "https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/cfb"
 FILES = {
@@ -409,6 +413,53 @@ def gauge_max(series):
     return int(math.ceil(float(series.max()) / 5.0) * 5)
 
 
+# Garbage time for the EPA page: a lead bigger than this in the quarter (Q1..Q4), the usual
+# college cutoffs. Overtime always counts.
+GARBAGE_LEAD = {1: 43, 2: 37, 3: 27, 4: 21}
+# ridge strength and how far projections are pulled toward a pick'em / league-average total
+# (1.0 = not at all: in college the ridge fit already shrinks enough, and more made it worse)
+EPA_ALPHA, EPA_K_MARGIN, EPA_K_TOTAL = 150.0, 1.0, 0.5   # from the walk-forward check, Oct 2026
+
+
+def epa_ratings(pbp, g, fbs_ids, id_to_name, lines, season, through_week, cur_week):
+    """data/epa.json for the EPA page: the play-by-play in scripts/epa_ratings.py's shape.
+    Non-FBS opponents are pooled into one "FCS" team, so FBS teams' FCS games still count
+    with an adjustment, but only FBS teams are published."""
+    game_ids = set(g["game_id"])
+    d = pbp[pbp["game_id"].isin(game_ids) & (pbp["rush"].astype(bool) | pbp["pass"].astype(bool))
+            & ~pbp["kneel_down"].astype(bool) & ~pbp["penalty_no_play"].astype(bool) & pbp["EPA"].notna()]
+    key = lambda tid: id_to_name.get(int(tid), "FCS") if int(tid) in fbs_ids else "FCS"
+    neutral_ids = set(g.loc[g["neutral_site"].astype(bool), "game_id"])
+    period = num(d["period"]).fillna(4).astype(int)
+    lead = num(d["pos_score_diff_start"]).abs().fillna(0)
+    lost_fumble = d["fumble_vec"].astype(bool) & d["change_of_pos_team"].astype(bool) & ~d["int"].astype(bool)
+    plays = pd.DataFrame({
+        "game_id": d["game_id"], "week": d["week"].astype(int),
+        "off": d["pos_team_id"].map(key), "def": d["def_pos_team_id"].map(key),
+        "home": (d["is_home"].astype(bool) & ~d["game_id"].isin(neutral_ids)).astype(int),
+        "epa": d["EPA"], "success": d["EPA_success"].astype(bool).astype(int),
+        "pass": d["pass"].astype(bool).astype(int), "rush": d["rush"].astype(bool).astype(int),
+        "down": d["down"], "wp": d["wp_before"],
+        "to_lost": (d["int"].astype(bool) | lost_fumble).astype(int),
+        "passer": d["passer_player_name"].where(d["pass"].astype(bool)), "cpoe": np.nan,
+        "garbage": [lead_ > GARBAGE_LEAD.get(p_, 99) for lead_, p_ in zip(lead, period)],
+    })
+    plays = plays[plays["off"] != plays["def"]]   # FCS vs FCS never counts
+    ln = lambda gid, k: (lines.get(int(gid)) or {}).get(k)
+    games = pd.DataFrame({
+        "game_id": g["game_id"], "week": g["week"].astype(int),
+        "home": g["home_id"].map(key), "away": g["away_id"].map(key),
+        "hs": g["home_score"], "as_": g["away_score"], "neutral": g["neutral_site"].astype(bool),
+        "spread": pd.to_numeric(g["game_id"].map(lambda x: ln(x, "spread")), errors="coerce"),
+        "total": pd.to_numeric(g["game_id"].map(lambda x: ln(x, "over_under")), errors="coerce"),
+    })
+    games = games[(games["home"] != "FCS") | (games["away"] != "FCS")]
+    fbs_keys = sorted(id_to_name[t] for t in fbs_ids if t in id_to_name)
+    epa = build_epa(plays, games, fbs_keys, hfa=2.5, alpha=EPA_ALPHA, k_margin=EPA_K_MARGIN, k_total=EPA_K_TOTAL)
+    return {"generatedAt": datetime.now(timezone.utc).isoformat(), "season": season,
+            "throughWeek": through_week, "week": cur_week, **epa}
+
+
 def build(season, cache, prev_path=None):
     sched = load("schedule", season, cache)
     tbox = load("team_box", season, cache)
@@ -652,6 +703,7 @@ def build(season, cache, prev_path=None):
     eff = efficiency(pbp, game_ids, set(per.index)) if pbp is not None else {}
     if pbp is None:
         notes.append("no play-by-play: EPA and success rate left out")
+    epa = epa_ratings(pbp, g, set(per.index), id_to_name, lines, season, last_week, cur_week) if pbp is not None else None
     for tid, name in id_to_name.items():
         team_rows[name]["betting"] = bet.get(tid)
         if eff:
@@ -700,7 +752,7 @@ def build(season, cache, prev_path=None):
             "defPassYdsG": {"min": 0, "max": gauge_max(per["d_passYdsG"])},
         },
     }
-    return out, weeks
+    return out, weeks, epa
 
 
 def team_game_list(results, pg, names, team_names):
@@ -789,12 +841,18 @@ def main():
     ap.add_argument("--cache", default=None, help="optional folder to cache downloads")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "data", "data.json"))
     a = ap.parse_args()
-    data, weeks = build(a.season, a.cache, prev_path=a.out)
+    data, weeks, epa = build(a.season, a.cache, prev_path=a.out)
     out_dir = os.path.dirname(os.path.abspath(a.out))
     os.makedirs(out_dir, exist_ok=True)
     write_json(data, a.out)
     print(f"Wrote {a.out}: {len(data['teams'])} teams, {data['gamesCounted']} games, "
           f"through week {data['throughWeek']}")
+    if epa:
+        with open(os.path.join(out_dir, "epa.json"), "w", encoding="utf-8") as f:
+            f.write(json.dumps(epa, ensure_ascii=False, separators=(",", ":"), allow_nan=False) + "\n")
+        bt = epa["backtest"]
+        print(f"Wrote data/epa.json: {epa['teamCount']} teams, {epa['playsUsed']} of {epa['playsAll']} plays"
+              + (f"; walk-forward miss on {bt['games']} games: line {bt['lineM']}, EPA {bt['modelM']}" if bt else ""))
     wrote = write_weeks(weeks, data, out_dir)
     print("Week files (data/season.json, data/weeks/): "
           + ("updated " + ", ".join(f"Week {w}" for w in wrote) if wrote else "no changes"))
