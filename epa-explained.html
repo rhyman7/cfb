@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EPA Explained · CFB Matchups</title>
+<meta name="description" content="What expected points added (EPA) means, why it beats yards and points, and how to read every part of the EPA page.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CFB Matchups">
+<meta property="og:title" content="EPA Explained · CFB Matchups">
+<meta property="og:description" content="What expected points added (EPA) means, why it beats yards and points, and how to read every part of the EPA page.">
+<meta property="og:url" content="https://rhyman7.github.io/cfb/epa-explained.html">
+<meta property="og:image" content="https://rhyman7.github.io/cfb/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CFB Matchups: every game this week, offense against defense.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="style.css?v=202610161300">
+<style>
+  .rx { max-width: 820px; margin: 0 auto; line-height: 1.6; }
+  .rx h2 { font-size: 2.5rem; line-height: 1.05; font-stretch: 62%; font-weight: 800; margin: 4px 0 10px; }
+  .rx .lede { color: var(--text-dim); margin: 0 0 24px; }
+  .rx h3 { margin: 0 0 4px; font-size: 1.1rem; font-weight: 600; }
+  .rx h4 { margin: 14px 0 4px; font-size: 1rem; font-weight: 600; }
+  .rx .abbr { margin-right: 8px; font-size: 1.375rem; font-stretch: 68%; font-weight: 700; }
+  .rx .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .rx .card p { margin: 6px 0 0; }
+  .rx a { color: var(--text); }
+  .rx .read { color: var(--text-dim); font-size: 0.92rem; }
+  .rx .formula { display: inline-block; background: var(--panel-alt); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; font-size: 0.9rem; }
+  .rx .section { margin-top: 30px; }
+  .rx .section > h3 { font-size: 1.625rem; line-height: 1.1; font-stretch: 62%; font-weight: 800; margin-bottom: 8px; }
+  .rx ul, .rx ol { padding-left: 20px; margin: 6px 0; }
+  .rx li { margin: 4px 0; }
+  .rx .example { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0 8px; }
+  .rx .example.three { grid-template-columns: repeat(3, 1fr); }
+  .rx .example div { background: var(--panel-alt); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
+  .rx .example .lbl { display: block; font-size: 0.78rem; color: var(--text-dim); }
+  .rx .example .val { font-size: 1.625rem; font-stretch: 62%; font-weight: 800; }
+  .rx .pos { color: var(--good); }
+  .rx .neg { color: var(--neg); }
+  .rx .tbl { overflow-x: auto; margin: 8px 0; }
+  .rx table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .rx th { text-align: left; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dim); font-weight: 600;
+    padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  .rx td { padding: 7px 8px; border-top: 1px solid var(--hair); vertical-align: top; }
+  .rx td:first-child { font-weight: 600; white-space: nowrap; }
+  .rx .note { background: rgba(251, 191, 36, 0.12); border-radius: 6px; padding: 10px 14px; margin: 10px 0; }
+  .rx .note b { color: #fbbf24; }
+  .rx .toc { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: -10px 0 20px; font-size: 0.875rem; }
+  .rx .toc a { color: var(--text-dim); }
+  .rx .toc a:hover { color: var(--text); }
+  @media (max-width: 600px) { .rx .example, .rx .example.three { grid-template-columns: repeat(2, 1fr); } }
+  @media print { .rx .note { background: #fef3c7; } .rx .note b { color: #92400e; } .rx .toc { display: none; } }
+</style>
+</head>
+<body data-page="epaexplained">
+<header class="topbar">
+  <h1><a href="index.html" class="home-link">CFB Matchups</a></h1>
+  <nav class="topnav no-print">
+    <a href="index.html"><span class="nav-full">This Week's Games</span><span class="nav-short">This Week</span></a>
+    <a href="epa.html"><span class="nav-full">EPA</span><span class="nav-short">EPA</span></a>
+    <a href="epa-explained.html" class="active"><span class="nav-full">EPA Explained</span><span class="nav-short">EPA Explained</span></a>
+    <a href="edges.html"><span class="nav-full">Weekly Edges</span><span class="nav-short">Edges</span></a>
+    <a href="dashboard.html"><span class="nav-full">Compare Any Two Teams</span><span class="nav-short">Compare</span></a>
+    <a href="ratings.html"><span class="nav-full">Ratings Explained</span><span class="nav-short">Ratings</span></a>
+  </nav>
+  <a href="/nfl/" class="league-link no-print">NFL Matchups</a>
+</header>
+
+<main id="app">
+  <article class="rx">
+    <h2>What EPA means and how to read the EPA page</h2>
+    <p class="lede">EPA, expected points added, measures how much each play helped or hurt a team's chances of
+      scoring. It is the stat most sharp bettors and analysts use to rate offenses and defenses, because it
+      credits what actually matters on each play instead of treating every yard the same.</p>
+    <nav class="toc" aria-label="On this page">
+      <a href="#basics">The basics</a><a href="#why">Why it beats yards</a><a href="#adjusted">What "adjusted" means</a>
+      <a href="#header">Reading a game</a><a href="#routine">A routine</a><a href="#limits">Limits</a>
+    </nav>
+
+    <div id="basics">
+      <div class="card">
+        <h3><span class="abbr">EP</span>Expected points</h3>
+        <p>Before every snap, the down, distance, field position and time left say how many points the
+          offense can expect from the drive, on average, based on thousands of past plays. First-and-10 at
+          your own 25 is worth about +1 point. First-and-goal at the 2 is worth about +6. Backed up at
+          your own 2, it can be below zero, because the other team is more likely to score next.</p>
+      </div>
+      <div class="card">
+        <h3><span class="abbr">EPA</span>Expected points added</h3>
+        <p>The change in expected points from one play to the next. A play that improves the offense's
+          situation has positive EPA; a play that makes it worse has negative EPA. Averaged over many
+          plays, EPA per play is a team's efficiency.</p>
+        <p class="read"><span class="formula">EPA = expected points after the play − expected points before it</span></p>
+      </div>
+      <div class="card">
+        <h3><span class="abbr">Success</span>Success rate</h3>
+        <p>The share of plays with positive EPA. EPA per play rewards big plays; success rate shows how
+          often an offense stays on schedule. A team with a good EPA but a low success rate is living on
+          explosive plays, which tend to be less repeatable.</p>
+      </div>
+
+      <div class="section">
+        <h3>One play, start to finish</h3>
+        <p>First-and-10 at the offense's own 25. The quarterback completes a pass for 20 yards to his own 45.</p>
+        <div class="example three">
+          <div><span class="lbl">Before the play</span><span class="val">+1.0</span></div>
+          <div><span class="lbl">After the play</span><span class="val">+2.3</span></div>
+          <div><span class="lbl">EPA</span><span class="val pos">+1.3</span></div>
+        </div>
+        <p class="read">On the next drive the same team faces 3rd-and-5 near midfield and takes a sack that
+          forces a punt. That play might be worth about −1.5 EPA: the drive's scoring chances are gone, and
+          the other team gets the ball.</p>
+      </div>
+    </div>
+
+    <div class="section" id="why">
+      <h3>Why it beats yards and points</h3>
+      <ul>
+        <li><b>Situation counts.</b> A 4-yard run on 3rd-and-3 keeps a drive alive and earns positive EPA.
+          A 9-yard catch on 3rd-and-12 gives the ball away on the punt and earns negative EPA. Yards per
+          game counts the second one as better.</li>
+        <li><b>Turnovers and sacks are priced in.</b> An interception at midfield costs several points of
+          EPA; yards ignore it.</li>
+        <li><b>It is less noisy than points.</b> Points depend on a few red-zone plays, field goal luck and
+          defensive touchdowns. EPA spreads the credit over every snap, so it settles down faster.</li>
+        <li><b>Passing EPA predicts best.</b> How well a team passes, especially on 1st and 2nd down, carries
+          over from week to week more than almost any other stat. Rushing EPA is noisier.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="adjusted">
+      <h3>What "adjusted" means on this site</h3>
+      <ul>
+        <li><b>Garbage time is left out.</b> Plays with a lopsided score don't count: a lead over 43 points
+          in the 1st quarter, 37 in the 2nd, 27 in the 3rd or 21 in the 4th. College blowouts are common, and
+          starters often sit, so these plays say little about the teams. Kneels and plays wiped out by a
+          penalty are left out too.</li>
+        <li><b>Opponents are accounted for.</b> One regression across every play this season gives each team
+          an offense rating and a defense rating, with the strength of every opponent and home field separated
+          out. A good offense that has faced three elite defenses moves up; one that has faced three bad ones
+          moves down. FCS opponents are pooled into one team, so games against them still count, with an adjustment.</li>
+        <li><b>Pass and run get their own ratings,</b> fit the same way.</li>
+        <li><b>Projections are pulled toward average.</b> The EPA line on each game is each offense's rating
+          plus the other defense's, times expected plays, plus 2.5 points for home field (none at a neutral site).
+          Totals are pulled toward the league average; spreads are not, because the regression already shrinks
+          the ratings and pulling them further made them worse.</li>
+      </ul>
+      <p class="read">For an offense, a positive number is good. For a defense, a negative number is good,
+        because it means opponents gained less than expected. Ranks always run #1 = best.</p>
+    </div>
+
+    <div class="section" id="header">
+      <h3>Reading a game on the EPA page</h3>
+      <p>Pick a game from the dropdown at the top of the <a href="epa.html">EPA page</a>. Read it top to bottom: the header gives
+        the bottom line, the two panels show where it comes from, and the team cards show how much to trust it.</p>
+
+      <h4>1. The header: the ratings vs. the market</h4>
+      <div class="tbl"><table>
+        <tr><th>Item</th><th>What it means</th></tr>
+        <tr><td>EPA line</td><td>What the ratings alone say the spread should be, for example "DEN −1.5".</td></tr>
+        <tr><td>Market</td><td>The current sportsbook line.</td></tr>
+        <tr><td>Side gap</td><td>The distance between the two, in points. Gaps of 3 or more are highlighted: the
+          ratings and the market disagree enough to look into. It is not a bet signal.</td></tr>
+        <tr><td>EPA total and gap</td><td>The same comparison for the over/under.</td></tr>
+        <tr><td>Net EPA rank</td><td>Adjusted offense minus adjusted defense, ranked among FBS teams. Two teams with
+          similar net ranks produce an EPA line near a pick'em plus home field.</td></tr>
+      </table></div>
+
+      <h4>2. The panels: each offense against the other defense</h4>
+      <p>Each row shows the value, the league rank and a bar for both sides; a longer bar is a better rank. The
+        <b>Edge</b> column names a team only when it ranks at least 26 spots better than the other side (about
+        the same share of the field as 6 of 32 in the NFL), and otherwise says Even.</p>
+      <div class="tbl"><table>
+        <tr><th>Row</th><th>What it measures</th></tr>
+        <tr><td>Adj. EPA / play</td><td>Overall efficiency on every pass and run, adjusted for opponents.</td></tr>
+        <tr><td>Pass EPA / play</td><td>Efficiency on dropbacks, including sacks and scrambles. The most predictive row.</td></tr>
+        <tr><td>Rush EPA / play</td><td>Efficiency on runs. Matters, but swings more from week to week.</td></tr>
+        <tr><td>Early-down pass</td><td>EPA on 1st- and 2nd-down passes, before a defense knows the offense has to throw.</td></tr>
+        <tr><td>Success %</td><td>Share of plays with positive EPA: how often the offense stays on schedule.</td></tr>
+      </table></div>
+      <p class="read">Look for the rows that decide the game. An elite run defense matters less against a team that
+        throws 60% of the time; a bad pass defense against a strong passing offense matters a lot.</p>
+
+      <h4>3. The team cards: context and warning signs</h4>
+      <div class="tbl"><table>
+        <tr><th>Row</th><th>How to read it</th></tr>
+        <tr><td>Rank, raw → adjusted</td><td>How much the schedule changed the picture. ▲ means the unit has been
+          better than its raw numbers once opponents are counted; ▼ means worse.</td></tr>
+        <tr><td>QB, EPA / dropback</td><td>Points added per dropback for the season's main passer. Check that he's the one starting this week.</td></tr>
+        <tr><td>Plays per game</td><td>Pace. Two fast teams push a total up; two slow ones pull it down.</td></tr>
+        <tr><td>Neutral early-down pass rate</td><td>How often a team throws on 1st and 2nd down in a close game:
+          its true play-calling tendency.</td></tr>
+        <tr><td>Turnover margin</td><td>Turnovers swing on luck, especially fumble recoveries. ±5 or more gets a flag.</td></tr>
+      </table></div>
+      <p><b>Flags</b> at the bottom of each card list results that usually even out: a big turnover margin,
+        a lopsided record in one-score games, or more or fewer wins than the team's points would predict. A
+        team with good flags has probably been a little lucky; one with bad flags, a little unlucky.</p>
+
+      <div class="note"><b>The most common reason for a big gap is the quarterback.</b> The card shows the
+        season's main passer. If someone else is starting this week, the offense rating describes a player who
+        isn't on the field, and the market has already priced that in.</div>
+    </div>
+
+    <div class="section" id="routine">
+      <h3>A routine for any game</h3>
+      <ol>
+        <li><b>Start with the header gap.</b> Under 3 points, the ratings and the market roughly agree. Highlighted means look closer.</li>
+        <li><b>Find what drives it in the panels.</b> Which rows have an edge, and are they the important ones?
+          Overall, pass and early-down pass matter most.</li>
+        <li><b>Check the cards for reasons to doubt it.</b> Big raw-to-adjusted shifts, a different starting QB,
+          flags for turnover or close-game luck, or news the ratings can't know: injuries, opt-outs, weather, rest.</li>
+        <li><b>Decide whether the market has a reason.</b> If you can find one, trust the market. If you can't,
+          the game is worth a closer look.</li>
+      </ol>
+    </div>
+
+    <div class="section" id="example" hidden>
+      <h3>Right now: the top-rated team</h3>
+      <p id="exName"></p>
+      <div class="example" id="exGrid"></div>
+      <p class="read" id="exText"></p>
+    </div>
+
+    <div class="section" id="limits">
+      <h3>Limits</h3>
+      <ul>
+        <li><b>It rates the team's play, not one player.</b> A quarterback's EPA includes his line, his
+          receivers and his play-caller.</li>
+        <li><b>Small samples swing.</b> Six weeks is about 350 plays per unit, and schedules vary enormously between conferences. Treat early-season ratings as rough.</li>
+        <li><b>It doesn't know the news.</b> Injuries, opt-outs, weather, rest and travel aren't in the ratings. The market knows all of them.</li>
+        <li><b>The market is hard to beat.</b> The walk-forward check at the bottom of the EPA page shows how the
+          ratings have done against closing lines this season. Use them as context and as a way to find games
+          worth a closer look, not as picks.</li>
+      </ul>
+      <p class="read">Data: ESPN play-by-play via cfbfastR for the current FBS regular season, updated with each weekly refresh.
+        Expected points come from cfbfastR's model.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="no-print">
+  <p>All FBS teams, 2026 regular season. EPA ratings cover completed games. Updated weekly.</p>
+</footer>
+
+<script>
+(function () {
+  var sg = function (v) { return (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(2); };
+  var cls = function (v, good) { return v === 0 ? "" : (v > 0) === good ? "pos" : "neg"; };
+  fetch("data/epa.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (e) {
+      var keys = Object.keys(e.teams || {});
+      if (!keys.length) return;
+      keys.sort(function (a, b) { return e.teams[b].net - e.teams[a].net; });
+      var k = keys[0], t = e.teams[k];
+      document.getElementById("exName").textContent = k + " (" + t.rec + "), #1 in net EPA among FBS teams through Week " + e.throughWeek;
+      document.getElementById("exGrid").innerHTML = [
+        ["Offense, adj. EPA / play", t.off.adj, true, "#" + t.rk.o_adj],
+        ["Defense, adj. EPA / play", t.def.adj, false, "#" + t.rk.d_adj],
+        ["Net", t.net, true, "#1"],
+        ["Pass offense", t.off.pass, true, "#" + t.rk.o_pass],
+      ].map(function (p) {
+        return '<div><span class="lbl">' + p[0] + '</span><span class="val ' + cls(p[1], p[2]) + '">' + sg(p[1]) +
+          '</span><span class="lbl">' + p[3] + "</span></div>";
+      }).join("");
+      var side = t.rk.o_adj <= t.rk.d_adj ? "offense" : "defense";
+      var flags = t.flags.length ? " Its card carries a flag worth knowing: " + t.flags[0].toLowerCase() + "." : "";
+      document.getElementById("exText").textContent =
+        "Its offense ranks #" + t.rk.o_adj + " and its defense #" + t.rk.d_adj + " after adjusting for opponents, so most of its edge comes from the " +
+        side + ". Before the adjustment the offense ranked #" + t.rk.o_raw + " and the defense #" + t.rk.d_raw + "." + flags;
+      document.getElementById("example").hidden = false;
+    })
+    .catch(function () { /* the example is optional; the explanation stands on its own */ });
+})();
+</script>
+</body>
+</html>

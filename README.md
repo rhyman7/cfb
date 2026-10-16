@@ -49,6 +49,10 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   `scripts/epa_ratings.py`: garbage time dropped by score (a lead over 43/37/27/21 points
   in quarters 1–4), FCS opponents pooled into one team, a ridge regression on offense,
   defense and home field (2.5 points; none at neutral sites).
+- **`epa-explained.html` — EPA Explained**, linked right of EPA: what EPA is, why it
+  beats yards and points, what "adjusted" means here (score-based garbage time, FCS pooled),
+  how to read every part of the EPA page, and its limits. Its example uses the current #1 FBS
+  team in net EPA from `data/epa.json`; the rest is static.
 - **`edges.html` — Weekly Edges.** A game board for the week's games sorted
   by kickoff (current spread and O/U, implied team totals, line move since the
   week's first update, and the net EPA edge: which team's offense EPA/play minus
