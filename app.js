@@ -100,7 +100,7 @@ function initWeekNav() {
   const search = nav.querySelector(".psearch");
   if (search) tools.appendChild(search);
   nav.appendChild(tools);
-  // "This Week's Games" is only the page on screen when the board shows this week
+  // "This Week's Matchups" is only the page on screen when the board shows this week
   if (page === "week" && VIEW_WEEK !== LIVE_WEEK) nav.querySelectorAll(":scope > a.active").forEach(a => a.classList.remove("active"));
 
   // Keep everything on one row when it can be: if the strip had to drop to a second row,
