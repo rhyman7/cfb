@@ -29,11 +29,11 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   field as the NFL site's 6 of 32), then both teams' full stat cards. The header shows the kickoff forecast
   (outdoor games) between the venue and the spread/O-U, and uses the same
   current ESPN line as the slate. Prints
-  on one landscape page.
+  on two landscape pages.
   Non-FBS opponents show a short note instead of stats.
 - **`print.html` — Print all.** The slate's "Print all" button opens every
   game currently shown (respecting the conference / Top 25 / search
-  filters), one matchup per landscape page, and brings up the print dialog.
+  filters), two landscape pages per matchup, and brings up the print dialog.
   Each matchup page still has its own Print Matchup button.
 - **`epa.html` — EPA** (with `epa.js`), linked left of Weekly Edges.
   Opponent-adjusted EPA: pick a game from the dropdown for Head to Head panels
@@ -276,4 +276,4 @@ rushing rows.
 - **Weekly Edges**: combined plays per game and early-down pass rate on the game board; Tgt % (with
   the last three games) on the receiving prop tables and Carry % on RB rush yds.
 
-These sections are screen-only: printouts keep the one-page layout.
+Printouts include them: each matchup prints on two landscape pages (header, Head to Head and pace on the first; both team cards with usage on the second).

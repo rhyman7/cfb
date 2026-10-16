@@ -908,8 +908,10 @@ body.plog-open { overflow: hidden; }
 
   .no-print, .matchup-picker, footer, .print-btn, .topnav, .league-link, .psearch,
   .ptip, .plog, .boxscore, #boxscore, .live-note, .print-all-bar { display: none !important; }
-  /* the one-page layout has no room for the newer sections; they stay on screen only */
-  .tape-group, .tape-x, .edge-key-x, .pace-panel, .usage-block { display: none !important; }
+  /* Two landscape pages per matchup: header, Head to Head and pace on the first; both
+     team cards (with usage) on the second */
+  body:not(.print-single) .m-cards { break-before: page; page-break-before: always; }
+  .pace-panel, .usage-block { break-inside: avoid; page-break-inside: avoid; }
 
   .topbar { display: block; min-height: 0; padding: 0 0 10px; margin-bottom: 12px; border-bottom: 2px solid #111318; }
   main { max-width: 100%; padding: 0; }
@@ -1000,6 +1002,10 @@ body.plog-open { overflow: hidden; }
   body.mprint:not(.print-single) .edge-panel { padding: 8px 14px 4px; }
   body.mprint:not(.print-single) .edge-panel h4 { margin-bottom: 4px; }
   body.mprint:not(.print-single) .tape { padding: 2px 0; }
+  body.mprint:not(.print-single) .tape-group { padding: 6px 0 2px; }
+  body.mprint:not(.print-single) .pace-panel { margin-top: 8px; padding: 8px 14px 4px; }
+  body.mprint:not(.print-single) .pace-panel th, body.mprint:not(.print-single) .pace-panel td { padding-top: 3px; padding-bottom: 3px; }
+  body.mprint:not(.print-single) .pace-panel .bet-note { margin-top: 2px; }
   body.mprint:not(.print-single) .edge-key { max-width: none; margin-top: 4px; }
   body.mprint:not(.print-single) .m-edges { margin-bottom: 10px; }
 }

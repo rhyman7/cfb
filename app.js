@@ -475,7 +475,7 @@ function initPrintAll() {
   wrap.querySelectorAll(".print-btn-single").forEach(b => b.remove());
 
   const n = games.length;
-  status.textContent = `${n} matchup${n === 1 ? "" : "s"} ready, ${n} landscape page${n === 1 ? "" : "s"}`;
+  status.textContent = `${n} matchup${n === 1 ? "" : "s"} ready, ${2 * n} landscape pages (two per matchup)`;
   const btn = document.getElementById("printAllBtn");
   btn.disabled = false;
   btn.addEventListener("click", () => window.print());
