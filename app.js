@@ -72,6 +72,7 @@ async function init() {
   else if (PAGE === "edges") initEdges();
   else if (PAGE === "ratings") { /* static page: only the player search */ }
   else if (PAGE === "epa") { if (typeof initEpa === "function") initEpa(); }
+  else if (PAGE === "learn") { if (typeof initLearn === "function") initLearn(); }
   else initDashboard();
 }
 

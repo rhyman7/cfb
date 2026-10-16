@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read Matchups · CFB Matchups</title>
+<meta name="description" content="Every section of a college football matchup page explained, using a real game from this week: the line, Head to Head edges, pace, betting trends, team cards, player usage and more.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CFB Matchups">
+<meta property="og:title" content="How to Read Matchups · CFB Matchups">
+<meta property="og:description" content="Every section of a college football matchup page explained, using a real game from this week.">
+<meta property="og:url" content="https://rhyman7.github.io/cfb/how-to-read.html">
+<meta property="og:image" content="https://rhyman7.github.io/cfb/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CFB Matchups: every game this week, offense against defense.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="style.css?v=202610162100">
+</head>
+<body data-page="learn">
+<header class="topbar">
+  <h1><a href="index.html" class="home-link">CFB Matchups</a></h1>
+  <nav class="topnav no-print">
+    <a href="index.html"><span class="nav-full">This Week's Matchups</span><span class="nav-short">This Week</span></a>
+    <a href="how-to-read.html" class="active"><span class="nav-full">How to Read Matchups</span><span class="nav-short">How to Read</span></a>
+    <a href="epa.html"><span class="nav-full">EPA</span><span class="nav-short">EPA</span></a>
+    <a href="epa-explained.html"><span class="nav-full">EPA Explained</span><span class="nav-short">EPA Explained</span></a>
+    <a href="edges.html"><span class="nav-full">Weekly Edges</span><span class="nav-short">Edges</span></a>
+    <a href="dashboard.html"><span class="nav-full">Compare Any Two Teams</span><span class="nav-short">Compare</span></a>
+    <a href="ratings.html"><span class="nav-full">Ratings Explained</span><span class="nav-short">Ratings</span></a>
+  </nav>
+  <a href="/nfl/" class="league-link no-print">NFL Matchups</a>
+</header>
+
+<main id="app">
+  <section class="week-head learn-top">
+    <div>
+      <h2 class="week-title">How to Read Matchups</h2>
+      <p class="week-sub learn-lede">Every matchup page, section by section, using one real FBS game from this week: <b id="learnGame">loading…</b>. The numbers are this game's own, so they change with each update.</p>
+    </div>
+    <div class="week-filters learn-controls no-print">
+      <label class="learn-lbl" for="learnPick">Game</label>
+      <select id="learnPick" aria-label="Choose a game"></select>
+      <button id="learnRandom" class="print-btn" type="button">Pick another game</button>
+      <a id="learnOpen" class="learn-btn" href="index.html">Open this matchup</a>
+    </div>
+  </section>
+  <nav class="learn-jump no-print" aria-label="Sections">
+    <a href="#learn-1"><span class="lm">1</span>Game header</a>
+    <a href="#learn-2"><span class="lm">2</span>Head to head</a>
+    <a href="#learn-3"><span class="lm">3</span>Pace and tendency</a>
+    <a href="#learn-4"><span class="lm">4</span>Betting trends</a>
+    <a href="#learn-5"><span class="lm">5</span>Team card</a>
+    <a href="#learn-6"><span class="lm">6</span>Player tables and game logs</a>
+    <a href="#learn-7"><span class="lm">7</span>Usage</a>
+    <a href="#learn-8"><span class="lm">8</span>Defense vs position</a>
+  </nav>
+  <div id="learn"><div class="empty-note">Loading...</div></div>
+</main>
+
+<footer class="no-print">
+  <p>All FBS teams, 2026 regular season, updated weekly. Lines: ESPN when available, otherwise the weekly consensus. <a href="https://open-meteo.com/" rel="noopener">Weather data by Open-Meteo.com</a>.</p>
+</footer>
+
+<script src="teamcolors.js?v=202610031730"></script>
+<script src="app.js?v=202610162100"></script>
+<script src="live.js?v=202610041900"></script>
+<script src="weather.js?v=202609301330"></script>
+<script src="how-to-read.js?v=202610162100"></script>
+</body>
+</html>
