@@ -10,6 +10,14 @@ with one exception: `lineOpen` on this week's games (the line at the week's
 first build) is carried over from the existing output file when it covers the
 same season and week, so the site can show how far the line has moved.
 
+Next to data.json the build also writes the files behind the site's week strip:
+    data/season.json      every regular-season week: game count, first/last game day, game ids
+    data/epa.json         opponent-adjusted EPA ratings for the EPA page (scripts/epa_ratings.py),
+                          written when play-by-play is available
+    data/weeks/<N>.json   that week's games, in the same shape as data.json's weekGames.
+                          Finished weeks carry the final scores, with each team's record
+                          and AP rank going into the week; later weeks are the schedule so far.
+
 Usage:
     pip install -r requirements.txt
     python scripts/build_data.py            # writes data/data.json
@@ -17,6 +25,7 @@ Usage:
 """
 
 import argparse
+import copy
 import io
 import json
 import math
@@ -29,6 +38,9 @@ from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
+
+from epa_ratings import build_epa
+import situational
 
 BASE = "https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/cfb"
 FILES = {
@@ -197,10 +209,13 @@ def overall_record(records):
     return m.group(1) if m else ""
 
 
-def current_poll(full):
+def current_poll(full, week=None):
     """team_id -> current AP rank. ESPN tags every unplayed game with each team's
     current poll rank, so each team's next unplayed game gives the latest poll
-    (this also covers teams on a bye). Falls back to the latest game played."""
+    (this also covers teams on a bye). Falls back to the latest game played.
+
+    With `week`, the poll going into that week instead: a finished game keeps the rank
+    each team had at kickoff, so a team's first game in that week or later gives it."""
     reg = full[full["season_type"] == 2]
     rows = []
     for p in ("home", "away"):
@@ -209,7 +224,8 @@ def current_poll(full):
         rows.append(d)
     r = pd.concat(rows)
     r["rank"] = num(r["rank"])
-    upcoming = r[~r["done"].astype(bool)].sort_values("week").groupby("team_id").first()["rank"]
+    ahead = ~r["done"].astype(bool) if week is None else r["week"] >= week
+    upcoming = r[ahead].sort_values("week").groupby("team_id").first()["rank"]
     if upcoming.empty:
         upcoming = r.sort_values("week").groupby("team_id").last()["rank"]
     return {int(t): int(k) for t, k in upcoming.items() if pd.notna(k) and 1 <= k <= 25}
@@ -220,14 +236,18 @@ def half(x):
     return None if x is None or pd.isna(x) else round(float(x) * 2) / 2
 
 
-def week_games(full, id_to_name, team_rows, poll, lines, qbs):
+def week_games(full, id_to_name, team_rows, poll, lines, qbs, week=None, records=None):
     """Games for the current week: the first regular-season week that still has
-    an unplayed game (or the final week once everything is complete)."""
+    an unplayed game (or the final week once everything is complete).
+
+    With `week`, that week's games instead; `records` ({team name: "2-1"}) then replaces
+    the current records, for a finished week shown as it stood."""
     reg = full[full["season_type"] == 2].copy()
     if reg.empty:
         return None, []
-    open_weeks = reg.loc[~reg["status_type_completed"].astype(bool), "week"]
-    week = int(open_weeks.min()) if len(open_weeks) else int(reg["week"].max())
+    if week is None:
+        open_weeks = reg.loc[~reg["status_type_completed"].astype(bool), "week"]
+        week = int(open_weeks.min()) if len(open_weeks) else int(reg["week"].max())
     wk = reg[reg["week"] == week].sort_values(["start_date", "game_id"])
 
     def side(r, pfx):
@@ -237,10 +257,13 @@ def week_games(full, id_to_name, team_rows, poll, lines, qbs):
         if key:
             rec = team_rows[key]["record"]
             record = f"{rec['w']}-{rec['l']}" + (f"-{rec['t']}" if rec["t"] else "")
+            if records is not None:
+                record = records.get(key, "0-0")
             conf = team_rows[key]["conference"]
             name = key
         else:
-            record = overall_record(r.get(f"{pfx}_records"))
+            # ESPN only has a non-FBS team's record as of today, so leave it off a finished week
+            record = overall_record(r.get(f"{pfx}_records")) if records is None else ""
             conf = "FCS"
             name = r.get(f"{pfx}_location") or r.get(f"{pfx}_short_display_name") or r.get(f"{pfx}_display_name")
         score = num(pd.Series([r.get(f"{pfx}_score")])).iloc[0]
@@ -391,6 +414,53 @@ def gauge_max(series):
     return int(math.ceil(float(series.max()) / 5.0) * 5)
 
 
+# Garbage time for the EPA page: a lead bigger than this in the quarter (Q1..Q4), the usual
+# college cutoffs. Overtime always counts.
+GARBAGE_LEAD = {1: 43, 2: 37, 3: 27, 4: 21}
+# ridge strength and how far projections are pulled toward a pick'em / league-average total
+# (1.0 = not at all: in college the ridge fit already shrinks enough, and more made it worse)
+EPA_ALPHA, EPA_K_MARGIN, EPA_K_TOTAL = 150.0, 1.0, 0.5   # from the walk-forward check, Oct 2026
+
+
+def epa_ratings(pbp, g, fbs_ids, id_to_name, lines, season, through_week, cur_week):
+    """data/epa.json for the EPA page: the play-by-play in scripts/epa_ratings.py's shape.
+    Non-FBS opponents are pooled into one "FCS" team, so FBS teams' FCS games still count
+    with an adjustment, but only FBS teams are published."""
+    game_ids = set(g["game_id"])
+    d = pbp[pbp["game_id"].isin(game_ids) & (pbp["rush"].astype(bool) | pbp["pass"].astype(bool))
+            & ~pbp["kneel_down"].astype(bool) & ~pbp["penalty_no_play"].astype(bool) & pbp["EPA"].notna()]
+    key = lambda tid: id_to_name.get(int(tid), "FCS") if int(tid) in fbs_ids else "FCS"
+    neutral_ids = set(g.loc[g["neutral_site"].astype(bool), "game_id"])
+    period = num(d["period"]).fillna(4).astype(int)
+    lead = num(d["pos_score_diff_start"]).abs().fillna(0)
+    lost_fumble = d["fumble_vec"].astype(bool) & d["change_of_pos_team"].astype(bool) & ~d["int"].astype(bool)
+    plays = pd.DataFrame({
+        "game_id": d["game_id"], "week": d["week"].astype(int),
+        "off": d["pos_team_id"].map(key), "def": d["def_pos_team_id"].map(key),
+        "home": (d["is_home"].astype(bool) & ~d["game_id"].isin(neutral_ids)).astype(int),
+        "epa": d["EPA"], "success": d["EPA_success"].astype(bool).astype(int),
+        "pass": d["pass"].astype(bool).astype(int), "rush": d["rush"].astype(bool).astype(int),
+        "down": d["down"], "wp": d["wp_before"],
+        "to_lost": (d["int"].astype(bool) | lost_fumble).astype(int),
+        "passer": d["passer_player_name"].where(d["pass"].astype(bool)), "cpoe": np.nan,
+        "garbage": [lead_ > GARBAGE_LEAD.get(p_, 99) for lead_, p_ in zip(lead, period)],
+    })
+    plays = plays[plays["off"] != plays["def"]]   # FCS vs FCS never counts
+    ln = lambda gid, k: (lines.get(int(gid)) or {}).get(k)
+    games = pd.DataFrame({
+        "game_id": g["game_id"], "week": g["week"].astype(int),
+        "home": g["home_id"].map(key), "away": g["away_id"].map(key),
+        "hs": g["home_score"], "as_": g["away_score"], "neutral": g["neutral_site"].astype(bool),
+        "spread": pd.to_numeric(g["game_id"].map(lambda x: ln(x, "spread")), errors="coerce"),
+        "total": pd.to_numeric(g["game_id"].map(lambda x: ln(x, "over_under")), errors="coerce"),
+    })
+    games = games[(games["home"] != "FCS") | (games["away"] != "FCS")]
+    fbs_keys = sorted(id_to_name[t] for t in fbs_ids if t in id_to_name)
+    epa = build_epa(plays, games, fbs_keys, hfa=2.5, alpha=EPA_ALPHA, k_margin=EPA_K_MARGIN, k_total=EPA_K_TOTAL)
+    return {"generatedAt": datetime.now(timezone.utc).isoformat(), "season": season,
+            "throughWeek": through_week, "week": cur_week, **epa}
+
+
 def build(season, cache, prev_path=None):
     sched = load("schedule", season, cache)
     tbox = load("team_box", season, cache)
@@ -422,7 +492,8 @@ def build(season, cache, prev_path=None):
     tb = tbox[tbox["game_id"].isin(game_ids)].copy()
     tb["rushYds"] = num(tb["rushingYards"])
     tb["passYds"] = num(tb["netPassingYards"])
-    tb = tb[["game_id", "team_id", "rushYds", "passYds"]]
+    tb["rushAtt"] = num(tb["rushingAttempts"])
+    tb = tb[["game_id", "team_id", "rushYds", "passYds", "rushAtt"]]
 
     passing = player_category(pbox[pbox["game_id"].isin(game_ids)], "passing")
     rushing = player_category(pbox[pbox["game_id"].isin(game_ids)], "rushing")
@@ -436,9 +507,10 @@ def build(season, cache, prev_path=None):
             .merge(ptd, on=["game_id", "team_id"], how="left")
             .merge(rtd, on=["game_id", "team_id"], how="left"))
     # opponent's numbers = what this team's defense allowed
-    opp = tg[["game_id", "team_id", "rushYds", "passYds", "passTd", "passInt", "rushTd"]].rename(
+    opp = tg[["game_id", "team_id", "rushYds", "passYds", "passTd", "passInt", "rushTd", "rushAtt"]].rename(
         columns={"team_id": "opp_id", "rushYds": "o_rushYds", "passYds": "o_passYds",
-                 "passTd": "o_passTd", "passInt": "o_passInt", "rushTd": "o_rushTd"})
+                 "passTd": "o_passTd", "passInt": "o_passInt", "rushTd": "o_rushTd",
+                 "rushAtt": "o_rushAtt"})
     tg = tg.merge(opp, on=["game_id", "opp_id"], how="left")
 
     tg = tg[tg["team_id"].isin(fbs_ids)]
@@ -449,11 +521,17 @@ def build(season, cache, prev_path=None):
         rushTdG=("rushTd", "mean"), passTdG=("passTd", "mean"), intG=("passInt", "mean"),
         d_rushYdsG=("o_rushYds", "mean"), d_passYdsG=("o_passYds", "mean"),
         d_rushTdG=("o_rushTd", "mean"), d_passTdG=("o_passTd", "mean"), d_intG=("o_passInt", "mean"),
+        rushYdsTot=("rushYds", "sum"), rushAttTot=("rushAtt", "sum"),
+        d_rushYdsTot=("o_rushYds", "sum"), d_rushAttTot=("o_rushAtt", "sum"),
     )
     wl = tg.assign(win=tg["pf"] > tg["pa"], loss=tg["pf"] < tg["pa"], tie=tg["pf"] == tg["pa"]) \
            .groupby("team_id")[["win", "loss", "tie"]].sum()
     per["w"], per["l"], per["t"] = wl["win"], wl["loss"], wl["tie"]
     per = per.fillna(0)
+    # rush yards per attempt = season rushing yards / season rushing attempts, from the team
+    # box scores (college box scores count sacks as rushes); defense = what opponents ran for
+    per["rushYpa"] = (per["rushYdsTot"] / per["rushAttTot"].where(per["rushAttTot"] > 0)).fillna(0)
+    per["d_rushYpa"] = (per["d_rushYdsTot"] / per["d_rushAttTot"].where(per["d_rushAttTot"] > 0)).fillna(0)
 
     per["offRushRk"] = rank(per["rushYdsG"], ascending=False)
     per["offPassRk"] = rank(per["passYdsG"], ascending=False)
@@ -588,10 +666,10 @@ def build(season, cache, prev_path=None):
             "record": {"w": int(p.w), "l": int(p.l), "t": int(p.t), "sos": r1(sos[t]),
                        "srs": r1(s), "osrs": r1(o), "dsrs": r1(d)},
             "offense": {"ppg": r1(p.pf), "rushYdsG": r1(p.rushYdsG), "rushYdsGRank": int(p.offRushRk),
-                        "rushTdG": r2(p.rushTdG), "passYdsG": r1(p.passYdsG),
+                        "rushYpa": r2(p.rushYpa), "rushTdG": r2(p.rushTdG), "passYdsG": r1(p.passYdsG),
                         "passYdsGRank": int(p.offPassRk), "passTdG": r2(p.passTdG), "int": r2(p.intG)},
             "defense": {"papg": r1(p.pa), "rushYdsG": r1(p.d_rushYdsG), "rushYdsGRank": int(p.defRushRk),
-                        "rushTdG": r2(p.d_rushTdG), "passYdsG": r1(p.d_passYdsG),
+                        "rushYpa": r2(p.d_rushYpa), "rushTdG": r2(p.d_rushTdG), "passYdsG": r1(p.d_passYdsG),
                         "passYdsGRank": int(p.defPassRk), "passTdG": r2(p.d_passTdG), "int": r2(p.d_intG)},
             "passing": pass_rows,
             "rushing": rush_rows,
@@ -626,10 +704,51 @@ def build(season, cache, prev_path=None):
     eff = efficiency(pbp, game_ids, set(per.index)) if pbp is not None else {}
     if pbp is None:
         notes.append("no play-by-play: EPA and success rate left out")
+    epa = epa_ratings(pbp, g, set(per.index), id_to_name, lines, season, last_week, cur_week) if pbp is not None else None
     for tid, name in id_to_name.items():
         team_rows[name]["betting"] = bet.get(tid)
         if eff:
             team_rows[name]["eff"] = eff.get(tid)
+    # finishing drives, big plays, pass rush, pace and usage (scripts/situational.py)
+    extra = situational.build(pbp, game_ids, set(per.index), pg, results, athlete_names) if pbp is not None else {}
+    for tid, name in id_to_name.items():
+        x = extra.get(tid) or {}
+        row = team_rows[name]
+        row["situ"], row["pace"] = x.get("situ"), x.get("pace")
+        u = x.get("usage")
+        if u:
+            for r in u["targets"] + u["carries"]:
+                r["log"] = add_log(tid, r.pop("aid"))
+        row["usage"] = u
+        sh = x.get("shares") or {}
+        for r in row["receiving"]:
+            z = sh.get(int(r["log"].split("|", 1)[1]))
+            if z:
+                r["ts"], r["ts3"] = z["ts"], z["ts3"]
+        for r in row["rushing"]:
+            z = sh.get(int(r["log"].split("|", 1)[1]))
+            if z:
+                r["cs"] = z["cs"]
+    # --- every regular-season week's games, for the week strip (written by write_weeks) ---
+    reg_weeks = sorted(int(w) for w in full.loc[full["season_type"] == 2, "week"].unique())
+    weeks = {}
+    for w in reg_weeks:
+        if w == cur_week:
+            weeks[w] = copy.deepcopy(games)
+        elif w > cur_week:
+            weeks[w] = week_games(full, id_to_name, team_rows, poll, lines, qbs, week=w)[1]
+        else:
+            # a finished week as it stood: records and AP ranks going into it, no "at QB"
+            before = tg[tg["week"] < w]
+            wl = before.assign(w=before["pf"] > before["pa"], l=before["pf"] < before["pa"], t=before["pf"] == before["pa"]) \
+                       .groupby("team_id")[["w", "l", "t"]].sum()
+            records = {id_to_name[int(t)]: f"{int(r.w)}-{int(r.l)}" + (f"-{int(r.t)}" if r.t else "")
+                       for t, r in wl.iterrows() if int(t) in id_to_name}
+            weeks[w] = week_games(full, id_to_name, team_rows, current_poll(full, w), lines, {}, week=w, records=records)[1]
+        if w != cur_week:
+            for x in weeks[w]:
+                x["lineOpen"] = None  # only tracked for the current week
+
     out = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "season": season,
@@ -654,7 +773,7 @@ def build(season, cache, prev_path=None):
             "defPassYdsG": {"min": 0, "max": gauge_max(per["d_passYdsG"])},
         },
     }
-    return out
+    return out, weeks, epa
 
 
 def team_game_list(results, pg, names, team_names):
@@ -704,17 +823,60 @@ def write_json(data, path):
         f.write(text)
 
 
+def write_if_changed(path, data):
+    """Write compact JSON unless the file already holds the same thing (ignoring
+    generatedAt), so a rerun only touches the weeks that changed."""
+    def strip(x):
+        return {k: v for k, v in x.items() if k != "generatedAt"}
+    try:
+        with open(path, encoding="utf-8") as f:
+            if strip(json.load(f)) == strip(json.loads(json.dumps(data))):
+                return False
+    except (OSError, ValueError):
+        pass
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace('{"week"', '\n{"week"').replace('{"id"', '\n{"id"') + "\n")
+    return True
+
+
+def write_weeks(weeks, data, out_dir):
+    """data/season.json and data/weeks/<N>.json for the site's week strip."""
+    eastern = ZoneInfo("America/New_York")
+    index, wrote = [], []
+    for week, games in sorted(weeks.items()):
+        days = sorted(datetime.fromisoformat(x["start"].replace("Z", "+00:00")).astimezone(eastern).strftime("%Y-%m-%d")
+                      for x in games)
+        index.append({"week": week, "games": len(games), "from": days[0] if days else None,
+                      "to": days[-1] if days else None, "ids": [x["id"] for x in games]})
+        doc = {"season": data["season"], "week": week, "generatedAt": data["generatedAt"], "weekGames": games}
+        if write_if_changed(os.path.join(out_dir, "weeks", f"{week}.json"), doc):
+            wrote.append(week)
+    write_if_changed(os.path.join(out_dir, "season.json"), {"season": data["season"], "weeks": index})
+    return wrote
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, default=2026)
     ap.add_argument("--cache", default=None, help="optional folder to cache downloads")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "data", "data.json"))
     a = ap.parse_args()
-    data = build(a.season, a.cache, prev_path=a.out)
-    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
+    data, weeks, epa = build(a.season, a.cache, prev_path=a.out)
+    out_dir = os.path.dirname(os.path.abspath(a.out))
+    os.makedirs(out_dir, exist_ok=True)
     write_json(data, a.out)
     print(f"Wrote {a.out}: {len(data['teams'])} teams, {data['gamesCounted']} games, "
           f"through week {data['throughWeek']}")
+    if epa:
+        with open(os.path.join(out_dir, "epa.json"), "w", encoding="utf-8") as f:
+            f.write(json.dumps(epa, ensure_ascii=False, separators=(",", ":"), allow_nan=False) + "\n")
+        bt = epa["backtest"]
+        print(f"Wrote data/epa.json: {epa['teamCount']} teams, {epa['playsUsed']} of {epa['playsAll']} plays"
+              + (f"; walk-forward miss on {bt['games']} games: line {bt['lineM']}, EPA {bt['modelM']}" if bt else ""))
+    wrote = write_weeks(weeks, data, out_dir)
+    print("Week files (data/season.json, data/weeks/): "
+          + ("updated " + ", ".join(f"Week {w}" for w in wrote) if wrote else "no changes"))
     for n in data.get("notes", []):
         print("  note:", n)
 

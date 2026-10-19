@@ -4,21 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weekly Edges · CFB Matchups</title>
+<meta name="description" content="This week's college football edges: line moves and net EPA edges for every FBS game, plus player prop matchups by position.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CFB Matchups">
+<meta property="og:title" content="Weekly Edges · CFB Matchups">
+<meta property="og:description" content="This week's college football edges: line moves and net EPA edges for every FBS game, plus player prop matchups by position.">
+<meta property="og:url" content="https://rhyman7.github.io/cfb/edges.html">
+<meta property="og:image" content="https://rhyman7.github.io/cfb/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CFB Matchups: every FBS game this week, offense against defense.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
-<link rel="stylesheet" href="style.css?v=202610031815">
+<link rel="stylesheet" href="style.css?v=202610191900">
 </head>
 <body data-page="edges">
 <header class="topbar">
   <h1><a href="index.html" class="home-link">CFB Matchups</a></h1>
   <nav class="topnav no-print">
-    <a href="index.html"><span class="nav-full">This Week's Games</span><span class="nav-short">This Week</span></a>
+    <a href="index.html"><span class="nav-full">This Week's Matchups</span><span class="nav-short">This Week</span></a>
+    <a href="how-to-read.html"><span class="nav-full">How to Read Matchups</span><span class="nav-short">How to Read</span></a>
+    <a href="epa.html"><span class="nav-full">EPA</span><span class="nav-short">EPA</span></a>
+    <a href="epa-explained.html"><span class="nav-full">EPA Explained</span><span class="nav-short">EPA Explained</span></a>
     <a href="edges.html" class="active"><span class="nav-full">Weekly Edges</span><span class="nav-short">Edges</span></a>
     <a href="dashboard.html"><span class="nav-full">Compare Any Two Teams</span><span class="nav-short">Compare</span></a>
     <a href="ratings.html"><span class="nav-full">Ratings Explained</span><span class="nav-short">Ratings</span></a>
   </nav>
-  <a href="/nfl-dashboard/" class="league-link no-print">NFL Matchups</a>
+  <a href="/nfl/" class="league-link no-print">NFL Matchups</a>
 </header>
 
 <main id="app">
@@ -36,7 +50,7 @@
 
   <h3 class="section-title">Game board</h3>
   <div id="gameBoard" class="table-block board-block"><div class="empty-note">Loading...</div></div>
-  <p class="edge-key">Sorted by kickoff. Spread and O/U are the current line (ESPN when available, otherwise the weekly cfbfastR consensus); implied team totals come from them, favorite = (O/U + spread) ÷ 2. Line move compares the weekly consensus line at this week's first update with the latest update. Net EPA = offense EPA/play minus defense EPA/play allowed (from cfbfastR play-by-play); the column names the team with the better net number and the gap between the two. Non-FBS teams have no stats, so their games show dashes there.</p>
+  <p class="edge-key">Sorted by kickoff. Spread and O/U are the current line (ESPN when available, otherwise the weekly cfbfastR consensus); implied team totals come from them, favorite = (O/U + spread) ÷ 2. Line move compares the weekly consensus line at this week's first update with the latest update. Net EPA = offense EPA/play minus defense EPA/play allowed (from cfbfastR play-by-play); the column names the team with the better net number and the gap between the two. Plays / G adds both teams' plays per game; the colored figure is the difference from the FBS average (blue = faster game). Early pass % is each team's share of 1st- and 2nd-down plays that were passes. Non-FBS teams have no stats, so their games show dashes there.</p>
 
   <h3 class="section-title">Prop matchups</h3>
   <p class="edge-key edge-intro">FBS-vs-FBS games only. Players facing defenses that allow more than the FBS average for their position. <b>Matchup</b> = what this opponent allows per game ÷ the FBS average; <b>Adj</b> = the player's average × Matchup. Top 10 by Adj; only players who've appeared (with that stat) in at least half their team's games. It's a starting point for props, not a projection. Click a name for his game log and prop check.</p>
@@ -47,8 +61,8 @@
   <p>All FBS teams, 2026 regular season, updated weekly. <span id="sourceNote"></span></p>
 </footer>
 
-<script src="teamcolors.js?v=202610031815"></script>
-<script src="app.js?v=202610031730"></script>
-<script src="live.js?v=202610031700"></script>
+<script src="teamcolors.js?v=202610191900"></script>
+<script src="app.js?v=202610162100"></script>
+<script src="live.js?v=202610041900"></script>
 </body>
 </html>

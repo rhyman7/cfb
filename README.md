@@ -2,7 +2,7 @@
 
 **Live site: https://rhyman7.github.io/cfb/**
 
-College football version of the [NFL Matchup Dashboard](https://github.com/rhyman7/nfl-dashboard):
+College football version of the [NFL Matchup Dashboard](https://github.com/rhyman7/nfl):
 a static GitHub Pages site showing a side-by-side offense/defense breakdown for
 any two **FBS** teams — record, SoS/SRS/OSRS/DSRS, rush/pass yards-per-game
 gauges with FBS rank, TD and points per game, top passers/rushers/receivers,
@@ -32,12 +32,30 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   field as the NFL site's 6 of 32), then both teams' full stat cards. The header shows the kickoff forecast
   (outdoor games) between the venue and the spread/O-U, and uses the same
   current ESPN line as the slate. Prints
-  on one landscape page.
+  on two landscape pages.
   Non-FBS opponents show a short note instead of stats.
 - **`print.html` — Print all.** The slate's "Print all" button opens every
   game currently shown (respecting the conference / Top 25 / search
-  filters), one matchup per landscape page, and brings up the print dialog.
+  filters), two landscape pages per matchup, and brings up the print dialog.
   Each matchup page still has its own Print Matchup button.
+- **`epa.html` — EPA** (with `epa.js`), linked left of Weekly Edges.
+  Opponent-adjusted EPA: pick a game from the dropdown for Head to Head panels
+  (adjusted EPA / play, pass and rush EPA, early-down pass EPA, success rate, ranked
+  among FBS teams, edge at 26+ spots) and both teams' cards (raw vs. adjusted rank, QB
+  EPA / dropback, pace, neutral pass rate, regression flags). Below that: the EPA line
+  and total against the current market for every game, a sortable ratings table for
+  every FBS team, and a walk-forward check against closing lines. **Print all** prints
+  every game (one landscape page each), then the board and the ratings; **Download PDF**
+  is `pdf/epa.pdf`, built by the **Build EPA PDF** workflow (`scripts/build_pdfs.py`)
+  whenever the data or the page changes, and shown only when it's for the week on the
+  page. The ratings are `data/epa.json`, written by `scripts/build_data.py` with
+  `scripts/epa_ratings.py`: garbage time dropped by score (a lead over 43/37/27/21 points
+  in quarters 1–4), FCS opponents pooled into one team, a ridge regression on offense,
+  defense and home field (2.5 points; none at neutral sites).
+- **`epa-explained.html` — EPA Explained**, linked right of EPA: what EPA is, why it
+  beats yards and points, what "adjusted" means here (score-based garbage time, FCS pooled),
+  how to read every part of the EPA page, and its limits. Its example uses the current #1 FBS
+  team in net EPA from `data/epa.json`; the rest is static.
 - **`edges.html` — Weekly Edges.** A game board for the week's games sorted
   by kickoff (current spread and O/U, implied team totals, line move since the
   week's first update, and the net EPA edge: which team's offense EPA/play minus
@@ -79,6 +97,21 @@ scoring plays), which the browser fetches from ESPN using the game's id. If ESPN
 can't be reached the panel says so and links to the game on ESPN. The lists live
 in `teamGames` in `data/data.json`, keyed by team name, one compact line per team.
 
+**Week strip.** Just left of the search box, the top bar lists every regular-season
+week, right-aligned so the last week sits beside the search. The current week is
+outlined and the week on screen is filled in. A finished week (`index.html?week=N`)
+shows that week's games with final scores, and each team's record and AP rank going
+into it; a row opens `matchup.html?game=<id>` with the game header and the full box
+score from ESPN, and nothing else. A later week shows the schedule so far (kickoff, TV,
+venue, records and any line) as plain rows that don't open anything. The conference,
+Top 25 and team filters work on every week. The stats, Head to Head, Weekly Edges and
+Print all stay on the current week. When the bar is too narrow for one row the page
+names shorten, then the strip and search drop to a second row; on phones the strip
+scrolls sideways. The weeks (and each week's game ids, so a matchup link finds its week)
+come from `data/season.json` and each week's games from `data/weeks/<N>.json` (same shape
+as `weekGames`); the site decides what is past or upcoming from `currentWeek` in
+`data.json`.
+
 **Player search.** Every page's top bar has a search box: type two letters,
 pick a player (name, position, team; arrow keys and Enter work) and his game
 log opens.
@@ -111,6 +144,13 @@ for the same week, and the pages show "Line move since <day>: spread A → B ·
 O/U X → Y" by comparing it with the latest build's consensus line (same
 source at both ends, so a difference between ESPN and the consensus never
 shows up as a move).
+
+**Rush yards per attempt.** Head to Head has a Rush Yds / Att row under Rush
+Yds / G: each offense's season rushing yards divided by its rushing attempts
+against what the other defense has allowed per attempt, from the team box
+scores (which count sacks as rushes, the way college stats do). Offense rank
+1 = highest; defense rank 1 = lowest allowed. The data is `rushYpa` in each
+team's `offense` and `defense`; the row is left out if the data doesn't have it.
 
 **EPA and success rate.** Head to Head adds EPA per play and success rate
 (share of plays with positive EPA) for each offense and defense, from
@@ -179,8 +219,11 @@ A weekly scheduled task (Mondays 7:47 AM ET, after the new AP poll and the weeke
 ```bash
 pip install -r requirements.txt
 python scripts/build_data.py
-git add data/data.json && git commit -m "Weekly data update" && git push
+git add data && git commit -m "Weekly data update" && git push
 ```
+
+The build writes `data/data.json` plus `data/season.json` and `data/weeks/<N>.json` for the
+week strip (it only rewrites the weeks that changed), so commit the whole `data` folder.
 
 Run the build with the default `--out` (the repo's `data/data.json`) so it can
 keep this week's `lineOpen`. Because `lineOpen` is set at the week's first
@@ -198,6 +241,9 @@ Run the same commands yourself any time to refresh manually, and preview with
 - **Offense/Defense Yds/G & ranks** — team box score rushing yards and net
   passing yards per game (defense = what opponents gained). Rank 1 = most
   yards on offense, fewest allowed on defense, among all FBS teams.
+- **Rush Yds/Att** — team box score rushing yards divided by rushing attempts
+  over the season (not an average of each game's figure); defense = what
+  opponents gained per attempt.
 - **Rush/Pass TD/G** — summed from player box scores.
 - **SRS / OSRS / DSRS** — least-squares Simple Rating System on points, using
   FBS-vs-FBS games only (no home-field term, light regularization so early
@@ -216,3 +262,30 @@ Run the same commands yourself any time to refresh manually, and preview with
   from scratch from the current season's files each run except `lineOpen`,
   which is carried over from the existing `data/data.json` for the same week.
 - **League averages** — mean across FBS teams of Rush TD/G, Pass TD/G and PPG.
+
+### Finishing drives, big plays, pass rush, pace and usage
+
+Built by `scripts/situational.py` (called from `build_data.py`, from the play-by-play file) into
+each team's `situ`, `pace` and `usage` keys, plus `ts`/`ts3` on receiving rows and `cs` on
+rushing rows.
+
+- **Head to head** gains three groups under the existing rows: Finishing drives (points per trip
+  inside the 40 at 7 per TD and 3 per FG, 3rd down %), Big plays (explosive %: passes of 20+ yards
+  and runs of 10+) and Pass rush and havoc (sack rate per pass play; havoc rate = tackles for loss,
+  sacks, interceptions, fumbles and pass breakups per play). Same bars and edge rule as the rows above.
+- **Pace and tendency** under Head to head: plays per game and early-down pass rate.
+- **Usage** in each team card: target share with the last three games, and carry share. College
+  data has no snap counts.
+- **Weekly Edges**: combined plays per game and early-down pass rate on the game board; Tgt % (with
+  the last three games) on the receiving prop tables and Carry % on RB rush yds.
+
+Printouts include them: each matchup prints on two landscape pages (header, Head to Head and pace on the first; both team cards with usage on the second).
+
+### How to Read Matchups (`how-to-read.html`)
+
+Linked left of EPA. Walks through every section of a matchup page (game header, Head to Head,
+pace, betting trends, team card, player tables and game logs, usage, defense vs position) using
+one FBS-vs-FBS game from this week, with numbered markers on the real components and notes
+written from that game's numbers (`how-to-read.js`; `app.js` calls `initLearn()` on this page).
+It opens on a random game; the Game picker and "Pick another game" switch games, and
+`?game=<id>` opens a given one. Nothing extra to build: it reads `data/data.json`.
