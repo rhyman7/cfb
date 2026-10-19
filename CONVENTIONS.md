@@ -83,11 +83,15 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   `teamcolors.js` covers every FBS and FCS team, from ESPN's team list (`cfb_teams`: `color`
   and `alternate_color`). A few teams have no secondary listed; a team missing from the table
   gets a neutral block. `teamColors()` / `teamVars()` derive the readable versions and set
-  `--tc`, `--tc-on`, `--tc-on2`, `--tc-ink`, `--tc-inkp` on the team's element. The color math
+  `--tc`, `--tc-on`, `--tc-on2`, `--tc-on2s`, `--tc-ink`, `--tc-inkp` on the team's element. The color math
   is the same as the NFL site's; change it in both.
 - **Team-color blocks** (the matchup header scorebug, the team stats header, the week
   board's abbreviation blocks) are the primary color lettered in the team's **secondary**
-  color (`--tc-on2`), **never black**. Don't swap in `--tc-on` or a fixed color.
+  color (`--tc-on2` for the big lettering, `--tc-on2s` for the small lines), **never black**.
+  Don't swap in `--tc-on` or a fixed color. `tcLetter()` in `teamcolors.js` decides it:
+  the listed secondary when it reads (3:1 for big lettering, 4.5:1 for small lines and
+  grays); a lighter secondary that falls short moves lighter in the same hue; a black
+  secondary, or one darker than the block that can't be read on it, becomes **white**.
 - Team color as text, bars and dials on the dark page uses `--tc-ink`; in print, `--tc-inkp`.
 - Pages must work from phone width up: nothing cut off or overlapping, wide tables scroll
   sideways inside their container.

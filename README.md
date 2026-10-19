@@ -23,8 +23,9 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   secondary color, from ESPN's team list); the type is Archivo, loaded from
   Google Fonts. A team's block is lettered in its secondary color: as listed
   when it can be read on the primary (3:1 for the big lettering, 4.5:1 for the
-  small lines), otherwise nudged lighter or darker in the same hue, or plain
-  white or dark when the secondary is black or white.
+  small lines). A lighter secondary that falls short is nudged lighter in the
+  same hue; a black secondary, or one too dark to read on the primary, is set
+  in white. Lettering is never black.
 - **`matchup.html?game=<ESPN game id>` — One game.** A game header (records,
   AP rank, QB, SRS, kickoff, venue, indoors/outdoors, spread, O/U), a Head to
   Head section comparing each offense with the other defense (FBS ranks, with

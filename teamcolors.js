@@ -318,33 +318,26 @@ function tcReadable(hex, bg, floor, dir) {
 // whenever it can be read there: 3:1 against the block for the big bold lettering (the
 // abbreviation, the name and the score), 4.5:1 for the small lines under the name. Grays
 // are held to 4.5:1 at any size, because a gray that only just clears 3:1 looks muddy on a color.
-// When the listed color falls short, its lightness moves the shorter way to the floor, same
-// hue, so gold stays gold and navy stays navy. It is never pushed so far that a bright color
-// reads as black or white; when that is the only way, or the secondary is itself black or
-// white, the lettering is plain white or dark instead.
+// Lettering is never black. A black secondary letters the block in white, and so does a
+// secondary darker than the block that can't be read on it (it is never darkened further).
+// A lighter secondary that falls short moves lighter in the same hue, so gold stays gold;
+// if that would wash it out, or no lighter shade reads, the lettering is white.
 function tcLetter(sec, bg, big) {
-  let plain = tcContrast("#ffffff", bg) >= tcContrast(TC_DARK, bg) ? "#ffffff" : TC_DARK;
-  // a mid-tone block where neither quite reaches 4.5:1 gets true black, the most it can have
-  if (tcContrast(plain, bg) < 4.5 && tcContrast("#000000", bg) > tcContrast(plain, bg)) plain = "#000000";
-  if (!sec) return plain;
+  if (!sec) return "#ffffff";
   const [h, s, l] = tcHsl(sec), rgb = tcRgb(sec);
   const neutral = Math.max(...rgb) - Math.min(...rgb) < 0.1;   // black, white or gray
+  if (neutral && l < 0.3) return "#ffffff";                    // black (or near it)
   const floor = big && (!neutral || l > 0.85) ? 3 : 4.5;
   if (tcContrast(sec, bg) >= floor) return sec;
-  if (neutral && (l < 0.3 || l > 0.85)) return plain;
-  let best = null;
-  for (const d of [1, -1]) {
-    for (let step = 1; step <= 100; step++) {
-      const x = l + (d * step) / 100;
-      if (x < 0 || x > 1) break;
-      const c = tcHex(h, s, x);
-      if (tcContrast(c, bg) < floor) continue;
-      const washedOut = !neutral && l >= 0.25 && l <= 0.8 && (x < 0.2 || x > 0.9);
-      if (!washedOut && (!best || step < best.step)) best = { c, step };
-      break;
-    }
+  if (neutral || tcLum(sec) <= tcLum(bg)) return "#ffffff";
+  for (let step = 1; step <= 100; step++) {
+    const x = l + step / 100;
+    if (x > 1) break;
+    const c = tcHex(h, s, x);
+    if (tcContrast(c, bg) < floor) continue;
+    return l >= 0.25 && l <= 0.8 && x > 0.9 ? "#ffffff" : c;
   }
-  return best ? best.c : plain;
+  return "#ffffff";
 }
 
 const TC_CACHE = {};
