@@ -551,7 +551,7 @@ function heroTotalText(g) {
 // The roof-or-forecast slot under the game header: an indoor game just says so; an
 // outdoor game shows the forecast once it has loaded.
 function heroWxText(g) {
-  if (g.indoor === true) return "Indoors";
+  if (g.indoor === true) return "Dome";
   const w = g.completed ? null : WX[g.id];
   if (!w) return g.indoor === false ? "Outdoors" : "";
   return [w.text, w.daily ? `high ${w.temp}°` : `${w.temp}° at kickoff`,
