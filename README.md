@@ -47,7 +47,7 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   and total against the current market for every game, a sortable ratings table for
   every FBS team, and a walk-forward check against closing lines. **Print all** prints
   every game (one landscape page each), then the board and the ratings; **Download PDF**
-  is `pdf/epa.pdf`, built by the **Build EPA PDF** workflow (`scripts/build_pdfs.py`)
+  is `pdf/epa.pdf`, built by the **Build PDFs** workflow (`scripts/build_pdfs.py`)
   whenever the data or the page changes, and shown only when it's for the week on the
   page. The ratings are `data/epa.json`, written by `scripts/build_data.py` with
   `scripts/epa_ratings.py`: garbage time dropped by score (a lead over 43/37/27/21 points
@@ -74,6 +74,15 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   calculates them. Its example uses the current top-SRS team from
   `data/data.json`; the rest of the page is static. Linked from the main
   page's top nav.
+- **Game packets** — on This Week's Matchups, **Print all packets / Save all packets** gives
+  every game's packet in one PDF, and **Print report / Save report** gives the Weekly Matchup
+  Report on its own; each matchup page has **Print packet / Save packet** for that game. A
+  packet is four parts back to back: the game's Weekly Matchup Report page (good and tough
+  spots, from `scripts/build_report.py`), the printed matchup, the EPA matchup page and the
+  value board's matchup (rhyman7/fb-value-board). `scripts/build_packets.py` builds the source
+  PDFs and `pdf/packets.json` in the **Build PDFs** workflow; `packets.js` stitches the pages
+  together in the browser (pdf-lib, `vendor/`). The buttons show once the packets are for the
+  week on the page; a game the value board doesn't model gets a three-part packet.
 
 **Player game logs.** On every team card, each player name in the Passing,
 Rushing and Receiving tables is clickable. Hovering (on a computer) shows a
