@@ -111,7 +111,7 @@ def main():
             files["report"] = "report.pdf"
             n = len(ids)
             for i, t in enumerate(texts(PdfReader(str(OUT / "report.pdf")))):
-                m = re.search(rf"game\s+(\d+)\s+of\s+{n}\b", t, re.I)
+                m = re.search(rf"game\s+(\d+)\s+of\s+{n}(?!\d)", t, re.I)
                 if m and 1 <= int(m.group(1)) <= n:
                     pages[ids[int(m.group(1)) - 1]].setdefault("report", [i])
             print("report:", sum("report" in v for v in pages.values()), "of", n)
