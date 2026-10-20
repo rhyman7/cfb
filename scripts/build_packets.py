@@ -110,8 +110,10 @@ def main():
             build_report.render_pdf(report_html, OUT / "report.pdf", title, browser)
             files["report"] = "report.pdf"
             n = len(ids)
+            # whitespace is dropped first: newer pypdf spaces out the letter-spaced eyebrow
+            # ("G A M E 1 O F  14") and older ones can run it into the next word ("OF 14NE")
             for i, t in enumerate(texts(PdfReader(str(OUT / "report.pdf")))):
-                m = re.search(rf"game\s+(\d+)\s+of\s+{n}(?!\d)", t, re.I)
+                m = re.search(rf"game(\d+)of{n}", re.sub(r"\s+", "", t), re.I)
                 if m and 1 <= int(m.group(1)) <= n:
                     pages[ids[int(m.group(1)) - 1]].setdefault("report", [i])
             print("report:", sum("report" in v for v in pages.values()), "of", n)
