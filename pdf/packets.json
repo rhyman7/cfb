@@ -4,7 +4,7 @@
  "league": "cfb",
  "title": "CFB Week 8 Matchup Report",
  "dataGeneratedAt": "2026-10-19T09:23:47.077787+00:00",
- "generatedAt": "2026-10-20T19:14:33Z",
+ "generatedAt": "2026-10-20T19:18:14Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -23,6 +23,9 @@
    "label": "MTSU @ FIU",
    "file": "CFB_Week8_MTSU-FIU_packet",
    "pages": {
+    "report": [
+     2
+    ],
     "matchup": [
      0,
      1
@@ -34,15 +37,16 @@
      1
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401871069",
    "label": "MOST @ DEL",
    "file": "CFB_Week8_MOST-DEL_packet",
    "pages": {
+    "report": [
+     3
+    ],
     "matchup": [
      2,
      3
@@ -54,15 +58,16 @@
      0
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401871092",
    "label": "USA @ MRSH",
    "file": "CFB_Week8_USA-MRSH_packet",
    "pages": {
+    "report": [
+     4
+    ],
     "matchup": [
      4,
      5
@@ -74,15 +79,16 @@
      2
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401871070",
    "label": "NMSU @ SHSU",
    "file": "CFB_Week8_NMSU-SHSU_packet",
    "pages": {
+    "report": [
+     5
+    ],
     "matchup": [
      6,
      7
@@ -94,15 +100,16 @@
      3
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401869845",
    "label": "JMU @ APP",
    "file": "CFB_Week8_JMU-APP_packet",
    "pages": {
+    "report": [
+     6
+    ],
     "matchup": [
      8,
      9
@@ -114,15 +121,16 @@
      4
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401871056",
    "label": "LIB @ KENN",
    "file": "CFB_Week8_LIB-KENN_packet",
    "pages": {
+    "report": [
+     7
+    ],
     "matchup": [
      10,
      11
@@ -134,15 +142,16 @@
      5
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401862807",
    "label": "ECU @ MEM",
    "file": "CFB_Week8_ECU-MEM_packet",
    "pages": {
+    "report": [
+     8
+    ],
     "matchup": [
      12,
      13
@@ -154,15 +163,16 @@
      6
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858271",
    "label": "DUKE @ UVA",
    "file": "CFB_Week8_DUKE-UVA_packet",
    "pages": {
+    "report": [
+     9
+    ],
     "matchup": [
      14,
      15
@@ -174,15 +184,16 @@
      7
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401861965",
    "label": "MASS @ CONN",
    "file": "CFB_Week8_MASS-CONN_packet",
    "pages": {
+    "report": [
+     10
+    ],
     "matchup": [
      16,
      17
@@ -194,15 +205,16 @@
      8
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401862808",
    "label": "ARMY @ TLSA",
    "file": "CFB_Week8_ARMY-TLSA_packet",
    "pages": {
+    "report": [
+     11
+    ],
     "matchup": [
      18,
      19
@@ -214,15 +226,16 @@
      9
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401864525",
    "label": "AFA @ WYO",
    "file": "CFB_Week8_AFA-WYO_packet",
    "pages": {
+    "report": [
+     12
+    ],
     "matchup": [
      20,
      21
@@ -234,15 +247,16 @@
      10
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858272",
    "label": "NCSU @ STAN",
    "file": "CFB_Week8_NCSU-STAN_packet",
    "pages": {
+    "report": [
+     13
+    ],
     "matchup": [
      22,
      23
@@ -254,15 +268,16 @@
      11
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856728",
    "label": "LSU @ AUB",
    "file": "CFB_Week8_LSU-AUB_packet",
    "pages": {
+    "report": [
+     14
+    ],
     "matchup": [
      24,
      25
@@ -274,15 +289,16 @@
      14
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856840",
    "label": "TTU @ CIN",
    "file": "CFB_Week8_TTU-CIN_packet",
    "pages": {
+    "report": [
+     15
+    ],
     "matchup": [
      26,
      27
@@ -294,15 +310,16 @@
      18
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856841",
    "label": "WVU @ TCU",
    "file": "CFB_Week8_WVU-TCU_packet",
    "pages": {
+    "report": [
+     16
+    ],
     "matchup": [
      28,
      29
@@ -314,15 +331,16 @@
      20
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858270",
    "label": "CAL @ SMU",
    "file": "CFB_Week8_CAL-SMU_packet",
    "pages": {
+    "report": [
+     17
+    ],
     "matchup": [
      30,
      31
@@ -334,15 +352,16 @@
      12
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858274",
    "label": "PITT @ MIA",
    "file": "CFB_Week8_PITT-MIA_packet",
    "pages": {
+    "report": [
+     18
+    ],
     "matchup": [
      32,
      33
@@ -354,15 +373,16 @@
      15
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858496",
    "label": "IU @ MICH",
    "file": "CFB_Week8_IU-MICH_packet",
    "pages": {
+    "report": [
+     19
+    ],
     "matchup": [
      34,
      35
@@ -374,15 +394,16 @@
      13
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858498",
    "label": "RUTG @ NU",
    "file": "CFB_Week8_RUTG-NU_packet",
    "pages": {
+    "report": [
+     20
+    ],
     "matchup": [
      36,
      37
@@ -394,15 +415,16 @@
      17
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401862809",
    "label": "RICE @ FAU",
    "file": "CFB_Week8_RICE-FAU_packet",
    "pages": {
+    "report": [
+     21
+    ],
     "matchup": [
      38,
      39
@@ -414,15 +436,16 @@
      16
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401866450",
    "label": "WMU @ TOL",
    "file": "CFB_Week8_WMU-TOL_packet",
    "pages": {
+    "report": [
+     22
+    ],
     "matchup": [
      40,
      41
@@ -434,15 +457,16 @@
      19
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856834",
    "label": "BAY @ KU",
    "file": "CFB_Week8_BAY-KU_packet",
    "pages": {
+    "report": [
+     23
+    ],
     "matchup": [
      42,
      43
@@ -454,15 +478,16 @@
      22
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401866446",
    "label": "AKR @ KENT",
    "file": "CFB_Week8_AKR-KENT_packet",
    "pages": {
+    "report": [
+     24
+    ],
     "matchup": [
      44,
      45
@@ -474,15 +499,16 @@
      21
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401866476",
    "label": "M-OH @ CMU",
    "file": "CFB_Week8_M-OH-CMU_packet",
    "pages": {
+    "report": [
+     25
+    ],
     "matchup": [
      46,
      47
@@ -494,15 +520,16 @@
      23
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858495",
    "label": "ORE @ ILL",
    "file": "CFB_Week8_ORE-ILL_packet",
    "pages": {
+    "report": [
+     26
+    ],
     "matchup": [
      48,
      49
@@ -514,15 +541,16 @@
      24
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856727",
    "label": "TA&M @ ALA",
    "file": "CFB_Week8_TAM-ALA_packet",
    "pages": {
+    "report": [
+     27
+    ],
     "matchup": [
      50,
      51
@@ -534,15 +562,16 @@
      33
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856730",
    "label": "OU @ MSST",
    "file": "CFB_Week8_OU-MSST_packet",
    "pages": {
+    "report": [
+     28
+    ],
     "matchup": [
      52,
      53
@@ -554,15 +583,16 @@
      31
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856731",
    "label": "TENN @ SC",
    "file": "CFB_Week8_TENN-SC_packet",
    "pages": {
+    "report": [
+     29
+    ],
     "matchup": [
      54,
      55
@@ -574,15 +604,16 @@
      34
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856835",
    "label": "BYU @ UCF",
    "file": "CFB_Week8_BYU-UCF_packet",
    "pages": {
+    "report": [
+     30
+    ],
     "matchup": [
      56,
      57
@@ -594,15 +625,16 @@
      27
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858273",
    "label": "BC @ GT",
    "file": "CFB_Week8_BC-GT_packet",
    "pages": {
+    "report": [
+     31
+    ],
     "matchup": [
      58,
      59
@@ -614,15 +646,16 @@
      25
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858497",
    "label": "IOWA @ MINN",
    "file": "CFB_Week8_IOWA-MINN_packet",
    "pages": {
+    "report": [
+     32
+    ],
     "matchup": [
      60,
      61
@@ -634,15 +667,16 @@
      29
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858499",
    "label": "MSU @ UCLA",
    "file": "CFB_Week8_MSU-UCLA_packet",
    "pages": {
+    "report": [
+     33
+    ],
     "matchup": [
      62,
      63
@@ -654,15 +688,16 @@
      30
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401862810",
    "label": "UNT @ NAVY",
    "file": "CFB_Week8_UNT-NAVY_packet",
    "pages": {
+    "report": [
+     34
+    ],
     "matchup": [
      64,
      65
@@ -674,15 +709,16 @@
      35
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401864526",
    "label": "HAW @ NIU",
    "file": "CFB_Week8_HAW-NIU_packet",
    "pages": {
+    "report": [
+     35
+    ],
     "matchup": [
      66,
      67
@@ -694,15 +730,16 @@
      28
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401866447",
    "label": "SAC @ BALL",
    "file": "CFB_Week8_SAC-BALL_packet",
    "pages": {
+    "report": [
+     36
+    ],
     "matchup": [
      68,
      69
@@ -714,15 +751,16 @@
      32
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401866448",
    "label": "BGSU @ BUFF",
    "file": "CFB_Week8_BGSU-BUFF_packet",
    "pages": {
+    "report": [
+     37
+    ],
     "matchup": [
      70,
      71
@@ -734,15 +772,16 @@
      26
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856839",
    "label": "KSU @ ASU",
    "file": "CFB_Week8_KSU-ASU_packet",
    "pages": {
+    "report": [
+     38
+    ],
     "matchup": [
      72,
      73
@@ -754,15 +793,16 @@
      36
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401866449",
    "label": "EMU @ OHIO",
    "file": "CFB_Week8_EMU-OHIO_packet",
    "pages": {
+    "report": [
+     39
+    ],
     "matchup": [
      74,
      75
@@ -774,15 +814,16 @@
      37
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401871094",
    "label": "ULM @ TROY",
    "file": "CFB_Week8_ULM-TROY_packet",
    "pages": {
+    "report": [
+     40
+    ],
     "matchup": [
      76,
      77
@@ -794,15 +835,16 @@
      38
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401864528",
    "label": "SJSU @ NEV",
    "file": "CFB_Week8_SJSU-NEV_packet",
    "pages": {
+    "report": [
+     41
+    ],
     "matchup": [
      78,
      79
@@ -814,15 +856,16 @@
      40
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401869967",
    "label": "UL @ USM",
    "file": "CFB_Week8_UL-USM_packet",
    "pages": {
+    "report": [
+     42
+    ],
     "matchup": [
      80,
      81
@@ -834,15 +877,16 @@
      41
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401871093",
    "label": "ODU @ LT",
    "file": "CFB_Week8_ODU-LT_packet",
    "pages": {
+    "report": [
+     43
+    ],
     "matchup": [
      82,
      83
@@ -854,15 +898,16 @@
      39
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401860907",
    "label": "BOIS @ WSU",
    "file": "CFB_Week8_BOIS-WSU_packet",
    "pages": {
+    "report": [
+     44
+    ],
     "matchup": [
      84,
      85
@@ -874,15 +919,16 @@
      42
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401860905",
    "label": "SDSU @ CSU",
    "file": "CFB_Week8_SDSU-CSU_packet",
    "pages": {
+    "report": [
+     45
+    ],
     "matchup": [
      86,
      87
@@ -894,15 +940,16 @@
      43
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856836",
    "label": "COLO @ OKST",
    "file": "CFB_Week8_COLO-OKST_packet",
    "pages": {
+    "report": [
+     46
+    ],
     "matchup": [
      88,
      89
@@ -914,15 +961,16 @@
      44
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858276",
    "label": "VT @ CLEM",
    "file": "CFB_Week8_VT-CLEM_packet",
    "pages": {
+    "report": [
+     47
+    ],
     "matchup": [
      90,
      91
@@ -934,15 +982,16 @@
      46
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401869935",
    "label": "GAST @ ARST",
    "file": "CFB_Week8_GAST-ARST_packet",
    "pages": {
+    "report": [
+     48
+    ],
     "matchup": [
      92,
      93
@@ -954,15 +1003,16 @@
      45
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856729",
    "label": "VAN @ UK",
    "file": "CFB_Week8_VAN-UK_packet",
    "pages": {
+    "report": [
+     49
+    ],
     "matchup": [
      94,
      95
@@ -974,15 +1024,16 @@
      52
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856732",
    "label": "MISS @ TEX",
    "file": "CFB_Week8_MISS-TEX_packet",
    "pages": {
+    "report": [
+     50
+    ],
     "matchup": [
      96,
      97
@@ -994,15 +1045,16 @@
      48
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856838",
    "label": "ISU @ ARIZ",
    "file": "CFB_Week8_ISU-ARIZ_packet",
    "pages": {
+    "report": [
+     51
+    ],
     "matchup": [
      98,
      99
@@ -1014,15 +1066,16 @@
      47
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858275",
    "label": "SYR @ UNC",
    "file": "CFB_Week8_SYR-UNC_packet",
    "pages": {
+    "report": [
+     52
+    ],
     "matchup": [
      100,
      101
@@ -1034,15 +1087,16 @@
      49
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401858500",
    "label": "USC @ WIS",
    "file": "CFB_Week8_USC-WIS_packet",
    "pages": {
+    "report": [
+     53
+    ],
     "matchup": [
      102,
      103
@@ -1054,15 +1108,16 @@
      50
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401860906",
    "label": "USU @ TXST",
    "file": "CFB_Week8_USU-TXST_packet",
    "pages": {
+    "report": [
+     54
+    ],
     "matchup": [
      104,
      105
@@ -1074,15 +1129,16 @@
      51
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401862811",
    "label": "UTSA @ TULN",
    "file": "CFB_Week8_UTSA-TULN_packet",
    "pages": {
+    "report": [
+     55
+    ],
     "matchup": [
      106,
      107
@@ -1094,15 +1150,16 @@
      53
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401864527",
    "label": "NDSU @ UNM",
    "file": "CFB_Week8_NDSU-UNM_packet",
    "pages": {
+    "report": [
+     56
+    ],
     "matchup": [
      108,
      109
@@ -1114,15 +1171,16 @@
      54
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   },
   {
    "id": "401856837",
    "label": "HOU @ UTAH",
    "file": "CFB_Week8_HOU-UTAH_packet",
    "pages": {
+    "report": [
+     57
+    ],
     "matchup": [
      110,
      111
@@ -1134,9 +1192,7 @@
      55
     ]
    },
-   "missing": [
-    "Matchup Report"
-   ]
+   "missing": []
   }
  ]
 }
