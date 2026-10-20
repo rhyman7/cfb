@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+# value board checkout used by the Build PDFs Action
+_value-board/
+pdf/_work/

@@ -1,0 +1,89 @@
+/* Weekly Matchup Report (scripts/build_report.py). Landscape letter, one page per game. */
+@page { size: 11in 8.5in; margin: 0.5in 0.55in 0.6in; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: "Archivo", "Inter", system-ui, sans-serif; color: #17181b; font-size: 10.5pt; line-height: 1.4; font-stretch: 96%; }
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+
+/* cover */
+.cover { break-after: page; }
+.kicker { font-size: 9pt; letter-spacing: 0.12em; text-transform: uppercase; color: #6a6f78; font-weight: 700; }
+h1 { font-size: 30pt; line-height: 1.05; font-weight: 800; font-stretch: 75%; margin: 3pt 0 6pt; }
+.lede { font-size: 11pt; color: #3a3e45; max-width: 7.6in; }
+.covergrid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 28pt; margin-top: 14pt; }
+.top td:nth-child(2), .top td:nth-child(3) { white-space: nowrap; }
+.cover h2 { font-size: 8.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6f78; font-weight: 700; padding-bottom: 4pt; border-bottom: 1.5pt solid #17181b; margin-bottom: 1pt; }
+table { width: 100%; border-collapse: collapse; font-size: 9.2pt; }
+th { text-align: left; font-size: 7.2pt; letter-spacing: 0.06em; text-transform: uppercase; color: #6a6f78; font-weight: 600; padding: 3pt 8pt 2pt 0; }
+td { padding: 3.4pt 8pt 3.4pt 0; border-top: 0.5pt solid #d9dbdf; vertical-align: top; }
+tbody tr:first-child td { border-top: 0; }
+td.n { width: 16pt; color: #6a6f78; font-variant-numeric: tabular-nums; }
+.toc td { white-space: nowrap; font-variant-numeric: tabular-nums; padding-top: 2.1pt; padding-bottom: 2.1pt; }
+.notes { margin-top: 12pt; }
+.notes ul { columns: 2; column-gap: 28pt; }
+.notes li { padding: 3.5pt 0; border-top: 0.5pt solid #d9dbdf; font-size: 8.8pt; color: #2b2e33; break-inside: avoid; }
+
+/* game page */
+.game { break-after: page; break-inside: avoid; }
+.game:last-child { break-after: auto; }
+.eyebrow { display: flex; align-items: baseline; gap: 11pt; margin-bottom: 5pt; }
+.gno { font-size: 8.4pt; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: #6a6f78; }
+.gtitle { font-size: 21pt; font-weight: 800; font-stretch: 72%; line-height: 1; }
+.gwhen { margin-left: auto; font-size: 10.5pt; font-weight: 600; color: #3a3e45; }
+
+.strip { background: #111214; color: #f2f1ee; border-radius: 6pt 6pt 0 0; padding: 11pt 14pt; display: grid;
+  grid-template-columns: minmax(0, 1.5fr) auto minmax(0, 1.5fr) auto auto auto minmax(0, 1.05fr); column-gap: 14pt; align-items: center; }
+.team { display: flex; align-items: center; gap: 9pt; min-width: 0; }
+.slab { display: inline-flex; align-items: center; justify-content: center; width: 41pt; height: 25pt; border-radius: 3.5pt;
+  font-weight: 800; font-size: 11.5pt; font-stretch: 80%; letter-spacing: 0.02em; flex: none; }
+.tname { font-size: 13.5pt; font-weight: 700; font-stretch: 68%; line-height: 1.1; text-wrap: balance; }
+.sub { font-size: 8.2pt; color: #a4a8af; line-height: 1.3; font-stretch: 90%; }
+.team .sub, .move { white-space: nowrap; }
+.move { color: #e0b252; }
+.at { font-size: 8.2pt; color: #a4a8af; }
+.lbl { font-size: 6.4pt; letter-spacing: 0.1em; text-transform: uppercase; color: #8d9199; line-height: 1.2; margin-bottom: 1.5pt; }
+.big { font-size: 14pt; font-weight: 700; font-stretch: 68%; line-height: 1.15; white-space: nowrap; }
+.imp { font-size: 9.6pt; line-height: 1.25; white-space: nowrap; }
+.stad { font-size: 9.6pt; line-height: 1.2; }
+
+.body { border: 0.75pt solid #c9ccd1; border-top: 0; border-radius: 0 0 6pt 6pt; padding: 11pt 14pt 13pt; }
+.read { font-size: 10.6pt; color: #2b2e33; padding-bottom: 8pt; border-bottom: 0.5pt solid #d9dbdf; }
+.qbs { color: #6a6f78; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26pt; margin-top: 9pt; }
+.col h3 { font-size: 8.4pt; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; padding: 3pt 7pt; border-radius: 2.5pt; display: inline-block; margin-bottom: 2pt; }
+.good h3 { background: #dff0e3; color: #17603a; }
+.tough h3 { background: #f7e1dc; color: #94321f; }
+.col li { padding: 1.5pt 0 1.5pt 10pt; border-left: 2.25pt solid; margin-top: 6.5pt; }
+.good li { border-color: #2e8b57; }
+.tough li { border-color: #c2553f; }
+.pl { font-weight: 700; font-size: 11.6pt; }
+.tag { font-size: 7.6pt; font-weight: 700; letter-spacing: 0.05em; color: #6a6f78; white-space: nowrap; }
+.why { font-size: 10.2pt; color: #2b2e33; line-height: 1.38; }
+
+/* CFB additions */
+a { color: inherit; text-decoration: none; }
+.covergrid.one { grid-template-columns: 1fr; }
+.rk { color: #a4a8af; font-weight: 600; }
+.dim { color: #8d9199; }
+.dimc { color: #8d9199; }
+.slab { width: auto; min-width: 41pt; padding: 0 6pt; }
+h2.gtitle { margin: 0; }
+td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
+.none .why { color: #6a6f78; }
+.col li.none { border-color: #c9ccd1; }
+.tdw { margin-top: 10pt; padding-top: 8pt; border-top: 0.5pt solid #d9dbdf; font-size: 9.6pt; color: #2b2e33; }
+.tdl { font-size: 7.8pt; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; background: #e6e9f5; color: #2c3a78; padding: 2.5pt 6pt; border-radius: 2.5pt; margin-right: 6pt; }
+.idx, .tdsec { break-after: page; }
+.h1s { font-size: 26pt; margin: 3pt 0 6pt; }
+.h2s { font-size: 16pt; font-weight: 800; font-stretch: 75%; margin: 0 0 8pt; }
+.idxgrid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22pt; }
+.idxgrid table { font-size: 8.4pt; }
+.idxgrid td { padding: 3.6pt 6pt 3.6pt 0; }
+.tdt { margin-top: 10pt; font-size: 9.3pt; }
+.tdt td { padding: 3.6pt 8pt 3.6pt 0; }
+.tdt td:nth-child(2), .tdt td:nth-child(3), .tdt td:nth-child(4) { white-space: nowrap; }
+.tdsec .notes ul { columns: 2; }
+.tdsec .lede { max-width: 8.6in; font-size: 10.5pt; }
+.tdsec:last-child { break-after: auto; }
+.tdsec:last-child { break-after: auto; }

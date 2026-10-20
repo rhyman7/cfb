@@ -1202,3 +1202,10 @@ body.plog-open { overflow: hidden; }
   .ep-print-page .ep-tbl { zoom: 0.82; }
   .ep-print-page .ep-lede { margin-bottom: 6px; }
 }
+
+/* Game packets (packets.js): Print/Save packet buttons */
+.packet-actions { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.packet-actions[hidden] { display: none; }
+.packet-status { font-size: 0.8125rem; color: var(--text-dim); }
+.packet-status:empty { display: none; }
+@media print { .packet-actions { display: none !important; } }

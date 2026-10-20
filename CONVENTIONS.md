@@ -31,7 +31,7 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **Out of scope here:** prediction and betting-model work belongs in the separate CFB/NFL
   Model project, not in this repo.
 - **What does commit straight to `main`** (automated, not hand edits): the weekly data
-  update (`data/`, see WEEKLY_PROMPT.md) and the **Build EPA PDF** Action (`pdf/`).
+  update (`data/`, see WEEKLY_PROMPT.md) and the **Build PDFs** Action (`pdf/`).
   Everything else goes through a PR.
 
 ## Site structure
@@ -125,11 +125,27 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - The **EPA page always has both "Print all" and "Download PDF"** buttons (`epaPrintBtn`,
   `epaPdfBtn`). Print all is every game (one landscape page each), then the board, the
   ratings and the method; Download PDF is `pdf/epa.pdf`.
-- `pdf/epa.pdf` is the only PDF on this site (no per-game PDFs; there are 50+ games a week).
-  It's built by `scripts/build_pdfs.py` (headless Chromium via Playwright) in the **Build EPA
-  PDF** Action, which runs when the data or the EPA page change. `pdf/manifest.json` says
-  which week it's for; the link only shows when it matches the week on the page. Don't
-  hand-edit anything in `pdf/`.
+- `pdf/epa.pdf` is built by `scripts/build_pdfs.py` (headless Chromium via Playwright) in the
+  **Build PDFs** Action, which runs when the data or a print layout changes, and daily after the
+  college value board updates. `pdf/manifest.json` says which week it's for; the link only
+  shows when it matches the week on the page. There are no per-game matchup PDFs (50+ games a
+  week); the game packets below cover that. Don't hand-edit anything in `pdf/`.
+- **Game packets** (`packets.js`, `scripts/build_report.py`, `scripts/build_packets.py`,
+  `scripts/report.css`, `vendor/pdf-lib.min.js`). For every game, four parts back to back:
+  the Weekly Matchup Report page, the printed matchup, the EPA matchup page and the value
+  board's matchup. This Week's Matchups has **Print all packets / Save all packets** and
+  **Print report / Save report**; each matchup page has **Print packet / Save packet**.
+  `build_packets.py` writes `pdf/report.pdf`, `pdf/matchups.pdf`, `pdf/value-board.pdf` and
+  `pdf/packets.json` (which pages of each file belong to each game); `packets.js` assembles the
+  packet in the browser with pdf-lib, so each week's pages are stored once. The buttons only
+  show when `packets.json` is for the week on the page. A part with no page for a game is left
+  out of that packet and listed under `missing`.
+- The **Weekly Matchup Report** is rule-based and built from `data/data.json` only (good and
+  tough spots per game, Best Overall Matchups, Most Likely to Score a TD). `build_report.py`,
+  `build_packets.py` and `report.css` are **identical in both repos**; change them in both.
+- The value board's pages come from a checkout of rhyman7/fb-value-board (its Matchups view,
+  Print all). If that board's print layout or game ids change, check the packets still map
+  every game (the Action log prints the counts and any missing parts).
 - If you change the print layout, check the page count still comes out right.
 
 ## Cache busting

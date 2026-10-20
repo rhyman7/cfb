@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
-<link rel="stylesheet" href="style.css?v=202610191900">
+<link rel="stylesheet" href="style.css?v=202610201500">
 </head>
 <body data-page="week">
 <header class="topbar">
@@ -47,6 +47,13 @@
       <select id="confFilter" aria-label="Conference"></select>
       <label class="ranked-toggle"><input id="rankedOnly" type="checkbox"> Top 25 only</label>
       <button id="printAllBtn" class="print-btn" type="button" title="Print every game shown, two pages per matchup">Print all</button>
+      <span id="packetAll" class="packet-actions" hidden>
+        <button class="print-btn" type="button" data-packet="all" data-act="print" title="Every game's packet: Matchup Report, printed matchup, EPA and value board">Print all packets</button>
+        <button class="print-btn" type="button" data-packet="all" data-act="save">Save all packets</button>
+        <button class="print-btn" type="button" data-packet="report" data-act="print" title="The Weekly Matchup Report: every game, the best overall matchups and the likeliest TD scorers">Print report</button>
+        <button class="print-btn" type="button" data-packet="report" data-act="save">Save report</button>
+        <span class="packet-status" aria-live="polite"></span>
+      </span>
     </div>
   </section>
   <div id="gameList"><div class="empty-note">Loading games...</div></div>
@@ -60,5 +67,6 @@
 <script src="app.js?v=202610192330"></script>
 <script src="live.js?v=202610041900"></script>
 <script src="weather.js?v=202609301330"></script>
+<script src="packets.js?v=202610201500"></script>
 </body>
 </html>

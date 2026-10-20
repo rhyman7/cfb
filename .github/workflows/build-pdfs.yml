@@ -1,6 +1,8 @@
-name: Build EPA PDF
+name: Build PDFs
 
-# Rebuilds pdf/epa.pdf (the EPA page's Download PDF) whenever the data or the page changes.
+# Rebuilds pdf/: the EPA page's Download PDF (epa.pdf) and the game packets (Weekly Matchup Report,
+# printed matchups, EPA and value board pages, plus packets.json) whenever the data or a layout
+# changes, and daily after the value board's own update.
 on:
   push:
     branches: [main]
@@ -12,7 +14,14 @@ on:
       - "app.js"
       - "teamcolors.js"
       - "style.css"
+      - "print.html"
       - "scripts/build_pdfs.py"
+      - "scripts/build_report.py"
+      - "scripts/build_packets.py"
+      - "scripts/report.css"
+  schedule:
+    - cron: "13 14 * 8-12,1 *"      # daily 14:13 UTC, after the college value board updates (12:43)
+    - cron: "13 18,22 * 8-12,1 6"   # Saturdays also after its 16:43 and 20:43 updates
   workflow_dispatch: {}
 
 permissions:
@@ -30,25 +39,34 @@ jobs:
         with:
           ref: main
 
+      # the value board (public repo) supplies part 4 of each packet
+      - uses: actions/checkout@v4
+        with:
+          repository: rhyman7/fb-value-board
+          path: _value-board
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install Playwright + Chromium
         run: |
-          pip install playwright
+          pip install playwright pypdf
           python -m playwright install --with-deps chromium
 
-      - name: Build PDF
+      - name: Build EPA PDF
         run: python scripts/build_pdfs.py
 
-      - name: Commit PDF
+      - name: Build game packets
+        run: python scripts/build_packets.py --value-board _value-board
+
+      - name: Commit PDFs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A pdf
           if git diff --staged --quiet; then exit 0; fi
-          git commit -m "Rebuild EPA PDF"
+          git commit -m "Rebuild PDFs and game packets"
           for i in 1 2 3; do
             git pull --rebase origin main && git push && exit 0
             sleep 5
