@@ -169,10 +169,22 @@ completed regular-season games, leaving out QB kneels and plays wiped out by
 a penalty. Offense rank 1 = highest; defense rank 1 = lowest allowed. The
 data is `eff` on each team. These rows print with the rest of Head to Head.
 
-**Not available for college.** The NFL site's injury tags have no college
-equivalent: cfbfastR has no injury or availability report for any
-conference (only an Active/Inactive flag on past game rosters), so there are
-no injury tags. Referee tendencies and fantasy points aren't on this site.
+**Injury tags.** College football has no official injury report (cfbfastR
+only has an Active/Inactive flag on past game rosters), so the tags come from
+each team's Covers.com injury page, read in the daily update (WEEKLY_PROMPT.md
+step 7) and matched to the site's players by `scripts/injuries.py`, which
+writes `data/injuries.json`. A listed player gets a superscript after his name
+everywhere his name appears (team-card tables, usage, Weekly Edges prop
+tables, the search list, the game-log tooltip and panel, and the QB in the
+matchup header): **O** out, **D** doubtful, **Q** questionable, **P**
+probable. Hover it for the injury, source and date. A dimmed tag means Covers
+listed him before a game he has since played in, so the listing may be old.
+Each team card also has an **Injury report** listing everyone on the team's
+Covers page, including linemen and defenders who aren't in the stat tables
+(screen only). News items the daily run confirms (a QB ruled out, say) can
+override Covers and name their source. Teams don't have to report injuries,
+so the list is never complete. Referee tendencies and fantasy points aren't
+on this site.
 
 **Live scores.** On game days the slate and matchup pages fetch live
 scores straight from ESPN's public site API in the viewer's browser

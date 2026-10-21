@@ -281,8 +281,8 @@ function learnSections(g, a, h) {
   }
   const hurt = [];
   for (const t of [a, h]) for (const tab of ["passing", "rushing", "receiving"]) for (const p of t[tab] || []) {
-    if (p.inj && (["O", "D", "Q"].includes(p.inj.s) || (p.pos === "QB" && p.inj.s === "DNP")) && !hurt.some(x => x.p === p.player))
-      hurt.push({ p: p.player, t, s: p.inj.s, what: (p.inj.note || "").split(" · ")[0].toLowerCase() });
+    if (p.inj && !p.inj.stale && (["O", "D", "Q"].includes(p.inj.s) || (p.pos === "QB" && p.inj.s === "DNP")) && !hurt.some(x => x.p === p.player))
+      hurt.push({ p: p.player, t, s: p.inj.s, what: (p.inj.note || "").split(" · ")[0].toLowerCase().replace(/^undisclosed$/, "") });
   }
   if (hurt.length) sum.push("On the injury report: " + hurt.slice(0, 3).map(x => `${escapeHtml(x.p)} (${escapeHtml(x.t.abbr)}, ${x.s === "DNP" ? "missed practice" : { O: "out", D: "doubtful", Q: "questionable" }[x.s]}${x.what ? ", " + escapeHtml(x.what) : ""})`).join("; ") + ".");
   parts.push(`<section class="learn-sum">
