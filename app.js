@@ -7,6 +7,7 @@ let SEASON = null;      // data/season.json: { season, weeks: [{ week, games, fr
 let LIVE_WEEK = null;   // the week data.json is for
 let VIEW_WEEK = null;   // the week this page is showing
 let WEEK_MISSING = false;   // the chosen week's file couldn't be loaded
+let INJ = null;         // data/injuries.json (Covers.com injury designations), when it loads
 
 // "current", "past" (finished: scores and box scores) or "upcoming" (schedule only).
 function weekMode() {
@@ -37,12 +38,14 @@ init();
 
 async function init() {
   try {
-    const [res, season] = await Promise.all([
+    const [res, season, inj] = await Promise.all([
       fetch("data/data.json", { cache: "no-store" }),
       fetch("data/season.json", { cache: "no-cache" }).then(r => (r.ok ? r.json() : null)).catch(() => null),
+      fetch("data/injuries.json", { cache: "no-cache" }).then(r => (r.ok ? r.json() : null)).catch(() => null),
     ]);
     DATA = await res.json();
     SEASON = season && season.season === DATA.season && Array.isArray(season.weeks) ? season : null;
+    try { applyInjuries(inj); } catch (e) { INJ = null; /* the tags are optional */ }
   } catch (err) {
     document.getElementById("app").innerHTML =
       `<div class="empty-note">Couldn't load data/data.json. Run scripts/build_data.py first.</div>`;
@@ -74,6 +77,61 @@ async function init() {
   else if (PAGE === "epa") { if (typeof initEpa === "function") initEpa(); }
   else if (PAGE === "learn") { if (typeof initLearn === "function") initLearn(); }
   else initDashboard();
+}
+
+// ---------------- Injury tags ----------------
+// data/injuries.json comes from each team's Covers.com injury page (read in the daily update,
+// matched to players by scripts/injuries.py): players[log key] = { s: O|D|Q|P, status, injury,
+// date, src, note: "Knee · Covers, Oct 17", stale?, playedSince? }. A "stale" entry is one the
+// player has recorded stats since; it shows dimmed. Rows get r.inj so other scripts can read it.
+const INJ_ORDER = { O: 0, D: 1, Q: 2, P: 3 };
+function applyInjuries(inj) {
+  if (!inj || inj.season !== DATA.season || !inj.players) return;
+  INJ = inj;
+  for (const t of Object.values(DATA.teams))
+    for (const tab of ["passing", "rushing", "receiving"])
+      for (const r of t[tab] || []) if (r.log && inj.players[r.log]) r.inj = inj.players[r.log];
+}
+function injOf(log) { return (INJ && log && INJ.players[log]) || null; }
+function injTitle(e) {
+  return `${e.status}: ${e.note}` + (e.stale
+    ? `. He has played since (Week ${e.playedSince}), so this listing may be out of date.` : "");
+}
+function injTag(log) {
+  const e = injOf(log);
+  return e ? `<sup class="inj inj-${e.s}${e.stale ? " inj-stale" : ""}" title="${escapeHtml(injTitle(e))}">${e.s}</sup>` : "";
+}
+function injLine(log, cls) {
+  const e = injOf(log);
+  return e ? `<div class="${cls}${e.stale ? " inj-stale-line" : ""}">${escapeHtml(injTitle(e))}</div>` : "";
+}
+// The QB named in weekGames, as a passing row of his team (for the header's tag).
+function qbLog(teamName, qb) {
+  const t = teamName && DATA.teams[teamName];
+  const r = t && qb && (t.passing || []).find(p => p.player === qb);
+  return r ? r.log : null;
+}
+function shortDate(iso) {
+  const d = iso ? new Date(iso + "T12:00:00") : null;
+  return d && !isNaN(d) ? d.toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "";
+}
+// Every designation on the team's Covers page, including players not in the stat tables.
+function injuryReport(t) {
+  if (!INJ || !(INJ.checked || {})[t.team]) return "";
+  const all = Object.values(INJ.players).filter(e => e.team === t.team)
+    .concat((INJ.unmatched || []).filter(e => e.team === t.team))
+    .sort((a, b) => INJ_ORDER[a.s] - INJ_ORDER[b.s] || (a.stale ? 1 : 0) - (b.stale ? 1 : 0) || (a.player || a.name).localeCompare(b.player || b.name));
+  const groups = ["O", "D", "Q", "P"].map(s => {
+    const list = all.filter(e => e.s === s);
+    if (!list.length) return "";
+    return `<p><span class="inj inj-${s}">${s}</span> <b>${{ O: "Out", D: "Doubtful", Q: "Questionable", P: "Probable" }[s]}</b>: ${list.map(e =>
+      `<span class="inj-who${e.stale ? " inj-stale-line" : ""}" title="${escapeHtml(injTitle(e))}">${escapeHtml(e.player || e.name)} <span class="rk">${escapeHtml([e.pos, e.injury ? e.injury.toLowerCase() : ""].filter(Boolean).join(", "))}${e.stale ? ", may be old" : ""}</span></span>`).join(", ")}</p>`;
+  }).join("");
+  return `<div class="inj-report no-print">
+    <h4>Injury report</h4>
+    ${groups || `<p class="rk">No players listed.</p>`}
+    <p class="bet-note">From the team's Covers.com injury page, checked ${escapeHtml(shortDate(INJ.checked[t.team]))}${all.some(e => e.src !== "Covers") ? ", plus news reports where noted" : ""}. College teams don't have to report injuries, so this is incomplete. Hover a name (or open a player's game log) for the injury and date; "may be old" means he has played since he was listed.</p>
+  </div>`;
 }
 
 // The week strip in the top bar, just left of the player search: one link per week,
@@ -561,15 +619,15 @@ function heroWxText(g) {
 
 function heroTeam(s, t, side, score, otherScore, sideKey) {
   // the rating is this week's, so another week's header (week strip) leaves it out
-  const rec = [[s.record, s.conference].filter(Boolean).join(", "), t && weekMode() === "current" ? `SRS ${dispNum(t.record.srs)}` : null].filter(Boolean).join(", ")
-    + (s.qb ? `. ${s.qb} at QB` : "");
+  const rec = escapeHtml([[s.record, s.conference].filter(Boolean).join(", "), t && weekMode() === "current" ? `SRS ${dispNum(t.record.srs)}` : null].filter(Boolean).join(", "))
+    + (s.qb ? `. ${escapeHtml(s.qb)}${weekMode() === "past" ? "" : injTag(qbLog(t && t.team, s.qb))} at QB` : "");
   const lost = score !== null && otherScore !== null && score < otherScore;
   return `
     <div class="hero-team" data-side="${sideKey}" style="${teamVars(s.name)}">
       <div class="hero-side">${side}</div>
       <div class="hero-name">${rankTag(s.rank)}${t ? teamLink(t) : escapeHtml(s.name)}</div>
       <div class="hero-score${lost ? " lost" : ""}"${score === null ? " hidden" : ""}>${score === null ? "" : score}</div>
-      <div class="hero-rec">${escapeHtml(rec)}</div>
+      <div class="hero-rec">${rec}</div>
     </div>`;
 }
 
@@ -704,8 +762,8 @@ function usageBlock(t) {
   const u = t.usage;
   if (!u || !u.targets || !u.targets.length) return "";
   const name = (r, kind) => r.log && DATA.gameLogs && DATA.gameLogs[r.log]
-    ? `<button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="" data-name="${escapeHtml(r.player)}">${escapeHtml(r.player)}</button>`
-    : escapeHtml(r.player);
+    ? `<span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="" data-name="${escapeHtml(r.player)}">${escapeHtml(r.player)}</button>${injTag(r.log)}</span>`
+    : escapeHtml(r.player) + injTag(r.log);
   const trend = r => {
     const d = r.ts3 - r.ts;
     const cls = d >= 2 ? "up" : d <= -2 ? "down" : "";
@@ -869,6 +927,8 @@ function renderTeamCard(t) {
       ])}
     </div>
 
+    ${injuryReport(t)}
+
     ${usageBlock(t)}
 
     <div class="defpos-row">
@@ -920,8 +980,8 @@ function playerTable(title, rows, cols) {
     const cells = cols.map(([, key, type]) => {
       const txt = escapeHtml(type === "num" ? dispNum(r[key] ?? "—") : String(r[key] ?? "—"));
       const val = key === "player" && r.log && DATA.gameLogs && DATA.gameLogs[r.log]
-        ? `<button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>`
-        : txt;
+        ? `<span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>${injTag(r.log)}</span>`
+        : txt + (key === "player" ? injTag(r.log) : "");
       return `<td class="${type === "num" ? "num" : ""}">${val}</td>`;
     }).join("");
     return `<tr>${cells}</tr>`;
@@ -1018,11 +1078,12 @@ function teamOfLog(key) {
 }
 function gamesText(n) { return `${n} game${n === 1 ? "" : "s"}`; }
 
-function tooltipHtml(name, kind, log) {
+function tooltipHtml(name, kind, log, key) {
   const cols = LOG_GROUPS[kind] || [];
   const head = `<th>Wk</th><th>Opp</th>${cols.map(([l]) => `<th class="num">${l}</th>`).join("")}`;
   const body = log.map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>${cols.map(([, f]) => `<td class="num">${f(e)}</td>`).join("")}</tr>`).join("");
   return `<div class="ptip-head"><b>${name}</b><span>${GROUP_LABEL[kind] || ""}, ${gamesText(log.length)}</span></div>
+    ${injLine(key, "ptip-inj")}
     <table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
     <div class="ptip-foot">Click for full game log and prop check</div>`;
 }
@@ -1042,8 +1103,9 @@ function panelHtml(name, key, log, kind, pos) {
   return `<div class="plog-card" role="dialog" aria-modal="true" aria-labelledby="plogTitle">
     <div class="plog-top">
       <div>
-        <h3 id="plogTitle">${name}</h3>
+        <h3 id="plogTitle">${name}${injTag(key)}</h3>
         <div class="plog-sub">${pos ? escapeHtml(pos) + ", " : ""}${t ? escapeHtml(t.team) + ", " : ""}${gamesText(log.length)}</div>
+        ${injLine(key, "plog-inj")}
       </div>
       <button type="button" class="plog-close" aria-label="Close">✕</button>
     </div>
@@ -1070,7 +1132,7 @@ function panelHtml(name, key, log, kind, pos) {
     const log = DATA && DATA.gameLogs && DATA.gameLogs[btn.dataset.log];
     if (!log || (panel && !panel.hidden)) return;
     if (!tip) { tip = document.createElement("div"); tip.className = "ptip no-print"; document.body.appendChild(tip); }
-    tip.innerHTML = tooltipHtml(escapeHtml(btn.dataset.name), btn.dataset.kind, log);
+    tip.innerHTML = tooltipHtml(escapeHtml(btn.dataset.name), btn.dataset.kind, log, btn.dataset.log);
     tip.hidden = false;
     // next to the name: to its right if it fits, otherwise below (or above near the bottom)
     const r = btn.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
@@ -1415,7 +1477,7 @@ function initPlayerSearch() {
   const close = () => { list.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; };
   const render = () => {
     list.innerHTML = hits.map((p, i) => `<li role="option" id="ps-opt-${i}" data-i="${i}" class="${i === active ? "active" : ""}" aria-selected="${i === active}">
-      <span class="ps-name">${escapeHtml(p.name)}</span><span class="ps-meta">${escapeHtml([p.pos, p.abbr].filter(Boolean).join(", "))}</span></li>`).join("")
+      <span class="ps-name">${escapeHtml(p.name)}${injTag(p.key)}</span><span class="ps-meta">${escapeHtml([p.pos, p.abbr].filter(Boolean).join(", "))}</span></li>`).join("")
       || `<li class="ps-empty">No players found</li>`;
     list.hidden = false; input.setAttribute("aria-expanded", "true");
     if (active >= 0) {
@@ -1571,7 +1633,7 @@ function propBoards(games) {
     }
     rows.sort((x, y) => y.adj - x.adj);
     const body = rows.slice(0, 10).map(({ r, t, o, f, adj }) => `<tr>
-      <td><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${table}" data-pos="${escapeHtml(r.pos || "")}" data-name="${escapeHtml(r.player)}">${escapeHtml(r.player)}</button></td>
+      <td><span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${table}" data-pos="${escapeHtml(r.pos || "")}" data-name="${escapeHtml(r.player)}">${escapeHtml(r.player)}</button>${injTag(r.log)}</span></td>
       <td>${escapeHtml(t.abbr)} ${o.at ? "@" : "vs"} ${escapeHtml(o.t.abbr)}</td>
       <td class="num">${r.ydsG}</td>
       <td class="num">${allowed(o.t)} <span class="rk">#${allowedRank(o.t)}</span></td>

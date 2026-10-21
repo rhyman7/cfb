@@ -764,6 +764,19 @@ body.plog-open { overflow: hidden; }
 .inj-DNP, .inj-LP { background: var(--track); color: var(--text-dim); }
 .ptip-inj, .plog-inj { margin: -2px 0 6px; font-size: 0.78rem; color: #fde047; }
 .plog-inj { margin: 4px 0 0; }
+/* College: the tag sits as a superscript after the name (data/injuries.json, from Covers.com) */
+sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.35; vertical-align: super; }
+.inj-P { background: var(--track); color: var(--text-dim); }
+.inj.inj-stale { background: transparent; color: var(--text-dim); box-shadow: inset 0 0 0 1px var(--border); }
+.inj-stale-line { color: var(--text-dim); }
+.hero-rec sup.inj { font-size: 0.6rem; }
+.pn { white-space: nowrap; }
+.pn .plink { white-space: normal; }
+.inj-report { margin: 14px 20px 0; padding: 10px 14px; background: var(--panel-alt); border-radius: 6px; }
+.inj-report h4 { margin: 0 0 6px; }
+.inj-report p { margin: 4px 0; font-size: 0.8125rem; line-height: 1.6; }
+.inj-report .inj { margin: 0 2px 0 0; }
+.inj-report .bet-note { margin-top: 8px; }
 
 /* ---------- Player search ---------- */
 .psearch { position: relative; align-self: center; width: 200px; margin-left: auto; }
