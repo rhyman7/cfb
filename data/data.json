@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-19T09:23:47.077787+00:00",
+ "generatedAt": "2026-10-21T13:49:12.974627+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -62680,9 +62680,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/20 - 7:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Pitbull Stadium",
    "city": "Miami, FL",
    "tv": "CBSSN",
@@ -62696,7 +62696,7 @@
     "rank": null,
     "record": "3-3",
     "conference": "CUSA",
-    "score": null,
+    "score": 26,
     "abbr": "MTSU",
     "qb": "Roman Gagliano"
    },
@@ -62706,7 +62706,7 @@
     "rank": null,
     "record": "3-3",
     "conference": "CUSA",
-    "score": null,
+    "score": 23,
     "abbr": "FIU",
     "qb": "JJ Kohl"
    },
@@ -62723,9 +62723,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/20 - 7:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Delaware Stadium",
    "city": "Newark, DE",
    "tv": "ESPNU",
@@ -62739,7 +62739,7 @@
     "rank": null,
     "record": "2-4",
     "conference": "CUSA",
-    "score": null,
+    "score": 38,
     "abbr": "MOST",
     "qb": "Henry Belin IV"
    },
@@ -62749,7 +62749,7 @@
     "rank": null,
     "record": "2-4",
     "conference": "CUSA",
-    "score": null,
+    "score": 61,
     "abbr": "DEL",
     "qb": "Tyler Bell"
    },
@@ -62766,9 +62766,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/20 - 7:30 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Joan C. Edwards Stadium",
    "city": "Huntington, WV",
    "tv": "ESPN2",
@@ -62782,7 +62782,7 @@
     "rank": null,
     "record": "4-2",
     "conference": "Sun Belt",
-    "score": null,
+    "score": 13,
     "abbr": "USA",
     "qb": "Jared Hollins"
    },
@@ -62792,7 +62792,7 @@
     "rank": null,
     "record": "3-3",
     "conference": "Sun Belt",
-    "score": null,
+    "score": 20,
     "abbr": "MRSH",
     "qb": "Zion Turner"
    },
@@ -63315,7 +63315,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63358,7 +63358,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63530,7 +63530,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63573,7 +63573,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63616,7 +63616,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63659,7 +63659,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63702,7 +63702,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63745,7 +63745,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63831,7 +63831,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -63960,7 +63960,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64089,7 +64089,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64132,7 +64132,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64175,7 +64175,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64218,7 +64218,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64261,7 +64261,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64304,7 +64304,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64347,7 +64347,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64390,7 +64390,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64433,7 +64433,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64476,7 +64476,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64519,7 +64519,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64562,7 +64562,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64605,7 +64605,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64691,7 +64691,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64863,7 +64863,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64949,7 +64949,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -64992,7 +64992,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-19"
+    "at": "2026-10-21"
    }
   },
   {
@@ -66989,7 +66989,9 @@
   "Sam Houston": [{"w":1,"opp":"TROY","at":true,"res":"L 21-24","espnId":"401870763","pass":{"n":"Landyn Locke","yds":335,"td":3,"cmp":30,"att":46},"rush":{"n":"Alton McCaskill","yds":51,"td":0,"car":13},"rec":{"n":"Grady O'Neill","yds":86,"td":1,"rec":7}},{"w":2,"opp":"TLSA","res":"L 17-23","espnId":"401862707","pass":{"n":"Landyn Locke","yds":316,"td":2,"cmp":24,"att":34},"rush":{"n":"Alton McCaskill","yds":48,"td":0,"car":14},"rec":{"n":"Jerrian Parker Jr.","yds":101,"td":1,"rec":2}},{"w":3,"opp":"NICH","res":"W 59-0","espnId":"401870764","pass":{"n":"Landyn Locke","yds":322,"td":4,"cmp":19,"att":28},"rush":{"n":"Jerrian Parker Jr.","yds":52,"td":0,"car":6},"rec":{"n":"Kamari Maxwell","yds":86,"td":1,"rec":2}},{"w":4,"opp":"TTU","at":true,"res":"L 14-49","espnId":"401856805","pass":{"n":"Landyn Locke","yds":195,"td":2,"cmp":23,"att":37},"rush":{"n":"Landyn Locke","yds":25,"td":0,"car":8},"rec":{"n":"Tim Burns Jr.","yds":61,"td":1,"rec":2}},{"w":6,"opp":"LIB","at":true,"res":"L 3-35","espnId":"401870766","pass":{"n":"Landyn Locke","yds":138,"td":0,"cmp":20,"att":30},"rush":{"n":"MJ Dowdy","yds":42,"td":0,"car":11},"rec":{"n":"Grady O'Neill","yds":39,"td":0,"rec":3}},{"w":7,"opp":"WKU","res":"L 3-16","espnId":"401871068","pass":{"n":"Landyn Locke","yds":112,"td":0,"cmp":13,"att":30},"rush":{"n":"MJ Dowdy","yds":55,"td":0,"car":14},"rec":{"n":"Chris Reed","yds":51,"td":0,"rec":3}}]
  },
  "hasTargets": true,
- "notes": [],
+ "notes": [
+  "lineOpen kept for 29 of 56 Week 8 games from the week's first build"
+ ],
  "leagueAverage": {
   "rushTdG": 1.8,
   "passTdG": 1.7,
