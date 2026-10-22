@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T13:49:12.974627+00:00",
+ "generatedAt": "2026-10-22T13:51:01.450972+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -62809,9 +62809,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/21 - 8:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Elliott T. Bowers Stadium",
    "city": "Huntsville, TX",
    "tv": "ESPN2",
@@ -62825,7 +62825,7 @@
     "rank": null,
     "record": "2-4",
     "conference": "CUSA",
-    "score": null,
+    "score": 30,
     "abbr": "NMSU",
     "qb": "Adam Damante"
    },
@@ -62835,7 +62835,7 @@
     "rank": null,
     "record": "1-5",
     "conference": "CUSA",
-    "score": null,
+    "score": 24,
     "abbr": "SHSU",
     "qb": "Landyn Locke"
    },
@@ -63315,7 +63315,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63358,7 +63358,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63530,7 +63530,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63573,7 +63573,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63616,7 +63616,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63659,7 +63659,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63702,7 +63702,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63745,7 +63745,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63831,7 +63831,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -63960,7 +63960,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64089,7 +64089,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64132,7 +64132,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64175,7 +64175,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64218,7 +64218,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64261,7 +64261,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64304,7 +64304,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64347,7 +64347,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64390,7 +64390,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64433,7 +64433,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64476,7 +64476,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64519,7 +64519,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64562,7 +64562,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64605,7 +64605,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64691,7 +64691,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64863,7 +64863,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64949,7 +64949,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
@@ -64992,7 +64992,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-21"
+    "at": "2026-10-22"
    }
   },
   {
