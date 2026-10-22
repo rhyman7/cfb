@@ -3,8 +3,8 @@
  "week": 8,
  "league": "cfb",
  "title": "CFB Week 8 Matchup Report",
- "dataGeneratedAt": "2026-10-21T13:49:12.974627+00:00",
- "generatedAt": "2026-10-21T18:38:50Z",
+ "dataGeneratedAt": "2026-10-22T13:51:01.450972+00:00",
+ "generatedAt": "2026-10-22T13:53:12Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -19,9 +19,9 @@
  ],
  "games": [
   {
-   "id": "401871070",
-   "label": "NMSU @ SHSU",
-   "file": "CFB_Week8_NMSU-SHSU_packet",
+   "id": "401869845",
+   "label": "JMU @ APP",
+   "file": "CFB_Week8_JMU-APP_packet",
    "pages": {
     "report": [
      2
@@ -29,27 +29,6 @@
     "matchup": [
      0,
      1
-    ],
-    "epa": [
-     3
-    ],
-    "value": [
-     0
-    ]
-   },
-   "missing": []
-  },
-  {
-   "id": "401869845",
-   "label": "JMU @ APP",
-   "file": "CFB_Week8_JMU-APP_packet",
-   "pages": {
-    "report": [
-     3
-    ],
-    "matchup": [
-     2,
-     3
     ],
     "epa": [
      4
@@ -66,11 +45,11 @@
    "file": "CFB_Week8_LIB-KENN_packet",
    "pages": {
     "report": [
-     4
+     3
     ],
     "matchup": [
-     4,
-     5
+     2,
+     3
     ],
     "epa": [
      5
@@ -87,11 +66,11 @@
    "file": "CFB_Week8_ECU-MEM_packet",
    "pages": {
     "report": [
-     5
+     4
     ],
     "matchup": [
-     6,
-     7
+     4,
+     5
     ],
     "epa": [
      6
@@ -108,11 +87,11 @@
    "file": "CFB_Week8_DUKE-UVA_packet",
    "pages": {
     "report": [
-     6
+     5
     ],
     "matchup": [
-     8,
-     9
+     6,
+     7
     ],
     "epa": [
      7
@@ -129,11 +108,11 @@
    "file": "CFB_Week8_MASS-CONN_packet",
    "pages": {
     "report": [
-     7
+     6
     ],
     "matchup": [
-     10,
-     11
+     8,
+     9
     ],
     "epa": [
      8
@@ -150,11 +129,11 @@
    "file": "CFB_Week8_ARMY-TLSA_packet",
    "pages": {
     "report": [
-     8
+     7
     ],
     "matchup": [
-     12,
-     13
+     10,
+     11
     ],
     "epa": [
      9
@@ -171,11 +150,11 @@
    "file": "CFB_Week8_AFA-WYO_packet",
    "pages": {
     "report": [
-     9
+     8
     ],
     "matchup": [
-     14,
-     15
+     12,
+     13
     ],
     "epa": [
      10
@@ -192,11 +171,11 @@
    "file": "CFB_Week8_NCSU-STAN_packet",
    "pages": {
     "report": [
-     10
+     9
     ],
     "matchup": [
-     16,
-     17
+     14,
+     15
     ],
     "epa": [
      11
@@ -213,11 +192,11 @@
    "file": "CFB_Week8_LSU-AUB_packet",
    "pages": {
     "report": [
-     11
+     10
     ],
     "matchup": [
-     18,
-     19
+     16,
+     17
     ],
     "epa": [
      12
@@ -234,11 +213,11 @@
    "file": "CFB_Week8_TTU-CIN_packet",
    "pages": {
     "report": [
-     12
+     11
     ],
     "matchup": [
-     20,
-     21
+     18,
+     19
     ],
     "epa": [
      13
@@ -255,11 +234,11 @@
    "file": "CFB_Week8_WVU-TCU_packet",
    "pages": {
     "report": [
-     13
+     12
     ],
     "matchup": [
-     22,
-     23
+     20,
+     21
     ],
     "epa": [
      14
@@ -276,11 +255,11 @@
    "file": "CFB_Week8_CAL-SMU_packet",
    "pages": {
     "report": [
-     14
+     13
     ],
     "matchup": [
-     24,
-     25
+     22,
+     23
     ],
     "epa": [
      15
@@ -297,11 +276,11 @@
    "file": "CFB_Week8_PITT-MIA_packet",
    "pages": {
     "report": [
-     15
+     14
     ],
     "matchup": [
-     26,
-     27
+     24,
+     25
     ],
     "epa": [
      16
@@ -318,11 +297,11 @@
    "file": "CFB_Week8_IU-MICH_packet",
    "pages": {
     "report": [
-     16
+     15
     ],
     "matchup": [
-     28,
-     29
+     26,
+     27
     ],
     "epa": [
      17
@@ -339,11 +318,11 @@
    "file": "CFB_Week8_RUTG-NU_packet",
    "pages": {
     "report": [
-     17
+     16
     ],
     "matchup": [
-     30,
-     31
+     28,
+     29
     ],
     "epa": [
      18
@@ -360,11 +339,11 @@
    "file": "CFB_Week8_RICE-FAU_packet",
    "pages": {
     "report": [
-     18
+     17
     ],
     "matchup": [
-     32,
-     33
+     30,
+     31
     ],
     "epa": [
      19
@@ -381,11 +360,11 @@
    "file": "CFB_Week8_WMU-TOL_packet",
    "pages": {
     "report": [
-     19
+     18
     ],
     "matchup": [
-     34,
-     35
+     32,
+     33
     ],
     "epa": [
      20
@@ -402,11 +381,11 @@
    "file": "CFB_Week8_BAY-KU_packet",
    "pages": {
     "report": [
-     20
+     19
     ],
     "matchup": [
-     36,
-     37
+     34,
+     35
     ],
     "epa": [
      21
@@ -423,11 +402,11 @@
    "file": "CFB_Week8_AKR-KENT_packet",
    "pages": {
     "report": [
-     21
+     20
     ],
     "matchup": [
-     38,
-     39
+     36,
+     37
     ],
     "epa": [
      22
@@ -444,11 +423,11 @@
    "file": "CFB_Week8_M-OH-CMU_packet",
    "pages": {
     "report": [
-     22
+     21
     ],
     "matchup": [
-     40,
-     41
+     38,
+     39
     ],
     "epa": [
      23
@@ -465,11 +444,11 @@
    "file": "CFB_Week8_ORE-ILL_packet",
    "pages": {
     "report": [
-     23
+     22
     ],
     "matchup": [
-     42,
-     43
+     40,
+     41
     ],
     "epa": [
      24
@@ -486,11 +465,11 @@
    "file": "CFB_Week8_TAM-ALA_packet",
    "pages": {
     "report": [
-     24
+     23
     ],
     "matchup": [
-     44,
-     45
+     42,
+     43
     ],
     "epa": [
      25
@@ -507,11 +486,11 @@
    "file": "CFB_Week8_OU-MSST_packet",
    "pages": {
     "report": [
-     25
+     24
     ],
     "matchup": [
-     46,
-     47
+     44,
+     45
     ],
     "epa": [
      26
@@ -528,11 +507,11 @@
    "file": "CFB_Week8_TENN-SC_packet",
    "pages": {
     "report": [
-     26
+     25
     ],
     "matchup": [
-     48,
-     49
+     46,
+     47
     ],
     "epa": [
      27
@@ -549,11 +528,11 @@
    "file": "CFB_Week8_BYU-UCF_packet",
    "pages": {
     "report": [
-     27
+     26
     ],
     "matchup": [
-     50,
-     51
+     48,
+     49
     ],
     "epa": [
      28
@@ -570,11 +549,11 @@
    "file": "CFB_Week8_BC-GT_packet",
    "pages": {
     "report": [
-     28
+     27
     ],
     "matchup": [
-     52,
-     53
+     50,
+     51
     ],
     "epa": [
      29
@@ -591,11 +570,11 @@
    "file": "CFB_Week8_IOWA-MINN_packet",
    "pages": {
     "report": [
-     29
+     28
     ],
     "matchup": [
-     54,
-     55
+     52,
+     53
     ],
     "epa": [
      30
@@ -612,11 +591,11 @@
    "file": "CFB_Week8_MSU-UCLA_packet",
    "pages": {
     "report": [
-     30
+     29
     ],
     "matchup": [
-     56,
-     57
+     54,
+     55
     ],
     "epa": [
      31
@@ -633,11 +612,11 @@
    "file": "CFB_Week8_UNT-NAVY_packet",
    "pages": {
     "report": [
-     31
+     30
     ],
     "matchup": [
-     58,
-     59
+     56,
+     57
     ],
     "epa": [
      32
@@ -654,11 +633,11 @@
    "file": "CFB_Week8_HAW-NIU_packet",
    "pages": {
     "report": [
-     32
+     31
     ],
     "matchup": [
-     60,
-     61
+     58,
+     59
     ],
     "epa": [
      33
@@ -675,11 +654,11 @@
    "file": "CFB_Week8_SAC-BALL_packet",
    "pages": {
     "report": [
-     33
+     32
     ],
     "matchup": [
-     62,
-     63
+     60,
+     61
     ],
     "epa": [
      34
@@ -696,11 +675,11 @@
    "file": "CFB_Week8_BGSU-BUFF_packet",
    "pages": {
     "report": [
-     34
+     33
     ],
     "matchup": [
-     64,
-     65
+     62,
+     63
     ],
     "epa": [
      35
@@ -717,11 +696,11 @@
    "file": "CFB_Week8_KSU-ASU_packet",
    "pages": {
     "report": [
-     35
+     34
     ],
     "matchup": [
-     66,
-     67
+     64,
+     65
     ],
     "epa": [
      36
@@ -738,11 +717,11 @@
    "file": "CFB_Week8_EMU-OHIO_packet",
    "pages": {
     "report": [
-     36
+     35
     ],
     "matchup": [
-     68,
-     69
+     66,
+     67
     ],
     "epa": [
      37
@@ -759,11 +738,11 @@
    "file": "CFB_Week8_ULM-TROY_packet",
    "pages": {
     "report": [
-     37
+     36
     ],
     "matchup": [
-     70,
-     71
+     68,
+     69
     ],
     "epa": [
      38
@@ -780,11 +759,11 @@
    "file": "CFB_Week8_SJSU-NEV_packet",
    "pages": {
     "report": [
-     38
+     37
     ],
     "matchup": [
-     72,
-     73
+     70,
+     71
     ],
     "epa": [
      39
@@ -801,11 +780,11 @@
    "file": "CFB_Week8_UL-USM_packet",
    "pages": {
     "report": [
-     39
+     38
     ],
     "matchup": [
-     74,
-     75
+     72,
+     73
     ],
     "epa": [
      40
@@ -822,11 +801,11 @@
    "file": "CFB_Week8_ODU-LT_packet",
    "pages": {
     "report": [
-     40
+     39
     ],
     "matchup": [
-     76,
-     77
+     74,
+     75
     ],
     "epa": [
      41
@@ -843,11 +822,11 @@
    "file": "CFB_Week8_BOIS-WSU_packet",
    "pages": {
     "report": [
-     41
+     40
     ],
     "matchup": [
-     78,
-     79
+     76,
+     77
     ],
     "epa": [
      42
@@ -864,11 +843,11 @@
    "file": "CFB_Week8_SDSU-CSU_packet",
    "pages": {
     "report": [
-     42
+     41
     ],
     "matchup": [
-     80,
-     81
+     78,
+     79
     ],
     "epa": [
      43
@@ -885,11 +864,11 @@
    "file": "CFB_Week8_COLO-OKST_packet",
    "pages": {
     "report": [
-     43
+     42
     ],
     "matchup": [
-     82,
-     83
+     80,
+     81
     ],
     "epa": [
      44
@@ -906,11 +885,11 @@
    "file": "CFB_Week8_VT-CLEM_packet",
    "pages": {
     "report": [
-     44
+     43
     ],
     "matchup": [
-     84,
-     85
+     82,
+     83
     ],
     "epa": [
      45
@@ -927,11 +906,11 @@
    "file": "CFB_Week8_GAST-ARST_packet",
    "pages": {
     "report": [
-     45
+     44
     ],
     "matchup": [
-     86,
-     87
+     84,
+     85
     ],
     "epa": [
      46
@@ -948,11 +927,11 @@
    "file": "CFB_Week8_VAN-UK_packet",
    "pages": {
     "report": [
-     46
+     45
     ],
     "matchup": [
-     88,
-     89
+     86,
+     87
     ],
     "epa": [
      47
@@ -969,11 +948,11 @@
    "file": "CFB_Week8_MISS-TEX_packet",
    "pages": {
     "report": [
-     47
+     46
     ],
     "matchup": [
-     90,
-     91
+     88,
+     89
     ],
     "epa": [
      48
@@ -990,11 +969,11 @@
    "file": "CFB_Week8_ISU-ARIZ_packet",
    "pages": {
     "report": [
-     48
+     47
     ],
     "matchup": [
-     92,
-     93
+     90,
+     91
     ],
     "epa": [
      49
@@ -1011,11 +990,11 @@
    "file": "CFB_Week8_SYR-UNC_packet",
    "pages": {
     "report": [
-     49
+     48
     ],
     "matchup": [
-     94,
-     95
+     92,
+     93
     ],
     "epa": [
      50
@@ -1032,11 +1011,11 @@
    "file": "CFB_Week8_USC-WIS_packet",
    "pages": {
     "report": [
-     50
+     49
     ],
     "matchup": [
-     96,
-     97
+     94,
+     95
     ],
     "epa": [
      51
@@ -1053,11 +1032,11 @@
    "file": "CFB_Week8_USU-TXST_packet",
    "pages": {
     "report": [
-     51
+     50
     ],
     "matchup": [
-     98,
-     99
+     96,
+     97
     ],
     "epa": [
      52
@@ -1074,11 +1053,11 @@
    "file": "CFB_Week8_UTSA-TULN_packet",
    "pages": {
     "report": [
-     52
+     51
     ],
     "matchup": [
-     100,
-     101
+     98,
+     99
     ],
     "epa": [
      53
@@ -1095,11 +1074,11 @@
    "file": "CFB_Week8_NDSU-UNM_packet",
    "pages": {
     "report": [
-     53
+     52
     ],
     "matchup": [
-     102,
-     103
+     100,
+     101
     ],
     "epa": [
      54
@@ -1116,11 +1095,11 @@
    "file": "CFB_Week8_HOU-UTAH_packet",
    "pages": {
     "report": [
-     54
+     53
     ],
     "matchup": [
-     104,
-     105
+     102,
+     103
     ],
     "epa": [
      55
