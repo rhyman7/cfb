@@ -174,7 +174,8 @@ quarterback this week for every FBS team playing (news after its last game: inju
 benchings, named starters) and writes `overrides/qb_starters.json`. `scripts/build_data.py`
 uses it, while its `week` matches the coming week, for the QB in the game header (this
 week and later unplayed weeks) and on the EPA page, with that QB's own EPA per dropback.
-Without it, a team's QB is its leading passer in its most recent game.
+Without it, a team's QB is its leading passer in its most recent game. The College Value Board
+(rhyman7/fb-value-board) reads the same file for its game model and projections.
 
 **Injury tags.** College football has no official injury report (cfbfastR
 only has an Active/Inactive flag on past game rosters), so the tags come from
