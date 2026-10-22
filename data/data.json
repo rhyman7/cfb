@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T15:20:57.731722+00:00",
+ "generatedAt": "2026-10-22T15:40:37.612478+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -63740,7 +63740,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "ILL",
-    "qb": "Katin Houser"
+    "qb": "Michael Clayton II"
    },
    "lineOpen": {
     "spread": null,
@@ -64557,7 +64557,7 @@
     "conference": "Pac-12",
     "score": null,
     "abbr": "CSU",
-    "qb": "K'saan Farrar"
+    "qb": "Hauss Hejny"
    },
    "lineOpen": {
     "spread": null,
@@ -66990,7 +66990,7 @@
  },
  "hasTargets": true,
  "notes": [
-  "announced starting QBs applied from overrides/qb_starters.json",
+  "starting QBs for 104 teams applied from overrides/qb_starters.json",
   "lineOpen kept for 29 of 56 Week 8 games from the week's first build"
  ],
  "leagueAverage": {

@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-10-22T15:15:16.706844+00:00",
+ "generatedAt": "2026-10-22T15:40:09.853588+00:00",
  "source": "Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [
   "Air Force",
@@ -288,20 +288,6 @@
    "pos": "RB",
    "note": "Leg · Covers, Oct 19",
    "player": "EJ Crowell"
-  },
-  "APP|4870999": {
-   "s": "O",
-   "status": "Out",
-   "injury": "Ankle",
-   "date": "2026-10-11",
-   "src": "Covers",
-   "name": "M. Singleton",
-   "team": "App State",
-   "pos": "QB",
-   "note": "Ankle · Covers, Oct 11 · out for an undetermined time",
-   "stale": true,
-   "playedSince": 7,
-   "player": "Malachi Singleton"
   },
   "APP|4871065": {
    "s": "Q",
@@ -760,6 +746,18 @@
    "pos": "RB",
    "note": "Leg · Covers, Oct 5 · out for the season",
    "player": "John Hebert"
+  },
+  "ILL|4795295": {
+   "s": "O",
+   "status": "Out",
+   "injury": "Hand",
+   "date": "2026-10-22",
+   "src": "CBS Sports",
+   "name": "Katin Houser",
+   "team": "Illinois",
+   "pos": "QB",
+   "note": "Hand · CBS Sports, Oct 22 · could miss several weeks; Michael Clayton II starts",
+   "player": "Katin Houser"
   },
   "IOWA|5089314": {
    "s": "O",
@@ -1314,15 +1312,15 @@
    "player": "Ja'Kyrian Turner"
   },
   "PITT|5208095": {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "Leg",
-   "date": "2026-10-17",
-   "src": "Covers",
-   "name": "M. Heintschel",
+   "s": "O",
+   "status": "Out",
+   "injury": "Torn ACL",
+   "date": "2026-10-20",
+   "src": "CBS Sports/AP",
+   "name": "Mason Heintschel",
    "team": "Pittsburgh",
    "pos": "QB",
-   "note": "Leg · Covers, Oct 17",
+   "note": "Torn ACL · CBS Sports/AP, Oct 20 · out for the season",
    "player": "Mason Heintschel"
   },
   "RICE|4923288": {

@@ -237,29 +237,42 @@ def half(x):
 
 
 
-def apply_qb_starters(games, season, team_rows, notes):
-    """Use announced starters from overrides/qb_starters.json for the weeks they cover."""
+def load_qb_starters(season, cur_week, notes):
+    """Starting QBs from overrides/qb_starters.json, {team name: qb name}.
+
+    The daily update checks every team's starter for the coming week on every run and
+    writes the file (WEEKLY_PROMPT.md step 7e). It counts only when its season and week
+    match the build, so last week's list never carries over."""
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "overrides", "qb_starters.json")
     if not os.path.exists(path):
-        return 0
+        return {}
     cfg = json.load(open(path))
     if cfg.get("season") != season:
-        return 0
+        return {}
+    if cfg.get("week") != cur_week:
+        notes.append(f"overrides/qb_starters.json is for Week {cfg.get('week')}, not Week {cur_week}: not applied")
+        return {}
+    return {t: o["qb"] for t, o in (cfg.get("starters") or {}).items() if o.get("qb")}
+
+
+def apply_qb_starters(games, starters, team_rows, notes):
+    """Set each side's qb to the checked starter (this week's games and later, unplayed ones)."""
     used = 0
-    for team, o in (cfg.get("starters") or {}).items():
-        lo = int(o["from_week"])
-        hi = int(o.get("through_week", lo))
-        names = {r["player"] for r in (team_rows.get(team) or {}).get("passing", [])}
-        for g in games:
-            if not lo <= int(g["week"]) <= hi:
-                continue
-            for side in ("away", "home"):
-                if g[side].get("name") == team:
-                    g[side]["qb"] = o["qb"]
-                    used += 1
-        if o["qb"] not in names:
-            notes.append(f"QB override for {team}: {o['qb']} has no passing row on the site")
+    for g in games:
+        if g.get("completed"):
+            continue
+        for side in ("away", "home"):
+            q = starters.get(g[side].get("name"))
+            if q:
+                g[side]["qb"] = q
+                used += 1
+    if notes is not None:
+        for team, q in starters.items():
+            names = {r["player"] for r in (team_rows.get(team) or {}).get("passing", [])}
+            if team in team_rows and q not in names:
+                notes.append(f"starting QB for {team}: {q} has no passing row on the site")
     return used
+
 
 def week_games(full, id_to_name, team_rows, poll, lines, qbs, week=None, records=None):
     """Games for the current week: the first regular-season week that still has
@@ -447,7 +460,7 @@ GARBAGE_LEAD = {1: 43, 2: 37, 3: 27, 4: 21}
 EPA_ALPHA, EPA_K_MARGIN, EPA_K_TOTAL = 150.0, 1.0, 0.5   # from the walk-forward check, Oct 2026
 
 
-def epa_ratings(pbp, g, fbs_ids, id_to_name, lines, season, through_week, cur_week):
+def epa_ratings(pbp, g, fbs_ids, id_to_name, lines, season, through_week, cur_week, starters=None):
     """data/epa.json for the EPA page: the play-by-play in scripts/epa_ratings.py's shape.
     Non-FBS opponents are pooled into one "FCS" team, so FBS teams' FCS games still count
     with an adjustment, but only FBS teams are published."""
@@ -482,6 +495,13 @@ def epa_ratings(pbp, g, fbs_ids, id_to_name, lines, season, through_week, cur_we
     games = games[(games["home"] != "FCS") | (games["away"] != "FCS")]
     fbs_keys = sorted(id_to_name[t] for t in fbs_ids if t in id_to_name)
     epa = build_epa(plays, games, fbs_keys, hfa=2.5, alpha=EPA_ALPHA, k_margin=EPA_K_MARGIN, k_total=EPA_K_TOTAL)
+    # the EPA page shows this week's starting QB (step 7e), with his own numbers when he has any
+    for t, name in (starters or {}).items():
+        row = epa["teams"].get(t)
+        if not row or (row.get("qb") or {}).get("name") == name:
+            continue
+        s = plays[(plays["off"] == t) & (plays["passer"] == name) & ~plays["garbage"]]
+        row["qb"] = {"name": name, "epa": round(float(s["epa"].mean()), 3) if len(s) else None, "db": int(len(s))}
     return {"generatedAt": datetime.now(timezone.utc).isoformat(), "season": season,
             "throughWeek": through_week, "week": cur_week, **epa}
 
@@ -716,8 +736,9 @@ def build(season, cache, prev_path=None):
     lines = {int(r.game_id): {"spread": r.spread, "over_under": r.over_under}
              for r in ml[ml["season_type"].astype(str).isin(["2", "regular"])].itertuples()}
     cur_week, games = week_games(full, id_to_name, team_rows, poll, lines, qbs)
-    if apply_qb_starters(games, season, team_rows, notes):
-        notes.append("announced starting QBs applied from overrides/qb_starters.json")
+    starters = load_qb_starters(season, cur_week, notes)
+    if apply_qb_starters(games, starters, team_rows, notes):
+        notes.append(f"starting QBs for {len(starters)} teams applied from overrides/qb_starters.json")
     kept = carry_line_open(games, cur_week, season, prev_path) if prev_path else 0
     if kept:
         notes.append(f"lineOpen kept for {kept} of {len(games)} Week {cur_week} games from the week's first build")
@@ -731,7 +752,7 @@ def build(season, cache, prev_path=None):
     eff = efficiency(pbp, game_ids, set(per.index)) if pbp is not None else {}
     if pbp is None:
         notes.append("no play-by-play: EPA and success rate left out")
-    epa = epa_ratings(pbp, g, set(per.index), id_to_name, lines, season, last_week, cur_week) if pbp is not None else None
+    epa = epa_ratings(pbp, g, set(per.index), id_to_name, lines, season, last_week, cur_week, starters) if pbp is not None else None
     for tid, name in id_to_name.items():
         team_rows[name]["betting"] = bet.get(tid)
         if eff:
@@ -764,7 +785,7 @@ def build(season, cache, prev_path=None):
             weeks[w] = copy.deepcopy(games)
         elif w > cur_week:
             weeks[w] = week_games(full, id_to_name, team_rows, poll, lines, qbs, week=w)[1]
-            apply_qb_starters(weeks[w], season, team_rows, [])
+            apply_qb_starters(weeks[w], starters, team_rows, None)
         else:
             # a finished week as it stood: records and AP ranks going into it, no "at QB"
             before = tg[tg["week"] < w]
