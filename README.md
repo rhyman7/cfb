@@ -169,6 +169,12 @@ completed regular-season games, leaving out QB kneels and plays wiped out by
 a penalty. Offense rank 1 = highest; defense rank 1 = lowest allowed. The
 data is `eff` on each team. These rows print with the rest of Head to Head.
 
+**QB in the game header.** Each side's QB is normally the team's leading
+passer (most attempts) in its most recent game. When a different starter is
+confirmed for the coming game (an injury or a benching), the daily update adds
+him to `overrides/qb_starters.json`, which `scripts/build_data.py` applies to
+that week only, so it expires once the game is played.
+
 **Injury tags.** College football has no official injury report (cfbfastR
 only has an Active/Inactive flag on past game rosters), so the tags come from
 each team's Covers.com injury page, read in the daily update (WEEKLY_PROMPT.md

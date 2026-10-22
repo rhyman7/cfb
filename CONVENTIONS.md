@@ -31,7 +31,7 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **Out of scope here:** prediction and betting-model work belongs in the separate CFB/NFL
   Model project, not in this repo.
 - **What does commit straight to `main`** (automated, not hand edits): the weekly data
-  update (`data/`, see WEEKLY_PROMPT.md) and the **Build PDFs** Action (`pdf/`).
+  update (`data/`, plus announced starting QBs in `overrides/qb_starters.json`; see WEEKLY_PROMPT.md) and the **Build PDFs** Action (`pdf/`).
   Everything else goes through a PR.
 
 ## Site structure

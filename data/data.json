@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T13:51:01.450972+00:00",
+ "generatedAt": "2026-10-22T15:20:57.731722+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -63439,7 +63439,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "MICH",
-    "qb": "Bryce Underwood"
+    "qb": "Tommy Carr"
    },
    "lineOpen": {
     "spread": 8.5,
@@ -66990,6 +66990,7 @@
  },
  "hasTargets": true,
  "notes": [
+  "announced starting QBs applied from overrides/qb_starters.json",
   "lineOpen kept for 29 of 56 Week 8 games from the week's first build"
  ],
  "leagueAverage": {
