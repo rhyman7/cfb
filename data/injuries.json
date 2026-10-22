@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-10-22T13:58:09.090428+00:00",
+ "generatedAt": "2026-10-22T15:15:16.706844+00:00",
  "source": "Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [
   "Air Force",
@@ -1084,6 +1084,18 @@
    "pos": "WR",
    "note": "Undisclosed · Big Ten availability report (Yahoo Sports), Oct 21 · out vs Iowa",
    "player": "Hayden Moore"
+  },
+  "MISS|5086388": {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Ole Miss On SI)",
+   "name": "Kewan Lacy",
+   "team": "Ole Miss",
+   "pos": "RB",
+   "note": "Undisclosed · SEC availability report (Ole Miss On SI), Oct 21 · initial report vs Texas",
+   "player": "Kewan Lacy"
   },
   "MSST|5177084": {
    "s": "Q",
@@ -3399,17 +3411,6 @@
    "s": "Q",
    "status": "Questionable",
    "injury": "",
-   "date": "2026-10-18",
-   "src": "Covers",
-   "name": "K. Smith",
-   "team": "Vanderbilt",
-   "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 18"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
    "date": "2026-10-10",
    "src": "Covers",
    "name": "S. Brennan",
@@ -3944,17 +3945,6 @@
    "team": "South Carolina",
    "pos": "DL",
    "note": "Back · Covers, Sep 20 · out for an undetermined time"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "Lower Body",
-   "date": "2026-08-17",
-   "src": "Covers",
-   "name": "J. Sellers",
-   "team": "South Carolina",
-   "pos": "WR",
-   "note": "Lower Body · Covers, Aug 17 · out for the season"
   },
   {
    "s": "O",
@@ -5598,17 +5588,6 @@
   {
    "s": "Q",
    "status": "Questionable",
-   "injury": "Ankle",
-   "date": "2026-10-19",
-   "src": "Covers",
-   "name": "C. Simmons",
-   "team": "Texas",
-   "pos": "DL",
-   "note": "Ankle · Covers, Oct 19"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
    "injury": "Illness",
    "date": "2026-10-17",
    "src": "Covers",
@@ -5737,6 +5716,204 @@
    "team": "Tulane",
    "pos": "TE",
    "note": "Toe · Covers, Oct 17"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Texas Longhorns On SI)",
+   "name": "Richard Wesley",
+   "team": "Texas",
+   "pos": "DE",
+   "note": "Undisclosed · SEC availability report (Texas Longhorns On SI), Oct 21 · initial report vs Ole Miss"
+  },
+  {
+   "s": "D",
+   "status": "Doubtful",
+   "injury": "Ankle",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Texas Longhorns On SI)",
+   "name": "Colin Simmons",
+   "team": "Texas",
+   "pos": "EDGE",
+   "note": "Ankle · SEC availability report (Texas Longhorns On SI), Oct 21 · initial report vs Ole Miss"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Texas Longhorns On SI)",
+   "name": "Jaydon Chatman",
+   "team": "Texas",
+   "pos": "OL",
+   "note": "Undisclosed · SEC availability report (Texas Longhorns On SI), Oct 21 · initial report vs Ole Miss"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Ole Miss On SI)",
+   "name": "Izaiah Hartrup",
+   "team": "Ole Miss",
+   "pos": "WR",
+   "note": "Undisclosed · SEC availability report (Ole Miss On SI), Oct 21 · initial report vs Texas"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Ole Miss On SI)",
+   "name": "Kervin Johnson Jr.",
+   "team": "Ole Miss",
+   "pos": "WR",
+   "note": "Undisclosed · SEC availability report (Ole Miss On SI), Oct 21 · initial report vs Texas"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Ole Miss On SI)",
+   "name": "Emanuel Faulkner",
+   "team": "Ole Miss",
+   "pos": "OL",
+   "note": "Undisclosed · SEC availability report (Ole Miss On SI), Oct 21 · initial report vs Texas"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Leg",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Yahoo Sports)",
+   "name": "Whit Weeks",
+   "team": "LSU",
+   "pos": "LB",
+   "note": "Leg · SEC availability report (Yahoo Sports), Oct 21 · initial report vs Auburn"
+  },
+  {
+   "s": "D",
+   "status": "Doubtful",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Yahoo Sports)",
+   "name": "Richard Anderson",
+   "team": "LSU",
+   "pos": "DT",
+   "note": "Undisclosed · SEC availability report (Yahoo Sports), Oct 21 · initial report vs Auburn"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Rocky Top Insider)",
+   "name": "Jayden Sellers",
+   "team": "South Carolina",
+   "pos": "WR",
+   "note": "Undisclosed · SEC availability report (Rocky Top Insider), Oct 21 · initial report vs Tennessee"
+  },
+  {
+   "s": "D",
+   "status": "Doubtful",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Rocky Top Insider)",
+   "name": "Quay'sheed Scott",
+   "team": "South Carolina",
+   "pos": "DB",
+   "note": "Undisclosed · SEC availability report (Rocky Top Insider), Oct 21 · initial report vs Tennessee"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Ankle",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Vanderbilt On SI)",
+   "name": "Brian Allen Jr.",
+   "team": "Vanderbilt",
+   "pos": "EDGE",
+   "note": "Ankle · SEC availability report (Vanderbilt On SI), Oct 21 · initial report vs Kentucky"
+  },
+  {
+   "s": "D",
+   "status": "Doubtful",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Vanderbilt On SI)",
+   "name": "Josiah Broxton",
+   "team": "Vanderbilt",
+   "pos": "LB",
+   "note": "Undisclosed · SEC availability report (Vanderbilt On SI), Oct 21 · initial report vs Kentucky"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "SEC availability report (Vanderbilt On SI)",
+   "name": "Kahden Smith",
+   "team": "Vanderbilt",
+   "pos": "WR",
+   "note": "Undisclosed · SEC availability report (Vanderbilt On SI), Oct 21 · will remain out"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-22",
+   "src": "Michigan availability report (GBMWolverine)",
+   "name": "Blake Frazier",
+   "team": "Michigan",
+   "pos": "OT",
+   "note": "Undisclosed · Michigan availability report (GBMWolverine), Oct 22 · vs Indiana"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-22",
+   "src": "Michigan availability report (GBMWolverine)",
+   "name": "Jake Guarnera",
+   "team": "Michigan",
+   "pos": "OL",
+   "note": "Undisclosed · Michigan availability report (GBMWolverine), Oct 22 · vs Indiana"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-22",
+   "src": "Michigan availability report (GBMWolverine)",
+   "name": "Rod Moore Jr.",
+   "team": "Michigan",
+   "pos": "S",
+   "note": "Undisclosed · Michigan availability report (GBMWolverine), Oct 22 · vs Indiana"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-21",
+   "src": "ACC availability report (TigerNet)",
+   "name": "Thomas Williams",
+   "team": "Virginia Tech",
+   "pos": "CB",
+   "note": "Undisclosed · ACC availability report (TigerNet), Oct 21 · vs Clemson"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Concussion",
+   "date": "2026-10-21",
+   "src": "ACC availability report (TigerNet)",
+   "name": "Gordon Sellars III",
+   "team": "Clemson",
+   "pos": "WR",
+   "note": "Concussion · ACC availability report (TigerNet), Oct 21 · vs Virginia Tech"
   }
  ]
 }
