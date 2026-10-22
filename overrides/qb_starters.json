@@ -1,0 +1,7 @@
+{
+ "_about": "Announced starting QBs that the build can't see yet. The build script normally shows each team's leading passer from its most recent game; an entry here replaces that for the listed weeks only (default: just from_week), so it expires on its own once the game is played. The daily update adds entries from confirmed news (school, coach, or a clearly reported start).",
+ "season": 2026,
+ "starters": {
+  "Michigan": {"qb": "Tommy Carr", "from_week": 8, "source": "On3 (Pete Nakos), Oct 20", "note": "Bryce Underwood benched"}
+ }
+}

@@ -236,6 +236,31 @@ def half(x):
     return None if x is None or pd.isna(x) else round(float(x) * 2) / 2
 
 
+
+def apply_qb_starters(games, season, team_rows, notes):
+    """Use announced starters from overrides/qb_starters.json for the weeks they cover."""
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "overrides", "qb_starters.json")
+    if not os.path.exists(path):
+        return 0
+    cfg = json.load(open(path))
+    if cfg.get("season") != season:
+        return 0
+    used = 0
+    for team, o in (cfg.get("starters") or {}).items():
+        lo = int(o["from_week"])
+        hi = int(o.get("through_week", lo))
+        names = {r["player"] for r in (team_rows.get(team) or {}).get("passing", [])}
+        for g in games:
+            if not lo <= int(g["week"]) <= hi:
+                continue
+            for side in ("away", "home"):
+                if g[side].get("name") == team:
+                    g[side]["qb"] = o["qb"]
+                    used += 1
+        if o["qb"] not in names:
+            notes.append(f"QB override for {team}: {o['qb']} has no passing row on the site")
+    return used
+
 def week_games(full, id_to_name, team_rows, poll, lines, qbs, week=None, records=None):
     """Games for the current week: the first regular-season week that still has
     an unplayed game (or the final week once everything is complete).
@@ -691,6 +716,8 @@ def build(season, cache, prev_path=None):
     lines = {int(r.game_id): {"spread": r.spread, "over_under": r.over_under}
              for r in ml[ml["season_type"].astype(str).isin(["2", "regular"])].itertuples()}
     cur_week, games = week_games(full, id_to_name, team_rows, poll, lines, qbs)
+    if apply_qb_starters(games, season, team_rows, notes):
+        notes.append("announced starting QBs applied from overrides/qb_starters.json")
     kept = carry_line_open(games, cur_week, season, prev_path) if prev_path else 0
     if kept:
         notes.append(f"lineOpen kept for {kept} of {len(games)} Week {cur_week} games from the week's first build")
@@ -737,6 +764,7 @@ def build(season, cache, prev_path=None):
             weeks[w] = copy.deepcopy(games)
         elif w > cur_week:
             weeks[w] = week_games(full, id_to_name, team_rows, poll, lines, qbs, week=w)[1]
+            apply_qb_starters(weeks[w], season, team_rows, [])
         else:
             # a finished week as it stood: records and AP ranks going into it, no "at QB"
             before = tg[tg["week"] < w]
