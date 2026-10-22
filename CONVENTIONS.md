@@ -33,6 +33,10 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **What does commit straight to `main`** (automated, not hand edits): the weekly data
   update (`data/`, plus this week's starting QBs in `overrides/qb_starters.json`; see WEEKLY_PROMPT.md) and the **Build PDFs** Action (`pdf/`).
   Everything else goes through a PR.
+- **Task merges are pre-approved.** `.claude/settings.json` lets Claude sessions, including the
+  scheduled tasks, merge their own PRs (`gh api -X PUT repos/rhyman7/cfb/pulls/<n>/merge`)
+  without stopping to ask. The checks above still decide whether a PR is merged. Keep it in
+  step with the same file in `rhyman7/nfl` and `rhyman7/fb-value-board`.
 
 ## Site structure
 
