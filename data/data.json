@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T15:40:37.612478+00:00",
+ "generatedAt": "2026-10-23T13:49:39.548866+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -62852,9 +62852,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/22 - 7:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final/OT",
+   "completed": true,
    "venue": "Kidd Brewer Stadium",
    "city": "Boone, NC",
    "tv": "ESPNU",
@@ -62868,7 +62868,7 @@
     "rank": null,
     "record": "7-0",
     "conference": "Sun Belt",
-    "score": null,
+    "score": 31,
     "abbr": "JMU",
     "qb": "Camden Coleman"
    },
@@ -62878,7 +62878,7 @@
     "rank": null,
     "record": "4-2",
     "conference": "Sun Belt",
-    "score": null,
+    "score": 34,
     "abbr": "APP",
     "qb": "Malachi Singleton"
    },
@@ -62895,9 +62895,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/22 - 7:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Walens Family Field at Fifth Third Stadium",
    "city": "Kennesaw, GA",
    "tv": "CBSSN",
@@ -62911,7 +62911,7 @@
     "rank": null,
     "record": "5-1",
     "conference": "CUSA",
-    "score": null,
+    "score": 34,
     "abbr": "LIB",
     "qb": "Deshawn Purdie"
    },
@@ -62921,7 +62921,7 @@
     "rank": null,
     "record": "1-5",
     "conference": "CUSA",
-    "score": null,
+    "score": 6,
     "abbr": "KENN",
     "qb": "Rickie Collins"
    },
@@ -62938,9 +62938,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/22 - 7:30 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final/OT",
+   "completed": true,
    "venue": "Simmons Bank Liberty Stadium",
    "city": "Memphis, TN",
    "tv": "ESPN2",
@@ -62954,7 +62954,7 @@
     "rank": null,
     "record": "3-3",
     "conference": "American",
-    "score": null,
+    "score": 34,
     "abbr": "ECU",
     "qb": "Emory Williams"
    },
@@ -62964,7 +62964,7 @@
     "rank": null,
     "record": "5-2",
     "conference": "American",
-    "score": null,
+    "score": 41,
     "abbr": "MEM",
     "qb": "Marcus Stokes"
    },
@@ -63315,7 +63315,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63358,7 +63358,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63530,7 +63530,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63573,7 +63573,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63616,7 +63616,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63659,7 +63659,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63702,7 +63702,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63745,7 +63745,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63831,7 +63831,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -63960,7 +63960,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64089,7 +64089,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64132,7 +64132,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64175,7 +64175,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64218,7 +64218,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64261,7 +64261,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64304,7 +64304,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64347,7 +64347,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64390,7 +64390,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64433,7 +64433,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64476,7 +64476,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64519,7 +64519,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64562,7 +64562,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64605,7 +64605,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64691,7 +64691,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64863,7 +64863,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64949,7 +64949,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
@@ -64992,7 +64992,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-22"
+    "at": "2026-10-23"
    }
   },
   {
