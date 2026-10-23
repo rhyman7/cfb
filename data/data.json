@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-23T13:49:39.548866+00:00",
+ "generatedAt": "2026-10-23T14:07:15.259988+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -63343,7 +63343,7 @@
     "conference": "ACC",
     "score": null,
     "abbr": "CAL",
-    "qb": "Jackson Brousseau"
+    "qb": "Jaron-Keawe Sagapolutele"
    },
    "home": {
     "name": "SMU",
@@ -66990,7 +66990,7 @@
  },
  "hasTargets": true,
  "notes": [
-  "starting QBs for 104 teams applied from overrides/qb_starters.json",
+  "starting QBs for 98 teams applied from overrides/qb_starters.json",
   "lineOpen kept for 29 of 56 Week 8 games from the week's first build"
  ],
  "leagueAverage": {
