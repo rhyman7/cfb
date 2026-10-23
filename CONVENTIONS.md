@@ -174,8 +174,15 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   is called from it. Run with the default `--out` so it can keep this week's `lineOpen`.
 - **The data update is a daily scheduled task** (9:47 AM ET, August–December) following
   **WEEKLY_PROMPT.md**, which lists the steps and the checks before publishing: it rebuilds
-  the data, refreshes the injury tags (`data/injuries.json`) and reports injury and weather
-  news.
+  the data, refreshes the injury tags (`data/injuries.json`) and the starting-QB list, and
+  reports injury, QB and weather news. WEEKLY_PROMPT.md is the task's exact text: when you
+  change the scheduled task, put the same text here in the same PR, and the other way round.
+- **Web addresses in the task.** In scheduled runs WebFetch only opens an address that
+  appears word for word in the conversation (the task text or a search result); an address
+  built from a pattern, or one a subagent reads from a file, is refused with
+  PROVENANCE_REQUIRED. So WEEKLY_PROMPT.md lists every Covers team page as a full address,
+  the main session reads Covers itself (subagents only do web searches), and the weather
+  comes from the cleatz page named in the task, not from built Open-Meteo addresses.
 - **WEEKLY_PROMPT.md must match the site.** When a change adds, renames or removes a page, a
   data file or a `data.json` key, update WEEKLY_PROMPT.md in the same PR (its page list,
   "data.json shape" and checks), and check the scheduled task's wording still matches.
@@ -184,7 +191,7 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - `currentWeek` is the first regular-season week that still has an unplayed game.
 - `scripts/epa_ratings.py` is **identical in both repos**. Change it in both, or not at all.
 - **Injury tags** come from Covers.com team injury pages (college has no official report),
-  read by the daily update with WebFetch and matched to players by `scripts/injuries.py`,
+  read by the daily update with WebFetch (full addresses listed in WEEKLY_PROMPT.md) and matched to players by `scripts/injuries.py`,
   which writes `data/injuries.json` (players keyed by `gameLogs` key, plus `unmatched` rows
   and a `checked` date per team). `app.js` loads it next to `data.json` and sets `r.inj` on
   player rows; if it fails to load, the page works without tags. Tags are superscripts
