@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T13:09:50.992078+00:00",
+ "generatedAt": "2026-10-24T13:21:49.183005+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -63386,7 +63386,7 @@
     "conference": "ACC",
     "score": null,
     "abbr": "PITT",
-    "qb": "Corey Dailey"
+    "qb": "Holden Geriner"
    },
    "home": {
     "name": "Miami",
@@ -63730,7 +63730,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "ORE",
-    "qb": "Brock Thomas"
+    "qb": "Dylan Raiola"
    },
    "home": {
     "name": "Illinois",
@@ -64246,7 +64246,7 @@
     "conference": "Big 12",
     "score": null,
     "abbr": "KSU",
-    "qb": "Avery Johnson"
+    "qb": "Jacob Knuth"
    },
    "home": {
     "name": "Arizona State",
@@ -64848,7 +64848,7 @@
     "conference": "ACC",
     "score": null,
     "abbr": "SYR",
-    "qb": "Malachi Nelson"
+    "qb": "Steve Angeli"
    },
    "home": {
     "name": "North Carolina",
