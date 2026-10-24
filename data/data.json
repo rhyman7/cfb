@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-23T14:07:15.259988+00:00",
+ "generatedAt": "2026-10-24T13:09:50.992078+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -62981,9 +62981,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/23 - 7:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Scott Stadium",
    "city": "Charlottesville, VA",
    "tv": "ESPN",
@@ -62997,7 +62997,7 @@
     "rank": null,
     "record": "4-2",
     "conference": "ACC",
-    "score": null,
+    "score": 19,
     "abbr": "DUKE",
     "qb": "Walker Eget"
    },
@@ -63007,7 +63007,7 @@
     "rank": null,
     "record": "4-3",
     "conference": "ACC",
-    "score": null,
+    "score": 16,
     "abbr": "UVA",
     "qb": "Beau Pribula"
    },
@@ -63024,9 +63024,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": false,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/23 - 7:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Pratt & Whitney Stadium",
    "city": "East Hartford, CT",
    "tv": "CBSSN",
@@ -63040,7 +63040,7 @@
     "rank": null,
     "record": "4-3",
     "conference": "MAC",
-    "score": null,
+    "score": 16,
     "abbr": "MASS",
     "qb": "Logan Inagawa"
    },
@@ -63050,7 +63050,7 @@
     "rank": null,
     "record": "3-3",
     "conference": "FBS Indep.",
-    "score": null,
+    "score": 35,
     "abbr": "CONN",
     "qb": "Kalieb Osborne"
    },
@@ -63067,9 +63067,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/23 - 8:30 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "H. A. Chapman Stadium",
    "city": "Tulsa, OK",
    "tv": "ESPN2",
@@ -63083,7 +63083,7 @@
     "rank": null,
     "record": "4-2",
     "conference": "American",
-    "score": null,
+    "score": 38,
     "abbr": "ARMY",
     "qb": "Cale Hellums"
    },
@@ -63093,7 +63093,7 @@
     "rank": null,
     "record": "4-3",
     "conference": "American",
-    "score": null,
+    "score": 35,
     "abbr": "TLSA",
     "qb": "Baylor Hayes"
    },
@@ -63110,9 +63110,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/23 - 9:00 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "War Memorial Stadium",
    "city": "Laramie, WY",
    "tv": "CW",
@@ -63126,7 +63126,7 @@
     "rank": null,
     "record": "5-1",
     "conference": "Mountain West",
-    "score": null,
+    "score": 14,
     "abbr": "AFA",
     "qb": "Evan Medders"
    },
@@ -63136,7 +63136,7 @@
     "rank": null,
     "record": "4-3",
     "conference": "Mountain West",
-    "score": null,
+    "score": 28,
     "abbr": "WYO",
     "qb": "Tyler Hughes"
    },
@@ -63153,9 +63153,9 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "10/23 - 10:30 PM EDT",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Stanford Stadium",
    "city": "Stanford, CA",
    "tv": "ESPN",
@@ -63169,7 +63169,7 @@
     "rank": null,
     "record": "3-3",
     "conference": "ACC",
-    "score": null,
+    "score": 28,
     "abbr": "NCSU",
     "qb": "CJ Bailey"
    },
@@ -63179,7 +63179,7 @@
     "rank": null,
     "record": "3-4",
     "conference": "ACC",
-    "score": null,
+    "score": 31,
     "abbr": "STAN",
     "qb": "Davis Warren"
    },
@@ -63315,7 +63315,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63358,7 +63358,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63530,7 +63530,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63573,7 +63573,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63616,7 +63616,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63659,7 +63659,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63702,7 +63702,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63745,7 +63745,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63831,7 +63831,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -63960,7 +63960,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64089,7 +64089,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64132,7 +64132,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64175,7 +64175,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64218,7 +64218,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64261,7 +64261,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64304,7 +64304,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64347,7 +64347,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64390,7 +64390,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64433,7 +64433,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64476,7 +64476,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64519,7 +64519,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64562,7 +64562,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64605,7 +64605,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64691,7 +64691,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64863,7 +64863,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64949,7 +64949,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
@@ -64992,7 +64992,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-10-23"
+    "at": "2026-10-24"
    }
   },
   {
