@@ -33,6 +33,13 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **What does commit straight to `main`** (automated, not hand edits): the weekly data
   update (`data/`, plus this week's starting QBs in `overrides/qb_starters.json`; see WEEKLY_PROMPT.md) and the **Build PDFs** Action (`pdf/`).
   Everything else goes through a PR.
+- **One other writer for `overrides/qb_starters.json`** (Ryan's call, Oct 24, 2026): the College
+  Value Board's daily check (rhyman7/fb-value-board) may correct a single team's entry when news
+  confirms its listed starter is out or a different starter is named for a game in the next 3
+  days. It does that through a PR here that changes only those teams' entries (`source` ends
+  "(Value Board check)") and nothing in `data/`, so the game headers pick it up on the daily
+  update's next build. The daily update still rewrites the whole list each run; it sees the
+  correction as the previous check.
 - **Task merges are pre-approved.** `.claude/settings.json` lets Claude sessions, including the
   scheduled tasks, merge their own PRs (`gh api -X PUT repos/rhyman7/cfb/pulls/<n>/merge`)
   without stopping to ask. The checks above still decide whether a PR is merged. Keep it in
