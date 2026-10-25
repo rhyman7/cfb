@@ -9,6 +9,7 @@ on:
     paths:
       - "data/data.json"
       - "data/epa.json"
+      - "data/injuries.json"
       - "epa.html"
       - "epa.js"
       - "app.js"
