@@ -16,6 +16,7 @@ import argparse
 import html
 import json
 import math
+import re
 import statistics as st
 import subprocess
 import sys
@@ -28,6 +29,10 @@ ROOT = Path(__file__).resolve().parent.parent
 ET = ZoneInfo("America/New_York")
 E = html.escape
 MINUS = "−"
+# injury designations that keep a player out of the picks (Q stays in, tagged)
+INJ_OUT = {"O": "out", "D": "doubtful", "IR": "on IR", "PUP": "on PUP", "SUSP": "suspended"}
+INJ_CODE = {"out": "O", "doubtful": "D", "questionable": "Q", "injured reserve": "IR", "physically unable to perform": "PUP",
+            "pup": "PUP", "suspension": "SUSP", "suspended": "SUSP"}
 FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">'
 
 
@@ -38,6 +43,10 @@ def num(x):
 
 def half_up(x):
     return num(float(Decimal(str(x)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)))
+
+
+def norm_name(n):  # same as normName() in the NFL site's common.js
+    return re.sub(r"[^a-z]", "", re.sub(r"\b(jr|sr|ii|iii|iv|v)\b\.?", "", str(n or "").lower()))
 
 
 def clip(x, a, b):
@@ -66,6 +75,39 @@ class Data:
         self.by_abbr = {t["abbr"]: n for n, t in self.T.items()}
         self.games = self._games()
         self.POS_AVG = {k: st.mean(t["defVsPosition"][k]["td"] for t in self.T.values()) for k in ("rb", "recRb", "te", "wr")}
+        self.inj, self.inj_src, self.inj_at = {}, None, None
+
+    def load_injuries(self, path):
+        """Injury designations from data/injuries.json, as {log key: {"s", "what"}}.
+        CFB: players keyed by log key (scripts/injuries.py; stale entries and Probable are skipped).
+        NFL: ESPN's shape, teams with injured players by name (scripts/fetch_espn_injuries.py)."""
+        try:
+            j = json.loads(Path(path).read_text(encoding="utf-8"))
+        except Exception:
+            return
+        out = {}
+        if isinstance(j.get("players"), dict):
+            for k, e in j["players"].items():
+                if e.get("s") in ("O", "D", "Q") and not e.get("stale"):
+                    out[k] = dict(s=e["s"], what=e.get("injury") or "")
+        elif isinstance(j.get("injuries"), list):
+            by = {}
+            for grp in j["injuries"]:
+                for it in grp.get("injuries") or []:
+                    s = INJ_CODE.get(str(it.get("status") or "").strip().lower())
+                    nm = norm_name((it.get("athlete") or {}).get("displayName"))
+                    det = it.get("details") or {}
+                    if s and nm and grp.get("displayName"):
+                        by[(grp["displayName"], nm)] = dict(s=s, what=det.get("type") if isinstance(det.get("type"), str) else "")
+            for name, t in self.T.items():
+                for sec in ("passing", "rushing", "receiving"):
+                    for r in t[sec]:
+                        e = by.get((name, norm_name(r["player"])))
+                        if e:
+                            out[r["log"]] = e
+        else:
+            return
+        self.inj, self.inj_src, self.inj_at = out, j.get("source") or "injury report", j.get("generatedAt")
 
     def team_games(self, key):
         if self.league == "cfb":
@@ -160,6 +202,7 @@ class Report:
         for p in P.values():
             logs = self.GL.get(p["log"], [])
             p["gp"] = len(logs)
+            p["inj"] = self.D.inj.get(p["log"])
             p["active"] = bool(logs) and logs[-1]["w"] == last_w
             p["rtd"] = sum(x.get("rTd", 0) for x in logs)
             p["ctd"] = sum(x.get("recTd", 0) for x in logs)
@@ -174,7 +217,7 @@ class Report:
         t = self.T[me["key"]]
         o = self.T[opp["key"]] if opp["key"] else None
         on, ab = opp["abbr"], me["abbr"]
-        out, skipped = [], []
+        out, skipped, hurt, quest = [], [], [], []
         P, tgp = self.roster(me["key"])
         for p in P.values():
             pos, c = p["pos"], None
@@ -219,6 +262,14 @@ class Report:
                 c = dict(prod=prod, grp=key, base=base, yds=r["ydsG"], rec=r["rec"])
             if not c:
                 continue
+            inj = p["inj"]
+            if inj and inj["s"] in INJ_OUT:  # won't play (or very unlikely): named in the game read instead
+                if c["prod"] >= 0.6 and (p["active"] or c["prod"] >= 0.9):
+                    hurt.append(f'{p["name"]} ({ab}, {INJ_OUT[inj["s"]]}' + (f', {inj["what"].lower()}' if inj["what"] else "") + ")")
+                continue
+            if inj and p["active"] and c["prod"] >= 0.6:
+                quest.append(f'{p["name"]} ({ab}' + (f', {inj["what"].lower()}' if inj["what"] else "") + ")")
+            c["inj"] = inj["s"] if inj else None
             if pos != "QB" and p["gp"] <= tgp - 2:
                 c["base"] += f' ({p["gp"]} of {tgp} gms)'
             if o:
@@ -233,7 +284,7 @@ class Report:
                     skipped.append(f'{p["name"]} ({ab})')
                 continue
             out.append(c)
-        return out, skipped
+        return out, skipped, hurt, quest
 
     @staticmethod
     def take(pool, n, cap):
@@ -248,11 +299,13 @@ class Report:
         return res
 
     def pick(self, g):
-        cands, skipped = [], []
+        cands, skipped, hurt, quest = [], [], [], []
         for side in ("away", "home"):
-            c, s = self.candidates(g, side)
+            c, s, h, q = self.candidates(g, side)
             cands += c
             skipped += s
+            hurt += h
+            quest += q
         NT = self.NT
         stats = [c for c in cands if c["rk"] is not None]
         nostat = [c for c in cands if c["rk"] is None]
@@ -289,7 +342,7 @@ class Report:
                 c["text"] = f'{c["base"]}; same matchup as {seen[k]}.'
             else:
                 seen.setdefault(k, c["name"])
-        return good, tough, skipped
+        return good, tough, skipped, hurt, quest
 
     def td_rows(self, g):
         rows = []
@@ -305,7 +358,7 @@ class Report:
             P, _ = self.roster(me["key"])
             for p in P.values():
                 pos = p["pos"]
-                if not p["active"] or p["gp"] < 2:
+                if not p["active"] or p["gp"] < 2 or (p["inj"] and p["inj"]["s"] in INJ_OUT):
                     continue
                 if pos == "QB":
                     if p["name"] != me["qb"]:
@@ -341,10 +394,11 @@ class Report:
                 lam = (tds + 0.6) / (p["gp"] + 2) * (share * clip(mr, 0.6, 1.6) + (1 - share) * clip(mc, 0.6, 1.6)) * script
                 split = f'{p["rtd"]} rush, {p["ctd"]} rec' if p["rtd"] and p["ctd"] else ("rushing" if p["rtd"] else "receiving")
                 rows.append(dict(lam=lam, name=p["name"], team=me["abbr"], pos=pos, tds=tds, gp=p["gp"], split=split,
-                                 oab=opp["abbr"], allowed=allowed, pts=pts, est=imp is None, gid=g["id"]))
+                                 oab=opp["abbr"], allowed=allowed, pts=pts, est=imp is None, gid=g["id"],
+                                 inj=p["inj"]["s"] if p["inj"] else None))
         return sorted(rows, key=lambda r: -r["lam"])
 
-    def game_read(self, g, skipped):
+    def game_read(self, g, skipped, hurt=(), quest=()):
         s = []
         if g["spread"] is not None and g["total"] is not None:
             if g["spread"] == 0:
@@ -382,6 +436,10 @@ class Report:
             top = max(t["passing"], key=lambda p: p["ydsG"] * len(self.GL.get(p["log"], [])))
             if top["player"] != g[side]["qb"]:
                 s.append(f'{t.get("team", k)} has {g[side]["qb"]} listed at QB; {top["player"]} has thrown for most of its yards.')
+        if hurt:
+            s.append("Left out with injuries: " + ", ".join(hurt) + ".")
+        if quest:
+            s.append("Questionable: " + ", ".join(quest) + ".")
         if skipped:
             s.append("Left out because they missed their team's last game: " + ", ".join(skipped) + ".")
         return " ".join(s)
@@ -403,6 +461,7 @@ def build(root=ROOT, out=None, font_css=None):
     out.mkdir(parents=True, exist_ok=True)
     d = json.loads((root / "data" / "data.json").read_text(encoding="utf-8"))
     D = Data(d)
+    D.load_injuries(root / "data" / "injuries.json")
     R = Report(D)
     COL = team_colors(root, D.league)
     L = D.league.upper()
@@ -459,22 +518,25 @@ def build(root=ROOT, out=None, font_css=None):
         return (f'<div class="strip">{team_html(g["away"])}<div class="at">{vs(g)}</div>{team_html(g["home"])}{cells}'
                 f'<div class="cell where"><div class="stad">{E(g["venue"])}</div><div class="sub">{E(". ".join(b for b in bits if b))}</div></div></div>')
 
+    def itag(c):
+        return f' <span class="inj">{E(c["inj"])}</span>' if c.get("inj") else ""
+
     def bullets(items, empty):
         if not items:
             return f'<li class="none"><div class="why">{empty}</div></li>'
-        return "".join(f'<li><span class="pl">{E(c["name"])}</span> <span class="tag">{E(c["team"])} {c["pos"]}</span><div class="why">{E(c["text"])}</div></li>' for c in items)
+        return "".join(f'<li><span class="pl">{E(c["name"])}</span>{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span><div class="why">{E(c["text"])}</div></li>' for c in items)
 
     G = []
     for i, g in enumerate(games, 1):
-        good, tough, skipped = R.pick(g)
-        G.append(dict(g=g, n=i, good=good, tough=tough, read=R.game_read(g, skipped), td=R.td_rows(g)))
+        good, tough, skipped, hurt, quest = R.pick(g)
+        G.append(dict(g=g, n=i, good=good, tough=tough, read=R.game_read(g, skipped, hurt, quest), td=R.td_rows(g)))
 
     cards = []
     for x in G:
         g = x["g"]
         _, day, tm = when(g)
         tv = f' · {g["tv"]}' if g["tv"] else ""
-        tdw = "; ".join(f'<b>{E(r["name"])}</b> <span class="tag">{E(r["team"])} {r["pos"]}</span> {r["tds"]} TD{"s" if r["tds"] != 1 else ""} in {r["gp"]} games' for r in x["td"][:3]) or "No one qualifies."
+        tdw = "; ".join(f'<b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> {r["tds"]} TD{"s" if r["tds"] != 1 else ""} in {r["gp"]} games' for r in x["td"][:3]) or "No one qualifies."
         cards.append(f'''<section class="game" id="g{E(g["id"])}" data-game="{E(g["id"])}">
   <div class="eyebrow"><span class="gno">Game {x["n"]} of {NG}</span><h2 class="gtitle">{E(gtitle(g))}</h2><span class="gwhen">{day} · {tm}{tv}</span></div>
   {strip(g)}
@@ -498,7 +560,7 @@ def build(root=ROOT, out=None, font_css=None):
         if len(top) == TOPN:
             break
     top_rows = "".join(
-        f'<tr><td class="n">{i}</td><td><b>{E(c["name"])}</b> <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
+        f'<tr><td class="n">{i}</td><td><b>{E(c["name"])}</b>{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
         f'<td><a href="#g{E(x["g"]["id"])}">{E(gtitle(x["g"]))}</a></td><td>{E(c["good"].split("; ", 1)[0])}</td><td>{E(c["good"].split("; ", 1)[1])}</td></tr>'
         for i, (c, x) in enumerate(top, 1))
 
@@ -507,7 +569,7 @@ def build(root=ROOT, out=None, font_css=None):
 
     def td_table(rows, start):
         body = "".join(
-            f'<tr><td class="n">{i}</td><td><b>{E(r["name"])}</b> <span class="tag">{E(r["team"])} {r["pos"]}</span></td>'
+            f'<tr><td class="n">{i}</td><td><b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span></td>'
             f'<td><a href="#g{E(r["gid"])}">{E(gtitle(r["x"]["g"]))}</a></td><td>{r["tds"]} in {r["gp"]} ({r["split"]})</td>'
             f'<td>{E(r["oab"])} allows {E(r["allowed"])}</td><td class="r">{half_up(r["pts"])}{" est." if r["est"] else ""}</td></tr>'
             for i, r in enumerate(rows, start))
@@ -544,6 +606,19 @@ def build(root=ROOT, out=None, font_css=None):
 
     nlines = sum(g["spread"] is not None for g in games)
     gen = datetime.fromisoformat(d["generatedAt"]).astimezone(ET) if d.get("generatedAt") else None
+    if D.inj_src:
+        try:
+            ia = datetime.fromisoformat(D.inj_at.replace("Z", "+00:00")).astimezone(ET)
+            ia = f', as of {ia.strftime("%b")} {ia.day}, {ia.strftime("%I:%M %p").lstrip("0")} ET'
+        except Exception:
+            ia = ""
+        inj_note = (f'<li><b>Injuries.</b> Source: {E(D.inj_src)}{ia}. '
+                    "Players listed out, doubtful, on IR or suspended are left out of the picks and named in the game read; "
+                    "questionable players stay in, tagged Q. Players who missed their team's last game are also left out. "
+                    "Schedule strength is not adjusted for.</li>")
+    else:
+        inj_note = ("<li><b>No injury data.</b> Players who missed their team's last game are left out and named in the game read. "
+                    "Schedule strength is not adjusted for.</li>")
     def _d(g):
         dt = when(g)[0]; return f'{dt.strftime("%A")}, {dt.strftime("%b")} {dt.day}'
     rng = f"{_d(games[0])} through {_d(games[-1])}" if games else ""
@@ -560,7 +635,7 @@ def build(root=ROOT, out=None, font_css=None):
     <li><b>Method.</b> Each player's per-game production is compared with how the opposing defense ranks against his position (backs, receivers, tight ends) and against the pass. Ranks are out of {D.NT}; #1 is the stingiest defense.</li>
     <li><b>Source.</b> Every number comes from the {L} dashboard ({site}), with stats through Week {D.through}{f" and lines as of {gen.strftime('%b')} {gen.day}" if gen else ""}. The report is built automatically after each data update.</li>
     <li><b>Lines.</b> {"Every game has a spread and total in the data." if nlines == NG else f"{nlines} of the {NG} games have a spread and total so far; the rest show No line yet, and their team points in the TD ranking are estimates (est.)."}</li>
-    <li><b>No injury data.</b> Players who missed their team's last game are left out and named in the game read. Schedule strength is not adjusted for.</li>
+    {inj_note}
   </ul></div>
 </header>
 {index_html}

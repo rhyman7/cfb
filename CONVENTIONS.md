@@ -151,8 +151,11 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   packet in the browser with pdf-lib, so each week's pages are stored once. The buttons only
   show when `packets.json` is for the week on the page. A part with no page for a game is left
   out of that packet and listed under `missing`.
-- The **Weekly Matchup Report** is rule-based and built from `data/data.json` only (good and
-  tough spots per game, Best Overall Matchups, Most Likely to Score a TD). `build_report.py`,
+- The **Weekly Matchup Report** is rule-based and built from `data/data.json` plus the injury
+  tags in `data/injuries.json` (good and tough spots per game, Best Overall Matchups, Most Likely
+  to Score a TD). Players listed out, doubtful, IR, PUP or suspended are left out of the picks and
+  named in the game read; questionable players stay in with a Q tag. It reads both files' shapes
+  (NFL: ESPN's; CFB: `scripts/injuries.py`'s), and without the file it says there's no injury data. `build_report.py`,
   `build_packets.py` and `report.css` are **identical in both repos**; change them in both.
 - The value board's pages come from a checkout of rhyman7/fb-value-board (its Matchups view,
   Print all). If that board's print layout or game ids change, check the packets still map
