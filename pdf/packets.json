@@ -4,7 +4,7 @@
  "league": "cfb",
  "title": "CFB Week 8 Matchup Report",
  "dataGeneratedAt": "2026-10-24T13:21:49.183005+00:00",
- "generatedAt": "2026-10-24T20:48:50Z",
+ "generatedAt": "2026-10-25T00:21:10Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -277,12 +277,11 @@
     ],
     "epa": [
      24
-    ],
-    "value": [
-     5
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401856727",
@@ -300,7 +299,7 @@
      25
     ],
     "value": [
-     14
+     8
     ]
    },
    "missing": []
@@ -319,12 +318,11 @@
     ],
     "epa": [
      26
-    ],
-    "value": [
-     12
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401856731",
@@ -342,7 +340,7 @@
      27
     ],
     "value": [
-     15
+     9
     ]
    },
    "missing": []
@@ -363,7 +361,7 @@
      28
     ],
     "value": [
-     8
+     5
     ]
    },
    "missing": []
@@ -382,12 +380,11 @@
     ],
     "epa": [
      29
-    ],
-    "value": [
-     6
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401858497",
@@ -405,7 +402,7 @@
      30
     ],
     "value": [
-     10
+     6
     ]
    },
    "missing": []
@@ -426,7 +423,7 @@
      31
     ],
     "value": [
-     11
+     7
     ]
    },
    "missing": []
@@ -445,12 +442,11 @@
     ],
     "epa": [
      32
-    ],
-    "value": [
-     16
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401864526",
@@ -466,12 +462,11 @@
     ],
     "epa": [
      33
-    ],
-    "value": [
-     9
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401866447",
@@ -487,12 +482,11 @@
     ],
     "epa": [
      34
-    ],
-    "value": [
-     13
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401866448",
@@ -508,12 +502,11 @@
     ],
     "epa": [
      35
-    ],
-    "value": [
-     7
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401856839",
@@ -529,12 +522,11 @@
     ],
     "epa": [
      36
-    ],
-    "value": [
-     17
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401866449",
@@ -550,12 +542,11 @@
     ],
     "epa": [
      37
-    ],
-    "value": [
-     18
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401871094",
@@ -571,12 +562,11 @@
     ],
     "epa": [
      38
-    ],
-    "value": [
-     19
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401864528",
@@ -592,12 +582,11 @@
     ],
     "epa": [
      39
-    ],
-    "value": [
-     21
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401869967",
@@ -613,12 +602,11 @@
     ],
     "epa": [
      40
-    ],
-    "value": [
-     22
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401871093",
@@ -634,12 +622,11 @@
     ],
     "epa": [
      41
-    ],
-    "value": [
-     20
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401860907",
@@ -655,12 +642,11 @@
     ],
     "epa": [
      42
-    ],
-    "value": [
-     23
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401860905",
@@ -676,12 +662,11 @@
     ],
     "epa": [
      43
-    ],
-    "value": [
-     24
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
    "id": "401856836",
@@ -699,7 +684,7 @@
      44
     ],
     "value": [
-     25
+     10
     ]
    },
    "missing": []
@@ -720,7 +705,7 @@
      45
     ],
     "value": [
-     27
+     12
     ]
    },
    "missing": []
@@ -741,7 +726,7 @@
      46
     ],
     "value": [
-     26
+     11
     ]
    },
    "missing": []
@@ -762,7 +747,7 @@
      47
     ],
     "value": [
-     33
+     18
     ]
    },
    "missing": []
@@ -783,7 +768,7 @@
      48
     ],
     "value": [
-     29
+     14
     ]
    },
    "missing": []
@@ -804,7 +789,7 @@
      49
     ],
     "value": [
-     28
+     13
     ]
    },
    "missing": []
@@ -825,7 +810,7 @@
      50
     ],
     "value": [
-     30
+     15
     ]
    },
    "missing": []
@@ -846,7 +831,7 @@
      51
     ],
     "value": [
-     31
+     16
     ]
    },
    "missing": []
@@ -867,7 +852,7 @@
      52
     ],
     "value": [
-     32
+     17
     ]
    },
    "missing": []
@@ -888,7 +873,7 @@
      53
     ],
     "value": [
-     34
+     19
     ]
    },
    "missing": []
@@ -909,7 +894,7 @@
      54
     ],
     "value": [
-     35
+     20
     ]
    },
    "missing": []
@@ -930,7 +915,7 @@
      55
     ],
     "value": [
-     36
+     21
     ]
    },
    "missing": []
