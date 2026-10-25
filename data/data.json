@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T13:48:44.311032+00:00",
+ "generatedAt": "2026-10-25T14:07:22.313194+00:00",
  "season": 2026,
  "throughWeek": 7,
  "gamesCounted": 510,
@@ -62698,7 +62698,7 @@
     "conference": "CUSA",
     "score": null,
     "abbr": "DEL",
-    "qb": "Tyler Bell"
+    "qb": "Nick Minicucci"
    },
    "home": {
     "name": "Western Kentucky",
@@ -63128,7 +63128,7 @@
     "conference": "ACC",
     "score": null,
     "abbr": "CAL",
-    "qb": "Jackson Brousseau"
+    "qb": "Jaron-Keawe Sagapolutele"
    },
    "home": {
     "name": "NC State",
@@ -63181,7 +63181,7 @@
     "conference": "ACC",
     "score": null,
     "abbr": "SYR",
-    "qb": "Malachi Nelson"
+    "qb": "Steve Angeli"
    },
    "lineOpen": {
     "spread": null,
@@ -63300,7 +63300,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "ILL",
-    "qb": "Katin Houser"
+    "qb": "Michael Clayton II"
    },
    "home": {
     "name": "Maryland",
@@ -63472,7 +63472,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "MICH",
-    "qb": "Bryce Underwood"
+    "qb": "Tommy Carr"
    },
    "home": {
     "name": "Rutgers",
@@ -63568,7 +63568,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "ODU",
-    "qb": "Ryan Huff"
+    "qb": "Jaxon Potter"
    },
    "lineOpen": {
     "spread": null,
@@ -63601,7 +63601,7 @@
     "conference": "Big 12",
     "score": null,
     "abbr": "KSU",
-    "qb": "Avery Johnson"
+    "qb": "Jacob Knuth"
    },
    "home": {
     "name": "Colorado",
@@ -63902,7 +63902,7 @@
     "conference": "Big 12",
     "score": null,
     "abbr": "ASU",
-    "qb": "Mikey Keene"
+    "qb": "Jake Fette"
    },
    "home": {
     "name": "BYU",
@@ -64041,7 +64041,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "ORE",
-    "qb": "Brock Thomas"
+    "qb": "Dylan Raiola"
    },
    "lineOpen": {
     "spread": null,
@@ -64074,7 +64074,7 @@
     "conference": "Pac-12",
     "score": null,
     "abbr": "CSU",
-    "qb": "K'saan Farrar"
+    "qb": "Hauss Hejny"
    },
    "home": {
     "name": "Utah State",
@@ -64461,7 +64461,7 @@
     "conference": "Mountain West",
     "score": null,
     "abbr": "NEV",
-    "qb": "AJ Bianco"
+    "qb": "Luke Duncan"
    },
    "home": {
     "name": "UCLA",
@@ -64729,7 +64729,7 @@
     "conference": "ACC",
     "score": null,
     "abbr": "PITT",
-    "qb": "Corey Dailey"
+    "qb": "Holden Geriner"
    },
    "lineOpen": {
     "spread": null,
@@ -64805,7 +64805,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "OSU",
-    "qb": "Julian Sayin"
+    "qb": "Luke Fahey"
    },
    "home": {
     "name": "USC",
@@ -64891,7 +64891,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "WASH",
-    "qb": "Elijah Brown"
+    "qb": "Demond Williams Jr."
    },
    "home": {
     "name": "Nebraska",
@@ -66990,7 +66990,8 @@
  },
  "hasTargets": true,
  "notes": [
-  "overrides/qb_starters.json is for Week 8, not Week 9: not applied"
+  "starting QBs for 112 teams applied from overrides/qb_starters.json",
+  "lineOpen kept for 3 of 56 Week 9 games from the week's first build"
  ],
  "leagueAverage": {
   "rushTdG": 1.8,
