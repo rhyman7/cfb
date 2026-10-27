@@ -112,6 +112,7 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - Team color as text, bars and dials on the dark page uses `--tc-ink`; in print, `--tc-inkp`.
 - Pages must work from phone width up: nothing cut off or overlapping, wide tables scroll
   sideways inside their container.
+- **Favicon:** the RH monogram, as `favicon.ico`, `favicon-192.png` and `apple-touch-icon.png` at the repo root (the same three files in rhyman7/nfl, rhyman7/cfb, rhyman7.github.io and rhyman7/fb-value-board). Every page links all three in `<head>`, right after the viewport meta; a new page gets the same three lines.
 
 ## Matchup page
 
