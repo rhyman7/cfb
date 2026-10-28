@@ -109,7 +109,14 @@ def positions(rosters, game_rosters):
     of athletes filled from game_rosters)."""
     r = rosters[["athlete_id", "team_id", "position_abbreviation"]].copy()
     r["athlete_id"] = num(r["athlete_id"])
-    on_roster = set(r["athlete_id"].dropna())
+    # cfb_rosters can list a player with only position_id (abbreviation blank, seen 2026-10-28):
+    # fill those from the ESPN id table, and leave any still blank to the game_rosters fallback
+    if "position_id" in rosters.columns:
+        pid_r = num(rosters["position_id"])
+        r["position_abbreviation"] = r["position_abbreviation"].where(
+            r["position_abbreviation"].notna(),
+            pid_r.map(lambda x: ESPN_POS.get(int(x)) if pd.notna(x) else None))
+    on_roster = set(r.dropna(subset=["position_abbreviation"])["athlete_id"].dropna())
     extra = pd.DataFrame(columns=["athlete_id", "team_id", "position_abbreviation"])
     if game_rosters is not None and len(game_rosters):
         gr = game_rosters[["athlete_id", "team_id", "position_href"]].copy()
