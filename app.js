@@ -846,6 +846,7 @@ function renderTeamCard(t) {
   if (!t) return "";
   const avg = DATA.leagueAverage;
   const gr = DATA.gaugeRanges;
+  const pop = kind => (dpHas(t) ? { team: t.team, kind } : null);
 
   return `
   <div class="team-card" data-team="${escapeHtml(t.team)}" style="${teamVars(t.team)}">
@@ -892,8 +893,8 @@ function renderTeamCard(t) {
       <div class="stat-col defense">
         <h3>Defense</h3>
         <div class="gauges">
-          ${gaugeBlock("Rush Yds/G", t.defense.rushYdsG, gr.defRushYdsG, t.defense.rushYdsGRank)}
-          ${gaugeBlock("Pass Yds/G", t.defense.passYdsG, gr.defPassYdsG, t.defense.passYdsGRank)}
+          ${gaugeBlock("Rush Yds/G", t.defense.rushYdsG, gr.defRushYdsG, t.defense.rushYdsGRank, pop("rush"))}
+          ${gaugeBlock("Pass Yds/G", t.defense.passYdsG, gr.defPassYdsG, t.defense.passYdsGRank, pop("pass"))}
         </div>
         <div class="mini-stats">
           ${miniStat("Rush TD/G", t.defense.rushTdG, avg.rushTdG)}
@@ -904,12 +905,13 @@ function renderTeamCard(t) {
     </div>
 
     <div class="tables-row">
-      ${playerTable("Passing", t.passing, [
+      ${playerTable("Passing", withAvgC(t.passing), [
         ["Player", "player", "text"],
         ["Yds/G", "ydsG", "num"],
         ["TD", "td", "num"],
         ["Int", "int", "num"],
         ["Cmp/G", "cmp", "num"],
+        ["Avg/C", "ypc", "num"],
       ])}
       ${playerTable("Rushing", t.rushing, [
         ["Player", "player", "text"],
@@ -970,6 +972,12 @@ function defPosBlock(title, d) {
   </div>`;
 }
 
+// Avg/C = passing yards per completion: the data's ypc, or season yards ÷ completions
+// worked out from the per-game numbers (data built before ypc was added)
+function withAvgC(rows) {
+  return (rows || []).map(r => r.ypc != null ? r : { ...r, ypc: r.cmp > 0 ? Math.round((10 * r.ydsG) / r.cmp) / 10 : null });
+}
+
 function playerTable(title, rows, cols) {
   if (!rows || rows.length === 0) {
     return `<div class="table-block"><h4>${title}</h4><div class="empty-note">No data</div></div>`;
@@ -993,9 +1001,11 @@ function playerTable(title, rows, cols) {
 }
 
 // --- Gauge (SVG semicircle) ---
-function gaugeBlock(label, value, range, rank) {
+// pop = { team, kind: "pass" | "rush" } makes the dial open the Defense game popup (dpPassHtml / dpRushHtml)
+function gaugeBlock(label, value, range, rank, pop) {
   const svg = gaugeSvg(value, range.min, range.max);
-  return `<div class="gauge-block">
+  const open = pop ? ` dpop" data-team="${escapeHtml(pop.team)}" data-kind="${pop.kind}" tabindex="0" role="button" aria-haspopup="dialog" aria-expanded="false" aria-label="${label} allowed, ${value}: show it game by game` : "";
+  return `<div class="gauge-block${open}">
     ${svg}
     <div class="gauge-value">${value}</div>
     <div class="gauge-label">${label}</div>
@@ -1814,6 +1824,199 @@ function teamGamesHtml(t) {
     document.addEventListener("focusout", e => { if (e.target.closest && e.target.closest(".tlink")) hideTip(); });
   }
   window.addEventListener("scroll", hideTip, { passive: true });
+})();
+
+/* ---------------- Defense dial popups ---------------- */
+// Hover (tap on a phone, or Enter on the focused dial) the Defense "Pass Yds/G" or
+// "Rush Yds/G" dial on a team card for every game this season. Passing: the quarterbacks the
+// defense faced, their passing yards and the team total. Rushing: the rushing yards allowed
+// in each game; hover (or tap) a game for a second popup with the opponent's running backs,
+// then everyone else who ran, so the lines add up to the game's total. Reads e.allowed =
+// { pass, rush, passers: [{ n, pos, yds, cmp, att }], rushers: [{ n, pos, yds, car }] } on each
+// of the team's games (team_game_list in the data build). Without it the dials stay plain.
+const DP_LEAGUE = "FBS";
+function dpGames(t) { return teamGamesOf(t); }
+const DP_PASS_NOTE = "Team = the opponent's net passing yards (sack yards taken off), the number the dial averages, so it can be less than the passers' own yards. C/Att = completions/attempts.";
+const DP_RUSH_NOTE = "Rush yds = the opponent's team rushing yards, the number the dial averages; college box scores count sacks as runs.";
+const DP_DIFF_LABEL = "Sacks and team runs";
+
+function dpHas(t) { return dpGames(t).some(e => e.allowed); }
+const dpIsRb = x => /^(RB|FB|HB)$/i.test(x.pos || "");
+const dpName = x => `${escapeHtml(x.n)}${x.pos && x.pos !== "QB" ? ` <span class="dp-pos">${escapeHtml(x.pos)}</span>` : ""}`;
+const dpAvg = (t, k) => { const a = dpGames(t).filter(e => e.allowed); return a.length ? (a.reduce((s, e) => s + e.allowed[k], 0) / a.length).toFixed(1) : "—"; };
+
+function dpPassHtml(t) {
+  const body = dpGames(t).map(e => {
+    const a = e.allowed, opp = escapeHtml(oppText(e));
+    if (!a) return `<tr class="dp-g"><td>${e.w}</td><td>${opp}</td><td colspan="4" class="dp-dim">No box score</td></tr>`;
+    const ps = a.passers.length ? a.passers : [null];
+    const n = ps.length;
+    return ps.map((p, i) => `<tr class="${i === 0 ? "dp-g" : "dp-more"}">
+      ${i === 0 ? `<td rowspan="${n}">${e.w}</td><td rowspan="${n}">${opp}</td>` : ""}
+      <td>${p ? dpName(p) : "—"}</td><td class="num dp-dim">${p ? `${p.cmp}/${p.att}` : ""}</td><td class="num">${p ? dispNum(p.yds) : ""}</td>
+      ${i === 0 ? `<td rowspan="${n}" class="num"><b>${dispNum(a.pass)}</b></td>` : ""}</tr>`).join("");
+  }).join("");
+  return `<div class="ptip-head"><b>${escapeHtml(t.team)} pass defense</b><span>${dispNum(t.defense.passYdsG)} yds/G allowed, ${fmtRank(t.defense.passYdsGRank)} in ${DP_LEAGUE}</span></div>
+    <table><thead><tr><th>Wk</th><th>Opp</th><th>Quarterback</th><th class="num">C/Att</th><th class="num">Yds</th><th class="num">Team</th></tr></thead>
+    <tbody>${body}</tbody>
+    <tfoot><tr><td colspan="5">Average per game</td><td class="num"><b>${dispNum(dpAvg(t, "pass"))}</b></td></tr></tfoot></table>
+    <div class="ptip-foot">${DP_PASS_NOTE}</div>`;
+}
+
+function dpRushHtml(t, canHover) {
+  const body = dpGames(t).map((e, i) => {
+    const a = e.allowed, opp = escapeHtml(oppText(e));
+    if (!a) return `<tr><td>${e.w}</td><td>${opp}</td><td colspan="2" class="dp-dim">No box score</td></tr>`;
+    const rb = a.rushers.filter(dpIsRb)[0];
+    return `<tr class="dp-row" data-i="${i}" tabindex="0" aria-label="Week ${e.w} ${opp}: ${a.rush} rushing yards allowed. Show running backs">
+      <td>${e.w}</td><td>${opp}</td><td class="num"><b>${dispNum(a.rush)}</b></td>
+      <td class="dp-dim">${rb ? `${escapeHtml(shortName(rb.n))} ${dispNum(rb.yds)}` : "—"}</td></tr>`;
+  }).join("");
+  return `<div class="ptip-head"><b>${escapeHtml(t.team)} run defense</b><span>${dispNum(t.defense.rushYdsG)} yds/G allowed, ${fmtRank(t.defense.rushYdsGRank)} in ${DP_LEAGUE}</span></div>
+    <table><thead><tr><th>Wk</th><th>Opp</th><th class="num">Rush yds</th><th>Top RB</th></tr></thead>
+    <tbody>${body}</tbody>
+    <tfoot><tr><td colspan="2">Average per game</td><td class="num"><b>${dispNum(dpAvg(t, "rush"))}</b></td><td></td></tr></tfoot></table>
+    <div class="ptip-foot">${canHover ? "Hover" : "Tap"} a game for the running backs. ${DP_RUSH_NOTE}</div>`;
+}
+
+function dpBacksHtml(t, e) {
+  const a = e.allowed;
+  const rbs = a.rushers.filter(dpIsRb), rest = a.rushers.filter(x => !dpIsRb(x));
+  const row = x => `<tr><td>${dpName(x)}</td><td class="num">${x.car}</td><td class="num">${dispNum(x.yds)}</td></tr>`;
+  const diff = a.rush - a.rushers.reduce((s, x) => s + x.yds, 0);
+  return `<div class="ptip-head"><b>Week ${e.w}, ${escapeHtml(oppText(e))}</b><span>${dispNum(a.rush)} rush yds allowed</span></div>
+    <table><thead><tr><th>Running back</th><th class="num">Car</th><th class="num">Yds</th></tr></thead>
+    <tbody>${rbs.length ? rbs.map(row).join("") : `<tr><td colspan="3" class="dp-dim">No running back carries</td></tr>`}
+    ${rest.length ? `<tr class="dp-sub"><td colspan="3">Other rushers</td></tr>${rest.map(row).join("")}` : ""}
+    ${diff ? `<tr class="dp-more"><td class="dp-dim">${DP_DIFF_LABEL}</td><td></td><td class="num">${dispNum(diff)}</td></tr>` : ""}</tbody>
+    <tfoot><tr><td colspan="2">Total</td><td class="num"><b>${dispNum(a.rush)}</b></td></tr></tfoot></table>`;
+}
+
+(function setupDefensePops() {
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let tip = null, tip2 = null, dial = null, team = null, kind = null, timer = 0, pinned = false, quiet = false, row = null;
+
+  const dialTeam = d => (DATA && DATA.teams && DATA.teams[d.dataset.team]) || null;
+  function make(cls) {
+    const el = document.createElement("div");
+    el.className = "ptip dtip no-print " + cls;
+    el.hidden = true;
+    document.body.appendChild(el);
+    return el;
+  }
+  function place(el, r, side) {
+    const w = el.offsetWidth, h = el.offsetHeight, W = window.innerWidth, Hh = window.innerHeight;
+    let left, top;
+    if (side) {                                   // beside the first popup, level with the row
+      left = r.box.right + 6;
+      if (left + w > W - 8) left = r.box.left - w - 6;
+      top = r.row.top - 10;
+      if (left < 8) { left = r.row.left; top = r.row.bottom + 4; if (top + h > Hh - 8) top = r.row.top - h - 4; }
+    } else {
+      left = r.left + r.width / 2 - w / 2;
+      top = r.bottom + 6;
+      if (top + h > Hh - 8) top = r.top - h - 6;
+    }
+    left = Math.min(left, W - w - 8);
+    top = Math.min(top, Hh - h - 8);
+    el.style.left = Math.max(8, left) + "px";
+    el.style.top = Math.max(8, top) + "px";
+  }
+  function hideBacks() { row = null; if (tip2) tip2.hidden = true; if (tip) tip.querySelectorAll(".dp-row.on").forEach(r => r.classList.remove("on")); }
+  // keep the popups next to the dial while the page scrolls; close them once it's off screen
+  function follow() {
+    if (!tip || tip.hidden || !dial) return;
+    const r = dial.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) { hide(); return; }
+    place(tip, r);
+    if (row && tip2 && !tip2.hidden) place(tip2, { box: tip.getBoundingClientRect(), row: row.getBoundingClientRect() }, true);
+  }
+  function hide() {
+    clearTimeout(timer);
+    hideBacks();
+    if (tip) tip.hidden = true;
+    if (dial) dial.setAttribute("aria-expanded", "false");
+    dial = null; team = null; pinned = false;
+  }
+  function later() { clearTimeout(timer); if (!pinned) timer = setTimeout(hide, 220); }
+  function show(d, pin) {
+    const t = dialTeam(d);
+    if (!t || !dpHas(t)) return;
+    clearTimeout(timer);
+    if (d === dial && !tip.hidden) { pinned = pinned || pin; return; }
+    hide();
+    if (!tip) {
+      tip = make("dtip-games");
+      tip.addEventListener("mouseover", () => clearTimeout(timer));
+      tip.addEventListener("mouseout", e => { if (!tip.contains(e.relatedTarget) && !(dial && dial.contains(e.relatedTarget))) later(); });
+      tip.addEventListener("click", e => { const r = e.target.closest(".dp-row"); if (r) { pinned = true; showBacks(r); } });
+      tip.addEventListener("keydown", e => {
+        const r = e.target.closest(".dp-row");
+        if (!r) return;
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showBacks(r); }
+        else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          const rows = [...tip.querySelectorAll(".dp-row")], i = rows.indexOf(r) + (e.key === "ArrowDown" ? 1 : -1);
+          if (rows[i]) rows[i].focus();
+        }
+      });
+      if (canHover) {
+        tip.addEventListener("mouseover", e => { const r = e.target.closest(".dp-row"); if (r) showBacks(r); });
+        tip.addEventListener("mouseleave", () => { if (!pinned) hideBacks(); });
+      }
+      tip.addEventListener("focusin", e => { const r = e.target.closest(".dp-row"); if (r) showBacks(r); });
+    }
+    dial = d; team = t; kind = d.dataset.kind; pinned = !!pin;
+    tip.innerHTML = kind === "rush" ? dpRushHtml(t, canHover) : dpPassHtml(t);
+    tip.hidden = false;
+    d.setAttribute("aria-expanded", "true");
+    place(tip, d.getBoundingClientRect());
+  }
+  function showBacks(r) {
+    const e = team && dpGames(team)[+r.dataset.i];
+    if (!e || !e.allowed) return;
+    if (!tip2) tip2 = make("dtip-backs");
+    if (r === row && !tip2.hidden) return;
+    row = r;
+    tip.querySelectorAll(".dp-row.on").forEach(x => x.classList.remove("on"));
+    r.classList.add("on");
+    tip2.innerHTML = dpBacksHtml(team, e);
+    tip2.hidden = false;
+    place(tip2, { box: tip.getBoundingClientRect(), row: r.getBoundingClientRect() }, true);
+  }
+
+  document.addEventListener("click", e => {
+    const d = e.target.closest(".dpop");
+    if (d) {
+      if (d === dial && pinned) hide(); else show(d, true);
+      return;
+    }
+    if (tip && !tip.hidden && !tip.contains(e.target)) hide();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && tip && !tip.hidden) { const d = dial; hide(); if (d) { quiet = true; d.focus(); quiet = false; } return; }
+    const d = e.target.closest && e.target.closest(".dpop");
+    if (d && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      show(d, true);
+      const first = tip && !tip.hidden && tip.querySelector(".dp-row");
+      if (first) first.focus();
+    }
+  });
+  if (canHover) {
+    document.addEventListener("mouseover", e => { const d = e.target.closest(".dpop"); if (d) show(d, false); });
+    document.addEventListener("mouseout", e => {
+      const d = e.target.closest(".dpop");
+      if (d && d === dial && !d.contains(e.relatedTarget) && !(tip && tip.contains(e.relatedTarget))) later();
+    });
+  }
+  document.addEventListener("focusin", e => {
+    const d = e.target.closest && e.target.closest(".dpop");
+    if (d) { if (!quiet && d.matches(":focus-visible")) show(d, false); return; }   // keyboard focus; a tap opens on click
+    if (tip && !tip.hidden && !tip.contains(e.target) && !pinned) hide();
+  });
+  window.addEventListener("scroll", follow, { passive: true });
+  window.addEventListener("resize", () => { if (tip && !tip.hidden) hide(); });
 })();
 
 function escapeHtml(str) {

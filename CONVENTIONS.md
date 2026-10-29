@@ -126,6 +126,16 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   to match the NFL site's 6 of 32: `edgeGap()` = team count × 6 ÷ 32, rounded (26 with 138
   FBS teams). Don't hard-code the number. The side with the edge shows in its team color.
 - Betting trends and the live box score are screen-only (left out of print).
+- **Defense dial popups.** On every team card, the Defense **Pass Yds/G** and **Rush Yds/G**
+  dials open a popup of this season's games (hover on a computer, tap on a phone, Enter from
+  the keyboard). Passing: week, opponent, each quarterback faced with C/Att and yards, and the
+  team total. Rushing: week, opponent, rushing yards allowed and the top running back;
+  hovering or tapping a game opens a second popup with every running back, then the other
+  rushers and a "Sacks and team runs" line (college box scores count sacks as runs), so the lines add up to the game's total. Data: `allowed` on each game in
+  `teamGames` (`team_game_list()` in the build). The game totals must stay the same numbers the
+  dials average; change both together. Popups are screen-only (`no-print`).
+- **Passing table columns:** Player, Yds/G, TD, Int, Cmp/G, **Avg/C** (season passing yards
+  per completion, the row's `ypc`; `withAvgC()` works it out for data built without it).
 
 ## Printing and PDFs
 

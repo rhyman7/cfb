@@ -107,6 +107,17 @@ scoring plays), which the browser fetches from ESPN using the game's id. If ESPN
 can't be reached the panel says so and links to the game on ESPN. The lists live
 in `teamGames` in `data/data.json`, keyed by team name, one compact line per team.
 
+**Defense by game.** Hovering the Defense **Pass Yds/G** dial on a team card (tap on a
+phone) shows every game this season: the quarterbacks the defense faced, their
+completions/attempts and passing yards, and the team total (net passing yards, sacks taken
+off, which is what the dial averages). The **Rush Yds/G** dial shows the rushing yards
+allowed in each game; hover or tap a game for a second popup with the opponent's running
+backs (carries and yards), the other rushers, and a "Sacks and team runs" line when the box
+score's sacks make the team total differ. The data is `allowed` on each `teamGames` entry
+({pass, rush, passers: [{n, pos, yds, cmp, att}], rushers: [{n, pos, yds, car}]}), from the
+ESPN team and player box scores. The Passing table's **Avg/C** column is passing yards per
+completion (`ypc`).
+
 **Week strip.** Just left of the search box, the top bar lists every regular-season
 week, right-aligned so the last week sits beside the search. The current week is
 outlined and the week on screen is filled in. A finished week (`index.html?week=N`)
