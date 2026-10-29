@@ -691,7 +691,7 @@ def build(season, cache, prev_path=None):
             att=("att", "sum"), cmp=("cmp", "sum")).reset_index()
         pdx = top(pdx[pdx["att"] > 0], 6, p.gp)
         pass_rows = [{"player": r.player, "ydsG": r1(r.yds / r.gp), "td": r2(r.td / r.gp),
-                      "int": r2(r.it / r.gp), "cmp": r1(r.cmp / r.gp), "pos": pos_all.get(int(r.athlete_id), ""), "log": add_log(t, r.athlete_id)} for r in pdx.itertuples()]
+                      "int": r2(r.it / r.gp), "cmp": r1(r.cmp / r.gp), "ypc": r1(r.yds / r.cmp) if r.cmp else None, "pos": pos_all.get(int(r.athlete_id), ""), "log": add_log(t, r.athlete_id)} for r in pdx.itertuples()]
 
         rdx = rushing[rushing["team_id"] == t].groupby("athlete_id").agg(
             player=("athlete_name", "last"), gp=("game_id", "nunique"),
@@ -753,7 +753,10 @@ def build(season, cache, prev_path=None):
     # each team's games so far with the game's top passer, rusher and receiver
     athlete_names = {int(i): str(n) for i, n in pd.concat([passing, rushing, receiving])
                      .dropna(subset=["athlete_id"]).groupby("athlete_id")["athlete_name"].last().items()}
-    team_games = team_game_list(results, pg, athlete_names, id_to_name)
+    # what each defense allowed per game (Defense dial popups): the opponent's team box totals
+    opp_of = {(r.game_id, r.team_id): r.opp_id for r in tg[["game_id", "team_id", "opp_id"]].itertuples()}
+    box = {(r.game_id, r.team_id): (r.passYds, r.rushYds) for r in tb.itertuples()}
+    team_games = team_game_list(results, pg, athlete_names, id_to_name, opp_of, box, pos_all)
 
     bet = betting_trends(g, lines, results, set(per.index))
     eff = efficiency(pbp, game_ids, set(per.index)) if pbp is not None else {}
@@ -832,7 +835,7 @@ def build(season, cache, prev_path=None):
     return out, weeks, epa
 
 
-def team_game_list(results, pg, names, team_names):
+def team_game_list(results, pg, names, team_names, opp_of=None, box=None, pos_all=None):
     """Each FBS team's completed games in order: opponent, result, the ESPN game id (for the
     box score the site fetches) and that team's top passer, rusher and receiver by yards.
 
@@ -840,7 +843,13 @@ def team_game_list(results, pg, names, team_names):
     (team_id, athlete_id, game_id). Returns {team name: [{w, opp, at?, res, espnId, pass,
     rush, rec}]}; pass = {n, yds, td, cmp, att}, rush = {n, yds, td, car}, rec = {n, yds,
     td, rec}. A leader is left out when the box score has nobody with an attempt, carry
-    or catch for that team."""
+    or catch for that team.
+
+    allowed (when opp_of and box are given) is what the team's defense gave up that game:
+    pass and rush = the opponent's team box net passing and rushing yards (the same totals as
+    the Defense dials; net passing takes sacks off, so the passers' own yards can add up to
+    more), passers = [{n, pos, yds, cmp, att}], rushers = [{n, pos, yds, car}], most yards
+    first. The Defense dial popups read it."""
     LEADERS = (("pass", "att", "pYds", "pTd", {"cmp": "cmp", "att": "att"}),
                ("rush", "car", "rYds", "rTd", {"car": "car"}),
                ("rec", "rec", "recYds", "recTd", {"rec": "rec"}))
@@ -861,6 +870,24 @@ def team_game_list(results, pg, names, team_names):
                 top = d.sort_values([yds, td], ascending=False).iloc[0]
                 entry[key] = {"n": names.get(int(top.name[1]), "?"), "yds": int(top[yds]), "td": int(top[td]),
                               **{k: int(top[col]) for k, col in extra.items()}}
+        oid = (opp_of or {}).get((gid, tid))
+        if oid is not None and box is not None:
+            orows = by_team_game.get((oid, gid))
+            tot = box.get((gid, oid))
+            if orows is not None or tot is not None:
+                def people(need, yds, extra, rows=orows):
+                    if rows is None:
+                        return []
+                    d = rows[rows[need] > 0].sort_values([yds, need], ascending=False)
+                    return [{"n": names.get(int(i[1]), "?"), "pos": (pos_all or {}).get(int(i[1]), ""),
+                             "yds": int(x[yds]), **{k: int(x[c]) for k, c in extra.items()}} for i, x in d.iterrows()]
+                n0 = lambda v: 0 if v is None or pd.isna(v) else int(v)
+                passers = people("att", "pYds", {"cmp": "cmp", "att": "att"})
+                rushers = people("car", "rYds", {"car": "car"})
+                entry["allowed"] = {
+                    "pass": n0(tot[0]) if tot else sum(x["yds"] for x in passers),
+                    "rush": n0(tot[1]) if tot else sum(x["yds"] for x in rushers),
+                    "passers": passers, "rushers": rushers}
         out.setdefault(name, []).append(entry)
     return out
 

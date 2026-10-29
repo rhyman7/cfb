@@ -667,6 +667,25 @@ footer { padding: 20px 28px 28px; text-align: center; font-size: 0.78rem; color:
 td.fp { font-weight: 700; }
 .ttip td { white-space: nowrap; }
 
+/* ---------- Defense dial popups (dpPassHtml / dpRushHtml in the page script) ---------- */
+.gauge-block.dpop { cursor: pointer; border-radius: var(--radius); outline-offset: 2px; }
+.gauge-block.dpop .gauge-label { text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--text-dim); }
+.gauge-block.dpop:hover .gauge-label, .gauge-block.dpop[aria-expanded="true"] .gauge-label { text-decoration-color: currentColor; }
+.ptip.dtip { pointer-events: auto; max-width: min(600px, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow-y: auto; }
+.ptip.dtip-backs { pointer-events: none; z-index: 61; min-width: 220px; }
+.dtip td { white-space: nowrap; vertical-align: top; }
+.dtip tr.dp-g > td { border-top: 1px solid var(--border); }
+.dtip tbody tr:first-child > td { border-top: 0; }
+.dtip tr.dp-more > td { border-top: 0; padding-top: 0; }
+.dtip tfoot td { border-top: 1px solid var(--border); color: var(--text-dim); }
+.dtip tfoot td b { color: var(--text); }
+.dtip .dp-dim { color: var(--text-dim); }
+.dtip .dp-pos { font-size: 0.72rem; color: var(--text-dim); }
+.dtip tr.dp-row { cursor: pointer; }
+.dtip tr.dp-row:hover > td, .dtip tr.dp-row.on > td, .dtip tr.dp-row:focus-visible > td { background: var(--panel); }
+.dtip tr.dp-row:focus-visible { outline: 2px solid var(--text-dim); outline-offset: -2px; }
+.dtip tr.dp-sub > td { padding-top: 8px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); }
+
 .plog {
   position: fixed;
   inset: 0;
