@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T13:47:36.156372+00:00",
+ "generatedAt": "2026-10-29T14:00:57.930355+00:00",
  "season": 2026,
  "throughWeek": 9,
  "gamesCounted": 570,
@@ -64913,7 +64913,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "ODU",
-    "qb": "Jaxon Potter"
+    "qb": "Ryan Huff"
    },
    "lineOpen": {
     "spread": 3.0,
@@ -64999,7 +64999,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "GAST",
-    "qb": "Cameran Brown"
+    "qb": "Ayden Pereira"
    },
    "lineOpen": {
     "spread": -6.5,
@@ -65859,7 +65859,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "GASO",
-    "qb": "Turner Helton"
+    "qb": "Max Johnson"
    },
    "lineOpen": {
     "spread": -5.0,
@@ -68337,7 +68337,7 @@
  "hasTargets": true,
  "notes": [
   "positions for 99 players filled from game_rosters (cfb_rosters lists 235 teams)",
-  "starting QBs for 112 teams applied from overrides/qb_starters.json",
+  "starting QBs for 104 teams applied from overrides/qb_starters.json",
   "lineOpen kept for 56 of 56 Week 9 games from the week's first build"
  ],
  "leagueAverage": {
