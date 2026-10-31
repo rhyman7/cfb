@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-10-30T13:56:20.210917+00:00",
+ "generatedAt": "2026-10-31T13:49:08.333226+00:00",
  "source": "Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [
   "Air Force",
@@ -11,12 +11,10 @@
   "Army",
   "Auburn",
   "BYU",
-  "Baylor",
   "Boise State",
   "Boston College",
   "Bowling Green",
   "California",
-  "Charlotte",
   "Cincinnati",
   "Clemson",
   "Coastal Carolina",
@@ -38,7 +36,6 @@
   "Iowa State",
   "Kansas",
   "Kansas State",
-  "Kent State",
   "Liberty",
   "Louisiana Tech",
   "Louisville",
@@ -72,7 +69,6 @@
   "Purdue",
   "Rutgers",
   "SMU",
-  "Sacramento State",
   "San Diego State",
   "San José State",
   "South Alabama",
@@ -86,9 +82,7 @@
   "Texas",
   "Texas State",
   "Texas Tech",
-  "Tulane",
   "UAB",
-  "UCF",
   "UCLA",
   "UConn",
   "UL Monroe",
@@ -105,168 +99,168 @@
   "Wisconsin"
  ],
  "checked": {
-  "Air Force": "2026-10-30",
+  "Air Force": "2026-10-31",
   "Akron": "2026-10-24",
   "Alabama": "2026-10-24",
-  "App State": "2026-10-30",
-  "Arizona": "2026-10-30",
-  "Arizona State": "2026-10-30",
-  "Arkansas": "2026-10-30",
+  "App State": "2026-10-31",
+  "Arizona": "2026-10-31",
+  "Arizona State": "2026-10-31",
+  "Arkansas": "2026-10-31",
   "Arkansas State": "2026-10-24",
-  "Army": "2026-10-30",
-  "Auburn": "2026-10-30",
-  "BYU": "2026-10-30",
+  "Army": "2026-10-31",
+  "Auburn": "2026-10-31",
+  "BYU": "2026-10-31",
   "Ball State": "2026-10-24",
   "Baylor": "2026-10-30",
-  "Boise State": "2026-10-30",
-  "Boston College": "2026-10-30",
-  "Bowling Green": "2026-10-30",
+  "Boise State": "2026-10-31",
+  "Boston College": "2026-10-31",
+  "Bowling Green": "2026-10-31",
   "Buffalo": "2026-10-24",
-  "California": "2026-10-30",
+  "California": "2026-10-31",
   "Central Michigan": "2026-10-24",
   "Charlotte": "2026-10-30",
-  "Cincinnati": "2026-10-30",
-  "Clemson": "2026-10-30",
-  "Coastal Carolina": "2026-10-30",
-  "Colorado": "2026-10-30",
-  "Colorado State": "2026-10-30",
+  "Cincinnati": "2026-10-31",
+  "Clemson": "2026-10-31",
+  "Coastal Carolina": "2026-10-31",
+  "Colorado": "2026-10-31",
+  "Colorado State": "2026-10-31",
   "Delaware": "2026-10-27",
-  "Duke": "2026-10-30",
-  "East Carolina": "2026-10-30",
+  "Duke": "2026-10-31",
+  "East Carolina": "2026-10-31",
   "Eastern Michigan": "2026-10-24",
-  "Florida": "2026-10-30",
+  "Florida": "2026-10-31",
   "Florida Atlantic": "2026-10-29",
-  "Florida International": "2026-10-30",
-  "Florida State": "2026-10-30",
-  "Fresno State": "2026-10-30",
-  "Georgia": "2026-10-30",
-  "Georgia Southern": "2026-10-30",
-  "Georgia State": "2026-10-30",
-  "Georgia Tech": "2026-10-30",
+  "Florida International": "2026-10-31",
+  "Florida State": "2026-10-31",
+  "Fresno State": "2026-10-31",
+  "Georgia": "2026-10-31",
+  "Georgia Southern": "2026-10-31",
+  "Georgia State": "2026-10-31",
+  "Georgia Tech": "2026-10-31",
   "Hawai'i": "2026-10-24",
   "Houston": "2026-10-24",
-  "Illinois": "2026-10-30",
-  "Indiana": "2026-10-30",
-  "Iowa": "2026-10-30",
-  "Iowa State": "2026-10-30",
+  "Illinois": "2026-10-31",
+  "Indiana": "2026-10-31",
+  "Iowa": "2026-10-31",
+  "Iowa State": "2026-10-31",
   "Jacksonville State": "2026-10-28",
   "James Madison": "2026-10-29",
-  "Kansas": "2026-10-30",
-  "Kansas State": "2026-10-30",
+  "Kansas": "2026-10-31",
+  "Kansas State": "2026-10-31",
   "Kennesaw State": "2026-10-28",
   "Kent State": "2026-10-30",
   "Kentucky": "2026-10-24",
   "LSU": "2026-10-24",
-  "Liberty": "2026-10-30",
+  "Liberty": "2026-10-31",
   "Louisiana": "2026-10-24",
-  "Louisiana Tech": "2026-10-30",
-  "Louisville": "2026-10-30",
-  "Marshall": "2026-10-30",
-  "Maryland": "2026-10-30",
+  "Louisiana Tech": "2026-10-31",
+  "Louisville": "2026-10-31",
+  "Marshall": "2026-10-31",
+  "Maryland": "2026-10-31",
   "Massachusetts": "2026-10-22",
-  "Memphis": "2026-10-30",
-  "Miami": "2026-10-30",
+  "Memphis": "2026-10-31",
+  "Miami": "2026-10-31",
   "Miami (OH)": "2026-10-24",
-  "Michigan": "2026-10-30",
+  "Michigan": "2026-10-31",
   "Michigan State": "2026-10-24",
   "Middle Tennessee": "2026-10-28",
-  "Minnesota": "2026-10-30",
-  "Mississippi State": "2026-10-30",
-  "Missouri": "2026-10-30",
+  "Minnesota": "2026-10-31",
+  "Mississippi State": "2026-10-31",
+  "Missouri": "2026-10-31",
   "Missouri State": "2026-10-27",
-  "NC State": "2026-10-30",
-  "Navy": "2026-10-30",
-  "Nebraska": "2026-10-30",
-  "Nevada": "2026-10-30",
-  "New Mexico": "2026-10-30",
+  "NC State": "2026-10-31",
+  "Navy": "2026-10-31",
+  "Nebraska": "2026-10-31",
+  "Nevada": "2026-10-31",
+  "New Mexico": "2026-10-31",
   "New Mexico State": "2026-10-28",
-  "North Carolina": "2026-10-30",
-  "North Dakota State": "2026-10-30",
+  "North Carolina": "2026-10-31",
+  "North Dakota State": "2026-10-31",
   "North Texas": "2026-10-29",
-  "Northern Illinois": "2026-10-30",
-  "Northwestern": "2026-10-30",
-  "Notre Dame": "2026-10-30",
+  "Northern Illinois": "2026-10-31",
+  "Northwestern": "2026-10-31",
+  "Notre Dame": "2026-10-31",
   "Ohio": "2026-10-24",
-  "Ohio State": "2026-10-30",
-  "Oklahoma": "2026-10-30",
-  "Oklahoma State": "2026-10-30",
-  "Old Dominion": "2026-10-30",
-  "Ole Miss": "2026-10-30",
-  "Oregon": "2026-10-30",
-  "Oregon State": "2026-10-30",
-  "Penn State": "2026-10-30",
-  "Pittsburgh": "2026-10-30",
-  "Purdue": "2026-10-30",
+  "Ohio State": "2026-10-31",
+  "Oklahoma": "2026-10-31",
+  "Oklahoma State": "2026-10-31",
+  "Old Dominion": "2026-10-31",
+  "Ole Miss": "2026-10-31",
+  "Oregon": "2026-10-31",
+  "Oregon State": "2026-10-31",
+  "Penn State": "2026-10-31",
+  "Pittsburgh": "2026-10-31",
+  "Purdue": "2026-10-31",
   "Rice": "2026-10-24",
-  "Rutgers": "2026-10-30",
-  "SMU": "2026-10-30",
+  "Rutgers": "2026-10-31",
+  "SMU": "2026-10-31",
   "Sacramento State": "2026-10-30",
   "Sam Houston": "2026-10-27",
-  "San Diego State": "2026-10-30",
-  "San José State": "2026-10-30",
-  "South Alabama": "2026-10-30",
-  "South Carolina": "2026-10-30",
-  "South Florida": "2026-10-30",
-  "Southern Miss": "2026-10-30",
-  "Stanford": "2026-10-30",
-  "Syracuse": "2026-10-30",
-  "TCU": "2026-10-30",
-  "Temple": "2026-10-30",
+  "San Diego State": "2026-10-31",
+  "San José State": "2026-10-31",
+  "South Alabama": "2026-10-31",
+  "South Carolina": "2026-10-31",
+  "South Florida": "2026-10-31",
+  "Southern Miss": "2026-10-31",
+  "Stanford": "2026-10-31",
+  "Syracuse": "2026-10-31",
+  "TCU": "2026-10-31",
+  "Temple": "2026-10-31",
   "Tennessee": "2026-10-24",
-  "Texas": "2026-10-30",
+  "Texas": "2026-10-31",
   "Texas A&M": "2026-10-24",
-  "Texas State": "2026-10-30",
-  "Texas Tech": "2026-10-30",
+  "Texas State": "2026-10-31",
+  "Texas Tech": "2026-10-31",
   "Toledo": "2026-10-24",
   "Troy": "2026-10-29",
   "Tulane": "2026-10-30",
   "Tulsa": "2026-10-22",
-  "UAB": "2026-10-30",
+  "UAB": "2026-10-31",
   "UCF": "2026-10-30",
-  "UCLA": "2026-10-30",
-  "UConn": "2026-10-30",
-  "UL Monroe": "2026-10-30",
-  "UNLV": "2026-10-30",
-  "USC": "2026-10-30",
-  "UTEP": "2026-10-30",
+  "UCLA": "2026-10-31",
+  "UConn": "2026-10-31",
+  "UL Monroe": "2026-10-31",
+  "UNLV": "2026-10-31",
+  "USC": "2026-10-31",
+  "UTEP": "2026-10-31",
   "UTSA": "2026-10-24",
-  "Utah": "2026-10-30",
-  "Utah State": "2026-10-30",
+  "Utah": "2026-10-31",
+  "Utah State": "2026-10-31",
   "Vanderbilt": "2026-10-24",
-  "Virginia": "2026-10-30",
+  "Virginia": "2026-10-31",
   "Virginia Tech": "2026-10-24",
-  "Wake Forest": "2026-10-30",
-  "Washington": "2026-10-30",
-  "Washington State": "2026-10-30",
+  "Wake Forest": "2026-10-31",
+  "Washington": "2026-10-31",
+  "Washington State": "2026-10-31",
   "West Virginia": "2026-10-24",
   "Western Kentucky": "2026-10-27",
-  "Western Michigan": "2026-10-30",
-  "Wisconsin": "2026-10-30",
+  "Western Michigan": "2026-10-31",
+  "Wisconsin": "2026-10-31",
   "Wyoming": "2026-10-22"
  },
  "players": {
   "AFA|5238868": {
    "s": "O",
    "status": "Out",
-   "injury": "Lower leg",
+   "injury": "Leg",
    "date": "2026-10-05",
    "src": "Covers",
    "name": "L. Szarka",
    "team": "Air Force",
    "pos": "QB",
-   "note": "Lower leg · Covers, Oct 5 · out for the season",
+   "note": "Leg · Covers, Oct 5 · out for the season",
    "player": "Liam Szarka"
   },
   "AFA|5306440": {
-   "s": "D",
-   "status": "Doubtful",
+   "s": "O",
+   "status": "Out",
    "injury": "Toe",
-   "date": "2026-10-26",
-   "src": "Denver Gazette / RotoWire",
+   "date": "2026-10-30",
+   "src": "Colorado Springs Gazette",
    "name": "Evan Medders",
    "team": "Air Force",
    "pos": "QB",
-   "note": "Toe · Denver Gazette / RotoWire, Oct 26 · toe, no fracture; off depth chart, Josh Johnson or Howard Fisher IV",
+   "note": "Toe · Colorado Springs Gazette, Oct 30 · turf toe; freshman Howard Fisher IV expected to be primary QB",
    "player": "Evan Medders"
   },
   "AFA|5309672": {
@@ -532,6 +526,18 @@
    "pos": "QB",
    "note": "Knee · Covers, Oct 6",
    "player": "Elijah Holmes"
+  },
+  "BYU|4918126": {
+   "s": "O",
+   "status": "Out",
+   "injury": "Ankle",
+   "date": "2026-10-07",
+   "src": "Covers",
+   "name": "L. Martin",
+   "team": "BYU",
+   "pos": "RB",
+   "note": "Ankle · Covers, Oct 7 · no timetable for return",
+   "player": "LJ Martin"
   },
   "CAL|4688541": {
    "s": "Q",
@@ -834,15 +840,15 @@
    "player": "Anthony Carrie"
   },
   "FLA|5132812": {
-   "s": "Q",
-   "status": "Questionable",
+   "s": "P",
+   "status": "Probable",
    "injury": "Shoulder",
-   "date": "2026-10-29",
-   "src": "AP",
+   "date": "2026-10-31",
+   "src": "SI / ESPN (Pete Thamel)",
    "name": "Aaron Philo",
    "team": "Florida",
    "pos": "QB",
-   "note": "Shoulder · AP, Oct 29 · throwing shoulder",
+   "note": "Shoulder · SI / ESPN (Pete Thamel), Oct 31 · expected to start at Georgia (Thamel, Oct 30)",
    "player": "Aaron Philo"
   },
   "FLA|5295811": {
@@ -858,15 +864,15 @@
    "player": "Vernell Brown III"
   },
   "FLA|5295814": {
-   "s": "Q",
-   "status": "Questionable",
+   "s": "P",
+   "status": "Probable",
    "injury": "",
-   "date": "2026-10-29",
-   "src": "AP",
+   "date": "2026-10-31",
+   "src": "SI",
    "name": "Tramell Jones Jr.",
    "team": "Florida",
    "pos": "QB",
-   "note": "Undisclosed · AP, Oct 29 · Sumrall: QB choice comes down to health; Philo also questionable",
+   "note": "Undisclosed · SI, Oct 31 · listed probable; Philo expected to start",
    "player": "Tramell Jones Jr."
   },
   "FRES|4685445": {
@@ -890,7 +896,7 @@
    "name": "S. Singleton Jr.",
    "team": "Florida State",
    "pos": "RB",
-   "note": "Lower Body · Covers, Sep 21",
+   "note": "Lower Body · Covers, Sep 21 · out for an undetermined time",
    "player": "Samuel Singleton Jr."
   },
   "FSU|5141560": {
@@ -1017,28 +1023,40 @@
    "playedSince": 8,
    "player": "L.J. Phillips Jr."
   },
+  "ISU|5192958": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Knee",
+   "date": "2026-10-11",
+   "src": "Covers",
+   "name": "D. Overby",
+   "team": "Iowa State",
+   "pos": "WR",
+   "note": "Knee · Covers, Oct 11",
+   "player": "Dominic Overby"
+  },
   "KSU|4736246": {
-   "s": "D",
-   "status": "Doubtful",
+   "s": "O",
+   "status": "Out",
    "injury": "Ankle",
-   "date": "2026-10-29",
-   "src": "Wichita Eagle",
+   "date": "2026-10-31",
+   "src": "Yahoo Sports (ESPN, Pete Thamel)",
    "name": "Jacob Knuth",
    "team": "Kansas State",
    "pos": "QB",
-   "note": "Ankle · Wichita Eagle, Oct 29 · doubtful; Blake Barnett off injury report, no starter named",
+   "note": "Ankle · Yahoo Sports (ESPN, Pete Thamel), Oct 31 · out; Dillon Duff makes first career start",
    "player": "Jacob Knuth"
   },
   "KSU|4804882": {
    "s": "O",
    "status": "Out",
-   "injury": "",
+   "injury": "Illness",
    "date": "2026-10-19",
    "src": "Covers",
    "name": "G. Oakley",
    "team": "Kansas State",
    "pos": "TE",
-   "note": "Undisclosed · Covers, Oct 19",
+   "note": "Illness · Covers, Oct 19",
    "player": "Garrett Oakley"
   },
   "KSU|4870857": {
@@ -1090,6 +1108,18 @@
    "pos": "WR",
    "note": "Undisclosed · Covers, Oct 17",
    "player": "Keaton Kubecka"
+  },
+  "KU|5079604": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Arm",
+   "date": "2026-10-30",
+   "src": "SI / KU Sports",
+   "name": "Isaiah Marshall",
+   "team": "Kansas",
+   "pos": "QB",
+   "note": "Arm · SI / KU Sports, Oct 30 · downgraded to questionable (arm soreness), more likely than not to play; Cole Ballard alternative",
+   "player": "Isaiah Marshall"
   },
   "KU|5079749": {
    "s": "O",
@@ -1201,18 +1231,6 @@
    "note": "Undisclosed · Covers, Oct 10 · out for the season",
    "player": "Jordan Washington"
   },
-  "MD|4872721": {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-17",
-   "src": "Covers",
-   "name": "C. Williams",
-   "team": "Maryland",
-   "pos": "QB",
-   "note": "Undisclosed · Covers, Oct 17",
-   "player": "Cardell Williams"
-  },
   "MEM|5148995": {
    "s": "Q",
    "status": "Questionable",
@@ -1267,12 +1285,12 @@
    "s": "Q",
    "status": "Questionable",
    "injury": "Leg",
-   "date": "2026-10-23",
+   "date": "2026-10-31",
    "src": "WV MetroNews",
    "name": "Zion Turner",
    "team": "Marshall",
    "pos": "QB",
-   "note": "Leg · WV MetroNews, Oct 23 · hurt left leg late Week 8, severity unknown; Khalil Wilkins finished",
+   "note": "Leg · WV MetroNews, Oct 31 · lower body; Gibson says all three QBs could play",
    "player": "Zion Turner"
   },
   "MSST|5177084": {
@@ -1408,7 +1426,7 @@
    "name": "D. Scott",
    "team": "North Dakota State",
    "pos": "RB",
-   "note": "Undisclosed · Covers, Oct 18",
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time",
    "stale": true,
    "playedSince": 8,
    "player": "DJ Scott"
@@ -1422,7 +1440,7 @@
    "name": "N. Punni",
    "team": "North Dakota State",
    "pos": "RB",
-   "note": "Shoulder · Covers, Oct 18",
+   "note": "Shoulder · Covers, Oct 18 · out for an undetermined time",
    "player": "Nyeoti Punni"
   },
   "NEB|5087700": {
@@ -1446,7 +1464,7 @@
    "name": "I. Mozee",
    "team": "Nebraska",
    "pos": "RB",
-   "note": "Undisclosed · Covers, Oct 19",
+   "note": "Undisclosed · Covers, Oct 19 · out for an undetermined time",
    "player": "Isaiah Mozee"
   },
   "NEB|5290565": {
@@ -1560,13 +1578,13 @@
   "OSU|5079712": {
    "s": "O",
    "status": "Out",
-   "injury": "Shoulder",
-   "date": "2026-10-23",
-   "src": "TSN/AP; SI",
+   "injury": "Arm",
+   "date": "2026-10-27",
+   "src": "Field Level Media",
    "name": "Julian Sayin",
    "team": "Ohio State",
    "pos": "QB",
-   "note": "Shoulder · TSN/AP; SI, Oct 23 · throwing shoulder, out indefinitely; Luke Fahey expected to start",
+   "note": "Arm · Field Level Media, Oct 27 · Day: likely to miss rest of season; Luke Fahey expected to start",
    "player": "Julian Sayin"
   },
   "OSU|5141517": {
@@ -1590,7 +1608,7 @@
    "name": "J. Jackson",
    "team": "Ohio State",
    "pos": "RB",
-   "note": "Foot · Covers, Oct 21",
+   "note": "Foot · Covers, Oct 21 · out for an undetermined time",
    "player": "Ja'Kobi Jackson"
   },
   "OU|5141719": {
@@ -1816,21 +1834,19 @@
    "name": "D. Green",
    "team": "SMU",
    "pos": "RB",
-   "note": "Hand · Covers, Oct 13",
+   "note": "Hand · Covers, Oct 13 · out for an undetermined time",
    "player": "Dramekco Green"
   },
   "SYR|4685694": {
-   "s": "Q",
-   "status": "Questionable",
+   "s": "P",
+   "status": "Probable",
    "injury": "",
-   "date": "2026-10-18",
-   "src": "Covers",
-   "name": "S. Angeli",
+   "date": "2026-10-30",
+   "src": "ACC availability report / RotoWire",
+   "name": "Steve Angeli",
    "team": "Syracuse",
    "pos": "QB",
-   "note": "Undisclosed · Covers, Oct 18",
-   "stale": true,
-   "playedSince": 8,
+   "note": "Undisclosed · ACC availability report / RotoWire, Oct 30 · upgraded, expected to play vs SMU",
    "player": "Steve Angeli"
   },
   "SYR|4870928": {
@@ -1980,13 +1996,13 @@
   "TTU|5193580": {
    "s": "O",
    "status": "Out",
-   "injury": "Ankle (sprain)",
+   "injury": "Ankle",
    "date": "2026-10-05",
    "src": "Covers",
    "name": "C. Dickey",
    "team": "Texas Tech",
    "pos": "RB",
-   "note": "Ankle (sprain) · Covers, Oct 5 · no timetable for return",
+   "note": "Ankle · Covers, Oct 5 · no timetable for return",
    "player": "Cameron Dickey"
   },
   "TTU|5227057": {
@@ -2148,7 +2164,7 @@
    "name": "T. Omeire",
    "team": "New Mexico",
    "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 2",
+   "note": "Undisclosed · Covers, Oct 2 · out for an undetermined time",
    "player": "Troy Omeire"
   },
   "UNT|5125905": {
@@ -2320,19 +2336,19 @@
    "name": "J. Limar",
    "team": "Washington",
    "pos": "RB",
-   "note": "Upper Body · Covers, Sep 7",
+   "note": "Upper Body · Covers, Sep 7 · out for an undetermined time",
    "player": "Jayden Limar"
   },
   "WASH|5079653": {
-   "s": "Q",
-   "status": "Questionable",
+   "s": "P",
+   "status": "Probable",
    "injury": "Ribs",
-   "date": "2026-10-26",
-   "src": "Yahoo Sports",
+   "date": "2026-10-29",
+   "src": "SI (Huskies)",
    "name": "Demond Williams Jr.",
    "team": "Washington",
    "pos": "QB",
-   "note": "Ribs · Yahoo Sports, Oct 26 · fractured rib; Fisch decides Thu, announces game day; Elijah Brown if out",
+   "note": "Ribs · SI (Huskies), Oct 29 · fractured rib, upgraded to probable; Fisch keeps starter sealed until game time",
    "player": "Demond Williams Jr."
   },
   "WASH|5209302": {
@@ -2344,7 +2360,7 @@
    "name": "Q. Carr",
    "team": "Washington",
    "pos": "RB",
-   "note": "Undisclosed · Covers, Sep 7",
+   "note": "Undisclosed · Covers, Sep 7 · no timetable for return",
    "player": "Quaid Carr"
   },
   "WIS|5079552": {
@@ -4039,13 +4055,13 @@
   {
    "s": "O",
    "status": "Out",
-   "injury": "Knee (torn ACL)",
+   "injury": "Knee",
    "date": "2026-10-19",
    "src": "Covers",
    "name": "D. Lee Jr.",
    "team": "Texas Tech",
    "pos": "WR",
-   "note": "Knee (torn ACL) · Covers, Oct 19 · out for the season"
+   "note": "Knee · Covers, Oct 19 · out for the season"
   },
   {
    "s": "O",
@@ -4067,7 +4083,7 @@
    "name": "R. Walker",
    "team": "California",
    "pos": "TE",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -4221,18 +4237,18 @@
    "name": "I. Singleton IV",
    "team": "SMU",
    "pos": "DL",
-   "note": "Undisclosed · Covers, Sep 29 · out for the season"
+   "note": "Undisclosed · Covers, Sep 29"
   },
   {
    "s": "O",
    "status": "Out",
-   "injury": "Knee (torn ACL)",
+   "injury": "Knee",
    "date": "2026-08-26",
    "src": "Covers",
    "name": "L. Rhodes",
    "team": "SMU",
    "pos": "RB",
-   "note": "Knee (torn ACL) · Covers, Aug 26 · out for the season"
+   "note": "Knee · Covers, Aug 26"
   },
   {
    "s": "O",
@@ -4284,7 +4300,7 @@
    "injury": "",
    "date": "2026-10-19",
    "src": "Covers",
-   "name": "Pellicciotta",
+   "name": "A. Pellicciotta",
    "team": "Duke",
    "pos": "S",
    "note": "Undisclosed · Covers, Oct 19"
@@ -4295,7 +4311,7 @@
    "injury": "",
    "date": "2026-10-12",
    "src": "Covers",
-   "name": "Salas",
+   "name": "C. Salas",
    "team": "Duke",
    "pos": "K",
    "note": "Undisclosed · Covers, Oct 12"
@@ -4444,12 +4460,23 @@
    "note": "Undisclosed · Covers, Aug 11"
   },
   {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "Williams",
+   "team": "Maryland",
+   "pos": "QB",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
    "s": "O",
    "status": "Out",
    "injury": "Leg",
    "date": "2026-08-13",
    "src": "Covers",
-   "name": "Z. Mathis",
+   "name": "Mathis",
    "team": "Maryland",
    "pos": "LB",
    "note": "Leg · Covers, Aug 13"
@@ -4529,7 +4556,7 @@
    "name": "I. Dawson",
    "team": "Bowling Green",
    "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 10"
+   "note": "Undisclosed · Covers, Oct 10 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -4705,7 +4732,7 @@
    "name": "D. Duff",
    "team": "Kansas State",
    "pos": "QB",
-   "note": "Undisclosed · Covers, Oct 17"
+   "note": "Undisclosed · Covers, Oct 17 · out for an undetermined time"
   },
   {
    "s": "Q",
@@ -5002,7 +5029,7 @@
    "name": "M. Quisenberry",
    "team": "Louisville",
    "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -5013,7 +5040,7 @@
    "name": "A. O'neal",
    "team": "Louisville",
    "pos": "OG",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "Q",
@@ -5073,13 +5100,13 @@
   {
    "s": "O",
    "status": "Out",
-   "injury": "Back",
+   "injury": "",
    "date": "2026-09-07",
    "src": "Covers",
    "name": "D. Groce",
    "team": "Florida",
    "pos": "WR",
-   "note": "Back · Covers, Sep 7 · no timetable for return"
+   "note": "Undisclosed · Covers, Sep 7 · no timetable for return"
   },
   {
    "s": "O",
@@ -5098,7 +5125,7 @@
    "injury": "Leg",
    "date": "2026-10-17",
    "src": "Covers",
-   "name": "Canion",
+   "name": "I. Canion",
    "team": "Georgia",
    "pos": "WR",
    "note": "Leg · Covers, Oct 17 · no timetable for return"
@@ -5109,7 +5136,7 @@
    "injury": "Upper Body",
    "date": "2026-10-17",
    "src": "Covers",
-   "name": "Blackshear",
+   "name": "T. Blackshear",
    "team": "Georgia",
    "pos": "WR",
    "note": "Upper Body · Covers, Oct 17"
@@ -5120,10 +5147,10 @@
    "injury": "",
    "date": "2026-09-05",
    "src": "Covers",
-   "name": "Dowdell",
+   "name": "D. Dowdell",
    "team": "Georgia",
    "pos": "RB",
-   "note": "Undisclosed · Covers, Sep 5"
+   "note": "Undisclosed · Covers, Sep 5 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -5134,7 +5161,7 @@
    "name": "H. Hassmann",
    "team": "Arizona State",
    "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 17"
+   "note": "Undisclosed · Covers, Oct 17 · no timetable for return"
   },
   {
    "s": "O",
@@ -5145,7 +5172,7 @@
    "name": "L. Rawls",
    "team": "Arizona State",
    "pos": "CB",
-   "note": "Leg · Covers, Oct 7"
+   "note": "Leg · Covers, Oct 7 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -5186,7 +5213,7 @@
    "injury": "",
    "date": "2026-10-18",
    "src": "Covers",
-   "name": "Nye",
+   "name": "J. Nye",
    "team": "BYU",
    "pos": "TE",
    "note": "Undisclosed · Covers, Oct 18"
@@ -5197,7 +5224,7 @@
    "injury": "",
    "date": "2026-10-18",
    "src": "Covers",
-   "name": "Gentry",
+   "name": "A. Gentry",
    "team": "BYU",
    "pos": "OG",
    "note": "Undisclosed · Covers, Oct 18"
@@ -5208,7 +5235,7 @@
    "injury": "",
    "date": "2026-10-18",
    "src": "Covers",
-   "name": "Laga",
+   "name": "B. Laga",
    "team": "BYU",
    "pos": "K",
    "note": "Undisclosed · Covers, Oct 18"
@@ -5216,21 +5243,10 @@
   {
    "s": "O",
    "status": "Out",
-   "injury": "Ankle",
-   "date": "2026-10-07",
-   "src": "Covers",
-   "name": "Martin",
-   "team": "BYU",
-   "pos": "RB",
-   "note": "Ankle · Covers, Oct 7 · no timetable for return"
-  },
-  {
-   "s": "O",
-   "status": "Out",
    "injury": "",
    "date": "2026-09-20",
    "src": "Covers",
-   "name": "Moa",
+   "name": "S. Moa",
    "team": "BYU",
    "pos": "RB",
    "note": "Undisclosed · Covers, Sep 20 · no timetable for return"
@@ -5860,7 +5876,7 @@
    "name": "J. Stevens",
    "team": "Virginia",
    "pos": "RB",
-   "note": "Undisclosed · Covers, Oct 17"
+   "note": "Undisclosed · Covers, Oct 17 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -5926,7 +5942,7 @@
    "name": "T. Walsh",
    "team": "New Mexico",
    "pos": "TE",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -5970,18 +5986,18 @@
    "name": "J. Layne",
    "team": "New Mexico",
    "pos": "QB",
-   "note": "Elbow · Covers, Aug 27"
+   "note": "Elbow · Covers, Aug 27 · out for an undetermined time"
   },
   {
    "s": "O",
    "status": "Out",
-   "injury": "Knee",
+   "injury": "Knee (ACL)",
    "date": "2026-08-11",
    "src": "Covers",
    "name": "J. Olsen",
    "team": "New Mexico",
    "pos": "TE",
-   "note": "Knee · Covers, Aug 11"
+   "note": "Knee (ACL) · Covers, Aug 11 · out for an undetermined time"
   },
   {
    "s": "Q",
@@ -6014,7 +6030,7 @@
    "name": "D. Stewart",
    "team": "South Carolina",
    "pos": "DL",
-   "note": "Back · Covers, Sep 20"
+   "note": "Back · Covers, Sep 20 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -6206,21 +6222,10 @@
   {
    "s": "Q",
    "status": "Questionable",
-   "injury": "Knee",
-   "date": "2026-10-11",
-   "src": "Covers",
-   "name": "Overby",
-   "team": "Iowa State",
-   "pos": "WR",
-   "note": "Knee · Covers, Oct 11"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
    "injury": "",
    "date": "2026-10-10",
    "src": "Covers",
-   "name": "Miller",
+   "name": "E. Miller",
    "team": "Iowa State",
    "pos": "RB",
    "note": "Undisclosed · Covers, Oct 10"
@@ -6231,7 +6236,7 @@
    "injury": "",
    "date": "2026-10-10",
    "src": "Covers",
-   "name": "Galer",
+   "name": "L. Galer",
    "team": "Iowa State",
    "pos": "TE",
    "note": "Undisclosed · Covers, Oct 10"
@@ -6242,7 +6247,7 @@
    "injury": "",
    "date": "2026-10-10",
    "src": "Covers",
-   "name": "Singletary",
+   "name": "J. Singletary",
    "team": "Iowa State",
    "pos": "CB",
    "note": "Undisclosed · Covers, Oct 10"
@@ -6253,7 +6258,7 @@
    "injury": "",
    "date": "2026-10-10",
    "src": "Covers",
-   "name": "Crawford",
+   "name": "C. Crawford",
    "team": "Iowa State",
    "pos": "DL",
    "note": "Undisclosed · Covers, Oct 10"
@@ -6264,7 +6269,7 @@
    "injury": "",
    "date": "2026-10-10",
    "src": "Covers",
-   "name": "Barnes",
+   "name": "R. Barnes",
    "team": "Iowa State",
    "pos": "TE",
    "note": "Undisclosed · Covers, Oct 10"
@@ -6275,7 +6280,7 @@
    "injury": "Knee",
    "date": "2026-10-03",
    "src": "Covers",
-   "name": "Pabst",
+   "name": "C. Pabst",
    "team": "Iowa State",
    "pos": "WR",
    "note": "Knee · Covers, Oct 3 · out for the season"
@@ -6286,7 +6291,7 @@
    "injury": "",
    "date": "2026-09-01",
    "src": "Covers",
-   "name": "Bailey",
+   "name": "J. Bailey",
    "team": "Iowa State",
    "pos": "WR",
    "note": "Undisclosed · Covers, Sep 1"
@@ -6333,7 +6338,7 @@
    "name": "C. Turner",
    "team": "Clemson",
    "pos": "WR",
-   "note": "Personal · Covers, Aug 21"
+   "note": "Personal · Covers, Aug 21 · no timetable for return"
   },
   {
    "s": "O",
@@ -6355,7 +6360,7 @@
    "name": "D. Carter",
    "team": "Florida State",
    "pos": "WR",
-   "note": "Back · Covers, Oct 18"
+   "note": "Back · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -6366,7 +6371,7 @@
    "name": "T. Gelsey",
    "team": "Florida State",
    "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -6377,7 +6382,7 @@
    "name": "G. Markey",
    "team": "Florida State",
    "pos": "RB",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -6388,7 +6393,7 @@
    "name": "R. McKendry",
    "team": "Washington State",
    "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -6399,18 +6404,18 @@
    "name": "C. Toney",
    "team": "Washington State",
    "pos": "RB",
-   "note": "Undisclosed · Covers, Oct 18"
+   "note": "Undisclosed · Covers, Oct 18 · out for an undetermined time"
   },
   {
    "s": "O",
    "status": "Out",
-   "injury": "Torn ACL",
+   "injury": "Leg",
    "date": "2026-09-14",
    "src": "Covers",
    "name": "T. Freeman",
    "team": "Washington State",
    "pos": "WR",
-   "note": "Torn ACL · Covers, Sep 14 · out for the season"
+   "note": "Leg · Covers, Sep 14 · out for the season"
   },
   {
    "s": "O",
@@ -6784,7 +6789,7 @@
    "name": "J. Washington",
    "team": "North Carolina",
    "pos": "TE",
-   "note": "Undisclosed · Covers, Oct 10"
+   "note": "Undisclosed · Covers, Oct 10 · out for an undetermined time"
   },
   {
    "s": "O",
@@ -6795,7 +6800,7 @@
    "name": "J. Warren",
    "team": "North Carolina",
    "pos": "TE",
-   "note": "Undisclosed · Covers, Aug 21"
+   "note": "Undisclosed · Covers, Aug 21 · out for an undetermined time"
   },
   {
    "s": "Q",
@@ -6883,7 +6888,7 @@
    "name": "T. Anderson",
    "team": "USC",
    "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 9"
+   "note": "Undisclosed · Covers, Oct 9 · no timetable for return"
   },
   {
    "s": "O",
