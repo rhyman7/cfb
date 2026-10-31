@@ -282,7 +282,6 @@
     DLG.innerHTML = `<form method="dialog">
       <h3>${verb(act)} packets for ${plural(SEL.size)}</h3>
       <p class="pk-sub">Choose which reports to include.</p>
-      <label class="pk-rep pk-repall"><input type="checkbox"><span><b>Select all</b></span></label>
       <div class="pk-grp">For each game</div>${REPORTS.filter(r => !r.slate).map(row).join("")}
       <div class="pk-grp">Whole week</div>${REPORTS.filter(r => r.slate).map(row).join("")}
       <p class="pk-status" aria-live="polite"></p>
@@ -292,16 +291,10 @@
         <button class="print-btn pk-x" value="cancel">Cancel</button>
       </div></form>`;
     document.body.appendChild(DLG);
-    const reps = [...DLG.querySelectorAll(".pk-rep:not(.pk-repall) input:not([disabled])")];
-    const all = DLG.querySelector(".pk-repall input");
+    const reps = [...DLG.querySelectorAll(".pk-rep input:not([disabled])")];
     const go = DLG.querySelector('[data-all="0"]');
-    const sync = () => {
-      const on = reps.filter(b => b.checked).length;
-      all.checked = on === reps.length; all.indeterminate = on > 0 && on < reps.length;
-      go.disabled = !on;
-    };
+    const sync = () => { go.disabled = !reps.some(b => b.checked); };
     reps.forEach(b => b.addEventListener("change", sync));
-    all.addEventListener("change", () => { reps.forEach(b => { b.checked = all.checked; }); sync(); });
     const status = DLG.querySelector(".pk-status");
     const say = t => { status.textContent = t || ""; };
     DLG.querySelectorAll("button[data-all]").forEach(btn => btn.addEventListener("click", async () => {

@@ -1261,7 +1261,6 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
 .pk-sub { margin: 0 0 12px; font-size: 0.875rem; color: var(--text-dim); }
 .pk-grp { margin: 12px 0 0; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
 .pk-rep { display: flex; gap: 12px; align-items: flex-start; padding: 9px 0; border-top: 1px solid var(--border); cursor: pointer; }
-.pk-rep.pk-repall { border-top: 0; }
 .pk-rep input { margin-top: 1px; }
 .pk-rep b { font-size: 0.9375rem; }
 .pk-rep small { display: block; margin-top: 2px; font-size: 0.8rem; color: var(--text-dim); }
