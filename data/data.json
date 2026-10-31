@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T13:37:06.125731+00:00",
+ "generatedAt": "2026-10-31T13:42:16.021030+00:00",
  "season": 2026,
  "throughWeek": 9,
  "gamesCounted": 575,
@@ -65489,7 +65489,7 @@
     "conference": "Big 12",
     "score": null,
     "abbr": "KSU",
-    "qb": "Jacob Knuth"
+    "qb": "Dillon Duff"
    },
    "home": {
     "name": "Colorado",
@@ -65585,7 +65585,7 @@
     "conference": "Mountain West",
     "score": null,
     "abbr": "AFA",
-    "qb": "Josh Johnson"
+    "qb": "Howard Fisher IV"
    },
    "lineOpen": {
     "spread": -3.0,
@@ -65747,7 +65747,7 @@
     "conference": "SEC",
     "score": null,
     "abbr": "FLA",
-    "qb": "Tramell Jones Jr."
+    "qb": "Aaron Philo"
    },
    "home": {
     "name": "Georgia",
@@ -68879,6 +68879,7 @@
  "hasTargets": true,
  "notes": [
   "positions for 99 players filled from game_rosters (cfb_rosters lists 235 teams)",
+  "starting QB for Kansas State: Dillon Duff has no passing row on the site",
   "starting QBs for 104 teams applied from overrides/qb_starters.json",
   "lineOpen kept for 56 of 56 Week 9 games from the week's first build"
  ],
