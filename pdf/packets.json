@@ -4,7 +4,7 @@
  "league": "cfb",
  "title": "CFB Week 9 Matchup Report",
  "dataGeneratedAt": "2026-10-31T13:42:16.021030+00:00",
- "generatedAt": "2026-10-31T21:33:24Z",
+ "generatedAt": "2026-10-31T21:40:47Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -17,6 +17,16 @@
   "EPA",
   "Value board"
  ],
+ "slate": {
+  "best": [
+   49,
+   50
+  ],
+  "td": [
+   51,
+   52
+  ]
+ },
  "games": [
   {
    "id": "401856842",
