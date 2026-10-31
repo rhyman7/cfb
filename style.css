@@ -1241,3 +1241,38 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
 .packet-status { font-size: 0.8125rem; color: var(--text-dim); }
 .packet-status:empty { display: none; }
 @media print { .packet-actions { display: none !important; } }
+
+/* ---- Print Packets / Save Packets (packets.js): pick games, then pick reports ---- */
+.print-btn.pk-active, .print-btn.pk-go:not(:disabled) { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 700; }
+.pk-hint { margin: 6px 0 0; font-size: 0.875rem; }
+.pk-top { display: flex; gap: 12px; align-items: center; padding: 4px 2px 8px; margin-bottom: 4px; border-bottom: 1px solid var(--border); font-weight: 700; font-size: 0.9375rem; cursor: pointer; }
+.pk-top .pk-n { font-weight: 400; font-size: 0.875rem; color: var(--text-dim); }
+.pk-top input, .pk-cb input, .pk-rep input { width: 20px; height: 20px; margin: 0; accent-color: var(--text); cursor: pointer; flex: none; }
+.pk-row { display: flex; align-items: stretch; }
+.pk-row > .game-row { flex: 1; min-width: 0; }
+.pk-row.on > .game-row { background: var(--panel); }
+.pk-cb { flex: 0 0 40px; display: flex; align-items: center; padding-left: 2px; cursor: pointer; }
+.pk-cb.pk-none { cursor: default; }
+#gameList.picking .board-cols, #gameList.picking .day-label, #gameList.picking .bye-note { margin-left: 40px; }
+.pk-bar { position: sticky; bottom: 0; z-index: 5; display: flex; gap: 10px; align-items: center; padding: 14px 0 18px; margin-top: 10px; background: var(--bg); border-top: 1px solid var(--border); }
+.pk-dialog { width: min(470px, calc(100vw - 32px)); padding: 22px 24px 20px; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6); }
+.pk-dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
+.pk-dialog h3 { margin: 0 0 4px; font-size: 1.25rem; }
+.pk-sub { margin: 0 0 12px; font-size: 0.875rem; color: var(--text-dim); }
+.pk-grp { margin: 12px 0 0; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+.pk-rep { display: flex; gap: 12px; align-items: flex-start; padding: 9px 0; border-top: 1px solid var(--border); cursor: pointer; }
+.pk-rep.pk-repall { border-top: 0; }
+.pk-rep input { margin-top: 1px; }
+.pk-rep b { font-size: 0.9375rem; }
+.pk-rep small { display: block; margin-top: 2px; font-size: 0.8rem; color: var(--text-dim); }
+.pk-rep.off { opacity: 0.55; cursor: default; }
+.pk-status { margin: 10px 0 0; font-size: 0.8125rem; color: var(--text-dim); }
+.pk-status:empty { display: none; }
+.pk-dbar { display: flex; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+.pk-dbar .pk-x { margin-left: auto; }
+@media (max-width: 760px) {
+  #gameList.picking .board-cols, #gameList.picking .day-label, #gameList.picking .bye-note { margin-left: 34px; }
+  .pk-cb { flex-basis: 34px; }
+}
+@media print { .pk-top, .pk-bar, .pk-hint, .pk-cb { display: none !important; } }
+.week-head > .week-filters { flex-basis: 100%; }

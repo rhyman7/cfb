@@ -8,11 +8,25 @@
 //
 // Same file in both dashboards (rhyman7/cfb and rhyman7/nfl). It wires whichever of these is on
 // the page and leaves them hidden until packets.json is for the week the page shows:
-//   #packetAll  (This Week's Matchups)  buttons with data-packet="all" | "report"
-//   #packetOne  (one matchup)           buttons with data-packet="game"
-// and data-act="print" | "save".
+//   #packetAll  (This Week's Matchups)  Print Packets / Save Packets (data-pick="print" | "save").
+//               Pressing one puts a checkbox beside each game in #gameList, with Select all
+//               above the list and a Print/Save button below it. That button opens a dialog
+//               for choosing which of the six reports go in: the four per-game parts, plus the
+//               report's two whole-slate rankings (packets.json "slate"), added once at the end.
+//   #packetOne  (one matchup)           buttons with data-packet="game" and data-act="print" | "save"
+//               (that game's four parts).
 (function () {
   const PART_ORDER = ["report", "matchup", "epa", "value"];
+  const SLATE_ORDER = ["best", "td"];
+  // the six reports offered in the packet dialog, in the order they print
+  const REPORTS = [
+    { key: "report", label: "Matchup Report", note: "One page per game: the edges, key numbers and touchdown watch" },
+    { key: "matchup", label: "Printed matchup", note: "The full matchup, two pages per game" },
+    { key: "epa", label: "EPA", note: "The game's EPA matchup page" },
+    { key: "value", label: "Value board", note: "The game's value board matchup" },
+    { key: "best", slate: true, label: "Best Overall Matchups", note: "Ranked across the whole week; one copy, at the end" },
+    { key: "td", slate: true, label: "Likeliest TD Scorers", note: "Ranked across the whole week; one copy, at the end" },
+  ];
   let MAN = null, LIB = null;
   const FILES = {};
 
@@ -54,31 +68,37 @@
     return FILES[name];
   }
 
-  // One PDF from the given games' parts, in order: report, matchup, EPA, value board.
-  async function assemble(games, status) {
+  // One PDF: each game's chosen parts in order (report page, printed matchup, EPA, value board),
+  // then the chosen whole-slate rankings from the report, once each.
+  async function assemble(games, parts, slateKeys, status) {
     const PDFLib = await loadLib();
     const out = await PDFLib.PDFDocument.create();
-    out.setTitle(games.length === 1 ? `${games[0].label} · ${MAN.title} packet` : `${MAN.title}: game packets`);
-    for (let i = 0; i < games.length; i++) {
-      const g = games[i];
-      if (status && games.length > 1) status(`Building ${i + 1} of ${games.length}…`);
-      for (const key of PART_ORDER) {
-        const idx = g.pages[key];
-        if (!idx || !idx.length) continue;
-        const src = await source(PDFLib, key);
-        if (!src) continue;
-        const copied = await out.copyPages(src, idx);
-        copied.forEach(p => out.addPage(p));
+    out.setTitle(games.length === 1 && !slateKeys.length ? `${games[0].label} · ${MAN.title} packet` : `${MAN.title}: game packets`);
+    const keys = PART_ORDER.filter(k => parts.includes(k));
+    if (keys.length) {
+      for (let i = 0; i < games.length; i++) {
+        const g = games[i];
+        if (status && games.length > 1) status(`Building ${i + 1} of ${games.length}…`);
+        for (const key of keys) {
+          const idx = g.pages[key];
+          if (!idx || !idx.length) continue;
+          const src = await source(PDFLib, key);
+          if (!src) continue;
+          const copied = await out.copyPages(src, idx);
+          copied.forEach(p => out.addPage(p));
+        }
       }
     }
+    for (const key of SLATE_ORDER) {
+      const idx = slateKeys.includes(key) && MAN.slate && MAN.slate[key];
+      if (!idx || !idx.length) continue;
+      const src = await source(PDFLib, "report");
+      if (!src) continue;
+      const copied = await out.copyPages(src, idx);
+      copied.forEach(p => out.addPage(p));
+    }
+    if (!out.getPageCount()) throw new Error("nothing to print");
     return out.save();
-  }
-
-  async function wholeFile(key) {
-    const name = MAN.files[key];
-    const r = await fetch("pdf/" + name + "?v=" + encodeURIComponent(MAN.generatedAt), { cache: "no-cache" });
-    if (!r.ok) throw new Error(name + ": HTTP " + r.status);
-    return r.arrayBuffer();
   }
 
   function save(bytes, filename) {
@@ -107,26 +127,30 @@
     document.body.appendChild(f);
   }
 
+  function packetName(games, parts, slateKeys) {
+    const L = MAN.league.toUpperCase();
+    if (!parts.length) return `${L}_Week${MAN.week}_Rankings.pdf`;
+    if (games.length === 1 && !slateKeys.length) return `${games[0].file}.pdf`;
+    return `${L}_Week${MAN.week}_Game_Packets.pdf`;
+  }
+
+  async function run(act, games, parts, slateKeys, say) {
+    const bytes = await assemble(games, parts, slateKeys, say);
+    if (act === "print") print(bytes); else save(bytes, packetName(games, parts, slateKeys));
+  }
+
+  // A matchup page's Print packet / Save packet: that game's four parts.
   function wire(box, pick) {
     const status = box.querySelector(".packet-status");
     const say = t => { if (status) status.textContent = t || ""; };
     box.querySelectorAll("button[data-act]").forEach(btn => {
       btn.addEventListener("click", async () => {
-        const kind = btn.dataset.packet, act = btn.dataset.act;
+        const act = btn.dataset.act;
         const buttons = box.querySelectorAll("button[data-act]");
         buttons.forEach(b => { b.disabled = true; });
         say(act === "print" ? "Preparing to print…" : "Preparing the PDF…");
         try {
-          let bytes, name;
-          if (kind === "report") {
-            bytes = await wholeFile("report");
-            name = `${MAN.league.toUpperCase()}_Week${MAN.week}_Matchup_Report.pdf`;
-          } else {
-            const games = pick();
-            bytes = await assemble(games, say);
-            name = games.length === 1 ? `${games[0].file}.pdf` : `${MAN.league.toUpperCase()}_Week${MAN.week}_Game_Packets.pdf`;
-          }
-          if (act === "print") print(bytes); else save(bytes, name);
+          await run(act, pick(), PART_ORDER, [], say);
           say("");
         } catch (err) {
           console.error(err);
@@ -136,6 +160,179 @@
         }
       });
     });
+  }
+
+  /* ---------- This Week's Matchups: pick games, then pick reports ---------- */
+
+  let PICK = null;            // "print" | "save" while choosing games
+  const SEL = new Set();      // chosen game ids
+  let BOX = null, LIST = null, DLG = null;
+  const verb = act => act === "print" ? "Print" : "Save";
+  const plural = n => `${n} game${n === 1 ? "" : "s"}`;
+
+  function rowId(row) {
+    const href = row.getAttribute("href") || "";
+    const q = href.indexOf("?");
+    return q < 0 ? null : new URLSearchParams(href.slice(q + 1)).get("game");
+  }
+
+  // Wraps each game row with its checkbox; runs again whenever the list is redrawn
+  // (filters, live scores, forecasts), keeping what was ticked.
+  function decorate() {
+    if (!PICK || !LIST) return;
+    const ok = new Set(MAN.games.map(g => g.id));
+    LIST.classList.add("picking");
+    LIST.querySelectorAll(".game-row").forEach(row => {
+      if (row.parentElement.classList.contains("pk-row")) return;
+      const id = rowId(row);
+      const wrap = document.createElement("div");
+      wrap.className = "pk-row";
+      row.replaceWith(wrap);
+      if (id && ok.has(id)) {
+        const label = row.querySelector(".gr-name") ? [...row.querySelectorAll(".gr-name")].map(n => n.textContent).join(" at ") : id;
+        wrap.innerHTML = `<label class="pk-cb"><input type="checkbox" data-id="${id}" aria-label="${label.replace(/"/g, "&quot;")}"></label>`;
+        const cb = wrap.querySelector("input");
+        cb.checked = SEL.has(id);
+        wrap.classList.toggle("on", cb.checked);
+        cb.addEventListener("change", () => {
+          if (cb.checked) SEL.add(id); else SEL.delete(id);
+          wrap.classList.toggle("on", cb.checked);
+          counts();
+        });
+      } else {
+        wrap.innerHTML = `<span class="pk-cb pk-none" title="No packet for this game"></span>`;
+      }
+      wrap.appendChild(row);
+    });
+    counts();
+  }
+
+  function shownBoxes() {
+    return LIST ? [...LIST.querySelectorAll(".pk-cb input")] : [];
+  }
+
+  function counts() {
+    const top = document.getElementById("pkTop"), bar = document.getElementById("pkBar");
+    if (!top || !bar) return;
+    const boxes = shownBoxes(), on = boxes.filter(b => b.checked).length;
+    const all = top.querySelector("input");
+    all.checked = boxes.length > 0 && on === boxes.length;
+    all.indeterminate = on > 0 && on < boxes.length;
+    all.disabled = !boxes.length;
+    const hidden = SEL.size - on;
+    top.querySelector(".pk-n").textContent = `${SEL.size} selected` + (hidden > 0 ? ` (${hidden} not shown by the filters)` : "");
+    const go = bar.querySelector(".pk-go");
+    go.disabled = !SEL.size;
+    go.textContent = SEL.size ? `${verb(PICK)} ${plural(SEL.size)}` : verb(PICK);
+  }
+
+  function startPick(act) {
+    if (PICK === act) { stopPick(); return; }
+    if (PICK) stopPick(true);
+    PICK = act;
+    BOX.querySelectorAll("button[data-pick]").forEach(b => {
+      const on = b.dataset.pick === act;
+      b.classList.toggle("pk-active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    const head = document.querySelector(".week-head > div");
+    if (head) head.insertAdjacentHTML("beforeend",
+      `<p id="pkHint" class="pk-hint">Tick the games you want, then press ${verb(act)} at the bottom.</p>`);
+    LIST.insertAdjacentHTML("beforebegin",
+      `<label id="pkTop" class="pk-top no-print"><input type="checkbox"> Select all <span class="pk-n"></span></label>`);
+    LIST.insertAdjacentHTML("afterend",
+      `<div id="pkBar" class="pk-bar no-print"><button class="print-btn pk-go" type="button" disabled>${verb(act)}</button><button class="print-btn pk-cancel" type="button">Cancel</button></div>`);
+    document.querySelector("#pkTop input").addEventListener("change", e => {
+      shownBoxes().forEach(cb => {
+        cb.checked = e.target.checked;
+        if (cb.checked) SEL.add(cb.dataset.id); else SEL.delete(cb.dataset.id);
+        cb.closest(".pk-row").classList.toggle("on", cb.checked);
+      });
+      counts();
+    });
+    document.querySelector("#pkBar .pk-go").addEventListener("click", openDialog);
+    document.querySelector("#pkBar .pk-cancel").addEventListener("click", () => stopPick());
+    decorate();
+  }
+
+  // keepSel: switching straight from Print to Save keeps the ticked games
+  function stopPick(keepSel) {
+    PICK = null;
+    if (!keepSel) SEL.clear();
+    ["pkHint", "pkTop", "pkBar"].forEach(id => { const e = document.getElementById(id); if (e) e.remove(); });
+    BOX.querySelectorAll("button[data-pick]").forEach(b => { b.classList.remove("pk-active"); b.setAttribute("aria-pressed", "false"); });
+    if (LIST) {
+      LIST.classList.remove("picking");
+      LIST.querySelectorAll(".pk-row").forEach(w => { const row = w.querySelector(".game-row"); if (row) w.replaceWith(row); else w.remove(); });
+    }
+  }
+
+  function openDialog() {
+    if (!SEL.size) return;
+    const act = PICK;
+    if (DLG) DLG.remove();
+    const hasSlate = k => !!(MAN.slate && MAN.slate[k] && MAN.slate[k].length);
+    const row = r => {
+      const off = r.slate && !hasSlate(r.key);
+      return `<label class="pk-rep${off ? " off" : ""}"><input type="checkbox" value="${r.key}"${off ? " disabled" : ""}>`
+        + `<span><b>${r.label}</b><small>${off ? "Not in this week's files yet. It's added at the next PDF build." : r.note}</small></span></label>`;
+    };
+    DLG = document.createElement("dialog");
+    DLG.className = "pk-dialog";
+    DLG.innerHTML = `<form method="dialog">
+      <h3>${verb(act)} packets for ${plural(SEL.size)}</h3>
+      <p class="pk-sub">Choose which reports to include.</p>
+      <label class="pk-rep pk-repall"><input type="checkbox"><span><b>Select all</b></span></label>
+      <div class="pk-grp">For each game</div>${REPORTS.filter(r => !r.slate).map(row).join("")}
+      <div class="pk-grp">Whole week</div>${REPORTS.filter(r => r.slate).map(row).join("")}
+      <p class="pk-status" aria-live="polite"></p>
+      <div class="pk-dbar">
+        <button class="print-btn pk-go" type="button" data-all="0" disabled>${verb(act)}</button>
+        <button class="print-btn" type="button" data-all="1">${verb(act)} All</button>
+        <button class="print-btn pk-x" value="cancel">Cancel</button>
+      </div></form>`;
+    document.body.appendChild(DLG);
+    const reps = [...DLG.querySelectorAll(".pk-rep:not(.pk-repall) input:not([disabled])")];
+    const all = DLG.querySelector(".pk-repall input");
+    const go = DLG.querySelector('[data-all="0"]');
+    const sync = () => {
+      const on = reps.filter(b => b.checked).length;
+      all.checked = on === reps.length; all.indeterminate = on > 0 && on < reps.length;
+      go.disabled = !on;
+    };
+    reps.forEach(b => b.addEventListener("change", sync));
+    all.addEventListener("change", () => { reps.forEach(b => { b.checked = all.checked; }); sync(); });
+    const status = DLG.querySelector(".pk-status");
+    const say = t => { status.textContent = t || ""; };
+    DLG.querySelectorAll("button[data-all]").forEach(btn => btn.addEventListener("click", async () => {
+      const keys = btn.dataset.all === "1" ? REPORTS.map(r => r.key) : reps.filter(b => b.checked).map(b => b.value);
+      const parts = keys.filter(k => PART_ORDER.includes(k)), slateKeys = keys.filter(k => SLATE_ORDER.includes(k));
+      const games = MAN.games.filter(g => SEL.has(g.id));   // kickoff order, as in the report
+      const buttons = DLG.querySelectorAll("button");
+      buttons.forEach(b => { b.disabled = true; });
+      say(act === "print" ? "Preparing to print…" : "Preparing the PDF…");
+      try {
+        await run(act, games, parts, slateKeys, say);
+        DLG.close();
+        stopPick();
+      } catch (err) {
+        console.error(err);
+        say("Couldn't build the PDF. Try again in a minute.");
+        buttons.forEach(b => { b.disabled = false; });
+        sync();
+      }
+    }));
+    DLG.addEventListener("close", () => { DLG.remove(); DLG = null; });
+    DLG.showModal();
+  }
+
+  function wirePick(box) {
+    BOX = box;
+    LIST = document.getElementById("gameList");
+    if (!LIST) return;
+    new MutationObserver(decorate).observe(LIST, { childList: true });
+    box.querySelectorAll("button[data-pick]").forEach(btn =>
+      btn.addEventListener("click", () => startPick(btn.dataset.pick)));
   }
 
   async function init() {
@@ -152,7 +349,7 @@
       all.hidden = false;
       const full = MAN.games.filter(g => !g.missing.length).length;
       all.title = `${MAN.games.length} games, ${full} with all four parts (${MAN.parts.join(", ")})`;
-      wire(all, () => MAN.games);
+      wirePick(all);
     }
     if (one) {
       const g = MAN.games.find(x => x.id === gameIdFromUrl());

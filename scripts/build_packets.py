@@ -5,7 +5,9 @@
   3. EPA matchup page             (epa.html's Print all)            -> pdf/epa.pdf (from build_pdfs.py)
   4. Value board matchup          (fb-value-board's Matchups view)  -> pdf/value-board.pdf
 
-and pdf/packets.json, which says which pages of each file belong to each game. The site's
+and pdf/packets.json, which says which pages of each file belong to each game, plus which
+report pages hold the two whole-slate rankings (Best Overall Matchups, Most Likely to Score
+a TD) under "slate". The site's
 packets.js reads it and assembles a packet in the browser (one game, or every game) to print
 or save, so the repo stores each week's pages once instead of a copy per packet.
 
@@ -94,6 +96,7 @@ def main():
     tmp.mkdir(parents=True)
     report_html, ids, title = build_report.build(ROOT, tmp, a.font_css)
     pages = {gid: {} for gid in ids}
+    slate = {}   # report.pdf pages of the whole-slate rankings: "best" and "td"
 
     vb = Path(a.value_board)
     vb_page = vb / ("docs/cfb/index.html" if league == "cfb" else "docs/index.html")
@@ -112,11 +115,24 @@ def main():
             n = len(ids)
             # whitespace is dropped first: newer pypdf spaces out the letter-spaced eyebrow
             # ("G A M E 1 O F  14") and older ones can run it into the next word ("OF 14NE")
-            for i, t in enumerate(texts(PdfReader(str(OUT / "report.pdf")))):
+            rt = texts(PdfReader(str(OUT / "report.pdf")))
+            for i, t in enumerate(rt):
                 m = re.search(rf"game(\d+)of{n}", re.sub(r"\s+", "", t), re.I)
                 if m and 1 <= int(m.group(1)) <= n:
                     pages[ids[int(m.group(1)) - 1]].setdefault("report", [i])
             print("report:", sum("report" in v for v in pages.values()), "of", n)
+            # the two whole-slate rankings after the game pages: Best Overall Matchups, then
+            # Most Likely to Score a TD, each running until the next one starts (or the end)
+            last_game = max((i for v in pages.values() for i in v.get("report", [])), default=-1)
+            flat = [re.sub(r"\s+", "", t).lower() for t in rt]
+            starts = {}
+            for key, head in (("best", "bestoverallmatchups"), ("td", "mostlikelytoscoreatd")):
+                starts[key] = next((i for i in range(last_game + 1, len(flat)) if head in flat[i]), None)
+            found = sorted((i, k) for k, i in starts.items() if i is not None)
+            for j, (i, key) in enumerate(found):
+                end = found[j + 1][0] if j + 1 < len(found) else len(flat)
+                slate[key] = list(range(i, end))
+            print("slate rankings:", {k: v for k, v in slate.items()})
 
             # 2. Printed matchups: count each game's pages, then print them all in one file
             ready = "#printAllBtn:not([disabled])"
@@ -236,6 +252,7 @@ def main():
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "files": files,
         "parts": [names[k] for k in order4],
+        "slate": slate,
         "games": summary,
     }
     (OUT / "packets.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")

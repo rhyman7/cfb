@@ -230,7 +230,6 @@ function initWeek() {
     : mode === "upcoming" ? (games.length ? `${count} on the schedule. Full matchups open when Week ${DATA.currentWeek} is the current week.` : "")
     : `${count}. Team stats through Week ${DATA.throughWeek}. Pick a game for the full matchup.`;
   if (mode !== "current") {
-    document.getElementById("printAllBtn").hidden = true;   // Print all is this week's matchups
     document.title = `Week ${DATA.currentWeek} · CFB Matchups`;
   }
   if (!games.length) {
@@ -244,7 +243,7 @@ function initWeek() {
   const confSel = document.getElementById("confFilter");
   const confs = new Set();
   games.forEach(g => [g.away, g.home].forEach(s => s.conference && confs.add(s.conference)));
-  confSel.innerHTML = `<option value="">All conferences</option>` +
+  confSel.innerHTML = `<option value="">Conferences</option>` +
     [...confs].sort().map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
 
   const rankedOnly = document.getElementById("rankedOnly");
@@ -269,7 +268,6 @@ function renderWeek(games) {
     return true;
   });
 
-  updatePrintAll(shown, games.length);
   if (!shown.length) {
     list.innerHTML = `<div class="empty-note">No games match those filters.</div>`;
     return;
@@ -311,23 +309,6 @@ function renderWeek(games) {
       <h2 class="day-label">${grp.live ? '<span class="live-dot"></span>' : ""}${escapeHtml(grp.label)}${grp.games.length > 1 ? ` <span class="day-count">${grp.games.length} games</span>` : ""}</h2>
       ${grp.games.map(g => gameRow(g, grp)).join("")}
     </section>`).join("");
-}
-
-// "Print all" prints whatever the filters are showing, in kickoff order.
-let PRINT_IDS = [];
-function updatePrintAll(shown, total) {
-  const btn = document.getElementById("printAllBtn");
-  if (!btn) return;
-  PRINT_IDS = shown.map(g => g.id);
-  btn.disabled = !shown.length;
-  btn.textContent = shown.length === total ? `Print all ${total}` : `Print ${shown.length} shown`;
-  if (!btn.dataset.wired) {
-    btn.dataset.wired = "1";
-    btn.addEventListener("click", () => {
-      const all = (DATA.weekGames || []).length === PRINT_IDS.length;
-      window.open("print.html" + (all ? "" : "?games=" + PRINT_IDS.join(",")), "_blank");
-    });
-  }
 }
 
 function kickoff(g) {
@@ -1532,7 +1513,7 @@ function initEdges() {
   const confSel = document.getElementById("confFilter"), ranked = document.getElementById("rankedOnly");
   const confs = new Set();
   all.forEach(g => [g.away, g.home].forEach(s => s.conference && confs.add(s.conference)));
-  confSel.innerHTML = `<option value="">All conferences</option>` +
+  confSel.innerHTML = `<option value="">Conferences</option>` +
     [...confs].sort().map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
   const draw = () => {
     const conf = confSel.value, top = ranked.checked;

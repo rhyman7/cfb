@@ -137,13 +137,20 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **Passing table columns:** Player, Yds/G, TD, Int, Cmp/G, **Avg/C** (season passing yards
   per completion, the row's `ypc`; `withAvgC()` works it out for data built without it).
 
+## This Week's Matchups filters
+
+- **Find a team**, the **Conferences** dropdown (first option "Conferences" = every game; same on Weekly Edges) and
+  **Top 25 only**, left of the packet buttons. The NFL board has the same search and a
+  Conferences dropdown (AFC/NFC and their divisions) in the same spot.
+
 ## Printing and PDFs
 
 - Anything screen-only gets `class="no-print"`; print rules live in `@media print` in
   `style.css`.
 - A matchup prints on **two landscape pages** (header, Head to Head and pace; then both team
-  cards with usage). Print all (`print.html`) is every game currently shown on the slate,
-  respecting the conference / Top 25 / search filters, two pages each.
+  cards with usage). `print.html` is every game this week, two pages each (`?games=<ids>`
+  for some). **It has no button anymore, but don't remove it**: the Build PDFs Action renders
+  it into `pdf/matchups.pdf`, the packets' "Printed matchup".
 - The **EPA page always has both "Print all" and "Download PDF"** buttons (`epaPrintBtn`,
   `epaPdfBtn`). Print all is every game (one landscape page each), then the board, the
   ratings and the method; Download PDF is `pdf/epa.pdf`.
@@ -155,8 +162,17 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **Game packets** (`packets.js`, `scripts/build_report.py`, `scripts/build_packets.py`,
   `scripts/report.css`, `vendor/pdf-lib.min.js`). For every game, four parts back to back:
   the Weekly Matchup Report page, the printed matchup, the EPA matchup page and the value
-  board's matchup. This Week's Matchups has **Print all packets / Save all packets** and
-  **Print report / Save report**; each matchup page has **Print packet / Save packet**.
+  board's matchup. Each matchup page has **Print packet / Save packet** (that game's four parts).
+- This Week's Matchups has only **Print Packets / Save Packets** (no Print all, Download PDF or
+  report buttons). Pressing one puts a checkbox to the left of every game that has a packet
+  (all unticked), **Select all** above the list (it ticks the games the filters show) and a
+  **Print / Save** button at the bottom left, under the checkboxes. Ticks survive filtering
+  and live redraws. That button opens a dialog listing six reports, all unticked: the four
+  per-game parts, then the report's two whole-week rankings, **Best Overall Matchups** and
+  **Likeliest TD Scorers** ("Most Likely to Score a TD" in the report), added once at the end.
+  **Print / Save** builds the ticked reports for the ticked games; **Print All / Save All**
+  builds all six. `build_packets.py` records the rankings' report pages in `packets.json`
+  under `slate` (`best`, `td`); until a build has written it, those two rows are disabled.
   `build_packets.py` writes `pdf/report.pdf`, `pdf/matchups.pdf`, `pdf/value-board.pdf` and
   `pdf/packets.json` (which pages of each file belong to each game); `packets.js` assembles the
   packet in the browser with pdf-lib, so each week's pages are stored once. The buttons only

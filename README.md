@@ -35,9 +35,9 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   current ESPN line as the slate. Prints
   on two landscape pages.
   Non-FBS opponents show a short note instead of stats.
-- **`print.html` — Print all.** The slate's "Print all" button opens every
-  game currently shown (respecting the conference / Top 25 / search
-  filters), two landscape pages per matchup, and brings up the print dialog.
+- **`print.html` — Print all.** Every game this week (or `?games=<ids>`), two
+  landscape pages per matchup, and brings up the print dialog. No button links to
+  it anymore; the PDF build uses it for the packets' printed matchups, so keep it.
   Each matchup page still has its own Print Matchup button.
 - **`epa.html` — EPA** (with `epa.js`), linked left of Weekly Edges.
   Opponent-adjusted EPA: pick a game from the dropdown for Head to Head panels
@@ -74,9 +74,12 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   calculates them. Its example uses the current top-SRS team from
   `data/data.json`; the rest of the page is static. Linked from the main
   page's top nav.
-- **Game packets** — on This Week's Matchups, **Print all packets / Save all packets** gives
-  every game's packet in one PDF, and **Print report / Save report** gives the Weekly Matchup
-  Report on its own; each matchup page has **Print packet / Save packet** for that game. A
+- **Game packets** — on This Week's Matchups, **Print Packets / Save Packets** puts a
+  checkbox beside each game (with Select all); the Print/Save button at the bottom then asks
+  which of six reports to include: the four per-game parts below, plus the Weekly Matchup
+  Report's two whole-week rankings (Best Overall Matchups, Likeliest TD Scorers), added once
+  at the end. **Print All / Save All** includes all six. Each matchup page has
+  **Print packet / Save packet** for that game. A
   packet is four parts back to back: the game's Weekly Matchup Report page (good and tough
   spots, from `scripts/build_report.py`), the printed matchup, the EPA matchup page and the
   value board's matchup (rhyman7/fb-value-board). `scripts/build_packets.py` builds the source
