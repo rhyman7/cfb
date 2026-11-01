@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T14:37:25.216591+00:00",
+ "generatedAt": "2026-11-01T14:44:49.272921+00:00",
  "season": 2026,
  "throughWeek": 9,
  "gamesCounted": 622,
@@ -70264,7 +70264,8 @@
  "hasTargets": true,
  "notes": [
   "positions for 85 players filled from game_rosters (cfb_rosters lists 235 teams)",
-  "overrides/qb_starters.json is for Week 9, not Week 10: not applied"
+  "starting QBs for 125 teams applied from overrides/qb_starters.json",
+  "lineOpen kept for 24 of 63 Week 10 games from the week's first build"
  ],
  "leagueAverage": {
   "rushTdG": 1.7,
