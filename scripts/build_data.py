@@ -832,7 +832,28 @@ def build(season, cache, prev_path=None):
             "defPassYdsG": {"min": 0, "max": gauge_max(per["d_passYdsG"])},
         },
     }
+    global CAPPED_PLAYS
+    CAPPED_PLAYS = capped_plays(pbp, game_ids, meta) if pbp is not None else None
     return out, weeks, epa
+
+
+CAPPED_PLAYS = None
+
+
+def capped_plays(pbp, game_ids, meta):
+    """One row per completion, catch and run by an FBS team, keyed like the game logs
+    ("ABBR|athlete_id"), for data/capped.json (scripts/capped.py)."""
+    d = pbp[pbp["game_id"].isin(game_ids) & pbp["pos_team_id"].isin(meta.index)
+            & ~pbp["penalty_no_play"].astype(bool) & pbp["two_point_conv_result"].isna()]
+    abbr = d["pos_team_id"].map(meta["abbreviation"])
+    frames = []
+    for mask, pid, yds, kind in ((d["completion"].astype(bool), "passer_player_id", "yds_receiving", "pass"),
+                                 (d["completion"].astype(bool), "receiver_player_id", "yds_receiving", "rec"),
+                                 (d["rush"].astype(bool), "rusher_player_id", "yds_rushed", "rush")):
+        x = d[mask & d[pid].notna() & d[yds].notna()]
+        frames.append(pd.DataFrame({"key": abbr[x.index] + "|" + x[pid].astype("int64").astype(str),
+                                    "kind": kind, "game": x["game_id"], "yds": x[yds]}))
+    return pd.concat(frames, ignore_index=True)
 
 
 def team_game_list(results, pg, names, team_names, opp_of=None, box=None, pos_all=None):
@@ -957,6 +978,10 @@ def main():
         bt = epa["backtest"]
         print(f"Wrote data/epa.json: {epa['teamCount']} teams, {epa['playsUsed']} of {epa['playsAll']} plays"
               + (f"; walk-forward miss on {bt['games']} games: line {bt['lineM']}, EPA {bt['modelM']}" if bt else ""))
+    if CAPPED_PLAYS is not None:
+        import capped
+        from pathlib import Path
+        capped.write(CAPPED_PLAYS, data["season"], data["throughWeek"], Path(out_dir) / "capped.json")
     wrote = write_weeks(weeks, data, out_dir)
     print("Week files (data/season.json, data/weeks/): "
           + ("updated " + ", ".join(f"Week {w}" for w in wrote) if wrote else "no changes"))
