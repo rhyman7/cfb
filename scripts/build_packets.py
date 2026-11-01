@@ -94,7 +94,7 @@ def main():
     tmp = OUT / "_work"
     shutil.rmtree(tmp, ignore_errors=True)
     tmp.mkdir(parents=True)
-    report_html, ids, title = build_report.build(ROOT, tmp, a.font_css)
+    report_html, ids, title = build_report.build(ROOT, tmp, a.font_css, vb=a.value_board)
     pages = {gid: {} for gid in ids}
     slate = {}   # report.pdf pages of the whole-slate rankings: "best" and "td"
 
