@@ -312,12 +312,14 @@ class Report:
                 if not bp or proj <= 0 or avg <= 0:
                     continue   # the board doesn't project him (not playing, or not this role)
                 lift = proj / avg - 1
+                why_ = self.drivers(pos, self.GL.get(p["log"], []), bp, on)
                 what_ = "pass" if pos == "QB" else "scrimmage" if pos in ("RB", "FB") else "rec"
-                bt = f'board {num(round(proj))} {what_} yds, {"+" if lift >= 0 else MINUS}{abs(lift) * 100:.0f}% on his avg'
-                ctx = c["good"].split("; ", 1)[1].split(" (", 1)[0] if o and "; " in c.get("good", "") else ""   # "TB is #23 vs TEs"
+                bt0 = f'board {num(round(proj))} ({"+" if lift >= 0 else MINUS}{abs(lift) * 100:.0f}%)'
+                bt = bt0 + (f": {'; '.join(why_)}" if why_ else "")
+                c["mx"] = bt0 + (f": {why_[0]}" if why_ and why_[0][0].isdigit() or why_ and why_[0].startswith("rushing") else "")   # Best Overall's shorter cell
+                head_ = f"{num(avg)} {what_} yds/G" + (f' ({p["gp"]} of {tgp} gms)' if pos != "QB" and p["gp"] <= tgp - 2 else "")
                 c.update(m=clip(lift / LIFT_FULL, -1, 1), lift=lift, proj=proj, board=True,
-                         good=f'{c["good"].split("; ", 1)[0]}; {bt}' + (f'; {ctx}.' if ctx else "."),
-                         tough=f'{c["tough"].split("; ", 1)[0]}; {bt}' + (f'; {ctx}.' if ctx else "."))
+                         good=f"{head_}; {bt}.", tough=f"{head_}; {bt}.")
                 if not o:
                     c["rk"] = None
             c.update(name=p["name"], team=ab, pos=pos, gp=p["gp"], tgp=tgp)
@@ -376,7 +378,7 @@ class Report:
         extra_te = [c for c in tpool if c["pos"] == "TE"][1:]
         tough = self.take([c for c in tpool if c not in extra_te], 4, 3)
         for c in tough:
-            c["text"] = c["tough"] + (" Volume keeps him in play." if c["prod"] >= 1.3 and c["pos"] != "QB" else "")
+            c["text"] = c["tough"] + (" Volume keeps him in play." if c["prod"] >= 1.3 and c["pos"] != "QB" and not c.get("board") else "")
         seen = {}
         for c in good:
             k = (c["team"], c["grp"])
@@ -447,6 +449,45 @@ class Report:
                                  oab=opp["abbr"], allowed=allowed, pts=pts, est=imp is None, gid=g["id"],
                                  inj=p["inj"]["s"] if p["inj"] else None, ptd=ptd))
         return sorted(rows, key=lambda r: -r["lam"])
+
+    # volume and yards-per-play behind a projection: (board volume key, log volume key, log yards key,
+    # volume unit, per-play unit, board yards stat, defense factor key, defense text)
+    DRIVERS = {
+        "QB": ("pass_att", "att", "pYds", "att", "yds/att", "pass_yds", "ypa", "per attempt"),
+        "RB": ("carries", "car", "rYds", "carries", "yds/carry", "rush_yds", "ypc", "per carry"),
+        "WR": ("targets", "tgt", "recYds", "tgt", "yds/tgt", "rec_yds", "ypt", "per target to WRs"),
+        "TE": ("targets", "tgt", "recYds", "tgt", "yds/tgt", "rec_yds", "ypt", "per target to TEs"),
+    }
+
+    def drivers(self, pos, logs, bp, opp):
+        """Why the board's number differs from his average: projected volume and yards per play
+        against his own so far (and without his best game, when one game carries his average), the
+        books' line, and the opponent when the board's defense factor moves him 5% or more."""
+        key = "RB" if pos == "FB" else pos
+        if key not in self.DRIVERS or not logs:
+            return []
+        bv, lv, ly, vu, eu, stat, fk, ftxt = self.DRIVERS[key]
+        if self.D.league == "cfb" and key in ("WR", "TE"):   # college: catches and yards per catch, no position factor
+            bv, lv, vu, eu, fk = "receptions", "rec", "rec", "yds/catch", None
+        vol = [(g.get(lv) or 0, g.get(ly) or 0) for g in logs]
+        tv, ty = sum(v for v, _ in vol), sum(y for _, y in vol)
+        bvol, byds = bp["p"].get(bv), bp["p"].get(stat)
+        out = []
+        if tv > 0 and bvol and byds:
+            his_v, his_e, b_e = tv / len(logs), ty / tv, byds / bvol
+            wo = ""
+            if len(logs) >= 4 and b_e < his_e:   # only when the board expects fewer yards per play
+                bv_, by_ = max((x for x in vol if x[0] > 0), key=lambda x: x[1] / x[0])
+                if tv - bv_ > 0 and (ty - by_) / (tv - bv_) <= 0.9 * his_e:
+                    wo = f"; {(ty - by_) / (tv - bv_):.1f} without best game"
+            out.append(("rushing " if key == "RB" else "") + f"{bvol:.1f} {vu} (his {his_v:.1f}), {b_e:.1f} {eu} (his {his_e:.1f}{wo})")
+        ln = (bp.get("L") or {}).get(stat)
+        if ln:
+            out.append(f'line {num(ln["L"])}')
+        f = (bp.get("f") or {}).get(fk) if fk else None
+        if f is not None and abs(f - 1) >= 0.05:
+            out.append(f'{opp} allows {abs(f - 1) * 100:.0f}% {"more" if f > 1 else "fewer"} {ftxt}')
+        return out
 
     def _z(self, side, key, v):
         vals = [t[side][key] for t in self.EPA.values() if t.get(side, {}).get(key) is not None]
@@ -647,7 +688,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
             break
     top_rows = "".join(
         f'<tr><td class="n">{i}</td><td><b>{E(c["name"])}</b>{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
-        f'<td><a href="#g{E(x["g"]["id"])}">{E(gtitle(x["g"]))}</a></td><td>{E(c["good"].split("; ", 1)[0])}</td><td>{E(c["good"].split("; ", 1)[1])}</td></tr>'
+        f'<td><a href="#g{E(x["g"]["id"])}">{E(gtitle(x["g"]))}</a></td><td>{E(c["good"].split("; ", 1)[0])}</td><td>{E(c.get("mx") or c["good"].split("; ", 1)[1])}</td></tr>'
         for i, (c, x) in enumerate(top, 1))
 
     alltd = sorted([dict(r, x=x) for x in G for r in x["td"]], key=lambda r: -r["lam"])
