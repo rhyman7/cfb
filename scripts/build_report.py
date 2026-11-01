@@ -592,6 +592,19 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
         cap = cap if cap.get("season") == d.get("season") else None
     except Exception:
         cap = None
+    if feed:   # the value board's projected starter beats the schedule's listed QB (stale when a starter goes on IR)
+        by_team = {}
+        for k, v in feed["players"].items():
+            if v.get("pos") == "QB" and (v.get("p") or {}).get("pass_att", 0) > 0:
+                t = k.split("|", 1)[0]
+                if t not in by_team or v["p"]["pass_att"] > by_team[t]["p"]["pass_att"]:
+                    by_team[t] = v
+        for g in D.games:
+            for side in ("away", "home"):
+                b = by_team.get(g[side]["abbr"])
+                if b and b["n"] != g[side]["qb"]:
+                    print(f"  report: {g[side]['abbr']} QB {g[side]['qb'] or 'n/a'} -> {b['n']} (value board's projected starter)")
+                    g[side]["qb"] = b["n"]
     R = Report(D, feed, epa, cap)
     print(f"  report: value board feed {'used' if feed else 'not found, raw matchups'}; adjusted EPA {'used' if epa else 'not found'}")
     COL = team_colors(root, D.league)
@@ -660,7 +673,11 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     G = []
     for i, g in enumerate(games, 1):
         good, tough, skipped, hurt, quest = R.pick(g)
-        G.append(dict(g=g, n=i, good=good, tough=tough, read=R.game_read(g, skipped, hurt, quest), td=R.td_rows(g)))
+        read = R.game_read(g, skipped, hurt, quest)
+        if len(read) > 350 and len(good) + len(tough) > 5:   # keep a long game read on one page
+            good = good[:4] if len(good) >= len(tough) else good
+            tough = tough[:3] if len(good) + len(tough) > 7 else tough
+        G.append(dict(g=g, n=i, good=good, tough=tough, read=read, td=R.td_rows(g)))
 
     cards = []
     for x in G:
