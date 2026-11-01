@@ -213,7 +213,7 @@ class Report:
     def candidates(self, g, side):
         me, opp = g[side], g["home" if side == "away" else "away"]
         if not me["key"]:
-            return [], []
+            return [], [], [], []
         t = self.T[me["key"]]
         o = self.T[opp["key"]] if opp["key"] else None
         on, ab = opp["abbr"], me["abbr"]
