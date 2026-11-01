@@ -4,12 +4,10 @@
 // app.js loads the data and calls initLearn() on this page (data-page="learn").
 let LEARN_GAMES = [];
 let LEARN_CUR = null;
-let EDGE_GAP = 26;
 const TM = s => (s && s.key ? DATA.teams[s.key] : null);
 
 function initLearn() {
   const root = document.getElementById("learn");
-  EDGE_GAP = edgeGap();   // same rule as Head to Head (edgePanel)
   LEARN_GAMES = (DATA.weekGames || []).filter(g => TM(g.away) && TM(g.home))
     .slice().sort((a, b) => new Date(a.start) - new Date(b.start));
   if (!LEARN_GAMES.length) {
@@ -95,9 +93,9 @@ function edgeList(off, def) {
     const o = offGet(off), d = defGet(def);
     if (o == null || d == null) continue;
     const or = leagueRank(offGet, o, offHi), dr = leagueRank(defGet, d, defHi);
-    const diff = dr - or;
-    out.push({ label, o: fmt ? fmt(o) : o, d: fmt ? fmt(d) : d, or, dr, gap: Math.abs(diff),
-               side: diff >= EDGE_GAP ? off : diff <= -EDGE_GAP ? def : null, off, def });
+    const z = zScore(offGet, o, offHi) - zScore(defGet, d, defHi);   // same rule as Head to Head (edgePanel)
+    out.push({ label, o: fmt ? fmt(o) : o, d: fmt ? fmt(d) : d, or, dr, gap: Math.abs(z),
+               side: z >= EDGE_SD ? off : z <= -EDGE_SD ? def : null, off, def });
   }
   return out;
 }
@@ -159,8 +157,8 @@ function learnSections(g, a, h) {
   const edges = t => both.filter(r => r.side === t).length;
   const ea = edges(a), eh = edges(h);
   const exNote = best
-    ? ["The edge", `The edge goes to whichever side ranks at least ${EDGE_GAP} spots better, and its bar turns that team's color. The biggest gap here: ${escapeHtml(best.label)}, where ${poss(best.off)} offense ranks #${best.or} and ${poss(best.def)} defense #${best.dr}, a ${best.gap}-spot gap, so the edge is ${escapeHtml(best.side.abbr)}.`]
-    : ["The edge", `The edge goes to whichever side ranks at least ${EDGE_GAP} spots better, and its bar turns that team's color. Every row in this game is within ${EDGE_GAP - 1} spots, so it's Even across the board.`];
+    ? ["The edge", `The edge goes to whichever side is better by at least one standard deviation of the league (how far each number sits from average, so the size of the gap counts, not just rank spots), and its bar turns that team's color. The biggest gap here: ${escapeHtml(best.label)}, where ${poss(best.off)} offense ranks #${best.or} and ${poss(best.def)} defense #${best.dr}, ${best.gap.toFixed(1)} standard deviations apart, so the edge is ${escapeHtml(best.side.abbr)}.`]
+    : ["The edge", `The edge goes to whichever side is better by at least one standard deviation of the league, and its bar turns that team's color. Every row in this game is closer than that, so it's Even across the board.`];
   const glossary = [
     ["EPA / play", "Expected points added: how much each play changed a team's expected score, averaged. Above 0 is good for an offense."],
     ["Success %", "Share of plays with positive EPA. Steadier than EPA, which a few big plays can swing."],

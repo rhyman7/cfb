@@ -29,8 +29,7 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 - **`matchup.html?game=<ESPN game id>` — One game.** A game header (records,
   AP rank, QB, SRS, kickoff, venue, indoors/outdoors, spread, O/U), a Head to
   Head section comparing each offense with the other defense (FBS ranks, with
-  an edge called when one side ranks 26+ spots better — the same share of the
-  field as the NFL site's 6 of 32), then both teams' full stat cards. The header shows the kickoff forecast
+  an edge called when one side is at least one FBS standard deviation better), then both teams' full stat cards. The header shows the kickoff forecast
   (outdoor games) between the venue and the spread/O-U, and uses the same
   current ESPN line as the slate. Prints
   on two landscape pages.
@@ -42,7 +41,7 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 - **`epa.html` — EPA** (with `epa.js`), linked left of Weekly Edges.
   Opponent-adjusted EPA: pick a game from the dropdown for Head to Head panels
   (adjusted EPA / play, pass and rush EPA, early-down pass EPA, success rate, ranked
-  among FBS teams, edge at 26+ spots) and both teams' cards (raw vs. adjusted rank, QB
+  among FBS teams, edge at one standard deviation) and both teams' cards (raw vs. adjusted rank, QB
   EPA / dropback, pace, neutral pass rate, regression flags). Below that: the EPA line
   and total against the current market for every game, a sortable ratings table for
   every FBS team, and a walk-forward check against closing lines. **Print all** prints
@@ -61,12 +60,12 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
   by kickoff (current spread and O/U, implied team totals, line move since the
   week's first update, and the net EPA edge: which team's offense EPA/play minus
   defense EPA/play allowed is better, and by how much), with conference and
-  Top 25 filters. Below it, prop matchup tables (QB pass yds, RB rush yds, WR
-  rec yds, TE rec yds) list players in FBS-vs-FBS games whose opponent allows
-  more than the FBS average for that stat: the player's average, what the
-  opponent allows (and its rank), **Matchup** = opponent allowed ÷ FBS average,
-  and **Adj** = average × Matchup. Top 10 each by Adj, regulars only (at least
-  half the team's games). Names open the game log.
+  Top 25 filters. Below it, prop tables (QB pass yds, RB rush yds, WR
+  rec yds, TE rec yds) list regulars (at least half the team's games) in
+  FBS-vs-FBS games whose value board projection is above their season average:
+  the average, what the opponent allows (raw, with its rank, as context), the
+  board's projection and the gain over the average, top 10 by projection.
+  "new role" marks a projection 1.5 times the average or more. Names open the game log.
 - **`dashboard.html` — Compare any two teams.** The original dashboard
   (same layout as the NFL site). Also accepts `?team1=Alabama&team2=Georgia`.
 - **`ratings.html` — Ratings explained.** Plain-language definitions of SoS,
@@ -333,3 +332,18 @@ one FBS-vs-FBS game from this week, with numbered markers on the real components
 written from that game's numbers (`how-to-read.js`; `app.js` calls `initLearn()` on this page).
 It opens on a random game; the Game picker and "Pick another game" switch games, and
 `?game=<id>` opens a given one. Nothing extra to build: it reads `data/data.json`.
+
+**The value board on the dashboard (Nov 2026).** The pages read a small feed from the value
+board (rhyman7/fb-value-board, `docs/feed/cfb.json`, same site, so no extra requests to
+other domains): each game's projected line and total and the bets on its Bet sheet, and each
+player's projection. The week board shows the board's line under the implied score
+(with any bet-sheet pick), the matchup header has a "Value board" strip with links to the game
+on the board and to the parlay tool (hidden in print), and Weekly Edges builds its prop tables
+from the player projections. If the feed is missing or for another week, those pieces hide.
+
+**Head to Head rows and the edge rule (Nov 2026).** EPA / play, Pass EPA and Rush EPA are the
+opponent-adjusted ratings from `data/epa.json` (the EPA page's), loaded with the data; Success %
+and the per-game rows are raw. Touchdowns per game sit in their own on-screen group. An edge is
+called when one side is at least one league standard deviation better than the other (each value
+scaled by the whole league's spread), so the size of the gap counts, not rank spots; the EPA page,
+How to Read and EPA Explained use the same rule.

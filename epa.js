@@ -118,11 +118,16 @@ const ROWS = [
   ["Success %", "sr", "o_sr", "d_sr", v => v == null ? "—" : v.toFixed(1)],
 ];
 function edgePanelEpa(o, d) {
-  const T = EPA.teams, n = EPA.teamCount, edgeAt = Math.max(6, Math.round(n * 0.19));
+  const T = EPA.teams, n = EPA.teamCount;
   const ov = SITE.vars(o), dv = SITE.vars(d), oa = SITE.esc(SITE.abbr(o)), da = SITE.esc(SITE.abbr(d));
   const rows = ROWS.map(([lbl, key, ok, dk, fmt]) => {
-    const or = T[o].rk[ok], dr = T[d].rk[dk], diff = dr - or;
-    const side = diff >= edgeAt ? "off" : diff <= -edgeAt ? "def" : "";
+    const or = T[o].rk[ok], dr = T[d].rk[dk];
+    // edge: at least one league standard deviation apart (lower is better for a defense), as on the matchup page
+    const z = (v, side) => { const all = Object.values(T).map(t => t[side][key]).filter(x => x != null);
+      const m = all.reduce((a, b) => a + b, 0) / all.length;
+      return (v - m) / (Math.sqrt(all.reduce((a, b) => a + (b - m) ** 2, 0) / Math.max(1, all.length - 1)) || 1); };
+    const gap = T[o].off[key] == null || T[d].def[key] == null ? 0 : z(T[o].off[key], "off") + z(T[d].def[key], "def");
+    const side = gap >= 1 ? "off" : gap <= -1 ? "def" : "";
     const w = r => Math.round(((n + 1 - r) / n) * 100);
     const edge = side === "off" ? `<b class="tc" style="${ov}">${oa}</b>` : side === "def" ? `<b class="tc" style="${dv}">${da}</b>` : `<span class="even">Even</span>`;
     return `<div class="tape"><span class="lbl">${lbl}</span>
