@@ -1358,14 +1358,17 @@ function lineMoveText(g) {
 // t.betting = { ats, fav, dog, home, away: {w,l,p}, ou: {o,u,p}, games: [{ w, opp, at, line, score, ats, total, ou }] }
 // line is the team's own line from the cfbfastR matchup line (negative = favored).
 
+// Collapsed by default: a team's record against the spread over a few games doesn't predict the
+// next one (the closing line already prices what's behind it), so it's there to look up, not lead.
 function renderBetting(a, b) {
   const teams = [a, b].filter(t => t && t.betting);
   if (!teams.length) return "";
-  return `<div class="bet-section no-print">
-    <h3 class="section-title">Betting trends</h3>
+  return `<details class="bet-section bet-fold no-print">
+    <summary><h3 class="section-title">Betting trends</h3><span class="bet-fold-note">ATS and over/under records, game by game. Show</span></summary>
+    <p class="edge-key bet-caution">A record against the spread over a handful of games doesn't predict the next one: the closing line already prices what's behind it. Use these to look up results, not to pick sides.</p>
     <div class="edge-grid">${teams.map(bettingPanel).join("")}</div>
-    <p class="edge-key">Against the spread (ATS) and over/under records use each completed game's consensus line from the cfbfastR matchup lines, rounded to the half point. W-L-P = wins, losses and pushes; percentages leave out pushes. Neutral-site games count in ATS, Fav and Dog but not Home or Away. Games against FCS teams have no line and are left out. Small samples early in the season can mislead.</p>
-  </div>`;
+    <p class="edge-key">Against the spread (ATS) and over/under records use each completed game's consensus line from the cfbfastR matchup lines, rounded to the half point. W-L-P = wins, losses and pushes; percentages leave out pushes. Neutral-site games count in ATS, Fav and Dog but not Home or Away. Games against FCS teams have no line and are left out.</p>
+  </details>`;
 }
 
 function fmtLine(x) {

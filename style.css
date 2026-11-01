@@ -1297,3 +1297,11 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
 .capd-h, .capd { display: block; font-size: 0.72rem; font-weight: 500; color: var(--text-dim); line-height: 1.2; }
 .capd.amber { color: #f5b942; font-weight: 700; }
 @media print { .capd.amber { color: #b26b00; } }
+
+/* Betting trends, collapsed by default (renderBetting) */
+.bet-fold > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 14px; }
+.bet-fold > summary::-webkit-details-marker { display: none; }
+.bet-fold > summary .section-title { margin-bottom: 0; }
+.bet-fold-note { font-size: 0.875rem; color: var(--accent); }
+.bet-fold[open] .bet-fold-note { visibility: hidden; }
+.bet-fold .bet-caution { margin: 10px 0 14px; }
