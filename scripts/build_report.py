@@ -175,11 +175,13 @@ class Data:
 # (LIFT_FULL = the most it counts for); the old rank-based thresholds on m (+0.25 good, -0.35/-0.40
 # tough) then read as about +6% and -9% to -10%.
 LIFT_FULL = 0.25
+CAP_KIND = {"QB": "pass", "RB": "rush", "WR": "rec", "TE": "rec"}
 
 
 class Report:
-    def __init__(self, D, feed=None, epa=None):
+    def __init__(self, D, feed=None, epa=None, capped=None):
         self.D = D
+        self.CAP = capped["players"] if capped and capped.get("players") else None
         self.F = feed["players"] if feed else None
         self.EPA = epa["teams"] if epa and epa.get("teams") else None
         self.T, self.GL, self.LA, self.NT, self.POS_AVG = D.T, D.GL, D.LA, D.NT, D.POS_AVG
@@ -312,7 +314,7 @@ class Report:
                 if not bp or proj <= 0 or avg <= 0:
                     continue   # the board doesn't project him (not playing, or not this role)
                 lift = proj / avg - 1
-                why_ = self.drivers(pos, self.GL.get(p["log"], []), bp, on)
+                why_ = self.drivers(pos, self.GL.get(p["log"], []), bp, on, p["log"])
                 what_ = "pass" if pos == "QB" else "scrimmage" if pos in ("RB", "FB") else "rec"
                 bt0 = f'board {num(round(proj))} ({"+" if lift >= 0 else MINUS}{abs(lift) * 100:.0f}%)'
                 bt = bt0 + (f": {'; '.join(why_)}" if why_ else "")
@@ -459,9 +461,9 @@ class Report:
         "TE": ("targets", "tgt", "recYds", "tgt", "yds/tgt", "rec_yds", "ypt", "per target to TEs"),
     }
 
-    def drivers(self, pos, logs, bp, opp):
+    def drivers(self, pos, logs, bp, opp, log_key=None):
         """Why the board's number differs from his average: projected volume and yards per play
-        against his own so far (and without his best game, when one game carries his average), the
+        against his own so far (and capped at the league's 97.5th percentile per play, when long plays carry 5% or more of it), the
         books' line, and the opponent when the board's defense factor moves him 5% or more."""
         key = "RB" if pos == "FB" else pos
         if key not in self.DRIVERS or not logs:
@@ -476,10 +478,9 @@ class Report:
         if tv > 0 and bvol and byds:
             his_v, his_e, b_e = tv / len(logs), ty / tv, byds / bvol
             wo = ""
-            if len(logs) >= 4 and b_e < his_e:   # only when the board expects fewer yards per play
-                bv_, by_ = max((x for x in vol if x[0] > 0), key=lambda x: x[1] / x[0])
-                if tv - bv_ > 0 and (ty - by_) / (tv - bv_) <= 0.9 * his_e:
-                    wo = f"; {(ty - by_) / (tv - bv_):.1f} without best game"
+            share = self.CAP.get(log_key, {}).get(CAP_KIND[key]) if self.CAP else None
+            if share is not None and share <= 0.95:   # long plays capped at the league's 97.5th percentile (data/capped.json)
+                wo = f"; {his_e * share:.1f} capped"
             out.append(("rushing " if key == "RB" else "") + f"{bvol:.1f} {vu} (his {his_v:.1f}), {b_e:.1f} {eu} (his {his_e:.1f}{wo})")
         ln = (bp.get("L") or {}).get(stat)
         if ln:
@@ -586,7 +587,12 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
         epa = epa if epa.get("season") == d.get("season") else None
     except Exception:
         epa = None
-    R = Report(D, feed, epa)
+    try:
+        cap = json.loads((root / "data" / "capped.json").read_text(encoding="utf-8"))
+        cap = cap if cap.get("season") == d.get("season") else None
+    except Exception:
+        cap = None
+    R = Report(D, feed, epa, cap)
     print(f"  report: value board feed {'used' if feed else 'not found, raw matchups'}; adjusted EPA {'used' if epa else 'not found'}")
     COL = team_colors(root, D.league)
     L = D.league.upper()

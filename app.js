@@ -66,7 +66,7 @@ async function init() {
       DATA.weekGames = [];
     }
   }
-  await Promise.all([loadBoard(), loadAdjEpa()]);
+  await Promise.all([loadBoard(), loadAdjEpa(), loadCapped()]);
   setMeta();
   try { initPlayerSearch(); } catch (e) { /* search is optional */ }
   try { initWeekNav(); } catch (e) { /* so is the week strip */ }
@@ -110,6 +110,31 @@ function boardSpreadText(g, bg) {
 function boardBetText(b) {
   return `${b.pick.replace(/ -(?=\d)/, " " + MINUS)}${b.odds != null ? ` (${b.odds > 0 ? "+" : MINUS}${Math.abs(b.odds)})` : ""}`;
 }
+// Big-play-capped yards (data/capped.json, scripts/capped.py): each player's yards with every
+// completion, catch and run counted at no more than the league's 97.5th percentile, as a share of
+// his actual yards. Shown under Yds/G on the team cards; amber when the drop is in the league's top 10%.
+let CAPPED = null;
+async function loadCapped() {
+  try {
+    const r = await fetch("data/capped.json", { cache: "no-cache" });
+    const c = r.ok ? await r.json() : null;
+    if (c && c.season === DATA.season && c.players) CAPPED = c;
+  } catch (e) { /* the column is optional */ }
+}
+const CAP_KIND = { passing: "pass", rushing: "rush", receiving: "rec" };
+function cappedCell(r, kind) {
+  const k = CAP_KIND[kind], share = CAPPED && r.log && CAPPED.players[r.log] ? CAPPED.players[r.log][k] : null;
+  if (share == null || typeof r.ydsG !== "number") return "";
+  const v = Math.round(r.ydsG * share * 10) / 10, drop = 1 - share;
+  const games = DATA.gameLogs && DATA.gameLogs[r.log] ? DATA.gameLogs[r.log].length : 0;
+  const amber = games >= 4 && CAPPED.amber && CAPPED.amber[k] != null && drop >= CAPPED.amber[k] && drop > 0;
+  const cut = k === "rush" ? CAPPED.cut.rush : CAPPED.cut.catch;
+  const tip = `${v} yds/G with every ${k === "rush" ? "run" : k === "pass" ? "completion" : "catch"} counted at no more than ${cut} yards`
+    + (drop > 0 ? ` (${Math.round(drop * 100)}% lower)` : " (no long plays to cap)")
+    + (amber ? ". Amber: long plays carry more of his average than for 90% of FBS regulars." : ".");
+  return `<span class="capd${amber ? " amber" : ""}" title="${escapeHtml(tip)}">${dispNum(v.toFixed(1))}</span>`;
+}
+
 // Opponent-adjusted EPA (data/epa.json, the EPA page's ratings) for Head to Head.
 async function loadAdjEpa() {
   try {
@@ -1046,15 +1071,16 @@ function playerTable(title, rows, cols) {
   if (!rows || rows.length === 0) {
     return `<div class="table-block"><h4>${title}</h4><div class="empty-note">No data</div></div>`;
   }
-  const head = cols.map(([label, , type]) => `<th class="${type === "num" ? "num" : ""}">${label}</th>`).join("");
   const kind = title.toLowerCase();
+  const capOn = !!CAPPED && kind in CAP_KIND;
+  const head = cols.map(([label, key, type]) => `<th class="${type === "num" ? "num" : ""}">${label}${capOn && key === "ydsG" ? `<span class="capd-h" title="Yards per game with every long play counted at no more than the FBS 97.5th percentile">Capped</span>` : ""}</th>`).join("");
   const body = rows.map(r => {
     const cells = cols.map(([, key, type]) => {
       const txt = escapeHtml(type === "num" ? dispNum(r[key] ?? "—") : String(r[key] ?? "—"));
       const val = key === "player" && r.log && DATA.gameLogs && DATA.gameLogs[r.log]
         ? `<span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>${injTag(r.log)}</span>`
         : txt + (key === "player" ? injTag(r.log) : "");
-      return `<td class="${type === "num" ? "num" : ""}">${val}</td>`;
+      return `<td class="${type === "num" ? "num" : ""}">${val}${capOn && key === "ydsG" ? cappedCell(r, kind) : ""}</td>`;
     }).join("");
     return `<tr>${cells}</tr>`;
   }).join("");

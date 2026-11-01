@@ -1292,3 +1292,8 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
 }
 @media print { .pk-top, .pk-bar, .pk-hint, .pk-cb { display: none !important; } }
 .week-head > .week-filters { flex-basis: 100%; }
+
+/* team cards: big-play-capped yards per game under Yds/G (data/capped.json) */
+.capd-h, .capd { display: block; font-size: 0.72rem; font-weight: 500; color: var(--text-dim); line-height: 1.2; }
+.capd.amber { color: #f5b942; font-weight: 700; }
+@media print { .capd.amber { color: #b26b00; } }
