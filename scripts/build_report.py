@@ -1,6 +1,10 @@
 """Build the Weekly Matchup Report: who is set up for a good game, and who is not, in every
 game of the current week, plus two rankings across the slate (Best Overall Matchups and
-Most Likely to Score a TD). Every number comes from data/data.json.
+Most Likely to Score a TD). The stats come from data/data.json and data/epa.json; the player
+projections, matchup lifts and touchdown chances come from the value board's feed
+(rhyman7/fb-value-board, docs/feed/<league>.json) when a checkout of it is next to this repo or
+passed in (build_packets.py --value-board). Without the feed the report falls back to ranking each
+player's matchup by the raw yards his opponent allows at his position.
 
 The same file runs in both dashboards (rhyman7/cfb and rhyman7/nfl); it detects the league
 from the shape of data.json.
@@ -47,6 +51,20 @@ def half_up(x):
 
 def norm_name(n):  # same as normName() in the NFL site's common.js
     return re.sub(r"[^a-z]", "", re.sub(r"\b(jr|sr|ii|iii|iv|v)\b\.?", "", str(n or "").lower()))
+
+
+def vb_norm(n):  # same as vbNorm() in the sites' JS and nflmodel/dashfeed.norm on the value board
+    s = re.sub(r"[^a-z ]", "", str(n or "").lower().replace("-", " "))
+    return " ".join(w for w in s.split() if w not in {"jr", "sr", "ii", "iii", "iv", "v"})
+
+
+def load_feed(vb, league, season, week):
+    """The value board's feed for this league and week, or None."""
+    try:
+        f = json.loads((Path(vb) / "docs" / "feed" / f"{league}.json").read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    return f if f.get("season") == season and f.get("week") == week and f.get("players") else None
 
 
 def clip(x, a, b):
@@ -153,9 +171,17 @@ class Data:
 
 
 # ---------------------------------------------------------------- analysis
+# A player is a good spot when the board projects his main stat this much above his season average
+# (LIFT_FULL = the most it counts for); the old rank-based thresholds on m (+0.25 good, -0.35/-0.40
+# tough) then read as about +6% and -9% to -10%.
+LIFT_FULL = 0.25
+
+
 class Report:
-    def __init__(self, D):
+    def __init__(self, D, feed=None, epa=None):
         self.D = D
+        self.F = feed["players"] if feed else None
+        self.EPA = epa["teams"] if epa and epa.get("teams") else None
         self.T, self.GL, self.LA, self.NT, self.POS_AVG = D.T, D.GL, D.LA, D.NT, D.POS_AVG
         self._fit()
 
@@ -278,6 +304,22 @@ class Report:
                          tough=tough.replace("; ", f' ({p["gp"]} of {tgp} gms); ', 1) if pos != "QB" and p["gp"] <= tgp - 2 else tough)
             else:  # opponent without stats on the dashboard (FCS): volume only
                 c.update(m=0.0, rk=None, good=f'{c["base"]}; {on} has no stats on the dashboard.', tough="")
+            if self.F is not None:   # the value board's projection against his season average
+                bp = self.F.get(f"{ab}|{vb_norm(p['name'])}")
+                stat = {"QB": ("pass_yds",), "RB": ("rush_yds", "rec_yds"), "FB": ("rush_yds", "rec_yds")}.get(pos, ("rec_yds",))
+                avg = sum((p.get(sec) or {}).get("ydsG", 0) for sec, st_ in (("passing", "pass_yds"), ("rushing", "rush_yds"), ("receiving", "rec_yds")) if st_ in stat)
+                proj = sum((bp or {}).get("p", {}).get(x, 0) for x in stat)
+                if not bp or proj <= 0 or avg <= 0:
+                    continue   # the board doesn't project him (not playing, or not this role)
+                lift = proj / avg - 1
+                what_ = "pass" if pos == "QB" else "scrimmage" if pos in ("RB", "FB") else "rec"
+                bt = f'board {num(round(proj))} {what_} yds, {"+" if lift >= 0 else MINUS}{abs(lift) * 100:.0f}% on his avg'
+                ctx = c["good"].split("; ", 1)[1].split(" (", 1)[0] if o and "; " in c.get("good", "") else ""   # "TB is #23 vs TEs"
+                c.update(m=clip(lift / LIFT_FULL, -1, 1), lift=lift, proj=proj, board=True,
+                         good=f'{c["good"].split("; ", 1)[0]}; {bt}' + (f'; {ctx}.' if ctx else "."),
+                         tough=f'{c["tough"].split("; ", 1)[0]}; {bt}' + (f'; {ctx}.' if ctx else "."))
+                if not o:
+                    c["rk"] = None
             c.update(name=p["name"], team=ab, pos=pos, gp=p["gp"], tgp=tgp)
             if not p["active"] or p["gp"] < 2:
                 if c["prod"] >= 0.9 and not p["active"]:
@@ -310,7 +352,7 @@ class Report:
         stats = [c for c in cands if c["rk"] is not None]
         nostat = [c for c in cands if c["rk"] is None]
         gpool = sorted([c for c in stats if (c["m"] >= 0.25 and c["prod"] >= 0.6)
-                        or (c["pos"] == "TE" and c["rk"] >= NT - max(2, NT // 10) and c.get("yds", 0) >= 20 and c.get("rec", 0) >= 2)],
+                        or (self.F is None and c["pos"] == "TE" and c["rk"] >= NT - max(2, NT // 10) and c.get("yds", 0) >= 20 and c.get("rec", 0) >= 2)],
                        key=lambda c: -c["prod"] * (0.5 + c["m"]))
         for c in gpool:
             c["gs"] = c["prod"] * (0.5 + c["m"])
@@ -392,11 +434,44 @@ class Report:
                 if not usage or tds == 0:
                     continue
                 lam = (tds + 0.6) / (p["gp"] + 2) * (share * clip(mr, 0.6, 1.6) + (1 - share) * clip(mc, 0.6, 1.6)) * script
+                ptd = None
+                if self.F is not None:   # the value board's chance of a rushing or receiving TD
+                    bp = self.F.get(f"{me['abbr']}|{vb_norm(p['name'])}")
+                    if not bp:
+                        continue   # the board doesn't project him
+                    ptd = bp.get("td")
+                    if ptd is not None:   # a feed from before Nov 2026 has no TD chances: keep the estimate
+                        lam = ptd
                 split = f'{p["rtd"]} rush, {p["ctd"]} rec' if p["rtd"] and p["ctd"] else ("rushing" if p["rtd"] else "receiving")
                 rows.append(dict(lam=lam, name=p["name"], team=me["abbr"], pos=pos, tds=tds, gp=p["gp"], split=split,
                                  oab=opp["abbr"], allowed=allowed, pts=pts, est=imp is None, gid=g["id"],
-                                 inj=p["inj"]["s"] if p["inj"] else None))
+                                 inj=p["inj"]["s"] if p["inj"] else None, ptd=ptd))
         return sorted(rows, key=lambda r: -r["lam"])
+
+    def _z(self, side, key, v):
+        vals = [t[side][key] for t in self.EPA.values() if t.get(side, {}).get(key) is not None]
+        m = st.mean(vals)
+        return (v - m) / (st.stdev(vals) or 1)
+
+    def _epa_read(self, s, a, h):
+        """Biggest edge and hardest going from adjusted pass and run EPA: the gap between an offense
+        and the other defense in league standard deviations, called at 1 (the sites' Head to Head rule)."""
+        units = []
+        for x, y in ((a, h), (h, a)):
+            X, Y = self.EPA[x], self.EPA[y]
+            for key, word in (("pass", "passing"), ("rush", "running")):
+                gap = self._z("off", key, X["off"][key]) + self._z("def", key, Y["def"][key])   # a defense: higher allowed is worse
+                units.append((gap, x, y, key, word))
+        units.sort(key=lambda u: -u[0])
+        dw = lambda w: "run" if w == "running" else "pass"
+        rk = lambda t, k: self.EPA[t]["rk"].get(k)
+        best, worst = units[0], units[-1]
+        if best[0] >= 1:
+            s.append(f'Biggest edge: {best[1]}\'s {best[4]} game (#{rk(best[1], "o_" + best[3])} in adjusted EPA) against the #{rk(best[2], "d_" + best[3])} {dw(best[4])} defense.')
+        else:
+            s.append("Neither offense has a clear edge in adjusted EPA.")
+        if worst[0] <= -1:
+            s.append(f'Hardest going: {worst[1]}\'s {worst[4]} game (#{rk(worst[1], "o_" + worst[3])}) against the #{rk(worst[2], "d_" + worst[3])} {dw(worst[4])} defense.')
 
     def game_read(self, g, skipped, hurt=(), quest=()):
         s = []
@@ -409,7 +484,9 @@ class Report:
         else:
             s.append("No betting line in the data yet.")
         a, h = g["away"]["key"], g["home"]["key"]
-        if a and h:
+        if a and h and self.EPA and a in self.EPA and h in self.EPA:
+            self._epa_read(s, a, h)
+        elif a and h:
             A, H = self.T[a], self.T[h]
             units = []
             for t, o in ((A, H), (H, A)):
@@ -455,14 +532,21 @@ def team_colors(root, league):
         return {}
 
 
-def build(root=ROOT, out=None, font_css=None):
+def build(root=ROOT, out=None, font_css=None, vb=None):
     """Write report.html and report-games.json into `out`; return (path, game ids, title)."""
     out = Path(out or root / "pdf")
     out.mkdir(parents=True, exist_ok=True)
     d = json.loads((root / "data" / "data.json").read_text(encoding="utf-8"))
     D = Data(d)
     D.load_injuries(root / "data" / "injuries.json")
-    R = Report(D)
+    feed = load_feed(vb or Path(root).parent / "fb-value-board", D.league, d.get("season"), D.week)
+    try:
+        epa = json.loads((root / "data" / "epa.json").read_text(encoding="utf-8"))
+        epa = epa if epa.get("season") == d.get("season") else None
+    except Exception:
+        epa = None
+    R = Report(D, feed, epa)
+    print(f"  report: value board feed {'used' if feed else 'not found, raw matchups'}; adjusted EPA {'used' if epa else 'not found'}")
     COL = team_colors(root, D.league)
     L = D.league.upper()
     games = D.games
@@ -536,7 +620,9 @@ def build(root=ROOT, out=None, font_css=None):
         g = x["g"]
         _, day, tm = when(g)
         tv = f' · {g["tv"]}' if g["tv"] else ""
-        tdw = "; ".join(f'<b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> {r["tds"]} TD{"s" if r["tds"] != 1 else ""} in {r["gp"]} games' for r in x["td"][:3]) or "No one qualifies."
+        tdw = "; ".join(f'<b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> '
+                        + (f'{r["ptd"] * 100:.0f}% chance, ' if r.get("ptd") is not None else "")
+                        + f'{r["tds"]} TD{"s" if r["tds"] != 1 else ""} in {r["gp"]} games' for r in x["td"][:3]) or "No one qualifies."
         cards.append(f'''<section class="game" id="g{E(g["id"])}" data-game="{E(g["id"])}">
   <div class="eyebrow"><span class="gno">Game {x["n"]} of {NG}</span><h2 class="gtitle">{E(gtitle(g))}</h2><span class="gwhen">{day} · {tm}{tv}</span></div>
   {strip(g)}
@@ -544,7 +630,7 @@ def build(root=ROOT, out=None, font_css=None):
     <p class="read"><b>Game read.</b> {E(x["read"])} <span class="qbs">Listed QBs: {E(g["away"]["qb"] or "n/a")} ({E(g["away"]["abbr"])}), {E(g["home"]["qb"] or "n/a")} ({E(g["home"]["abbr"])}).</span></p>
     <div class="cols">
       <div class="col good"><h3>Good spots</h3><ul>{bullets(x["good"], "No soft matchups here.")}</ul></div>
-      <div class="col tough"><h3>Tough spots</h3><ul>{bullets(x["tough"], "None stand out. No main producer here faces a top defense against his position.")}</ul></div>
+      <div class="col tough"><h3>Tough spots</h3><ul>{bullets(x["tough"], "None stand out. The value board has no main producer here well under his average." if R.F is not None else "None stand out. No main producer here faces a top defense against his position.")}</ul></div>
     </div>
     <p class="tdw"><span class="tdl">Touchdown watch</span> {tdw}</p>
   </div></section>''')
@@ -571,16 +657,19 @@ def build(root=ROOT, out=None, font_css=None):
         body = "".join(
             f'<tr><td class="n">{i}</td><td><b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span></td>'
             f'<td><a href="#g{E(r["gid"])}">{E(gtitle(r["x"]["g"]))}</a></td><td>{r["tds"]} in {r["gp"]} ({r["split"]})</td>'
-            f'<td>{E(r["oab"])} allows {E(r["allowed"])}</td><td class="r">{half_up(r["pts"])}{" est." if r["est"] else ""}</td></tr>'
+            f'<td>{E(r["oab"])} allows {E(r["allowed"] if r.get("ptd") is None else r["allowed"].replace(" rushing to backs", " to RBs").replace(" (all rushers)", ""))}</td>'
+            + (f'<td class="r"><b>{r["ptd"] * 100:.0f}%</b></td>' if r.get("ptd") is not None   # the board's chance already counts team points
+               else f'<td class="r">{half_up(r["pts"])}{" est." if r["est"] else ""}</td>') + '</tr>'
             for i, r in enumerate(rows, start))
-        return f'<table class="tdt"><thead><tr><th></th><th>Player</th><th>Game</th><th>TDs so far</th><th>Opponent</th><th class="r">Team pts</th></tr></thead><tbody>{body}</tbody></table>'
+        last = '<th class="r">TD chance</th>' if any(r.get("ptd") is not None for r in rows) else '<th class="r">Team pts</th>'
+        return f'<table class="tdt"><thead><tr><th></th><th>Player</th><th>Game</th><th>TDs so far</th><th>Opponent</th>{last}</tr></thead><tbody>{body}</tbody></table>'
 
     league_name = "College football" if L == "CFB" else "NFL"
     half = TDN // 2 if L == "CFB" else TDN
     td_html = f'''<section class="tdsec" id="td">
   <div class="kicker">{league_name} Week {D.week} · {d.get("season", "")}</div>
   <h1 class="h1s">Most Likely to Score a TD</h1>
-  <p class="lede">The {TDN} players with the best chance of a rushing or receiving touchdown, ranked across all {NG} games. Passing TDs do not count for quarterbacks. Each game page lists its own top three under "Touchdown watch".</p>
+  <p class="lede">{f"The {TDN} likeliest rushing or receiving TD scorers across all {NG} games, by the value board's anytime-TD chance (passing TDs don't count). Each game page lists its top three under Touchdown watch." if R.F is not None else f'The {TDN} players with the best chance of a rushing or receiving touchdown, ranked across all {NG} games. Passing TDs do not count for quarterbacks. Each game page lists its own top three under "Touchdown watch".'}</p>
   {td_table(alltd[:half], 1)}
 </section>''' + (f'''
 <section class="tdsec">
@@ -590,7 +679,7 @@ def build(root=ROOT, out=None, font_css=None):
     best_html = f'''<section class="tdsec" id="best">
   <div class="kicker">{league_name} Week {D.week} · {d.get("season", "")}</div>
   <h1 class="h1s">Best Overall Matchups</h1>
-  <p class="lede">The strongest good spots across all {NG} games, ranked by production times how soft the opposing defense is at his position. One player per team, and only players who have played nearly every game.</p>
+  <p class="lede">The strongest good spots across all {NG} games, ranked by production times {"how far the value board projects him above his season average" if R.F is not None else "how soft the opposing defense is at his position"}. One player per team, and only players who have played nearly every game.</p>
   <table class="tdt"><thead><tr><th></th><th>Player</th><th>Game</th><th>Production</th><th>Matchup</th></tr></thead><tbody>{top_rows}</tbody></table>
 </section>'''
 
