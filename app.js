@@ -66,6 +66,7 @@ async function init() {
       DATA.weekGames = [];
     }
   }
+  await Promise.all([loadBoard(), loadAdjEpa()]);
   setMeta();
   try { initPlayerSearch(); } catch (e) { /* search is optional */ }
   try { initWeekNav(); } catch (e) { /* so is the week strip */ }
@@ -77,6 +78,46 @@ async function init() {
   else if (PAGE === "epa") { if (typeof initEpa === "function") initEpa(); }
   else if (PAGE === "learn") { if (typeof initLearn === "function") initLearn(); }
   else initDashboard();
+}
+
+// ---------------- The value board (rhyman7/fb-value-board) ----------------
+// The board publishes a small feed for this site (docs/feed/cfb.json), keyed by the ESPN game id:
+// each game's projected line and total and the bets it flags, and each player's projection.
+// Same site, so it loads directly. Missing or for another week: everything it feeds just hides.
+const VB_ROOT = "/fb-value-board/docs/";
+let BOARD = null;
+async function loadBoard() {
+  try {
+    const r = await fetch(VB_ROOT + "feed/cfb.json", { cache: "no-cache" });
+    const b = r.ok ? await r.json() : null;
+    if (b && b.season === DATA.season && b.week === LIVE_WEEK) BOARD = b;
+  } catch (e) { /* the board is optional */ }
+}
+function vbNorm(name) {
+  return String(name).toLowerCase().replace(/-/g, " ").replace(/[^a-z ]/g, "").split(/\s+/)
+    .filter(w => w && !["jr", "sr", "ii", "iii", "iv", "v"].includes(w)).join(" ");
+}
+function boardGame(g) { return BOARD && weekMode() === "current" && g ? BOARD.games[String(g.id)] || null : null; }
+function boardPlayer(abbr, name) { return BOARD ? BOARD.players[`${abbr}|${vbNorm(name)}`] || null : null; }
+function boardGameUrl(bg) { return `${VB_ROOT}cfb/#matchups/${encodeURIComponent(bg.id)}`; }
+const PARLAY_URL = VB_ROOT + "parlays.html";
+// "OHIO −11.7": the board's projected margin as a spread, favorite first.
+function boardSpreadText(g, bg) {
+  if (!bg || bg.margin == null) return "";
+  if (Math.abs(bg.margin) < 0.05) return "Pick'em";
+  return `${(bg.margin > 0 ? g.home : g.away).abbr} ${MINUS}${Math.abs(bg.margin).toFixed(1)}`;
+}
+function boardBetText(b) {
+  return `${b.pick.replace(/ -(?=\d)/, " " + MINUS)}${b.odds != null ? ` (${b.odds > 0 ? "+" : MINUS}${Math.abs(b.odds)})` : ""}`;
+}
+// Opponent-adjusted EPA (data/epa.json, the EPA page's ratings) for Head to Head.
+async function loadAdjEpa() {
+  try {
+    const r = await fetch("data/epa.json", { cache: "no-cache" });
+    const e = r.ok ? await r.json() : null;
+    if (!e || e.season !== DATA.season || !e.teams) return;
+    for (const [name, t] of Object.entries(DATA.teams)) if (e.teams[name]) t.adj = e.teams[name];
+  } catch (e) { /* Head to Head falls back to raw EPA */ }
 }
 
 // ---------------- Injury tags ----------------
@@ -359,6 +400,9 @@ function gameRow(g, grp) {
     status = `<div class="gr-big">${escapeHtml((L && L.state === "post" && L.detail) || "Final")}</div>`;
   } else {
     status = it ? `<span class="imp-pre">Implied </span>${escapeHtml(g.away.abbr)} ${it.away}, ${escapeHtml(g.home.abbr)} ${it.home}` : "";
+    const bg = boardGame(g);   // the value board's projected line and any bet it flags
+    if (bg) status += `<div class="gr-board">Board <b>${escapeHtml(boardSpreadText(g, bg))}</b>, ${bg.total.toFixed(1)}`
+      + bg.bets.map(b => ` <span class="vb-bet">${escapeHtml(boardBetText(b))}</span>`).join("") + `</div>`;
   }
   // a later week's games are just listed; this week's and finished ones open the game
   const open = mode === "upcoming" && !started ? `<div class="game-row upcoming">`
@@ -470,7 +514,6 @@ function renderMatchupParts(g) {
   let edges;
   if (away && home) {
     const n = Object.keys(DATA.teams).length;
-    const gap = edgeGap();
     edges = `
       <h3 class="section-title">Head to head</h3>
       <div class="edge-grid">
@@ -478,7 +521,7 @@ function renderMatchupParts(g) {
         ${edgePanel(home, away)}
       </div>
       ${pacePanel(away, home)}
-      <p class="edge-key">Longer bar, better rank. Ranks are out of ${n} FBS teams. The edge goes to whichever side ranks at least ${gap} spots better; INT compares interceptions thrown by the offense with interceptions made by the defense.${hasRushYpa() ? " Rush Yds / Att is season rushing yards divided by rushing attempts, with sacks counted as rushes the way college box scores do." : ""}${hasEff() ? " EPA / play (expected points added per play) and Success % (share of plays with positive EPA) use every run and pass play from cfbfastR play-by-play; for a defense they're what it allowed, so lower is better." : ""}${hasSitu() ? "<span class=\"edge-key-x\"> Pts / trip (40) counts every drive that reached the opponent's 40, at 7 for a touchdown and 3 for a field goal. Explosive % counts passes of 20+ yards and runs of 10+ per play. Sack rate is per pass play; havoc rate is plays with a tackle for loss, sack, interception, fumble or pass breakup, per play. For both, lower is better for an offense and higher for a defense.</span>" : ""}</p>`;
+      <p class="edge-key">Longer bar, better rank. Ranks are out of ${n} FBS teams. The edge goes to whichever side is better by at least one FBS standard deviation (so it counts how big the gap is, not just rank spots).${hasAdj() ? " Adj. rows are adjusted for the offenses and defenses each team has faced, as on the EPA page; the per-game rows are not, so a soft or hard schedule shows in them." : ""} INT compares interceptions thrown by the offense with interceptions made by the defense.${hasRushYpa() ? " Rush Yds / Att is season rushing yards divided by rushing attempts, with sacks counted as rushes the way college box scores do." : ""}${hasEff() ? " EPA / play (expected points added per play) and Success % (share of plays with positive EPA) use every run and pass play from cfbfastR play-by-play; for a defense they're what it allowed, so lower is better." : ""}${hasSitu() ? "<span class=\"edge-key-x\"> Pts / trip (40) counts every drive that reached the opponent's 40, at 7 for a touchdown and 3 for a field goal. Explosive % counts passes of 20+ yards and runs of 10+ per play. Sack rate is per pass play; havoc rate is plays with a tackle for loss, sack, interception, fumble or pass breakup, per play. For both, lower is better for an offense and higher for a defense.</span>" : ""}</p>`;
   } else {
     const other = away ? g.home : g.away;
     edges = `<h3 class="section-title">Head to head</h3>
@@ -562,7 +605,27 @@ function renderHero(g, away, home) {
     </div>
     ${heroTeam(g.home, home, g.neutral ? "Team 2" : "Home", final ? g.home.score : null, final ? g.away.score : null, "home")}
   </div>
-  <div class="hero-facts">${facts.join("")}</div>`;
+  <div class="hero-facts">${facts.join("")}</div>
+  ${heroBoard(g, final)}`;
+}
+
+// The value board's view of this game, under the header: its projected line and total next to
+// the market's, any bet it flags, and links to the game on the board and to the parlay tool.
+function heroBoard(g, final) {
+  const bg = boardGame(g);
+  if (!bg || final) return "";
+  const gap = bg.mkt_spread != null ? bg.margin - bg.mkt_spread : null;
+  const lean = gap == null || Math.abs(gap) < 0.5 ? "" : ` (${(gap > 0 ? g.home : g.away).abbr} side by ${Math.abs(gap).toFixed(1)})`;
+  const bets = bg.bets.length
+    ? bg.bets.map(b => `<span class="vb-bet">Bet sheet: ${escapeHtml(boardBetText(b))}</span>`).join(" ")
+    : `<span class="vb-none">Not on the bet sheet</span>`;
+  return `<div class="hero-board">
+    <span class="vb-lbl">Value board</span>
+    <span>Line <b>${escapeHtml(boardSpreadText(g, bg))}</b>${escapeHtml(lean)}</span>
+    <span>Total <b>${bg.total.toFixed(1)}</b></span>
+    ${bets}
+    <span class="vb-links"><a href="${boardGameUrl(bg)}">Open on the value board</a> · <a href="${PARLAY_URL}">Parlay tool</a></span>
+  </div>`;
 }
 
 // Fill the current line and the forecast into a header that is already on the page.
@@ -612,9 +675,15 @@ function heroTeam(s, t, side, score, otherScore, sideKey) {
     </div>`;
 }
 
-// The NFL site calls an edge at 6 of 32 spots; keep the same share of the FBS field.
-function edgeGap() {
-  return Math.max(1, Math.round(Object.keys(DATA.teams).length * 6 / 32));
+// How far a value sits from the FBS average, in standard deviations, signed so better is positive.
+// The edge goes to a side that is at least EDGE_SD better than the other after that scaling, so a
+// gap counts by its size, not just rank spots (same rule as the NFL site).
+const EDGE_SD = 1.0;
+function zScore(getter, value, higherIsBetter) {
+  const all = Object.values(DATA.teams).map(getter).filter(v => typeof v === "number");
+  const m = all.reduce((a, b) => a + b, 0) / all.length;
+  const sd = Math.sqrt(all.reduce((a, b) => a + (b - m) ** 2, 0) / Math.max(1, all.length - 1)) || 1;
+  return (higherIsBetter ? 1 : -1) * (value - m) / sd;
 }
 
 // Rank a value among all FBS teams. higherIsBetter decides direction; ties share the lower rank.
@@ -635,11 +704,14 @@ const EDGE_ROWS = [
   ["Points / G", t => t.offense.ppg, t => t.defense.papg, true, false],
   ["Rush Yds / G", t => t.offense.rushYdsG, t => t.defense.rushYdsG, true, false],
   RUSH_YPA_ROW,
-  ["Rush TD / G", t => t.offense.rushTdG, t => t.defense.rushTdG, true, false],
   ["Pass Yds / G", t => t.offense.passYdsG, t => t.defense.passYdsG, true, false],
-  ["Pass TD / G", t => t.offense.passTdG, t => t.defense.passTdG, true, false],
   ["INT / G", t => t.offense.int, t => t.defense.int, false, true],
 ];
+// Touchdowns per game: few per game, so noisy; on screen only, under their own label.
+const TD_GROUP = ["Touchdowns (per game)", [
+  ["Rush TD / G", t => t.offense.rushTdG, t => t.defense.rushTdG, true, false],
+  ["Pass TD / G", t => t.offense.passTdG, t => t.defense.passTdG, true, false],
+]];
 
 // EPA / play and success rate, from play-by-play (t.eff); shown when every team has them.
 const EFF_ROWS = [
@@ -647,6 +719,15 @@ const EFF_ROWS = [
   ["Success %", t => t.eff.off.sr, t => t.eff.def.sr, true, false, v => v.toFixed(1)],
 ];
 function hasEff() { return Object.values(DATA.teams).every(t => t.eff); }
+// The same, adjusted for the offenses and defenses each team has faced (data/epa.json).
+const f3 = v => (v >= 0 ? "+" : "") + v.toFixed(3);
+const ADJ_ROWS = [
+  ["EPA / play, adj.", t => t.adj.off.adj, t => t.adj.def.adj, true, false, f3],
+  ["Pass EPA, adj.", t => t.adj.off.pass, t => t.adj.def.pass, true, false, f3],
+  ["Rush EPA, adj.", t => t.adj.off.rush, t => t.adj.def.rush, true, false, f3],
+  ["Success %", t => t.eff.off.sr, t => t.eff.def.sr, true, false, v => v.toFixed(1)],
+];
+function hasAdj() { return Object.values(DATA.teams).every(t => t.adj && t.adj.off && t.adj.def && t.eff); }
 // Finishing drives, big plays and pass rush (t.situ, from scripts/situational.py), in labeled
 // groups under the rows above. A row is shown only when every team has the number.
 const sv = (side, key) => t => t.situ && t.situ[side][key] ? t.situ[side][key].v : null;
@@ -666,7 +747,9 @@ const SITU_GROUPS = [
 function hasSitu() { return Object.values(DATA.teams).every(t => t.situ); }
 function edgeRows() {
   const base = hasRushYpa() ? EDGE_ROWS : EDGE_ROWS.filter(r => r !== RUSH_YPA_ROW);
-  const rows = hasEff() ? base.slice(0, 1).concat(EFF_ROWS, base.slice(1)) : base.slice();
+  const rows = hasAdj() ? base.slice(0, 1).concat(ADJ_ROWS, base.slice(1))
+    : hasEff() ? base.slice(0, 1).concat(EFF_ROWS, base.slice(1)) : base.slice();
+  rows.push(TD_GROUP[0], ...TD_GROUP[1]);
   if (hasSitu()) {
     const teams = Object.values(DATA.teams);
     for (const [group, list] of SITU_GROUPS) {
@@ -680,7 +763,7 @@ function edgeRows() {
 // One offense against the other defense, stat by stat. Each side's bar grows from the
 // middle with its FBS rank (longer = better); the side with the edge shows in its color.
 function edgePanel(offTeam, defTeam) {
-  const gap = edgeGap(), n = Object.keys(DATA.teams).length;
+  const n = Object.keys(DATA.teams).length;
   const ov = teamVars(offTeam.team), dv = teamVars(defTeam.team);
   const oa = escapeHtml(offTeam.abbr), da = escapeHtml(defTeam.abbr);
   let extra = false;  // rows after the first group label are the newer ones; print leaves them out
@@ -689,8 +772,8 @@ function edgePanel(offTeam, defTeam) {
     const [label, offGet, defGet, offHi, defHi, fmt] = row;
     const o = offGet(offTeam), d = defGet(defTeam);
     const or = leagueRank(offGet, o, offHi), dr = leagueRank(defGet, d, defHi);
-    const diff = dr - or;
-    const side = diff >= gap ? "off" : diff <= -gap ? "def" : "";
+    const gap = zScore(offGet, o, offHi) - zScore(defGet, d, defHi);
+    const side = gap >= EDGE_SD ? "off" : gap <= -EDGE_SD ? "def" : "";
     const w = r => Math.round(((n + 1 - r) / n) * 100);
     const edge = side === "off" ? `<b class="tc" style="${ov}">${oa}</b>`
       : side === "def" ? `<b class="tc" style="${dv}">${da}</b>` : `<span class="even">Even</span>`;
@@ -1588,15 +1671,20 @@ function shareCells(r, table) {
   return `<td class="num share-cell"><b>${r.ts.toFixed(1)}%</b><span class="trend ${cls}">${cls === "up" ? "↑" : cls === "down" ? "↓" : "L3"} ${r.ts3.toFixed(1)}</span></td>`;
 }
 
-// [title, player table, positions, stat group in the log, opponent-allowed getter, rank getter, what]
+// [title, player table, positions, stat group in the log, opponent-allowed getter, rank getter, what, board stat]
 const PROP_BOARDS = [
-  ["QB pass yds", "passing", ["QB"], "passing", t => t.defense.passYdsG, t => t.defense.passYdsGRank, "pass yds/G"],
-  ["RB rush yds", "rushing", ["RB", "FB"], "rushing", t => t.defVsPosition.rb && t.defVsPosition.rb.yds, t => t.defVsPosition.rb && t.defVsPosition.rb.rank, "rush yds/G to RBs"],
-  ["WR rec yds", "receiving", ["WR"], "receiving", t => t.defVsPosition.wr && t.defVsPosition.wr.yds, t => t.defVsPosition.wr && t.defVsPosition.wr.rank, "rec yds/G to WRs"],
-  ["TE rec yds", "receiving", ["TE"], "receiving", t => t.defVsPosition.te && t.defVsPosition.te.yds, t => t.defVsPosition.te && t.defVsPosition.te.rank, "rec yds/G to TEs"],
+  ["QB pass yds", "passing", ["QB"], "passing", t => t.defense.passYdsG, t => t.defense.passYdsGRank, "pass yds/G", "pass_yds"],
+  ["RB rush yds", "rushing", ["RB", "FB"], "rushing", t => t.defVsPosition.rb && t.defVsPosition.rb.yds, t => t.defVsPosition.rb && t.defVsPosition.rb.rank, "rush yds/G to RBs", "rush_yds"],
+  ["WR rec yds", "receiving", ["WR"], "receiving", t => t.defVsPosition.wr && t.defVsPosition.wr.yds, t => t.defVsPosition.wr && t.defVsPosition.wr.rank, "rec yds/G to WRs", "rec_yds"],
+  ["TE rec yds", "receiving", ["TE"], "receiving", t => t.defVsPosition.te && t.defVsPosition.te.yds, t => t.defVsPosition.te && t.defVsPosition.te.rank, "rec yds/G to TEs", "rec_yds"],
 ];
 
+// Each table lists the regulars the value board projects above their season average this week,
+// biggest projection first. The board's projection already counts the opponent at a size that has held
+// up in testing; a raw "allowed" split overstates it (and in college it mostly reflects the
+// schedule), so it stays only as context. College props aren't priced, so there's no line here.
 function propBoards(games) {
+  if (!BOARD) return `<div class="empty-note">The value board's projections aren't available right now, so the prop tables are hidden. They come back once its feed for Week ${escapeHtml(String(LIVE_WEEK))} loads.</div>`;
   const opp = {};  // team name -> { t: opponent team, at }
   for (const g of games) {
     if (g.completed || !g.away.key || !g.home.key || !DATA.teams[g.away.key] || !DATA.teams[g.home.key]) continue;  // FBS vs FBS, not played yet
@@ -1605,40 +1693,38 @@ function propBoards(games) {
   }
   const teams = Object.values(DATA.teams);
   const n = teams.length;
-  return PROP_BOARDS.map(([title, table, positions, grp, allowed, allowedRank, what]) => {
-    const vals = teams.map(allowed).filter(v => v != null);
-    const lg = vals.reduce((a, v) => a + v, 0) / (vals.length || 1);
+  return PROP_BOARDS.map(([title, table, positions, grp, allowed, allowedRank, what, stat]) => {
     const rows = [];
     for (const t of teams) {
       const o = opp[t.team];
-      if (!o || allowed(o.t) == null) continue;
-      const f = lg ? allowed(o.t) / lg : 1;
-      if (f <= 1) continue;
+      if (!o) continue;
       const teamGames = t.record.w + t.record.l + t.record.t;
       for (const r of t[table] || []) {
         if (!positions.includes((r.pos || "").toUpperCase())) continue;
         const log = DATA.gameLogs[r.log] || [];
         if (log.filter(hasGroup[grp]).length < teamGames / 2) continue;  // regulars only
-        rows.push({ r, t, o, f, adj: r.ydsG * f });
+        const bp = boardPlayer(t.abbr, r.player);
+        const proj = bp && bp.p ? bp.p[stat] : null;
+        if (proj == null || proj <= r.ydsG) continue;   // the board has him at or under his average, or not playing
+        rows.push({ r, t, o, proj, d: proj - r.ydsG });
       }
     }
-    rows.sort((x, y) => y.adj - x.adj);
-    const body = rows.slice(0, 10).map(({ r, t, o, f, adj }) => `<tr>
+    rows.sort((x, y) => y.proj - x.proj);   // biggest projections first; "vs avg" says how unusual the week is
+    const body = rows.slice(0, 10).map(({ r, t, o, proj, d }) => `<tr>
       <td><span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${table}" data-pos="${escapeHtml(r.pos || "")}" data-name="${escapeHtml(r.player)}">${escapeHtml(r.player)}</button>${injTag(r.log)}</span></td>
       <td>${escapeHtml(t.abbr)} ${o.at ? "@" : "vs"} ${escapeHtml(o.t.abbr)}</td>
       <td class="num">${r.ydsG}</td>
-      <td class="num">${allowed(o.t)} <span class="rk">#${allowedRank(o.t)}</span></td>
-      <td class="num"><span class="tag W">×${f.toFixed(2)}</span></td>
-      <td class="num"><b>${adj.toFixed(1)}</b></td>
+      <td class="num">${allowed(o.t) == null ? "—" : `${allowed(o.t)} <span class="rk">#${allowedRank(o.t)}</span>`}</td>
+      <td class="num"><b>${proj.toFixed(1)}</b></td>
+      <td class="num"><span class="tag W">+${d.toFixed(1)}</span>${proj >= 1.5 * r.ydsG ? `<div class="rk" title="Projected at 1.5 times his season average or more: usually a new starter or a bigger role">new role</div>` : ""}</td>
       ${shareCells(r, table)}
     </tr>`).join("");
     const shareHead = table === "passing" ? "" : table === "rushing" ? `<th class="num" title="Share of the team's carries">Carry %</th>`
       : `<th class="num" title="Share of the team's targets this season, with the last three games under it (arrow when it moved 2 points or more)">Tgt %</th>`;
     return `<div class="table-block">
       <h4>${escapeHtml(title)}</h4>
-      ${body ? `<table><thead><tr><th>Player</th><th>Game</th><th class="num">Avg</th><th class="num" title="${escapeHtml(`Opponent allows ${what}; rank out of ${n}, #1 = fewest`)}">Opp allows</th><th class="num">Matchup</th><th class="num">Adj</th>${shareHead}</tr></thead><tbody>${body}</tbody></table>`
-        : `<div class="empty-note">No favorable matchups in the games shown.</div>`}
-      <p class="bet-note">FBS average allowed: ${lg.toFixed(1)} ${escapeHtml(what)}.${table === "receiving" ? " Tgt % = share of team targets; the figure under it is the last three games." : table === "rushing" ? " Carry % = share of team carries." : ""}</p>
+      ${body ? `<table><thead><tr><th>Player</th><th>Game</th><th class="num">Avg</th><th class="num" title="${escapeHtml(`Opponent allows ${what}, not adjusted for schedule; rank out of ${n}, #1 = fewest`)}">Opp allows</th><th class="num" title="The value board's projection for this game">Board</th><th class="num" title="Board projection minus his season average">vs avg</th>${shareHead}</tr></thead><tbody>${body}</tbody></table>`
+        : `<div class="empty-note">The board has nobody above his average here this week.</div>`}
     </div>`;
   }).join("");
 }

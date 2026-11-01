@@ -345,6 +345,23 @@ a.pdf-btn[hidden] { display: none; }
   font-size: 0.875rem;
   color: var(--text-dim);
 }
+/* the value board's line, bets and links under the header (from fb-value-board's feed) */
+.hero-board {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px;
+  margin-top: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.875rem; color: var(--text-dim);
+}
+.hero-board b { color: var(--text); }
+.vb-lbl { font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.72rem; }
+.vb-bet { white-space: nowrap; color: var(--text); font-weight: 600; padding: 1px 6px; border-radius: 4px; background: rgba(250, 204, 21, 0.16); }
+.vb-none { color: var(--text-dim); }
+.vb-links { margin-left: auto; }
+.vb-links a { color: var(--accent); }
+.gr-board { margin-top: 3px; font-size: 0.74rem; color: var(--text-dim); }
+.gr-board b { color: var(--text); font-weight: 600; }
+.gr-board .vb-bet { font-size: 0.72rem; padding: 0 4px; }
+.prop-note { margin-top: 6px; }
+@media print { .hero-board, .gr-board { display: none !important; } }
 .hero-ref { padding: 8px 4px 0; font-size: 0.78rem; color: var(--text-dim); }
 
 /* ---------- Sections, head to head, betting ---------- */
@@ -371,7 +388,7 @@ a.pdf-btn[hidden] { display: none; }
 .tape-h { padding-top: 0; border-top: 0; font-size: 0.78rem; color: var(--text-dim); }
 .tape .lbl { color: var(--text-dim); }
 .tape .num { text-align: right; }
-.tape .edge b { font-size: 0.9375rem; font-stretch: 68%; font-weight: 700; }
+.tape .edge b { white-space: nowrap; font-size: 0.9375rem; font-stretch: 68%; font-weight: 700; }
 .tape .edge .even { color: var(--text-dim); }
 .rk { color: var(--text-dim); font-size: 0.78rem; }
 .tl { display: flex; justify-content: flex-end; padding-right: 3px; border-right: 1px solid var(--text); }
