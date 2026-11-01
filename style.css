@@ -1296,7 +1296,11 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
 /* team cards: big-play-capped yards per game under Yds/G (data/capped.json) */
 .capd-h, .capd { display: block; font-size: 0.72rem; font-weight: 500; color: var(--text-dim); line-height: 1.2; }
 .capd.amber { color: #f5b942; font-weight: 700; }
-@media print { .capd.amber { color: #b26b00; } }
+@media print {   /* bigger and darker on paper: the screen size is easy to miss on a landscape page */
+  .capd { font-size: 0.9em; color: #444; }
+  .capd.amber { color: #9a4a00; font-weight: 800; }
+  .capd.amber::before { content: "▲ "; font-size: 0.8em; }
+}
 
 /* Betting trends, collapsed by default (renderBetting) */
 .bet-fold > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 14px; }
