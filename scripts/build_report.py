@@ -182,6 +182,7 @@ class Report:
     def __init__(self, D, feed=None, epa=None, capped=None):
         self.D = D
         self.CAP = capped["players"] if capped and capped.get("players") else None
+        self.AMBER = (capped or {}).get("amber") or {}
         self.F = feed["players"] if feed else None
         self.EPA = epa["teams"] if epa and epa.get("teams") else None
         self.T, self.GL, self.LA, self.NT, self.POS_AVG = D.T, D.GL, D.LA, D.NT, D.POS_AVG
@@ -490,6 +491,28 @@ class Report:
             out.append(f'{opp} allows {abs(f - 1) * 100:.0f}% {"more" if f > 1 else "fewer"} {ftxt}')
         return out
 
+    def amber_rows(self, g):
+        """The players the matchup pages color amber (common.js cappedCell): in the team card's
+        Passing, Rushing or Receiving table, 4+ games, and a capped drop at or above the league's
+        90th-percentile line for that table (data/capped.json). [(name, team, kind, yds/G, capped)]."""
+        if not self.CAP or not self.AMBER:
+            return []
+        out = []
+        for side in ("away", "home"):
+            k = g[side]["key"]
+            if not k:
+                continue
+            for sec, kind, word in (("passing", "pass", "pass"), ("rushing", "rush", "rush"), ("receiving", "rec", "rec")):
+                for r in self.T[k].get(sec) or []:
+                    share = (self.CAP.get(r.get("log")) or {}).get(kind)
+                    cut = self.AMBER.get(kind)
+                    if share is None or cut is None or len(self.GL.get(r.get("log"), [])) < 4:
+                        continue
+                    drop = 1 - share
+                    if drop > 0 and drop >= cut:
+                        out.append((r["player"], g[side]["abbr"], word, r["ydsG"], round(r["ydsG"] * share, 1)))
+        return sorted(out, key=lambda a: -(a[3] - a[4]))
+
     def _z(self, side, key, v):
         vals = [t[side][key] for t in self.EPA.values() if t.get(side, {}).get(key) is not None]
         m = st.mean(vals)
@@ -665,10 +688,11 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     def itag(c):
         return f' <span class="inj">{E(c["inj"])}</span>' if c.get("inj") else ""
 
-    def bullets(items, empty):
+    def bullets(items, empty, amb=frozenset()):
         if not items:
             return f'<li class="none"><div class="why">{empty}</div></li>'
-        return "".join(f'<li><span class="pl">{E(c["name"])}</span>{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span><div class="why">{E(c["text"])}</div></li>' for c in items)
+        mark = lambda c: ' <span class="amb" title="Long plays carry more of his average than for 90% of regulars">▲</span>' if (c["name"], c["team"]) in amb else ""
+        return "".join(f'<li><span class="pl">{E(c["name"])}</span>{mark(c)}{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span><div class="why">{E(c["text"])}</div></li>' for c in items)
 
     G = []
     for i, g in enumerate(games, 1):
@@ -677,11 +701,14 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
         if len(read) > 350 and len(good) + len(tough) > 5:   # keep a long game read on one page
             good = good[:4] if len(good) >= len(tough) else good
             tough = tough[:3] if len(good) + len(tough) > 7 else tough
-        G.append(dict(g=g, n=i, good=good, tough=tough, read=read, td=R.td_rows(g)))
+        G.append(dict(g=g, n=i, good=good, tough=tough, read=read, td=R.td_rows(g), amb=R.amber_rows(g)))
 
     cards = []
     for x in G:
         g = x["g"]
+        ambset = frozenset((a[0], a[1]) for a in x["amb"])
+        amb = ("; ".join(f'<b>{E(a[0])}</b> <span class="tag">{E(a[1])}</span> {a[2]} {num(a[3])} → {num(a[4])}' for a in x["amb"][:6])
+               + (f"; and {len(x['amb']) - 6} more" if len(x["amb"]) > 6 else ""))
         _, day, tm = when(g)
         tv = f' · {g["tv"]}' if g["tv"] else ""
         tdw = "; ".join(f'<b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> '
@@ -693,10 +720,11 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
   <div class="body">
     <p class="read"><b>Game read.</b> {E(x["read"])} <span class="qbs">Listed QBs: {E(g["away"]["qb"] or "n/a")} ({E(g["away"]["abbr"])}), {E(g["home"]["qb"] or "n/a")} ({E(g["home"]["abbr"])}).</span></p>
     <div class="cols">
-      <div class="col good"><h3>Good spots</h3><ul>{bullets(x["good"], "No soft matchups here.")}</ul></div>
-      <div class="col tough"><h3>Tough spots</h3><ul>{bullets(x["tough"], "None stand out. The value board has no main producer here well under his average." if R.F is not None else "None stand out. No main producer here faces a top defense against his position.")}</ul></div>
+      <div class="col good"><h3>Good spots</h3><ul>{bullets(x["good"], "No soft matchups here.", ambset)}</ul></div>
+      <div class="col tough"><h3>Tough spots</h3><ul>{bullets(x["tough"], "None stand out. The value board has no main producer here well under his average." if R.F is not None else "None stand out. No main producer here faces a top defense against his position.", ambset)}</ul></div>
     </div>
-    <p class="tdw"><span class="tdl">Touchdown watch</span> {tdw}</p>
+    <p class="tdw"><span class="tdl">Touchdown watch</span> {tdw}</p>{f"""
+    <p class="tdw ambw"><span class="tdl ambl">▲ Long plays</span> {amb} <span class="dim">(yds/G, then capped: every long play counted at the league's 97.5th percentile)</span></p>""" if amb else ""}
   </div></section>''')
 
     # Best Overall Matchups: one per team, players who have played nearly every game
