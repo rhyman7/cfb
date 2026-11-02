@@ -67,6 +67,74 @@ def load_feed(vb, league, season, week):
     return f if f.get("season") == season and f.get("week") == week and f.get("players") else None
 
 
+def load_tracker(vb, league, season):
+    """The value board's TD scorer tracker (docs/feed/td_tracker_<league>.json), or None."""
+    try:
+        t = json.loads((Path(vb) / "docs" / "feed" / f"td_tracker_{league}.json").read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    return t if t.get("season") == season and t.get("weeks") else None
+
+
+def american(x):
+    return "—" if x is None else (f"+{x:.0f}" if x > 0 else f"{x:.0f}")
+
+
+def money(x):
+    return f"+${x:,.2f}" if x > 0 else (f"−${-x:,.2f}" if x < 0 else "$0.00")
+
+
+def tracker_html(T, league_name, week):
+    """The Touchdown tracker page: last finished week's top 10 as cards (board chance, DraftKings and
+    FanDuel prices, the result) and the season as rows of dots."""
+    done = [w for w in T["weeks"] if w["complete"] and w["week"] < week]
+    if not done:
+        return ""
+    last, top = done[-1], T.get("top", 10)
+    cards = []
+    for p in last["players"]:
+        hit = bool(p["scored"])
+        def bk(b, lab):
+            v = p.get(b)
+            return f'<span class="{"tk-best" if p.get("best") == {"dk": "draftkings", "fd": "fanduel"}[b] else ""}">{lab} {american(v)}</span>' if v is not None else ""
+        odds = " ".join(x for x in (bk("dk", "DK"), bk("fd", "FD")) if x) or '<span class="dimc">no price</span>'
+        ret = f'<div class="tk-ret {"w" if (p.get("ret10") or 0) > 0 else ""}">$10 → {money(p["ret10"])}</div>' if p.get("ret10") is not None else ""
+        cards.append(f'<div class="tk-card{" hit" if hit else ""}"><div class="tk-rank">{p["rank"]}</div>'
+                     f'<div class="tk-main"><div class="tk-name">{E(p["name"])}</div><div class="tk-meta">{E(p["team"])} {E(p["pos"])} vs {E(p["opp"])}</div>'
+                     f'<div class="tk-odds">{odds}</div></div>'
+                     f'<div class="tk-side"><div class="tk-pct">{p["chance"] * 100:.0f}%</div><div class="tk-res">{"✓ TD" if hit else "No TD"}</div>{ret}</div></div>')
+    order = [c for i in range(5) for c in (cards[i:i + 1] + cards[i + 5:i + 6])]   # 1-5 down the left, 6-10 down the right
+    rows = "".join(
+        f'<div class="tk-row"><div class="tk-wk">Week {w["week"]}</div><div class="tk-dots">'
+        + "".join(f'<i class="{"on" if q["scored"] else ""}"></i>' for q in w["players"])
+        + f'</div><div class="tk-sum"><b>{w["scored"]}</b> of {len(w["players"])} <span>exp {w["expected"]:.1f}</span></div></div>'
+        for w in done)
+    S, a, b = T["season_total"], T["spots_1_5"], T["spots_6_10"]
+    pct = lambda x: f'{100 * x["scored"] / x["players"]:.0f}%' if x["players"] else "—"
+    epct = lambda x: f'{100 * x["expected"] / x["players"]:.0f}%' if x["players"] else "—"
+    bets = (f'<div class="tk-chip"><b>{money(S["net10"])}</b><div>$10 on each priced pick, at the better of DraftKings and FanDuel ({S["bets"]} bets)</div></div>'
+            if S.get("bets") else "")
+    rebuilt = [w["week"] for w in done if w.get("source") == "rebuilt"]
+    note = ("Each dot is one spot on that week's list, left to right from #1 to #10; green means he scored a rushing or receiving touchdown. "
+            "\"Expected\" adds up the board's chances. Prices are each book's anytime-TD odds before kickoff; the better one is bold. "
+            + (f"Weeks {rebuilt[0]}–{rebuilt[-1]} are rebuilt from the board's projections (the chances weren't saved then)." if rebuilt else ""))
+    return f'''<section class="tdsec tk" id="tdtracker">
+  <div class="kicker">{league_name} · Touchdown tracker</div>
+  <h1 class="h1s">Last week's top {top}: {last["scored"]} scored</h1>
+  <p class="lede">How the {top} likeliest scorers on the Week {last["week"]} list did, and every week this season.</p>
+  <div class="tk-grid">
+    <div><div class="tk-sec">Week {last["week"]} · ranked by the board's TD chance</div><div class="tk-cards">{"".join(order)}</div></div>
+    <div><div class="tk-sec">Season</div>
+      <div class="tk-score"><div class="tk-big">{S["scored"]}<small> / {S["players"]}</small></div><div class="tk-exp">scored<br>expected {S["expected"]:.1f}</div></div>
+      {rows}
+      <div class="tk-chips"><div class="tk-chip"><b>{pct(a)}</b><div>Spots 1–5 scored (expected {epct(a)})</div></div>
+      <div class="tk-chip"><b>{pct(b)}</b><div>Spots 6–10 scored (expected {epct(b)})</div></div>{bets}</div>
+      <p class="tk-note">{note}</p>
+    </div>
+  </div>
+</section>'''
+
+
 def clip(x, a, b):
     return max(a, min(b, x))
 
@@ -605,6 +673,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     D = Data(d)
     D.load_injuries(root / "data" / "injuries.json")
     feed = load_feed(vb or Path(root).parent / "fb-value-board", D.league, d.get("season"), D.week)
+    tracker = load_tracker(vb or Path(root).parent / "fb-value-board", D.league, d.get("season"))
     try:
         epa = json.loads((root / "data" / "epa.json").read_text(encoding="utf-8"))
         epa = epa if epa.get("season") == d.get("season") else None
@@ -823,6 +892,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 {"".join(cards)}
 {best_html}
 {td_html}
+{tracker_html(tracker, league_name, D.week) if tracker else ""}
 </body></html>'''
     (out / "report.html").write_text(doc, encoding="utf-8")
     ids = [g["id"] for g in games]

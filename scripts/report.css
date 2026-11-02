@@ -92,3 +92,39 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 .ambl { background: #fbe9d0; color: #8a4700; }
 .amb { color: #9a4a00; font-weight: 800; font-size: 0.85em; }
 .ambw .dim { color: #6b7078; font-size: 8.4pt; }
+
+/* Touchdown tracker page (tracker_html) */
+.tk-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 24pt; margin-top: 8pt; }
+.tk-sec { font-size: 8.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6f78; font-weight: 700; padding-bottom: 4pt; border-bottom: 1.5pt solid #17181b; margin-bottom: 7pt; }
+.tk-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 5pt 9pt; }
+.tk-card { display: grid; grid-template-columns: 18pt 1fr auto; gap: 7pt; align-items: center; border: 0.75pt solid #d9dbdf; border-left: 3pt solid #c9ccd1; border-radius: 5pt; padding: 5pt 8pt; break-inside: avoid; }
+.tk-card.hit { border-left-color: #2e8b57; background: #f3faf5; }
+.tk-rank { font-size: 15pt; font-weight: 800; font-stretch: 72%; color: #6a6f78; text-align: center; }
+.tk-name { font-weight: 700; font-size: 10.6pt; line-height: 1.1; }
+.tk-meta { font-size: 7.6pt; color: #6a6f78; font-weight: 600; letter-spacing: 0.03em; }
+.tk-odds { font-size: 8.2pt; margin-top: 2.5pt; color: #3a3e45; font-variant-numeric: tabular-nums; }
+.tk-odds span { margin-right: 7pt; white-space: nowrap; }
+.tk-odds .tk-best { font-weight: 800; color: #17181b; }
+.tk-side { text-align: right; }
+.tk-pct { font-size: 12.5pt; font-weight: 800; font-stretch: 72%; }
+.tk-res { font-size: 7.2pt; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #8d9199; }
+.tk-card.hit .tk-res { color: #17603a; }
+.tk-ret { font-size: 7.6pt; color: #94321f; font-weight: 700; white-space: nowrap; }
+.tk-ret.w { color: #17603a; }
+.tk-score { display: flex; align-items: baseline; gap: 10pt; margin: 2pt 0 8pt; }
+.tk-big { font-size: 38pt; font-weight: 800; font-stretch: 70%; line-height: 1; }
+.tk-big small { font-size: 17pt; color: #8d9199; }
+.tk-exp { font-size: 9.6pt; color: #3a3e45; }
+.tk-row { display: grid; grid-template-columns: 42pt 1fr auto; align-items: center; gap: 8pt; padding: 3.8pt 0; border-top: 0.5pt solid #d9dbdf; }
+.tk-wk { font-size: 8pt; font-weight: 700; color: #6a6f78; text-transform: uppercase; letter-spacing: 0.06em; }
+.tk-dots { display: flex; gap: 3.5pt; }
+.tk-dots i { width: 10pt; height: 10pt; border-radius: 50%; border: 1.25pt solid #b9bdc4; display: inline-block; }
+.tk-dots i.on { background: #2e8b57; border-color: #2e8b57; }
+.tk-sum { font-size: 9pt; white-space: nowrap; }
+.tk-sum span { color: #8d9199; margin-left: 4pt; }
+.tk-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 7pt; margin-top: 10pt; }
+.tk-chip { border: 0.75pt solid #d9dbdf; border-radius: 5pt; padding: 6pt 8pt; }
+.tk-chip:nth-child(3) { grid-column: 1 / -1; }
+.tk-chip b { font-size: 14pt; font-stretch: 72%; font-weight: 800; }
+.tk-chip div { font-size: 7.8pt; color: #6a6f78; }
+.tk-note { margin-top: 9pt; font-size: 7.6pt; color: #6a6f78; }
