@@ -88,3 +88,7 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 .tdsec .lede { max-width: 8.6in; font-size: 10.5pt; }
 .tdsec:last-child { break-after: auto; }
 .tdsec:last-child { break-after: auto; }
+.ambw { margin-top: 5pt; padding-top: 5pt; }
+.ambl { background: #fbe9d0; color: #8a4700; }
+.amb { color: #9a4a00; font-weight: 800; font-size: 0.85em; }
+.ambw .dim { color: #6b7078; font-size: 8.4pt; }
