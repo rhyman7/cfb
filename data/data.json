@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T14:44:49.272921+00:00",
+ "generatedAt": "2026-11-02T15:20:30.118731+00:00",
  "season": 2026,
  "throughWeek": 9,
  "gamesCounted": 622,
@@ -2710,7 +2710,7 @@
      "td": 0.75
     }
    },
-   "apRank": 22,
+   "apRank": 24,
    "betting": {
     "ats": {
      "w": 3,
@@ -5634,7 +5634,7 @@
      "td": 0.5
     }
    },
-   "apRank": 7,
+   "apRank": 5,
    "betting": {
     "ats": {
      "w": 8,
@@ -6103,7 +6103,7 @@
      "td": 1.11
     }
    },
-   "apRank": null,
+   "apRank": 18,
    "betting": {
     "ats": {
      "w": 3,
@@ -9446,7 +9446,7 @@
      "td": 1.5
     }
    },
-   "apRank": 17,
+   "apRank": 25,
    "betting": {
     "ats": {
      "w": 4,
@@ -10853,7 +10853,7 @@
      "td": 0.5
     }
    },
-   "apRank": 3,
+   "apRank": 2,
    "betting": {
     "ats": {
      "w": 5,
@@ -12729,7 +12729,7 @@
      "td": 1.0
     }
    },
-   "apRank": 20,
+   "apRank": null,
    "betting": {
     "ats": {
      "w": 4,
@@ -13198,7 +13198,7 @@
      "td": 0.44
     }
    },
-   "apRank": 4,
+   "apRank": 6,
    "betting": {
     "ats": {
      "w": 1,
@@ -13677,7 +13677,7 @@
      "td": 0.25
     }
    },
-   "apRank": 5,
+   "apRank": 4,
    "betting": {
     "ats": {
      "w": 4,
@@ -14146,7 +14146,7 @@
      "td": 1.0
     }
    },
-   "apRank": 9,
+   "apRank": 8,
    "betting": {
     "ats": {
      "w": 6,
@@ -18906,7 +18906,7 @@
      "td": 1.38
     }
    },
-   "apRank": 23,
+   "apRank": 19,
    "betting": {
     "ats": {
      "w": 4,
@@ -23656,7 +23656,7 @@
      "td": 0.62
     }
    },
-   "apRank": null,
+   "apRank": 22,
    "betting": {
     "ats": {
      "w": 4,
@@ -25562,7 +25562,7 @@
      "td": 0.5
     }
    },
-   "apRank": 2,
+   "apRank": 11,
    "betting": {
     "ats": {
      "w": 5,
@@ -26500,7 +26500,7 @@
      "td": 1.38
     }
    },
-   "apRank": 24,
+   "apRank": null,
    "betting": {
     "ats": {
      "w": 5,
@@ -32667,7 +32667,7 @@
      "td": 1.0
     }
    },
-   "apRank": 18,
+   "apRank": 17,
    "betting": {
     "ats": {
      "w": 2,
@@ -33595,7 +33595,7 @@
      "td": 0.5
     }
    },
-   "apRank": 11,
+   "apRank": 10,
    "betting": {
     "ats": {
      "w": 3,
@@ -34074,7 +34074,7 @@
      "td": 0.38
     }
    },
-   "apRank": 8,
+   "apRank": 7,
    "betting": {
     "ats": {
      "w": 5,
@@ -34533,7 +34533,7 @@
      "td": 0.5
     }
    },
-   "apRank": 6,
+   "apRank": 3,
    "betting": {
     "ats": {
      "w": 6,
@@ -37377,7 +37377,7 @@
      "td": 0.25
     }
    },
-   "apRank": 25,
+   "apRank": null,
    "betting": {
     "ats": {
      "w": 4,
@@ -42097,7 +42097,7 @@
      "td": 1.0
     }
    },
-   "apRank": 10,
+   "apRank": 9,
    "betting": {
     "ats": {
      "w": 4,
@@ -50669,7 +50669,7 @@
      "td": 1.0
     }
    },
-   "apRank": null,
+   "apRank": 21,
    "betting": {
     "ats": {
      "w": 4,
@@ -59241,7 +59241,7 @@
      "td": 0.38
     }
    },
-   "apRank": 19,
+   "apRank": null,
    "betting": {
     "ats": {
      "w": 1,
@@ -60209,7 +60209,7 @@
      "td": 1.62
     }
    },
-   "apRank": null,
+   "apRank": 23,
    "betting": {
     "ats": {
      "w": 4,
@@ -65656,8 +65656,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": 12.5,
-   "total": 49.5,
+   "spread": 13.0,
+   "total": 51.0,
    "away": {
     "name": "Ohio",
     "key": "Ohio",
@@ -65699,8 +65699,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -6.5,
-   "total": 45.5,
+   "spread": -7.0,
+   "total": 44.0,
    "away": {
     "name": "Buffalo",
     "key": "Buffalo",
@@ -65742,8 +65742,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": -4.5,
-   "total": 48.5,
+   "spread": -3.0,
+   "total": 49.5,
    "away": {
     "name": "Ball State",
     "key": "Ball State",
@@ -65785,8 +65785,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": 27.5,
-   "total": 51.5,
+   "spread": 25.0,
+   "total": 53.0,
    "away": {
     "name": "Toledo",
     "key": "Toledo",
@@ -65829,7 +65829,7 @@
    "note": "",
    "indoor": true,
    "spread": -1.5,
-   "total": 46.5,
+   "total": 44.5,
    "away": {
     "name": "Central Michigan",
     "key": "Central Michigan",
@@ -65871,8 +65871,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": 6.5,
-   "total": 71.5,
+   "spread": 7.0,
+   "total": 72.0,
    "away": {
     "name": "UTSA",
     "key": "UTSA",
@@ -65914,8 +65914,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": 14.0,
-   "total": 55.5,
+   "spread": 14.5,
+   "total": 57.0,
    "away": {
     "name": "James Madison",
     "key": "James Madison",
@@ -65957,8 +65957,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -6.5,
-   "total": 56.5,
+   "spread": -6.0,
+   "total": 55.0,
    "away": {
     "name": "Virginia Tech",
     "key": "Virginia Tech",
@@ -65972,7 +65972,7 @@
    "home": {
     "name": "SMU",
     "key": "SMU",
-    "rank": 19,
+    "rank": null,
     "record": "6-2",
     "conference": "ACC",
     "score": null,
@@ -66000,8 +66000,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": 1.5,
-   "total": 45.5,
+   "spread": -2.0,
+   "total": 40.0,
    "away": {
     "name": "South Florida",
     "key": "South Florida",
@@ -66043,8 +66043,8 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": 6.0,
-   "total": 48.5,
+   "spread": 4.5,
+   "total": 49.5,
    "away": {
     "name": "Nebraska",
     "key": "Nebraska",
@@ -66086,12 +66086,12 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": 12.5,
-   "total": 43.5,
+   "spread": 10.0,
+   "total": 38.5,
    "away": {
     "name": "New Mexico",
     "key": "New Mexico",
-    "rank": null,
+    "rank": 22,
     "record": "7-1",
     "conference": "Mountain West",
     "score": null,
@@ -66129,8 +66129,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -8.5,
-   "total": 44.5,
+   "spread": -9.5,
+   "total": 43.5,
    "away": {
     "name": "TCU",
     "key": "TCU",
@@ -66144,7 +66144,7 @@
    "home": {
     "name": "Arizona",
     "key": "Arizona",
-    "rank": 22,
+    "rank": 24,
     "record": "6-2",
     "conference": "Big 12",
     "score": null,
@@ -66154,264 +66154,6 @@
    "lineOpen": {
     "spread": -8.5,
     "total": 44.5,
-    "at": "2026-11-01"
-   }
-  },
-  {
-   "id": "401856851",
-   "week": 10,
-   "start": "2026-11-07T05:00Z",
-   "timeTbd": true,
-   "neutral": false,
-   "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "TBD",
-   "completed": false,
-   "venue": "TDECU Stadium",
-   "city": "Houston, TX",
-   "tv": "",
-   "note": "",
-   "indoor": false,
-   "spread": null,
-   "total": null,
-   "away": {
-    "name": "Cincinnati",
-    "key": "Cincinnati",
-    "rank": null,
-    "record": "5-3",
-    "conference": "Big 12",
-    "score": null,
-    "abbr": "CIN",
-    "qb": "JC French IV"
-   },
-   "home": {
-    "name": "Houston",
-    "key": "Houston",
-    "rank": 18,
-    "record": "6-2",
-    "conference": "Big 12",
-    "score": null,
-    "abbr": "HOU",
-    "qb": "Conner Weigman"
-   },
-   "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
-   }
-  },
-  {
-   "id": "401856853",
-   "week": 10,
-   "start": "2026-11-07T05:00Z",
-   "timeTbd": true,
-   "neutral": false,
-   "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "TBD",
-   "completed": false,
-   "venue": "McLane Stadium",
-   "city": "Waco, TX",
-   "tv": "",
-   "note": "",
-   "indoor": false,
-   "spread": null,
-   "total": null,
-   "away": {
-    "name": "Iowa State",
-    "key": "Iowa State",
-    "rank": null,
-    "record": "4-4",
-    "conference": "Big 12",
-    "score": null,
-    "abbr": "ISU",
-    "qb": "Jaylen Raynor"
-   },
-   "home": {
-    "name": "Baylor",
-    "key": "Baylor",
-    "rank": null,
-    "record": "5-3",
-    "conference": "Big 12",
-    "score": null,
-    "abbr": "BAY",
-    "qb": "DJ Lagway"
-   },
-   "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
-   }
-  },
-  {
-   "id": "401858511",
-   "week": 10,
-   "start": "2026-11-07T05:00Z",
-   "timeTbd": true,
-   "neutral": false,
-   "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "TBD",
-   "completed": false,
-   "venue": "Michigan Stadium",
-   "city": "Ann Arbor, MI",
-   "tv": "",
-   "note": "",
-   "indoor": false,
-   "spread": -14.0,
-   "total": 39.5,
-   "away": {
-    "name": "Michigan State",
-    "key": "Michigan State",
-    "rank": null,
-    "record": "2-6",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "MSU",
-    "qb": "Leo Hannan"
-   },
-   "home": {
-    "name": "Michigan",
-    "key": "Michigan",
-    "rank": null,
-    "record": "5-3",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "MICH",
-    "qb": "Tommy Carr"
-   },
-   "lineOpen": {
-    "spread": -14.0,
-    "total": 39.5,
-    "at": "2026-11-01"
-   }
-  },
-  {
-   "id": "401858512",
-   "week": 10,
-   "start": "2026-11-07T05:00Z",
-   "timeTbd": true,
-   "neutral": false,
-   "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "TBD",
-   "completed": false,
-   "venue": "Huntington Bank Stadium",
-   "city": "Minneapolis, MN",
-   "tv": "",
-   "note": "",
-   "indoor": false,
-   "spread": 6.0,
-   "total": 42.5,
-   "away": {
-    "name": "UCLA",
-    "key": "UCLA",
-    "rank": 7,
-    "record": "8-0",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "UCLA",
-    "qb": "Ty Dieffenbach"
-   },
-   "home": {
-    "name": "Minnesota",
-    "key": "Minnesota",
-    "rank": null,
-    "record": "5-3",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "MINN",
-    "qb": "Drake Lindsey"
-   },
-   "lineOpen": {
-    "spread": 6.0,
-    "total": 42.5,
-    "at": "2026-11-01"
-   }
-  },
-  {
-   "id": "401858513",
-   "week": 10,
-   "start": "2026-11-07T05:00Z",
-   "timeTbd": true,
-   "neutral": false,
-   "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "TBD",
-   "completed": false,
-   "venue": "Ryan Field",
-   "city": "Evanston, IL",
-   "tv": "",
-   "note": "",
-   "indoor": false,
-   "spread": -1.5,
-   "total": 42.5,
-   "away": {
-    "name": "Iowa",
-    "key": "Iowa",
-    "rank": null,
-    "record": "6-2",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "IOWA",
-    "qb": "Hank Brown"
-   },
-   "home": {
-    "name": "Northwestern",
-    "key": "Northwestern",
-    "rank": 20,
-    "record": "6-2",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "NU",
-    "qb": "Aidan Chiles"
-   },
-   "lineOpen": {
-    "spread": -1.5,
-    "total": 42.5,
-    "at": "2026-11-01"
-   }
-  },
-  {
-   "id": "401858516",
-   "week": 10,
-   "start": "2026-11-07T05:00Z",
-   "timeTbd": true,
-   "neutral": false,
-   "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "TBD",
-   "completed": false,
-   "venue": "Husky Stadium",
-   "city": "Seattle, WA",
-   "tv": "",
-   "note": "",
-   "indoor": false,
-   "spread": null,
-   "total": null,
-   "away": {
-    "name": "Penn State",
-    "key": "Penn State",
-    "rank": null,
-    "record": "4-4",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "PSU",
-    "qb": "Rocco Becht"
-   },
-   "home": {
-    "name": "Washington",
-    "key": "Washington",
-    "rank": null,
-    "record": "5-3",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "WASH",
-    "qb": "Elijah Brown"
-   },
-   "lineOpen": {
-    "spread": null,
-    "total": null,
     "at": "2026-11-01"
    }
   },
@@ -66430,12 +66172,12 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": 3.5,
-   "total": 48.5,
+   "spread": 3.0,
+   "total": 43.5,
    "away": {
     "name": "Texas",
     "key": "Texas",
-    "rank": 11,
+    "rank": 10,
     "record": "6-2",
     "conference": "SEC",
     "score": null,
@@ -66445,7 +66187,7 @@
    "home": {
     "name": "Missouri",
     "key": "Missouri",
-    "rank": 23,
+    "rank": 19,
     "record": "6-2",
     "conference": "SEC",
     "score": null,
@@ -66473,12 +66215,12 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": -4.5,
-   "total": 48.5,
+   "spread": -5.0,
+   "total": 47.5,
    "away": {
     "name": "BYU",
     "key": "BYU",
-    "rank": 8,
+    "rank": 7,
     "record": "7-1",
     "conference": "Big 12",
     "score": null,
@@ -66488,7 +66230,7 @@
    "home": {
     "name": "Utah",
     "key": "Utah",
-    "rank": 6,
+    "rank": 3,
     "record": "8-0",
     "conference": "Big 12",
     "score": null,
@@ -66502,7 +66244,7 @@
    }
   },
   {
-   "id": "401856854",
+   "id": "401856853",
    "week": 10,
    "start": "2026-11-07T17:00Z",
    "timeTbd": false,
@@ -66511,37 +66253,37 @@
    "status": "STATUS_SCHEDULED",
    "statusDetail": "11/7 - 12:00 PM EST",
    "completed": false,
-   "venue": "Bill Snyder Family Stadium",
-   "city": "Manhattan, KS",
-   "tv": "TNT",
+   "venue": "McLane Stadium",
+   "city": "Waco, TX",
+   "tv": "",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -9.5,
+   "total": 50.0,
    "away": {
-    "name": "Oklahoma State",
-    "key": "Oklahoma State",
-    "rank": 24,
-    "record": "5-3",
-    "conference": "Big 12",
-    "score": null,
-    "abbr": "OKST",
-    "qb": "Drew Mestemaker"
-   },
-   "home": {
-    "name": "Kansas State",
-    "key": "Kansas State",
+    "name": "Iowa State",
+    "key": "Iowa State",
     "rank": null,
     "record": "4-4",
     "conference": "Big 12",
     "score": null,
-    "abbr": "KSU",
-    "qb": "Blake Barnett"
+    "abbr": "ISU",
+    "qb": "Jaylen Raynor"
+   },
+   "home": {
+    "name": "Baylor",
+    "key": "Baylor",
+    "rank": null,
+    "record": "5-3",
+    "conference": "Big 12",
+    "score": null,
+    "abbr": "BAY",
+    "qb": "DJ Lagway"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -9.5,
+    "total": 50.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66559,8 +66301,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": true,
-   "spread": null,
-   "total": null,
+   "spread": 1.5,
+   "total": 50.0,
    "away": {
     "name": "Clemson",
     "key": "Clemson",
@@ -66582,9 +66324,9 @@
     "qb": "Steve Angeli"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 1.5,
+    "total": 50.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66602,8 +66344,8 @@
    "tv": "ACC Network",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 6.5,
+   "total": 52.0,
    "away": {
     "name": "Florida State",
     "key": "Florida State",
@@ -66625,9 +66367,9 @@
     "qb": "Mason McKenzie"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 6.5,
+    "total": 52.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66645,8 +66387,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 7.0,
+   "total": 54.0,
    "away": {
     "name": "North Carolina",
     "key": "North Carolina",
@@ -66668,8 +66410,51 @@
     "qb": "Kalieb Osborne"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
+    "spread": 7.0,
+    "total": 54.0,
+    "at": "2026-11-02"
+   }
+  },
+  {
+   "id": "401858512",
+   "week": 10,
+   "start": "2026-11-07T17:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "11/7 - 12:00 PM EST",
+   "completed": false,
+   "venue": "Huntington Bank Stadium",
+   "city": "Minneapolis, MN",
+   "tv": "Fox",
+   "note": "",
+   "indoor": false,
+   "spread": 6.5,
+   "total": 39.5,
+   "away": {
+    "name": "UCLA",
+    "key": "UCLA",
+    "rank": 5,
+    "record": "8-0",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "UCLA",
+    "qb": "Ty Dieffenbach"
+   },
+   "home": {
+    "name": "Minnesota",
+    "key": "Minnesota",
+    "rank": null,
+    "record": "5-3",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "MINN",
+    "qb": "Drake Lindsey"
+   },
+   "lineOpen": {
+    "spread": 6.0,
+    "total": 42.5,
     "at": "2026-11-01"
    }
   },
@@ -66688,8 +66473,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 1.0,
+   "total": 50.0,
    "away": {
     "name": "Tulsa",
     "key": "Tulsa",
@@ -66711,9 +66496,9 @@
     "qb": "Trace Johnson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 1.0,
+    "total": 50.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66731,8 +66516,8 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 4.5,
+   "total": 50.5,
    "away": {
     "name": "Duke",
     "key": "Duke",
@@ -66754,9 +66539,9 @@
     "qb": "CJ Bailey"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 4.5,
+    "total": 50.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66774,8 +66559,8 @@
    "tv": "BTN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -6.5,
+   "total": 57.5,
    "away": {
     "name": "Maryland",
     "key": "Maryland",
@@ -66797,52 +66582,9 @@
     "qb": "Ryan Browne"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
-   }
-  },
-  {
-   "id": "401858517",
-   "week": 10,
-   "start": "2026-11-07T17:30Z",
-   "timeTbd": false,
-   "neutral": false,
-   "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "11/7 - 12:30 PM EST",
-   "completed": false,
-   "venue": "Camp Randall Stadium",
-   "city": "Madison, WI",
-   "tv": "BTN",
-   "note": "",
-   "indoor": false,
-   "spread": null,
-   "total": null,
-   "away": {
-    "name": "Rutgers",
-    "key": "Rutgers",
-    "rank": null,
-    "record": "2-6",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "RUTG",
-    "qb": "AJ Surace"
-   },
-   "home": {
-    "name": "Wisconsin",
-    "key": "Wisconsin",
-    "rank": 25,
-    "record": "5-3",
-    "conference": "Big Ten",
-    "score": null,
-    "abbr": "WIS",
-    "qb": "Colton Joseph"
-   },
-   "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -6.5,
+    "total": 57.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66860,8 +66602,8 @@
    "tv": "SEC Network",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -10.5,
+   "total": 51.0,
    "away": {
     "name": "Arkansas",
     "key": "Arkansas",
@@ -66883,9 +66625,52 @@
     "qb": "Byrum Brown"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -10.5,
+    "total": 51.0,
+    "at": "2026-11-02"
+   }
+  },
+  {
+   "id": "401856854",
+   "week": 10,
+   "start": "2026-11-07T18:00Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "11/7 - 1:00 PM EST",
+   "completed": false,
+   "venue": "Bill Snyder Family Stadium",
+   "city": "Manhattan, KS",
+   "tv": "TNT",
+   "note": "",
+   "indoor": false,
+   "spread": 3.5,
+   "total": 62.0,
+   "away": {
+    "name": "Oklahoma State",
+    "key": "Oklahoma State",
+    "rank": null,
+    "record": "5-3",
+    "conference": "Big 12",
+    "score": null,
+    "abbr": "OKST",
+    "qb": "Drew Mestemaker"
+   },
+   "home": {
+    "name": "Kansas State",
+    "key": "Kansas State",
+    "rank": null,
+    "record": "4-4",
+    "conference": "Big 12",
+    "score": null,
+    "abbr": "KSU",
+    "qb": "Blake Barnett"
+   },
+   "lineOpen": {
+    "spread": 3.5,
+    "total": 62.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66903,8 +66688,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -7.0,
+   "total": 44.5,
    "away": {
     "name": "Old Dominion",
     "key": "Old Dominion",
@@ -66926,9 +66711,9 @@
     "qb": "Deuce Bailey"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -7.0,
+    "total": 44.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66946,8 +66731,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.5,
+   "total": 55.5,
    "away": {
     "name": "Georgia State",
     "key": "Georgia State",
@@ -66969,9 +66754,9 @@
     "qb": "Malachi Singleton"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -3.5,
+    "total": 55.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -66989,8 +66774,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -7.5,
+   "total": 51.0,
    "away": {
     "name": "Texas A&M",
     "key": "Texas A&M",
@@ -67004,7 +66789,7 @@
    "home": {
     "name": "South Carolina",
     "key": "South Carolina",
-    "rank": null,
+    "rank": 23,
     "record": "5-3",
     "conference": "SEC",
     "score": null,
@@ -67012,9 +66797,9 @@
     "qb": "LaNorris Sellers"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -7.5,
+    "total": 51.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67032,8 +66817,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -14.5,
+   "total": 52.5,
    "away": {
     "name": "UL Monroe",
     "key": "UL Monroe",
@@ -67055,9 +66840,9 @@
     "qb": "Trey Owens"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -14.5,
+    "total": 52.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67075,8 +66860,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 2.0,
+   "total": 56.0,
    "away": {
     "name": "Delaware",
     "key": "Delaware",
@@ -67098,9 +66883,9 @@
     "qb": "Rickie Collins"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 2.0,
+    "total": 56.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67118,12 +66903,12 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": -4.5,
+   "spread": -6.0,
    "total": 52.5,
    "away": {
     "name": "Alabama",
     "key": "Alabama",
-    "rank": 10,
+    "rank": 9,
     "record": "6-2",
     "conference": "SEC",
     "score": null,
@@ -67144,6 +66929,49 @@
     "spread": -4.5,
     "total": 52.5,
     "at": "2026-11-01"
+   }
+  },
+  {
+   "id": "401856851",
+   "week": 10,
+   "start": "2026-11-07T20:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "11/7 - 3:30 PM EST",
+   "completed": false,
+   "venue": "TDECU Stadium",
+   "city": "Houston, TX",
+   "tv": "Fox",
+   "note": "",
+   "indoor": false,
+   "spread": -11.0,
+   "total": 62.5,
+   "away": {
+    "name": "Cincinnati",
+    "key": "Cincinnati",
+    "rank": null,
+    "record": "5-3",
+    "conference": "Big 12",
+    "score": null,
+    "abbr": "CIN",
+    "qb": "JC French IV"
+   },
+   "home": {
+    "name": "Houston",
+    "key": "Houston",
+    "rank": 17,
+    "record": "6-2",
+    "conference": "Big 12",
+    "score": null,
+    "abbr": "HOU",
+    "qb": "Conner Weigman"
+   },
+   "lineOpen": {
+    "spread": -11.0,
+    "total": 62.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67186,7 +67014,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-11-01"
+    "at": "2026-11-02"
    }
   },
   {
@@ -67204,8 +67032,8 @@
    "tv": "CBS",
    "note": "",
    "indoor": false,
-   "spread": -10.5,
-   "total": 45.5,
+   "spread": -7.0,
+   "total": 48.5,
    "away": {
     "name": "Oregon",
     "key": "Oregon",
@@ -67219,7 +67047,7 @@
    "home": {
     "name": "Ohio State",
     "key": "Ohio State",
-    "rank": 2,
+    "rank": 11,
     "record": "6-2",
     "conference": "Big Ten",
     "score": null,
@@ -67230,6 +67058,49 @@
     "spread": -10.5,
     "total": 45.5,
     "at": "2026-11-01"
+   }
+  },
+  {
+   "id": "401858516",
+   "week": 10,
+   "start": "2026-11-07T20:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "11/7 - 3:30 PM EST",
+   "completed": false,
+   "venue": "Husky Stadium",
+   "city": "Seattle, WA",
+   "tv": "FS1",
+   "note": "",
+   "indoor": false,
+   "spread": -2.0,
+   "total": 44.5,
+   "away": {
+    "name": "Penn State",
+    "key": "Penn State",
+    "rank": null,
+    "record": "4-4",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "PSU",
+    "qb": "Rocco Becht"
+   },
+   "home": {
+    "name": "Washington",
+    "key": "Washington",
+    "rank": null,
+    "record": "5-3",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "WASH",
+    "qb": "Elijah Brown"
+   },
+   "lineOpen": {
+    "spread": -2.0,
+    "total": 44.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67247,8 +67118,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -11.0,
+   "total": 47.5,
    "away": {
     "name": "Charlotte",
     "key": "Charlotte",
@@ -67270,9 +67141,9 @@
     "qb": "Ryder Burton"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -11.0,
+    "total": 47.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67290,8 +67161,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -7.5,
+   "total": 53.5,
    "away": {
     "name": "Temple",
     "key": "Temple",
@@ -67313,9 +67184,9 @@
     "qb": "Jackson Gutierrez"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -7.5,
+    "total": 53.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67333,8 +67204,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -10.0,
+   "total": 55.0,
    "away": {
     "name": "Marshall",
     "key": "Marshall",
@@ -67356,9 +67227,9 @@
     "qb": "Max Johnson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -10.0,
+    "total": 55.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67376,8 +67247,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -1.0,
+   "total": 53.0,
    "away": {
     "name": "Western Kentucky",
     "key": "Western Kentucky",
@@ -67399,9 +67270,9 @@
     "qb": "Roman Gagliano"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -1.0,
+    "total": 53.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67419,8 +67290,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.0,
+   "total": 48.5,
    "away": {
     "name": "UCF",
     "key": "UCF",
@@ -67442,9 +67313,9 @@
     "qb": "Cole Ballard"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -3.0,
+    "total": 48.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67462,8 +67333,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -17.0,
+   "total": 64.0,
    "away": {
     "name": "Rice",
     "key": "Rice",
@@ -67485,9 +67356,9 @@
     "qb": "Tayven Jackson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -17.0,
+    "total": 64.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67505,8 +67376,8 @@
    "tv": "MW+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -10.0,
+   "total": 52.0,
    "away": {
     "name": "Northern Illinois",
     "key": "Northern Illinois",
@@ -67528,9 +67399,9 @@
     "qb": "Luke Weaver"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -10.0,
+    "total": 52.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67548,8 +67419,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -4.0,
+   "total": 50.0,
    "away": {
     "name": "Missouri State",
     "key": "Missouri State",
@@ -67571,9 +67442,9 @@
     "qb": "JJ Kohl"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -4.0,
+    "total": 50.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67591,8 +67462,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 5.5,
+   "total": 47.5,
    "away": {
     "name": "Louisiana Tech",
     "key": "Louisiana Tech",
@@ -67614,9 +67485,9 @@
     "qb": "Tucker Kilcrease"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 5.5,
+    "total": 47.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67634,8 +67505,8 @@
    "tv": "SEC Network",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.0,
+   "total": 48.5,
    "away": {
     "name": "Vanderbilt",
     "key": "Vanderbilt",
@@ -67657,9 +67528,52 @@
     "qb": "AJ Swann"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -3.0,
+    "total": 48.5,
+    "at": "2026-11-02"
+   }
+  },
+  {
+   "id": "401858517",
+   "week": 10,
+   "start": "2026-11-07T21:15Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "11/7 - 4:15 PM EST",
+   "completed": false,
+   "venue": "Camp Randall Stadium",
+   "city": "Madison, WI",
+   "tv": "BTN",
+   "note": "",
+   "indoor": false,
+   "spread": -17.0,
+   "total": 45.5,
+   "away": {
+    "name": "Rutgers",
+    "key": "Rutgers",
+    "rank": null,
+    "record": "2-6",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "RUTG",
+    "qb": "AJ Surace"
+   },
+   "home": {
+    "name": "Wisconsin",
+    "key": "Wisconsin",
+    "rank": null,
+    "record": "5-3",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "WIS",
+    "qb": "Colton Joseph"
+   },
+   "lineOpen": {
+    "spread": -17.0,
+    "total": 45.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67677,8 +67591,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -9.5,
+   "total": 58.0,
    "away": {
     "name": "South Alabama",
     "key": "South Alabama",
@@ -67700,9 +67614,9 @@
     "qb": "Lunch Winfield"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -9.5,
+    "total": 58.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67720,8 +67634,8 @@
    "tv": "USA Net",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 18.0,
+   "total": 68.5,
    "away": {
     "name": "Boise State",
     "key": "Boise State",
@@ -67743,9 +67657,9 @@
     "qb": "Hauss Hejny"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 18.0,
+    "total": 68.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67763,12 +67677,12 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -5.5,
-   "total": 50.5,
+   "spread": -6.5,
+   "total": 51.0,
    "away": {
     "name": "Kentucky",
     "key": "Kentucky",
-    "rank": 9,
+    "rank": 8,
     "record": "7-1",
     "conference": "SEC",
     "score": null,
@@ -67806,8 +67720,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -16.5,
+   "total": 48.0,
    "away": {
     "name": "Sam Houston",
     "key": "Sam Houston",
@@ -67829,9 +67743,9 @@
     "qb": "Caden Creel"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -16.5,
+    "total": 48.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67849,12 +67763,12 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": 3.0,
+   "spread": 3.5,
    "total": 56.5,
    "away": {
     "name": "Georgia",
     "key": "Georgia",
-    "rank": 3,
+    "rank": 2,
     "record": "7-1",
     "conference": "SEC",
     "score": null,
@@ -67892,8 +67806,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -4.0,
+   "total": 49.0,
    "away": {
     "name": "Colorado",
     "key": "Colorado",
@@ -67915,9 +67829,9 @@
     "qb": "Jake Fette"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -4.0,
+    "total": 49.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67935,8 +67849,8 @@
    "tv": "ACC Network",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 14.5,
+   "total": 60.5,
    "away": {
     "name": "Louisville",
     "key": "Louisville",
@@ -67958,9 +67872,9 @@
     "qb": "Alberto Mendoza"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 14.5,
+    "total": 60.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -67978,8 +67892,8 @@
    "tv": "NBC",
    "note": "",
    "indoor": false,
-   "spread": -3.5,
-   "total": 55.5,
+   "spread": -5.5,
+   "total": 57.5,
    "away": {
     "name": "Miami",
     "key": "Miami",
@@ -67993,7 +67907,7 @@
    "home": {
     "name": "Notre Dame",
     "key": "Notre Dame",
-    "rank": 5,
+    "rank": 4,
     "record": "7-1",
     "conference": "FBS Indep.",
     "score": null,
@@ -68003,6 +67917,92 @@
    "lineOpen": {
     "spread": -3.5,
     "total": 55.5,
+    "at": "2026-11-01"
+   }
+  },
+  {
+   "id": "401858511",
+   "week": 10,
+   "start": "2026-11-08T00:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "11/7 - 7:30 PM EST",
+   "completed": false,
+   "venue": "Michigan Stadium",
+   "city": "Ann Arbor, MI",
+   "tv": "Peacock",
+   "note": "",
+   "indoor": false,
+   "spread": -13.0,
+   "total": 39.5,
+   "away": {
+    "name": "Michigan State",
+    "key": "Michigan State",
+    "rank": null,
+    "record": "2-6",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "MSU",
+    "qb": "Leo Hannan"
+   },
+   "home": {
+    "name": "Michigan",
+    "key": "Michigan",
+    "rank": null,
+    "record": "5-3",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "MICH",
+    "qb": "Tommy Carr"
+   },
+   "lineOpen": {
+    "spread": -14.0,
+    "total": 39.5,
+    "at": "2026-11-01"
+   }
+  },
+  {
+   "id": "401858513",
+   "week": 10,
+   "start": "2026-11-08T00:30Z",
+   "timeTbd": false,
+   "neutral": false,
+   "conferenceGame": true,
+   "status": "STATUS_SCHEDULED",
+   "statusDetail": "11/7 - 7:30 PM EST",
+   "completed": false,
+   "venue": "Ryan Field",
+   "city": "Evanston, IL",
+   "tv": "Fox",
+   "note": "",
+   "indoor": false,
+   "spread": -2.5,
+   "total": 44.5,
+   "away": {
+    "name": "Iowa",
+    "key": "Iowa",
+    "rank": 21,
+    "record": "6-2",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "IOWA",
+    "qb": "Hank Brown"
+   },
+   "home": {
+    "name": "Northwestern",
+    "key": "Northwestern",
+    "rank": null,
+    "record": "6-2",
+    "conference": "Big Ten",
+    "score": null,
+    "abbr": "NU",
+    "qb": "Aidan Chiles"
+   },
+   "lineOpen": {
+    "spread": -1.5,
+    "total": 42.5,
     "at": "2026-11-01"
    }
   },
@@ -68021,8 +68021,8 @@
    "tv": "CBS",
    "note": "",
    "indoor": false,
-   "spread": -5.5,
-   "total": 50.5,
+   "spread": -3.5,
+   "total": 47.5,
    "away": {
     "name": "Air Force",
     "key": "Air Force",
@@ -68064,8 +68064,8 @@
    "tv": "SEC Network",
    "note": "",
    "indoor": false,
-   "spread": -5.5,
-   "total": 48.5,
+   "spread": -7.0,
+   "total": 45.5,
    "away": {
     "name": "Oklahoma",
     "key": "Oklahoma",
@@ -68079,7 +68079,7 @@
    "home": {
     "name": "Florida",
     "key": "Florida",
-    "rank": 17,
+    "rank": 25,
     "record": "5-3",
     "conference": "SEC",
     "score": null,
@@ -68107,8 +68107,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 17.0,
+   "total": 47.0,
    "away": {
     "name": "Liberty",
     "key": "Liberty",
@@ -68130,9 +68130,9 @@
     "qb": "Adam Damante"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 17.0,
+    "total": 47.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -68150,8 +68150,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -17.0,
+   "total": 63.0,
    "away": {
     "name": "West Virginia",
     "key": "West Virginia",
@@ -68173,9 +68173,9 @@
     "qb": "Thomas Castellanos"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -17.0,
+    "total": 63.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -68193,8 +68193,8 @@
    "tv": "USA Net",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 3.0,
+   "total": 42.0,
    "away": {
     "name": "Fresno State",
     "key": "Fresno State",
@@ -68216,9 +68216,9 @@
     "qb": "McCae Hillstead"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 3.0,
+    "total": 42.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -68236,8 +68236,8 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 9.5,
+   "total": 48.5,
    "away": {
     "name": "Hawai'i",
     "key": "Hawai'i",
@@ -68259,9 +68259,9 @@
     "qb": "EJ Colson Jr."
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": 9.5,
+    "total": 48.5,
+    "at": "2026-11-02"
    }
   },
   {
@@ -68279,8 +68279,8 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -6.5,
+   "total": 71.0,
    "away": {
     "name": "Texas State",
     "key": "Texas State",
@@ -68302,9 +68302,9 @@
     "qb": "Braden Atkinson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -6.5,
+    "total": 71.0,
+    "at": "2026-11-02"
    }
   },
   {
@@ -68322,8 +68322,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": true,
-   "spread": null,
-   "total": null,
+   "spread": -7.0,
+   "total": 48.0,
    "away": {
     "name": "Wyoming",
     "key": "Wyoming",
@@ -68345,9 +68345,9 @@
     "qb": "Jackson Arnold"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-01"
+    "spread": -7.0,
+    "total": 48.0,
+    "at": "2026-11-02"
    }
   }
  ],
