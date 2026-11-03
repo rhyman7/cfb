@@ -19,6 +19,10 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   change", and merge it yourself once they pass (squash, delete the branch). Then tell Ryan in
   a line or two what went live, with the PR link. If a check fails, don't merge: fix it, or
   leave the PR open and tell Ryan why.
+- **Branches.** The repo deletes a pull request's branch when it merges (Settings, Nov 3,
+  2026). For leftovers, run the **Delete merged branches** Action (`delete-merged-branches.yml`)
+  by hand: dry run first (the default), then untick it. It only deletes branches with nothing
+  that isn't on `main`, never one with an open pull request.
 - **After merging**, confirm the Pages deploy for the merge commit succeeded and load the
   live pages you changed. If something broke, revert right away (a revert PR, merged the same
   way) and tell Ryan.
