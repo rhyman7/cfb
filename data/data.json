@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T15:33:54.514614+00:00",
+ "generatedAt": "2026-11-03T14:37:21.446032+00:00",
  "season": 2026,
  "throughWeek": 9,
  "gamesCounted": 622,
@@ -365,7 +365,7 @@
      "td": 0.12
     },
     "te": {
-     "rank": 118,
+     "rank": 119,
      "yds": 43.8,
      "td": 0.25
     },
@@ -2241,8 +2241,8 @@
      "td": 0.0
     },
     "te": {
-     "rank": 54,
-     "yds": 29.2,
+     "rank": 47,
+     "yds": 28.2,
      "td": 0.25
     },
     "wr": {
@@ -3169,7 +3169,7 @@
      "td": 0.11
     },
     "te": {
-     "rank": 51,
+     "rank": 52,
      "yds": 28.8,
      "td": 0.11
     },
@@ -3668,7 +3668,7 @@
      "td": 0.22
     },
     "te": {
-     "rank": 123,
+     "rank": 124,
      "yds": 45.4,
      "td": 0.44
     },
@@ -4157,7 +4157,7 @@
      "td": 0.22
     },
     "te": {
-     "rank": 53,
+     "rank": 54,
      "yds": 28.9,
      "td": 0.33
     },
@@ -16970,7 +16970,7 @@
      "td": 0.25
     },
     "te": {
-     "rank": 116,
+     "rank": 117,
      "yds": 43.0,
      "td": 0.62
     },
@@ -21271,7 +21271,7 @@
      "td": 0.38
     },
     "te": {
-     "rank": 117,
+     "rank": 118,
      "yds": 43.2,
      "td": 0.12
     },
@@ -23157,7 +23157,7 @@
      "td": 0.12
     },
     "te": {
-     "rank": 49,
+     "rank": 50,
      "yds": 28.8,
      "td": 0.38
     },
@@ -29364,7 +29364,7 @@
      "td": 0.0
     },
     "te": {
-     "rank": 121,
+     "rank": 122,
      "yds": 45.1,
      "td": 0.33
     },
@@ -31270,7 +31270,7 @@
      "td": 0.0
     },
     "te": {
-     "rank": 52,
+     "rank": 53,
      "yds": 28.9,
      "td": 0.38
     },
@@ -33585,7 +33585,7 @@
      "td": 0.0
     },
     "te": {
-     "rank": 47,
+     "rank": 48,
      "yds": 28.4,
      "td": 0.25
     },
@@ -40231,8 +40231,8 @@
      "td": 0.0
     },
     "te": {
-     "rank": 124,
-     "yds": 46.1,
+     "rank": 116,
+     "yds": 41.8,
      "td": 0.5
     },
     "wr": {
@@ -46847,7 +46847,7 @@
      "td": 0.12
     },
     "te": {
-     "rank": 120,
+     "rank": 121,
      "yds": 44.4,
      "td": 0.12
     },
@@ -49701,7 +49701,7 @@
      "td": 0.0
     },
     "te": {
-     "rank": 48,
+     "rank": 49,
      "yds": 28.5,
      "td": 0.38
     },
@@ -53084,7 +53084,7 @@
      "td": 0.0
     },
     "te": {
-     "rank": 54,
+     "rank": 55,
      "yds": 29.2,
      "td": 0.25
     },
@@ -54940,7 +54940,7 @@
      "td": 0.12
     },
     "te": {
-     "rank": 122,
+     "rank": 123,
      "yds": 45.1,
      "td": 0.62
     },
@@ -59730,7 +59730,7 @@
      "td": 0.38
     },
     "te": {
-     "rank": 49,
+     "rank": 50,
      "yds": 28.8,
      "td": 0.25
     },
@@ -62554,7 +62554,7 @@
      "td": 0.12
     },
     "te": {
-     "rank": 119,
+     "rank": 120,
      "yds": 43.9,
      "td": 0.38
     },
@@ -65656,7 +65656,7 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": 13.0,
+   "spread": 14.0,
    "total": 51.0,
    "away": {
     "name": "Ohio",
@@ -65699,8 +65699,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -7.0,
-   "total": 44.0,
+   "spread": -6.0,
+   "total": 44.5,
    "away": {
     "name": "Buffalo",
     "key": "Buffalo",
@@ -65786,7 +65786,7 @@
    "note": "",
    "indoor": false,
    "spread": 25.0,
-   "total": 53.0,
+   "total": 52.5,
    "away": {
     "name": "Toledo",
     "key": "Toledo",
@@ -65828,8 +65828,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": true,
-   "spread": -1.5,
-   "total": 44.5,
+   "spread": -1.0,
+   "total": 44.0,
    "away": {
     "name": "Central Michigan",
     "key": "Central Michigan",
@@ -65872,7 +65872,7 @@
    "note": "",
    "indoor": false,
    "spread": 7.0,
-   "total": 72.0,
+   "total": 72.5,
    "away": {
     "name": "UTSA",
     "key": "UTSA",
@@ -65915,7 +65915,7 @@
    "note": "",
    "indoor": false,
    "spread": 14.5,
-   "total": 57.0,
+   "total": 58.0,
    "away": {
     "name": "James Madison",
     "key": "James Madison",
@@ -65958,7 +65958,7 @@
    "note": "",
    "indoor": false,
    "spread": -6.0,
-   "total": 55.0,
+   "total": 55.5,
    "away": {
     "name": "Virginia Tech",
     "key": "Virginia Tech",
@@ -66001,7 +66001,7 @@
    "note": "",
    "indoor": false,
    "spread": -2.0,
-   "total": 40.0,
+   "total": 39.5,
    "away": {
     "name": "South Florida",
     "key": "South Florida",
@@ -66044,7 +66044,7 @@
    "note": "",
    "indoor": false,
    "spread": 4.5,
-   "total": 49.5,
+   "total": 50.0,
    "away": {
     "name": "Nebraska",
     "key": "Nebraska",
@@ -66086,7 +66086,7 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": 10.0,
+   "spread": 9.5,
    "total": 38.5,
    "away": {
     "name": "New Mexico",
@@ -66129,8 +66129,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -9.5,
-   "total": 43.5,
+   "spread": -8.0,
+   "total": 43.0,
    "away": {
     "name": "TCU",
     "key": "TCU",
@@ -66215,8 +66215,8 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": -5.0,
-   "total": 47.5,
+   "spread": -5.5,
+   "total": 49.0,
    "away": {
     "name": "BYU",
     "key": "BYU",
@@ -66258,8 +66258,8 @@
    "tv": "",
    "note": "",
    "indoor": false,
-   "spread": -9.5,
-   "total": 50.0,
+   "spread": -10.0,
+   "total": 50.5,
    "away": {
     "name": "Iowa State",
     "key": "Iowa State",
@@ -66301,7 +66301,7 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": true,
-   "spread": 1.5,
+   "spread": 2.5,
    "total": 50.0,
    "away": {
     "name": "Clemson",
@@ -66344,8 +66344,8 @@
    "tv": "ACC Network",
    "note": "",
    "indoor": false,
-   "spread": 6.5,
-   "total": 52.0,
+   "spread": 7.0,
+   "total": 51.5,
    "away": {
     "name": "Florida State",
     "key": "Florida State",
@@ -66388,7 +66388,7 @@
    "note": "",
    "indoor": false,
    "spread": 7.0,
-   "total": 54.0,
+   "total": 55.0,
    "away": {
     "name": "North Carolina",
     "key": "North Carolina",
@@ -66430,7 +66430,7 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": 6.5,
+   "spread": 5.5,
    "total": 39.5,
    "away": {
     "name": "UCLA",
@@ -66473,7 +66473,7 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": 1.0,
+   "spread": 1.5,
    "total": 50.0,
    "away": {
     "name": "Tulsa",
@@ -66517,7 +66517,7 @@
    "note": "",
    "indoor": false,
    "spread": 4.5,
-   "total": 50.5,
+   "total": 51.5,
    "away": {
     "name": "Duke",
     "key": "Duke",
@@ -66560,7 +66560,7 @@
    "note": "",
    "indoor": false,
    "spread": -6.5,
-   "total": 57.5,
+   "total": 57.0,
    "away": {
     "name": "Maryland",
     "key": "Maryland",
@@ -66603,7 +66603,7 @@
    "note": "",
    "indoor": false,
    "spread": -10.5,
-   "total": 51.0,
+   "total": 52.5,
    "away": {
     "name": "Arkansas",
     "key": "Arkansas",
@@ -66645,7 +66645,7 @@
    "tv": "TNT",
    "note": "",
    "indoor": false,
-   "spread": 3.5,
+   "spread": 4.0,
    "total": 62.0,
    "away": {
     "name": "Oklahoma State",
@@ -66689,7 +66689,7 @@
    "note": "",
    "indoor": false,
    "spread": -7.0,
-   "total": 44.5,
+   "total": 44.0,
    "away": {
     "name": "Old Dominion",
     "key": "Old Dominion",
@@ -66731,7 +66731,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -3.5,
+   "spread": -5.0,
    "total": 55.5,
    "away": {
     "name": "Georgia State",
@@ -66774,7 +66774,7 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -7.5,
+   "spread": -7.0,
    "total": 51.0,
    "away": {
     "name": "Texas A&M",
@@ -66818,7 +66818,7 @@
    "note": "",
    "indoor": false,
    "spread": -14.5,
-   "total": 52.5,
+   "total": 53.0,
    "away": {
     "name": "UL Monroe",
     "key": "UL Monroe",
@@ -66861,7 +66861,7 @@
    "note": "",
    "indoor": false,
    "spread": 2.0,
-   "total": 56.0,
+   "total": 55.5,
    "away": {
     "name": "Delaware",
     "key": "Delaware",
@@ -66903,7 +66903,7 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": -6.0,
+   "spread": -5.5,
    "total": 52.5,
    "away": {
     "name": "Alabama",
@@ -66947,7 +66947,7 @@
    "note": "",
    "indoor": false,
    "spread": -11.0,
-   "total": 62.5,
+   "total": 62.0,
    "away": {
     "name": "Cincinnati",
     "key": "Cincinnati",
@@ -67014,7 +67014,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-11-02"
+    "at": "2026-11-03"
    }
   },
   {
@@ -67033,7 +67033,7 @@
    "note": "",
    "indoor": false,
    "spread": -7.0,
-   "total": 48.5,
+   "total": 46.5,
    "away": {
     "name": "Oregon",
     "key": "Oregon",
@@ -67075,7 +67075,7 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": -2.0,
+   "spread": -2.5,
    "total": 44.5,
    "away": {
     "name": "Penn State",
@@ -67118,7 +67118,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -11.0,
+   "spread": -10.0,
    "total": 47.5,
    "away": {
     "name": "Charlotte",
@@ -67162,7 +67162,7 @@
    "note": "",
    "indoor": false,
    "spread": -7.5,
-   "total": 53.5,
+   "total": 54.5,
    "away": {
     "name": "Temple",
     "key": "Temple",
@@ -67204,7 +67204,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -10.0,
+   "spread": -10.5,
    "total": 55.0,
    "away": {
     "name": "Marshall",
@@ -67419,7 +67419,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -4.0,
+   "spread": -5.0,
    "total": 50.0,
    "away": {
     "name": "Missouri State",
@@ -67462,7 +67462,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": 5.5,
+   "spread": 4.5,
    "total": 47.5,
    "away": {
     "name": "Louisiana Tech",
@@ -67549,7 +67549,7 @@
    "note": "",
    "indoor": false,
    "spread": -17.0,
-   "total": 45.5,
+   "total": 46.0,
    "away": {
     "name": "Rutgers",
     "key": "Rutgers",
@@ -67591,8 +67591,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -9.5,
-   "total": 58.0,
+   "spread": -8.5,
+   "total": 57.5,
    "away": {
     "name": "South Alabama",
     "key": "South Alabama",
@@ -67634,7 +67634,7 @@
    "tv": "USA Net",
    "note": "",
    "indoor": false,
-   "spread": 18.0,
+   "spread": 17.5,
    "total": 68.5,
    "away": {
     "name": "Boise State",
@@ -67678,7 +67678,7 @@
    "note": "",
    "indoor": false,
    "spread": -6.5,
-   "total": 51.0,
+   "total": 50.5,
    "away": {
     "name": "Kentucky",
     "key": "Kentucky",
@@ -67720,7 +67720,7 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": -16.5,
+   "spread": -17.0,
    "total": 48.0,
    "away": {
     "name": "Sam Houston",
@@ -67806,7 +67806,7 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": -4.0,
+   "spread": -3.0,
    "total": 49.0,
    "away": {
     "name": "Colorado",
@@ -67850,7 +67850,7 @@
    "note": "",
    "indoor": false,
    "spread": 14.5,
-   "total": 60.5,
+   "total": 61.0,
    "away": {
     "name": "Louisville",
     "key": "Louisville",
@@ -67935,8 +67935,8 @@
    "tv": "Peacock",
    "note": "",
    "indoor": false,
-   "spread": -13.0,
-   "total": 39.5,
+   "spread": -13.5,
+   "total": 40.0,
    "away": {
     "name": "Michigan State",
     "key": "Michigan State",
@@ -67979,7 +67979,7 @@
    "note": "",
    "indoor": false,
    "spread": -2.5,
-   "total": 44.5,
+   "total": 45.5,
    "away": {
     "name": "Iowa",
     "key": "Iowa",
@@ -68021,8 +68021,8 @@
    "tv": "CBS",
    "note": "",
    "indoor": false,
-   "spread": -3.5,
-   "total": 47.5,
+   "spread": -3.0,
+   "total": 46.0,
    "away": {
     "name": "Air Force",
     "key": "Air Force",
@@ -68064,7 +68064,7 @@
    "tv": "SEC Network",
    "note": "",
    "indoor": false,
-   "spread": -7.0,
+   "spread": -6.0,
    "total": 45.5,
    "away": {
     "name": "Oklahoma",
@@ -68108,7 +68108,7 @@
    "note": "",
    "indoor": false,
    "spread": 17.0,
-   "total": 47.0,
+   "total": 46.0,
    "away": {
     "name": "Liberty",
     "key": "Liberty",
@@ -68151,7 +68151,7 @@
    "note": "",
    "indoor": false,
    "spread": -17.0,
-   "total": 63.0,
+   "total": 65.0,
    "away": {
     "name": "West Virginia",
     "key": "West Virginia",
@@ -68193,7 +68193,7 @@
    "tv": "USA Net",
    "note": "",
    "indoor": false,
-   "spread": 3.0,
+   "spread": 2.5,
    "total": 42.0,
    "away": {
     "name": "Fresno State",
@@ -68280,7 +68280,7 @@
    "note": "",
    "indoor": false,
    "spread": -6.5,
-   "total": 71.0,
+   "total": 72.0,
    "away": {
     "name": "Texas State",
     "key": "Texas State",
@@ -68322,8 +68322,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": true,
-   "spread": -7.0,
-   "total": 48.0,
+   "spread": -6.0,
+   "total": 48.5,
    "away": {
     "name": "Wyoming",
     "key": "Wyoming",
@@ -70243,7 +70243,7 @@
   "Central Michigan": [{"w":1,"opp":"UNM","at":true,"res":"L 7-38","espnId":"401864498","pass":{"n":"Jadyn Glasser","yds":16,"td":0,"cmp":4,"att":10},"rush":{"n":"Angel Flores","yds":27,"td":0,"car":10},"rec":{"n":"Nasir Williams","yds":11,"td":0,"rec":1},"allowed":{"pass":159,"rush":205,"passers":[{"n":"Luke Moga","pos":"QB","yds":116,"cmp":13,"att":17},{"n":"Toa Fa'avae","pos":"QB","yds":43,"cmp":4,"att":8}],"rushers":[{"n":"Scottre Humphrey","pos":"RB","yds":64,"car":13},{"n":"Kiefer Sibley","pos":"RB","yds":45,"car":8},{"n":"Toa Fa'avae","pos":"QB","yds":45,"car":7},{"n":"Darrion Bowers","pos":"RB","yds":21,"car":2},{"n":"James Laubstein","pos":"QB","yds":18,"car":6},{"n":"Cameron Mathews","pos":"RB","yds":13,"car":5},{"n":"Luke Moga","pos":"QB","yds":-1,"car":3}]}},{"w":2,"opp":"COLG","res":"W 13-10","espnId":"401866415","pass":{"n":"Angel Flores","yds":57,"td":0,"cmp":7,"att":13},"rush":{"n":"Angel Flores","yds":122,"td":1,"car":22},"rec":{"n":"Vaughn Blue","yds":29,"td":0,"rec":3},"allowed":{"pass":124,"rush":95,"passers":[{"n":"Jake Stearney","pos":"QB","yds":124,"cmp":16,"att":31}],"rushers":[{"n":"Danny Shaban","pos":"RB","yds":87,"car":22},{"n":"Jake Stearney","pos":"QB","yds":16,"car":6},{"n":"O'Shea Faison","pos":"RB","yds":2,"car":2}]}},{"w":3,"opp":"WYO","res":"W 24-10","espnId":"401864508","pass":{"n":"Angel Flores","yds":32,"td":0,"cmp":4,"att":7},"rush":{"n":"Angel Flores","yds":163,"td":2,"car":28},"rec":{"n":"Shawn Foster II","yds":13,"td":0,"rec":1},"allowed":{"pass":180,"rush":162,"passers":[{"n":"Tyler Hughes","pos":"QB","yds":173,"cmp":14,"att":30},{"n":"Bart Edmiston","pos":"P","yds":7,"cmp":1,"att":1}],"rushers":[{"n":"Tyler Hughes","pos":"QB","yds":78,"car":10},{"n":"Markell Holman","pos":"RB","yds":38,"car":9},{"n":"Samuel Harris","pos":"RB","yds":23,"car":4},{"n":"Jake Wilson","pos":"TE","yds":20,"car":1},{"n":"Eric Richardson","pos":"WR","yds":4,"car":1},{"n":"Nico Hamilton","pos":"RB","yds":2,"car":1},{"n":"Deion DeBlanc","pos":"WR","yds":-1,"car":1}]}},{"w":4,"opp":"MIA","at":true,"res":"L 3-52","espnId":"401858238","pass":{"n":"Jadyn Glasser","yds":88,"td":0,"cmp":13,"att":15},"rush":{"n":"Nick Woodford","yds":21,"td":0,"car":6},"rec":{"n":"Tayte Vanderleest","yds":24,"td":0,"rec":1},"allowed":{"pass":371,"rush":201,"passers":[{"n":"Darian Mensah","pos":"QB","yds":338,"cmp":23,"att":27},{"n":"Luke Nickel","pos":"QB","yds":33,"cmp":4,"att":7}],"rushers":[{"n":"Chris Wheatley-Humphrey","pos":"RB","yds":104,"car":11},{"n":"Girard Pringle Jr.","pos":"RB","yds":38,"car":7},{"n":"Javian Mallory","pos":"RB","yds":30,"car":5},{"n":"Darian Mensah","pos":"QB","yds":21,"car":4},{"n":"Jordan Lyle","pos":"RB","yds":16,"car":6},{"n":"Luke Nickel","pos":"QB","yds":-8,"car":1}]}},{"w":5,"opp":"AKR","res":"W 41-17","espnId":"401866430","pass":{"n":"Angel Flores","yds":78,"td":1,"cmp":7,"att":14},"rush":{"n":"Angel Flores","yds":154,"td":1,"car":18},"rec":{"n":"Langston Lewis","yds":71,"td":1,"rec":1},"allowed":{"pass":180,"rush":160,"passers":[{"n":"Brayden Roggow","pos":"QB","yds":180,"cmp":15,"att":32}],"rushers":[{"n":"Jordan Gant","pos":"RB","yds":102,"car":17},{"n":"Sean Patrick","pos":"RB","yds":31,"car":6},{"n":"Marquese Williams","pos":"RB","yds":17,"car":3},{"n":"Kyan Mason","pos":"WR","yds":11,"car":1},{"n":"Taven Curry","pos":"RB","yds":3,"car":1},{"n":"Brayden Roggow","pos":"QB","yds":-4,"car":8}]}},{"w":6,"opp":"OHIO","at":true,"res":"L 14-31","espnId":"401866438","pass":{"n":"Angel Flores","yds":112,"td":0,"cmp":14,"att":20},"rush":{"n":"Nick Woodford","yds":27,"td":1,"car":3},"rec":{"n":"Braylen Naves","yds":56,"td":0,"rec":4},"allowed":{"pass":158,"rush":245,"passers":[{"n":"Nick Poulos","pos":"QB","yds":158,"cmp":11,"att":18}],"rushers":[{"n":"Duncan Brune","pos":"RB","yds":91,"car":16},{"n":"Victor Rosa","pos":"RB","yds":70,"car":9},{"n":"Nick Poulos","pos":"QB","yds":52,"car":16},{"n":"Irving Brown","pos":"RB","yds":25,"car":5},{"n":"Mike Taylor Jr.","pos":"RB","yds":7,"car":4}]}},{"w":7,"opp":"WMU","res":"L 14-21","espnId":"401866443","pass":{"n":"Angel Flores","yds":162,"td":1,"cmp":14,"att":25},"rush":{"n":"Angel Flores","yds":117,"td":0,"car":31},"rec":{"n":"Langston Lewis","yds":74,"td":0,"rec":4},"allowed":{"pass":48,"rush":224,"passers":[{"n":"Broc Lowry","pos":"QB","yds":48,"cmp":5,"att":8}],"rushers":[{"n":"Jalen Buckley","pos":"RB","yds":150,"car":24},{"n":"Lolo Mataele","pos":"RB","yds":60,"car":13},{"n":"Broc Lowry","pos":"QB","yds":16,"car":7},{"n":"Emazon Littlejohn","pos":"WR","yds":-2,"car":1}]}},{"w":8,"opp":"M-OH","res":"L 27-28","espnId":"401866476","pass":{"n":"Jadyn Glasser","yds":221,"td":1,"cmp":18,"att":31},"rush":{"n":"Jayden Clerveaux","yds":32,"td":0,"car":9},"rec":{"n":"Langston Lewis","yds":163,"td":1,"rec":10},"allowed":{"pass":221,"rush":139,"passers":[{"n":"Caleb Heavner","pos":"QB","yds":221,"cmp":18,"att":33}],"rushers":[{"n":"Caleb Heavner","pos":"QB","yds":58,"car":15},{"n":"Rodney Nelson","pos":"RB","yds":43,"car":10},{"n":"D'Shawntae Jones","pos":"RB","yds":25,"car":8},{"n":"Scoop Smith","pos":"WR","yds":14,"car":2}]}}],
   "North Dakota State": [{"w":1,"opp":"FOR","res":"W 38-0","espnId":"401864499","pass":{"n":"Nathan Hayes","yds":210,"td":2,"cmp":18,"att":22},"rush":{"n":"DJ Scott","yds":60,"td":2,"car":11},"rec":{"n":"Chris Kiel","yds":50,"td":1,"rec":4},"allowed":{"pass":116,"rush":19,"passers":[{"n":"Gunnar Smith","pos":"QB","yds":116,"cmp":12,"att":22}],"rushers":[{"n":"Yohan-Li Louis","pos":"RB","yds":23,"car":9},{"n":"Jamell James","pos":"RB","yds":17,"car":4},{"n":"Jacob Rodriguez","pos":"RB","yds":11,"car":4},{"n":"Taariq Denson","pos":"RB","yds":8,"car":3},{"n":"Barrett Fallon","pos":"RB","yds":0,"car":1},{"n":"Gunnar Smith","pos":"QB","yds":-40,"car":5}]}},{"w":1,"opp":"JVST","res":"W 33-7","espnId":"401864577","pass":{"n":"Nathan Hayes","yds":160,"td":2,"cmp":14,"att":22},"rush":{"n":"Myles Mitchell","yds":74,"td":0,"car":11},"rec":{"n":"Jackson Williams","yds":58,"td":0,"rec":5},"allowed":{"pass":85,"rush":85,"passers":[{"n":"Caden Creel","pos":"QB","yds":85,"cmp":12,"att":23}],"rushers":[{"n":"Jalen Likely","pos":"RB","yds":48,"car":11},{"n":"Caden Creel","pos":"QB","yds":44,"car":15},{"n":"Jamill Williams","pos":"WR","yds":7,"car":1}]}},{"w":2,"opp":"AFA","at":true,"res":"W 38-32","espnId":"401864502","pass":{"n":"Nathan Hayes","yds":228,"td":2,"cmp":15,"att":23},"rush":{"n":"Myles Mitchell","yds":61,"td":2,"car":15},"rec":{"n":"Logan Conklin","yds":57,"td":1,"rec":2},"allowed":{"pass":179,"rush":207,"passers":[{"n":"Liam Szarka","pos":"QB","yds":103,"cmp":5,"att":10},{"n":"Evan Medders","pos":"QB","yds":47,"cmp":3,"att":4},{"n":"Mason Hayes","pos":"WR","yds":29,"cmp":1,"att":1}],"rushers":[{"n":"Liam Szarka","pos":"QB","yds":88,"car":21},{"n":"Owen Allen","pos":"RB","yds":53,"car":13},{"n":"Evan Medders","pos":"QB","yds":31,"car":6},{"n":"Kemper Hodges","pos":"QB","yds":24,"car":6},{"n":"Rocco Conti","pos":"RB","yds":9,"car":4},{"n":"Matt Long","pos":"WR","yds":2,"car":1}]}},{"w":3,"opp":"SAC","at":true,"res":"W 31-10","espnId":"401864507","pass":{"n":"Nathan Hayes","yds":210,"td":1,"cmp":14,"att":24},"rush":{"n":"DJ Scott","yds":80,"td":1,"car":14},"rec":{"n":"Jackson Williams","yds":134,"td":1,"rec":7},"allowed":{"pass":238,"rush":90,"passers":[{"n":"Jackson Sharman","pos":"QB","yds":238,"cmp":25,"att":41}],"rushers":[{"n":"Cincere Rhaney","pos":"RB","yds":38,"car":9},{"n":"Isaiah Ene","pos":"RB","yds":36,"car":9},{"n":"Daniel Swinney","pos":"RB","yds":15,"car":2},{"n":"Jackson Sharman","pos":"QB","yds":5,"car":1},{"n":"Jaylen Patterson","pos":"QB","yds":3,"car":1},{"n":"Jamar Curtis","pos":"RB","yds":-7,"car":4}]}},{"w":5,"opp":"WYO","res":"W 28-0","espnId":"401864515","pass":{"n":"Nathan Hayes","yds":187,"td":0,"cmp":14,"att":25},"rush":{"n":"Nathan Hayes","yds":79,"td":2,"car":10},"rec":{"n":"Jackson Williams","yds":75,"td":0,"rec":4},"allowed":{"pass":52,"rush":110,"passers":[{"n":"Tyler Hughes","pos":"QB","yds":52,"cmp":5,"att":14}],"rushers":[{"n":"Tyler Hughes","pos":"QB","yds":37,"car":12},{"n":"Samuel Harris","pos":"RB","yds":31,"car":10},{"n":"Markell Holman","pos":"RB","yds":29,"car":8},{"n":"Nico Hamilton","pos":"RB","yds":9,"car":3},{"n":"Landon Sims","pos":"QB","yds":5,"car":1},{"n":"Jake Wilson","pos":"TE","yds":-1,"car":1}]}},{"w":6,"opp":"UNLV","at":true,"res":"L 7-13","espnId":"401864518","pass":{"n":"Nathan Hayes","yds":124,"td":1,"cmp":12,"att":22},"rush":{"n":"Myles Mitchell","yds":91,"td":0,"car":22},"rec":{"n":"Chris Kiel","yds":30,"td":1,"rec":2},"allowed":{"pass":77,"rush":178,"passers":[{"n":"Jackson Arnold","pos":"QB","yds":77,"cmp":8,"att":16}],"rushers":[{"n":"Jai'Den Thomas","pos":"RB","yds":112,"car":22},{"n":"Jackson Arnold","pos":"QB","yds":60,"car":19},{"n":"Darrien Jones","pos":"RB","yds":10,"car":3},{"n":"Kayden McGee","pos":"WR","yds":3,"car":1}]}},{"w":7,"opp":"NEV","res":"W 31-17","espnId":"401864520","pass":{"n":"Nathan Hayes","yds":153,"td":2,"cmp":19,"att":25},"rush":{"n":"Myles Mitchell","yds":49,"td":0,"car":13},"rec":{"n":"Jackson Williams","yds":58,"td":0,"rec":5},"allowed":{"pass":190,"rush":96,"passers":[{"n":"AJ Bianco","pos":"QB","yds":190,"cmp":17,"att":34},{"n":"Luke Duncan","pos":"QB","yds":0,"cmp":0,"att":2}],"rushers":[{"n":"Dominic Kelley","pos":"RB","yds":60,"car":11},{"n":"AJ Bianco","pos":"QB","yds":23,"car":4},{"n":"Herschel Turner","pos":"RB","yds":10,"car":5},{"n":"Donnie Cheers","pos":"WR","yds":3,"car":1}]}},{"w":8,"opp":"UNM","at":true,"res":"L 16-21","espnId":"401864527","pass":{"n":"Nathan Hayes","yds":198,"td":2,"cmp":17,"att":33},"rush":{"n":"Myles Mitchell","yds":34,"td":0,"car":10},"rec":{"n":"Jackson Williams","yds":71,"td":0,"rec":4},"allowed":{"pass":92,"rush":187,"passers":[{"n":"Toa Fa'avae","pos":"QB","yds":92,"cmp":8,"att":14}],"rushers":[{"n":"Kiefer Sibley","pos":"RB","yds":91,"car":13},{"n":"Deshaun Buchanan","pos":"RB","yds":39,"car":3},{"n":"Scottre Humphrey","pos":"RB","yds":31,"car":10},{"n":"Toa Fa'avae","pos":"QB","yds":25,"car":14},{"n":"Massiah Mingo","pos":"WR","yds":4,"car":1}]}},{"w":9,"opp":"UTEP","res":"W 31-7","espnId":"401864531","pass":{"n":"Nathan Hayes","yds":240,"td":1,"cmp":22,"att":32},"rush":{"n":"DJ Scott","yds":50,"td":1,"car":13},"rec":{"n":"Jackson Williams","yds":111,"td":0,"rec":10},"allowed":{"pass":91,"rush":147,"passers":[{"n":"EJ Colson Jr.","pos":"QB","yds":59,"cmp":11,"att":16},{"n":"Raymond Moore III","pos":"QB","yds":32,"cmp":4,"att":6}],"rushers":[{"n":"Raymond Moore III","pos":"QB","yds":67,"car":3},{"n":"EJ Colson Jr.","pos":"QB","yds":21,"car":10},{"n":"Jaden Smith","pos":"WR","yds":21,"car":1},{"n":"Tavorus Jones","pos":"RB","yds":15,"car":8},{"n":"Elijah McCoy","pos":"RB","yds":10,"car":2},{"n":"Kam Thomas","pos":"RB","yds":6,"car":1},{"n":"Lamar Sperling","pos":"RB","yds":4,"car":3},{"n":"Chris Hunter","pos":"RB","yds":3,"car":1}]}}],
   "New Mexico State": [{"w":1,"opp":"FSU","at":true,"res":"L 17-34","espnId":"401864570","pass":{"n":"Trey Hedden","yds":272,"td":2,"cmp":26,"att":42},"rush":{"n":"James Jones","yds":28,"td":0,"car":11},"rec":{"n":"Brodie Malone-Bradford","yds":96,"td":1,"rec":6},"allowed":{"pass":202,"rush":217,"passers":[{"n":"Ashton Daniels","pos":"QB","yds":202,"cmp":17,"att":27}],"rushers":[{"n":"Ousmane Kromah","pos":"RB","yds":115,"car":14},{"n":"Samuel Singleton Jr.","pos":"RB","yds":42,"car":9},{"n":"Quintrevion Wisner","pos":"RB","yds":34,"car":4},{"n":"Ashton Daniels","pos":"QB","yds":30,"car":8},{"n":"Micahi Danzy","pos":"WR","yds":1,"car":1}]}},{"w":1,"opp":"MERC","res":"W 51-14","espnId":"401870790","pass":{"n":"Trey Hedden","yds":253,"td":2,"cmp":11,"att":20},"rush":{"n":"James Jones","yds":137,"td":1,"car":19},"rec":{"n":"TK King","yds":94,"td":0,"rec":3},"allowed":{"pass":167,"rush":70,"passers":[{"n":"Alex Gevaudan","pos":"QB","yds":147,"cmp":13,"att":21},{"n":"Tyler Tusai","pos":"QB","yds":20,"cmp":3,"att":9},{"n":"Anthony Wolter","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Jameir Gamble","pos":"RB","yds":59,"car":12},{"n":"Byron Cardwell Jr.","pos":"RB","yds":10,"car":7},{"n":"Emanuel Fincher","pos":"RB","yds":6,"car":3},{"n":"Ethan Holbrook","pos":"WR","yds":5,"car":1},{"n":"Amare Lattimore","pos":"WR","yds":3,"car":1},{"n":"Alex Gevaudan","pos":"QB","yds":-2,"car":2},{"n":"Tyler Tusai","pos":"QB","yds":-11,"car":1}]}},{"w":2,"opp":"HAW","at":true,"res":"L 19-29","espnId":"401864578","pass":{"n":"Trey Hedden","yds":256,"td":1,"cmp":19,"att":35},"rush":{"n":"James Jones","yds":78,"td":1,"car":13},"rec":{"n":"TK King","yds":67,"td":1,"rec":4},"allowed":{"pass":353,"rush":67,"passers":[{"n":"Micah Alejado","pos":"QB","yds":346,"cmp":33,"att":45},{"n":"Tama Uiliata","pos":"WR","yds":7,"cmp":1,"att":1}],"rushers":[{"n":"DeVon Rice","pos":"RB","yds":59,"car":16},{"n":"Sitani Mikaele","pos":"RB","yds":12,"car":7},{"n":"Micah Alejado","pos":"QB","yds":-4,"car":3}]}},{"w":4,"opp":"UNM","res":"L 18-42","espnId":"401864579","pass":{"n":"Adam Damante","yds":157,"td":1,"cmp":16,"att":19},"rush":{"n":"James Jones","yds":112,"td":0,"car":14},"rec":{"n":"Josiah Thomas","yds":90,"td":0,"rec":5},"allowed":{"pass":174,"rush":253,"passers":[{"n":"Toa Fa'avae","pos":"QB","yds":174,"cmp":10,"att":17}],"rushers":[{"n":"Scottre Humphrey","pos":"RB","yds":104,"car":19},{"n":"Kiefer Sibley","pos":"RB","yds":63,"car":12},{"n":"Toa Fa'avae","pos":"QB","yds":57,"car":11},{"n":"James Laubstein","pos":"QB","yds":17,"car":4},{"n":"Deshaun Buchanan","pos":"RB","yds":12,"car":1}]}},{"w":5,"opp":"WKU","res":"W 34-13","espnId":"401871049","pass":{"n":"Adam Damante","yds":146,"td":1,"cmp":15,"att":26},"rush":{"n":"James Jones","yds":155,"td":1,"car":20},"rec":{"n":"Josiah Thomas","yds":60,"td":0,"rec":4},"allowed":{"pass":314,"rush":43,"passers":[{"n":"Rodney Tisdale Jr.","pos":"QB","yds":314,"cmp":29,"att":40},{"n":"Brock Glenn","pos":"QB","yds":0,"cmp":0,"att":2}],"rushers":[{"n":"Brock Glenn","pos":"QB","yds":23,"car":7},{"n":"Ajay Allen","pos":"RB","yds":17,"car":9},{"n":"Cameron Flowers","pos":"WR","yds":9,"car":1},{"n":"Le'Kamren Meadows","pos":"RB","yds":4,"car":2},{"n":"Sincere Baines","pos":"RB","yds":4,"car":2},{"n":"Rodney Tisdale Jr.","pos":"QB","yds":-14,"car":10}]}},{"w":6,"opp":"FIU","at":true,"res":"L 3-22","espnId":"401871066","pass":{"n":"Adam Damante","yds":104,"td":0,"cmp":9,"att":22},"rush":{"n":"James Jones","yds":89,"td":0,"car":15},"rec":{"n":"Terrione Graves","yds":39,"td":0,"rec":2},"allowed":{"pass":120,"rush":100,"passers":[{"n":"JJ Kohl","pos":"QB","yds":115,"cmp":12,"att":21},{"n":"Zach Marker","pos":"QB","yds":5,"cmp":1,"att":1}],"rushers":[{"n":"Devonte Lyons","pos":"RB","yds":78,"car":14},{"n":"Anthony Carrie","pos":"RB","yds":37,"car":16},{"n":"Sterling Joseph","pos":"RB","yds":17,"car":5},{"n":"Zach Marker","pos":"QB","yds":8,"car":2},{"n":"Jayden Ford","pos":"RB","yds":2,"car":2},{"n":"Jai-Ayviauynn Celestine","pos":"DB","yds":-10,"car":1},{"n":"JJ Kohl","pos":"QB","yds":-32,"car":4}]}},{"w":8,"opp":"SHSU","at":true,"res":"W 30-24","espnId":"401871070","pass":{"n":"Adam Damante","yds":160,"td":2,"cmp":19,"att":29},"rush":{"n":"James Jones","yds":178,"td":1,"car":27},"rec":{"n":"AJ Williams III","yds":52,"td":2,"rec":3},"allowed":{"pass":235,"rush":11,"passers":[{"n":"Landyn Locke","pos":"QB","yds":235,"cmp":18,"att":31},{"n":"DJ Bailey","pos":"QB","yds":0,"cmp":0,"att":2}],"rushers":[{"n":"MJ Dowdy","pos":"RB","yds":17,"car":4},{"n":"Jerrian Parker Jr.","pos":"RB","yds":13,"car":3},{"n":"Alton McCaskill","pos":"RB","yds":9,"car":2},{"n":"Landyn Locke","pos":"QB","yds":0,"car":3},{"n":"Brett Holloway","pos":"QB","yds":-1,"car":3},{"n":"Landan Brown","pos":"RB","yds":-4,"car":3},{"n":"DJ Bailey","pos":"QB","yds":-16,"car":1}]}},{"w":9,"opp":"JXST","res":"L 0-24","espnId":"401871057","pass":{"n":"Adam Damante","yds":29,"td":0,"cmp":6,"att":19},"rush":{"n":"James Jones","yds":112,"td":0,"car":20},"rec":{"n":"Brodie Malone-Bradford","yds":19,"td":0,"rec":3},"allowed":{"pass":109,"rush":324,"passers":[{"n":"Caden Creel","pos":"QB","yds":109,"cmp":11,"att":17}],"rushers":[{"n":"Caden Creel","pos":"QB","yds":211,"car":21},{"n":"Jalen Likely","pos":"RB","yds":39,"car":4},{"n":"Justus Savage","pos":"RB","yds":28,"car":3},{"n":"Khristian Lando","pos":"RB","yds":27,"car":10},{"n":"Lucas Farrington","pos":"RB","yds":20,"car":7},{"n":"Aidan Thompson","pos":"LB","yds":-1,"car":1}]}}],
-  "Jacksonville State": [{"w":1,"opp":"NDSU","at":true,"res":"L 7-33","espnId":"401864577","pass":{"n":"Caden Creel","yds":85,"td":0,"cmp":12,"att":23},"rush":{"n":"Jalen Likely","yds":48,"td":0,"car":11},"rec":{"n":"Deondre Johnson","yds":26,"td":0,"rec":2},"allowed":{"pass":164,"rush":209,"passers":[{"n":"Nathan Hayes","pos":"QB","yds":160,"cmp":14,"att":22},{"n":"Preston Brown","pos":"QB","yds":4,"cmp":1,"att":1}],"rushers":[{"n":"Myles Mitchell","pos":"RB","yds":74,"car":11},{"n":"Nyeoti Punni","pos":"RB","yds":60,"car":8},{"n":"DJ Scott","pos":"RB","yds":51,"car":13},{"n":"Nathan Hayes","pos":"QB","yds":14,"car":7},{"n":"Barika Kpeenu","pos":"TE","yds":5,"car":1},{"n":"Preston Brown","pos":"QB","yds":3,"car":2},{"n":"Brady Wavrunek","pos":"RB","yds":3,"car":1}]}},{"w":1,"opp":"EKU","res":"W 49-7","espnId":"401868140","pass":{"n":"Caden Creel","yds":327,"td":5,"cmp":21,"att":28},"rush":{"n":"Jalen Likely","yds":73,"td":1,"car":5},"rec":{"n":"Jamill Williams","yds":144,"td":4,"rec":7},"allowed":{"pass":90,"rush":195,"passers":[{"n":"Tyler Travers","pos":"QB","yds":90,"cmp":12,"att":19}],"rushers":[{"n":"Brady Hensley","pos":"RB","yds":91,"car":7},{"n":"Cortez Stone","pos":"RB","yds":58,"car":8},{"n":"Brayden Latham","pos":"RB","yds":32,"car":10},{"n":"Ryder Hooks","pos":"RB","yds":16,"car":6},{"n":"Tyler Travers","pos":"QB","yds":-2,"car":7}]}},{"w":2,"opp":"OHIO","at":true,"res":"L 27-29","espnId":"401866418","pass":{"n":"Caden Creel","yds":265,"td":1,"cmp":18,"att":24},"rush":{"n":"Caden Creel","yds":120,"td":1,"car":29},"rec":{"n":"Luke Gilbert","yds":82,"td":1,"rec":1},"allowed":{"pass":97,"rush":165,"passers":[{"n":"Matt Vezza","pos":"QB","yds":80,"cmp":10,"att":12},{"n":"Nick Poulos","pos":"QB","yds":16,"cmp":2,"att":5},{"n":"Levi Davis","pos":"QB","yds":1,"cmp":1,"att":2}],"rushers":[{"n":"Matt Vezza","pos":"QB","yds":67,"car":12},{"n":"Duncan Brune","pos":"RB","yds":66,"car":18},{"n":"Victor Rosa","pos":"RB","yds":17,"car":8},{"n":"Nick Poulos","pos":"QB","yds":11,"car":4},{"n":"Levi Davis","pos":"QB","yds":3,"car":2},{"n":"Preston Bowman","pos":"WR","yds":1,"car":2}]}},{"w":3,"opp":"GASO","res":"W 31-27","espnId":"401869948","pass":{"n":"Caden Creel","yds":194,"td":2,"cmp":17,"att":24},"rush":{"n":"Lucas Farrington","yds":44,"td":1,"car":4},"rec":{"n":"Deondre Johnson","yds":61,"td":1,"rec":3},"allowed":{"pass":187,"rush":182,"passers":[{"n":"Max Johnson","pos":"QB","yds":187,"cmp":23,"att":33}],"rushers":[{"n":"David Mbadinga","pos":"RB","yds":103,"car":18},{"n":"Jamarian Samuel","pos":"RB","yds":34,"car":4},{"n":"Weston Bryan","pos":"QB","yds":27,"car":6},{"n":"Max Johnson","pos":"QB","yds":12,"car":7},{"n":"Josh Dallas","pos":"WR","yds":6,"car":1},{"n":"Taeo Todd","pos":"RB","yds":0,"car":3}]}},{"w":4,"opp":"MTSU","res":"W 23-13","espnId":"401871048","pass":{"n":"Caden Creel","yds":241,"td":1,"cmp":19,"att":27},"rush":{"n":"Caden Creel","yds":119,"td":1,"car":12},"rec":{"n":"Deondre Johnson","yds":57,"td":1,"rec":3},"allowed":{"pass":216,"rush":103,"passers":[{"n":"Roman Gagliano","pos":"QB","yds":216,"cmp":18,"att":28}],"rushers":[{"n":"Antonio Martin","pos":"RB","yds":106,"car":17},{"n":"Terrence Brown","pos":"RB","yds":30,"car":8},{"n":"Cam'ron Lacy","pos":"WR","yds":-9,"car":1},{"n":"Roman Gagliano","pos":"QB","yds":-24,"car":4}]}},{"w":6,"opp":"KENN","at":true,"res":"W 27-26","espnId":"401871051","pass":{"n":"Caden Creel","yds":311,"td":1,"cmp":26,"att":44},"rush":{"n":"Jalen Likely","yds":40,"td":1,"car":11},"rec":{"n":"Deondre Johnson","yds":112,"td":0,"rec":4},"allowed":{"pass":293,"rush":117,"passers":[{"n":"Rickie Collins","pos":"QB","yds":293,"cmp":24,"att":34}],"rushers":[{"n":"Rickie Collins","pos":"QB","yds":61,"car":15},{"n":"Boogie Woods III","pos":"RB","yds":37,"car":8},{"n":"Latrelle Murrell","pos":"RB","yds":13,"car":3},{"n":"Brayden Munroe","pos":"WR","yds":6,"car":2},{"n":"Triston Morgan","pos":"RB","yds":0,"car":2}]}},{"w":7,"opp":"FIU","res":"W 27-24","espnId":"401871053","pass":{"n":"Caden Creel","yds":214,"td":2,"cmp":16,"att":22},"rush":{"n":"Caden Creel","yds":95,"td":0,"car":19},"rec":{"n":"Deondre Johnson","yds":93,"td":1,"rec":4},"allowed":{"pass":280,"rush":124,"passers":[{"n":"JJ Kohl","pos":"QB","yds":278,"cmp":24,"att":38},{"n":"Jackson Verdugo","pos":"TE","yds":2,"cmp":1,"att":1},{"n":"Zach Marker","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Devonte Lyons","pos":"RB","yds":73,"car":15},{"n":"Anthony Carrie","pos":"RB","yds":26,"car":10},{"n":"JJ Kohl","pos":"QB","yds":16,"car":5},{"n":"Maguire Anderson","pos":"WR","yds":5,"car":1},{"n":"James Resar","pos":"TE","yds":4,"car":1}]}},{"w":9,"opp":"NMSU","at":true,"res":"W 24-0","espnId":"401871057","pass":{"n":"Caden Creel","yds":109,"td":1,"cmp":11,"att":17},"rush":{"n":"Caden Creel","yds":211,"td":1,"car":21},"rec":{"n":"Luke Gilbert","yds":67,"td":1,"rec":5},"allowed":{"pass":29,"rush":192,"passers":[{"n":"Adam Damante","pos":"QB","yds":29,"cmp":6,"att":19}],"rushers":[{"n":"James Jones","pos":"RB","yds":112,"car":20},{"n":"TJ Washington Jr.","pos":"RB","yds":70,"car":10},{"n":"Dijon Stanley","pos":"RB","yds":15,"car":2},{"n":"Adam Damante","pos":"QB","yds":-5,"car":2}]}}],
+  "Jacksonville State": [{"w":1,"opp":"NDSU","at":true,"res":"L 7-33","espnId":"401864577","pass":{"n":"Caden Creel","yds":85,"td":0,"cmp":12,"att":23},"rush":{"n":"Jalen Likely","yds":48,"td":0,"car":11},"rec":{"n":"Deondre Johnson","yds":26,"td":0,"rec":2},"allowed":{"pass":164,"rush":209,"passers":[{"n":"Nathan Hayes","pos":"QB","yds":160,"cmp":14,"att":22},{"n":"Preston Brown","pos":"QB","yds":4,"cmp":1,"att":1}],"rushers":[{"n":"Myles Mitchell","pos":"RB","yds":74,"car":11},{"n":"Nyeoti Punni","pos":"RB","yds":60,"car":8},{"n":"DJ Scott","pos":"RB","yds":51,"car":13},{"n":"Nathan Hayes","pos":"QB","yds":14,"car":7},{"n":"Barika Kpeenu","pos":"-","yds":5,"car":1},{"n":"Preston Brown","pos":"QB","yds":3,"car":2},{"n":"Brady Wavrunek","pos":"RB","yds":3,"car":1}]}},{"w":1,"opp":"EKU","res":"W 49-7","espnId":"401868140","pass":{"n":"Caden Creel","yds":327,"td":5,"cmp":21,"att":28},"rush":{"n":"Jalen Likely","yds":73,"td":1,"car":5},"rec":{"n":"Jamill Williams","yds":144,"td":4,"rec":7},"allowed":{"pass":90,"rush":195,"passers":[{"n":"Tyler Travers","pos":"QB","yds":90,"cmp":12,"att":19}],"rushers":[{"n":"Brady Hensley","pos":"RB","yds":91,"car":7},{"n":"Cortez Stone","pos":"RB","yds":58,"car":8},{"n":"Brayden Latham","pos":"RB","yds":32,"car":10},{"n":"Ryder Hooks","pos":"RB","yds":16,"car":6},{"n":"Tyler Travers","pos":"QB","yds":-2,"car":7}]}},{"w":2,"opp":"OHIO","at":true,"res":"L 27-29","espnId":"401866418","pass":{"n":"Caden Creel","yds":265,"td":1,"cmp":18,"att":24},"rush":{"n":"Caden Creel","yds":120,"td":1,"car":29},"rec":{"n":"Luke Gilbert","yds":82,"td":1,"rec":1},"allowed":{"pass":97,"rush":165,"passers":[{"n":"Matt Vezza","pos":"QB","yds":80,"cmp":10,"att":12},{"n":"Nick Poulos","pos":"QB","yds":16,"cmp":2,"att":5},{"n":"Levi Davis","pos":"QB","yds":1,"cmp":1,"att":2}],"rushers":[{"n":"Matt Vezza","pos":"QB","yds":67,"car":12},{"n":"Duncan Brune","pos":"RB","yds":66,"car":18},{"n":"Victor Rosa","pos":"RB","yds":17,"car":8},{"n":"Nick Poulos","pos":"QB","yds":11,"car":4},{"n":"Levi Davis","pos":"QB","yds":3,"car":2},{"n":"Preston Bowman","pos":"WR","yds":1,"car":2}]}},{"w":3,"opp":"GASO","res":"W 31-27","espnId":"401869948","pass":{"n":"Caden Creel","yds":194,"td":2,"cmp":17,"att":24},"rush":{"n":"Lucas Farrington","yds":44,"td":1,"car":4},"rec":{"n":"Deondre Johnson","yds":61,"td":1,"rec":3},"allowed":{"pass":187,"rush":182,"passers":[{"n":"Max Johnson","pos":"QB","yds":187,"cmp":23,"att":33}],"rushers":[{"n":"David Mbadinga","pos":"RB","yds":103,"car":18},{"n":"Jamarian Samuel","pos":"RB","yds":34,"car":4},{"n":"Weston Bryan","pos":"QB","yds":27,"car":6},{"n":"Max Johnson","pos":"QB","yds":12,"car":7},{"n":"Josh Dallas","pos":"WR","yds":6,"car":1},{"n":"Taeo Todd","pos":"RB","yds":0,"car":3}]}},{"w":4,"opp":"MTSU","res":"W 23-13","espnId":"401871048","pass":{"n":"Caden Creel","yds":241,"td":1,"cmp":19,"att":27},"rush":{"n":"Caden Creel","yds":119,"td":1,"car":12},"rec":{"n":"Deondre Johnson","yds":57,"td":1,"rec":3},"allowed":{"pass":216,"rush":103,"passers":[{"n":"Roman Gagliano","pos":"QB","yds":216,"cmp":18,"att":28}],"rushers":[{"n":"Antonio Martin","pos":"RB","yds":106,"car":17},{"n":"Terrence Brown","pos":"RB","yds":30,"car":8},{"n":"Cam'ron Lacy","pos":"WR","yds":-9,"car":1},{"n":"Roman Gagliano","pos":"QB","yds":-24,"car":4}]}},{"w":6,"opp":"KENN","at":true,"res":"W 27-26","espnId":"401871051","pass":{"n":"Caden Creel","yds":311,"td":1,"cmp":26,"att":44},"rush":{"n":"Jalen Likely","yds":40,"td":1,"car":11},"rec":{"n":"Deondre Johnson","yds":112,"td":0,"rec":4},"allowed":{"pass":293,"rush":117,"passers":[{"n":"Rickie Collins","pos":"QB","yds":293,"cmp":24,"att":34}],"rushers":[{"n":"Rickie Collins","pos":"QB","yds":61,"car":15},{"n":"Boogie Woods III","pos":"RB","yds":37,"car":8},{"n":"Latrelle Murrell","pos":"RB","yds":13,"car":3},{"n":"Brayden Munroe","pos":"WR","yds":6,"car":2},{"n":"Triston Morgan","pos":"RB","yds":0,"car":2}]}},{"w":7,"opp":"FIU","res":"W 27-24","espnId":"401871053","pass":{"n":"Caden Creel","yds":214,"td":2,"cmp":16,"att":22},"rush":{"n":"Caden Creel","yds":95,"td":0,"car":19},"rec":{"n":"Deondre Johnson","yds":93,"td":1,"rec":4},"allowed":{"pass":280,"rush":124,"passers":[{"n":"JJ Kohl","pos":"QB","yds":278,"cmp":24,"att":38},{"n":"Jackson Verdugo","pos":"TE","yds":2,"cmp":1,"att":1},{"n":"Zach Marker","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Devonte Lyons","pos":"RB","yds":73,"car":15},{"n":"Anthony Carrie","pos":"RB","yds":26,"car":10},{"n":"JJ Kohl","pos":"QB","yds":16,"car":5},{"n":"Maguire Anderson","pos":"WR","yds":5,"car":1},{"n":"James Resar","pos":"TE","yds":4,"car":1}]}},{"w":9,"opp":"NMSU","at":true,"res":"W 24-0","espnId":"401871057","pass":{"n":"Caden Creel","yds":109,"td":1,"cmp":11,"att":17},"rush":{"n":"Caden Creel","yds":211,"td":1,"car":21},"rec":{"n":"Luke Gilbert","yds":67,"td":1,"rec":5},"allowed":{"pass":29,"rush":192,"passers":[{"n":"Adam Damante","pos":"QB","yds":29,"cmp":6,"att":19}],"rushers":[{"n":"James Jones","pos":"RB","yds":112,"car":20},{"n":"TJ Washington Jr.","pos":"RB","yds":70,"car":10},{"n":"Dijon Stanley","pos":"RB","yds":15,"car":2},{"n":"Adam Damante","pos":"QB","yds":-5,"car":2}]}}],
   "Sacramento State": [{"w":1,"opp":"EMU","at":true,"res":"L 17-28","espnId":"401866408","pass":{"n":"Carson Conklin","yds":222,"td":0,"cmp":25,"att":46},"rush":{"n":"Isaiah Ene","yds":44,"td":1,"car":3},"rec":{"n":"Onterrio Smith Jr.","yds":86,"td":0,"rec":9},"allowed":{"pass":279,"rush":69,"passers":[{"n":"Noah Kim","pos":"QB","yds":279,"cmp":27,"att":38}],"rushers":[{"n":"Amareon Blue","pos":"RB","yds":55,"car":12},{"n":"Braydon Bennett","pos":"RB","yds":27,"car":7},{"n":"Joey Mattord","pos":"RB","yds":8,"car":2},{"n":"Noah Kim","pos":"QB","yds":-13,"car":6}]}},{"w":1,"opp":"MVSU","res":"W 52-0","espnId":"401866411","pass":{"n":"Jackson Sharman","yds":247,"td":4,"cmp":18,"att":28},"rush":{"n":"Daniel Swinney","yds":58,"td":1,"car":8},"rec":{"n":"Matt Coleman","yds":141,"td":3,"rec":6},"allowed":{"pass":43,"rush":104,"passers":[{"n":"Jordon Davis","pos":"QB","yds":24,"cmp":3,"att":6},{"n":"Josh Brown","pos":"QB","yds":19,"cmp":6,"att":13}],"rushers":[{"n":"Dezmond Ray","pos":"RB","yds":36,"car":3},{"n":"Norman Taylor","pos":"RB","yds":25,"car":5},{"n":"Carter James","pos":"RB","yds":23,"car":10},{"n":"Josh Brown","pos":"QB","yds":17,"car":4},{"n":"Jordon Davis","pos":"QB","yds":7,"car":8},{"n":"JaKobe McKinnie","pos":"RB","yds":3,"car":2},{"n":"Nick Stephens","pos":"P","yds":-2,"car":1}]}},{"w":2,"opp":"FRES","at":true,"res":"L 3-49","espnId":"401860883","pass":{"n":"Jackson Sharman","yds":150,"td":0,"cmp":15,"att":31},"rush":{"n":"Jamar Curtis","yds":48,"td":0,"car":9},"rec":{"n":"Onterrio Smith Jr.","yds":66,"td":0,"rec":4},"allowed":{"pass":349,"rush":193,"passers":[{"n":"Jayden Mandal","pos":"QB","yds":316,"cmp":23,"att":26},{"n":"Jordan Malau'ulu","pos":"WR","yds":21,"cmp":1,"att":1},{"n":"Khristian Martin","pos":"QB","yds":12,"cmp":2,"att":2}],"rushers":[{"n":"Bryson Donelson","pos":"RB","yds":102,"car":13},{"n":"Julius Gillick","pos":"RB","yds":39,"car":7},{"n":"Jayon Farrar","pos":"WR","yds":16,"car":1},{"n":"Andrew Chavez","pos":"RB","yds":11,"car":1},{"n":"Jayden Mandal","pos":"QB","yds":8,"car":4},{"n":"Khristian Martin","pos":"QB","yds":8,"car":3},{"n":"Tariq Thomas","pos":"RB","yds":6,"car":1},{"n":"Rayshon Luke","pos":"RB","yds":3,"car":3}]}},{"w":3,"opp":"NDSU","res":"L 10-31","espnId":"401864507","pass":{"n":"Jackson Sharman","yds":238,"td":1,"cmp":25,"att":41},"rush":{"n":"Cincere Rhaney","yds":38,"td":0,"car":9},"rec":{"n":"Matt Coleman","yds":95,"td":0,"rec":8},"allowed":{"pass":210,"rush":152,"passers":[{"n":"Nathan Hayes","pos":"QB","yds":210,"cmp":14,"att":24},{"n":"Preston Brown","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"DJ Scott","pos":"RB","yds":80,"car":14},{"n":"Myles Mitchell","pos":"RB","yds":34,"car":10},{"n":"Nathan Hayes","pos":"QB","yds":14,"car":1},{"n":"Preston Brown","pos":"QB","yds":13,"car":2},{"n":"Brady Wavrunek","pos":"RB","yds":7,"car":2},{"n":"Nyeoti Punni","pos":"RB","yds":4,"car":3},{"n":"Kaden Zenzen","pos":"TE","yds":1,"car":1}]}},{"w":4,"opp":"MASS","res":"L 6-35","espnId":"401866429","pass":{"n":"Jackson Sharman","yds":221,"td":0,"cmp":24,"att":43},"rush":{"n":"Daniel Swinney","yds":35,"td":0,"car":9},"rec":{"n":"Raiden Brown","yds":61,"td":0,"rec":6},"allowed":{"pass":101,"rush":232,"passers":[{"n":"William Watson III","pos":"QB","yds":101,"cmp":11,"att":16}],"rushers":[{"n":"William Watson III","pos":"QB","yds":72,"car":7},{"n":"Curtis Kimmons IV","pos":"RB","yds":61,"car":11},{"n":"Elijah Faulkner","pos":"RB","yds":32,"car":6},{"n":"T.Y. Harding","pos":"WR","yds":21,"car":2},{"n":"Justin Lewis","pos":"RB","yds":20,"car":4},{"n":"Jordan Washington","pos":"RB","yds":16,"car":5},{"n":"Logan Inagawa","pos":"QB","yds":7,"car":1},{"n":"Kezion Dia-Johnson","pos":"WR","yds":3,"car":1}]}},{"w":6,"opp":"BGSU","at":true,"res":"L 10-38","espnId":"401866436","pass":{"n":"Jackson Sharman","yds":145,"td":1,"cmp":13,"att":28},"rush":{"n":"Isaiah Ene","yds":46,"td":0,"car":12},"rec":{"n":"Matt Coleman","yds":85,"td":1,"rec":6},"allowed":{"pass":137,"rush":218,"passers":[{"n":"Jay Kastantin","pos":"QB","yds":116,"cmp":11,"att":15},{"n":"Austin Novosad","pos":"QB","yds":21,"cmp":2,"att":2}],"rushers":[{"n":"Austyn Dendy","pos":"RB","yds":86,"car":15},{"n":"Jay Kastantin","pos":"QB","yds":50,"car":7},{"n":"Brennan Ridley","pos":"WR","yds":34,"car":2},{"n":"Nakai Amachree","pos":"RB","yds":32,"car":9},{"n":"Tristin Blackmon","pos":"RB","yds":8,"car":3},{"n":"Carson Lovett","pos":"RB","yds":6,"car":2},{"n":"Marceles Carey","pos":"RB","yds":2,"car":3}]}},{"w":7,"opp":"OHIO","res":"L 7-48","espnId":"401866445","pass":{"n":"Brian Salazar Jr.","yds":71,"td":1,"cmp":4,"att":5},"rush":{"n":"Isaiah Ene","yds":59,"td":0,"car":7},"rec":{"n":"Kenyon Shabazz","yds":46,"td":1,"rec":2},"allowed":{"pass":203,"rush":265,"passers":[{"n":"Nick Poulos","pos":"QB","yds":165,"cmp":11,"att":14},{"n":"Levi Davis","pos":"QB","yds":32,"cmp":3,"att":4},{"n":"Matt Vezza","pos":"QB","yds":6,"cmp":1,"att":4}],"rushers":[{"n":"Irving Brown","pos":"RB","yds":87,"car":8},{"n":"Duncan Brune","pos":"RB","yds":55,"car":12},{"n":"Nick Poulos","pos":"QB","yds":48,"car":5},{"n":"Victor Rosa","pos":"RB","yds":35,"car":8},{"n":"Levi Davis","pos":"QB","yds":20,"car":3},{"n":"Mike Taylor Jr.","pos":"RB","yds":16,"car":3},{"n":"Preston Bowman","pos":"WR","yds":7,"car":1},{"n":"Matthew Papas","pos":"QB","yds":-2,"car":1}]}},{"w":8,"opp":"BALL","at":true,"res":"L 17-34","espnId":"401866447","pass":{"n":"Jackson Sharman","yds":187,"td":2,"cmp":17,"att":27},"rush":{"n":"Isaiah Ene","yds":57,"td":0,"car":10},"rec":{"n":"Jace Wilson","yds":89,"td":1,"rec":3},"allowed":{"pass":234,"rush":183,"passers":[{"n":"Keldric Luster","pos":"QB","yds":234,"cmp":14,"att":27}],"rushers":[{"n":"Jalen Bonds","pos":"RB","yds":77,"car":17},{"n":"Keldric Luster","pos":"QB","yds":68,"car":10},{"n":"TJ Horton","pos":"RB","yds":33,"car":9},{"n":"Elijah Jackson","pos":"RB","yds":11,"car":3},{"n":"Johnny Thompson Jr.","pos":"RB","yds":-4,"car":2}]}},{"w":9,"opp":"KENT","res":"W 31-10","espnId":"401866451","pass":{"n":"Jackson Sharman","yds":117,"td":0,"cmp":14,"att":25},"rush":{"n":"Isaiah Ene","yds":107,"td":2,"car":19},"rec":{"n":"Onterrio Smith Jr.","yds":40,"td":0,"rec":2},"allowed":{"pass":209,"rush":93,"passers":[{"n":"Dru DeShields","pos":"QB","yds":190,"cmp":16,"att":33},{"n":"Nolan Good","pos":"QB","yds":19,"cmp":1,"att":5}],"rushers":[{"n":"Dru DeShields","pos":"QB","yds":43,"car":10},{"n":"Brandon White","pos":"RB","yds":33,"car":10},{"n":"Jakorion Caffey","pos":"RB","yds":13,"car":3},{"n":"Brendyn Smith","pos":"WR","yds":4,"car":1}]}}],
   "Buffalo": [{"w":1,"opp":"ALB","res":"W 21-17","espnId":"401866409","pass":{"n":"Elijah Holmes","yds":189,"td":3,"cmp":26,"att":47},"rush":{"n":"Messiah Burch","yds":74,"td":0,"car":8},"rec":{"n":"Chance Morrow","yds":48,"td":3,"rec":7},"allowed":{"pass":204,"rush":72,"passers":[{"n":"Kai Colon","pos":"QB","yds":191,"cmp":16,"att":36},{"n":"Aidan Semo","pos":"QB","yds":13,"cmp":3,"att":5}],"rushers":[{"n":"Joey Koch","pos":"RB","yds":40,"car":8},{"n":"Rahshan La Mons","pos":"RB","yds":32,"car":11},{"n":"Aidan Semo","pos":"QB","yds":9,"car":5},{"n":"BJ Norman","pos":"WR","yds":1,"car":2},{"n":"Kai Colon","pos":"QB","yds":-10,"car":5}]}},{"w":2,"opp":"FIU","at":true,"res":"L 20-33","espnId":"401866414","pass":{"n":"Jason Wright","yds":185,"td":2,"cmp":13,"att":27},"rush":{"n":"Terrance Shelton Jr.","yds":29,"td":0,"car":8},"rec":{"n":"Chance Morrow","yds":170,"td":2,"rec":11},"allowed":{"pass":386,"rush":154,"passers":[{"n":"JJ Kohl","pos":"QB","yds":367,"cmp":21,"att":36},{"n":"Jojo Stone","pos":"WR","yds":19,"cmp":1,"att":1}],"rushers":[{"n":"Anthony Carrie","pos":"RB","yds":49,"car":13},{"n":"Devonte Lyons","pos":"RB","yds":46,"car":11},{"n":"Sterling Joseph","pos":"RB","yds":24,"car":8},{"n":"JJ Kohl","pos":"QB","yds":19,"car":5},{"n":"Maguire Anderson","pos":"WR","yds":9,"car":1},{"n":"Jojo Stone","pos":"WR","yds":7,"car":1}]}},{"w":3,"opp":"PSU","at":true,"res":"L 13-55","espnId":"401858456","pass":{"n":"Jason Wright","yds":60,"td":0,"cmp":10,"att":25},"rush":{"n":"James McNeil Jr.","yds":80,"td":1,"car":20},"rec":{"n":"Chance Morrow","yds":31,"td":0,"rec":2},"allowed":{"pass":269,"rush":304,"passers":[{"n":"Rocco Becht","pos":"QB","yds":212,"cmp":11,"att":19},{"n":"Alex Manske","pos":"QB","yds":45,"cmp":3,"att":6},{"n":"Connor Barry","pos":"QB","yds":12,"cmp":1,"att":1}],"rushers":[{"n":"Quinton Martin Jr.","pos":"RB","yds":100,"car":10},{"n":"Cam Wallace","pos":"RB","yds":77,"car":8},{"n":"James Peoples","pos":"RB","yds":59,"car":8},{"n":"Carson Hansen","pos":"RB","yds":37,"car":5},{"n":"Koby Howard","pos":"WR","yds":20,"car":1},{"n":"Amarion Jackson","pos":"WR","yds":12,"car":1},{"n":"Alex Manske","pos":"QB","yds":3,"car":1},{"n":"Amar'e Glover","pos":"RB","yds":2,"car":2},{"n":"Logan Cunningham","pos":"WR","yds":2,"car":1},{"n":"Connor Barry","pos":"QB","yds":-1,"car":1},{"n":"Rocco Becht","pos":"QB","yds":-7,"car":3}]}},{"w":4,"opp":"RMU","res":"W 31-28","espnId":"401866426","pass":{"n":"Jason Wright","yds":140,"td":1,"cmp":15,"att":28},"rush":{"n":"Messiah Burch","yds":146,"td":0,"car":26},"rec":{"n":"Chance Morrow","yds":58,"td":1,"rec":5},"allowed":{"pass":163,"rush":153,"passers":[{"n":"Carson Haggard","pos":"QB","yds":163,"cmp":13,"att":31}],"rushers":[{"n":"Xavier Goulbourne","pos":"RB","yds":77,"car":12},{"n":"Carson Haggard","pos":"QB","yds":59,"car":4},{"n":"Donta Whack","pos":"RB","yds":16,"car":4},{"n":"Breyon Williams","pos":"RB","yds":1,"car":2}]}},{"w":5,"opp":"WMU","res":"L 17-20","espnId":"401866432","pass":{"n":"Jason Wright","yds":170,"td":1,"cmp":11,"att":18},"rush":{"n":"Messiah Burch","yds":106,"td":1,"car":23},"rec":{"n":"Chance Morrow","yds":90,"td":0,"rec":7},"allowed":{"pass":212,"rush":115,"passers":[{"n":"Broc Lowry","pos":"QB","yds":212,"cmp":19,"att":24}],"rushers":[{"n":"Jalen Buckley","pos":"RB","yds":62,"car":15},{"n":"Broc Lowry","pos":"QB","yds":54,"car":14},{"n":"Lolo Mataele","pos":"RB","yds":5,"car":8}]}},{"w":6,"opp":"TOL","at":true,"res":"W 23-8","espnId":"401866437","pass":{"n":"Jason Wright","yds":171,"td":0,"cmp":14,"att":31},"rush":{"n":"Messiah Burch","yds":137,"td":1,"car":17},"rec":{"n":"Dwayne Early Jr.","yds":77,"td":0,"rec":4},"allowed":{"pass":203,"rush":105,"passers":[{"n":"John Alan Richter","pos":"QB","yds":203,"cmp":22,"att":35}],"rushers":[{"n":"Connor Walendzak","pos":"RB","yds":50,"car":10},{"n":"CJ Miller","pos":"RB","yds":32,"car":9},{"n":"Autavius Ison","pos":"RB","yds":17,"car":3},{"n":"John Alan Richter","pos":"QB","yds":6,"car":4}]}},{"w":7,"opp":"MASS","res":"W 25-18","espnId":"401866442","pass":{"n":"Jason Wright","yds":134,"td":2,"cmp":16,"att":35},"rush":{"n":"Messiah Burch","yds":172,"td":0,"car":28},"rec":{"n":"Clint Walker","yds":45,"td":2,"rec":7},"allowed":{"pass":168,"rush":171,"passers":[{"n":"Logan Inagawa","pos":"QB","yds":168,"cmp":14,"att":25}],"rushers":[{"n":"Elijah Faulkner","pos":"RB","yds":84,"car":23},{"n":"Logan Inagawa","pos":"QB","yds":66,"car":19},{"n":"Kezion Dia-Johnson","pos":"WR","yds":10,"car":2},{"n":"Tavian Dashiell","pos":"WR","yds":4,"car":1},{"n":"Curtis Kimmons IV","pos":"RB","yds":4,"car":1},{"n":"Justin Williams-Thomas","pos":"RB","yds":3,"car":1}]}},{"w":8,"opp":"BGSU","res":"W 31-24","espnId":"401866448","pass":{"n":"Jason Wright","yds":127,"td":1,"cmp":13,"att":21},"rush":{"n":"Messiah Burch","yds":184,"td":3,"car":33},"rec":{"n":"Clint Walker","yds":40,"td":1,"rec":2},"allowed":{"pass":217,"rush":124,"passers":[{"n":"Jay Kastantin","pos":"QB","yds":217,"cmp":19,"att":27}],"rushers":[{"n":"Austyn Dendy","pos":"RB","yds":39,"car":10},{"n":"Jay Kastantin","pos":"QB","yds":34,"car":14},{"n":"Nakai Amachree","pos":"RB","yds":32,"car":7},{"n":"Ke'Marion Baldwin","pos":"RB","yds":9,"car":1},{"n":"Leo Kemp","pos":"FB","yds":5,"car":2},{"n":"Brennan Ridley","pos":"WR","yds":5,"car":2}]}}],
   "Bowling Green": [{"w":1,"opp":"TAR","res":"L 13-20","espnId":"401866410","pass":{"n":"Jay Kastantin","yds":283,"td":0,"cmp":24,"att":30},"rush":{"n":"Austyn Dendy","yds":60,"td":1,"car":15},"rec":{"n":"Jeremiah Scoby","yds":103,"td":0,"rec":10},"allowed":{"pass":206,"rush":258,"passers":[{"n":"Kaden Anderson","pos":"QB","yds":206,"cmp":16,"att":24}],"rushers":[{"n":"Tylan Hines","pos":"RB","yds":250,"car":26},{"n":"Kaden Anderson","pos":"QB","yds":8,"car":6},{"n":"Jackson Gilkey","pos":"QB","yds":0,"car":1}]}},{"w":2,"opp":"NEB","at":true,"res":"L 7-56","espnId":"401858441","pass":{"n":"Jay Kastantin","yds":84,"td":1,"cmp":10,"att":16},"rush":{"n":"Nakai Amachree","yds":53,"td":0,"car":13},"rec":{"n":"Leo Kemp","yds":19,"td":1,"rec":1},"allowed":{"pass":282,"rush":264,"passers":[{"n":"Anthony Colandrea","pos":"QB","yds":222,"cmp":20,"att":24},{"n":"TJ Lateef","pos":"QB","yds":60,"cmp":6,"att":8}],"rushers":[{"n":"Jamal Rule","pos":"RB","yds":88,"car":8},{"n":"Isaiah Mozee","pos":"RB","yds":55,"car":8},{"n":"Mekhi Nelson","pos":"RB","yds":48,"car":8},{"n":"Anthony Colandrea","pos":"QB","yds":33,"car":4},{"n":"TJ Lateef","pos":"QB","yds":22,"car":2},{"n":"Conor Booth","pos":"RB","yds":9,"car":1},{"n":"Nyziah Hunter","pos":"WR","yds":7,"car":1},{"n":"Vincent Genatone","pos":"RB","yds":4,"car":1},{"n":"Kwinten Ives","pos":"RB","yds":-2,"car":1}]}},{"w":3,"opp":"ISU","at":true,"res":"L 7-55","espnId":"401856798","pass":{"n":"Jay Kastantin","yds":97,"td":1,"cmp":8,"att":17},"rush":{"n":"Ke'Marion Baldwin","yds":38,"td":0,"car":6},"rec":{"n":"Winn Sharp","yds":59,"td":1,"rec":1},"allowed":{"pass":142,"rush":365,"passers":[{"n":"Jaylen Raynor","pos":"QB","yds":133,"cmp":11,"att":17},{"n":"Connor Moberly","pos":"QB","yds":9,"cmp":1,"att":1}],"rushers":[{"n":"Aiden Flora","pos":"RB","yds":194,"car":12},{"n":"Arnold Barnes III","pos":"RB","yds":63,"car":13},{"n":"Jaylen Raynor","pos":"QB","yds":60,"car":6},{"n":"Connor Moberly","pos":"QB","yds":21,"car":5},{"n":"Caleb Francois","pos":"RB","yds":16,"car":5},{"n":"Cameron Pettaway","pos":"RB","yds":12,"car":4},{"n":"Omari Hayes","pos":"WR","yds":-1,"car":1}]}},{"w":4,"opp":"USF","res":"L 6-14","espnId":"401862785","pass":{"n":"Jay Kastantin","yds":122,"td":0,"cmp":16,"att":28},"rush":{"n":"Austyn Dendy","yds":48,"td":0,"car":18},"rec":{"n":"Winn Sharp","yds":56,"td":0,"rec":5},"allowed":{"pass":52,"rush":162,"passers":[{"n":"Michael Van Buren Jr.","pos":"QB","yds":52,"cmp":7,"att":11}],"rushers":[{"n":"D.J. Crowther","pos":"RB","yds":143,"car":23},{"n":"Michael Van Buren Jr.","pos":"QB","yds":12,"car":13},{"n":"Jason Collins Jr.","pos":"RB","yds":8,"car":2},{"n":"Luke Kromenhoek","pos":"QB","yds":2,"car":1}]}},{"w":5,"opp":"M-OH","at":true,"res":"W 24-20","espnId":"401866477","pass":{"n":"Jay Kastantin","yds":305,"td":2,"cmp":25,"att":37},"rush":{"n":"Leo Kemp","yds":25,"td":1,"car":3},"rec":{"n":"Brennan Ridley","yds":95,"td":0,"rec":9},"allowed":{"pass":198,"rush":108,"passers":[{"n":"Caleb Heavner","pos":"QB","yds":198,"cmp":17,"att":24}],"rushers":[{"n":"Rodney Nelson","pos":"RB","yds":70,"car":16},{"n":"Caleb Heavner","pos":"QB","yds":24,"car":15},{"n":"Lazaro Rogers","pos":"RB","yds":11,"car":2},{"n":"D'Shawntae Jones","pos":"RB","yds":3,"car":2}]}},{"w":6,"opp":"SAC","res":"W 38-10","espnId":"401866436","pass":{"n":"Jay Kastantin","yds":116,"td":1,"cmp":11,"att":15},"rush":{"n":"Austyn Dendy","yds":86,"td":2,"car":15},"rec":{"n":"Jeremiah Scoby","yds":70,"td":0,"rec":6},"allowed":{"pass":145,"rush":70,"passers":[{"n":"Jackson Sharman","pos":"QB","yds":145,"cmp":13,"att":28}],"rushers":[{"n":"Isaiah Ene","pos":"RB","yds":46,"car":12},{"n":"Daniel Swinney","pos":"RB","yds":45,"car":8},{"n":"Cincere Rhaney","pos":"RB","yds":6,"car":2},{"n":"Jackson Sharman","pos":"QB","yds":0,"car":10},{"n":"Raiden Brown","pos":"WR","yds":-10,"car":1}]}},{"w":7,"opp":"BALL","res":"L 31-32","espnId":"401866441","pass":{"n":"Jay Kastantin","yds":215,"td":2,"cmp":17,"att":24},"rush":{"n":"Austyn Dendy","yds":61,"td":1,"car":17},"rec":{"n":"Brennan Ridley","yds":84,"td":1,"rec":2},"allowed":{"pass":195,"rush":240,"passers":[{"n":"Keldric Luster","pos":"QB","yds":195,"cmp":16,"att":24}],"rushers":[{"n":"Keldric Luster","pos":"QB","yds":125,"car":17},{"n":"TJ Horton","pos":"RB","yds":81,"car":16},{"n":"Jalen Bonds","pos":"RB","yds":21,"car":6},{"n":"Jamarion McDougle","pos":"WR","yds":12,"car":1},{"n":"Johnny Thompson Jr.","pos":"RB","yds":1,"car":2}]}},{"w":8,"opp":"BUFF","at":true,"res":"L 24-31","espnId":"401866448","pass":{"n":"Jay Kastantin","yds":217,"td":3,"cmp":19,"att":27},"rush":{"n":"Austyn Dendy","yds":39,"td":0,"car":10},"rec":{"n":"Winn Sharp","yds":50,"td":0,"rec":5},"allowed":{"pass":127,"rush":251,"passers":[{"n":"Jason Wright","pos":"QB","yds":127,"cmp":13,"att":21}],"rushers":[{"n":"Messiah Burch","pos":"RB","yds":184,"car":33},{"n":"Jason Wright","pos":"QB","yds":35,"car":4},{"n":"Nino Hill","pos":"RB","yds":32,"car":4}]}},{"w":9,"opp":"WMU","at":true,"res":"L 10-23","espnId":"401866452","pass":{"n":"Jay Kastantin","yds":149,"td":1,"cmp":20,"att":31},"rush":{"n":"Nakai Amachree","yds":61,"td":0,"car":11},"rec":{"n":"Eli Jacon-Duffy","yds":41,"td":0,"rec":4},"allowed":{"pass":146,"rush":190,"passers":[{"n":"Broc Lowry","pos":"QB","yds":146,"cmp":9,"att":18}],"rushers":[{"n":"Cole Cabana","pos":"RB","yds":110,"car":7},{"n":"Jalen Buckley","pos":"RB","yds":77,"car":24},{"n":"Broc Lowry","pos":"QB","yds":4,"car":7}]}}],
@@ -70255,7 +70255,7 @@
   "South Alabama": [{"w":1,"opp":"SELA","res":"W 39-14","espnId":"401868316","pass":{"n":"Bishop Davenport","yds":154,"td":1,"cmp":18,"att":27},"rush":{"n":"PJ Martin","yds":69,"td":1,"car":18},"rec":{"n":"Brendan Jenkins","yds":78,"td":1,"rec":5},"allowed":{"pass":186,"rush":45,"passers":[{"n":"Kyle Lowe","pos":"QB","yds":186,"cmp":12,"att":20}],"rushers":[{"n":"Calvin Smith Jr.","pos":"RB","yds":38,"car":8},{"n":"Kyree Paul","pos":"RB","yds":10,"car":3},{"n":"Chad Elzy Jr.","pos":"RB","yds":7,"car":5},{"n":"Kyle Lowe","pos":"QB","yds":-10,"car":1}]}},{"w":2,"opp":"TULN","at":true,"res":"L 24-28","espnId":"401864575","pass":{"n":"Bishop Davenport","yds":296,"td":2,"cmp":22,"att":32},"rush":{"n":"PJ Martin","yds":73,"td":1,"car":15},"rec":{"n":"Brendan Jenkins","yds":119,"td":1,"rec":9},"allowed":{"pass":212,"rush":212,"passers":[{"n":"Kadin Semonza","pos":"QB","yds":212,"cmp":14,"att":22}],"rushers":[{"n":"Jaylin Lucas","pos":"RB","yds":214,"car":11},{"n":"Johnnie Daniels","pos":"RB","yds":8,"car":6},{"n":"Kadin Semonza","pos":"QB","yds":3,"car":5},{"n":"DJ Dugar","pos":"RB","yds":0,"car":1},{"n":"Maurice Turner","pos":"RB","yds":-2,"car":3}]}},{"w":3,"opp":"OHIO","res":"W 41-36","espnId":"401866423","pass":{"n":"Jared Hollins","yds":192,"td":1,"cmp":13,"att":20},"rush":{"n":"Keenan Phillips","yds":116,"td":1,"car":18},"rec":{"n":"Jeremiah Jones-Thomas","yds":74,"td":0,"rec":6},"allowed":{"pass":234,"rush":153,"passers":[{"n":"Levi Davis","pos":"QB","yds":121,"cmp":9,"att":15},{"n":"Matt Vezza","pos":"QB","yds":113,"cmp":12,"att":16}],"rushers":[{"n":"Victor Rosa","pos":"RB","yds":78,"car":13},{"n":"Matt Vezza","pos":"QB","yds":46,"car":9},{"n":"Levi Davis","pos":"QB","yds":27,"car":4},{"n":"Mike Taylor Jr.","pos":"RB","yds":2,"car":2}]}},{"w":4,"opp":"UK","at":true,"res":"L 21-45","espnId":"401864576","pass":{"n":"Jared Hollins","yds":266,"td":2,"cmp":23,"att":43},"rush":{"n":"PJ Martin","yds":48,"td":1,"car":9},"rec":{"n":"Jeremiah Jones-Thomas","yds":91,"td":1,"rec":6},"allowed":{"pass":177,"rush":390,"passers":[{"n":"Kenny Minchey","pos":"QB","yds":177,"cmp":19,"att":25},{"n":"Callum Wither","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"CJ Baxter","pos":"RB","yds":149,"car":16},{"n":"Jason Patterson","pos":"RB","yds":137,"car":12},{"n":"Jovantae Barnes","pos":"RB","yds":100,"car":8},{"n":"Jordan Colbert","pos":"RB","yds":14,"car":2},{"n":"Ahmir Smith","pos":"RB","yds":-1,"car":1},{"n":"Kenny Minchey","pos":"QB","yds":-9,"car":3}]}},{"w":5,"opp":"ULM","res":"W 52-35","espnId":"401871089","pass":{"n":"Jared Hollins","yds":321,"td":3,"cmp":14,"att":19},"rush":{"n":"Trae'von Dunbar","yds":91,"td":1,"car":12},"rec":{"n":"Anthony Eager","yds":168,"td":2,"rec":4},"allowed":{"pass":355,"rush":87,"passers":[{"n":"Aidan Armenta","pos":"QB","yds":355,"cmp":25,"att":41}],"rushers":[{"n":"Zach Palmer-Smith","pos":"RB","yds":54,"car":8},{"n":"Bryson Roland","pos":"RB","yds":12,"car":4},{"n":"Aidan Armenta","pos":"QB","yds":10,"car":10},{"n":"CJ Phillip","pos":"RB","yds":10,"car":4},{"n":"Marcellus Jackson","pos":"WR","yds":2,"car":1},{"n":"LT Robinson","pos":"WR","yds":-1,"car":1}]}},{"w":6,"opp":"ARST","at":true,"res":"W 56-49","espnId":"401869933","pass":{"n":"Jared Hollins","yds":76,"td":1,"cmp":6,"att":10},"rush":{"n":"Keenan Phillips","yds":157,"td":3,"car":19},"rec":{"n":"Brendan Jenkins","yds":36,"td":0,"rec":1},"allowed":{"pass":418,"rush":98,"passers":[{"n":"Trey Owens","pos":"QB","yds":418,"cmp":32,"att":43}],"rushers":[{"n":"Trey Owens","pos":"QB","yds":28,"car":11},{"n":"Solomon Baggett","pos":"RB","yds":28,"car":4},{"n":"Ezell Jolly","pos":"RB","yds":26,"car":2},{"n":"Kenyon Clay","pos":"RB","yds":10,"car":4},{"n":"Timothy Carter","pos":"RB","yds":3,"car":4},{"n":"Chauncy Cobb","pos":"WR","yds":2,"car":1},{"n":"Jaylen Bonelli","pos":"WR","yds":1,"car":1}]}},{"w":8,"opp":"MRSH","at":true,"res":"L 13-20","espnId":"401871092","pass":{"n":"Jared Hollins","yds":148,"td":0,"cmp":12,"att":33},"rush":{"n":"Keenan Phillips","yds":70,"td":0,"car":16},"rec":{"n":"Brendan Jenkins","yds":75,"td":0,"rec":4},"allowed":{"pass":181,"rush":147,"passers":[{"n":"Zion Turner","pos":"QB","yds":181,"cmp":21,"att":33}],"rushers":[{"n":"Khalil Wilkins","pos":"QB","yds":69,"car":8},{"n":"Zion Turner","pos":"QB","yds":45,"car":9},{"n":"Judah Price","pos":"RB","yds":30,"car":13},{"n":"TJ Lester","pos":"RB","yds":4,"car":2}]}},{"w":9,"opp":"LT","res":"L 20-35","espnId":"401871097","pass":{"n":"Jared Hollins","yds":192,"td":2,"cmp":14,"att":31},"rush":{"n":"PJ Martin","yds":82,"td":0,"car":12},"rec":{"n":"Anthony Eager","yds":102,"td":2,"rec":7},"allowed":{"pass":194,"rush":121,"passers":[{"n":"Blake Baker","pos":"QB","yds":167,"cmp":10,"att":16},{"n":"Trey Kukuk","pos":"QB","yds":27,"cmp":1,"att":1}],"rushers":[{"n":"Rayshun Hurt","pos":"RB","yds":40,"car":6},{"n":"Blake Baker","pos":"QB","yds":35,"car":16},{"n":"Andrew Burnette","pos":"RB","yds":16,"car":9},{"n":"Sergio Snider","pos":"RB","yds":10,"car":3},{"n":"Trey Kukuk","pos":"QB","yds":6,"car":1}]}}],
   "Southern Miss": [{"w":1,"opp":"ALCN","res":"W 49-3","espnId":"401868356","pass":{"n":"Ethan Hampton","yds":180,"td":1,"cmp":13,"att":23},"rush":{"n":"Steven Robinson","yds":123,"td":3,"car":23},"rec":{"n":"Mario Sanders","yds":94,"td":1,"rec":6},"allowed":{"pass":119,"rush":104,"passers":[{"n":"Jaylon Tolbert","pos":"","yds":119,"cmp":15,"att":22},{"n":"Bryan Wilson","pos":"","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Joshua Tate","pos":"","yds":33,"car":8},{"n":"Ernest Temple","pos":"","yds":32,"car":9},{"n":"Fredrick Robertson","pos":"","yds":13,"car":8},{"n":"Bryan Wilson","pos":"","yds":13,"car":2},{"n":"Jaylon Tolbert","pos":"","yds":12,"car":3},{"n":"Carl McDonald Jr.","pos":"","yds":6,"car":3},{"n":"Armon Wright","pos":"","yds":-3,"car":1}]}},{"w":2,"opp":"AUB","at":true,"res":"L 8-43","espnId":"401856671","pass":{"n":"Ethan Hampton","yds":146,"td":1,"cmp":18,"att":27},"rush":{"n":"Steven Robinson","yds":51,"td":0,"car":15},"rec":{"n":"Mario Sanders","yds":58,"td":0,"rec":3},"allowed":{"pass":270,"rush":343,"passers":[{"n":"Byrum Brown","pos":"QB","yds":226,"cmp":18,"att":29},{"n":"Tristan Ti'a","pos":"QB","yds":39,"cmp":2,"att":4},{"n":"Christian Neptune","pos":"WR","yds":5,"cmp":1,"att":1}],"rushers":[{"n":"Omar Mabson II","pos":"RB","yds":108,"car":15},{"n":"Byrum Brown","pos":"QB","yds":88,"car":13},{"n":"Jeremiah Cobb","pos":"RB","yds":85,"car":12},{"n":"Bryson Washington","pos":"RB","yds":44,"car":7},{"n":"Tae Meadows","pos":"RB","yds":18,"car":3},{"n":"Tristan Ti'a","pos":"QB","yds":0,"car":1}]}},{"w":3,"opp":"CONN","res":"L 20-48","espnId":"401861963","pass":{"n":"Landry Lyddy","yds":194,"td":1,"cmp":14,"att":25},"rush":{"n":"Steven Robinson","yds":72,"td":1,"car":18},"rec":{"n":"Mario Sanders","yds":81,"td":0,"rec":7},"allowed":{"pass":223,"rush":213,"passers":[{"n":"Kalieb Osborne","pos":"QB","yds":214,"cmp":16,"att":22},{"n":"Tucker McDonald","pos":"QB","yds":9,"cmp":2,"att":3}],"rushers":[{"n":"Cyncir Bowers","pos":"RB","yds":84,"car":11},{"n":"Kenji Christian","pos":"RB","yds":64,"car":15},{"n":"Kalieb Osborne","pos":"QB","yds":32,"car":10},{"n":"Trey Cornist","pos":"RB","yds":18,"car":6},{"n":"Shawn Simeon","pos":"RB","yds":15,"car":4}]}},{"w":4,"opp":"TULN","at":true,"res":"L 21-24","espnId":"401862784","pass":{"n":"Landry Lyddy","yds":243,"td":3,"cmp":18,"att":29},"rush":{"n":"Steven Robinson","yds":73,"td":0,"car":16},"rec":{"n":"Davis Dalton","yds":75,"td":1,"rec":3},"allowed":{"pass":164,"rush":281,"passers":[{"n":"Kadin Semonza","pos":"QB","yds":129,"cmp":12,"att":24},{"n":"Trace Johnson","pos":"QB","yds":35,"cmp":2,"att":5}],"rushers":[{"n":"Maurice Turner","pos":"RB","yds":200,"car":12},{"n":"Johnnie Daniels","pos":"RB","yds":70,"car":19},{"n":"Jaylin Lucas","pos":"RB","yds":23,"car":9},{"n":"Dagan Bruno","pos":"QB","yds":9,"car":1},{"n":"Kadin Semonza","pos":"QB","yds":-17,"car":5}]}},{"w":6,"opp":"TROY","at":true,"res":"L 34-55","espnId":"401871090","pass":{"n":"Landry Lyddy","yds":316,"td":2,"cmp":24,"att":37},"rush":{"n":"Robert Briggs","yds":44,"td":1,"car":2},"rec":{"n":"Kaden Saunders","yds":138,"td":0,"rec":7},"allowed":{"pass":225,"rush":437,"passers":[{"n":"Goose Crowder","pos":"QB","yds":225,"cmp":18,"att":21}],"rushers":[{"n":"Goose Crowder","pos":"QB","yds":145,"car":17},{"n":"Jordan Lovett","pos":"RB","yds":142,"car":12},{"n":"Gavin Griffin","pos":"RB","yds":78,"car":15},{"n":"Jaheim Merriweather","pos":"RB","yds":72,"car":15}]}},{"w":7,"opp":"ARST","res":"L 13-23","espnId":"401869934","pass":{"n":"Landry Lyddy","yds":208,"td":1,"cmp":18,"att":34},"rush":{"n":"Steven Robinson","yds":84,"td":1,"car":21},"rec":{"n":"Mario Sanders","yds":88,"td":0,"rec":6},"allowed":{"pass":170,"rush":134,"passers":[{"n":"Trey Owens","pos":"QB","yds":170,"cmp":17,"att":25}],"rushers":[{"n":"Solomon Baggett","pos":"RB","yds":48,"car":15},{"n":"Kenyon Clay","pos":"RB","yds":30,"car":10},{"n":"Trey Owens","pos":"QB","yds":25,"car":15},{"n":"Timothy Carter","pos":"RB","yds":23,"car":7},{"n":"James Lee","pos":"RB","yds":12,"car":2}]}},{"w":8,"opp":"UL","res":"W 35-31","espnId":"401869967","pass":{"n":"Landry Lyddy","yds":164,"td":0,"cmp":21,"att":38},"rush":{"n":"Jamarice Wilder","yds":154,"td":1,"car":13},"rec":{"n":"Mario Sanders","yds":77,"td":0,"rec":6},"allowed":{"pass":299,"rush":118,"passers":[{"n":"Lunch Winfield","pos":"QB","yds":299,"cmp":22,"att":41}],"rushers":[{"n":"JJ Garner","pos":"RB","yds":52,"car":7},{"n":"Steven Blanco","pos":"RB","yds":33,"car":13},{"n":"Anthony Reagan Jr.","pos":"RB","yds":16,"car":5},{"n":"Russell Babineaux","pos":"WR","yds":9,"car":1},{"n":"Lunch Winfield","pos":"QB","yds":7,"car":13},{"n":"KeDarius Wade","pos":"WR","yds":1,"car":1}]}},{"w":9,"opp":"ULM","at":true,"res":"W 35-21","espnId":"401871095","pass":{"n":"Landry Lyddy","yds":130,"td":1,"cmp":15,"att":30},"rush":{"n":"Steven Robinson","yds":151,"td":1,"car":21},"rec":{"n":"Mario Sanders","yds":31,"td":0,"rec":4},"allowed":{"pass":202,"rush":157,"passers":[{"n":"Aidan Armenta","pos":"QB","yds":202,"cmp":19,"att":34}],"rushers":[{"n":"Don Chaney","pos":"RB","yds":54,"car":10},{"n":"Zach Palmer-Smith","pos":"RB","yds":31,"car":8},{"n":"Derrick Jameson","pos":"RB","yds":23,"car":6},{"n":"Jaiden Tucker","pos":"WR","yds":18,"car":1},{"n":"Austin Carlisle","pos":"QB","yds":15,"car":2},{"n":"Aidan Armenta","pos":"QB","yds":8,"car":14},{"n":"CJ Phillip","pos":"RB","yds":7,"car":2},{"n":"Marcellus Jackson","pos":"WR","yds":1,"car":1}]}}],
   "Louisiana Tech": [{"w":1,"opp":"NWST","res":"W 80-6","espnId":"401869129","pass":{"n":"Blake Baker","yds":232,"td":3,"cmp":10,"att":14},"rush":{"n":"Trey Kukuk","yds":50,"td":0,"car":5},"rec":{"n":"Jalen Mickens","yds":133,"td":1,"rec":3},"allowed":{"pass":43,"rush":86,"passers":[{"n":"Abram Johnston","pos":"QB","yds":43,"cmp":5,"att":13},{"n":"Zach Wilcke","pos":"QB","yds":0,"cmp":0,"att":3}],"rushers":[{"n":"Sage Ingram","pos":"RB","yds":48,"car":13},{"n":"Zach Wilcke","pos":"QB","yds":43,"car":6},{"n":"Abram Johnston","pos":"QB","yds":17,"car":7},{"n":"Kameron Thomas","pos":"RB","yds":1,"car":8},{"n":"Zay Davis","pos":"RB","yds":-3,"car":9},{"n":"Brendan Webb","pos":"WR","yds":-5,"car":1}]}},{"w":2,"opp":"LSU","at":true,"res":"L 14-45","espnId":"401867796","pass":{"n":"Blake Baker","yds":128,"td":1,"cmp":11,"att":21},"rush":{"n":"Andrew Burnette","yds":16,"td":0,"car":6},"rec":{"n":"Jalen Mickens","yds":101,"td":1,"rec":6},"allowed":{"pass":381,"rush":147,"passers":[{"n":"Sam Leavitt","pos":"QB","yds":344,"cmp":25,"att":38},{"n":"Landen Clark","pos":"QB","yds":37,"cmp":2,"att":3}],"rushers":[{"n":"Dilin Jones","pos":"RB","yds":66,"car":18},{"n":"Sam Leavitt","pos":"QB","yds":22,"car":11},{"n":"Stacy Gage","pos":"RB","yds":20,"car":4},{"n":"Landen Clark","pos":"QB","yds":19,"car":3},{"n":"Trey'Dez Green","pos":"TE","yds":7,"car":2},{"n":"Winston Watkins Jr.","pos":"WR","yds":6,"car":1},{"n":"Harlem Berry","pos":"RB","yds":4,"car":1},{"n":"Phillip Wright III","pos":"WR","yds":4,"car":1},{"n":"Eugene Wilson III","pos":"WR","yds":1,"car":1},{"n":"Caden Durham","pos":"RB","yds":-2,"car":1}]}},{"w":3,"opp":"BAY","at":true,"res":"L 19-36","espnId":"401867804","pass":{"n":"Trey Kukuk","yds":223,"td":1,"cmp":25,"att":44},"rush":{"n":"Trey Kukuk","yds":75,"td":0,"car":11},"rec":{"n":"Eli Finley","yds":65,"td":1,"rec":8},"allowed":{"pass":253,"rush":165,"passers":[{"n":"Nate Bennett","pos":"QB","yds":253,"cmp":21,"att":24}],"rushers":[{"n":"Ryelan Morris","pos":"RB","yds":55,"car":4},{"n":"Dawson Pendergrass","pos":"RB","yds":46,"car":16},{"n":"Caden Knighten","pos":"RB","yds":42,"car":10},{"n":"Michael Turner","pos":"RB","yds":25,"car":8},{"n":"Nate Bennett","pos":"QB","yds":2,"car":4},{"n":"HD Davis","pos":"RB","yds":1,"car":1}]}},{"w":5,"opp":"ARMY","res":"W 31-29","espnId":"401869842","pass":{"n":"Trey Kukuk","yds":185,"td":0,"cmp":16,"att":22},"rush":{"n":"Dylone Brooks","yds":119,"td":1,"car":7},"rec":{"n":"Dylone Brooks","yds":81,"td":1,"rec":2},"allowed":{"pass":151,"rush":270,"passers":[{"n":"Cale Hellums","pos":"QB","yds":151,"cmp":12,"att":24}],"rushers":[{"n":"Samari Howard","pos":"WR","yds":158,"car":12},{"n":"Cale Hellums","pos":"QB","yds":55,"car":19},{"n":"Carson Smith","pos":"RB","yds":20,"car":5},{"n":"Zach Mundell","pos":"WR","yds":18,"car":3},{"n":"Jake Rendina","pos":"RB","yds":16,"car":5},{"n":"David Clerk","pos":"WR","yds":3,"car":1}]}},{"w":6,"opp":"UL","res":"W 32-31","espnId":"401869965","pass":{"n":"Blake Baker","yds":319,"td":3,"cmp":32,"att":42},"rush":{"n":"Andrew Burnette","yds":85,"td":0,"car":14},"rec":{"n":"Eli Finley","yds":114,"td":2,"rec":9},"allowed":{"pass":239,"rush":160,"passers":[{"n":"Lunch Winfield","pos":"QB","yds":239,"cmp":14,"att":24}],"rushers":[{"n":"Steven Blanco","pos":"RB","yds":36,"car":8},{"n":"JJ Garner","pos":"RB","yds":36,"car":7},{"n":"Lunch Winfield","pos":"QB","yds":34,"car":13},{"n":"Trenton Chaney","pos":"WR","yds":25,"car":2},{"n":"Rahji Dennis","pos":"WR","yds":23,"car":1},{"n":"Anthony Reagan Jr.","pos":"RB","yds":6,"car":3}]}},{"w":7,"opp":"ULM","at":true,"res":"W 24-0","espnId":"401871091","pass":{"n":"Blake Baker","yds":178,"td":2,"cmp":15,"att":21},"rush":{"n":"Andrew Burnette","yds":79,"td":0,"car":22},"rec":{"n":"Marcus Calwise Jr.","yds":119,"td":0,"rec":8},"allowed":{"pass":165,"rush":63,"passers":[{"n":"Aidan Armenta","pos":"QB","yds":119,"cmp":14,"att":24},{"n":"Austin Carlisle","pos":"QB","yds":46,"cmp":3,"att":5}],"rushers":[{"n":"Aidan Armenta","pos":"QB","yds":25,"car":6},{"n":"Austin Carlisle","pos":"QB","yds":11,"car":3},{"n":"Don Chaney","pos":"RB","yds":10,"car":4},{"n":"Bryson Roland","pos":"RB","yds":6,"car":3},{"n":"Zach Palmer-Smith","pos":"RB","yds":6,"car":1},{"n":"JP Coulter","pos":"WR","yds":6,"car":1},{"n":"Marcellus Jackson","pos":"WR","yds":5,"car":2},{"n":"CJ Phillip","pos":"RB","yds":4,"car":3},{"n":"Derrick Jameson","pos":"RB","yds":-2,"car":1}]}},{"w":8,"opp":"ODU","res":"W 26-0","espnId":"401871093","pass":{"n":"Blake Baker","yds":303,"td":1,"cmp":28,"att":34},"rush":{"n":"Andrew Burnette","yds":63,"td":0,"car":20},"rec":{"n":"Eli Finley","yds":128,"td":1,"rec":10},"allowed":{"pass":154,"rush":-13,"passers":[{"n":"Jaxon Potter","pos":"QB","yds":154,"cmp":18,"att":34}],"rushers":[{"n":"Devin Roche","pos":"RB","yds":9,"car":8},{"n":"Ja'Varien Salter","pos":"RB","yds":9,"car":1},{"n":"Trey Hall","pos":"RB","yds":-1,"car":3},{"n":"Maurki James","pos":"RB","yds":-2,"car":3},{"n":"Jaxon Potter","pos":"QB","yds":-28,"car":7}]}},{"w":9,"opp":"USA","at":true,"res":"W 35-20","espnId":"401871097","pass":{"n":"Blake Baker","yds":167,"td":3,"cmp":10,"att":16},"rush":{"n":"Rayshun Hurt","yds":40,"td":0,"car":6},"rec":{"n":"Marcus Calwise Jr.","yds":68,"td":2,"rec":3},"allowed":{"pass":192,"rush":205,"passers":[{"n":"Jared Hollins","pos":"QB","yds":192,"cmp":14,"att":31}],"rushers":[{"n":"PJ Martin","pos":"RB","yds":82,"car":12},{"n":"Keenan Phillips","pos":"RB","yds":62,"car":11},{"n":"Jared Hollins","pos":"QB","yds":38,"car":14},{"n":"Trae'von Dunbar","pos":"RB","yds":23,"car":7}]}}],
-  "Louisiana": [{"w":1,"opp":"LAM","res":"W 38-7","espnId":"401869142","pass":{"n":"Lunch Winfield","yds":189,"td":0,"cmp":16,"att":22},"rush":{"n":"Darrell Smith","yds":84,"td":2,"car":10},"rec":{"n":"Caden Jensen","yds":77,"td":0,"rec":5},"allowed":{"pass":149,"rush":56,"passers":[{"n":"Aiden McCown","pos":"QB","yds":126,"cmp":15,"att":26},{"n":"Julian Salazar","pos":"QB","yds":23,"cmp":3,"att":5}],"rushers":[{"n":"Jojo Uga","pos":"RB","yds":24,"car":8},{"n":"Parker Jenkins","pos":"RB","yds":23,"car":10},{"n":"Aiden McCown","pos":"QB","yds":11,"car":4},{"n":"Blake Thomas","pos":"WR","yds":7,"car":1},{"n":"LaDamion McDowell","pos":"TE","yds":2,"car":1},{"n":"Jameer Muhammad","pos":"RB","yds":1,"car":1},{"n":"Julian Salazar","pos":"QB","yds":-12,"car":4}]}},{"w":2,"opp":"USC","at":true,"res":"L 30-49","espnId":"401858445","pass":{"n":"Lunch Winfield","yds":212,"td":1,"cmp":16,"att":22},"rush":{"n":"Lunch Winfield","yds":91,"td":2,"car":14},"rec":{"n":"Russell Babineaux","yds":91,"td":1,"rec":6},"allowed":{"pass":269,"rush":214,"passers":[{"n":"Jayden Maiava","pos":"QB","yds":261,"cmp":19,"att":29},{"n":"Jonas Williams","pos":"QB","yds":8,"cmp":1,"att":1}],"rushers":[{"n":"King Miller","pos":"RB","yds":128,"car":18},{"n":"Waymond Jordan","pos":"RB","yds":47,"car":10},{"n":"Shahn Alston","pos":"RB","yds":34,"car":5},{"n":"Trent Mosley","pos":"WR","yds":8,"car":1},{"n":"Riley Wormley","pos":"RB","yds":5,"car":4},{"n":"Zacharyus Williams","pos":"WR","yds":-7,"car":1}]}},{"w":3,"opp":"UAB","res":"W 21-14","espnId":"401862776","pass":{"n":"Lunch Winfield","yds":110,"td":0,"cmp":15,"att":20},"rush":{"n":"Lunch Winfield","yds":91,"td":2,"car":19},"rec":{"n":"Landon Strother","yds":41,"td":0,"rec":5},"allowed":{"pass":144,"rush":74,"passers":[{"n":"Ryder Burton","pos":"QB","yds":144,"cmp":15,"att":25},{"n":"Nate Rogers","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Rod Robinson II","pos":"RB","yds":52,"car":13},{"n":"Nate Rogers","pos":"QB","yds":13,"car":2},{"n":"Bam McReynolds","pos":"RB","yds":12,"car":7},{"n":"Ja'Vin Simpkins","pos":"RB","yds":10,"car":2},{"n":"Ryder Burton","pos":"QB","yds":-13,"car":7}]}},{"w":4,"opp":"CLT","at":true,"res":"W 34-7","espnId":"401862780","pass":{"n":"Lunch Winfield","yds":149,"td":1,"cmp":19,"att":26},"rush":{"n":"Darrell Smith","yds":43,"td":0,"car":10},"rec":{"n":"Trenton Chaney","yds":44,"td":0,"rec":3},"allowed":{"pass":111,"rush":26,"passers":[{"n":"Cole Gonzales","pos":"QB","yds":68,"cmp":9,"att":16},{"n":"Conner Harrell","pos":"QB","yds":43,"cmp":8,"att":13},{"n":"Jaylen White","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Henry Rutledge","pos":"RB","yds":14,"car":3},{"n":"Khamani Alexander","pos":"RB","yds":8,"car":5},{"n":"Jaylen White","pos":"QB","yds":8,"car":1},{"n":"Jariel Cobb","pos":"RB","yds":7,"car":1},{"n":"D'Mariun Perteet","pos":"RB","yds":-2,"car":2},{"n":"Conner Harrell","pos":"QB","yds":-4,"car":1},{"n":"Cole Gonzales","pos":"QB","yds":-5,"car":2}]}},{"w":5,"opp":"ARST","res":"W 23-20","espnId":"401869932","pass":{"n":"Lunch Winfield","yds":189,"td":0,"cmp":18,"att":21},"rush":{"n":"JJ Garner","yds":78,"td":1,"car":7},"rec":{"n":"KeDarius Wade","yds":36,"td":0,"rec":1},"allowed":{"pass":206,"rush":87,"passers":[{"n":"Trey Owens","pos":"QB","yds":206,"cmp":20,"att":31}],"rushers":[{"n":"Solomon Baggett","pos":"RB","yds":51,"car":12},{"n":"Trey Owens","pos":"QB","yds":13,"car":5},{"n":"Chauncy Cobb","pos":"WR","yds":12,"car":1},{"n":"James Lee","pos":"RB","yds":11,"car":3},{"n":"Timothy Carter","pos":"RB","yds":2,"car":1},{"n":"Drew Dickey","pos":"QB","yds":-2,"car":1}]}},{"w":6,"opp":"LT","at":true,"res":"L 31-32","espnId":"401869965","pass":{"n":"Lunch Winfield","yds":239,"td":1,"cmp":14,"att":24},"rush":{"n":"JJ Garner","yds":36,"td":1,"car":7},"rec":{"n":"KeDarius Wade","yds":88,"td":1,"rec":2},"allowed":{"pass":338,"rush":147,"passers":[{"n":"Blake Baker","pos":"QB","yds":319,"cmp":32,"att":42},{"n":"Dylone Brooks","pos":"RB","yds":19,"cmp":1,"att":1}],"rushers":[{"n":"Andrew Burnette","pos":"RB","yds":85,"car":14},{"n":"Blake Baker","pos":"QB","yds":35,"car":11},{"n":"Sergio Snider","pos":"RB","yds":18,"car":3},{"n":"Dylone Brooks","pos":"RB","yds":6,"car":3},{"n":"Jalen Mickens","pos":"WR","yds":3,"car":1},{"n":"Talyn Shettron","pos":"WR","yds":1,"car":1}]}},{"w":7,"opp":"TROY","res":"W 33-6","espnId":"401869966","pass":{"n":"Lunch Winfield","yds":70,"td":1,"cmp":11,"att":21},"rush":{"n":"Lunch Winfield","yds":65,"td":0,"car":15},"rec":{"n":"Trenton Chaney","yds":45,"td":0,"rec":3},"allowed":{"pass":141,"rush":126,"passers":[{"n":"Tucker Kilcrease","pos":"QB","yds":76,"cmp":5,"att":10},{"n":"Goose Crowder","pos":"QB","yds":65,"cmp":9,"att":16}],"rushers":[{"n":"Jordan Lovett","pos":"RB","yds":50,"car":10},{"n":"Tucker Kilcrease","pos":"QB","yds":32,"car":4},{"n":"Goose Crowder","pos":"QB","yds":25,"car":5},{"n":"Gavin Griffin","pos":"RB","yds":22,"car":7},{"n":"Jaheim Merriweather","pos":"RB","yds":-3,"car":2}]}},{"w":8,"opp":"USM","at":true,"res":"L 31-35","espnId":"401869967","pass":{"n":"Lunch Winfield","yds":299,"td":2,"cmp":22,"att":41},"rush":{"n":"JJ Garner","yds":52,"td":1,"car":7},"rec":{"n":"Shelton Sampson Jr.","yds":58,"td":0,"rec":5},"allowed":{"pass":164,"rush":286,"passers":[{"n":"Landry Lyddy","pos":"QB","yds":164,"cmp":21,"att":38}],"rushers":[{"n":"Jamarice Wilder","pos":"RB","yds":154,"car":13},{"n":"Steven Robinson","pos":"RB","yds":145,"car":22},{"n":"Landry Lyddy","pos":"QB","yds":-9,"car":7}]}}],
+  "Louisiana": [{"w":1,"opp":"LAM","res":"W 38-7","espnId":"401869142","pass":{"n":"Lunch Winfield","yds":189,"td":0,"cmp":16,"att":22},"rush":{"n":"Darrell Smith","yds":84,"td":2,"car":10},"rec":{"n":"Caden Jensen","yds":77,"td":0,"rec":5},"allowed":{"pass":149,"rush":56,"passers":[{"n":"Aiden McCown","pos":"QB","yds":126,"cmp":15,"att":26},{"n":"Julian Salazar","pos":"QB","yds":23,"cmp":3,"att":5}],"rushers":[{"n":"Jojo Uga","pos":"RB","yds":24,"car":8},{"n":"Parker Jenkins","pos":"RB","yds":23,"car":10},{"n":"Aiden McCown","pos":"QB","yds":11,"car":4},{"n":"Blake Thomas","pos":"WR","yds":7,"car":1},{"n":"LaDamion McDowell","pos":"-","yds":2,"car":1},{"n":"Jameer Muhammad","pos":"RB","yds":1,"car":1},{"n":"Julian Salazar","pos":"QB","yds":-12,"car":4}]}},{"w":2,"opp":"USC","at":true,"res":"L 30-49","espnId":"401858445","pass":{"n":"Lunch Winfield","yds":212,"td":1,"cmp":16,"att":22},"rush":{"n":"Lunch Winfield","yds":91,"td":2,"car":14},"rec":{"n":"Russell Babineaux","yds":91,"td":1,"rec":6},"allowed":{"pass":269,"rush":214,"passers":[{"n":"Jayden Maiava","pos":"QB","yds":261,"cmp":19,"att":29},{"n":"Jonas Williams","pos":"QB","yds":8,"cmp":1,"att":1}],"rushers":[{"n":"King Miller","pos":"RB","yds":128,"car":18},{"n":"Waymond Jordan","pos":"RB","yds":47,"car":10},{"n":"Shahn Alston","pos":"RB","yds":34,"car":5},{"n":"Trent Mosley","pos":"WR","yds":8,"car":1},{"n":"Riley Wormley","pos":"RB","yds":5,"car":4},{"n":"Zacharyus Williams","pos":"WR","yds":-7,"car":1}]}},{"w":3,"opp":"UAB","res":"W 21-14","espnId":"401862776","pass":{"n":"Lunch Winfield","yds":110,"td":0,"cmp":15,"att":20},"rush":{"n":"Lunch Winfield","yds":91,"td":2,"car":19},"rec":{"n":"Landon Strother","yds":41,"td":0,"rec":5},"allowed":{"pass":144,"rush":74,"passers":[{"n":"Ryder Burton","pos":"QB","yds":144,"cmp":15,"att":25},{"n":"Nate Rogers","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Rod Robinson II","pos":"RB","yds":52,"car":13},{"n":"Nate Rogers","pos":"QB","yds":13,"car":2},{"n":"Bam McReynolds","pos":"RB","yds":12,"car":7},{"n":"Ja'Vin Simpkins","pos":"RB","yds":10,"car":2},{"n":"Ryder Burton","pos":"QB","yds":-13,"car":7}]}},{"w":4,"opp":"CLT","at":true,"res":"W 34-7","espnId":"401862780","pass":{"n":"Lunch Winfield","yds":149,"td":1,"cmp":19,"att":26},"rush":{"n":"Darrell Smith","yds":43,"td":0,"car":10},"rec":{"n":"Trenton Chaney","yds":44,"td":0,"rec":3},"allowed":{"pass":111,"rush":26,"passers":[{"n":"Cole Gonzales","pos":"QB","yds":68,"cmp":9,"att":16},{"n":"Conner Harrell","pos":"QB","yds":43,"cmp":8,"att":13},{"n":"Jaylen White","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Henry Rutledge","pos":"RB","yds":14,"car":3},{"n":"Khamani Alexander","pos":"RB","yds":8,"car":5},{"n":"Jaylen White","pos":"QB","yds":8,"car":1},{"n":"Jariel Cobb","pos":"RB","yds":7,"car":1},{"n":"D'Mariun Perteet","pos":"RB","yds":-2,"car":2},{"n":"Conner Harrell","pos":"QB","yds":-4,"car":1},{"n":"Cole Gonzales","pos":"QB","yds":-5,"car":2}]}},{"w":5,"opp":"ARST","res":"W 23-20","espnId":"401869932","pass":{"n":"Lunch Winfield","yds":189,"td":0,"cmp":18,"att":21},"rush":{"n":"JJ Garner","yds":78,"td":1,"car":7},"rec":{"n":"KeDarius Wade","yds":36,"td":0,"rec":1},"allowed":{"pass":206,"rush":87,"passers":[{"n":"Trey Owens","pos":"QB","yds":206,"cmp":20,"att":31}],"rushers":[{"n":"Solomon Baggett","pos":"RB","yds":51,"car":12},{"n":"Trey Owens","pos":"QB","yds":13,"car":5},{"n":"Chauncy Cobb","pos":"WR","yds":12,"car":1},{"n":"James Lee","pos":"RB","yds":11,"car":3},{"n":"Timothy Carter","pos":"RB","yds":2,"car":1},{"n":"Drew Dickey","pos":"QB","yds":-2,"car":1}]}},{"w":6,"opp":"LT","at":true,"res":"L 31-32","espnId":"401869965","pass":{"n":"Lunch Winfield","yds":239,"td":1,"cmp":14,"att":24},"rush":{"n":"JJ Garner","yds":36,"td":1,"car":7},"rec":{"n":"KeDarius Wade","yds":88,"td":1,"rec":2},"allowed":{"pass":338,"rush":147,"passers":[{"n":"Blake Baker","pos":"QB","yds":319,"cmp":32,"att":42},{"n":"Dylone Brooks","pos":"RB","yds":19,"cmp":1,"att":1}],"rushers":[{"n":"Andrew Burnette","pos":"RB","yds":85,"car":14},{"n":"Blake Baker","pos":"QB","yds":35,"car":11},{"n":"Sergio Snider","pos":"RB","yds":18,"car":3},{"n":"Dylone Brooks","pos":"RB","yds":6,"car":3},{"n":"Jalen Mickens","pos":"WR","yds":3,"car":1},{"n":"Talyn Shettron","pos":"WR","yds":1,"car":1}]}},{"w":7,"opp":"TROY","res":"W 33-6","espnId":"401869966","pass":{"n":"Lunch Winfield","yds":70,"td":1,"cmp":11,"att":21},"rush":{"n":"Lunch Winfield","yds":65,"td":0,"car":15},"rec":{"n":"Trenton Chaney","yds":45,"td":0,"rec":3},"allowed":{"pass":141,"rush":126,"passers":[{"n":"Tucker Kilcrease","pos":"QB","yds":76,"cmp":5,"att":10},{"n":"Goose Crowder","pos":"QB","yds":65,"cmp":9,"att":16}],"rushers":[{"n":"Jordan Lovett","pos":"RB","yds":50,"car":10},{"n":"Tucker Kilcrease","pos":"QB","yds":32,"car":4},{"n":"Goose Crowder","pos":"QB","yds":25,"car":5},{"n":"Gavin Griffin","pos":"RB","yds":22,"car":7},{"n":"Jaheim Merriweather","pos":"RB","yds":-3,"car":2}]}},{"w":8,"opp":"USM","at":true,"res":"L 31-35","espnId":"401869967","pass":{"n":"Lunch Winfield","yds":299,"td":2,"cmp":22,"att":41},"rush":{"n":"JJ Garner","yds":52,"td":1,"car":7},"rec":{"n":"Shelton Sampson Jr.","yds":58,"td":0,"rec":5},"allowed":{"pass":164,"rush":286,"passers":[{"n":"Landry Lyddy","pos":"QB","yds":164,"cmp":21,"att":38}],"rushers":[{"n":"Jamarice Wilder","pos":"RB","yds":154,"car":13},{"n":"Steven Robinson","pos":"RB","yds":145,"car":22},{"n":"Landry Lyddy","pos":"QB","yds":-9,"car":7}]}}],
   "James Madison": [{"w":1,"opp":"LIB","res":"W 20-13","espnId":"401869960","pass":{"n":"JC Evans","yds":61,"td":1,"cmp":7,"att":9},"rush":{"n":"JC Evans","yds":69,"td":0,"car":9},"rec":{"n":"Noah Grevious","yds":39,"td":0,"rec":4},"allowed":{"pass":230,"rush":91,"passers":[{"n":"Deshawn Purdie","pos":"QB","yds":230,"cmp":17,"att":27}],"rushers":[{"n":"Kam Davis","pos":"RB","yds":51,"car":16},{"n":"Peyton Jones","pos":"RB","yds":25,"car":9},{"n":"Jaylon Coleman","pos":"RB","yds":18,"car":3},{"n":"Deshawn Purdie","pos":"QB","yds":3,"car":7},{"n":"Jaylen Henderson","pos":"QB","yds":3,"car":1},{"n":"Ethan Vasko","pos":"QB","yds":2,"car":1}]}},{"w":2,"opp":"WAG","res":"W 87-3","espnId":"401867929","pass":{"n":"Camden Coleman","yds":171,"td":1,"cmp":12,"att":18},"rush":{"n":"Nick Herman","yds":132,"td":2,"car":8},"rec":{"n":"Corey Scott","yds":52,"td":0,"rec":3},"allowed":{"pass":118,"rush":86,"passers":[{"n":"Benjamin Newman","pos":"QB","yds":101,"cmp":11,"att":20},{"n":"Cristian Pinto","pos":"QB","yds":17,"cmp":3,"att":7}],"rushers":[{"n":"Uriah Moats-Maynard","pos":"RB","yds":33,"car":14},{"n":"Andrew Ransome","pos":"RB","yds":31,"car":11},{"n":"Benjamin Newman","pos":"QB","yds":13,"car":6},{"n":"Shawn James","pos":"RB","yds":9,"car":6},{"n":"Sekou Kamau","pos":"RB","yds":4,"car":1},{"n":"Derek Burrell","pos":"WR","yds":-1,"car":1}]}},{"w":3,"opp":"SDSU","at":true,"res":"W 26-13","espnId":"401860887","pass":{"n":"Camden Coleman","yds":246,"td":2,"cmp":19,"att":27},"rush":{"n":"George Pettaway","yds":82,"td":0,"car":20},"rec":{"n":"Braeden Wisloski","yds":90,"td":0,"rec":5},"allowed":{"pass":209,"rush":192,"passers":[{"n":"Jayden Denegal","pos":"QB","yds":209,"cmp":18,"att":33}],"rushers":[{"n":"Javion Kinnard","pos":"RB","yds":181,"car":33},{"n":"Nathan Acevedo","pos":"WR","yds":11,"car":2},{"n":"Jordin Thomas","pos":"RB","yds":1,"car":2},{"n":"Bert Emanuel Jr.","pos":"WR","yds":1,"car":1},{"n":"Jayden Denegal","pos":"QB","yds":-2,"car":6}]}},{"w":4,"opp":"ODU","at":true,"res":"W 46-20","espnId":"401869961","pass":{"n":"Camden Coleman","yds":243,"td":4,"cmp":24,"att":42},"rush":{"n":"George Pettaway","yds":110,"td":0,"car":16},"rec":{"n":"Corey Scott","yds":57,"td":1,"rec":4},"allowed":{"pass":261,"rush":-14,"passers":[{"n":"Ryan Huff","pos":"QB","yds":261,"cmp":20,"att":39}],"rushers":[{"n":"Devin Roche","pos":"RB","yds":18,"car":8},{"n":"Maurki James","pos":"RB","yds":13,"car":5},{"n":"Trey Hall","pos":"RB","yds":0,"car":3},{"n":"Ryan Huff","pos":"QB","yds":-45,"car":12}]}},{"w":5,"opp":"MRSH","res":"W 45-17","espnId":"401869962","pass":{"n":"Camden Coleman","yds":263,"td":3,"cmp":21,"att":32},"rush":{"n":"George Pettaway","yds":206,"td":2,"car":14},"rec":{"n":"Corey Scott","yds":104,"td":2,"rec":5},"allowed":{"pass":309,"rush":135,"passers":[{"n":"Carlos Del Rio-Wilson","pos":"QB","yds":221,"cmp":21,"att":37},{"n":"Zion Turner","pos":"QB","yds":88,"cmp":8,"att":12},{"n":"Khalil Wilkins","pos":"QB","yds":0,"cmp":0,"att":1},{"n":"Owen Sweeney","pos":"WR","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Jo'Shon Barbie","pos":"RB","yds":44,"car":7},{"n":"Khalil Wilkins","pos":"QB","yds":37,"car":3},{"n":"TJ Lester","pos":"RB","yds":25,"car":5},{"n":"Judah Price","pos":"RB","yds":17,"car":6},{"n":"Carlos Del Rio-Wilson","pos":"QB","yds":15,"car":7},{"n":"Zion Turner","pos":"QB","yds":-3,"car":2}]}},{"w":6,"opp":"GASO","at":true,"res":"W 27-24","espnId":"401869949","pass":{"n":"Camden Coleman","yds":171,"td":1,"cmp":16,"att":27},"rush":{"n":"George Pettaway","yds":151,"td":0,"car":21},"rec":{"n":"Cole Keller","yds":108,"td":1,"rec":4},"allowed":{"pass":343,"rush":122,"passers":[{"n":"Max Johnson","pos":"QB","yds":343,"cmp":26,"att":38},{"n":"Taeo Todd","pos":"RB","yds":0,"cmp":0,"att":1},{"n":"Weston Bryan","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Tyrese Woodgett","pos":"RB","yds":65,"car":11},{"n":"Terrance Gibbs","pos":"RB","yds":24,"car":5},{"n":"Max Johnson","pos":"QB","yds":18,"car":3},{"n":"Taeo Todd","pos":"RB","yds":8,"car":2},{"n":"David Mbadinga","pos":"RB","yds":6,"car":2},{"n":"Weston Bryan","pos":"QB","yds":1,"car":2}]}},{"w":7,"opp":"GAST","res":"W 49-22","espnId":"401869957","pass":{"n":"Camden Coleman","yds":185,"td":2,"cmp":13,"att":19},"rush":{"n":"George Pettaway","yds":119,"td":1,"car":14},"rec":{"n":"Cole Keller","yds":54,"td":0,"rec":2},"allowed":{"pass":185,"rush":188,"passers":[{"n":"Cameran Brown","pos":"QB","yds":134,"cmp":13,"att":25},{"n":"Ayden Pereira","pos":"QB","yds":51,"cmp":3,"att":4}],"rushers":[{"n":"Cameran Brown","pos":"QB","yds":71,"car":9},{"n":"Dennis Murray Jr.","pos":"RB","yds":56,"car":9},{"n":"Lanear McCrary Jr.","pos":"RB","yds":24,"car":9},{"n":"Xavier Butler","pos":"RB","yds":18,"car":2},{"n":"Qwantavius Wiggins","pos":"RB","yds":16,"car":5},{"n":"Ayden Pereira","pos":"QB","yds":3,"car":3}]}},{"w":8,"opp":"APP","at":true,"res":"L 31-34","espnId":"401869845","pass":{"n":"Camden Coleman","yds":232,"td":1,"cmp":22,"att":39},"rush":{"n":"George Pettaway","yds":57,"td":1,"car":15},"rec":{"n":"Braeden Wisloski","yds":84,"td":1,"rec":2},"allowed":{"pass":285,"rush":81,"passers":[{"n":"Malachi Singleton","pos":"QB","yds":271,"cmp":26,"att":40},{"n":"Henry Hasselbeck","pos":"QB","yds":14,"cmp":3,"att":4}],"rushers":[{"n":"Jaquari Lewis","pos":"RB","yds":74,"car":13},{"n":"Henry Hasselbeck","pos":"QB","yds":9,"car":7},{"n":"Ja'Quez Cross","pos":"RB","yds":6,"car":3},{"n":"Malachi Singleton","pos":"QB","yds":-1,"car":5}]}},{"w":9,"opp":"TROY","res":"L 21-24","espnId":"401869963","pass":{"n":"Camden Coleman","yds":175,"td":2,"cmp":14,"att":25},"rush":{"n":"Seth Cromwell","yds":135,"td":1,"car":23},"rec":{"n":"Michael Scott","yds":68,"td":0,"rec":4},"allowed":{"pass":179,"rush":170,"passers":[{"n":"Tucker Kilcrease","pos":"QB","yds":179,"cmp":15,"att":31}],"rushers":[{"n":"Jaheim Merriweather","pos":"RB","yds":84,"car":13},{"n":"Tucker Kilcrease","pos":"QB","yds":40,"car":17},{"n":"Gavin Griffin","pos":"RB","yds":38,"car":11},{"n":"Jordan Lovett","pos":"RB","yds":8,"car":4}]}}],
   "Liberty": [{"w":1,"opp":"JMU","at":true,"res":"L 13-20","espnId":"401869960","pass":{"n":"Deshawn Purdie","yds":230,"td":1,"cmp":17,"att":27},"rush":{"n":"Kam Davis","yds":51,"td":0,"car":16},"rec":{"n":"Makai Jackson","yds":73,"td":1,"rec":3},"allowed":{"pass":118,"rush":173,"passers":[{"n":"JC Evans","pos":"QB","yds":61,"cmp":7,"att":9},{"n":"Camden Coleman","pos":"QB","yds":57,"cmp":5,"att":9}],"rushers":[{"n":"JC Evans","pos":"QB","yds":69,"car":9},{"n":"Seth Cromwell","pos":"RB","yds":51,"car":4},{"n":"George Pettaway","pos":"RB","yds":47,"car":15},{"n":"Nick Herman","pos":"RB","yds":3,"car":2},{"n":"Braeden Wisloski","pos":"WR","yds":3,"car":1}]}},{"w":2,"opp":"GWEB","res":"W 24-23","espnId":"401868187","pass":{"n":"Deshawn Purdie","yds":122,"td":1,"cmp":6,"att":17},"rush":{"n":"Peyton Jones","yds":76,"td":0,"car":13},"rec":{"n":"Makai Jackson","yds":69,"td":1,"rec":2},"allowed":{"pass":186,"rush":118,"passers":[{"n":"Cole Pennington","pos":"QB","yds":186,"cmp":16,"att":38}],"rushers":[{"n":"Randy Young","pos":"RB","yds":75,"car":4},{"n":"Christian Vann","pos":"RB","yds":46,"car":17},{"n":"Adrian Cormier","pos":"RB","yds":2,"car":6},{"n":"Cole Pennington","pos":"QB","yds":-5,"car":6}]}},{"w":3,"opp":"BALL","res":"W 51-15","espnId":"401866422","pass":{"n":"Deshawn Purdie","yds":211,"td":3,"cmp":13,"att":20},"rush":{"n":"Terron Kellman","yds":51,"td":0,"car":3},"rec":{"n":"Makai Jackson","yds":88,"td":1,"rec":4},"allowed":{"pass":93,"rush":156,"passers":[{"n":"Keldric Luster","pos":"QB","yds":93,"cmp":10,"att":21}],"rushers":[{"n":"TJ Horton","pos":"RB","yds":79,"car":8},{"n":"Johnny Thompson Jr.","pos":"RB","yds":41,"car":7},{"n":"Keldric Luster","pos":"QB","yds":30,"car":10},{"n":"Elijah Jackson","pos":"RB","yds":5,"car":2},{"n":"Jalen Bonds","pos":"RB","yds":4,"car":4},{"n":"Tyler Mizzell","pos":"QB","yds":-1,"car":3}]}},{"w":4,"opp":"CCU","at":true,"res":"W 34-17","espnId":"401869941","pass":{"n":"Deshawn Purdie","yds":216,"td":2,"cmp":11,"att":16},"rush":{"n":"Kam Davis","yds":166,"td":0,"car":18},"rec":{"n":"Makai Jackson","yds":149,"td":2,"rec":5},"allowed":{"pass":213,"rush":79,"passers":[{"n":"Deuce Bailey","pos":"QB","yds":213,"cmp":17,"att":34}],"rushers":[{"n":"Deuce Bailey","pos":"QB","yds":31,"car":15},{"n":"Dominic Lee-Knicely","pos":"RB","yds":25,"car":5},{"n":"Jevon Edwards","pos":"RB","yds":17,"car":9},{"n":"Breyahn Townsend","pos":"RB","yds":4,"car":1},{"n":"Jaden Allen-Hendrix","pos":"RB","yds":2,"car":1}]}},{"w":5,"opp":"DEL","at":true,"res":"W 30-14","espnId":"401871050","pass":{"n":"Deshawn Purdie","yds":157,"td":0,"cmp":13,"att":20},"rush":{"n":"Kam Davis","yds":147,"td":2,"car":17},"rec":{"n":"Makai Jackson","yds":90,"td":0,"rec":5},"allowed":{"pass":257,"rush":102,"passers":[{"n":"EJ Archield Jr.","pos":"QB","yds":137,"cmp":10,"att":19},{"n":"Braden Streeter","pos":"QB","yds":78,"cmp":3,"att":7},{"n":"Tyler Bell","pos":"QB","yds":42,"cmp":4,"att":9}],"rushers":[{"n":"Tyler Bell","pos":"QB","yds":32,"car":6},{"n":"Kaderris Roberts","pos":"RB","yds":26,"car":5},{"n":"EJ Archield Jr.","pos":"QB","yds":18,"car":4},{"n":"Viron Ellison Jr.","pos":"RB","yds":15,"car":2},{"n":"Jo Silver","pos":"RB","yds":6,"car":7},{"n":"Braden Streeter","pos":"QB","yds":5,"car":1}]}},{"w":6,"opp":"SHSU","res":"W 35-3","espnId":"401870766","pass":{"n":"Deshawn Purdie","yds":114,"td":1,"cmp":10,"att":14},"rush":{"n":"Jaylon Coleman","yds":92,"td":0,"car":7},"rec":{"n":"Makai Jackson","yds":46,"td":0,"rec":3},"allowed":{"pass":138,"rush":105,"passers":[{"n":"Landyn Locke","pos":"QB","yds":138,"cmp":20,"att":30}],"rushers":[{"n":"MJ Dowdy","pos":"RB","yds":42,"car":11},{"n":"Alton McCaskill","pos":"RB","yds":36,"car":7},{"n":"Landan Brown","pos":"RB","yds":30,"car":5},{"n":"Jerrian Parker Jr.","pos":"RB","yds":2,"car":1},{"n":"Landyn Locke","pos":"QB","yds":-5,"car":5}]}},{"w":8,"opp":"KENN","at":true,"res":"W 34-6","espnId":"401871056","pass":{"n":"Deshawn Purdie","yds":176,"td":1,"cmp":10,"att":19},"rush":{"n":"Kam Davis","yds":59,"td":1,"car":9},"rec":{"n":"Jamari Person","yds":72,"td":0,"rec":4},"allowed":{"pass":235,"rush":62,"passers":[{"n":"Rickie Collins","pos":"QB","yds":124,"cmp":15,"att":26},{"n":"Landon Varnes","pos":"QB","yds":111,"cmp":9,"att":15}],"rushers":[{"n":"Boogie Woods III","pos":"RB","yds":38,"car":13},{"n":"Rickie Collins","pos":"QB","yds":24,"car":8},{"n":"Reed Jesiolowski","pos":"TE","yds":3,"car":1},{"n":"Landon Varnes","pos":"QB","yds":1,"car":2},{"n":"Latrelle Murrell","pos":"RB","yds":1,"car":2},{"n":"Keon Davis","pos":"WR","yds":-5,"car":1}]}},{"w":9,"opp":"FIU","res":"W 49-10","espnId":"401871059","pass":{"n":"Deshawn Purdie","yds":227,"td":1,"cmp":16,"att":19},"rush":{"n":"Kanye Udoh","yds":31,"td":1,"car":5},"rec":{"n":"Makai Jackson","yds":86,"td":0,"rec":6},"allowed":{"pass":176,"rush":34,"passers":[{"n":"JJ Kohl","pos":"QB","yds":164,"cmp":21,"att":28},{"n":"Zach Marker","pos":"QB","yds":12,"cmp":1,"att":3}],"rushers":[{"n":"Devonte Lyons","pos":"RB","yds":52,"car":10},{"n":"Jayden Ford","pos":"RB","yds":14,"car":2},{"n":"Sterling Joseph","pos":"RB","yds":8,"car":1},{"n":"Zach Marker","pos":"QB","yds":4,"car":2},{"n":"Kyle McNeal","pos":"WR","yds":2,"car":1},{"n":"Jojo Stone","pos":"WR","yds":-6,"car":1},{"n":"JJ Kohl","pos":"QB","yds":-40,"car":6}]}}],
   "Troy": [{"w":1,"opp":"SHSU","res":"W 24-21","espnId":"401870763","pass":{"n":"Goose Crowder","yds":165,"td":3,"cmp":12,"att":24},"rush":{"n":"Gavin Griffin","yds":81,"td":0,"car":16},"rec":{"n":"TK Keyes","yds":48,"td":1,"rec":2},"allowed":{"pass":335,"rush":38,"passers":[{"n":"Landyn Locke","pos":"QB","yds":335,"cmp":30,"att":46}],"rushers":[{"n":"Alton McCaskill","pos":"RB","yds":51,"car":13},{"n":"Landan Brown","pos":"RB","yds":23,"car":6},{"n":"Landyn Locke","pos":"QB","yds":-36,"car":5}]}},{"w":2,"opp":"ALST","res":"W 34-17","espnId":"401868326","pass":{"n":"Goose Crowder","yds":201,"td":1,"cmp":14,"att":27},"rush":{"n":"Jaheim Merriweather","yds":127,"td":3,"car":13},"rec":{"n":"TK Keyes","yds":119,"td":1,"rec":5},"allowed":{"pass":105,"rush":116,"passers":[{"n":"Andrew Body","pos":"QB","yds":105,"cmp":13,"att":23},{"n":"Aaron Frye","pos":"QB","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Jamarie Hostzclaw","pos":"RB","yds":80,"car":12},{"n":"Aaron Frye","pos":"QB","yds":17,"car":3},{"n":"Andrew Body","pos":"QB","yds":13,"car":12},{"n":"Jareese Howard","pos":"RB","yds":9,"car":4},{"n":"TJ Ramsey","pos":"RB","yds":1,"car":1},{"n":"Nehemiah Hixon","pos":"WR","yds":-2,"car":1}]}},{"w":3,"opp":"MIZ","at":true,"res":"L 17-27","espnId":"401856689","pass":{"n":"Goose Crowder","yds":230,"td":2,"cmp":18,"att":32},"rush":{"n":"Gavin Griffin","yds":56,"td":0,"car":17},"rec":{"n":"TK Keyes","yds":83,"td":1,"rec":2},"allowed":{"pass":91,"rush":139,"passers":[{"n":"Austin Simmons","pos":"QB","yds":91,"cmp":10,"att":19}],"rushers":[{"n":"Jamal Roberts","pos":"RB","yds":128,"car":22},{"n":"Xai'Shaun Edwards","pos":"RB","yds":9,"car":3},{"n":"Austin Simmons","pos":"QB","yds":3,"car":2}]}},{"w":4,"opp":"USU","at":true,"res":"L 10-21","espnId":"401860894","pass":{"n":"Goose Crowder","yds":226,"td":1,"cmp":25,"att":49},"rush":{"n":"Gavin Griffin","yds":66,"td":0,"car":11},"rec":{"n":"Noreel White","yds":75,"td":0,"rec":6},"allowed":{"pass":242,"rush":171,"passers":[{"n":"Grady Brosterhous","pos":"QB","yds":242,"cmp":18,"att":28}],"rushers":[{"n":"Grady Brosterhous","pos":"QB","yds":89,"car":15},{"n":"Javen Jacobs","pos":"RB","yds":84,"car":14}]}},{"w":6,"opp":"USM","res":"W 55-34","espnId":"401871090","pass":{"n":"Goose Crowder","yds":225,"td":2,"cmp":18,"att":21},"rush":{"n":"Goose Crowder","yds":145,"td":2,"car":17},"rec":{"n":"Jordan Lovett","yds":53,"td":1,"rec":2},"allowed":{"pass":391,"rush":121,"passers":[{"n":"Landry Lyddy","pos":"QB","yds":316,"cmp":24,"att":37},{"n":"Mario Sanders","pos":"WR","yds":75,"cmp":1,"att":1},{"n":"Eelijah Singleton","pos":"WR","yds":0,"cmp":0,"att":1}],"rushers":[{"n":"Robert Briggs","pos":"RB","yds":44,"car":2},{"n":"Jamarice Wilder","pos":"RB","yds":29,"car":9},{"n":"Steven Robinson","pos":"RB","yds":29,"car":6},{"n":"Landry Lyddy","pos":"QB","yds":13,"car":9},{"n":"MJ Johnson","pos":"WR","yds":6,"car":1}]}},{"w":7,"opp":"UL","at":true,"res":"L 6-33","espnId":"401869966","pass":{"n":"Tucker Kilcrease","yds":76,"td":0,"cmp":5,"att":10},"rush":{"n":"Jordan Lovett","yds":50,"td":0,"car":10},"rec":{"n":"Jace Petty","yds":69,"td":0,"rec":4},"allowed":{"pass":108,"rush":243,"passers":[{"n":"Lunch Winfield","pos":"QB","yds":70,"cmp":11,"att":21},{"n":"Daniel Beale","pos":"QB","yds":38,"cmp":2,"att":2}],"rushers":[{"n":"Lunch Winfield","pos":"QB","yds":65,"car":15},{"n":"JJ Garner","pos":"RB","yds":62,"car":10},{"n":"Anthony Reagan Jr.","pos":"RB","yds":58,"car":11},{"n":"Steven Blanco","pos":"RB","yds":50,"car":10},{"n":"Ke'Rynn Smith","pos":"RB","yds":6,"car":2},{"n":"Russell Babineaux","pos":"WR","yds":2,"car":1}]}},{"w":8,"opp":"ULM","res":"L 14-21","espnId":"401871094","pass":{"n":"Goose Crowder","yds":50,"td":0,"cmp":6,"att":14},"rush":{"n":"Jordan Lovett","yds":70,"td":0,"car":17},"rec":{"n":"TJ Lott","yds":32,"td":0,"rec":1},"allowed":{"pass":149,"rush":94,"passers":[{"n":"Aidan Armenta","pos":"QB","yds":147,"cmp":13,"att":22},{"n":"Austin Carlisle","pos":"QB","yds":2,"cmp":4,"att":9}],"rushers":[{"n":"Zach Palmer-Smith","pos":"RB","yds":51,"car":11},{"n":"CJ Phillip","pos":"RB","yds":12,"car":5},{"n":"Don Chaney","pos":"RB","yds":11,"car":5},{"n":"JP Coulter","pos":"WR","yds":10,"car":2},{"n":"Austin Carlisle","pos":"QB","yds":7,"car":4},{"n":"Aidan Armenta","pos":"QB","yds":3,"car":3}]}},{"w":9,"opp":"JMU","at":true,"res":"W 24-21","espnId":"401869963","pass":{"n":"Tucker Kilcrease","yds":179,"td":0,"cmp":15,"att":31},"rush":{"n":"Jaheim Merriweather","yds":84,"td":1,"car":13},"rec":{"n":"Noreel White","yds":64,"td":0,"rec":3},"allowed":{"pass":247,"rush":161,"passers":[{"n":"Camden Coleman","pos":"QB","yds":175,"cmp":14,"att":25},{"n":"JC Evans","pos":"QB","yds":72,"cmp":8,"att":10}],"rushers":[{"n":"Seth Cromwell","pos":"RB","yds":135,"car":23},{"n":"Nick Herman","pos":"RB","yds":15,"car":7},{"n":"JC Evans","pos":"QB","yds":12,"car":7},{"n":"Camden Coleman","pos":"QB","yds":-1,"car":5}]}}],
@@ -70263,7 +70263,6 @@
  },
  "hasTargets": true,
  "notes": [
-  "positions for 85 players filled from game_rosters (cfb_rosters lists 235 teams)",
   "starting QBs for 125 teams applied from overrides/qb_starters.json",
   "lineOpen kept for 62 of 63 Week 10 games from the week's first build"
  ],
