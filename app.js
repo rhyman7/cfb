@@ -1067,6 +1067,9 @@ function withAvgC(rows) {
   return (rows || []).map(r => r.ypc != null ? r : { ...r, ypc: r.cmp > 0 ? Math.round((10 * r.ydsG) / r.cmp) / 10 : null });
 }
 
+// Position after the player's name in the Rushing and Receiving tables (Passing is all QBs)
+const posTag = (r, kind) => kind !== "passing" && r.pos ? ` <span class="pt-pos">${escapeHtml(r.pos)}</span>` : "";
+
 function playerTable(title, rows, cols) {
   if (!rows || rows.length === 0) {
     return `<div class="table-block"><h4>${title}</h4><div class="empty-note">No data</div></div>`;
@@ -1078,8 +1081,8 @@ function playerTable(title, rows, cols) {
     const cells = cols.map(([, key, type]) => {
       const txt = escapeHtml(type === "num" ? dispNum(r[key] ?? "—") : String(r[key] ?? "—"));
       const val = key === "player" && r.log && DATA.gameLogs && DATA.gameLogs[r.log]
-        ? `<span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>${injTag(r.log)}</span>`
-        : txt + (key === "player" ? injTag(r.log) : "");
+        ? `<span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>${posTag(r, kind)}${injTag(r.log)}</span>`
+        : txt + (key === "player" ? posTag(r, kind) + injTag(r.log) : "");
       return `<td class="${type === "num" ? "num" : ""}">${val}${capOn && key === "ydsG" ? cappedCell(r, kind) : ""}</td>`;
     }).join("");
     return `<tr>${cells}</tr>`;
