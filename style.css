@@ -698,6 +698,7 @@ td.fp { font-weight: 700; }
 .dtip tfoot td b { color: var(--text); }
 .dtip .dp-dim { color: var(--text-dim); }
 .dtip .dp-pos { font-size: 0.72rem; color: var(--text-dim); }
+.table-block .pt-pos { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; color: var(--text-dim); }
 .dtip tr.dp-row { cursor: pointer; }
 .dtip tr.dp-row:hover > td, .dtip tr.dp-row.on > td, .dtip tr.dp-row:focus-visible > td { background: var(--panel); }
 .dtip tr.dp-row:focus-visible { outline: 2px solid var(--text-dim); outline-offset: -2px; }

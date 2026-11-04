@@ -140,6 +140,9 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   dials average; change both together. Popups are screen-only (`no-print`).
 - **Passing table columns:** Player, Yds/G, TD, Int, Cmp/G, **Avg/C** (season passing yards
   per completion, the row's `ypc`; `withAvgC()` works it out for data built without it).
+- **Position tags:** in the Rushing and Receiving tables each player's name is followed by his
+  position (`posTag()`, class `pt-pos`, small and gray, from the row's `pos`). Passing has none
+  (every row is a QB).
 
 ## This Week's Matchups filters
 
