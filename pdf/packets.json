@@ -4,7 +4,7 @@
  "league": "cfb",
  "title": "CFB Week 10 Matchup Report",
  "dataGeneratedAt": "2026-11-04T14:38:51.397848+00:00",
- "generatedAt": "2026-11-04T21:51:45Z",
+ "generatedAt": "2026-11-04T22:19:36Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -24,7 +24,8 @@
   ],
   "td": [
    65,
-   66
+   66,
+   67
   ]
  },
  "games": [
