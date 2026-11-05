@@ -161,7 +161,7 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - The **EPA page always has both "Print all" and "Download PDF"** buttons (`epaPrintBtn`,
   `epaPdfBtn`). Print all is every game (one landscape page each), then the board, the
   ratings and the method; Download PDF is `pdf/epa.pdf`.
-- `pdf/epa.pdf` is built by `scripts/build_pdfs.py` (headless Chromium via Playwright) in the
+- `pdf/epa.pdf` is built by `scripts/build_pdfs.py` (headless Chromium via Playwright; the page runs in `America/New_York` with locale en-US, since GitHub's runners are on UTC, so kickoff times print in ET) in the
   **Build PDFs** Action, which runs when the data or a print layout changes, and daily after the
   college value board updates. `pdf/manifest.json` says which week it's for; the link only
   shows when it matches the week on the page. There are no per-game matchup PDFs (50+ games a
