@@ -106,7 +106,7 @@ def main():
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch()
-            page = browser.new_page(viewport={"width": 1280, "height": 900})
+            page = browser.new_page(viewport={"width": 1280, "height": 900}, timezone_id="America/New_York", locale="en-US")   # GitHub runners are UTC; kickoffs print in ET
             page.add_init_script("window.print = () => {}")
 
             # 1. Weekly Matchup Report, split by its "Game n of N" eyebrow

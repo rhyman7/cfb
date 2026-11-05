@@ -43,7 +43,7 @@ def main():
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch()
-            page = browser.new_page(viewport={"width": 1280, "height": 900})
+            page = browser.new_page(viewport={"width": 1280, "height": 900}, timezone_id="America/New_York", locale="en-US")   # GitHub runners are UTC; kickoffs print in ET
             page.add_init_script("window.print = () => {}")
             page.goto(f"{base}/epa.html", wait_until="networkidle")
             # epa.js enables Print all once every game has been laid out
