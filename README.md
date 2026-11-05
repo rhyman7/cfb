@@ -354,7 +354,9 @@ no more than the league's 97.5th percentile for that kind of play this season (N
 on a catch, 18 on a run; college: about 44 and 24). It turns amber when the drop is in the league's
 top 10% (regulars with 4+ games), meaning a few long plays carry much of the average. The build
 writes `data/capped.json` (`scripts/capped.py`) from play-by-play next to `data/epa.json`. The
-Weekly Matchup Report uses it too ("4.5 yds/carry (his 5.8; 4.7 capped)"). Why a cap and not the
+Weekly Matchup Report uses it too ("4.5 yds/carry (his 5.8; 4.7 capped)"), and lists each game's
+amber players on a "▲ Long plays" line, leaving out anyone Out, Doubtful, on IR, PUP or suspended,
+and any passer who isn't the listed starting QB. Why a cap and not the
 median or a standard-deviation rule: on NFL play-by-play 2023-2025, first-half capped yards per carry
 predicted second-half yards per carry a little better than the plain average (0.365 against 0.342
 correlation), receivers showed no difference, and the median did much worse (0.24 and 0.19).

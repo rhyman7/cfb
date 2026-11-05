@@ -572,6 +572,11 @@ class Report:
                 continue
             for sec, kind, word in (("passing", "pass", "pass"), ("rushing", "rush", "rush"), ("receiving", "rec", "rec")):
                 for r in self.T[k].get(sec) or []:
+                    inj = self.D.inj.get(r.get("log"))
+                    if inj and inj["s"] in INJ_OUT:   # out/doubtful: not playing, so not a play this week
+                        continue
+                    if sec == "passing" and g[side].get("qb") and r["player"] != g[side]["qb"]:
+                        continue   # only the listed starter's passing
                     share = (self.CAP.get(r.get("log")) or {}).get(kind)
                     cut = self.AMBER.get(kind)
                     if share is None or cut is None or len(self.GL.get(r.get("log"), [])) < 4:
