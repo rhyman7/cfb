@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T14:42:18.329421+00:00",
+ "generatedAt": "2026-11-06T14:37:31.359312+00:00",
  "season": 2026,
  "throughWeek": 10,
  "gamesCounted": 624,
@@ -65903,23 +65903,23 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "11/5 - 7:30 PM EST",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "Flagler Credit Union Stadium",
    "city": "Boca Raton, FL",
    "tv": "ESPN",
    "note": "",
    "indoor": false,
    "spread": 7.0,
-   "total": 73.0,
+   "total": 72.0,
    "away": {
     "name": "UTSA",
     "key": "UTSA",
     "rank": null,
     "record": "7-1",
     "conference": "American",
-    "score": null,
+    "score": 29,
     "abbr": "UTSA",
     "qb": "Owen McCown"
    },
@@ -65929,7 +65929,7 @@
     "rank": null,
     "record": "5-3",
     "conference": "American",
-    "score": null,
+    "score": 60,
     "abbr": "FAU",
     "qb": "Caden Veltkamp"
    },
@@ -65946,23 +65946,23 @@
    "timeTbd": false,
    "neutral": false,
    "conferenceGame": true,
-   "status": "STATUS_SCHEDULED",
-   "statusDetail": "11/5 - 8:00 PM EST",
-   "completed": false,
+   "status": "STATUS_FINAL",
+   "statusDetail": "Final",
+   "completed": true,
    "venue": "M. M. Roberts Stadium",
    "city": "Hattiesburg, MS",
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": 14.0,
-   "total": 57.5,
+   "spread": 13.5,
+   "total": 58.0,
    "away": {
     "name": "James Madison",
     "key": "James Madison",
     "rank": null,
     "record": "7-2",
     "conference": "Sun Belt",
-    "score": null,
+    "score": 54,
     "abbr": "JMU",
     "qb": "Camden Coleman"
    },
@@ -65972,7 +65972,7 @@
     "rank": null,
     "record": "3-5",
     "conference": "Sun Belt",
-    "score": null,
+    "score": 23,
     "abbr": "USM",
     "qb": "Landry Lyddy"
    },
@@ -65998,7 +65998,7 @@
    "note": "",
    "indoor": false,
    "spread": -6.0,
-   "total": 56.0,
+   "total": 56.5,
    "away": {
     "name": "Virginia Tech",
     "key": "Virginia Tech",
@@ -66084,7 +66084,7 @@
    "note": "",
    "indoor": false,
    "spread": 4.5,
-   "total": 50.0,
+   "total": 50.5,
    "away": {
     "name": "Nebraska",
     "key": "Nebraska",
@@ -66127,7 +66127,7 @@
    "note": "",
    "indoor": false,
    "spread": 10.0,
-   "total": 37.0,
+   "total": 38.5,
    "away": {
     "name": "New Mexico",
     "key": "New Mexico",
@@ -66170,7 +66170,7 @@
    "note": "",
    "indoor": false,
    "spread": -7.5,
-   "total": 45.5,
+   "total": 46.0,
    "away": {
     "name": "TCU",
     "key": "TCU",
@@ -66213,7 +66213,7 @@
    "note": "",
    "indoor": false,
    "spread": 2.5,
-   "total": 43.0,
+   "total": 42.5,
    "away": {
     "name": "Texas",
     "key": "Texas",
@@ -66255,7 +66255,7 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": -5.0,
+   "spread": -4.5,
    "total": 48.5,
    "away": {
     "name": "BYU",
@@ -66299,7 +66299,7 @@
    "note": "",
    "indoor": false,
    "spread": -10.0,
-   "total": 50.5,
+   "total": 51.0,
    "away": {
     "name": "Iowa State",
     "key": "Iowa State",
@@ -66341,8 +66341,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": true,
-   "spread": 3.0,
-   "total": 50.0,
+   "spread": 2.5,
+   "total": 49.5,
    "away": {
     "name": "Clemson",
     "key": "Clemson",
@@ -66385,7 +66385,7 @@
    "note": "",
    "indoor": false,
    "spread": 6.5,
-   "total": 51.5,
+   "total": 52.5,
    "away": {
     "name": "Florida State",
     "key": "Florida State",
@@ -66428,7 +66428,7 @@
    "note": "",
    "indoor": false,
    "spread": 7.0,
-   "total": 55.0,
+   "total": 54.5,
    "away": {
     "name": "North Carolina",
     "key": "North Carolina",
@@ -66471,7 +66471,7 @@
    "note": "",
    "indoor": false,
    "spread": 5.5,
-   "total": 39.5,
+   "total": 39.0,
    "away": {
     "name": "UCLA",
     "key": "UCLA",
@@ -66599,7 +66599,7 @@
    "tv": "BTN",
    "note": "",
    "indoor": false,
-   "spread": -6.0,
+   "spread": -5.5,
    "total": 56.5,
    "away": {
     "name": "Maryland",
@@ -66643,7 +66643,7 @@
    "note": "",
    "indoor": false,
    "spread": -10.0,
-   "total": 53.5,
+   "total": 54.0,
    "away": {
     "name": "Arkansas",
     "key": "Arkansas",
@@ -66685,7 +66685,7 @@
    "tv": "TNT",
    "note": "",
    "indoor": false,
-   "spread": 5.5,
+   "spread": 6.5,
    "total": 62.5,
    "away": {
     "name": "Oklahoma State",
@@ -66728,7 +66728,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -6.0,
+   "spread": -6.5,
    "total": 44.0,
    "away": {
     "name": "Old Dominion",
@@ -66772,7 +66772,7 @@
    "note": "",
    "indoor": false,
    "spread": -6.0,
-   "total": 55.0,
+   "total": 54.0,
    "away": {
     "name": "Georgia State",
     "key": "Georgia State",
@@ -66986,7 +66986,7 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": -10.5,
+   "spread": -11.0,
    "total": 62.5,
    "away": {
     "name": "Cincinnati",
@@ -67054,7 +67054,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-11-05"
+    "at": "2026-11-06"
    }
   },
   {
@@ -67116,7 +67116,7 @@
    "note": "",
    "indoor": false,
    "spread": -2.5,
-   "total": 44.5,
+   "total": 44.0,
    "away": {
     "name": "Penn State",
     "key": "Penn State",
@@ -67331,7 +67331,7 @@
    "note": "",
    "indoor": false,
    "spread": -3.0,
-   "total": 48.0,
+   "total": 47.5,
    "away": {
     "name": "UCF",
     "key": "UCF",
@@ -67502,8 +67502,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": 4.5,
-   "total": 47.5,
+   "spread": 5.0,
+   "total": 48.0,
    "away": {
     "name": "Louisiana Tech",
     "key": "Louisiana Tech",
@@ -67588,7 +67588,7 @@
    "tv": "BTN",
    "note": "",
    "indoor": false,
-   "spread": -17.5,
+   "spread": -18.0,
    "total": 46.0,
    "away": {
     "name": "Rutgers",
@@ -67675,7 +67675,7 @@
    "note": "",
    "indoor": false,
    "spread": 17.5,
-   "total": 68.5,
+   "total": 69.0,
    "away": {
     "name": "Boise State",
     "key": "Boise State",
@@ -67718,7 +67718,7 @@
    "note": "",
    "indoor": false,
    "spread": -6.5,
-   "total": 50.5,
+   "total": 49.5,
    "away": {
     "name": "Kentucky",
     "key": "Kentucky",
@@ -67760,7 +67760,7 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": -17.0,
+   "spread": -17.5,
    "total": 48.0,
    "away": {
     "name": "Sam Houston",
@@ -67846,7 +67846,7 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": -3.0,
+   "spread": -3.5,
    "total": 48.5,
    "away": {
     "name": "Colorado",
@@ -67890,7 +67890,7 @@
    "note": "",
    "indoor": false,
    "spread": 14.5,
-   "total": 61.0,
+   "total": 62.0,
    "away": {
     "name": "Louisville",
     "key": "Louisville",
@@ -67933,7 +67933,7 @@
    "note": "",
    "indoor": false,
    "spread": -7.0,
-   "total": 55.0,
+   "total": 54.5,
    "away": {
     "name": "Miami",
     "key": "Miami",
@@ -67976,7 +67976,7 @@
    "note": "",
    "indoor": false,
    "spread": -13.5,
-   "total": 39.5,
+   "total": 40.0,
    "away": {
     "name": "Michigan State",
     "key": "Michigan State",
@@ -68062,7 +68062,7 @@
    "note": "",
    "indoor": false,
    "spread": -3.0,
-   "total": 45.0,
+   "total": 44.5,
    "away": {
     "name": "Air Force",
     "key": "Air Force",
@@ -68148,7 +68148,7 @@
    "note": "",
    "indoor": false,
    "spread": 16.5,
-   "total": 46.5,
+   "total": 46.0,
    "away": {
     "name": "Liberty",
     "key": "Liberty",
@@ -68276,8 +68276,8 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": 9.0,
-   "total": 49.5,
+   "spread": 8.5,
+   "total": 49.0,
    "away": {
     "name": "Hawai'i",
     "key": "Hawai'i",
@@ -68319,7 +68319,7 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": -6.5,
+   "spread": -6.0,
    "total": 71.0,
    "away": {
     "name": "Texas State",
@@ -68362,7 +68362,7 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": true,
-   "spread": -6.0,
+   "spread": -5.5,
    "total": 48.5,
    "away": {
     "name": "Wyoming",
