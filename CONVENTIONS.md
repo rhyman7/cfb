@@ -174,17 +174,25 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   report buttons). Pressing one puts a checkbox to the left of every game that has a packet
   (all unticked), **Select all** above the list (it ticks the games the filters show) and a
   **Print / Save** button at the bottom left, under the checkboxes. Ticks survive filtering
-  and live redraws. That button opens a dialog listing six reports, all unticked: the four
-  per-game parts, then the report's two whole-week rankings, **Best Overall Matchups** and
-  **Likeliest TD Scorers** ("Most Likely to Score a TD" in the report), added once at the end.
+  and live redraws. That button opens a dialog listing seven reports, all unticked: the four
+  per-game parts, then the report's three whole-week rankings, **Best Overall Matchups**,
+  **Likeliest TD Scorers** ("Most Likely to Score a TD" in the report, with the TD tracker after it)
+  and **Highest Floors** (Nov 7, 2026), added once at the end.
   **Print / Save** builds the ticked reports for the ticked games; **Print All / Save All**
-  builds all six. `build_packets.py` records the rankings' report pages in `packets.json`
-  under `slate` (`best`, `td`); until a build has written it, those two rows are disabled.
+  builds all seven. `build_packets.py` records the rankings' report pages in `packets.json`
+  under `slate` (`best`, `td`, `floors`); until a build has written one, its row is disabled.
   `build_packets.py` writes `pdf/report.pdf`, `pdf/matchups.pdf`, `pdf/value-board.pdf` and
   `pdf/packets.json` (which pages of each file belong to each game); `packets.js` assembles the
   packet in the browser with pdf-lib, so each week's pages are stored once. The buttons only
   show when `packets.json` is for the week on the page. A part with no page for a game is left
   out of that packet and listed under `missing`.
+- **Highest Floors** (the report's last two pages, Nov 7, 2026): the 15 highest every-game floors
+  at each position among the week's games, read from the value board's `players[].floor` in
+  `docs/data.json` / `docs/cfb/data.json` (a checkout next to this repo, as for the feed): QB
+  passing, QB rushing, RB rushing, RB rushing + receiving, WR receiving, TE receiving, each with
+  player, team, floor and games. Quarterbacks are each team's projected starter (most projected
+  pass attempts); players the board has ruled out are left out. Without the board's floors for
+  the week the pages are skipped and the packet row stays disabled.
 - The **Weekly Matchup Report** is rule-based and built from `data/data.json` plus the injury
   tags in `data/injuries.json` (good and tough spots per game, Best Overall Matchups, Most Likely
   to Score a TD). Players listed out, doubtful, IR, PUP or suspended are left out of the picks and

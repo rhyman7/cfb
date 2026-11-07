@@ -76,6 +76,63 @@ def load_tracker(vb, league, season):
     return t if t.get("season") == season and t.get("weeks") else None
 
 
+# Highest Floors: each list is (position, the value board's floor key, heading)
+FLOOR_LISTS = [("QB", "pass", "QB passing yards"), ("QB", "rush", "QB rushing yards"),
+               ("RB", "rush", "RB rushing yards"), ("RB", "rr", "RB rushing + receiving yards"),
+               ("WR", "rec", "WR receiving yards"), ("TE", "rec", "TE receiving yards")]
+FLOOR_N = 15
+
+
+def load_floors(vb, league, season, week, teams):
+    """The value board's every-game floors (players[].floor in docs/data.json, docs/cfb/data.json)
+    for this week's players, as {(pos, key): [rows]} with the FLOOR_N highest first, or None.
+    Players the board has ruled out (its teams' out lists, or an Out/Doubtful/IR status) are left out."""
+    try:
+        d = json.loads((Path(vb) / "docs" / ("cfb/data.json" if league == "cfb" else "data.json")).read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    if (d.get("meta") or {}).get("season") != season:
+        return None
+    P = (d.get("players") or {}).get("players") or []
+    pre = f"{season}_{int(week):02d}_"
+    outs = {(t.get("team"), vb_norm(o.get("name"))) for t in (d["players"].get("teams") or []) for o in (t.get("out") or [])}
+
+    def ruled_out(p):
+        if str(p.get("status") or "").lower().startswith(("out", "doubtful", "injured reserve", "ir", "suspend")):
+            return True
+        w = str(p.get("name") or "").split()
+        short = vb_norm(w[0][:1] + " " + " ".join(w[1:])) if len(w) > 1 else None   # the college out lists say "H. Hendrix"
+        return (p.get("team"), vb_norm(p.get("name"))) in outs or (p.get("team"), short) in outs
+
+    week_ps = [p for p in P if str(p.get("game") or "").startswith(pre) and p.get("floor")]
+    mine = [p for p in week_ps if p.get("team") in teams]
+    week_ps = mine or week_ps   # the board's team codes should match the report's; if none do, use the whole week
+    # quarterbacks: only each team's projected starter (most projected pass attempts), as the report's listed QB
+    qb1 = {}
+    for p in week_ps:
+        if p.get("pos") == "QB" and not ruled_out(p):
+            att = (p.get("proj") or {}).get("pass_att") or 0
+            if att > 0 and att > qb1.get(p["team"], (None, 0))[1]:
+                qb1[p["team"]] = (p["name"], att)
+    out, dropped = {}, 0
+    for pos, key, _ in FLOOR_LISTS:
+        rows = []
+        for p in week_ps:
+            f = (p.get("floor") or {}).get(key)
+            if p.get("pos") != pos or not f or f.get("floor") is None:
+                continue
+            if ruled_out(p):
+                dropped += 1
+                continue
+            if pos == "QB" and qb1.get(p["team"], (None,))[0] != p["name"]:
+                continue
+            rows.append(dict(name=p["name"], team=p["team"], floor=f["floor"], g=f.get("g"), avg=f.get("avg") or 0))
+        rows.sort(key=lambda r: (-r["floor"], -r["avg"], r["name"]))
+        out[(pos, key)] = rows[:FLOOR_N]
+    print(f"  report: floors for {len(week_ps)} players; {dropped} ruled-out entries left out")
+    return out if any(out.values()) else None
+
+
 def american(x):
     return "—" if x is None else (f"+{x:.0f}" if x > 0 else f"{x:.0f}")
 
@@ -703,6 +760,8 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
                     print(f"  report: {g[side]['abbr']} QB {g[side]['qb'] or 'n/a'} -> {b['n']} (value board's projected starter)")
                     g[side]["qb"] = b["n"]
     R = Report(D, feed, epa, cap)
+    floors = load_floors(vb or Path(root).parent / "fb-value-board", D.league, d.get("season"), D.week,
+                         {g[s]["abbr"] for g in D.games for s in ("away", "home")})
     print(f"  report: value board feed {'used' if feed else 'not found, raw matchups'}; adjusted EPA {'used' if epa else 'not found'}")
     COL = team_colors(root, D.league)
     L = D.league.upper()
@@ -849,6 +908,26 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
   <table class="tdt"><thead><tr><th></th><th>Player</th><th>Game</th><th>Production</th><th>Matchup</th></tr></thead><tbody>{top_rows}</tbody></table>
 </section>'''
 
+    # Highest Floors: two pages, three lists side by side on each
+    def floor_table(pos, key, head):
+        rows = floors.get((pos, key)) or []
+        body = "".join(f'<tr><td class="n">{i}</td><td><b>{E(r["name"])}</b></td><td>{E(r["team"])}</td>'
+                       f'<td class="r"><b>{r["floor"]}</b></td><td class="r dimc">{r["g"]}</td></tr>' for i, r in enumerate(rows, 1)) \
+            or '<tr><td></td><td colspan="4" class="dimc">No one qualifies.</td></tr>'
+        return (f'<div class="flcol"><h3 class="flh">{E(head)}</h3><table class="tdt flt"><thead><tr><th></th><th>Player</th><th>Team</th>'
+                f'<th class="r">Floor</th><th class="r">Games</th></tr></thead><tbody>{body}</tbody></table></div>')
+    floors_html = (f'''<section class="tdsec flsec" id="floors">
+  <div class="kicker">{league_name} Week {D.week} · {d.get("season", "")}</div>
+  <h1 class="h1s">Highest Floors</h1>
+  <p class="lede">The {FLOOR_N} highest every-game floors at each position across this week's games, from the value board: the yards he has reached in every game he has played this season (current team only, a quarterback's starts only, injury-shortened games left out; 3+ games). Players the board has ruled out are left out. Games: how many games the floor covers. Information, not a bet.</p>
+  <div class="flgrid">{"".join(floor_table(*x) for x in FLOOR_LISTS[:3])}</div>
+</section>
+<section class="tdsec flsec">
+  <h2 class="h2s">Highest Floors, continued</h2>
+  <div class="flgrid">{"".join(floor_table(*x) for x in FLOOR_LISTS[3:])}</div>
+</section>''') if floors else ""
+    print(f"  report: Highest Floors {'added' if floors else 'left out (no value board floors for this week)'}")
+
     third = math.ceil(NG / 3) if NG > 20 else NG
     def idx_table(rows):
         body = "".join(
@@ -885,7 +964,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 <header class="cover">
   <div class="kicker">{league_name} Week {D.week} · {d.get("season", "")}</div>
   <h1>{E(title_txt)}</h1>
-  <p class="lede">Who is set up for a good game, and who is not, in all {NG} games of Week {D.week}{", from " + rng if rng else ""}. After the game pages come two rankings across the whole slate: the best overall matchups and the players most likely to score a touchdown.</p>
+  <p class="lede">Who is set up for a good game, and who is not, in all {NG} games of Week {D.week}{", from " + rng if rng else ""}. After the game pages come {"three rankings" if floors else "two rankings"} across the whole slate: the best overall matchups, the players most likely to score a touchdown{" and the highest every-game floors at each position" if floors else ""}.</p>
   <div class="notes"><h2>How to read this</h2><ul>
     <li><b>Method.</b> Each player's per-game production is compared with how the opposing defense ranks against his position (backs, receivers, tight ends) and against the pass. Ranks are out of {D.NT}; #1 is the stingiest defense.</li>
     <li><b>Source.</b> Every number comes from the {L} dashboard ({site}), with stats through Week {D.through}{f" and lines as of {gen.strftime('%b')} {gen.day}" if gen else ""}. The report is built automatically after each data update.</li>
@@ -898,6 +977,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 {best_html}
 {td_html}
 {tracker_html(tracker, league_name, D.week) if tracker else ""}
+{floors_html}
 </body></html>'''
     (out / "report.html").write_text(doc, encoding="utf-8")
     ids = [g["id"] for g in games]

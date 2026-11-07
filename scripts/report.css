@@ -128,3 +128,10 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 .tk-chip b { font-size: 14pt; font-stretch: 72%; font-weight: 800; }
 .tk-chip div { font-size: 7.8pt; color: #6a6f78; }
 .tk-note { margin-top: 9pt; font-size: 7.6pt; color: #6a6f78; }
+/* Highest Floors: three position lists side by side per page */
+.flgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 0.3in; margin-top: 8pt; }
+.flh { font-size: 11pt; font-weight: 800; margin: 0; }
+.flt { margin-top: 4pt; font-size: 9pt; width: 100%; }
+.flt td { padding: 2.6pt 6pt 2.6pt 0; }
+.flt td:nth-child(2) { white-space: normal; }
+

@@ -6,8 +6,8 @@
   4. Value board matchup          (fb-value-board's Matchups view)  -> pdf/value-board.pdf
 
 and pdf/packets.json, which says which pages of each file belong to each game, plus which
-report pages hold the two whole-slate rankings (Best Overall Matchups, Most Likely to Score
-a TD) under "slate". The site's
+report pages hold the three whole-slate rankings (Best Overall Matchups, Most Likely to Score
+a TD, Highest Floors) under "slate". The site's
 packets.js reads it and assembles a packet in the browser (one game, or every game) to print
 or save, so the repo stores each week's pages once instead of a copy per packet.
 
@@ -96,7 +96,7 @@ def main():
     tmp.mkdir(parents=True)
     report_html, ids, title = build_report.build(ROOT, tmp, a.font_css, vb=a.value_board)
     pages = {gid: {} for gid in ids}
-    slate = {}   # report.pdf pages of the whole-slate rankings: "best" and "td"
+    slate = {}   # report.pdf pages of the whole-slate rankings: "best", "td" and "floors"
 
     vb = Path(a.value_board)
     vb_page = vb / ("docs/cfb/index.html" if league == "cfb" else "docs/index.html")
@@ -121,12 +121,13 @@ def main():
                 if m and 1 <= int(m.group(1)) <= n:
                     pages[ids[int(m.group(1)) - 1]].setdefault("report", [i])
             print("report:", sum("report" in v for v in pages.values()), "of", n)
-            # the two whole-slate rankings after the game pages: Best Overall Matchups, then
-            # Most Likely to Score a TD, each running until the next one starts (or the end)
+            # the whole-slate rankings after the game pages: Best Overall Matchups, Most Likely to
+            # Score a TD (with the TD tracker after it), then Highest Floors, each running until the
+            # next one starts (or the end)
             last_game = max((i for v in pages.values() for i in v.get("report", [])), default=-1)
             flat = [re.sub(r"\s+", "", t).lower() for t in rt]
             starts = {}
-            for key, head in (("best", "bestoverallmatchups"), ("td", "mostlikelytoscoreatd")):
+            for key, head in (("best", "bestoverallmatchups"), ("td", "mostlikelytoscoreatd"), ("floors", "highestfloors")):
                 starts[key] = next((i for i in range(last_game + 1, len(flat)) if head in flat[i]), None)
             found = sorted((i, k) for k, i in starts.items() if i is not None)
             for j, (i, key) in enumerate(found):
