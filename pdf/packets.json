@@ -1,10 +1,10 @@
 {
  "season": 2026,
- "week": 10,
+ "week": 11,
  "league": "cfb",
- "title": "CFB Week 10 Matchup Report",
- "dataGeneratedAt": "2026-11-07T14:43:08.153431+00:00",
- "generatedAt": "2026-11-08T01:28:01Z",
+ "title": "CFB Week 11 Matchup Report",
+ "dataGeneratedAt": "2026-11-08T14:40:05.100617+00:00",
+ "generatedAt": "2026-11-08T14:47:16Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -19,24 +19,24 @@
  ],
  "slate": {
   "best": [
-   53,
-   54
+   69,
+   70
   ],
   "td": [
-   55,
-   56,
-   57
+   71,
+   72,
+   73
   ],
   "floors": [
-   58,
-   59
+   74,
+   75
   ]
  },
  "games": [
   {
-   "id": "401856743",
-   "label": "TEX @ MIZ",
-   "file": "CFB_Week10_TEX-MIZ_packet",
+   "id": "401866458",
+   "label": "WMU @ AKR",
+   "file": "CFB_Week11_WMU-AKR_packet",
    "pages": {
     "report": [
      2
@@ -46,7 +46,7 @@
      1
     ],
     "epa": [
-     12
+     0
     ]
    },
    "missing": [
@@ -54,9 +54,9 @@
    ]
   },
   {
-   "id": "401856849",
-   "label": "BYU @ UTAH",
-   "file": "CFB_Week10_BYU-UTAH_packet",
+   "id": "401866459",
+   "label": "KENT @ BGSU",
+   "file": "CFB_Week11_KENT-BGSU_packet",
    "pages": {
     "report": [
      3
@@ -66,7 +66,7 @@
      3
     ],
     "epa": [
-     13
+     1
     ]
    },
    "missing": [
@@ -74,9 +74,9 @@
    ]
   },
   {
-   "id": "401856853",
-   "label": "ISU @ BAY",
-   "file": "CFB_Week10_ISU-BAY_packet",
+   "id": "401866460",
+   "label": "OHIO @ M-OH",
+   "file": "CFB_Week11_OHIO-M-OH_packet",
    "pages": {
     "report": [
      4
@@ -86,7 +86,7 @@
      5
     ],
     "epa": [
-     14
+     2
     ]
    },
    "missing": [
@@ -94,9 +94,9 @@
    ]
   },
   {
-   "id": "401858285",
-   "label": "CLEM @ SYR",
-   "file": "CFB_Week10_CLEM-SYR_packet",
+   "id": "401866461",
+   "label": "BUFF @ BALL",
+   "file": "CFB_Week11_BUFF-BALL_packet",
    "pages": {
     "report": [
      5
@@ -106,7 +106,7 @@
      7
     ],
     "epa": [
-     15
+     3
     ]
    },
    "missing": [
@@ -114,9 +114,9 @@
    ]
   },
   {
-   "id": "401858289",
-   "label": "FSU @ BC",
-   "file": "CFB_Week10_FSU-BC_packet",
+   "id": "401866462",
+   "label": "SAC @ CMU",
+   "file": "CFB_Week11_SAC-CMU_packet",
    "pages": {
     "report": [
      6
@@ -126,7 +126,7 @@
      9
     ],
     "epa": [
-     16
+     4
     ]
    },
    "missing": [
@@ -134,9 +134,9 @@
    ]
   },
   {
-   "id": "401858292",
-   "label": "UNC @ CONN",
-   "file": "CFB_Week10_UNC-CONN_packet",
+   "id": "401866463",
+   "label": "MASS @ TOL",
+   "file": "CFB_Week11_MASS-TOL_packet",
    "pages": {
     "report": [
      7
@@ -146,7 +146,7 @@
      11
     ],
     "epa": [
-     17
+     5
     ]
    },
    "missing": [
@@ -154,9 +154,9 @@
    ]
   },
   {
-   "id": "401858512",
-   "label": "UCLA @ MINN",
-   "file": "CFB_Week10_UCLA-MINN_packet",
+   "id": "401862824",
+   "label": "MEM @ USF",
+   "file": "CFB_Week11_MEM-USF_packet",
    "pages": {
     "report": [
      8
@@ -166,7 +166,7 @@
      13
     ],
     "epa": [
-     18
+     6
     ]
    },
    "missing": [
@@ -174,9 +174,9 @@
    ]
   },
   {
-   "id": "401862822",
-   "label": "TLSA @ TULN",
-   "file": "CFB_Week10_TLSA-TULN_packet",
+   "id": "401869969",
+   "label": "UL @ ULM",
+   "file": "CFB_Week11_UL-ULM_packet",
    "pages": {
     "report": [
      9
@@ -186,7 +186,7 @@
      15
     ],
     "epa": [
-     19
+     7
     ]
    },
    "missing": [
@@ -194,9 +194,9 @@
    ]
   },
   {
-   "id": "401858286",
-   "label": "DUKE @ NCSU",
-   "file": "CFB_Week10_DUKE-NCSU_packet",
+   "id": "401858293",
+   "label": "FSU @ PITT",
+   "file": "CFB_Week11_FSU-PITT_packet",
    "pages": {
     "report": [
      10
@@ -206,7 +206,7 @@
      17
     ],
     "epa": [
-     20
+     8
     ]
    },
    "missing": [
@@ -214,9 +214,9 @@
    ]
   },
   {
-   "id": "401858515",
-   "label": "MD @ PUR",
-   "file": "CFB_Week10_MD-PUR_packet",
+   "id": "401858526",
+   "label": "ILL @ UCLA",
+   "file": "CFB_Week11_ILL-UCLA_packet",
    "pages": {
     "report": [
      11
@@ -226,7 +226,7 @@
      19
     ],
     "epa": [
-     21
+     9
     ]
    },
    "missing": [
@@ -234,9 +234,9 @@
    ]
   },
   {
-   "id": "401856738",
-   "label": "ARK @ AUB",
-   "file": "CFB_Week10_ARK-AUB_packet",
+   "id": "401856860",
+   "label": "HOU @ COLO",
+   "file": "CFB_Week11_HOU-COLO_packet",
    "pages": {
     "report": [
      12
@@ -246,18 +246,17 @@
      21
     ],
     "epa": [
-     22
-    ],
-    "value": [
-     0
+     10
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856854",
-   "label": "OKST @ KSU",
-   "file": "CFB_Week10_OKST-KSU_packet",
+   "id": "401856857",
+   "label": "ASU @ UCF",
+   "file": "CFB_Week11_ASU-UCF_packet",
    "pages": {
     "report": [
      13
@@ -267,18 +266,17 @@
      23
     ],
     "epa": [
-     23
-    ],
-    "value": [
-     2
+     11
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401869945",
-   "label": "ODU @ CCU",
-   "file": "CFB_Week10_ODU-CCU_packet",
+   "id": "401856858",
+   "label": "BAY @ BYU",
+   "file": "CFB_Week11_BAY-BYU_packet",
    "pages": {
     "report": [
      14
@@ -288,18 +286,17 @@
      25
     ],
     "epa": [
-     24
-    ],
-    "value": [
-     1
+     12
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401869927",
-   "label": "GAST @ APP",
-   "file": "CFB_Week10_GAST-APP_packet",
+   "id": "401856859",
+   "label": "CIN @ ISU",
+   "file": "CFB_Week11_CIN-ISU_packet",
    "pages": {
     "report": [
      15
@@ -309,18 +306,17 @@
      27
     ],
     "epa": [
-     25
-    ],
-    "value": [
-     3
+     13
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856744",
-   "label": "TA&M @ SC",
-   "file": "CFB_Week10_TAM-SC_packet",
+   "id": "401856861",
+   "label": "KU @ WVU",
+   "file": "CFB_Week11_KU-WVU_packet",
    "pages": {
     "report": [
      16
@@ -330,18 +326,17 @@
      29
     ],
     "epa": [
-     26
-    ],
-    "value": [
-     5
+     14
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401869936",
-   "label": "ULM @ ARST",
-   "file": "CFB_Week10_ULM-ARST_packet",
+   "id": "401856862",
+   "label": "KSU @ TCU",
+   "file": "CFB_Week11_KSU-TCU_packet",
    "pages": {
     "report": [
      17
@@ -351,18 +346,17 @@
      31
     ],
     "epa": [
-     27
-    ],
-    "value": [
-     6
+     15
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401871073",
-   "label": "DEL @ KENN",
-   "file": "CFB_Week10_DEL-KENN_packet",
+   "id": "401856863",
+   "label": "TTU @ OKST",
+   "file": "CFB_Week11_TTU-OKST_packet",
    "pages": {
     "report": [
      18
@@ -372,18 +366,17 @@
      33
     ],
     "epa": [
-     28
-    ],
-    "value": [
-     4
+     16
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856740",
-   "label": "ALA @ LSU",
-   "file": "CFB_Week10_ALA-LSU_packet",
+   "id": "401856864",
+   "label": "UTAH @ ARIZ",
+   "file": "CFB_Week11_UTAH-ARIZ_packet",
    "pages": {
     "report": [
      19
@@ -393,18 +386,17 @@
      35
     ],
     "epa": [
-     29
-    ],
-    "value": [
-     7
+     17
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856851",
-   "label": "CIN @ HOU",
-   "file": "CFB_Week10_CIN-HOU_packet",
+   "id": "401856883",
+   "label": "MIZ @ UGA",
+   "file": "CFB_Week11_MIZ-UGA_packet",
    "pages": {
     "report": [
      20
@@ -414,18 +406,17 @@
      37
     ],
     "epa": [
-     30
-    ],
-    "value": [
-     8
+     18
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401858290",
-   "label": "MRMK @ WAKE",
-   "file": "CFB_Week10_MRMK-WAKE_packet",
+   "id": "401856884",
+   "label": "FLA @ UK",
+   "file": "CFB_Week11_FLA-UK_packet",
    "pages": {
     "report": [
      21
@@ -433,17 +424,19 @@
     "matchup": [
      38,
      39
+    ],
+    "epa": [
+     19
     ]
    },
    "missing": [
-    "EPA",
     "Value board"
    ]
   },
   {
-   "id": "401858514",
-   "label": "ORE @ OSU",
-   "file": "CFB_Week10_ORE-OSU_packet",
+   "id": "401856885",
+   "label": "TEX @ LSU",
+   "file": "CFB_Week11_TEX-LSU_packet",
    "pages": {
     "report": [
      22
@@ -453,18 +446,17 @@
      41
     ],
     "epa": [
-     31
-    ],
-    "value": [
-     11
+     20
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401858516",
-   "label": "PSU @ WASH",
-   "file": "CFB_Week10_PSU-WASH_packet",
+   "id": "401856887",
+   "label": "MISS @ OU",
+   "file": "CFB_Week11_MISS-OU_packet",
    "pages": {
     "report": [
      23
@@ -474,18 +466,17 @@
      43
     ],
     "epa": [
-     32
-    ],
-    "value": [
-     12
+     21
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401862819",
-   "label": "CLT @ UAB",
-   "file": "CFB_Week10_CLT-UAB_packet",
+   "id": "401856888",
+   "label": "TENN @ TA&M",
+   "file": "CFB_Week11_TENN-TAM_packet",
    "pages": {
     "report": [
      24
@@ -495,18 +486,17 @@
      45
     ],
     "epa": [
-     33
-    ],
-    "value": [
-     9
+     22
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401862820",
-   "label": "TEM @ NAVY",
-   "file": "CFB_Week10_TEM-NAVY_packet",
+   "id": "401858298",
+   "label": "LOU @ UNC",
+   "file": "CFB_Week11_LOU-UNC_packet",
    "pages": {
     "report": [
      25
@@ -516,18 +506,17 @@
      47
     ],
     "epa": [
-     34
-    ],
-    "value": [
-     13
+     23
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401869951",
-   "label": "MRSH @ GASO",
-   "file": "CFB_Week10_MRSH-GASO_packet",
+   "id": "401858299",
+   "label": "STAN @ VT",
+   "file": "CFB_Week11_STAN-VT_packet",
    "pages": {
     "report": [
      26
@@ -537,18 +526,17 @@
      49
     ],
     "epa": [
-     35
-    ],
-    "value": [
-     10
+     24
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401871076",
-   "label": "WKU @ MTSU",
-   "file": "CFB_Week10_WKU-MTSU_packet",
+   "id": "401856886",
+   "label": "AUB @ MSST",
+   "file": "CFB_Week11_AUB-MSST_packet",
    "pages": {
     "report": [
      27
@@ -558,18 +546,17 @@
      51
     ],
     "epa": [
-     36
-    ],
-    "value": [
-     14
+     25
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856850",
-   "label": "UCF @ KU",
-   "file": "CFB_Week10_UCF-KU_packet",
+   "id": "401858296",
+   "label": "DUKE @ MIA",
+   "file": "CFB_Week11_DUKE-MIA_packet",
    "pages": {
     "report": [
      28
@@ -579,18 +566,17 @@
      53
     ],
     "epa": [
-     37
-    ],
-    "value": [
-     15
+     26
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401862821",
-   "label": "RICE @ UNT",
-   "file": "CFB_Week10_RICE-UNT_packet",
+   "id": "401858300",
+   "label": "SYR @ NCSU",
+   "file": "CFB_Week11_SYR-NCSU_packet",
    "pages": {
     "report": [
      29
@@ -600,18 +586,17 @@
      55
     ],
     "epa": [
-     38
-    ],
-    "value": [
-     19
+     27
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401864534",
-   "label": "NIU @ SJSU",
-   "file": "CFB_Week10_NIU-SJSU_packet",
+   "id": "401858301",
+   "label": "WAKE @ SMU",
+   "file": "CFB_Week11_WAKE-SMU_packet",
    "pages": {
     "report": [
      30
@@ -621,18 +606,17 @@
      57
     ],
     "epa": [
-     39
-    ],
-    "value": [
-     18
+     28
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401871074",
-   "label": "MOST @ FIU",
-   "file": "CFB_Week10_MOST-FIU_packet",
+   "id": "401858520",
+   "label": "WIS @ MD",
+   "file": "CFB_Week11_WIS-MD_packet",
    "pages": {
     "report": [
      31
@@ -642,18 +626,17 @@
      59
     ],
     "epa": [
-     40
-    ],
-    "value": [
-     17
+     29
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401871098",
-   "label": "LT @ TROY",
-   "file": "CFB_Week10_LT-TROY_packet",
+   "id": "401858522",
+   "label": "NU @ OSU",
+   "file": "CFB_Week11_NU-OSU_packet",
    "pages": {
     "report": [
      32
@@ -663,18 +646,17 @@
      61
     ],
     "epa": [
-     41
-    ],
-    "value": [
-     16
+     30
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856742",
-   "label": "VAN @ MSST",
-   "file": "CFB_Week10_VAN-MSST_packet",
+   "id": "401861967",
+   "label": "JMU @ CONN",
+   "file": "CFB_Week11_JMU-CONN_packet",
    "pages": {
     "report": [
      33
@@ -684,18 +666,17 @@
      63
     ],
     "epa": [
-     42
-    ],
-    "value": [
-     21
+     31
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401858517",
-   "label": "RUTG @ WIS",
-   "file": "CFB_Week10_RUTG-WIS_packet",
+   "id": "401858297",
+   "label": "GT @ CLEM",
+   "file": "CFB_Week11_GT-CLEM_packet",
    "pages": {
     "report": [
      34
@@ -705,18 +686,17 @@
      65
     ],
     "epa": [
-     43
-    ],
-    "value": [
-     20
+     32
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401869968",
-   "label": "USA @ UL",
-   "file": "CFB_Week10_USA-UL_packet",
+   "id": "401858525",
+   "label": "NEB @ RUTG",
+   "file": "CFB_Week11_NEB-RUTG_packet",
    "pages": {
     "report": [
      35
@@ -726,18 +706,17 @@
      67
     ],
     "epa": [
-     44
-    ],
-    "value": [
-     22
+     33
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401860911",
-   "label": "BOIS @ CSU",
-   "file": "CFB_Week10_BOIS-CSU_packet",
+   "id": "401856889",
+   "label": "ALA @ VAN",
+   "file": "CFB_Week11_ALA-VAN_packet",
    "pages": {
     "report": [
      36
@@ -747,18 +726,17 @@
      69
     ],
     "epa": [
-     45
-    ],
-    "value": [
-     23
+     34
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856745",
-   "label": "UK @ TENN",
-   "file": "CFB_Week10_UK-TENN_packet",
+   "id": "401862825",
+   "label": "ECU @ CLT",
+   "file": "CFB_Week11_ECU-CLT_packet",
    "pages": {
     "report": [
      37
@@ -768,18 +746,17 @@
      71
     ],
     "epa": [
-     46
-    ],
-    "value": [
-     24
+     35
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401871075",
-   "label": "SHSU @ JVST",
-   "file": "CFB_Week10_SHSU-JVST_packet",
+   "id": "401862829",
+   "label": "UAB @ TEM",
+   "file": "CFB_Week11_UAB-TEM_packet",
    "pages": {
     "report": [
      38
@@ -789,18 +766,17 @@
      73
     ],
     "epa": [
-     47
-    ],
-    "value": [
-     25
+     36
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856741",
-   "label": "UGA @ MISS",
-   "file": "CFB_Week10_UGA-MISS_packet",
+   "id": "401869937",
+   "label": "ARST @ CCU",
+   "file": "CFB_Week11_ARST-CCU_packet",
    "pages": {
     "report": [
      39
@@ -810,18 +786,17 @@
      75
     ],
     "epa": [
-     48
-    ],
-    "value": [
-     32
+     37
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856852",
-   "label": "COLO @ ASU",
-   "file": "CFB_Week10_COLO-ASU_packet",
+   "id": "401862828",
+   "label": "TULN @ RICE",
+   "file": "CFB_Week11_TULN-RICE_packet",
    "pages": {
     "report": [
      40
@@ -831,18 +806,17 @@
      77
     ],
     "epa": [
-     49
-    ],
-    "value": [
-     27
+     38
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401858287",
-   "label": "LOU @ GT",
-   "file": "CFB_Week10_LOU-GT_packet",
+   "id": "401870769",
+   "label": "KENN @ SHSU",
+   "file": "CFB_Week11_KENN-SHSU_packet",
    "pages": {
     "report": [
      41
@@ -852,18 +826,17 @@
      79
     ],
     "epa": [
-     50
-    ],
-    "value": [
-     29
+     39
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401858291",
-   "label": "MIA @ ND",
-   "file": "CFB_Week10_MIA-ND_packet",
+   "id": "401870796",
+   "label": "NMSU @ MOST",
+   "file": "CFB_Week11_NMSU-MOST_packet",
    "pages": {
     "report": [
      42
@@ -873,18 +846,17 @@
      81
     ],
     "epa": [
-     51
-    ],
-    "value": [
-     30
+     40
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401858511",
-   "label": "MSU @ MICH",
-   "file": "CFB_Week10_MSU-MICH_packet",
+   "id": "401871060",
+   "label": "FIU @ DEL",
+   "file": "CFB_Week11_FIU-DEL_packet",
    "pages": {
     "report": [
      43
@@ -894,18 +866,17 @@
      83
     ],
     "epa": [
-     52
-    ],
-    "value": [
-     31
+     41
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401858513",
-   "label": "IOWA @ NU",
-   "file": "CFB_Week10_IOWA-NU_packet",
+   "id": "401858294",
+   "label": "BC @ ND",
+   "file": "CFB_Week11_BC-ND_packet",
    "pages": {
     "report": [
      44
@@ -915,18 +886,17 @@
      85
     ],
     "epa": [
-     53
-    ],
-    "value": [
-     28
+     42
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401862823",
-   "label": "AFA @ ARMY",
-   "file": "CFB_Week10_AFA-ARMY_packet",
+   "id": "401858295",
+   "label": "CAL @ UVA",
+   "file": "CFB_Week11_CAL-UVA_packet",
    "pages": {
     "report": [
      45
@@ -936,18 +906,17 @@
      87
     ],
     "epa": [
-     54
-    ],
-    "value": [
-     26
+     43
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856739",
-   "label": "OU @ FLA",
-   "file": "CFB_Week10_OU-FLA_packet",
+   "id": "401858518",
+   "label": "USC @ IU",
+   "file": "CFB_Week11_USC-IU_packet",
    "pages": {
     "report": [
      46
@@ -957,18 +926,17 @@
      89
     ],
     "epa": [
-     55
-    ],
-    "value": [
-     33
+     44
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401870795",
-   "label": "LIB @ NMSU",
-   "file": "CFB_Week10_LIB-NMSU_packet",
+   "id": "401858523",
+   "label": "MICH @ ORE",
+   "file": "CFB_Week11_MICH-ORE_packet",
    "pages": {
     "report": [
      47
@@ -978,18 +946,17 @@
      91
     ],
     "epa": [
-     56
-    ],
-    "value": [
-     34
+     45
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401856856",
-   "label": "WVU @ TTU",
-   "file": "CFB_Week10_WVU-TTU_packet",
+   "id": "401862826",
+   "label": "FAU @ TLSA",
+   "file": "CFB_Week11_FAU-TLSA_packet",
    "pages": {
     "report": [
      48
@@ -999,18 +966,17 @@
      93
     ],
     "epa": [
-     57
-    ],
-    "value": [
-     37
+     46
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401860913",
-   "label": "FRES @ USU",
-   "file": "CFB_Week10_FRES-USU_packet",
+   "id": "401864536",
+   "label": "NEV @ NIU",
+   "file": "CFB_Week11_NEV-NIU_packet",
    "pages": {
     "report": [
      49
@@ -1020,18 +986,17 @@
      95
     ],
     "epa": [
-     58
-    ],
-    "value": [
-     35
+     47
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401864532",
-   "label": "HAW @ UTEP",
-   "file": "CFB_Week10_HAW-UTEP_packet",
+   "id": "401869952",
+   "label": "GASO @ GAST",
+   "file": "CFB_Week11_GASO-GAST_packet",
    "pages": {
     "report": [
      50
@@ -1041,18 +1006,17 @@
      97
     ],
     "epa": [
-     59
-    ],
-    "value": [
-     36
+     48
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401860912",
-   "label": "TXST @ ORST",
-   "file": "CFB_Week10_TXST-ORST_packet",
+   "id": "401870752",
+   "label": "JVST @ WKU",
+   "file": "CFB_Week11_JVST-WKU_packet",
    "pages": {
     "report": [
      51
@@ -1062,18 +1026,17 @@
      99
     ],
     "epa": [
-     60
-    ],
-    "value": [
-     38
+     49
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
   },
   {
-   "id": "401864535",
-   "label": "WYO @ UNLV",
-   "file": "CFB_Week10_WYO-UNLV_packet",
+   "id": "401871061",
+   "label": "MTSU @ LIB",
+   "file": "CFB_Week11_MTSU-LIB_packet",
    "pages": {
     "report": [
      52
@@ -1083,13 +1046,332 @@
      101
     ],
     "epa": [
-     61
-    ],
-    "value": [
-     39
+     50
     ]
    },
-   "missing": []
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401860916",
+   "label": "FRES @ TXST",
+   "file": "CFB_Week11_FRES-TXST_packet",
+   "pages": {
+    "report": [
+     53
+    ],
+    "matchup": [
+     102,
+     103
+    ],
+    "epa": [
+     51
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401858521",
+   "label": "WASH @ MSU",
+   "file": "CFB_Week11_WASH-MSU_packet",
+   "pages": {
+    "report": [
+     54
+    ],
+    "matchup": [
+     104,
+     105
+    ],
+    "epa": [
+     52
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401871099",
+   "label": "USM @ LT",
+   "file": "CFB_Week11_USM-LT_packet",
+   "pages": {
+    "report": [
+     55
+    ],
+    "matchup": [
+     106,
+     107
+    ],
+    "epa": [
+     53
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401860914",
+   "label": "ORST @ BOIS",
+   "file": "CFB_Week11_ORST-BOIS_packet",
+   "pages": {
+    "report": [
+     56
+    ],
+    "matchup": [
+     108,
+     109
+    ],
+    "epa": [
+     54
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401869928",
+   "label": "APP @ MRSH",
+   "file": "CFB_Week11_APP-MRSH_packet",
+   "pages": {
+    "report": [
+     57
+    ],
+    "matchup": [
+     110,
+     111
+    ],
+    "epa": [
+     55
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401858524",
+   "label": "MINN @ PSU",
+   "file": "CFB_Week11_MINN-PSU_packet",
+   "pages": {
+    "report": [
+     58
+    ],
+    "matchup": [
+     112,
+     113
+    ],
+    "epa": [
+     56
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401864538",
+   "label": "SJSU @ AFA",
+   "file": "CFB_Week11_SJSU-AFA_packet",
+   "pages": {
+    "report": [
+     59
+    ],
+    "matchup": [
+     114,
+     115
+    ],
+    "epa": [
+     57
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401871100",
+   "label": "TROY @ USA",
+   "file": "CFB_Week11_TROY-USA_packet",
+   "pages": {
+    "report": [
+     60
+    ],
+    "matchup": [
+     116,
+     117
+    ],
+    "epa": [
+     58
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401858519",
+   "label": "PUR @ IOWA",
+   "file": "CFB_Week11_PUR-IOWA_packet",
+   "pages": {
+    "report": [
+     61
+    ],
+    "matchup": [
+     118,
+     119
+    ],
+    "epa": [
+     59
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401864539",
+   "label": "UNLV @ UNM",
+   "file": "CFB_Week11_UNLV-UNM_packet",
+   "pages": {
+    "report": [
+     62
+    ],
+    "matchup": [
+     120,
+     121
+    ],
+    "epa": [
+     60
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401856882",
+   "label": "SC @ ARK",
+   "file": "CFB_Week11_SC-ARK_packet",
+   "pages": {
+    "report": [
+     63
+    ],
+    "matchup": [
+     122,
+     123
+    ],
+    "epa": [
+     61
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401862827",
+   "label": "UNT @ UTSA",
+   "file": "CFB_Week11_UNT-UTSA_packet",
+   "pages": {
+    "report": [
+     64
+    ],
+    "matchup": [
+     124,
+     125
+    ],
+    "epa": [
+     62
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401860915",
+   "label": "USU @ SDSU",
+   "file": "CFB_Week11_USU-SDSU_packet",
+   "pages": {
+    "report": [
+     65
+    ],
+    "matchup": [
+     126,
+     127
+    ],
+    "epa": [
+     63
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401864540",
+   "label": "WYO @ UTEP",
+   "file": "CFB_Week11_WYO-UTEP_packet",
+   "pages": {
+    "report": [
+     66
+    ],
+    "matchup": [
+     128,
+     129
+    ],
+    "epa": [
+     64
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401860917",
+   "label": "CSU @ WSU",
+   "file": "CFB_Week11_CSU-WSU_packet",
+   "pages": {
+    "report": [
+     67
+    ],
+    "matchup": [
+     130,
+     131
+    ],
+    "epa": [
+     65
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
+  },
+  {
+   "id": "401864537",
+   "label": "NDSU @ HAW",
+   "file": "CFB_Week11_NDSU-HAW_packet",
+   "pages": {
+    "report": [
+     68
+    ],
+    "matchup": [
+     132,
+     133
+    ],
+    "epa": [
+     66
+    ]
+   },
+   "missing": [
+    "Value board"
+   ]
   }
  ]
 }
