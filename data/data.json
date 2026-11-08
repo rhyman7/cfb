@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T14:40:05.100617+00:00",
+ "generatedAt": "2026-11-08T14:49:15.179394+00:00",
  "season": 2026,
  "throughWeek": 10,
  "gamesCounted": 624,
@@ -66189,7 +66189,7 @@
     "conference": "Big 12",
     "score": null,
     "abbr": "UCF",
-    "qb": "Keyone Jenkins"
+    "qb": "Alonza Barnett III"
    },
    "lineOpen": {
     "spread": null,
@@ -66308,7 +66308,7 @@
     "conference": "Big 12",
     "score": null,
     "abbr": "KU",
-    "qb": "Cole Ballard"
+    "qb": "Isaiah Marshall"
    },
    "home": {
     "name": "West Virginia",
@@ -66953,7 +66953,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "WIS",
-    "qb": "Colton Joseph"
+    "qb": "Ryan Hopkins"
    },
    "home": {
     "name": "Maryland",
@@ -66996,7 +66996,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "NU",
-    "qb": "Aidan Chiles"
+    "qb": "Nicco Marchiol"
    },
    "home": {
     "name": "Ohio State",
@@ -67942,7 +67942,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "WASH",
-    "qb": "Elijah Brown"
+    "qb": "Demond Williams Jr."
    },
    "home": {
     "name": "Michigan State",
@@ -67952,7 +67952,7 @@
     "conference": "Big Ten",
     "score": null,
     "abbr": "MSU",
-    "qb": "Leo Hannan"
+    "qb": "Alessio Milivojevic"
    },
    "lineOpen": {
     "spread": null,
@@ -67985,7 +67985,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "USM",
-    "qb": "Landry Lyddy"
+    "qb": "John White"
    },
    "home": {
     "name": "Louisiana Tech",
@@ -68038,7 +68038,7 @@
     "conference": "Pac-12",
     "score": null,
     "abbr": "BOIS",
-    "qb": "Maddux Madsen"
+    "qb": "Max Cutforth"
    },
    "lineOpen": {
     "spread": -4.5,
@@ -68081,7 +68081,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "MRSH",
-    "qb": "Carlos Del Rio-Wilson"
+    "qb": "Zion Turner"
    },
    "lineOpen": {
     "spread": null,
@@ -68157,7 +68157,7 @@
     "conference": "Mountain West",
     "score": null,
     "abbr": "SJSU",
-    "qb": "Luke Weaver"
+    "qb": "Daniel Rolovich"
    },
    "home": {
     "name": "Air Force",
@@ -68210,7 +68210,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "USA",
-    "qb": "Jared Hollins"
+    "qb": "Bishop Davenport"
    },
    "lineOpen": {
     "spread": null,
@@ -70479,7 +70479,8 @@
  },
  "hasTargets": true,
  "notes": [
-  "overrides/qb_starters.json is for Week 10, not Week 11: not applied"
+  "starting QBs for 134 teams applied from overrides/qb_starters.json",
+  "lineOpen kept for 30 of 67 Week 11 games from the week's first build"
  ],
  "leagueAverage": {
   "rushTdG": 1.7,
