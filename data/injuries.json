@@ -1,110 +1,8 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-07T14:52:49.105693+00:00",
+ "generatedAt": "2026-11-08T14:49:15.887841+00:00",
  "source": "Covers.com team injury pages, plus news reports where noted",
- "teamsRead": [
-  "Air Force",
-  "Alabama",
-  "App State",
-  "Arizona State",
-  "Arkansas",
-  "Arkansas State",
-  "Army",
-  "Auburn",
-  "BYU",
-  "Baylor",
-  "Boise State",
-  "Boston College",
-  "Charlotte",
-  "Cincinnati",
-  "Clemson",
-  "Coastal Carolina",
-  "Colorado",
-  "Colorado State",
-  "Delaware",
-  "Duke",
-  "Florida",
-  "Florida International",
-  "Florida State",
-  "Fresno State",
-  "Georgia",
-  "Georgia Southern",
-  "Georgia State",
-  "Georgia Tech",
-  "Hawai'i",
-  "Houston",
-  "Iowa",
-  "Iowa State",
-  "Jacksonville State",
-  "Kansas",
-  "Kansas State",
-  "Kennesaw State",
-  "Kentucky",
-  "LSU",
-  "Liberty",
-  "Louisiana",
-  "Louisiana Tech",
-  "Louisville",
-  "Marshall",
-  "Maryland",
-  "Miami",
-  "Michigan",
-  "Michigan State",
-  "Middle Tennessee",
-  "Minnesota",
-  "Mississippi State",
-  "Missouri",
-  "Missouri State",
-  "NC State",
-  "Navy",
-  "New Mexico State",
-  "North Carolina",
-  "North Texas",
-  "Northern Illinois",
-  "Northwestern",
-  "Notre Dame",
-  "Ohio State",
-  "Oklahoma",
-  "Oklahoma State",
-  "Old Dominion",
-  "Ole Miss",
-  "Oregon",
-  "Oregon State",
-  "Penn State",
-  "Purdue",
-  "Rice",
-  "Rutgers",
-  "Sam Houston",
-  "San José State",
-  "South Alabama",
-  "South Carolina",
-  "Syracuse",
-  "Temple",
-  "Tennessee",
-  "Texas",
-  "Texas A&M",
-  "Texas State",
-  "Texas Tech",
-  "Troy",
-  "Tulane",
-  "Tulsa",
-  "UAB",
-  "UCF",
-  "UCLA",
-  "UConn",
-  "UL Monroe",
-  "UNLV",
-  "UTEP",
-  "Utah",
-  "Utah State",
-  "Vanderbilt",
-  "Wake Forest",
-  "Washington",
-  "West Virginia",
-  "Western Kentucky",
-  "Wisconsin",
-  "Wyoming"
- ],
+ "teamsRead": [],
  "checked": {
   "Air Force": "2026-11-07",
   "Akron": "2026-11-03",
@@ -257,18 +155,6 @@
    "pos": "QB",
    "note": "Leg · Covers, Oct 5 · out for the season",
    "player": "Liam Szarka"
-  },
-  "AFA|5306440": {
-   "s": "O",
-   "status": "Out",
-   "injury": "Toe",
-   "date": "2026-10-30",
-   "src": "Colorado Springs Gazette",
-   "name": "Evan Medders",
-   "team": "Air Force",
-   "pos": "QB",
-   "note": "Toe · Colorado Springs Gazette, Oct 30 · Toe · Colorado Springs Gazette, Oct 30",
-   "player": "Evan Medders"
   },
   "AFA|5309672": {
    "s": "Q",
@@ -433,7 +319,7 @@
    "name": "Mikey Keene",
    "team": "Arizona State",
    "pos": "QB",
-   "note": "Knee/leg · RotoWire / DevilsDigest, Oct 31 · Knee/leg · RotoWire / DevilsDigest, Oct 31 · likely to sit vs Colorado",
+   "note": "Knee/leg · RotoWire / DevilsDigest, Oct 31 · likely to sit vs Colorado",
    "player": "Mikey Keene"
   },
   "BALL|5078533": {
@@ -709,7 +595,7 @@
    "name": "Angel Flores",
    "team": "Central Michigan",
    "pos": "QB",
-   "note": "Ankle · Mitten Football, Oct 25 · Ankle · Mitten Football, Oct 25 · ankle surgery; likely out for season",
+   "note": "Ankle · Mitten Football, Oct 25 · ankle surgery; likely out for season",
    "player": "Angel Flores"
   },
   "CMU|5157391": {
@@ -813,7 +699,7 @@
    "name": "Emory Williams",
    "team": "East Carolina",
    "pos": "QB",
-   "note": "Undisclosed · RotoWire, Oct 26 · Undisclosed · RotoWire, Oct 26",
+   "note": "Undisclosed · RotoWire, Oct 26 · RotoWire, Oct 26",
    "player": "Emory Williams"
   },
   "EMU|4690158": {
@@ -825,7 +711,7 @@
    "name": "Noah Kim",
    "team": "Eastern Michigan",
    "pos": "QB",
-   "note": "Undisclosed · RotoWire, Oct 19 · Undisclosed · RotoWire, Oct 19",
+   "note": "Undisclosed · RotoWire, Oct 19 · RotoWire, Oct 19",
    "player": "Noah Kim"
   },
   "EMU|5083205": {
@@ -879,7 +765,7 @@
    "name": "Aaron Philo",
    "team": "Florida",
    "pos": "QB",
-   "note": "Shoulder · Hail Florida Hail, Nov 1 · Shoulder · Hail Florida Hail, Nov 1 · Sumrall not naming starter",
+   "note": "Shoulder · Hail Florida Hail, Nov 1 · Sumrall not naming starter",
    "player": "Aaron Philo"
   },
   "FLA|5295811": {
@@ -1047,7 +933,7 @@
    "name": "Jacob Knuth",
    "team": "Kansas State",
    "pos": "QB",
-   "note": "Ankle · Yahoo Sports (ESPN, Pete Thamel), Oct 31 · Ankle · Yahoo Sports (ESPN, Pete Thamel), Oct 31",
+   "note": "Ankle · Yahoo Sports (ESPN, Pete Thamel), Oct 31 · Yahoo Sports (ESPN, Pete Thamel), Oct 31",
    "player": "Jacob Knuth"
   },
   "KSU|4804882": {
@@ -1073,7 +959,7 @@
    "name": "Avery Johnson",
    "team": "Kansas State",
    "pos": "QB",
-   "note": "Neck/shoulder · Wichita Eagle, Oct 29 · Neck/shoulder · Wichita Eagle, Oct 29",
+   "note": "Neck/shoulder · Wichita Eagle, Oct 29 · Wichita Eagle, Oct 29",
    "player": "Avery Johnson"
   },
   "KSU|5164321": {
@@ -1127,7 +1013,7 @@
    "name": "Isaiah Marshall",
    "team": "Kansas",
    "pos": "QB",
-   "note": "Leg · SI (Jayhawks), Nov 6 · Leg · SI (Jayhawks), Nov 6 · upgraded to probable Thursday; likely starter",
+   "note": "Leg · SI (Jayhawks), Nov 6 · upgraded to probable Thursday; likely starter",
    "player": "Isaiah Marshall"
   },
   "KU|5079749": {
@@ -1151,7 +1037,7 @@
    "name": "Cole Ballard",
    "team": "Kansas",
    "pos": "QB",
-   "note": "Shoulder · SI QB tracker, Nov 6 · Shoulder · SI QB tracker, Nov 6 · started at TCU",
+   "note": "Shoulder · SI QB tracker, Nov 6 · started at TCU",
    "player": "Cole Ballard"
   },
   "LSU|5079420": {
@@ -1331,7 +1217,7 @@
    "name": "Kamario Taylor",
    "team": "Mississippi State",
    "pos": "QB",
-   "note": "Toe · ESPN (Thamel) / WLBT, Oct 27 · Toe · ESPN (Thamel) / WLBT, Oct 27",
+   "note": "Toe · ESPN (Thamel) / WLBT, Oct 27 · ESPN (Thamel) / WLBT, Oct 27",
    "player": "Kamario Taylor"
   },
   "MSST|5220197": {
@@ -1357,7 +1243,7 @@
    "name": "Cam Fancher",
    "team": "Michigan State",
    "pos": "QB",
-   "note": "Knee · Yahoo Sports, Oct 26 · Knee · Yahoo Sports, Oct 26 · out",
+   "note": "Knee · Yahoo Sports, Oct 26 · out",
    "player": "Cam Fancher"
   },
   "MSU|5086034": {
@@ -1381,7 +1267,7 @@
    "name": "Alessio Milivojevic",
    "team": "Michigan State",
    "pos": "QB",
-   "note": "Undisclosed · MSU Athletics / Yahoo Sports, Nov 3 · Undisclosed · MSU Athletics / Yahoo Sports, Nov 3 · ruled out vs UCLA; no timetable; no starter named vs Michigan",
+   "note": "Undisclosed · MSU Athletics / Yahoo Sports, Nov 3 · ruled out vs UCLA; no timetable; no starter named vs Michigan",
    "player": "Alessio Milivojevic"
   },
   "NAVY|5211746": {
@@ -1485,7 +1371,7 @@
    "name": "AJ Bianco",
    "team": "Nevada",
    "pos": "QB",
-   "note": "Ankle · Nevada Sports Net, Nov 5 · Ankle · Nevada Sports Net, Nov 5 · expected to start while nursing ankle",
+   "note": "Ankle · Nevada Sports Net, Nov 5 · expected to start while nursing ankle",
    "player": "AJ Bianco"
   },
   "NEV|5205097": {
@@ -1497,7 +1383,7 @@
    "name": "Carter Jones",
    "team": "Nevada",
    "pos": "QB",
-   "note": "Arm · RotoWire / Sports Radio Service, Oct 24 · Arm · RotoWire / Sports Radio Service, Oct 24",
+   "note": "Arm · RotoWire / Sports Radio Service, Oct 24 · RotoWire / Sports Radio Service, Oct 24",
    "player": "Carter Jones"
   },
   "NU|5075805": {
@@ -1547,7 +1433,7 @@
    "name": "Quinn Henicle",
    "team": "Old Dominion",
    "pos": "QB",
-   "note": "Undisclosed · RotoWire, Oct 28 · Undisclosed · RotoWire, Oct 28",
+   "note": "Undisclosed · RotoWire, Oct 28 · RotoWire, Oct 28",
    "player": "Quinn Henicle"
   },
   "OHIO|5228764": {
@@ -1587,7 +1473,7 @@
    "name": "Dante Moore",
    "team": "Oregon",
    "pos": "QB",
-   "note": "Concussion · AP, Oct 27 · Concussion · AP, Oct 27 · not expected back this season",
+   "note": "Concussion · AP, Oct 27 · not expected back this season",
    "player": "Dante Moore"
   },
   "ORE|5079519": {
@@ -1611,7 +1497,7 @@
    "name": "Julian Sayin",
    "team": "Ohio State",
    "pos": "QB",
-   "note": "Arm · Field Level Media, Oct 27 · Arm · Field Level Media, Oct 27",
+   "note": "Arm · Field Level Media, Oct 27 · Field Level Media, Oct 27",
    "player": "Julian Sayin"
   },
   "OSU|5141517": {
@@ -1661,7 +1547,7 @@
    "name": "Mason Heintschel",
    "team": "Pittsburgh",
    "pos": "QB",
-   "note": "Torn ACL · CBS Sports/AP, Oct 20 · Torn ACL · CBS Sports/AP, Oct 20",
+   "note": "Torn ACL · CBS Sports/AP, Oct 20 · CBS Sports/AP, Oct 20",
    "player": "Mason Heintschel"
   },
   "PSU|5141525": {
@@ -1709,7 +1595,7 @@
    "name": "Dylan Lonergan",
    "team": "Rutgers",
    "pos": "QB",
-   "note": "Head · NJ.com / SB Nation, Oct 26 · Head · NJ.com / SB Nation, Oct 26",
+   "note": "Head · NJ.com / SB Nation, Oct 26 · NJ.com / SB Nation, Oct 26",
    "player": "Dylan Lonergan"
   },
   "RUTG|5214940": {
@@ -1747,7 +1633,7 @@
    "name": "Jayden Denegal",
    "team": "San Diego State",
    "pos": "QB",
-   "note": "Ankle · SI / RotoWire, Oct 26 · Ankle · SI / RotoWire, Oct 26",
+   "note": "Ankle · SI / RotoWire, Oct 26 · SI / RotoWire, Oct 26",
    "player": "Jayden Denegal"
   },
   "SDSU|5175719": {
@@ -1851,7 +1737,7 @@
    "name": "Malachi Nelson",
    "team": "Syracuse",
    "pos": "QB",
-   "note": "Leg · ESPN / On3, Oct 24 · Leg · ESPN / On3, Oct 24",
+   "note": "Leg · ESPN / On3, Oct 24 · ESPN / On3, Oct 24",
    "player": "Malachi Nelson"
   },
   "SYR|5153782": {
@@ -1863,7 +1749,7 @@
    "name": "Amari Odom",
    "team": "Syracuse",
    "pos": "QB",
-   "note": "Shoulder · ESPN / On3, Oct 24 · Shoulder · ESPN / On3, Oct 24",
+   "note": "Shoulder · ESPN / On3, Oct 24 · ESPN / On3, Oct 24",
    "player": "Amari Odom"
   },
   "TEM|4685695": {
@@ -1967,7 +1853,7 @@
    "name": "Goose Crowder",
    "team": "Troy",
    "pos": "QB",
-   "note": "Shoulder · Sun Belt availability report / RotoWire, Oct 26 · Shoulder · Sun Belt availability report / RotoWire, Oct 26",
+   "note": "Shoulder · Sun Belt availability report / RotoWire, Oct 26 · Sun Belt availability report / RotoWire, Oct 26",
    "player": "Goose Crowder"
   },
   "TTU|5193580": {
@@ -2021,7 +1907,7 @@
    "name": "Alonza Barnett III",
    "team": "UCF",
    "pos": "QB",
-   "note": "Hamstring · Yahoo Sports / SI, Nov 5 · Hamstring · Yahoo Sports / SI, Nov 5 · probable on Thursday report; expected starter",
+   "note": "Hamstring · Yahoo Sports / SI, Nov 5 · probable on Thursday report; expected starter",
    "player": "Alonza Barnett III"
   },
   "UCF|4922996": {
@@ -2047,7 +1933,7 @@
    "name": "Keyone Jenkins",
    "team": "UCF",
    "pos": "QB",
-   "note": "Ankle · Yahoo Sports / SI, Nov 5 · Ankle · Yahoo Sports / SI, Nov 5 · out on Thursday report",
+   "note": "Ankle · Yahoo Sports / SI, Nov 5 · out on Thursday report",
    "player": "Keyone Jenkins"
   },
   "UCLA|4870799": {
@@ -2185,7 +2071,7 @@
    "name": "Michael Van Buren Jr.",
    "team": "South Florida",
    "pos": "QB",
-   "note": "Undisclosed · Yahoo Sports, Oct 31 · Undisclosed · Yahoo Sports, Oct 31 · hurt early vs UAB, did not return",
+   "note": "Undisclosed · Yahoo Sports, Oct 31 · hurt early vs UAB, did not return",
    "player": "Michael Van Buren Jr."
   },
   "USM|4618083": {
@@ -2303,7 +2189,7 @@
    "name": "Blaze Berlowitz",
    "team": "Vanderbilt",
    "pos": "QB",
-   "note": "Collarbone · SI QB tracker, Nov 4 · Collarbone · SI QB tracker, Nov 4 · backup QB",
+   "note": "Collarbone · SI QB tracker, Nov 4 · backup QB",
    "player": "Blaze Berlowitz"
   },
   "WAKE|4920227": {
@@ -2315,7 +2201,7 @@
    "name": "Gio Lopez",
    "team": "Wake Forest",
    "pos": "QB",
-   "note": "Knee · 247Sports / Fox Sports, Nov 2 · Knee · 247Sports / Fox Sports, Nov 2 · CT and MRI done; no starter named for Merrimack",
+   "note": "Knee · 247Sports / Fox Sports, Nov 2 · CT and MRI done; no starter named for Merrimack",
    "player": "Gio Lopez"
   },
   "WASH|4601283": {
@@ -2355,7 +2241,7 @@
    "name": "Demond Williams Jr.",
    "team": "Washington",
    "pos": "QB",
-   "note": "Ribs · Spokesman-Review / ESPN, Nov 2 · Ribs · Spokesman-Review / ESPN, Nov 2 · fractured rib; Fisch says he starts vs Penn State if healthy",
+   "note": "Ribs · Spokesman-Review / ESPN, Nov 2 · fractured rib; Fisch says he starts vs Penn State if healthy",
    "player": "Demond Williams Jr."
   },
   "WASH|5209302": {
