@@ -249,8 +249,8 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   kickoff), the MAC for every game and the American for conference games (a Game Day report three
   hours out); players not listed are available. The Mountain West publishes its own on themw.com
   and isn't read yet; the Pac-12, Sun Belt and CUSA publish none (Nov 2026). The **Fetch
-  availability** Action (`fetch-availability.yml`, evenings Monday to Friday and hourly on
-  Saturdays, Aug-Jan) runs `scripts/fetch_availability.py`, which reads all six leagues from the
+  availability** Action (`fetch-availability.yml`, evenings Monday to Friday, hourly 3-6 pm ET
+  Tuesday to Friday for weeknight Game Day reports, and hourly on Saturdays, Aug-Jan) runs `scripts/fetch_availability.py`, which reads all six leagues from the
   vendor app that serves them (app.hdintelligence.com, public JSON, no key; the MAC's "Miami" is
   renamed to the site's "Miami (OH)") into
   `data/availability.json`: each team's newest report while its game is still ahead, with the
