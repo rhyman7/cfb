@@ -1,0 +1,87 @@
+name: Fetch availability
+
+# Pulls the SEC, ACC, Big 12 and Big Ten official availability reports for this week's conference
+# games (scripts/fetch_availability.py, one public vendor app serves all four) into
+# data/availability.json, then rewrites data/injuries.json with scripts/injuries.py so the pages'
+# O / D / Q / P tags come from the official report wherever a team has one (Covers.com stays for
+# everyone else). Commits only when something changed; a change rebuilds the PDFs, which show the
+# tags. Run it by hand from the Actions tab for an immediate refresh.
+#
+# When the reports land (Eastern): Wednesday, Thursday and Friday evenings by 8 pm (the Big 12 posts
+# at 9 pm Central), one day earlier each for a Friday game, and a Game Day report 90 minutes to two
+# hours before kickoff. The schedule below is UTC.
+on:
+  schedule:
+    - cron: "20 1,3 * 8-12,1 2-6"       # Mon-Fri 8:20 / 10:20 pm ET (9:20 / 11:20 pm EDT): the evening reports
+    - cron: "20 21,23 * 8-12,1 5"       # Friday afternoon ET: Game Day reports for Friday-night games
+    - cron: "20 13-23 * 8-12,1 6"       # Saturday 8:20 am - 6:20 pm ET, hourly: Game Day reports
+    - cron: "20 0-3 * 8-12,1 0"         # Saturday 7:20 - 10:20 pm ET (Sunday UTC): night games
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print what the reports hold, write nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write   # to start Build matchup PDFs after a change (pushes made with this token don't trigger it)
+
+concurrency:
+  group: fetch-availability
+  cancel-in-progress: false
+
+jobs:
+  availability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch the conference reports
+        run: python scripts/fetch_availability.py ${{ inputs.dry_run == true && '--dry-run' || '' }}
+
+      - name: Rewrite the injury tags (official reports over Covers)
+        if: ${{ inputs.dry_run != true }}
+        run: python scripts/injuries.py
+
+      - name: Commit
+        id: commit
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # only the timestamps (fetched / generatedAt) changed: nothing to publish
+          changed=$(python - <<'EOF'
+          import json, subprocess
+          def strip(s):
+              d = json.loads(s); [d.pop(k, None) for k in ("fetched", "generatedAt")]; return d
+          n = 0
+          for f in ("data/availability.json", "data/injuries.json"):
+              try: old = strip(subprocess.check_output(["git", "show", f"HEAD:{f}"], text=True))
+              except subprocess.CalledProcessError: old = None
+              n += strip(open(f).read()) != old
+          print(n)
+          EOF
+          )
+          if [ "$changed" = "0" ]; then git checkout -- data; echo "no change"; exit 0; fi
+          git add data/availability.json data/injuries.json
+          git commit -m "Availability reports $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && echo "pushed=true" >> "$GITHUB_OUTPUT" && exit 0
+            sleep 5
+          done
+          exit 1
+
+      # The report and printed matchups in the game packets show these tags, so rebuild them
+      - name: Rebuild the PDFs
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run build-pdfs.yml --ref main

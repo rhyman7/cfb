@@ -243,12 +243,26 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   needs `app.js` (and WEEKLY_PROMPT.md) updated in the same PR.
 - `currentWeek` is the first regular-season week that still has an unplayed game.
 - `scripts/epa_ratings.py` is **identical in both repos**. Change it in both, or not at all.
-- **Injury tags** come from Covers.com team injury pages (college has no official report),
-  read by the daily update with WebFetch (full addresses listed in WEEKLY_PROMPT.md) and matched to players by `scripts/injuries.py`,
-  which writes `data/injuries.json` (players keyed by `gameLogs` key, plus `unmatched` rows
-  and a `checked` date per team). `app.js` loads it next to `data.json` and sets `r.inj` on
+- **Injury tags** have two sources, official reports first. (1) The four power conferences'
+  **availability reports** for conference games (SEC, ACC, Big 12, Big Ten: Wednesday to Friday
+  evenings and a Game Day report 90 minutes to two hours before kickoff; players not listed are
+  available). The **Fetch availability** Action (`fetch-availability.yml`, evenings Monday to
+  Friday and hourly on Saturdays, Aug-Jan) runs `scripts/fetch_availability.py`, which reads all
+  four from the vendor app that serves them (app.hdintelligence.com, public JSON, no key) into
+  `data/availability.json`: each team's newest report while its game is still ahead, with the
+  conference's own statuses ("Exempt" rows, deep-roster players exempt from reporting, dropped).
+  The Action then runs `scripts/injuries.py` with no Covers files and commits both files. (2)
+  **Covers.com** team injury pages for everyone else, read by the daily update with WebFetch
+  (full addresses listed in WEEKLY_PROMPT.md; it skips teams with a live report).
+  `scripts/injuries.py` matches both to players and writes `data/injuries.json` (players keyed by
+  `gameLogs` key, plus `unmatched` rows, a `checked` date per team and `reports`: which teams'
+  tags come from which conference report). For a team with a live report it drops the Covers and
+  news rows (except Covers rows that say out for the season, for a player the report doesn't
+  list) and tags the report's players: Out O, Doubtful D, Questionable Q, Probable P, Game Time
+  Decision Q, Out (1st Half) P. `app.js` loads it next to `data.json` and sets `r.inj` on
   player rows; if it fails to load, the page works without tags. Tags are superscripts
-  (`sup.inj`, O/D/Q/P), dimmed when the player has played since his Covers date.
+  (`sup.inj`, O/D/Q/P), dimmed when the player has played since his listing date; the team
+  card's Injury report says which source it came from. Never hand-edit `data/availability.json`.
 - **Not available for college:** referee tendencies and fantasy points. Don't add NFL
   features that depend on them without a source.
 
