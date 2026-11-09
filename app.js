@@ -146,10 +146,13 @@ async function loadAdjEpa() {
 }
 
 // ---------------- Injury tags ----------------
-// data/injuries.json comes from each team's Covers.com injury page (read in the daily update,
-// matched to players by scripts/injuries.py): players[log key] = { s: O|D|Q|P, status, injury,
-// date, src, note: "Knee · Covers, Oct 17", stale?, playedSince? }. A "stale" entry is one the
-// player has recorded stats since; it shows dimmed. Rows get r.inj so other scripts can read it.
+// data/injuries.json comes from the conferences' official availability reports where a team has
+// one (data/availability.json, the Fetch availability Action; INJ.reports[team] says which report)
+// and otherwise from each team's Covers.com injury page (read in the daily update), matched to
+// players by scripts/injuries.py: players[log key] = { s: O|D|Q|P, status, injury, date, src,
+// note: "Knee · Covers, Oct 17" or "SEC availability report, Game Day (Nov 7)", stale?,
+// playedSince? }. A "stale" entry is one the player has recorded stats since; it shows dimmed.
+// Rows get r.inj so other scripts can read it.
 const INJ_ORDER = { O: 0, D: 1, Q: 2, P: 3 };
 function applyInjuries(inj) {
   if (!inj || inj.season !== DATA.season || !inj.players) return;
@@ -196,8 +199,17 @@ function injuryReport(t) {
   return `<div class="inj-report no-print">
     <h4>Injury report</h4>
     ${groups || `<p class="rk">No players listed.</p>`}
-    <p class="bet-note">From the team's Covers.com injury page, checked ${escapeHtml(shortDate(INJ.checked[t.team]))}${all.some(e => e.src !== "Covers") ? ", plus news reports where noted" : ""}. College teams don't have to report injuries, so this is incomplete. Hover a name (or open a player's game log) for the injury and date; "may be old" means he has played since he was listed.</p>
+    <p class="bet-note">${injurySourceNote(t, all)} Hover a name (or open a player's game log) for the designation and date; "may be old" means he has played since he was listed.</p>
   </div>`;
+}
+// Where a team's tags come from: its conference's official availability report (power-conference
+// teams in conference-game weeks, data/availability.json) or its Covers.com page.
+function injurySourceNote(t, all) {
+  const rep = (INJ.reports || {})[t.team];
+  if (rep) {
+    return `From the ${escapeHtml(rep.conf)}'s official availability report (${escapeHtml(rep.report)} report, posted ${escapeHtml(shortDate(rep.published))}) for ${escapeHtml(rep.opponent ? "the game " + rep.opponent : "this week's conference game")}. Players not listed are available; the report says status only, not the injury.${all.some(e => e.src === "Covers") ? " Season-long outs from Covers.com are kept." : ""}`;
+  }
+  return `From the team's Covers.com injury page, checked ${escapeHtml(shortDate(INJ.checked[t.team]))}${all.some(e => e.src !== "Covers") ? ", plus news reports where noted" : ""}. Non-conference and most Group of Five games have no official report, so this is incomplete.`;
 }
 
 // The week strip in the top bar, just left of the player search: one link per week,
