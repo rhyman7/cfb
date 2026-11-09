@@ -243,12 +243,16 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   needs `app.js` (and WEEKLY_PROMPT.md) updated in the same PR.
 - `currentWeek` is the first regular-season week that still has an unplayed game.
 - `scripts/epa_ratings.py` is **identical in both repos**. Change it in both, or not at all.
-- **Injury tags** have two sources, official reports first. (1) The four power conferences'
-  **availability reports** for conference games (SEC, ACC, Big 12, Big Ten: Wednesday to Friday
-  evenings and a Game Day report 90 minutes to two hours before kickoff; players not listed are
-  available). The **Fetch availability** Action (`fetch-availability.yml`, evenings Monday to
-  Friday and hourly on Saturdays, Aug-Jan) runs `scripts/fetch_availability.py`, which reads all
-  four from the vendor app that serves them (app.hdintelligence.com, public JSON, no key) into
+- **Injury tags** have two sources, official reports first. (1) The conferences'
+  **availability reports**: the four power conferences for conference games (SEC, ACC, Big 12,
+  Big Ten: Wednesday to Friday evenings and a Game Day report 90 minutes to two hours before
+  kickoff), the MAC for every game and the American for conference games (a Game Day report three
+  hours out); players not listed are available. The Mountain West publishes its own on themw.com
+  and isn't read yet; the Pac-12, Sun Belt and CUSA publish none (Nov 2026). The **Fetch
+  availability** Action (`fetch-availability.yml`, evenings Monday to Friday and hourly on
+  Saturdays, Aug-Jan) runs `scripts/fetch_availability.py`, which reads all six leagues from the
+  vendor app that serves them (app.hdintelligence.com, public JSON, no key; the MAC's "Miami" is
+  renamed to the site's "Miami (OH)") into
   `data/availability.json`: each team's newest report while its game is still ahead, with the
   conference's own statuses ("Exempt" rows, deep-roster players exempt from reporting, dropped).
   The Action then runs `scripts/injuries.py` with no Covers files and commits both files. (2)
