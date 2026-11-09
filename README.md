@@ -117,7 +117,7 @@ allowed in each game; hover or tap a game for a second popup with the opponent's
 backs (carries and yards), the other rushers, and a "Sacks and team runs" line when the box
 score's sacks make the team total differ. The data is `allowed` on each `teamGames` entry
 ({pass, rush, passers: [{n, pos, yds, cmp, att}], rushers: [{n, pos, yds, car}]}), from the
-ESPN team and player box scores. The Passing table's **Avg/C** column is passing yards per
+ESPN team and player box scores. The Passing table's **Pass Yds / Comp** column is passing yards per
 completion (`ypc`).
 
 **Week strip.** Just left of the search box, the top bar lists every regular-season
@@ -174,6 +174,11 @@ against what the other defense has allowed per attempt, from the team box
 scores (which count sacks as rushes, the way college stats do). Offense rank
 1 = highest; defense rank 1 = lowest allowed. The data is `rushYpa` in each
 team's `offense` and `defense`; the row is left out if the data doesn't have it.
+
+**Pass yards per completion.** Head to Head has a Pass Yds / Comp row under Pass
+Yds / G: passing yards before sacks divided by completions for the offense, and
+the same for what the defense has allowed (`passYdsComp` on each team's `offense`
+and `defense`); the row is left out if the data doesn't have it.
 
 **EPA and success rate.** Head to Head adds EPA per play and success rate
 (share of plays with positive EPA) for each offense and defense, from

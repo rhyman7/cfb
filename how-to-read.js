@@ -163,6 +163,7 @@ function learnSections(g, a, h) {
     ["EPA / play", "Expected points added: how much each play changed a team's expected score, averaged. Above 0 is good for an offense."],
     ["Success %", "Share of plays with positive EPA. Steadier than EPA, which a few big plays can swing."],
     ["Rush Yds / Att", "Yards per carry gained by the offense, or allowed by the defense. College box scores count sacks as runs."],
+    ["Pass Yds / Comp", "Passing yards per completion gained by the offense, or allowed by the defense, before sacks. Higher means bigger completions."],
     ["Pts / trip (40)", "Points per drive that reached the opponent's 40, at 7 for a touchdown and 3 for a field goal. The college measure of finishing drives."],
     ["3rd down %", "Share of third downs converted by the offense, or allowed by the defense."],
     ["Explosive %", "Passes of 20+ yards and runs of 10+, per play."],
