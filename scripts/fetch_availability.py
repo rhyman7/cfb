@@ -68,6 +68,12 @@ def hdi(path, org, tries=3):
     raise RuntimeError(f"{org} {path}: {type(last).__name__}: {str(last)[:100]}")
 
 
+def hms(t):
+    """'9:30:00' -> '09:30:00', so posted times sort as text."""
+    t = str(t or "")[:8]
+    return ("0" + t) if len(t) == 7 and t[1] == ":" else t
+
+
 def parse_reports(org, payload):
     """One dict per (report, team): the report's metadata plus that team's player rows."""
     out = []
@@ -94,7 +100,7 @@ def parse_reports(org, payload):
                              "season_out": str(r.get("exemptStatus") or "") == "Out"})
             others = [n for n in names if n != team]
             out.append({"conf": CONFERENCES[org], "report_id": str(rid), "report": rtype,
-                        "published": str(rep.get("publishDate") or "")[:10], "posted": str(rep.get("postedTime") or "")[:8],
+                        "published": str(rep.get("publishDate") or "")[:10], "posted": hms(rep.get("postedTime")),
                         "game_date": str(foot.get("date") or "")[:10], "game_time": str(foot.get("time") or "")[:8],
                         "location": str(foot.get("location") or ""), "team": team,
                         "opponent": others[0] if len(others) == 1 else "", "players": rows})
