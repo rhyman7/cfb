@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-08T14:49:15.887841+00:00",
+ "generatedAt": "2026-11-09T14:46:02.605363+00:00",
  "source": "Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [],
  "checked": {
@@ -311,15 +311,15 @@
    "player": "Brady Anderson"
   },
   "ASU|4597499": {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "Knee/leg",
-   "date": "2026-10-31",
-   "src": "RotoWire / DevilsDigest",
+   "s": "P",
+   "status": "Probable",
+   "injury": "Knee",
+   "date": "2026-11-05",
+   "src": "SI",
    "name": "Mikey Keene",
    "team": "Arizona State",
    "pos": "QB",
-   "note": "Knee/leg · RotoWire / DevilsDigest, Oct 31 · likely to sit vs Colorado",
+   "note": "Knee · SI, Nov 5 · Jake Fette kept as starter",
    "player": "Mikey Keene"
   },
   "BALL|5078533": {
@@ -379,15 +379,15 @@
    "player": "Trey Johnson"
   },
   "BOIS|4870513": {
-   "s": "O",
-   "status": "Out",
+   "s": "Q",
+   "status": "Questionable",
    "injury": "Knee",
    "date": "2026-11-06",
-   "src": "ESPN sources",
+   "src": "ClutchPoints citing ESPN (Thamel)",
    "name": "Maddux Madsen",
    "team": "Boise State",
    "pos": "QB",
-   "note": "Knee · ESPN sources, Nov 6 · out at Colorado State; Max Cutforth starts",
+   "note": "Knee · ClutchPoints citing ESPN (Thamel), Nov 6 · missed CSU; staff expected him back vs Oregon State",
    "player": "Maddux Madsen"
   },
   "BOIS|5157187": {
@@ -1053,6 +1053,18 @@
    "stale": true,
    "playedSince": 8,
    "player": "Trey'Dez Green"
+  },
+  "LT|5150998": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-08",
+   "src": "RotoWire / On3",
+   "name": "Blake Baker",
+   "team": "Louisiana Tech",
+   "pos": "QB",
+   "note": "Undisclosed · RotoWire / On3, Nov 8 · left Troy game Nov 7; being monitored this week",
+   "player": "Blake Baker"
   },
   "LT|5296386": {
    "s": "O",
@@ -1781,17 +1793,15 @@
    "player": "JoJo Bermudez"
   },
   "TEM|5078166": {
-   "s": "Q",
-   "status": "Questionable",
+   "s": "P",
+   "status": "Probable",
    "injury": "",
-   "date": "2026-10-17",
-   "src": "Covers",
-   "name": "A. Sheppard",
+   "date": "2026-11-08",
+   "src": "RotoWire / Temple News",
+   "name": "Ajani Sheppard",
    "team": "Temple",
    "pos": "QB",
-   "note": "Undisclosed · Covers, Oct 17",
-   "stale": true,
-   "playedSince": 9,
+   "note": "Undisclosed · RotoWire / Temple News, Nov 8 · emergency-only vs Navy; extra rest before UAB",
    "player": "Ajani Sheppard"
   },
   "TEX|4871053": {
@@ -1897,18 +1907,6 @@
    "stale": true,
    "playedSince": 9,
    "player": "Davian Jackson"
-  },
-  "UCF|4911929": {
-   "s": "P",
-   "status": "Probable",
-   "injury": "Hamstring",
-   "date": "2026-11-05",
-   "src": "Yahoo Sports / SI",
-   "name": "Alonza Barnett III",
-   "team": "UCF",
-   "pos": "QB",
-   "note": "Hamstring · Yahoo Sports / SI, Nov 5 · probable on Thursday report; expected starter",
-   "player": "Alonza Barnett III"
   },
   "UCF|4922996": {
    "s": "Q",
@@ -2196,12 +2194,12 @@
    "s": "Q",
    "status": "Questionable",
    "injury": "Knee",
-   "date": "2026-11-02",
-   "src": "247Sports / Fox Sports",
+   "date": "2026-11-07",
+   "src": "CBS Sports",
    "name": "Gio Lopez",
    "team": "Wake Forest",
    "pos": "QB",
-   "note": "Knee · 247Sports / Fox Sports, Nov 2 · CT and MRI done; no starter named for Merrimack",
+   "note": "Knee · CBS Sports, Nov 7 · missed Merrimack; team hopes he returns at SMU",
    "player": "Gio Lopez"
   },
   "WASH|4601283": {
@@ -2231,18 +2229,6 @@
    "stale": true,
    "playedSince": 9,
    "player": "Jayden Limar"
-  },
-  "WASH|5079653": {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "Ribs",
-   "date": "2026-11-02",
-   "src": "Spokesman-Review / ESPN",
-   "name": "Demond Williams Jr.",
-   "team": "Washington",
-   "pos": "QB",
-   "note": "Ribs · Spokesman-Review / ESPN, Nov 2 · fractured rib; Fisch says he starts vs Penn State if healthy",
-   "player": "Demond Williams Jr."
   },
   "WASH|5209302": {
    "s": "O",

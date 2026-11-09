@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T14:37:27.438074+00:00",
+ "generatedAt": "2026-11-09T14:46:01.359758+00:00",
  "season": 2026,
  "throughWeek": 10,
  "gamesCounted": 685,
@@ -69315,7 +69315,7 @@
     "conference": "Mountain West",
     "score": null,
     "abbr": "AFA",
-    "qb": "Howard Fisher IV"
+    "qb": "Evan Medders"
    },
    "lineOpen": {
     "spread": -11.5,
@@ -71803,7 +71803,7 @@
  "hasTargets": true,
  "notes": [
   "starting QBs for 134 teams applied from overrides/qb_starters.json",
-  "lineOpen kept for 30 of 67 Week 11 games from the week's first build"
+  "lineOpen kept for 67 of 67 Week 11 games from the week's first build"
  ],
  "leagueAverage": {
   "rushTdG": 1.7,
