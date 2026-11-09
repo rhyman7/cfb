@@ -12,7 +12,7 @@ public JSON, so this script needs no browser and no key. Run by the **Fetch avai
 
 Output: {"season", "fetched" (UTC), "source", "conferences": {conf: {"reports": n, "teams": n}},
 "teams": {<site team name>: {"conf", "report" (Initial | Update | Game Day), "published" (date),
-"posted" (time), "game_date", "game_time", "location", "opponent", "players": [{"name", "pos",
+"posted" (time, in the conference's own zone: Central for the SEC, Big 12 and Big Ten, Eastern for the ACC), "game_date", "game_time", "location", "opponent", "players": [{"name", "pos",
 "number", "status", "season_out"}]}}}.
 
 Only each team's newest report is kept, and only while its game hasn't been played (game_date on

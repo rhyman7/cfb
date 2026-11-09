@@ -207,16 +207,9 @@ function injuryReport(t) {
 function injurySourceNote(t, all) {
   const rep = (INJ.reports || {})[t.team];
   if (rep) {
-    const posted = rep.posted ? ` at ${fmtTime(rep.posted)}` : "";
-    return `From the ${escapeHtml(rep.conf)}'s official availability report (${escapeHtml(rep.report)} report, posted ${escapeHtml(shortDate(rep.published))}${posted}) for ${escapeHtml(rep.opponent ? "the game " + rep.opponent : "this week's conference game")}. Players not listed are available; the report says status only, not the injury.${all.some(e => e.src === "Covers") ? " Season-long outs from Covers.com are kept." : ""}`;
+    return `From the ${escapeHtml(rep.conf)}'s official availability report (${escapeHtml(rep.report)} report, posted ${escapeHtml(shortDate(rep.published))}) for ${escapeHtml(rep.opponent ? "the game " + rep.opponent : "this week's conference game")}. Players not listed are available; the report says status only, not the injury.${all.some(e => e.src === "Covers") ? " Season-long outs from Covers.com are kept." : ""}`;
   }
   return `From the team's Covers.com injury page, checked ${escapeHtml(shortDate(INJ.checked[t.team]))}${all.some(e => e.src !== "Covers") ? ", plus news reports where noted" : ""}. Non-conference and most Group of Five games have no official report, so this is incomplete.`;
-}
-function fmtTime(hms) {
-  const m = /^(\d{1,2}):(\d{2})/.exec(hms || "");
-  if (!m) return hms || "";
-  const h = +m[1];
-  return `${((h + 11) % 12) + 1}:${m[2]} ${h < 12 ? "am" : "pm"}`;
 }
 
 // The week strip in the top bar, just left of the player search: one link per week,
