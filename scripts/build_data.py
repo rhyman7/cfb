@@ -552,17 +552,19 @@ def build(season, cache, prev_path=None):
     receiving = player_category(pbox[pbox["game_id"].isin(game_ids)], "receiving")
 
     ptd = passing.groupby(["game_id", "team_id"]).agg(
-        passTd=("passingTouchdowns", "sum"), passInt=("interceptions", "sum")).reset_index()
+        passTd=("passingTouchdowns", "sum"), passInt=("interceptions", "sum"),
+        grossPass=("passingYards", "sum"), passCmp=("cmp", "sum")).reset_index()
     rtd = rushing.groupby(["game_id", "team_id"]).agg(rushTd=("rushingTouchdowns", "sum")).reset_index()
 
     tg = (tg.merge(tb, on=["game_id", "team_id"], how="left")
             .merge(ptd, on=["game_id", "team_id"], how="left")
             .merge(rtd, on=["game_id", "team_id"], how="left"))
     # opponent's numbers = what this team's defense allowed
-    opp = tg[["game_id", "team_id", "rushYds", "passYds", "passTd", "passInt", "rushTd", "rushAtt"]].rename(
+    opp = tg[["game_id", "team_id", "rushYds", "passYds", "passTd", "passInt", "rushTd", "rushAtt",
+              "grossPass", "passCmp"]].rename(
         columns={"team_id": "opp_id", "rushYds": "o_rushYds", "passYds": "o_passYds",
                  "passTd": "o_passTd", "passInt": "o_passInt", "rushTd": "o_rushTd",
-                 "rushAtt": "o_rushAtt"})
+                 "rushAtt": "o_rushAtt", "grossPass": "o_grossPass", "passCmp": "o_passCmp"})
     tg = tg.merge(opp, on=["game_id", "opp_id"], how="left")
 
     tg = tg[tg["team_id"].isin(fbs_ids)]
@@ -575,6 +577,8 @@ def build(season, cache, prev_path=None):
         d_rushTdG=("o_rushTd", "mean"), d_passTdG=("o_passTd", "mean"), d_intG=("o_passInt", "mean"),
         rushYdsTot=("rushYds", "sum"), rushAttTot=("rushAtt", "sum"),
         d_rushYdsTot=("o_rushYds", "sum"), d_rushAttTot=("o_rushAtt", "sum"),
+        grossPassTot=("grossPass", "sum"), passCmpTot=("passCmp", "sum"),
+        d_grossPassTot=("o_grossPass", "sum"), d_passCmpTot=("o_passCmp", "sum"),
     )
     wl = tg.assign(win=tg["pf"] > tg["pa"], loss=tg["pf"] < tg["pa"], tie=tg["pf"] == tg["pa"]) \
            .groupby("team_id")[["win", "loss", "tie"]].sum()
@@ -584,6 +588,11 @@ def build(season, cache, prev_path=None):
     # box scores (college box scores count sacks as rushes); defense = what opponents ran for
     per["rushYpa"] = (per["rushYdsTot"] / per["rushAttTot"].where(per["rushAttTot"] > 0)).fillna(0)
     per["d_rushYpa"] = (per["d_rushYdsTot"] / per["d_rushAttTot"].where(per["d_rushAttTot"] > 0)).fillna(0)
+
+    # pass yards per completion = season passing yards before sacks / season completions, from
+    # the player box scores (so it matches the QB table); defense = what opponents completed
+    per["passYdsComp"] = (per["grossPassTot"] / per["passCmpTot"].where(per["passCmpTot"] > 0)).fillna(0)
+    per["d_passYdsComp"] = (per["d_grossPassTot"] / per["d_passCmpTot"].where(per["d_passCmpTot"] > 0)).fillna(0)
 
     per["offRushRk"] = rank(per["rushYdsG"], ascending=False)
     per["offPassRk"] = rank(per["passYdsG"], ascending=False)
@@ -719,10 +728,10 @@ def build(season, cache, prev_path=None):
                        "srs": r1(s), "osrs": r1(o), "dsrs": r1(d)},
             "offense": {"ppg": r1(p.pf), "rushYdsG": r1(p.rushYdsG), "rushYdsGRank": int(p.offRushRk),
                         "rushYpa": r2(p.rushYpa), "rushTdG": r2(p.rushTdG), "passYdsG": r1(p.passYdsG),
-                        "passYdsGRank": int(p.offPassRk), "passTdG": r2(p.passTdG), "int": r2(p.intG)},
+                        "passYdsGRank": int(p.offPassRk), "passYdsComp": r2(p.passYdsComp), "passTdG": r2(p.passTdG), "int": r2(p.intG)},
             "defense": {"papg": r1(p.pa), "rushYdsG": r1(p.d_rushYdsG), "rushYdsGRank": int(p.defRushRk),
                         "rushYpa": r2(p.d_rushYpa), "rushTdG": r2(p.d_rushTdG), "passYdsG": r1(p.d_passYdsG),
-                        "passYdsGRank": int(p.defPassRk), "passTdG": r2(p.d_passTdG), "int": r2(p.d_intG)},
+                        "passYdsGRank": int(p.defPassRk), "passYdsComp": r2(p.d_passYdsComp), "passTdG": r2(p.d_passTdG), "int": r2(p.d_intG)},
             "passing": pass_rows,
             "rushing": rush_rows,
             "receiving": rec_rows,

@@ -724,6 +724,11 @@ function hasRushYpa() {
   return Object.values(DATA.teams).every(t => typeof t.offense.rushYpa === "number" && typeof t.defense.rushYpa === "number");
 }
 
+const PASS_COMP_ROW = ["Pass Yds / Comp", t => t.offense.passYdsComp, t => t.defense.passYdsComp, true, false, v => v.toFixed(2)];
+function hasPassComp() {
+  return Object.values(DATA.teams).every(t => typeof t.offense.passYdsComp === "number" && typeof t.defense.passYdsComp === "number");
+}
+
 const EDGE_ROWS = [
   // label, offense getter, defense getter, offense higher-better, defense higher-better, number format
   ["Points / G", t => t.offense.ppg, t => t.defense.papg, true, false],
@@ -771,7 +776,8 @@ const SITU_GROUPS = [
 ];
 function hasSitu() { return Object.values(DATA.teams).every(t => t.situ); }
 function edgeRows() {
-  const base = hasRushYpa() ? EDGE_ROWS : EDGE_ROWS.filter(r => r !== RUSH_YPA_ROW);
+  const base = hasRushYpa() ? EDGE_ROWS.slice() : EDGE_ROWS.filter(r => r !== RUSH_YPA_ROW);
+  if (hasPassComp()) base.splice(base.findIndex(r => r[0] === "Pass Yds / G") + 1, 0, PASS_COMP_ROW);
   const rows = hasAdj() ? base.slice(0, 1).concat(ADJ_ROWS, base.slice(1))
     : hasEff() ? base.slice(0, 1).concat(EFF_ROWS, base.slice(1)) : base.slice();
   rows.push(TD_GROUP[0], ...TD_GROUP[1]);
@@ -1000,7 +1006,7 @@ function renderTeamCard(t) {
         ["TD", "td", "num"],
         ["Int", "int", "num"],
         ["Cmp/G", "cmp", "num"],
-        ["Avg/C", "ypc", "num"],
+        ["Pass<br>Yds /<br>Comp", "ypc", "num"],
       ])}
       ${playerTable("Rushing", t.rushing, [
         ["Player", "player", "text"],
@@ -1061,7 +1067,7 @@ function defPosBlock(title, d) {
   </div>`;
 }
 
-// Avg/C = passing yards per completion: the data's ypc, or season yards ÷ completions
+// Pass Yds / Comp = passing yards per completion: the data's ypc, or season yards ÷ completions
 // worked out from the per-game numbers (data built before ypc was added)
 function withAvgC(rows) {
   return (rows || []).map(r => r.ypc != null ? r : { ...r, ypc: r.cmp > 0 ? Math.round((10 * r.ydsG) / r.cmp) / 10 : null });

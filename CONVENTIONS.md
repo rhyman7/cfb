@@ -126,6 +126,7 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   - indoor games show only `Dome`;
   - outdoor games show the forecast itself (conditions, temperature at kickoff, or the day's
     high when there's no kickoff time yet, rain chance, wind), with **no "Forecast" label**.
+- Head to Head has a **Pass Yds / Comp** row under Pass Yds / G (`passYdsComp` on `offense` and `defense`: season passing yards before sacks ÷ completions, 2 decimals; hidden until every team has it).
 - Head to Head: FBS rank bars, and the edge goes to the side that ranks enough spots better
   to match the NFL site's 6 of 32: `edgeGap()` = team count × 6 ÷ 32, rounded (26 with 138
   FBS teams). Don't hard-code the number. The side with the edge shows in its team color.
@@ -138,7 +139,7 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   rushers and a "Sacks and team runs" line (college box scores count sacks as runs), so the lines add up to the game's total. Data: `allowed` on each game in
   `teamGames` (`team_game_list()` in the build). The game totals must stay the same numbers the
   dials average; change both together. Popups are screen-only (`no-print`).
-- **Passing table columns:** Player, Yds/G, TD, Int, Cmp/G, **Avg/C** (season passing yards
+- **Passing table columns:** Player, Yds/G, TD, Int, Cmp/G, **Pass Yds / Comp** (season passing yards
   per completion, the row's `ypc`; `withAvgC()` works it out for data built without it).
 - **Position tags:** in the Rushing and Receiving tables each player's name is followed by his
   position (`posTag()`, class `pt-pos`, small and gray, from the row's `pos`). Passing has none
