@@ -3,9 +3,11 @@
 Since 2025 all four power conferences publish NFL-style availability reports for conference games
 (Big Ten 2023, SEC 2024, ACC and Big 12 2025): daily from three days out (Wednesday, Thursday,
 Friday by 8 pm ET for a Saturday game) and a final Game Day report 90 minutes to two hours before
-kickoff. Players not listed are available. One vendor app serves all four conferences' reports
-(app.hdintelligence.com, embedded on secsports.com, theacc.com, big12sports.com and bigten.org) as
-public JSON, so this script needs no browser and no key. Run by the **Fetch availability** Action
+kickoff. The MAC reports every game (one Game Day report, three hours before kickoff) and the
+American its conference games. Players not listed are available. One vendor app serves all six
+leagues' reports (app.hdintelligence.com, embedded on secsports.com, theacc.com, big12sports.com,
+bigten.org and getsomemaction.com) as public JSON, so this script needs no browser and no key.
+The Mountain West publishes its own on themw.com and is not read yet. Run by the **Fetch availability** Action
 (fetch-availability.yml); the Claude workspace can't reach the app.
 
     python scripts/fetch_availability.py [--out data/availability.json] [--dry-run]
@@ -36,7 +38,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 HDI = "https://app.hdintelligence.com/api/"
-CONFERENCES = {"SEC": "SEC", "ACC": "ACC", "B12": "Big 12", "B10": "Big Ten"}
+CONFERENCES = {"SEC": "SEC", "ACC": "ACC", "B12": "Big 12", "B10": "Big Ten", "MAC": "MAC", "American": "American"}
+# the vendor's team names where they differ from the site's (the MAC's "Miami" is the RedHawks)
+RENAME = {("MAC", "Miami"): "Miami (OH)"}
 NAME_RE = re.compile(r"^\s*([A-Z/]{1,4})\s*#(\d+)\s+(.*?)\s*$")
 REPORT_ORDER = {"Initial": 0, "Update": 1, "Game Day": 2}
 KEEP = {"Out", "Doubtful", "Questionable", "Probable", "Game Time Decision", "Out (1st Half)"}
@@ -87,7 +91,7 @@ def parse_reports(org, payload):
             continue
         foot = rep.get("footer") or {}
         games = rep.get("games") or []
-        names = [g.get("teamDisplayName") or g.get("teamName") or "" for g in games]
+        names = [RENAME.get((org, g.get("teamDisplayName") or g.get("teamName") or ""), g.get("teamDisplayName") or g.get("teamName") or "") for g in games]
         for g, team in zip(games, names):
             rows = []
             for r in g.get("rows") or []:
