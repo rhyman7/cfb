@@ -95,7 +95,8 @@ function edgeList(off, def) {
     const or = leagueRank(offGet, o, offHi), dr = leagueRank(defGet, d, defHi);
     const z = zScore(offGet, o, offHi) - zScore(defGet, d, defHi);   // same rule as Head to Head (edgePanel)
     out.push({ label, o: fmt ? fmt(o) : o, d: fmt ? fmt(d) : d, or, dr, gap: Math.abs(z),
-               side: z >= EDGE_SD ? off : z <= -EDGE_SD ? def : null, off, def });
+               side: or < dr ? off : dr < or ? def : null,   // better rank; null only on a tie
+               big: (z >= EDGE_SD && or < dr) || (z <= -EDGE_SD && dr < or), off, def });
   }
   return out;
 }
@@ -153,12 +154,12 @@ function learnSections(g, a, h) {
 
   // 2 Head to head
   const both = edgeList(a, h).concat(edgeList(h, a));
-  const best = both.filter(r => r.side).sort((x, y) => y.gap - x.gap)[0];
+  const best = both.filter(r => r.big).sort((x, y) => y.gap - x.gap)[0];
   const edges = t => both.filter(r => r.side === t).length;
   const ea = edges(a), eh = edges(h);
   const exNote = best
-    ? ["The edge", `The edge goes to whichever side is better by at least one standard deviation of the league (how far each number sits from average, so the size of the gap counts, not just rank spots), and its bar turns that team's color. The biggest gap here: ${escapeHtml(best.label)}, where ${poss(best.off)} offense ranks #${best.or} and ${poss(best.def)} defense #${best.dr}, ${best.gap.toFixed(1)} standard deviations apart, so the edge is ${escapeHtml(best.side.abbr)}.`]
-    : ["The edge", `The edge goes to whichever side is better by at least one standard deviation of the league, and its bar turns that team's color. Every row in this game is closer than that, so it's Even across the board.`];
+    ? ["The edge", `The Edge column names the side with the better FBS rank on that row, and says Even only when the two ranks are tied. The bar turns that team's color when the edge is a big one: at least one standard deviation of the league apart (how far each number sits from average, so the size of the gap counts, not just rank spots). The biggest gap here: ${escapeHtml(best.label)}, where ${poss(best.off)} offense ranks #${best.or} and ${poss(best.def)} defense #${best.dr}, ${best.gap.toFixed(1)} standard deviations apart, so ${escapeHtml(best.side.abbr)} has a big edge.`]
+    : ["The edge", `The Edge column names the side with the better FBS rank on that row, and says Even only when the two ranks are tied. The bar turns that team's color when the edge is a big one: at least one standard deviation of the league apart. Every row in this game is closer than that, so no bar is colored.`];
   const glossary = [
     ["EPA / play", "Expected points added: how much each play changed a team's expected score, averaged. Above 0 is good for an offense."],
     ["Success %", "Share of plays with positive EPA. Steadier than EPA, which a few big plays can swing."],
@@ -173,7 +174,7 @@ function learnSections(g, a, h) {
   parts.push(section(2, "Head to head", "Each offense against the defense it faces, stat by stat",
     `<div class="edge-grid learn-edge">${edgePanel(a, h)}${edgePanel(h, a)}</div>`,
     [["Number and rank", `Each cell is the season value and its rank among all ${Object.keys(DATA.teams).length} FBS teams. For an offense #1 is best; for a defense #1 is the stingiest, or for sacks and havoc plays the most disruptive.`],
-     ["The bars", "Each side's bar grows from the middle line with its rank: longer means better. Grey bars mean neither side has a clear edge on that row."],
+     ["The bars", "Each side's bar grows from the middle line with its rank: longer means better. Grey bars mean the edge on that row is a small one."],
      exNote,
      ["Read both panels", `The second panel turns the matchup around. Across both, ${nm(a)} holds ${plural(ea, "edge")} and ${nm(h)} holds ${eh}${ea === eh ? ", so neither side has a clear statistical advantage" : `; the team that wins more rows in both panels is the stronger side of the matchup on paper`}.`]],
     `<div class="learn-gloss">${glossary.map(([t, d]) => `<div><b>${t}</b><span>${d}</span></div>`).join("")}</div>`, true));

@@ -127,9 +127,11 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   - outdoor games show the forecast itself (conditions, temperature at kickoff, or the day's
     high when there's no kickoff time yet, rain chance, wind), with **no "Forecast" label**.
 - Head to Head has a **Pass Yds / Comp** row under Pass Yds / G (`passYdsComp` on `offense` and `defense`: season passing yards before sacks ÷ completions, 2 decimals; hidden until every team has it).
-- Head to Head: FBS rank bars, and the edge goes to the side that ranks enough spots better
-  to match the NFL site's 6 of 32: `edgeGap()` = team count × 6 ÷ 32, rounded (26 with 138
-  FBS teams). Don't hard-code the number. The side with the edge shows in its team color.
+- Head to Head (matchup page and the EPA page's Head to head): FBS rank bars. The **Edge**
+  column names the side with the **better FBS rank** on every row and says **Even only when
+  the two ranks are tied**. The bar turns team color only for a big edge: that side is also at
+  least 1 standard deviation of FBS better (`EDGE_SD` in `app.js`). How to read and EPA
+  Explained describe the same rule; keep them in step. Same rule on the NFL site.
 - Betting trends and the live box score are screen-only (left out of print).
 - **Defense dial popups.** On every team card, the Defense **Pass Yds/G** and **Rush Yds/G**
   dials open a popup of this season's games (hover on a computer, tap on a phone, Enter from

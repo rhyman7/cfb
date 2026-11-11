@@ -122,18 +122,20 @@ function edgePanelEpa(o, d) {
   const ov = SITE.vars(o), dv = SITE.vars(d), oa = SITE.esc(SITE.abbr(o)), da = SITE.esc(SITE.abbr(d));
   const rows = ROWS.map(([lbl, key, ok, dk, fmt]) => {
     const or = T[o].rk[ok], dr = T[d].rk[dk];
-    // edge: at least one league standard deviation apart (lower is better for a defense), as on the matchup page
+    // edge: the better league rank, Even only on a tie; the bar is colored only when the sides are at least one
+    // league standard deviation apart (lower is better for a defense), as on the matchup page
     const z = (v, side) => { const all = Object.values(T).map(t => t[side][key]).filter(x => x != null);
       const m = all.reduce((a, b) => a + b, 0) / all.length;
       return (v - m) / (Math.sqrt(all.reduce((a, b) => a + (b - m) ** 2, 0) / Math.max(1, all.length - 1)) || 1); };
     const gap = T[o].off[key] == null || T[d].def[key] == null ? 0 : z(T[o].off[key], "off") + z(T[d].def[key], "def");
-    const side = gap >= 1 ? "off" : gap <= -1 ? "def" : "";
+    const side = or == null || dr == null ? "" : or < dr ? "off" : dr < or ? "def" : "";
+    const big = gap >= 1 ? "off" : gap <= -1 ? "def" : "";
     const w = r => Math.round(((n + 1 - r) / n) * 100);
     const edge = side === "off" ? `<b class="tc" style="${ov}">${oa}</b>` : side === "def" ? `<b class="tc" style="${dv}">${da}</b>` : `<span class="even">Even</span>`;
     return `<div class="tape"><span class="lbl">${lbl}</span>
       <span class="num"><b>${fmt(T[o].off[key])}</b> <span class="rk">#${or}</span></span>
-      <span class="tl"><i class="tb${side === "off" ? " on" : ""}" style="width:${w(or)}%;${ov}"></i></span>
-      <span class="tr"><i class="tb${side === "def" ? " on" : ""}" style="width:${w(dr)}%;${dv}"></i></span>
+      <span class="tl"><i class="tb${side === "off" && big === "off" ? " on" : ""}" style="width:${w(or)}%;${ov}"></i></span>
+      <span class="tr"><i class="tb${side === "def" && big === "def" ? " on" : ""}" style="width:${w(dr)}%;${dv}"></i></span>
       <span><b>${fmt(T[d].def[key])}</b> <span class="rk">#${dr}</span></span>
       <span class="num edge">${edge}</span></div>`;
   }).join("");

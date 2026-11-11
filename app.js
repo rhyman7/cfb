@@ -713,8 +713,10 @@ function heroTeam(s, t, side, score, otherScore, sideKey) {
 }
 
 // How far a value sits from the FBS average, in standard deviations, signed so better is positive.
-// The edge goes to a side that is at least EDGE_SD better than the other after that scaling, so a
-// gap counts by its size, not just rank spots (same rule as the NFL site).
+// Head to Head names the side with the better league rank on every row (Even only when the two
+// ranks are equal). The bar turns team color only when that side is also at least EDGE_SD better
+// after this scaling, so a big edge still stands out by the size of the gap, not just rank spots.
+// Same rule on the NFL and CFB sites.
 const EDGE_SD = 1.0;
 function zScore(getter, value, higherIsBetter) {
   const all = Object.values(DATA.teams).map(getter).filter(v => typeof v === "number");
@@ -804,7 +806,7 @@ function edgeRows() {
 }
 
 // One offense against the other defense, stat by stat. Each side's bar grows from the
-// middle with its FBS rank (longer = better); the side with the edge shows in its color.
+// middle with its FBS rank (longer = better); a side with a big edge shows in its color.
 function edgePanel(offTeam, defTeam) {
   const n = Object.keys(DATA.teams).length;
   const ov = teamVars(offTeam.team), dv = teamVars(defTeam.team);
@@ -816,15 +818,16 @@ function edgePanel(offTeam, defTeam) {
     const o = offGet(offTeam), d = defGet(defTeam);
     const or = leagueRank(offGet, o, offHi), dr = leagueRank(defGet, d, defHi);
     const gap = zScore(offGet, o, offHi) - zScore(defGet, d, defHi);
-    const side = gap >= EDGE_SD ? "off" : gap <= -EDGE_SD ? "def" : "";
+    const side = or < dr ? "off" : dr < or ? "def" : "";   // better rank gets the edge; Even only on a tie
+    const big = gap >= EDGE_SD ? "off" : gap <= -EDGE_SD ? "def" : "";   // colored bar: big edges only
     const w = r => Math.round(((n + 1 - r) / n) * 100);
     const edge = side === "off" ? `<b class="tc" style="${ov}">${oa}</b>`
       : side === "def" ? `<b class="tc" style="${dv}">${da}</b>` : `<span class="even">Even</span>`;
     return `<div class="tape${extra ? " tape-x" : ""}">
       <span class="lbl">${label}</span>
       <span class="num"><b>${dispNum(fmt ? fmt(o) : o)}</b> <span class="rk">#${or}</span></span>
-      <span class="tl"><i class="tb${side === "off" ? " on" : ""}" style="width:${w(or)}%;${ov}"></i></span>
-      <span class="tr"><i class="tb${side === "def" ? " on" : ""}" style="width:${w(dr)}%;${dv}"></i></span>
+      <span class="tl"><i class="tb${side === "off" && big === "off" ? " on" : ""}" style="width:${w(or)}%;${ov}"></i></span>
+      <span class="tr"><i class="tb${side === "def" && big === "def" ? " on" : ""}" style="width:${w(dr)}%;${dv}"></i></span>
       <span><b>${dispNum(fmt ? fmt(d) : d)}</b> <span class="rk">#${dr}</span></span>
       <span class="num edge">${edge}</span>
     </div>`;
