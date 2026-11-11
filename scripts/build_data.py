@@ -765,7 +765,8 @@ def build(season, cache, prev_path=None):
     # what each defense allowed per game (Defense dial popups): the opponent's team box totals
     opp_of = {(r.game_id, r.team_id): r.opp_id for r in tg[["game_id", "team_id", "opp_id"]].itertuples()}
     box = {(r.game_id, r.team_id): (r.passYds, r.rushYds) for r in tb.itertuples()}
-    team_games = team_game_list(results, pg, athlete_names, id_to_name, opp_of, box, pos_all)
+    grp_of = {int(a): g for a, g in zip(pos["athlete_id"], pos["grp"])}
+    team_games = team_game_list(results, pg, athlete_names, id_to_name, opp_of, box, pos_all, grp_of)
 
     bet = betting_trends(g, lines, results, set(per.index))
     eff = efficiency(pbp, game_ids, set(per.index)) if pbp is not None else {}
@@ -865,7 +866,7 @@ def capped_plays(pbp, game_ids, meta):
     return pd.concat(frames, ignore_index=True)
 
 
-def team_game_list(results, pg, names, team_names, opp_of=None, box=None, pos_all=None):
+def team_game_list(results, pg, names, team_names, opp_of=None, box=None, pos_all=None, grp_of=None):
     """Each FBS team's completed games in order: opponent, result, the ESPN game id (for the
     box score the site fetches) and that team's top passer, rusher and receiver by yards.
 
@@ -878,8 +879,10 @@ def team_game_list(results, pg, names, team_names, opp_of=None, box=None, pos_al
     allowed (when opp_of and box are given) is what the team's defense gave up that game:
     pass and rush = the opponent's team box net passing and rushing yards (the same totals as
     the Defense dials; net passing takes sacks off, so the passers' own yards can add up to
-    more), passers = [{n, pos, yds, cmp, att}], rushers = [{n, pos, yds, car}], most yards
-    first. The Defense dial popups read it."""
+    more), passers = [{n, pos, yds, cmp, att}], rushers = [{n, pos, yds, car, td}], receivers =
+    [{n, pos, yds, rec, td}], most yards first. The Defense dial popups read it. g on a rusher or
+    receiver (from grp_of: athlete id -> "RB", "TE" or "WR") is the Defense vs position group
+    the player counts toward in main(); the Defense vs position popups add those lines up."""
     LEADERS = (("pass", "att", "pYds", "pTd", {"cmp": "cmp", "att": "att"}),
                ("rush", "car", "rYds", "rTd", {"car": "car"}),
                ("rec", "rec", "recYds", "recTd", {"rec": "rec"}))
@@ -908,16 +911,20 @@ def team_game_list(results, pg, names, team_names, opp_of=None, box=None, pos_al
                 def people(need, yds, extra, rows=orows):
                     if rows is None:
                         return []
-                    d = rows[rows[need] > 0].sort_values([yds, need], ascending=False)
+                    # a line with yards but no attempt/carry/catch (a lateral) still counts toward the totals
+                    d = rows[(rows[need] > 0) | (rows[yds] != 0)].sort_values([yds, need], ascending=False)
                     return [{"n": names.get(int(i[1]), "?"), "pos": (pos_all or {}).get(int(i[1]), ""),
-                             "yds": int(x[yds]), **{k: int(x[c]) for k, c in extra.items()}} for i, x in d.iterrows()]
+                             "yds": int(x[yds]), **{k: int(x[c]) for k, c in extra.items()},
+                             **({"g": grp_of[int(i[1])]} if grp_of and int(i[1]) in grp_of else {})}
+                            for i, x in d.iterrows()]
                 n0 = lambda v: 0 if v is None or pd.isna(v) else int(v)
                 passers = people("att", "pYds", {"cmp": "cmp", "att": "att"})
-                rushers = people("car", "rYds", {"car": "car"})
+                rushers = people("car", "rYds", {"car": "car", "td": "rTd"})
+                receivers = people("rec", "recYds", {"rec": "rec", "td": "recTd"})
                 entry["allowed"] = {
                     "pass": n0(tot[0]) if tot else sum(x["yds"] for x in passers),
                     "rush": n0(tot[1]) if tot else sum(x["yds"] for x in rushers),
-                    "passers": passers, "rushers": rushers}
+                    "passers": passers, "rushers": rushers, "receivers": receivers}
         out.setdefault(name, []).append(entry)
     return out
 

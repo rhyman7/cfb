@@ -1044,10 +1044,10 @@ function renderTeamCard(t) {
     ${usageBlock(t)}
 
     <div class="defpos-row">
-      ${defPosBlock("Defense vs RB", t.defVsPosition.rb)}
-      ${defPosBlock("Defense vs receiving RB", t.defVsPosition.recRb)}
-      ${defPosBlock("Defense vs TE", t.defVsPosition.te)}
-      ${defPosBlock("Defense vs WR", t.defVsPosition.wr)}
+      ${defPosBlock("Defense vs RB", t.defVsPosition.rb, dpPosHas(t) ? { team: t.team, kind: "rb" } : null)}
+      ${defPosBlock("Defense vs receiving RB", t.defVsPosition.recRb, dpPosHas(t) ? { team: t.team, kind: "recRb" } : null)}
+      ${defPosBlock("Defense vs TE", t.defVsPosition.te, dpPosHas(t) ? { team: t.team, kind: "te" } : null)}
+      ${defPosBlock("Defense vs WR", t.defVsPosition.wr, dpPosHas(t) ? { team: t.team, kind: "wr" } : null)}
     </div>
   </div>`;
 }
@@ -1070,9 +1070,11 @@ function fmtRank(r) {
   return "#" + r;
 }
 
-function defPosBlock(title, d) {
+// pop = { team, kind: "rb" | "recRb" | "te" | "wr" } makes the block open its game-by-game popup (dpPosHtml)
+function defPosBlock(title, d, pop) {
   if (!d) return `<div class="defpos-block"><h4>${title}</h4><div class="empty-note">No data</div></div>`;
-  return `<div class="defpos-block">
+  const open = pop ? ` dpop" data-team="${escapeHtml(pop.team)}" data-kind="${pop.kind}" tabindex="0" role="button" aria-haspopup="dialog" aria-expanded="false" aria-label="${title}, ${d.yds} yards a game: show it game by game` : "";
+  return `<div class="defpos-block${open}">
     <h4>${title}</h4>
     <div class="defpos-stats">
       <div class="item"><div class="val">${fmtRank(d.rank)}</div><div class="lbl">rank</div></div>
@@ -2012,6 +2014,53 @@ function dpBacksHtml(t, e) {
     <tfoot><tr><td colspan="2">Total</td><td class="num"><b>${dispNum(a.rush)}</b></td></tr></tfoot></table>`;
 }
 
+// Defense vs position blocks (Defense vs RB, vs receiving RB, vs TE, vs WR): the same popup,
+// one row per game with what that position group did against this defense, and a second popup
+// with the players. Reads allowed.rushers / allowed.receivers, where g ("RB", "TE", "WR") marks
+// the group a line counts toward; the build sets g with the same positions it uses for
+// defVsPosition, so the footer averages are the block's yds/G and TD/G.
+const DP_POS = {
+  rb:    { list: "rushers",   g: "RB", n: "car", nLabel: "Car", title: "vs running backs (rushing)", who: "Running back", plural: "running backs", stat: "rushing" },
+  recRb: { list: "receivers", g: "RB", n: "rec", nLabel: "Rec", title: "vs running backs (receiving)", who: "Running back", plural: "running backs", stat: "receiving" },
+  te:    { list: "receivers", g: "TE", n: "rec", nLabel: "Rec", title: "vs tight ends", who: "Tight end", plural: "tight ends", stat: "receiving" },
+  wr:    { list: "receivers", g: "WR", n: "rec", nLabel: "Rec", title: "vs wide receivers", who: "Wide receiver", plural: "wide receivers", stat: "receiving" },
+};
+function dpPosHas(t) { return dpGames(t).some(e => e.allowed && e.allowed.receivers); }
+function dpPosLines(e, c) { return ((e.allowed && e.allowed[c.list]) || []).filter(x => x.g === c.g); }
+const dpSum = (xs, k) => xs.reduce((s, x) => s + (x[k] || 0), 0);
+
+function dpPosHtml(t, kind, canHover) {
+  const c = DP_POS[kind], d = t.defVsPosition[kind];
+  const games = dpGames(t);
+  let yds = 0, td = 0;
+  const body = games.map((e, i) => {
+    const opp = escapeHtml(oppText(e));
+    if (!e.allowed || !e.allowed[c.list]) return `<tr><td>${e.w}</td><td>${opp}</td><td colspan="4" class="dp-dim">No box score</td></tr>`;
+    const xs = dpPosLines(e, c), y = dpSum(xs, "yds"), tds = dpSum(xs, "td"), top = xs[0];
+    yds += y; td += tds;
+    return `<tr class="dp-row" data-i="${i}" tabindex="0" aria-label="Week ${e.w} ${opp}: ${y} ${c.stat} yards and ${tds} touchdowns by ${c.plural}. Show the players">
+      <td>${e.w}</td><td>${opp}</td><td class="num dp-dim">${dpSum(xs, c.n)}</td><td class="num"><b>${dispNum(y)}</b></td><td class="num">${tds}</td>
+      <td class="dp-dim">${top ? `${escapeHtml(shortName(top.n))} ${dispNum(top.yds)}` : "—"}</td></tr>`;
+  }).join("");
+  const n = games.length || 1;
+  // the build and the browser can round a .x5 differently; show the block's own number when they agree
+  const near = (a, b, tol) => Math.abs(a - b) < tol;
+  return `<div class="ptip-head"><b>${escapeHtml(t.team)} defense ${c.title}</b><span>${dispNum(d.yds)} yds/G and ${d.td} TD/G allowed, ${fmtRank(d.rank)} in ${DP_LEAGUE}</span></div>
+    <table><thead><tr><th>Wk</th><th>Opp</th><th class="num">${c.nLabel}</th><th class="num">Yds</th><th class="num">TD</th><th>Top ${kind === "te" ? "TE" : kind === "wr" ? "WR" : "RB"}</th></tr></thead>
+    <tbody>${body}</tbody>
+    <tfoot><tr><td colspan="3">Average per game</td><td class="num"><b>${dispNum(near(yds / n, d.yds, 0.06) ? d.yds : (yds / n).toFixed(1))}</b></td><td class="num"><b>${near(td / n, d.td, 0.006) ? d.td : (td / n).toFixed(2)}</b></td><td></td></tr></tfoot></table>
+    <div class="ptip-foot">${canHover ? "Hover" : "Tap"} a game for the players. Yds and TD = ${c.stat} yards and touchdowns by the opponent's ${c.plural} in the game, the numbers the block averages.</div>`;
+}
+
+function dpPosPlayersHtml(t, e, kind) {
+  const c = DP_POS[kind], xs = dpPosLines(e, c);
+  const row = x => `<tr><td>${dpName(x)}</td><td class="num">${x[c.n]}</td><td class="num">${dispNum(x.yds)}</td><td class="num">${x.td || 0}</td></tr>`;
+  return `<div class="ptip-head"><b>Week ${e.w}, ${escapeHtml(oppText(e))}</b><span>${dispNum(dpSum(xs, "yds"))} ${c.stat} yds by ${c.plural}</span></div>
+    <table><thead><tr><th>${c.who}</th><th class="num">${c.nLabel}</th><th class="num">Yds</th><th class="num">TD</th></tr></thead>
+    <tbody>${xs.length ? xs.map(row).join("") : `<tr><td colspan="4" class="dp-dim">None with a ${c.n === "car" ? "carry" : "catch"}</td></tr>`}</tbody>
+    <tfoot><tr><td>Total</td><td class="num"><b>${dpSum(xs, c.n)}</b></td><td class="num"><b>${dispNum(dpSum(xs, "yds"))}</b></td><td class="num"><b>${dpSum(xs, "td")}</b></td></tr></tfoot></table>`;
+}
+
 (function setupDefensePops() {
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   let tip = null, tip2 = null, dial = null, team = null, kind = null, timer = 0, pinned = false, quiet = false, row = null;
@@ -2061,7 +2110,7 @@ function dpBacksHtml(t, e) {
   function later() { clearTimeout(timer); if (!pinned) timer = setTimeout(hide, 220); }
   function show(d, pin) {
     const t = dialTeam(d);
-    if (!t || !dpHas(t)) return;
+    if (!t || !(DP_POS[d.dataset.kind] ? dpPosHas(t) && t.defVsPosition && t.defVsPosition[d.dataset.kind] : dpHas(t))) return;
     clearTimeout(timer);
     if (d === dial && !tip.hidden) { pinned = pinned || pin; return; }
     hide();
@@ -2087,7 +2136,7 @@ function dpBacksHtml(t, e) {
       tip.addEventListener("focusin", e => { const r = e.target.closest(".dp-row"); if (r) showBacks(r); });
     }
     dial = d; team = t; kind = d.dataset.kind; pinned = !!pin;
-    tip.innerHTML = kind === "rush" ? dpRushHtml(t, canHover) : dpPassHtml(t);
+    tip.innerHTML = DP_POS[kind] ? dpPosHtml(t, kind, canHover) : kind === "rush" ? dpRushHtml(t, canHover) : dpPassHtml(t);
     tip.hidden = false;
     d.setAttribute("aria-expanded", "true");
     place(tip, d.getBoundingClientRect());
@@ -2100,7 +2149,7 @@ function dpBacksHtml(t, e) {
     row = r;
     tip.querySelectorAll(".dp-row.on").forEach(x => x.classList.remove("on"));
     r.classList.add("on");
-    tip2.innerHTML = dpBacksHtml(team, e);
+    tip2.innerHTML = DP_POS[kind] ? dpPosPlayersHtml(team, e, kind) : dpBacksHtml(team, e);
     tip2.hidden = false;
     place(tip2, { box: tip.getBoundingClientRect(), row: r.getBoundingClientRect() }, true);
   }

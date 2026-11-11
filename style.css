@@ -686,6 +686,9 @@ td.fp { font-weight: 700; }
 
 /* ---------- Defense dial popups (dpPassHtml / dpRushHtml in the page script) ---------- */
 .gauge-block.dpop { cursor: pointer; border-radius: var(--radius); outline-offset: 2px; }
+.defpos-block.dpop { cursor: pointer; outline-offset: 2px; }
+.defpos-block.dpop h4 { text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--text-dim); }
+.defpos-block.dpop:hover h4, .defpos-block.dpop[aria-expanded="true"] h4 { text-decoration-color: currentColor; }
 .gauge-block.dpop .gauge-label { text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--text-dim); }
 .gauge-block.dpop:hover .gauge-label, .gauge-block.dpop[aria-expanded="true"] .gauge-label { text-decoration-color: currentColor; }
 .ptip.dtip { pointer-events: auto; max-width: min(600px, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow-y: auto; }

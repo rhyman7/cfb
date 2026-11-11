@@ -141,6 +141,16 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   rushers and a "Sacks and team runs" line (college box scores count sacks as runs), so the lines add up to the game's total. Data: `allowed` on each game in
   `teamGames` (`team_game_list()` in the build). The game totals must stay the same numbers the
   dials average; change both together. Popups are screen-only (`no-print`).
+- **Defense vs position popups.** The four blocks under each team card (**Defense vs RB**,
+  **vs receiving RB**, **vs TE**, **vs WR**) open the same kind of popup as the Defense dials
+  (hover, tap or Enter): one row per completed game with week, opponent, carries or catches,
+  yards, TDs and the top player at that position; hovering or tapping a game opens a second
+  popup with every player at the position. Code: `DP_POS`, `dpPosHtml()` and
+  `dpPosPlayersHtml()` in `app.js`, sharing `setupDefensePops()` with the dials. Data:
+  `allowed.rushers` (`td`) and `allowed.receivers` (`n, pos, yds, rec, td`) on each game, where
+  `g` ("RB", "TE", "WR") marks the group a line counts toward. The build sets `g` from the same
+  positions it uses for `defVsPosition`, so the popup's per-game lines must keep adding up to
+  the block's yds/G and TD/G; change both together. Screen-only (`no-print`).
 - **Passing table columns:** Player, Yds/G, TD, Int, Cmp/G, **Pass Yds / Comp** (season passing yards
   per completion, the row's `ypc`; `withAvgC()` works it out for data built without it).
 - **Position tags:** in the Rushing and Receiving tables each player's name is followed by his

@@ -116,7 +116,7 @@ off, which is what the dial averages). The **Rush Yds/G** dial shows the rushing
 allowed in each game; hover or tap a game for a second popup with the opponent's running
 backs (carries and yards), the other rushers, and a "Sacks and team runs" line when the box
 score's sacks make the team total differ. The data is `allowed` on each `teamGames` entry
-({pass, rush, passers: [{n, pos, yds, cmp, att}], rushers: [{n, pos, yds, car}]}), from the
+({pass, rush, passers: [{n, pos, yds, cmp, att}], rushers: [{n, pos, yds, car, td, g}], receivers: [{n, pos, yds, rec, td, g}]}; `g` is the Defense vs position group ("RB", "TE", "WR") behind the Defense vs position popups), from the
 ESPN team and player box scores. The Passing table's **Pass Yds / Comp** column is passing yards per
 completion (`ypc`).
 
