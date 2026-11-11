@@ -53,7 +53,13 @@ jobs:
       - name: Install Playwright + Chromium
         run: |
           pip install playwright pypdf
-          python -m playwright install --with-deps chromium
+          # Ubuntu's package mirrors sometimes fail to resolve on the runner; retry before giving up
+          for i in 1 2 3 4; do
+            python -m playwright install --with-deps chromium && exit 0
+            echo "Playwright install failed (attempt $i); retrying in $((i * 30))s"
+            sleep $((i * 30))
+          done
+          exit 1
 
       - name: Build EPA PDF
         run: python scripts/build_pdfs.py
