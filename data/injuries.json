@@ -1,14 +1,32 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-13T08:00:11.894076+00:00",
+ "generatedAt": "2026-11-13T14:46:33.036645+00:00",
  "source": "Conference availability reports where a team has one; otherwise Covers.com team injury pages, plus news reports where noted",
- "teamsRead": [],
+ "teamsRead": [
+  "Arizona",
+  "Colorado",
+  "Duke",
+  "Georgia",
+  "Indiana",
+  "Iowa State",
+  "Kentucky",
+  "LSU",
+  "Miami",
+  "Michigan",
+  "Minnesota",
+  "Missouri",
+  "Penn State",
+  "Tennessee",
+  "Texas Tech",
+  "UCF",
+  "Vanderbilt"
+ ],
  "checked": {
   "Air Force": "2026-11-12",
   "Akron": "2026-11-10",
   "Alabama": "2026-11-11",
   "App State": "2026-11-12",
-  "Arizona": "2026-11-11",
+  "Arizona": "2026-11-13",
   "Arizona State": "2026-11-11",
   "Arkansas": "2026-11-11",
   "Arkansas State": "2026-11-12",
@@ -27,10 +45,10 @@
   "Cincinnati": "2026-11-11",
   "Clemson": "2026-11-11",
   "Coastal Carolina": "2026-11-12",
-  "Colorado": "2026-11-12",
+  "Colorado": "2026-11-13",
   "Colorado State": "2026-11-12",
   "Delaware": "2026-11-12",
-  "Duke": "2026-11-11",
+  "Duke": "2026-11-13",
   "East Carolina": "2026-11-12",
   "Eastern Michigan": "2026-11-04",
   "Florida": "2026-11-11",
@@ -38,24 +56,24 @@
   "Florida International": "2026-11-12",
   "Florida State": "2026-11-12",
   "Fresno State": "2026-11-12",
-  "Georgia": "2026-11-11",
+  "Georgia": "2026-11-13",
   "Georgia Southern": "2026-11-12",
   "Georgia State": "2026-11-12",
   "Georgia Tech": "2026-11-11",
   "Hawai'i": "2026-11-12",
   "Houston": "2026-11-12",
   "Illinois": "2026-11-12",
-  "Indiana": "2026-11-11",
+  "Indiana": "2026-11-13",
   "Iowa": "2026-11-11",
-  "Iowa State": "2026-11-11",
+  "Iowa State": "2026-11-13",
   "Jacksonville State": "2026-11-12",
   "James Madison": "2026-11-12",
   "Kansas": "2026-11-11",
   "Kansas State": "2026-11-11",
   "Kennesaw State": "2026-11-12",
   "Kent State": "2026-11-10",
-  "Kentucky": "2026-11-11",
-  "LSU": "2026-11-11",
+  "Kentucky": "2026-11-13",
+  "LSU": "2026-11-13",
   "Liberty": "2026-11-12",
   "Louisiana": "2026-11-12",
   "Louisiana Tech": "2026-11-12",
@@ -64,14 +82,14 @@
   "Maryland": "2026-11-11",
   "Massachusetts": "2026-11-10",
   "Memphis": "2026-11-12",
-  "Miami": "2026-11-11",
+  "Miami": "2026-11-13",
   "Miami (OH)": "2026-11-10",
-  "Michigan": "2026-11-11",
+  "Michigan": "2026-11-13",
   "Michigan State": "2026-11-11",
   "Middle Tennessee": "2026-11-12",
-  "Minnesota": "2026-11-11",
+  "Minnesota": "2026-11-13",
   "Mississippi State": "2026-11-11",
-  "Missouri": "2026-11-11",
+  "Missouri": "2026-11-13",
   "Missouri State": "2026-11-12",
   "NC State": "2026-11-11",
   "Navy": "2026-11-07",
@@ -93,7 +111,7 @@
   "Ole Miss": "2026-11-11",
   "Oregon": "2026-11-11",
   "Oregon State": "2026-11-12",
-  "Penn State": "2026-11-11",
+  "Penn State": "2026-11-13",
   "Pittsburgh": "2026-11-12",
   "Purdue": "2026-11-11",
   "Rice": "2026-11-12",
@@ -111,17 +129,17 @@
   "Syracuse": "2026-11-11",
   "TCU": "2026-11-11",
   "Temple": "2026-11-12",
-  "Tennessee": "2026-11-11",
+  "Tennessee": "2026-11-13",
   "Texas": "2026-11-11",
   "Texas A&M": "2026-11-11",
   "Texas State": "2026-11-12",
-  "Texas Tech": "2026-11-11",
+  "Texas Tech": "2026-11-13",
   "Toledo": "2026-11-10",
   "Troy": "2026-11-12",
   "Tulane": "2026-11-12",
   "Tulsa": "2026-11-12",
   "UAB": "2026-11-12",
-  "UCF": "2026-11-11",
+  "UCF": "2026-11-13",
   "UCLA": "2026-11-12",
   "UConn": "2026-11-12",
   "UL Monroe": "2026-11-12",
@@ -131,7 +149,7 @@
   "UTSA": "2026-11-12",
   "Utah": "2026-11-11",
   "Utah State": "2026-11-12",
-  "Vanderbilt": "2026-11-11",
+  "Vanderbilt": "2026-11-13",
   "Virginia": "2026-11-11",
   "Virginia Tech": "2026-11-11",
   "Wake Forest": "2026-11-11",
@@ -206,7 +224,7 @@
    "name": "Keelon Russell",
    "team": "Alabama",
    "pos": "QB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Keelon Russell"
   },
   "ALA|5264688": {
@@ -218,7 +236,7 @@
    "name": "EJ Crowell",
    "team": "Alabama",
    "pos": "RB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "EJ Crowell"
   },
   "APP|4870999": {
@@ -270,8 +288,22 @@
    "name": "Ismail Mahdi",
    "team": "Arizona",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Ismail Mahdi"
+  },
+  "ARIZ|5217700": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Hamstring",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "G. Richardson",
+   "team": "Arizona",
+   "pos": "WR",
+   "note": "Hamstring · Covers, Oct 10",
+   "stale": true,
+   "playedSince": 10,
+   "player": "Giovanni Richardson"
   },
   "ARMY|5150333": {
    "s": "Q",
@@ -308,7 +340,7 @@
    "name": "Jason Brown Jr.",
    "team": "Arizona State",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Jason Brown Jr."
   },
   "BALL|5191056": {
@@ -428,7 +460,7 @@
    "name": "LJ Martin",
    "team": "BYU",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "LJ Martin"
   },
   "BYU|5130407": {
@@ -440,7 +472,7 @@
    "name": "Roger Saleapaga II",
    "team": "BYU",
    "pos": "TE",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Roger Saleapaga II"
   },
   "CAL|4908552": {
@@ -452,7 +484,7 @@
    "name": "Dorian Thomas",
    "team": "California",
    "pos": "TE",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Dorian Thomas"
   },
   "CAL|5148905": {
@@ -464,7 +496,7 @@
    "name": "Carter Vargas",
    "team": "California",
    "pos": "RB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Carter Vargas"
   },
   "CIN|5107875": {
@@ -476,7 +508,7 @@
    "name": "Cole Tabb",
    "team": "Cincinnati",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Cole Tabb"
   },
   "CIN|5152045": {
@@ -488,7 +520,7 @@
    "name": "Malachi Henry",
    "team": "Cincinnati",
    "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Malachi Henry"
   },
   "CIN|5229489": {
@@ -500,7 +532,7 @@
    "name": "JV Gibson",
    "team": "Cincinnati",
    "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "JV Gibson"
   },
   "CLEM|4379471": {
@@ -512,7 +544,7 @@
    "name": "Tyler Brown",
    "team": "Clemson",
    "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Tyler Brown"
   },
   "CLEM|5141422": {
@@ -524,7 +556,7 @@
    "name": "Gideon Davidson",
    "team": "Clemson",
    "pos": "RB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Gideon Davidson"
   },
   "CMU|4876695": {
@@ -642,7 +674,7 @@
    "name": "Terry Walker III",
    "team": "Duke",
    "pos": "QB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Terry Walker III"
   },
   "DUKE|5216844": {
@@ -654,8 +686,20 @@
    "name": "Kavon Simmons",
    "team": "Duke",
    "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Kavon Simmons"
+  },
+  "ECU|4433829": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Concussion",
+   "date": "2026-11-10",
+   "src": "RotoWire",
+   "name": "Mitch Griffis",
+   "team": "East Carolina",
+   "pos": "QB",
+   "note": "Concussion · RotoWire, Nov 10 · has not practiced",
+   "player": "Mitch Griffis"
   },
   "ECU|5075800": {
    "s": "Q",
@@ -850,7 +894,7 @@
    "name": "Chad Alexander",
    "team": "Georgia Tech",
    "pos": "RB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Chad Alexander"
   },
   "GT|5155366": {
@@ -862,7 +906,7 @@
    "name": "Malachi Hosley",
    "team": "Georgia Tech",
    "pos": "RB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Malachi Hosley"
   },
   "GT|5215629": {
@@ -871,10 +915,10 @@
    "injury": "",
    "date": "2026-11-11",
    "src": "ACC report",
-   "name": "Kevin Roche, Jr.",
+   "name": "Kevin Roche Jr.",
    "team": "Georgia Tech",
    "pos": "TE",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Kevin Roche Jr."
   },
   "HOU|5292032": {
@@ -927,14 +971,14 @@
   },
   "IOWA|5093886": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "Big Ten report",
    "name": "Kamari Moulton",
    "team": "Iowa",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · Big Ten report, Nov 11 · out for the season",
    "player": "Kamari Moulton"
   },
   "ISU|4875853": {
@@ -946,7 +990,7 @@
    "name": "Cody Jackson",
    "team": "Iowa State",
    "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Cody Jackson"
   },
   "ISU|5140620": {
@@ -958,7 +1002,7 @@
    "name": "Connor Moberly",
    "team": "Iowa State",
    "pos": "QB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Connor Moberly"
   },
   "IU|5146724": {
@@ -970,7 +1014,7 @@
    "name": "Turbo Richard",
    "team": "Indiana",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Turbo Richard"
   },
   "KSU|4736246": {
@@ -982,7 +1026,7 @@
    "name": "Jacob Knuth",
    "team": "Kansas State",
    "pos": "QB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Jacob Knuth"
   },
   "KSU|4870857": {
@@ -994,7 +1038,7 @@
    "name": "Avery Johnson",
    "team": "Kansas State",
    "pos": "QB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Avery Johnson"
   },
   "KU|5079749": {
@@ -1018,7 +1062,7 @@
    "name": "Cole Ballard",
    "team": "Kansas",
    "pos": "QB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Cole Ballard"
   },
   "KU|5151868": {
@@ -1030,7 +1074,7 @@
    "name": "Bryson Hayes",
    "team": "Kansas",
    "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Bryson Hayes"
   },
   "KU|5193112": {
@@ -1042,7 +1086,7 @@
    "name": "Jalen Dupree",
    "team": "Kansas",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Jalen Dupree"
   },
   "LOU|5079349": {
@@ -1054,7 +1098,7 @@
    "name": "Isaac Brown",
    "team": "Louisville",
    "pos": "RB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Isaac Brown"
   },
   "LOU|5086096": {
@@ -1066,8 +1110,22 @@
    "name": "Lawayne McCoy",
    "team": "Louisville",
    "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Lawayne McCoy"
+  },
+  "LSU|5079420": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "T. Green",
+   "team": "LSU",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 17",
+   "stale": true,
+   "playedSince": 10,
+   "player": "Trey'Dez Green"
   },
   "LT|5150998": {
    "s": "P",
@@ -1147,14 +1205,14 @@
   },
   "MD|5141419": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "Big Ten report",
    "name": "Harry Dalton III",
    "team": "Maryland",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · Big Ten report, Nov 11 · out for the season",
    "player": "Harry Dalton III"
   },
   "MD|5141695": {
@@ -1166,7 +1224,7 @@
    "name": "Malik Washington",
    "team": "Maryland",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Malik Washington"
   },
   "MEM|5148995": {
@@ -1192,7 +1250,7 @@
    "name": "Malachi Toney",
    "team": "Miami",
    "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Malachi Toney"
   },
   "MICH|5079417": {
@@ -1204,7 +1262,7 @@
    "name": "Channing Goodwin",
    "team": "Michigan",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Channing Goodwin"
   },
   "MICH|5079494": {
@@ -1216,7 +1274,7 @@
    "name": "Hogan Hansen",
    "team": "Michigan",
    "pos": "TE",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Hogan Hansen"
   },
   "MICH|5156349": {
@@ -1228,19 +1286,31 @@
    "name": "Jalen Hoffman",
    "team": "Michigan",
    "pos": "TE",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Jalen Hoffman"
+  },
+  "MINN|5082548": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-11",
+   "src": "Covers",
+   "name": "A. Turner",
+   "team": "Minnesota",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Oct 11",
+   "player": "A.J. Turner"
   },
   "MINN|5271219": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "Big Ten report",
    "name": "Hayden Moore",
    "team": "Minnesota",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · Big Ten report, Nov 11 · out for the season",
    "player": "Hayden Moore"
   },
   "MISS|4911529": {
@@ -1252,7 +1322,7 @@
    "name": "Trinidad Chambliss",
    "team": "Ole Miss",
    "pos": "QB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Trinidad Chambliss"
   },
   "MISS|5086388": {
@@ -1264,7 +1334,7 @@
    "name": "Kewan Lacy",
    "team": "Ole Miss",
    "pos": "RB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Kewan Lacy"
   },
   "MISS|5152158": {
@@ -1276,8 +1346,22 @@
    "name": "Deuce Alexander",
    "team": "Ole Miss",
    "pos": "WR",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Deuce Alexander"
+  },
+  "MIZ|4870869": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "B. Norfleet",
+   "team": "Missouri",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 17",
+   "stale": true,
+   "playedSince": 10,
+   "player": "Brett Norfleet"
   },
   "MOST|4712886": {
    "s": "Q",
@@ -1295,14 +1379,14 @@
   },
   "MSST|5177084": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "SEC report",
    "name": "Kamario Taylor",
    "team": "Mississippi State",
    "pos": "QB",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · SEC report, Nov 11 · out for the season",
    "player": "Kamario Taylor"
   },
   "MSU|4700135": {
@@ -1314,7 +1398,7 @@
    "name": "Cam Fancher",
    "team": "Michigan State",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Cam Fancher"
   },
   "MSU|5081332": {
@@ -1326,19 +1410,19 @@
    "name": "Jaziun Patterson",
    "team": "Michigan State",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Jaziun Patterson"
   },
   "MSU|5086034": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "Big Ten report",
    "name": "Cam Edwards",
    "team": "Michigan State",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · Big Ten report, Nov 11 · out for the season",
    "player": "Cam Edwards"
   },
   "MSU|5214448": {
@@ -1350,7 +1434,7 @@
    "name": "Jayden Savoury",
    "team": "Michigan State",
    "pos": "TE",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Jayden Savoury"
   },
   "MSU|5258024": {
@@ -1362,7 +1446,7 @@
    "name": "Marvis Parrish",
    "team": "Michigan State",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Marvis Parrish"
   },
   "MSU|5260691": {
@@ -1374,7 +1458,7 @@
    "name": "Rodney Bullard Jr.",
    "team": "Michigan State",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Rodney Bullard Jr."
   },
   "NAVY|5211746": {
@@ -1412,7 +1496,7 @@
    "name": "Keenan Jackson",
    "team": "NC State",
    "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Keenan Jackson"
   },
   "NCSU|5148611": {
@@ -1424,7 +1508,7 @@
    "name": "Will Wilson",
    "team": "NC State",
    "pos": "QB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Will Wilson"
   },
   "NDSU|5154224": {
@@ -1488,7 +1572,7 @@
    "name": "Aidan Chiles",
    "team": "Northwestern",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Aidan Chiles"
   },
   "ODU|5127805": {
@@ -1540,7 +1624,7 @@
    "name": "Dante Moore",
    "team": "Oregon",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Dante Moore"
   },
   "ORE|4871005": {
@@ -1552,7 +1636,7 @@
    "name": "Teitum Tuioti",
    "team": "Oregon",
    "pos": "OLB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Teitum Tuioti"
   },
   "ORE|5141423": {
@@ -1564,7 +1648,7 @@
    "name": "Jordon Davison",
    "team": "Oregon",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Jordon Davison"
   },
   "OSU|4870835": {
@@ -1576,7 +1660,7 @@
    "name": "Brandon Inniss",
    "team": "Ohio State",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Brandon Inniss"
   },
   "OSU|5079712": {
@@ -1588,7 +1672,7 @@
    "name": "Julian Sayin",
    "team": "Ohio State",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Julian Sayin"
   },
   "OSU|5141384": {
@@ -1600,7 +1684,7 @@
    "name": "Phillip Bell",
    "team": "Ohio State",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Phillip Bell"
   },
   "OSU|5151892": {
@@ -1609,10 +1693,10 @@
    "injury": "",
    "date": "2026-11-11",
    "src": "Big Ten report",
-   "name": "Ja’Kobi Jackson",
+   "name": "Ja'Kobi Jackson",
    "team": "Ohio State",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Ja'Kobi Jackson"
   },
   "OU|5141386": {
@@ -1624,8 +1708,20 @@
    "name": "Tory Blaylock",
    "team": "Oklahoma",
    "pos": "RB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Tory Blaylock"
+  },
+  "PITT|4714300": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-12",
+   "src": "ACC report via RotoWire",
+   "name": "Holden Geriner",
+   "team": "Pittsburgh",
+   "pos": "QB",
+   "note": "Undisclosed · ACC report via RotoWire, Nov 12 · Corey Dailey starts if he sits",
+   "player": "Holden Geriner"
   },
   "PITT|5208095": {
    "s": "O",
@@ -1648,7 +1744,7 @@
    "name": "Koby Howard",
    "team": "Penn State",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Koby Howard"
   },
   "RICE|4871093": {
@@ -1686,7 +1782,7 @@
    "name": "Dylan Lonergan",
    "team": "Rutgers",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Dylan Lonergan"
   },
   "RUTG|5079717": {
@@ -1698,19 +1794,19 @@
    "name": "AJ Surace",
    "team": "Rutgers",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "AJ Surace"
   },
   "RUTG|5084771": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "Big Ten report",
    "name": "KJ Duff",
    "team": "Rutgers",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · Big Ten report, Nov 11 · out for the season",
    "player": "KJ Duff"
   },
   "RUTG|5158988": {
@@ -1722,7 +1818,7 @@
    "name": "Dyzier Carter",
    "team": "Rutgers",
    "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Dyzier Carter"
   },
   "SAC|4912040": {
@@ -1746,19 +1842,19 @@
    "name": "Nyck Harbor",
    "team": "South Carolina",
    "pos": "WR",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Nyck Harbor"
   },
   "SC|4875127": {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
+   "s": "P",
+   "status": "Probable",
+   "injury": "Ankle",
+   "date": "2026-11-12",
+   "src": "SEC report via ClutchPoints",
    "name": "LaNorris Sellers",
    "team": "South Carolina",
    "pos": "QB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Ankle · SEC report via ClutchPoints, Nov 12 · upgraded to probable Thursday",
    "player": "LaNorris Sellers"
   },
   "SC|5145737": {
@@ -1770,7 +1866,7 @@
    "name": "Matt Fuller",
    "team": "South Carolina",
    "pos": "RB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Matt Fuller"
   },
   "SDSU|4685311": {
@@ -1846,7 +1942,7 @@
    "name": "Malachi Nelson",
    "team": "Syracuse",
    "pos": "QB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Malachi Nelson"
   },
   "SYR|5153782": {
@@ -1858,7 +1954,7 @@
    "name": "Amari Odom",
    "team": "Syracuse",
    "pos": "QB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Amari Odom"
   },
   "SYR|5289321": {
@@ -1870,7 +1966,7 @@
    "name": "Shavane Anderson Jr.",
    "team": "Syracuse",
    "pos": "RB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Shavane Anderson Jr."
   },
   "TA&M|5079345": {
@@ -1882,7 +1978,7 @@
    "name": "Mario Craver",
    "team": "Texas A&M",
    "pos": "WR",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Mario Craver"
   },
   "TCU|5214401": {
@@ -1894,7 +1990,7 @@
    "name": "Jon Denman",
    "team": "TCU",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Jon Denman"
   },
   "TEM|4685695": {
@@ -1946,7 +2042,7 @@
    "name": "Ethan Davis",
    "team": "Tennessee",
    "pos": "TE",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Ethan Davis"
   },
   "TEX|4871053": {
@@ -1958,7 +2054,7 @@
    "name": "Hollywood Smothers",
    "team": "Texas",
    "pos": "RB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Hollywood Smothers"
   },
   "TLSA|5223788": {
@@ -2018,7 +2114,7 @@
    "name": "Coy Eakin",
    "team": "Texas Tech",
    "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Coy Eakin"
   },
   "TTU|4917949": {
@@ -2030,7 +2126,7 @@
    "name": "Quinten Joyner",
    "team": "Texas Tech",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Quinten Joyner"
   },
   "TTU|5079691": {
@@ -2042,7 +2138,7 @@
    "name": "Malcolm Simmons",
    "team": "Texas Tech",
    "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Malcolm Simmons"
   },
   "TTU|5193580": {
@@ -2054,7 +2150,7 @@
    "name": "Cameron Dickey",
    "team": "Texas Tech",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Cameron Dickey"
   },
   "TXST|5149265": {
@@ -2085,6 +2181,34 @@
    "playedSince": 10,
    "player": "Davian Jackson"
   },
+  "UCF|4911929": {
+   "s": "O",
+   "status": "Out",
+   "injury": "Hamstring",
+   "date": "2026-10-20",
+   "src": "Covers",
+   "name": "A. Barnett III",
+   "team": "UCF",
+   "pos": "QB",
+   "note": "Hamstring · Covers, Oct 20",
+   "stale": true,
+   "playedSince": 10,
+   "player": "Alonza Barnett III"
+  },
+  "UCF|4922996": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Shoulder",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "D. Wade",
+   "team": "UCF",
+   "pos": "TE",
+   "note": "Shoulder · Covers, Oct 10",
+   "stale": true,
+   "playedSince": 10,
+   "player": "Dylan Wade"
+  },
   "UCF|5085337": {
    "s": "Q",
    "status": "Questionable",
@@ -2094,7 +2218,7 @@
    "name": "Keyone Jenkins",
    "team": "UCF",
    "pos": "QB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Keyone Jenkins"
   },
   "UCF|5136049": {
@@ -2106,7 +2230,7 @@
    "name": "Duke Watson",
    "team": "UCF",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Duke Watson"
   },
   "UCF|5142600": {
@@ -2118,7 +2242,7 @@
    "name": "Waden Charles",
    "team": "UCF",
    "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Waden Charles"
   },
   "UCF|5148656": {
@@ -2130,7 +2254,7 @@
    "name": "Caden Piening",
    "team": "UCF",
    "pos": "TE",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Caden Piening"
   },
   "UCLA|4870799": {
@@ -2154,8 +2278,22 @@
    "name": "Nic Anderson",
    "team": "Kentucky",
    "pos": "WR",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Nic Anderson"
+  },
+  "UK|4870609": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "C. Baxter",
+   "team": "Kentucky",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Oct 18",
+   "stale": true,
+   "playedSince": 10,
+   "player": "CJ Baxter"
   },
   "UL|5222657": {
    "s": "O",
@@ -2178,7 +2316,7 @@
    "name": "Jelani Thurman",
    "team": "North Carolina",
    "pos": "TE",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Jelani Thurman"
   },
   "UNLV|5149831": {
@@ -2332,7 +2470,7 @@
    "name": "Wayshawn Parker",
    "team": "Utah",
    "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big 12 report, Nov 11",
    "player": "Wayshawn Parker"
   },
   "VAN|5121691": {
@@ -2344,19 +2482,19 @@
    "name": "Blaze Berlowitz",
    "team": "Vanderbilt",
    "pos": "QB",
-   "note": "SEC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · SEC report, Nov 11",
    "player": "Blaze Berlowitz"
   },
   "VAN|5245128": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "SEC report",
    "name": "Evan Hampton",
    "team": "Vanderbilt",
    "pos": "RB",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · SEC report, Nov 11 · out for the season",
    "player": "Evan Hampton"
   },
   "WAKE|4920227": {
@@ -2368,7 +2506,7 @@
    "name": "Gio Lopez",
    "team": "Wake Forest",
    "pos": "QB",
-   "note": "ACC availability report, Initial (Nov 11)",
+   "note": "Undisclosed · ACC report, Nov 11",
    "player": "Gio Lopez"
   },
   "WASH|4601283": {
@@ -2380,7 +2518,7 @@
    "name": "Trey Cooley",
    "team": "Washington",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Trey Cooley"
   },
   "WASH|5079653": {
@@ -2392,31 +2530,31 @@
    "name": "Demond Williams Jr.",
    "team": "Washington",
    "pos": "QB",
-   "note": "Big Ten availability report, Initial (Nov 11)",
+   "note": "Undisclosed · Big Ten report, Nov 11",
    "player": "Demond Williams Jr."
   },
   "WASH|5209302": {
    "s": "O",
-   "status": "Out for season",
+   "status": "Out",
    "injury": "",
    "date": "2026-11-11",
    "src": "Big Ten report",
    "name": "Quaid Carr",
    "team": "Washington",
    "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season",
+   "note": "Undisclosed · Big Ten report, Nov 11 · out for the season",
    "player": "Quaid Carr"
   },
   "WYO|4838536": {
-   "s": "D",
-   "status": "Doubtful",
+   "s": "O",
+   "status": "Out",
    "injury": "Forearm",
-   "date": "2026-11-09",
-   "src": "RotoWire / Yahoo",
+   "date": "2026-11-12",
+   "src": "RotoWire",
    "name": "Tyler Hughes",
    "team": "Wyoming",
    "pos": "QB",
-   "note": "Forearm · RotoWire / Yahoo, Nov 9 · small fracture in right forearm; Landon Sims expected to start",
+   "note": "Forearm · RotoWire, Nov 12 · ruled out vs UTEP",
    "player": "Tyler Hughes"
   },
   "WYO|5258056": {
@@ -2560,17 +2698,6 @@
    "s": "O",
    "status": "Out",
    "injury": "",
-   "date": "2026-09-25",
-   "src": "Covers",
-   "name": "D. Austin",
-   "team": "Arizona",
-   "pos": "S",
-   "note": "Undisclosed · Covers, Sep 25 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
    "date": "2026-10-19",
    "src": "Covers",
    "name": "V. Genatone",
@@ -2659,28 +2786,6 @@
    "s": "O",
    "status": "Out",
    "injury": "",
-   "date": "2026-09-21",
-   "src": "Covers",
-   "name": "P. Wright III",
-   "team": "LSU",
-   "pos": "WR",
-   "note": "Undisclosed · Covers, Sep 21 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "Knee",
-   "date": "2026-09-21",
-   "src": "Covers",
-   "name": "D. Spears",
-   "team": "LSU",
-   "pos": "S",
-   "note": "Knee · Covers, Sep 21 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
    "date": "2026-10-18",
    "src": "Covers",
    "name": "J. Chalmers",
@@ -2742,28 +2847,6 @@
    "team": "Rutgers",
    "pos": "CB",
    "note": "Undisclosed · Covers, Oct 20 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-09-30",
-   "src": "Covers",
-   "name": "W. Moe Jr.",
-   "team": "Tennessee",
-   "pos": "OG",
-   "note": "Undisclosed · Covers, Sep 30 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "Knee (ACL tear)",
-   "date": "2026-09-07",
-   "src": "Covers",
-   "name": "J. Harmon",
-   "team": "Tennessee",
-   "pos": "LB",
-   "note": "Knee (ACL tear) · Covers, Sep 7 · out for the season"
   },
   {
    "s": "O",
@@ -3329,28 +3412,6 @@
   {
    "s": "O",
    "status": "Out",
-   "injury": "Knee",
-   "date": "2026-10-03",
-   "src": "Covers",
-   "name": "C. Pabst",
-   "team": "Iowa State",
-   "pos": "WR",
-   "note": "Knee · Covers, Oct 3 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "Lower Body",
-   "date": "2026-09-21",
-   "src": "Covers",
-   "name": "C. Brown",
-   "team": "Miami",
-   "pos": "RB",
-   "note": "Lower Body · Covers, Sep 21 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
    "injury": "",
    "date": "2026-09-29",
    "src": "Covers",
@@ -3461,17 +3522,6 @@
   {
    "s": "O",
    "status": "Out",
-   "injury": "",
-   "date": "2026-08-22",
-   "src": "Covers",
-   "name": "T. Mizell",
-   "team": "Kentucky",
-   "pos": "RB",
-   "note": "Undisclosed · Covers, Aug 22 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
    "injury": "Upper Body",
    "date": "2026-08-16",
    "src": "Covers",
@@ -3479,39 +3529,6 @@
    "team": "Arkansas",
    "pos": "TE",
    "note": "Upper Body · Covers, Aug 16 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "Knee",
-   "date": "2026-10-19",
-   "src": "Covers",
-   "name": "D. Lee Jr.",
-   "team": "Texas Tech",
-   "pos": "WR",
-   "note": "Knee · Covers, Oct 19 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-09-12",
-   "src": "Covers",
-   "name": "M. Granville",
-   "team": "Penn State",
-   "pos": "DL",
-   "note": "Undisclosed · Covers, Sep 12 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "Knee",
-   "date": "2026-09-07",
-   "src": "Covers",
-   "name": "R. Estrada",
-   "team": "Minnesota",
-   "pos": "RB",
-   "note": "Knee · Covers, Sep 7 · out for the season"
   },
   {
    "s": "Q",
@@ -3831,50 +3848,6 @@
    "team": "Houston",
    "pos": "WR",
    "note": "Foot · Covers, Aug 11"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-18",
-   "src": "Covers",
-   "name": "D. Scudero",
-   "team": "Colorado",
-   "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 18"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-18",
-   "src": "Covers",
-   "name": "M. Vickers",
-   "team": "Colorado",
-   "pos": "CB",
-   "note": "Undisclosed · Covers, Oct 18"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-18",
-   "src": "Covers",
-   "name": "K. Perry",
-   "team": "Colorado",
-   "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 18"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-18",
-   "src": "Covers",
-   "name": "T. Martinez",
-   "team": "Colorado",
-   "pos": "LB",
-   "note": "Undisclosed · Covers, Oct 18"
   },
   {
    "s": "Q",
@@ -5769,94 +5742,6 @@
    "note": "Undisclosed · Big Ten report, Nov 10 · Big Ten availability report, Initial (Nov 10)"
   },
   {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Naeten Mitchell",
-   "team": "Colorado",
-   "pos": "DB",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Kaleb Mathis",
-   "team": "Colorado",
-   "pos": "WR",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Danny Scudero",
-   "team": "Colorado",
-   "pos": "WR",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
-   "s": "D",
-   "status": "Doubtful",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Braylon Edwards",
-   "team": "Colorado",
-   "pos": "DB",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Tyler Martinez",
-   "team": "Colorado",
-   "pos": "LB",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
-   "s": "D",
-   "status": "Doubtful",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Vili Taufatofua",
-   "team": "Colorado",
-   "pos": "DL",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Elliot Arnold",
-   "team": "Colorado",
-   "pos": "K",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-10",
-   "src": "Big 12 report",
-   "name": "Sam Gadie",
-   "team": "Colorado",
-   "pos": "DE",
-   "note": "Undisclosed · Big 12 report, Nov 10 · Big 12 availability report, Initial (Nov 10)"
-  },
-  {
    "s": "P",
    "status": "Probable",
    "injury": "",
@@ -6246,138 +6131,6 @@
    "status": "Out",
    "injury": "",
    "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Jamien Little",
-   "team": "Duke",
-   "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Patrick Smith-Young",
-   "team": "Duke",
-   "pos": "S",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Kimari Robinson",
-   "team": "Duke",
-   "pos": "CB",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Qeanu Johnson",
-   "team": "Duke",
-   "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Elliott Schaper",
-   "team": "Duke",
-   "pos": "LB",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Cosme Salas",
-   "team": "Duke",
-   "pos": "K",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "David Anderson",
-   "team": "Duke",
-   "pos": "DT",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Nate Kurisky",
-   "team": "Duke",
-   "pos": "TE",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Cole Allen",
-   "team": "Duke",
-   "pos": "OL",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Kai Jacobowitz",
-   "team": "Duke",
-   "pos": "OL",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Reagan McCranie",
-   "team": "Duke",
-   "pos": "OL",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Roman Fina",
-   "team": "Duke",
-   "pos": "OL",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
    "src": "SEC report",
    "name": "Vernell Brown III",
    "team": "Florida",
@@ -6437,28 +6190,6 @@
    "name": "DK Kalu",
    "team": "Florida",
    "pos": "DL",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Amaris Williams",
-   "team": "Georgia",
-   "pos": "OLB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Josh Horton",
-   "team": "Georgia",
-   "pos": "DT",
    "note": "SEC availability report, Initial (Nov 11)"
   },
   {
@@ -6671,39 +6402,6 @@
    "note": "ACC availability report, Initial (Nov 11)"
   },
   {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "A.J. Harris",
-   "team": "Indiana",
-   "pos": "DB",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Rolijah Hardy",
-   "team": "Indiana",
-   "pos": "LB",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Kellan Wyatt",
-   "team": "Indiana",
-   "pos": "DL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
    "s": "O",
    "status": "Out",
    "injury": "",
@@ -6790,116 +6488,6 @@
    "team": "Iowa",
    "pos": "OL",
    "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Antwan Smith",
-   "team": "Kentucky",
-   "pos": "ILB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Jaden Smith",
-   "team": "Kentucky",
-   "pos": "DB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Grant Grayton",
-   "team": "Kentucky",
-   "pos": "DB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Whit Weeks",
-   "team": "LSU",
-   "pos": "LB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Dashawn Spears",
-   "team": "LSU",
-   "pos": "S",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Phillip Wright III",
-   "team": "LSU",
-   "pos": "WR",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Gabriel Reliford",
-   "team": "LSU",
-   "pos": "DE",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Charles Ross II",
-   "team": "LSU",
-   "pos": "LB",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Weston Davis",
-   "team": "LSU",
-   "pos": "OT",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Richard Anderson",
-   "team": "LSU",
-   "pos": "DT",
-   "note": "SEC availability report, Initial (Nov 11)"
   },
   {
    "s": "P",
@@ -7170,193 +6758,6 @@
    "status": "Out",
    "injury": "",
    "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Joshua Moore",
-   "team": "Miami",
-   "pos": "WR",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "CharMar Brown",
-   "team": "Miami",
-   "pos": "RB",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Ja'Boree Antoine",
-   "team": "Miami",
-   "pos": "DB",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Romanas \"OJ\" Frederique Jr.",
-   "team": "Miami",
-   "pos": "DB",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Max Buchanan",
-   "team": "Miami",
-   "pos": "OL",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "ACC report",
-   "name": "Luka Gilbert",
-   "team": "Miami",
-   "pos": "TE",
-   "note": "ACC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Kendrick Bell",
-   "team": "Michigan",
-   "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Rod Moore",
-   "team": "Michigan",
-   "pos": "S",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Dom Nichols",
-   "team": "Michigan",
-   "pos": "DE",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Braydon Alford",
-   "team": "Michigan",
-   "pos": "WR",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Micah Ka'apana",
-   "team": "Michigan",
-   "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Julius Holly",
-   "team": "Michigan",
-   "pos": "DE",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Ace Hamilton",
-   "team": "Michigan",
-   "pos": "OL",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Andrew Sprague",
-   "team": "Michigan",
-   "pos": "OL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Brady Norton",
-   "team": "Michigan",
-   "pos": "OL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "D",
-   "status": "Doubtful",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Blake Frazier",
-   "team": "Michigan",
-   "pos": "OL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "John Henry Daley",
-   "team": "Michigan",
-   "pos": "DE",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
    "src": "Big Ten report",
    "name": "Devin Vaught",
    "team": "Michigan State",
@@ -7453,138 +6854,6 @@
   },
   {
    "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Garrison Monroe",
-   "team": "Minnesota",
-   "pos": "DB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "John Nestor",
-   "team": "Minnesota",
-   "pos": "DB",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Pierce Walsh",
-   "team": "Minnesota",
-   "pos": "TE",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Ryan Estrada",
-   "team": "Minnesota",
-   "pos": "RB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Mason Carrier",
-   "team": "Minnesota",
-   "pos": "LB",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Jaylin Hicks",
-   "team": "Minnesota",
-   "pos": "DL",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Brett Carroll",
-   "team": "Minnesota",
-   "pos": "OL",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Ashton Beers",
-   "team": "Minnesota",
-   "pos": "OL",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Julian Johnson",
-   "team": "Minnesota",
-   "pos": "TE",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Riley Sunram",
-   "team": "Minnesota",
-   "pos": "DL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Adam Kissayi",
-   "team": "Minnesota",
-   "pos": "DL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Theorin Randle",
-   "team": "Minnesota",
-   "pos": "DL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
    "status": "Out",
    "injury": "",
    "date": "2026-11-11",
@@ -7659,50 +6928,6 @@
    "team": "Mississippi State",
    "pos": "DL",
    "note": "SEC availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Langden Kitchen",
-   "team": "Missouri",
-   "pos": "EDG",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Malae Fonoti",
-   "team": "Missouri",
-   "pos": "RB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Josh Atkins",
-   "team": "Missouri",
-   "pos": "OL",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Gavin Hoffman",
-   "team": "Missouri",
-   "pos": "TE",
-   "note": "SEC availability report, Initial (Nov 11)"
   },
   {
    "s": "O",
@@ -8651,72 +7876,6 @@
    "note": "Big Ten availability report, Initial (Nov 11)"
   },
   {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Max Granville",
-   "team": "Penn State",
-   "pos": "DE",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Alex Tatsch",
-   "team": "Penn State",
-   "pos": "LB",
-   "note": "Big Ten availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Tyler Armstead",
-   "team": "Penn State",
-   "pos": "CB",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Alijah Carnell",
-   "team": "Penn State",
-   "pos": "DT",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Malachi Goodman",
-   "team": "Penn State",
-   "pos": "OL",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big Ten report",
-   "name": "Cristiano Rosa",
-   "team": "Penn State",
-   "pos": "K",
-   "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
    "s": "Q",
    "status": "Questionable",
    "injury": "",
@@ -9239,72 +8398,6 @@
    "injury": "",
    "date": "2026-11-11",
    "src": "SEC report",
-   "name": "Joakim Dodson",
-   "team": "Tennessee",
-   "pos": "WR",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Jaedon Harmon",
-   "team": "Tennessee",
-   "pos": "LB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Edrees Farooq",
-   "team": "Tennessee",
-   "pos": "DB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Tyree Weathersby",
-   "team": "Tennessee",
-   "pos": "DL",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Dylan Lewis",
-   "team": "Tennessee",
-   "pos": "DB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Wendell Moe Jr.",
-   "team": "Tennessee",
-   "pos": "OL",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
    "name": "Trevor Goosby",
    "team": "Texas",
    "pos": "OL",
@@ -9485,72 +8578,6 @@
    "team": "USC",
    "pos": "OL",
    "note": "Big Ten availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Edwin Kolenge",
-   "team": "Vanderbilt",
-   "pos": "EDG",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Josiah Broxton",
-   "team": "Vanderbilt",
-   "pos": "LB",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Daniel Vollmer Jr.",
-   "team": "Vanderbilt",
-   "pos": "LB",
-   "note": "SEC availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Gunner Givens",
-   "team": "Vanderbilt",
-   "pos": "OL",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out for season",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Aaron Bryant",
-   "team": "Vanderbilt",
-   "pos": "DL",
-   "note": "SEC availability report, Initial (Nov 11) · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "SEC report",
-   "name": "Ted Gregoire",
-   "team": "Vanderbilt",
-   "pos": "OL",
-   "note": "SEC availability report, Initial (Nov 11)"
   },
   {
    "s": "D",
@@ -9987,105 +9014,6 @@
    "injury": "",
    "date": "2026-11-11",
    "src": "Big 12 report",
-   "name": "Max Harris",
-   "team": "Arizona",
-   "pos": "LB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Jay'Vion Cole",
-   "team": "Arizona",
-   "pos": "CB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Shane King",
-   "team": "Arizona",
-   "pos": "TE",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Cam Chapa",
-   "team": "Arizona",
-   "pos": "S",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Malcolm Hartzog Jr.",
-   "team": "Arizona",
-   "pos": "S",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Swayde Griffin",
-   "team": "Arizona",
-   "pos": "CB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Quinn Olson",
-   "team": "Arizona",
-   "pos": "S",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Kevin Moorer Jr.",
-   "team": "Arizona",
-   "pos": "DL",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Ezra Funa",
-   "team": "Arizona",
-   "pos": "DL",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
    "name": "Rodney Bimage Jr.",
    "team": "Arizona State",
    "pos": "DB",
@@ -10287,39 +9215,6 @@
    "name": "Stephen Rusnak",
    "team": "Cincinnati",
    "pos": "K",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Keyon Washington",
-   "team": "Iowa State",
-   "pos": "CB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Beni Ngoyi",
-   "team": "Iowa State",
-   "pos": "CB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Ka'Mori Moore",
-   "team": "Iowa State",
-   "pos": "DT",
    "note": "Big 12 availability report, Initial (Nov 11)"
   },
   {
@@ -10741,193 +9636,6 @@
    "note": "Big 12 availability report, Initial (Nov 11)"
   },
   {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Jalen Jones",
-   "team": "Texas Tech",
-   "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Austin Romaine",
-   "team": "Texas Tech",
-   "pos": "LB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Leyton Stone",
-   "team": "Texas Tech",
-   "pos": "WR",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Miquel Dingle Jr.",
-   "team": "Texas Tech",
-   "pos": "S",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Ansel Nedore",
-   "team": "Texas Tech",
-   "pos": "OLB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Howard Sampson",
-   "team": "Texas Tech",
-   "pos": "OL",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "DJ Bell",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Antione Jackson",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Demari Henderson",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Kahmel Johnson",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Lewis Carter",
-   "team": "UCF",
-   "pos": "LB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Ty Bartrum",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Jayden Jennings",
-   "team": "UCF",
-   "pos": "LB",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Bruno Dall",
-   "team": "UCF",
-   "pos": "EDG",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Jacob Maiava",
-   "team": "UCF",
-   "pos": "OL",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Tyler Gibson",
-   "team": "UCF",
-   "pos": "OL",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-11",
-   "src": "Big 12 report",
-   "name": "Dylan Burk",
-   "team": "UCF",
-   "pos": "TE",
-   "note": "Big 12 availability report, Initial (Nov 11)"
-  },
-  {
    "s": "P",
    "status": "Probable",
    "injury": "",
@@ -11113,6 +9821,666 @@
    "team": "West Virginia",
    "pos": "DL",
    "note": "Big 12 availability report, Initial (Nov 11)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Forearm",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "K. Martin",
+   "team": "Indiana",
+   "pos": "RB",
+   "note": "Forearm · Covers, Oct 17"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "D. Smith",
+   "team": "Missouri",
+   "pos": "DL",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-20",
+   "src": "Covers",
+   "name": "G. Hoffman",
+   "team": "Missouri",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Sep 20"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-20",
+   "src": "Covers",
+   "name": "J. Brady",
+   "team": "Missouri",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Sep 20"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-20",
+   "src": "Covers",
+   "name": "C. Green",
+   "team": "Missouri",
+   "pos": "OG",
+   "note": "Undisclosed · Covers, Sep 20 · no timetable for return"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Leg",
+   "date": "2026-09-11",
+   "src": "Covers",
+   "name": "A. Hardy",
+   "team": "Missouri",
+   "pos": "RB",
+   "note": "Leg · Covers, Sep 11 · no timetable for return"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "B. Norton",
+   "team": "Michigan",
+   "pos": "OG",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "K. Bell",
+   "team": "Michigan",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "Z. Marshall",
+   "team": "Michigan",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-26",
+   "src": "Covers",
+   "name": "A. Sprague",
+   "team": "Michigan",
+   "pos": "OG",
+   "note": "Undisclosed · Covers, Sep 26"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-09-20",
+   "src": "Covers",
+   "name": "L. Forbes",
+   "team": "Michigan",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Sep 20"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Leg",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "I. Canion",
+   "team": "Georgia",
+   "pos": "WR",
+   "note": "Leg · Covers, Oct 17 · no timetable for return"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Upper Body",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "T. Blackshear",
+   "team": "Georgia",
+   "pos": "WR",
+   "note": "Upper Body · Covers, Oct 17"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-05",
+   "src": "Covers",
+   "name": "D. Dowdell",
+   "team": "Georgia",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Sep 5 · out for an undetermined time"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Leg",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "K. Smith",
+   "team": "Vanderbilt",
+   "pos": "WR",
+   "note": "Leg · Covers, Oct 18"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "B. Brady",
+   "team": "Tennessee",
+   "pos": "LS",
+   "note": "Undisclosed · Covers, Oct 17 · will miss an extended period"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-30",
+   "src": "Covers",
+   "name": "W. Moe Jr.",
+   "team": "Tennessee",
+   "pos": "OG",
+   "note": "Undisclosed · Covers, Sep 30 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Knee",
+   "date": "2026-09-07",
+   "src": "Covers",
+   "name": "J. Harmon",
+   "team": "Tennessee",
+   "pos": "LB",
+   "note": "Knee · Covers, Sep 7 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "B. Kortovich",
+   "team": "Penn State",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 18 · no timetable for return"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "D. Sheffey",
+   "team": "Penn State",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Oct 18 · will miss an extended period"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-12",
+   "src": "Covers",
+   "name": "M. Granville",
+   "team": "Penn State",
+   "pos": "DL",
+   "note": "Undisclosed · Covers, Sep 12 · out for the season"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Illness",
+   "date": "2026-10-11",
+   "src": "Covers",
+   "name": "B. Stevens",
+   "team": "Minnesota",
+   "pos": "WR",
+   "note": "Illness · Covers, Oct 11"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-11",
+   "src": "Covers",
+   "name": "Z. Bates",
+   "team": "Minnesota",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Oct 11"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-11",
+   "src": "Covers",
+   "name": "B. Sunderland",
+   "team": "Minnesota",
+   "pos": "K",
+   "note": "Undisclosed · Covers, Oct 11"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Knee",
+   "date": "2026-09-07",
+   "src": "Covers",
+   "name": "R. Estrada",
+   "team": "Minnesota",
+   "pos": "RB",
+   "note": "Knee · Covers, Sep 7 · out for the season"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "A. Afari Jr.",
+   "team": "Kentucky",
+   "pos": "LB",
+   "note": "Undisclosed · Covers, Oct 18"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-08-22",
+   "src": "Covers",
+   "name": "T. Mizell",
+   "team": "Kentucky",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Aug 22 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "L. Watkins",
+   "team": "Kentucky",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 18 · no timetable for return"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "R. Guillory Jr.",
+   "team": "LSU",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "T. Brown",
+   "team": "LSU",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "T. Singleton",
+   "team": "LSU",
+   "pos": "LB",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-21",
+   "src": "Covers",
+   "name": "P. Wright III",
+   "team": "LSU",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Sep 21 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Knee",
+   "date": "2026-09-21",
+   "src": "Covers",
+   "name": "D. Spears",
+   "team": "LSU",
+   "pos": "S",
+   "note": "Knee · Covers, Sep 21 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Knee",
+   "date": "2026-10-19",
+   "src": "Covers",
+   "name": "D. Lee Jr.",
+   "team": "Texas Tech",
+   "pos": "WR",
+   "note": "Knee · Covers, Oct 19 · out for the season"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-17",
+   "src": "Covers",
+   "name": "J. Jones",
+   "team": "Texas Tech",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Oct 17"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-19",
+   "src": "Covers",
+   "name": "A. Pellicciotta",
+   "team": "Duke",
+   "pos": "S",
+   "note": "Undisclosed · Covers, Oct 19"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-12",
+   "src": "Covers",
+   "name": "C. Salas",
+   "team": "Duke",
+   "pos": "K",
+   "note": "Undisclosed · Covers, Oct 12"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "O. Ruskavich",
+   "team": "Miami",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 18"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Upper Body",
+   "date": "2026-09-21",
+   "src": "Covers",
+   "name": "J. Moore",
+   "team": "Miami",
+   "pos": "WR",
+   "note": "Upper Body · Covers, Sep 21"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Lower Body",
+   "date": "2026-09-21",
+   "src": "Covers",
+   "name": "C. Brown",
+   "team": "Miami",
+   "pos": "RB",
+   "note": "Lower Body · Covers, Sep 21 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-08-11",
+   "src": "Covers",
+   "name": "L. Gilbert",
+   "team": "Miami",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Aug 11"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Knee",
+   "date": "2026-10-11",
+   "src": "Covers",
+   "name": "D. Overby",
+   "team": "Iowa State",
+   "pos": "WR",
+   "note": "Knee · Covers, Oct 11"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "E. Miller",
+   "team": "Iowa State",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "L. Galer",
+   "team": "Iowa State",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "J. Singletary",
+   "team": "Iowa State",
+   "pos": "CB",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "C. Crawford",
+   "team": "Iowa State",
+   "pos": "DL",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "R. Barnes",
+   "team": "Iowa State",
+   "pos": "TE",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "Knee",
+   "date": "2026-10-03",
+   "src": "Covers",
+   "name": "C. Pabst",
+   "team": "Iowa State",
+   "pos": "WR",
+   "note": "Knee · Covers, Oct 3 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-01",
+   "src": "Covers",
+   "name": "J. Bailey",
+   "team": "Iowa State",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Sep 1"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "S. Brennan",
+   "team": "Arizona",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "C. Warren III",
+   "team": "Arizona",
+   "pos": "RB",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Leg",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "C. Rusk",
+   "team": "Arizona",
+   "pos": "TE",
+   "note": "Leg · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "M. Harris",
+   "team": "Arizona",
+   "pos": "LB",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-09-25",
+   "src": "Covers",
+   "name": "D. Austin",
+   "team": "Arizona",
+   "pos": "S",
+   "note": "Undisclosed · Covers, Sep 25 · out for the season"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "D. Thomas Jr.",
+   "team": "UCF",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Oct 10 · will miss an extended period"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-10-10",
+   "src": "Covers",
+   "name": "L. Carter",
+   "team": "UCF",
+   "pos": "LB",
+   "note": "Undisclosed · Covers, Oct 10"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "D. Scudero",
+   "team": "Colorado",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Oct 18"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "M. Vickers",
+   "team": "Colorado",
+   "pos": "CB",
+   "note": "Undisclosed · Covers, Oct 18"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "K. Perry",
+   "team": "Colorado",
+   "pos": "WR",
+   "note": "Undisclosed · Covers, Oct 18"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-10-18",
+   "src": "Covers",
+   "name": "T. Martinez",
+   "team": "Colorado",
+   "pos": "LB",
+   "note": "Undisclosed · Covers, Oct 18"
   }
  ]
 }
