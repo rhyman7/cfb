@@ -1,26 +1,8 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-13T14:46:33.036645+00:00",
+ "generatedAt": "2026-11-14T00:55:07.834895+00:00",
  "source": "Conference availability reports where a team has one; otherwise Covers.com team injury pages, plus news reports where noted",
- "teamsRead": [
-  "Arizona",
-  "Colorado",
-  "Duke",
-  "Georgia",
-  "Indiana",
-  "Iowa State",
-  "Kentucky",
-  "LSU",
-  "Miami",
-  "Michigan",
-  "Minnesota",
-  "Missouri",
-  "Penn State",
-  "Tennessee",
-  "Texas Tech",
-  "UCF",
-  "Vanderbilt"
- ],
+ "teamsRead": [],
  "checked": {
   "Air Force": "2026-11-12",
   "Akron": "2026-11-10",
