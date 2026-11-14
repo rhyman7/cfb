@@ -1,6 +1,6 @@
 """Build the Weekly Matchup Report: who is set up for a good game, and who is not, in every
-game of the current week, plus rankings across the slate (Best Overall Matchups, Most Likely
-to Score a TD, Highest Floors) and, when a team is coming off a bye, the Coming Off a Bye page
+game of the current week, plus rankings across the slate (Best Overall Matchups with its record,
+Most Likely to Score a TD, Highest Floors) and, when a team is coming off a bye, the Coming Off a Bye page
 (data.json's byeTrends). The stats come from data/data.json and data/epa.json; the player
 projections, matchup lifts and touchdown chances come from the value board's feed
 (rhyman7/fb-value-board, docs/feed/<league>.json) when a checkout of it is next to this repo or
@@ -25,7 +25,7 @@ import re
 import statistics as st
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -187,6 +187,131 @@ def tracker_html(T, league_name, week):
       {rows}
       <div class="tk-chips"><div class="tk-chip"><b>{pct(a)}</b><div>Spots 1–5 scored (expected {epct(a)})</div></div>
       <div class="tk-chip"><b>{pct(b)}</b><div>Spots 6–10 scored (expected {epct(b)})</div></div>{bets}</div>
+      <p class="tk-note">{note}</p>
+    </div>
+  </div>
+</section>'''
+
+
+# ---------------------------------------------------------------- Best Overall record
+# data/best_overall.json keeps every week's Best Overall Matchups list as it stood at each team's
+# kickoff, and what each pick then did against his own season average (his main yardage stat).
+# The yardstick: other regulars beat their own average about 41% of the time, in both leagues
+# (every week from Week 4, NFL 2013-2025 and college 2017-2025; Project doc
+# claude/best-overall-matchups-analysis-2026-11-14.md).
+BEST_BAR = 41
+BEST_YDS = {"pass": ("pYds",), "scrim": ("rYds", "recYds"), "rec": ("recYds",)}
+
+
+def load_best_log(root, league, season):
+    try:
+        j = json.loads((Path(root) / "data" / "best_overall.json").read_text(encoding="utf-8"))
+        if j.get("season") == season and j.get("league") == league and isinstance(j.get("weeks"), dict):
+            return j
+    except Exception:
+        pass
+    return dict(league=league, season=season, weeks={})
+
+
+def best_log_update(log, D, top, board, now=None):
+    """Record this build's list for every team that hasn't kicked off; a team whose game has started
+    keeps the pick it had at kickoff. Then grade any earlier pick whose game is in the data."""
+    now = now or datetime.now(timezone.utc)
+    picks = log["weeks"].setdefault(str(D.week), {}).setdefault("picks", {})
+    cur = {c["team"]: (i, c) for i, (c, x) in enumerate(top, 1)}
+    for g in D.games:
+        try:
+            ko = datetime.fromisoformat(str(g["start"]).replace("Z", "+00:00"))
+            ko = ko if ko.tzinfo else ko.replace(tzinfo=timezone.utc)
+        except Exception:
+            continue
+        if ko <= now:
+            continue
+        for s, o in (("away", "home"), ("home", "away")):
+            ab = g[s]["abbr"]
+            if ab not in cur:
+                picks.pop(ab, None)
+                continue
+            i, c = cur[ab]
+            # his average from his own game log, so the grade doesn't depend on which of the team's tables list him
+            gl = [sum(x.get(f, 0) or 0 for f in BEST_YDS[c["kind"]]) for x in D.GL.get(c["log"], []) if x.get("w", 0) < D.week]
+            picks[ab] = dict(rk=i, name=c["name"], pos=c["pos"], opp=g[o]["abbr"], log=c["log"], kind=c["kind"],
+                             avg=round(sum(gl) / len(gl), 1) if gl else round(c["avg"], 1), proj=round(c["proj"], 1) if board and c.get("proj") else None,
+                             v="board" if board else "rank", at=now.strftime("%Y-%m-%dT%H:%MZ"))
+    for wk, w in log["weeks"].items():
+        for ab, k in w.get("picks", {}).items():
+            if k.get("res"):
+                continue
+            key = D.by_abbr.get(ab)
+            if not key or not any(x.get("w") == int(wk) for x in D.team_games(key)):
+                continue   # his team's game isn't in the data yet
+            e = next((x for x in D.GL.get(k["log"], []) if x.get("w") == int(wk)), None)
+            if e is None:
+                k["res"] = "dnp"
+            else:
+                k["y"] = sum(e.get(f, 0) or 0 for f in BEST_YDS[k["kind"]])
+                k["res"] = "beat" if k["y"] > k["avg"] else "miss"
+    return log
+
+
+def best_record_html(log, league_name, week):
+    """The Best Overall record page: the last graded week's list with what each pick did, and the season."""
+    done = []
+    for wk, w in sorted(log["weeks"].items(), key=lambda kv: int(kv[0])):
+        ps = sorted(w.get("picks", {}).items(), key=lambda kv: kv[1]["rk"])
+        if int(wk) < week and ps and all(k.get("res") for _, k in ps):
+            done.append((int(wk), w, ps))
+    if not done:
+        return ""
+    graded = [k for _, _, ps in done for _, k in ps if k["res"] != "dnp"]
+    if not graded:
+        return ""
+    rate = lambda ks: f'{100 * sum(k["res"] == "beat" for k in ks) / len(ks):.0f}%' if ks else "—"
+    tot = lambda ks, f="y": sum(k[f] for k in ks) / sum(k["avg"] for k in ks) - 1
+    sgn = lambda x: f'{"+" if x >= 0 else MINUS}{abs(x) * 100:.0f}%'
+    lw, lwk, lps = done[-1]
+    body = "".join(
+        f'<tr class="{k["res"]}"><td class="n">{k["rk"]}</td><td><b>{E(k["name"])}</b> <span class="tag">{E(ab)} {k["pos"]}</span></td><td>{E(k["opp"])}</td>'
+        f'<td class="r">{num(k["avg"])}</td><td class="r">{num(round(k["proj"])) if k.get("proj") else "—"}</td>'
+        + (f'<td class="r"><b>{num(k["y"])}</b></td><td class="bo-res">{"✓ Beat it" if k["res"] == "beat" else "Under"}</td>' if k["res"] != "dnp"
+           else '<td class="r">—</td><td class="bo-res">Did not play</td>') + '</tr>'
+        for ab, k in lps)
+    rows = ""
+    for wk, w, ps in done:
+        g = [k for _, k in ps if k["res"] != "dnp"]
+        vs = {k["v"] for _, k in ps}
+        rows += (f'<div class="tk-row"><div class="tk-wk">Week {wk}</div><div class="tk-dots bo-dots">'
+                 + "".join(f'<i class="{"on" if k["res"] == "beat" else "na" if k["res"] == "dnp" else ""}"></i>' for _, k in ps)
+                 + f'</div><div class="tk-sum"><b>{sum(k["res"] == "beat" for k in g)}</b> of {len(g)}'
+                 + (f' <span>{"fallback" if vs == {"rank"} else "part fallback"}</span>' if "rank" in vs else "") + '</div></div>')
+    bd, fb = [k for k in graded if k["v"] == "board"], [k for k in graded if k["v"] == "rank"]
+    bp = [k for k in bd if k.get("proj")]
+    chips = f'<div class="tk-chip"><b>{rate(bd)}</b><div>Value board version ({len(bd)} picks)</div></div>'
+    chips += f'<div class="tk-chip"><b>{rate(fb)}</b><div>Fallback version, by defense rank ({len(fb)} picks)</div></div>' if fb else \
+             f'<div class="tk-chip"><b>{sgn(tot(graded))}</b><div>Their total yards against their averages</div></div>'
+    if bp:
+        chips += (f'<div class="tk-chip"><b>{sgn(tot(bp))}</b><div>What the value board\'s picks did against their averages; the board projected '
+                  f'{sgn(tot(bp, "proj"))}.' + (f' All {len(graded)} picks: {sgn(tot(graded))}.' if fb else "") + '</div></div>')
+    printed = [wk for wk, w, _ in done if w.get("source") == "printed"]
+    dnp = sum(k["res"] == "dnp" for _, _, ps in done for _, k in ps)
+    note = (f"Each pick is the list as it stood at his team's kickoff, graded on his main yardage stat (passing for quarterbacks, rushing + receiving for backs, "
+            f"receiving for wide receivers and tight ends) against his per-game average going in. Each dot is one spot on that week's list, from #1; green means he beat his average"
+            + (f", a dashed dot did not play ({dnp} this season, not counted)" if dnp else "") + ". "
+            f"The bar is about {BEST_BAR}%, not 50%: that is how often every other regular beats his own average. "
+            + (f"Week{'s' if len(printed) > 1 else ''} {printed[0]}{'–' + str(printed[-1]) if len(printed) > 1 else ''} {'were' if len(printed) > 1 else 'was'} read back from the printed reports. " if printed else "")
+            + ("Fallback weeks ranked the list by how soft the defense is, because the value board's projections weren't there when the report was built." if fb else ""))
+    nb = sum(k["res"] == "beat" for k in graded)
+    return f'''<section class="tdsec tk bo" id="bestrecord">
+  <div class="kicker">{league_name} · Best Overall record</div>
+  <h1 class="h1s">{nb} of {len(graded)} have beaten their average</h1>
+  <p class="lede">How each week's Best Overall list did against the players' own season averages. Other regulars beat theirs about {BEST_BAR}% of the time.</p>
+  <div class="tk-grid">
+    <div><div class="tk-sec">Week {lw} list · {sum(k["res"] == "beat" for _, k in lps)} of {sum(k["res"] != "dnp" for _, k in lps)} beat their average</div>
+      <table class="tdt bo-t"><thead><tr><th></th><th>Player</th><th>Opp</th><th class="r">His avg</th><th class="r">Board</th><th class="r">Actual</th><th></th></tr></thead><tbody>{body}</tbody></table></div>
+    <div><div class="tk-sec">Season</div>
+      <div class="tk-score"><div class="tk-big">{rate(graded)}</div><div class="tk-exp">beat their own average<br>{nb} of {len(graded)} picks · the bar is about {BEST_BAR}%</div></div>
+      {rows}
+      <div class="tk-chips">{chips}</div>
       <p class="tk-note">{note}</p>
     </div>
   </div>
@@ -433,10 +558,12 @@ class Report:
                          tough=tough.replace("; ", f' ({p["gp"]} of {tgp} gms); ', 1) if pos != "QB" and p["gp"] <= tgp - 2 else tough)
             else:  # opponent without stats on the dashboard (FCS): volume only
                 c.update(m=0.0, rk=None, good=f'{c["base"]}; {on} has no stats on the dashboard.', tough="")
+            # his main yardage stat (QB passing, backs rushing + receiving, WR/TE receiving) per game
+            stat = {"QB": ("pass_yds",), "RB": ("rush_yds", "rec_yds"), "FB": ("rush_yds", "rec_yds")}.get(pos, ("rec_yds",))
+            avg = sum((p.get(sec) or {}).get("ydsG", 0) for sec, st_ in (("passing", "pass_yds"), ("rushing", "rush_yds"), ("receiving", "rec_yds")) if st_ in stat)
+            c.update(avg=avg, kind="pass" if pos == "QB" else "scrim" if pos in ("RB", "FB") else "rec", log=p["log"])
             if self.F is not None:   # the value board's projection against his season average
                 bp = self.F.get(f"{ab}|{vb_norm(p['name'])}")
-                stat = {"QB": ("pass_yds",), "RB": ("rush_yds", "rec_yds"), "FB": ("rush_yds", "rec_yds")}.get(pos, ("rec_yds",))
-                avg = sum((p.get(sec) or {}).get("ydsG", 0) for sec, st_ in (("passing", "pass_yds"), ("rushing", "rush_yds"), ("receiving", "rec_yds")) if st_ in stat)
                 proj = sum((bp or {}).get("p", {}).get(x, 0) for x in stat)
                 if not bp or proj <= 0 or avg <= 0:
                     continue   # the board doesn't project him (not playing, or not this role)
@@ -970,6 +1097,9 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
         f'<td><a href="#g{E(x["g"]["id"])}">{E(gtitle(x["g"]))}</a></td><td>{E(c["good"].split("; ", 1)[0])}</td><td>{E(c.get("mx") or c["good"].split("; ", 1)[1])}</td></tr>'
         for i, (c, x) in enumerate(top, 1))
 
+    best_log = best_log_update(load_best_log(root, D.league, d.get("season")), D, top, R.F is not None)
+    (Path(root) / "data" / "best_overall.json").write_text(json.dumps(best_log, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+
     alltd = sorted([dict(r, x=x) for x in G for r in x["td"]], key=lambda r: -r["lam"])
     TDN = 40 if L == "CFB" else 20
 
@@ -996,10 +1126,15 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
   <h2 class="h2s">Most Likely to Score a TD, continued</h2>
   {td_table(alltd[half:TDN], half + 1)}
 </section>''' if half < TDN else "")
+    fb_note = "" if R.F is not None else (
+        '<p class="tdw ambw bo-fb"><span class="tdl ambl">Fallback version</span> The value board\'s projections weren\'t available for this build, '
+        "so this list is ranked by how soft the opposing defense is. That version has little record of finding players who beat their average "
+        f"(about 44% against {BEST_BAR}% for other regulars); the value board version runs about 56%.</p>")
     best_html = f'''<section class="tdsec" id="best">
   <div class="kicker">{league_name} Week {D.week} · {d.get("season", "")}</div>
   <h1 class="h1s">Best Overall Matchups</h1>
   <p class="lede">The strongest good spots across all {NG} games, ranked by production times {"how far the value board projects him above his season average" if R.F is not None else "how soft the opposing defense is at his position"}. One player per team, and only players who have played nearly every game.</p>
+  {fb_note}
   <table class="tdt"><thead><tr><th></th><th>Player</th><th>Game</th><th>Production</th><th>Matchup</th></tr></thead><tbody>{top_rows}</tbody></table>
 </section>'''
 
@@ -1072,6 +1207,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 {index_html}
 {"".join(cards)}
 {best_html}
+{best_record_html(best_log, league_name, D.week)}
 {td_html}
 {tracker_html(tracker, league_name, D.week) if tracker else ""}
 {floors_html}

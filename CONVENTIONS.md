@@ -211,6 +211,21 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   player, team, floor and games. Quarterbacks are each team's projected starter (most projected
   pass attempts); players the board has ruled out are left out. Without the board's floors for
   the week the pages are skipped and the packet row stays disabled.
+- **Best Overall record** (the page after Best Overall Matchups, Nov 14, 2026; it travels with the
+  Best Overall Matchups packet row). `build_report.py` keeps `data/best_overall.json`: each week's
+  list as it stood at each team's kickoff (a team that has kicked off keeps its pick; teams yet to
+  play are rewritten on every build), with the version that made it (`board` = value board lift,
+  `rank` = the fallback by defense rank). Once a pick's game is in `data.json` it is graded on his
+  main yardage stat (QB passing, backs rushing + receiving, WR/TE receiving) against his per-game
+  average going in, taken from his own game log, and the result is frozen. The page shows the last
+  graded week's list and the season; the bar it quotes (other regulars beat their own average
+  about 41% of the time) is `BEST_BAR`, from the Project doc
+  `claude/best-overall-matchups-analysis-2026-11-14.md`. The **Build PDFs** Action commits the file
+  with `pdf/`; don't hand-edit it. Weeks before Nov 14, 2026 were read back from the printed
+  reports (`"source": "printed"`). A new season starts a new file.
+- When the value board's feed isn't there at build time, Best Overall Matchups prints a
+  **Fallback version** note (ranked by defense rank, which has little record of predicting who
+  beats his average).
 - The **Weekly Matchup Report** is rule-based and built from `data/data.json` plus the injury
   tags in `data/injuries.json` (good and tough spots per game, Best Overall Matchups, Most Likely
   to Score a TD). Players listed out, doubtful, IR, PUP or suspended are left out of the picks and
