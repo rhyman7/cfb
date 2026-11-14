@@ -307,7 +307,7 @@ def best_record_html(log, league_name, week):
   <p class="lede">How each week's Best Overall list did against the players' own season averages. Other regulars beat theirs about {BEST_BAR}% of the time.</p>
   <div class="tk-grid">
     <div><div class="tk-sec">Week {lw} list · {sum(k["res"] == "beat" for _, k in lps)} of {sum(k["res"] != "dnp" for _, k in lps)} beat their average</div>
-      <table class="tdt bo-t"><thead><tr><th></th><th>Player</th><th>Opp</th><th class="r">His avg</th><th class="r">Board</th><th class="r">Actual</th><th></th></tr></thead><tbody>{body}</tbody></table></div>
+      <table class="tdt bo-t{" bo-long" if len(lps) > 16 else ""}"><thead><tr><th></th><th>Player</th><th>Opp</th><th class="r">His avg</th><th class="r">Board</th><th class="r">Actual</th><th></th></tr></thead><tbody>{body}</tbody></table></div>
     <div><div class="tk-sec">Season</div>
       <div class="tk-score"><div class="tk-big">{rate(graded)}</div><div class="tk-exp">beat their own average<br>{nb} of {len(graded)} picks · the bar is about {BEST_BAR}%</div></div>
       {rows}
