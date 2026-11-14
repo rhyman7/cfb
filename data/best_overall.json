@@ -2550,9 +2550,9 @@
      "log": "UNT|4911971",
      "kind": "scrim",
      "avg": 165.6,
-     "proj": 185.7,
+     "proj": 185.3,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
     "KU": {
      "rk": 2,
@@ -2655,16 +2655,16 @@
      }
     },
     "SJSU": {
-     "rk": 5,
+     "rk": 4,
      "name": "Carson Clark",
      "pos": "WR",
      "opp": "AFA",
      "log": "SJSU|5161012",
      "kind": "rec",
      "avg": 68.9,
-     "proj": 84.8,
+     "proj": 84.9,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
     "KENN": {
      "rk": 6,
@@ -2711,16 +2711,16 @@
      }
     },
     "UNM": {
-     "rk": 8,
+     "rk": 6,
      "name": "Scottre Humphrey",
      "pos": "RB",
      "opp": "UNLV",
      "log": "UNM|5166161",
      "kind": "scrim",
      "avg": 74.0,
-     "proj": 91.0,
+     "proj": 90.7,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
     "CAL": {
      "rk": 9,
@@ -2747,7 +2747,7 @@
      "at": "2026-11-14T19:09Z"
     },
     "PSU": {
-     "rk": 11,
+     "rk": 9,
      "name": "Benjamin Brahmer",
      "pos": "TE",
      "opp": "MINN",
@@ -2756,7 +2756,7 @@
      "avg": 33.3,
      "proj": 41.7,
      "v": "board",
-     "at": "2026-11-14T19:09Z",
+     "at": "2026-11-14T22:22Z",
      "lad": {
       "fd": [
        [
@@ -2767,7 +2767,7 @@
      }
     },
     "MINN": {
-     "rk": 12,
+     "rk": 10,
      "name": "Darius Taylor",
      "pos": "RB",
      "opp": "PSU",
@@ -2776,7 +2776,7 @@
      "avg": 56.0,
      "proj": 70.7,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
     "MOST": {
      "rk": 14,
@@ -2791,7 +2791,7 @@
      "at": "2026-11-14T19:09Z"
     },
     "STAN": {
-     "rk": 15,
+     "rk": 13,
      "name": "Micah Ford",
      "pos": "RB",
      "opp": "VT",
@@ -2800,7 +2800,7 @@
      "avg": 108.3,
      "proj": 119.9,
      "v": "board",
-     "at": "2026-11-14T19:09Z",
+     "at": "2026-11-14T22:22Z",
      "lad": {
       "fd": [
        [
@@ -2826,7 +2826,7 @@
      "res": "miss"
     },
     "UK": {
-     "rk": 13,
+     "rk": 12,
      "name": "Willie Rodriguez",
      "pos": "TE",
      "opp": "FLA",
@@ -2835,7 +2835,7 @@
      "avg": 45.0,
      "proj": 50.8,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
     "KSU": {
      "rk": 16,
@@ -2892,9 +2892,9 @@
      "log": "WYO|5227257",
      "kind": "scrim",
      "avg": 71.8,
-     "proj": 92.6,
+     "proj": 92.5,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
     "OHIO": {
      "rk": 18,
@@ -2936,16 +2936,16 @@
      "at": "2026-11-14T19:09Z"
     },
     "AFA": {
-     "rk": 20,
+     "rk": 21,
      "name": "Owen Allen",
      "pos": "RB",
      "opp": "SJSU",
      "log": "AFA|5223119",
      "kind": "scrim",
      "avg": 50.0,
-     "proj": 62.3,
+     "proj": 62.2,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
     "AKR": {
      "rk": 21,
@@ -2971,36 +2971,28 @@
      }
     },
     "UTSA": {
-     "rk": 21,
+     "rk": 22,
      "name": "Will Henderson III",
      "pos": "RB",
      "opp": "UNT",
      "log": "UTSA|5223167",
      "kind": "scrim",
      "avg": 87.6,
-     "proj": 101.4,
+     "proj": 101.2,
      "v": "board",
-     "at": "2026-11-14T19:09Z"
+     "at": "2026-11-14T22:22Z"
     },
-    "WSU": {
-     "rk": 22,
-     "name": "Daniel Blood",
+    "UCF": {
+     "rk": 14,
+     "name": "Josh Derry",
      "pos": "WR",
-     "opp": "CSU",
-     "log": "WSU|5119307",
+     "opp": "ASU",
+     "log": "UCF|5153889",
      "kind": "rec",
-     "avg": 46.0,
-     "proj": 67.4,
+     "avg": 63.4,
+     "proj": 76.5,
      "v": "board",
-     "at": "2026-11-14T19:09Z",
-     "lad": {
-      "fd": [
-       [
-        60.5,
-        -114
-       ]
-      ]
-     }
+     "at": "2026-11-14T22:22Z"
     }
    },
    "printed": {
