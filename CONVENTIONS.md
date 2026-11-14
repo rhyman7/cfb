@@ -229,6 +229,17 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   `printed`. A week holds more picks than the list's length because the list is redrawn as games
   finish and projections move, and each team's pick is taken at its own kickoff; the page's table
   shows the first `BEST_ROWS` (32). A new season starts a new file.
+- **Ladders on Best Overall** (Nov 14, 2026). The value board's feed carries each player's
+  yardage ladders (`R`: per book the main line and the next three alternate overs below it).
+  Under each Best Overall pick the report prints his ladder at DraftKings and FanDuel
+  (`ladder_row`): passing yards for a quarterback, receiving yards for a WR/TE, and **rushing
+  yards for a back**, since the books post no rushing + receiving ladder (`LADDER_STAT`). The
+  record keeps the ladder with the pick (`lad`) and, once graded, his yards on that stat (`ly`).
+  The **Best Overall on the ladder** page (after the record, same packet row) shows the live
+  record by rung (picks, hit rate, break-even rate, flat return on overs; a pick's two books are
+  averaged) next to the fixed backtest table `LADDER_BACKTEST` (Project doc
+  `claude/best-overall-lower-rungs-check-2026-11-14.md`). Ladders for NFL Weeks 8-10 and college
+  Weeks 10-11 were added from the board's prop logs (latest pull before kickoff).
 - When the value board's feed isn't there at build time, Best Overall Matchups prints a
   **Fallback version** note (ranked by defense rank, which has little record of predicting who
   beats his average).
