@@ -205,6 +205,36 @@ def tracker_html(T, league_name, week):
 # (every week from Week 4, NFL 2013-2025 and college 2017-2025; Project doc
 # claude/best-overall-matchups-analysis-2026-11-14.md).
 BEST_BAR = 41
+# The ladder a pick is shown and graded on: the books post no rushing + receiving ladder, so a back's is rushing yards.
+LADDER_STAT = {"pass": ("pass_yds", "Pass yds", ("pYds",)), "scrim": ("rush_yds", "Rush yds", ("rYds",)), "rec": ("rec_yds", "Rec yds", ("recYds",))}
+RUNG_NAMES = ("Main line", "1 rung down", "2 rungs down", "3 rungs down")
+# Backtest of the rebuilt lists on DraftKings/FanDuel closing ladders (Project doc
+# claude/best-overall-lower-rungs-check-2026-11-14.md): per rung (typical price, hit %, needed %, return %,
+# other regulars' return %), then by position (picks, return at the main line, return two rungs down).
+LADDER_BACKTEST = {
+    "nfl": dict(span="2025", n=218, rungs=((-112, 45.6, 52.9, -13.7, -7.9), (-150, 54.6, 60.6, -9.5, -8.0), (-264, 67.1, 73.0, -8.1, -5.4), (-437, 76.0, 81.9, -7.2, -4.2)),
+                pos=(("QB", 6, 57.6, 22.6), ("RB", 91, -14.8, -14.3), ("WR", 51, -5.3, -2.8), ("TE", 70, -24.3, -6.7))),
+    "cfb": dict(span="2024–2025", n=133, rungs=((-112, 53.4, 52.9, 0.9, -13.1), (-144, 55.8, 59.0, -6.1, -11.2), (-220, 64.8, 69.1, -6.6, -9.7), (-340, 76.5, 77.6, -1.7, -8.5)),
+                pos=(("QB", 16, 41.5, 11.5), ("RB", 68, -8.3, -10.2), ("WR", 29, -2.2, -3.7), ("TE", 20, 3.9, -10.2))),
+}
+
+
+def odds_txt(p):
+    return f'{"+" if p > 0 else MINUS}{abs(int(p))}'
+
+
+def dec_odds(p):
+    return 1 + p / 100 if p > 0 else 1 + 100 / (-p)
+
+
+def ladder_row(c):
+    """The row under a Best Overall pick: his ladder at each book, main line first, then the rungs below it."""
+    lad = c.get("lad")
+    if not lad:
+        return ""
+    books = "".join(f'<span class="ladb"><b>{lab}</b> ' + " · ".join(f'{num(l)} <i>{odds_txt(p)}</i>' for l, p in lad[b]) + '</span>'
+                    for b, lab in (("dk", "DK"), ("fd", "FD")) if lad.get(b))
+    return f'<tr class="lad"><td></td><td colspan="4"><span class="ladl">{LADDER_STAT[c["kind"]][1]} ladder</span>{books}</td></tr>'
 BEST_ROWS = 32   # rows of the last week's list that fit the record page
 BEST_YDS = {"pass": ("pYds",), "scrim": ("rYds", "recYds"), "rec": ("recYds",)}
 
@@ -245,6 +275,8 @@ def best_log_update(log, D, top, board, now=None):
             picks[ab] = dict(rk=i, name=c["name"], pos=c["pos"], opp=g[o]["abbr"], log=c["log"], kind=c["kind"],
                              avg=round(sum(gl) / len(gl), 1) if gl and c["kind"] != "pass" else round(c["avg"], 1), proj=round(c["proj"], 1) if board and c.get("proj") else None,
                              v="board" if board else "rank", at=now.strftime("%Y-%m-%dT%H:%MZ"))
+            if c.get("lad"):
+                picks[ab]["lad"] = c["lad"]
     for wk, w in log["weeks"].items():
         for ab, k in w.get("picks", {}).items():
             if k.get("res"):
@@ -257,8 +289,110 @@ def best_log_update(log, D, top, board, now=None):
                 k["res"] = "dnp"
             else:
                 k["y"] = sum(e.get(f, 0) or 0 for f in BEST_YDS[k["kind"]])
+                k["ly"] = sum(e.get(f, 0) or 0 for f in LADDER_STAT[k["kind"]][2])   # the stat his ladder is on
                 k["res"] = "beat" if k["y"] > k["avg"] else "miss"
     return log
+
+
+def ladder_stats(picks):
+    """Per rung 0-3: picks, hit rate, break-even rate and flat-bet return on overs. A pick's books are averaged."""
+    out = []
+    for r in range(4):
+        hit = need = ret = n = 0
+        for k in picks:
+            rows = [(k["ly"] > b[r][0], dec_odds(b[r][1])) for b in (k.get("lad") or {}).values() if len(b) > r and k["ly"] != b[r][0]]
+            if not rows:
+                continue
+            n += 1
+            hit += sum(h for h, d in rows) / len(rows)
+            need += sum(1 / d for h, d in rows) / len(rows)
+            ret += sum((d - 1) if h else -1 for h, d in rows) / len(rows)
+        out.append(dict(n=n, hit=100 * hit / n, need=100 * need / n, ret=100 * ret / n) if n else dict(n=0))
+    return out
+
+
+def best_track_html(log, top, league_name):
+    """How this week's picks did in the earlier weeks they made the list. Only those weeks count: a week
+    he was not on the list is not in his numbers."""
+    frac = lambda h, n: "—" if not n else f'{int(h) if float(h).is_integer() else (str(int(h)) if int(h) else "") + "½"} of {n}'
+    past = {}
+    for wk, w in sorted(log["weeks"].items(), key=lambda kv: int(kv[0])):
+        for k in w.get("picks", {}).values():
+            if k.get("res") in ("beat", "miss"):
+                past.setdefault(k["log"], []).append((int(wk), k))
+    rows, tot = "", dict(n=0, avg=0, pn=0, pb=0, r=[[0, 0] for _ in range(4)])
+    for i, (c, x) in enumerate(top, 1):
+        who = f'<td class="n">{i}</td><td><b>{E(c["name"])}</b> <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
+        ps = past.get(c["log"], [])
+        if not ps:
+            rows += f'<tr>{who}<td colspan="7" class="bo-first">First time on the list this season</td></tr>'
+            continue
+        pj = [k for _, k in ps if k.get("proj")]
+        rung = []
+        for r in range(4):
+            hs = []
+            for _, k in ps:
+                b = [k["ly"] > lad[r][0] for lad in (k.get("lad") or {}).values() if len(lad) > r and "ly" in k and k["ly"] != lad[r][0]]
+                if b:
+                    hs.append(sum(b) / len(b))
+            rung.append((sum(hs), len(hs)))
+            tot["r"][r][0] += sum(hs); tot["r"][r][1] += len(hs)
+        nb, pb = sum(k["res"] == "beat" for _, k in ps), sum(k["y"] > k["proj"] for k in pj)
+        tot["n"] += len(ps); tot["avg"] += nb; tot["pn"] += len(pj); tot["pb"] += pb
+        rows += (f'<tr>{who}<td>{", ".join(str(wk) for wk, _ in ps)}</td><td class="r"><b>{frac(nb, len(ps))}</b></td><td class="r">{frac(pb, len(pj))}</td>'
+                 + "".join(f'<td class="r">{frac(h, n)}</td>' for h, n in rung) + '</tr>')
+    if not tot["n"]:
+        return ""
+    rows += (f'<tr class="bo-tot"><td></td><td><b>All of this week\'s picks</b></td><td></td><td class="r"><b>{frac(tot["avg"], tot["n"])}</b></td><td class="r"><b>{frac(tot["pb"], tot["pn"])}</b></td>'
+             + "".join(f'<td class="r"><b>{frac(round(h * 2) / 2, n)}</b></td>' for h, n in tot["r"]) + '</tr>')
+    return f'''<section class="tdsec bo" id="besttrack">
+  <div class="kicker">{league_name} · Best Overall Matchups</div>
+  <h1 class="h1s">How this week's picks did when they made the list</h1>
+  <p class="lede">Each player's record in the earlier weeks he was on this list, and only those weeks: against his own average going in, against the value board's projection, and as an over at the main line and one to three rungs below it.</p>
+  <table class="tdt bo-tr{" bo-long" if len(top) > 16 else ""}"><thead><tr><th></th><th>Player</th><th>Weeks listed</th><th class="r">Beat his average</th><th class="r">Beat the projection</th><th class="r">Over main line</th><th class="r">1 rung down</th><th class="r">2 rungs down</th><th class="r">3 rungs down</th></tr></thead><tbody>{rows}</tbody></table>
+  <p class="tk-note">Graded on his main yardage stat (passing for quarterbacks, rushing + receiving for backs, receiving for wide receivers and tight ends) for the average and the projection, and on his ladder stat for the rungs (a back's is rushing yards). A half is a rung he cleared at one book and not the other. A dash means no ladder was posted for him that week. A few weeks is not a record: read these as a log, not a rate.</p>
+</section>'''
+
+
+def best_ladder_html(log, league, league_name):
+    """Best Overall on the ladder: the live record by rung, and the backtest it should be read against."""
+    pct = lambda x: f"{x:.1f}%"
+    sg = lambda x: f'{"+" if x >= 0 else MINUS}{abs(x):.1f}%'
+    graded = [k for w in log["weeks"].values() for k in w.get("picks", {}).values() if k.get("res") in ("beat", "miss") and k.get("lad") and "ly" in k]
+    wks = sorted(int(wk) for wk, w in log["weeks"].items() if any(k.get("res") in ("beat", "miss") and k.get("lad") and "ly" in k for k in w.get("picks", {}).values()))
+    if graded:
+        st = ladder_stats(graded)
+        live = "".join(f'<tr><td><b>{RUNG_NAMES[r]}</b></td><td class="r">{v["n"]}</td><td class="r">{pct(v["hit"])}</td><td class="r">{pct(v["need"])}</td><td class="r"><b>{sg(v["ret"])}</b></td></tr>'
+                       for r, v in enumerate(st) if v["n"])
+        bypos = ""
+        for pos in ("QB", "RB", "WR", "TE"):
+            ps = ladder_stats([k for k in graded if (k["pos"] if k["pos"] != "FB" else "RB") == pos])
+            if ps[0]["n"]:
+                bypos += (f'<tr><td><b>{pos}</b></td><td class="r">{ps[0]["n"]}</td><td class="r">{pct(ps[0]["hit"])}</td><td class="r">{sg(ps[0]["ret"])}</td>'
+                          f'<td class="r">{pct(ps[2]["hit"]) if ps[2]["n"] else "—"}</td><td class="r">{sg(ps[2]["ret"]) if ps[2]["n"] else "—"}</td></tr>')
+        live_html = (f'<table class="tdt bo-l"><thead><tr><th>Rung</th><th class="r">Picks</th><th class="r">Hit</th><th class="r">Needed</th><th class="r">Return</th></tr></thead><tbody>{live}</tbody></table>'
+                     f'<table class="tdt bo-l"><thead><tr><th>Position</th><th class="r">Picks</th><th class="r">Main: hit</th><th class="r">Return</th><th class="r">2 down: hit</th><th class="r">Return</th></tr></thead><tbody>{bypos}</tbody></table>'
+                     f'<p class="tk-note">Week{"s" if len(wks) > 1 else ""} {wks[0]}{"–" + str(wks[-1]) if len(wks) > 1 else ""}: picks that had a ladder at DraftKings or FanDuel when they were logged. With this few picks the returns swing widely from week to week.</p>')
+    else:
+        live_html = '<p class="tk-note">No graded picks with a ladder yet. Each pick\'s ladder is saved when the list is built and graded once his game is in the data.</p>'
+    T = LADDER_BACKTEST[league]
+    price = lambda p: f'{"+" if p > 0 else MINUS}{abs(p)}'
+    bt = "".join(f'<tr><td><b>{RUNG_NAMES[r]}</b></td><td class="r">{price(a)}</td><td class="r">{pct(h)}</td><td class="r">{pct(nd)}</td><td class="r"><b>{sg(rt)}</b></td><td class="r">{sg(o)}</td></tr>'
+                 for r, (a, h, nd, rt, o) in enumerate(T["rungs"]))
+    bp = "".join(f'<tr><td><b>{pos}</b></td><td class="r">{n}</td><td class="r">{sg(m)}</td><td class="r">{sg(t2)}</td></tr>' for pos, n, m, t2 in T["pos"])
+    return f'''<section class="tdsec tk bo" id="bestladder">
+  <div class="kicker">{league_name} · Best Overall on the ladder</div>
+  <h1 class="h1s">Lower rungs win more often, not more money</h1>
+  <p class="lede">How Best Overall picks do as overs at the main line and one to three rungs below it at DraftKings and FanDuel. "Needed" is the break-even rate at the posted prices; return is a flat bet on every over.</p>
+  <div class="tk-grid">
+    <div><div class="tk-sec">This season, as logged</div>{live_html}</div>
+    <div><div class="tk-sec">Backtest · {T["span"]} closing ladders · {T["n"]} picks</div>
+      <table class="tdt bo-l"><thead><tr><th>Rung</th><th class="r">Price</th><th class="r">Hit</th><th class="r">Needed</th><th class="r">Return</th><th class="r">Other regulars</th></tr></thead><tbody>{bt}</tbody></table>
+      <table class="tdt bo-l"><thead><tr><th>Position</th><th class="r">Picks</th><th class="r">Return, main line</th><th class="r">Return, 2 down</th></tr></thead><tbody>{bp}</tbody></table>
+      <p class="tk-note">At every rung the price moves at least as far as the hit rate. Quarterbacks are the only winning group, on very few picks. A back is graded on his rushing-yards ladder: the books post none for rushing + receiving, which is what the list picks him on. Closing prices; a player's two books are averaged.</p>
+    </div>
+  </div>
+</section>'''
 
 
 def best_record_html(log, league_name, week):
@@ -601,6 +735,7 @@ class Report:
             if self.F is not None:   # the value board's projection against his season average
                 bp = self.F.get(f"{ab}|{vb_norm(p['name'])}")
                 proj = sum((bp or {}).get("p", {}).get(x, 0) for x in stat)
+                c["lad"] = ((bp or {}).get("R") or {}).get(LADDER_STAT[c["kind"]][0])   # DK/FD main line and the next rungs down
                 if not bp or proj <= 0 or avg <= 0:
                     continue   # the board doesn't project him (not playing, or not this role)
                 lift = proj / avg - 1
@@ -1130,9 +1265,11 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
         if len(top) == TOPN:
             break
     top_rows = "".join(
-        f'<tr><td class="n">{i}</td><td><b>{E(c["name"])}</b>{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
+        f'<tr{" class=haslad" if c.get("lad") else ""}><td class="n">{i}</td><td><b>{E(c["name"])}</b>{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
         f'<td><a href="#g{E(x["g"]["id"])}">{E(gtitle(x["g"]))}</a></td><td>{E(c["good"].split("; ", 1)[0])}</td><td>{E(c.get("mx") or c["good"].split("; ", 1)[1])}</td></tr>'
+        + ladder_row(c)
         for i, (c, x) in enumerate(top, 1))
+    any_lad = any(c.get("lad") for c, x in top)
 
     best_log = best_log_update(load_best_log(root, D.league, d.get("season")), D, top, R.F is not None)
     (Path(root) / "data" / "best_overall.json").write_text(json.dumps(best_log, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -1170,7 +1307,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     best_html = f'''<section class="tdsec" id="best">
   <div class="kicker">{league_name} Week {D.week} · {d.get("season", "")}</div>
   <h1 class="h1s">Best Overall Matchups</h1>
-  <p class="lede">The strongest good spots across all {NG} games, ranked by production times {"how far the value board projects him above his season average" if R.F is not None else "how soft the opposing defense is at his position"}. One player per team, and only players who have played nearly every game.</p>
+  <p class="lede">The strongest good spots across all {NG} games, ranked by production times {"how far the value board projects him above his season average" if R.F is not None else "how soft the opposing defense is at his position"}. One player per team, and only players who have played nearly every game.{" Under each player is his ladder at DraftKings and FanDuel: the main line, then the next three rungs down, with the price on the over." if any_lad else ""}</p>
   {fb_note}
   <table class="tdt"><thead><tr><th></th><th>Player</th><th>Game</th><th>Production</th><th>Matchup</th></tr></thead><tbody>{top_rows}</tbody></table>
 </section>'''
@@ -1244,7 +1381,9 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 {index_html}
 {"".join(cards)}
 {best_html}
+{best_track_html(best_log, top, league_name)}
 {best_record_html(best_log, league_name, D.week)}
+{best_ladder_html(best_log, D.league, league_name)}
 {td_html}
 {tracker_html(tracker, league_name, D.week) if tracker else ""}
 {floors_html}
