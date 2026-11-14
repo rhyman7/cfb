@@ -156,3 +156,14 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 .cw { color: #17603a; }
 .cl { color: #94321f; }
 .bynote { margin-top: 9pt; font-size: 7.8pt; color: #6a6f78; }
+/* Best Overall record (after Best Overall Matchups) */
+.bo .tk-grid { grid-template-columns: 1.25fr 1fr; }
+.bo-t { margin-top: 0; font-size: 8.8pt; }
+.bo-t td { padding: 2.9pt 8pt 2.9pt 0; }
+.bo-t tr.beat td { background: #f3faf5; }
+.bo-res { font-size: 7.2pt; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #8d9199; white-space: nowrap; }
+.bo-t tr.beat .bo-res { color: #17603a; }
+.bo-dots { gap: 2.5pt; flex-wrap: wrap; }
+.bo-dots i { width: 7pt; height: 7pt; border-width: 1pt; }
+.bo-dots i.na { border-style: dashed; }
+.bo-fb { max-width: 8.6in; font-size: 9.2pt; }
