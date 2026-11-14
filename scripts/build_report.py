@@ -488,6 +488,12 @@ class Report:
             p["ctd"] = sum(x.get("recTd", 0) for x in logs)
             p["car"] = sum(x.get("car", 0) for x in logs) / max(1, len(logs))
             p["recg"] = sum(x.get("rec", 0) for x in logs) / max(1, len(logs))
+            # the receiving table lists only the team's top receivers by yards, so most backs aren't in it:
+            # take a back's catches and receiving yards from his own game log (Nov 14, 2026). Without this
+            # his "scrimmage yds/G" was rushing only while the value board's projection counted both.
+            if p["pos"] in ("RB", "FB") and "rushing" in p and "receiving" not in p and logs:
+                p["receiving"] = dict(player=p["name"], pos=p["pos"], log=p["log"], rec=round(p["recg"], 2), fromlog=True,
+                                      ydsG=round(sum(x.get("recYds", 0) for x in logs) / len(logs), 1), td=round(p["ctd"] / len(logs), 2))
         return P, len(tg_)
 
     def candidates(self, g, side):

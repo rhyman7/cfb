@@ -226,6 +226,11 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - When the value board's feed isn't there at build time, Best Overall Matchups prints a
   **Fallback version** note (ranked by defense rank, which has little record of predicting who
   beats his average).
+- **A back's receiving comes from his game log when he isn't in the receiving table** (Nov 14, 2026).
+  The dashboard's receiving table lists only each team's top seven by yards, so most backs aren't
+  in it. `build_report.py`'s `roster()` fills in his catches and receiving yards per game from his
+  log, so "scrimmage yds/G" (and the catches part of his production) counts both, as the value
+  board's projection does. Before this a back's lift was overstated by his receiving yards.
 - The **Weekly Matchup Report** is rule-based and built from `data/data.json` plus the injury
   tags in `data/injuries.json` (good and tough spots per game, Best Overall Matchups, Most Likely
   to Score a TD). Players listed out, doubtful, IR, PUP or suspended are left out of the picks and
