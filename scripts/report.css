@@ -170,3 +170,6 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 /* a long list (college, or an NFL week whose list changed between kickoffs) is set tighter so the page stays one page */
 .bo-long { font-size: 8.2pt; }
 .bo-long td { padding: 1.7pt 8pt 1.7pt 0; }
+.bo-xl { font-size: 7.4pt; }
+.bo-xl td { padding: 0.9pt 8pt 0.9pt 0; }
+.bo-xl .bo-res { font-size: 6.4pt; }
