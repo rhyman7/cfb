@@ -996,7 +996,7 @@
   "11": {
    "picks": {
     "NMSU": {
-     "rk": 1,
+     "rk": 4,
      "name": "James Jones",
      "pos": "RB",
      "opp": "MOST",
@@ -1005,10 +1005,10 @@
      "avg": 110.9,
      "proj": 129.9,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "UNT": {
-     "rk": 2,
+     "rk": 1,
      "name": "Jahiem White",
      "pos": "RB",
      "opp": "UTSA",
@@ -1017,10 +1017,10 @@
      "avg": 165.6,
      "proj": 185.7,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "KU": {
-     "rk": 3,
+     "rk": 2,
      "name": "Isaiah Marshall",
      "pos": "QB",
      "opp": "WVU",
@@ -1029,7 +1029,7 @@
      "avg": 214.5,
      "proj": 274.3,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "USF": {
      "rk": 4,
@@ -1045,7 +1045,7 @@
      "res": "dnp"
     },
     "ISU": {
-     "rk": 4,
+     "rk": 3,
      "name": "Aiden Flora",
      "pos": "RB",
      "opp": "CIN",
@@ -1054,7 +1054,7 @@
      "avg": 135.4,
      "proj": 158.5,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "WMU": {
      "rk": 5,
@@ -1080,10 +1080,10 @@
      "avg": 68.9,
      "proj": 84.8,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "UNM": {
-     "rk": 6,
+     "rk": 8,
      "name": "Scottre Humphrey",
      "pos": "RB",
      "opp": "UNLV",
@@ -1092,10 +1092,10 @@
      "avg": 74.0,
      "proj": 90.9,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "UTSA": {
-     "rk": 7,
+     "rk": 21,
      "name": "Will Henderson III",
      "pos": "RB",
      "opp": "UNT",
@@ -1104,10 +1104,10 @@
      "avg": 87.6,
      "proj": 101.4,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "KENN": {
-     "rk": 8,
+     "rk": 6,
      "name": "Boogie Woods III",
      "pos": "RB",
      "opp": "SHSU",
@@ -1116,10 +1116,10 @@
      "avg": 63.4,
      "proj": 101.3,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "CAL": {
-     "rk": 10,
+     "rk": 9,
      "name": "Chase Hendricks",
      "pos": "WR",
      "opp": "UVA",
@@ -1128,7 +1128,7 @@
      "avg": 62.8,
      "proj": 74.3,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "PSU": {
      "rk": 11,
@@ -1140,7 +1140,7 @@
      "avg": 33.3,
      "proj": 41.7,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "MINN": {
      "rk": 12,
@@ -1152,7 +1152,7 @@
      "avg": 56.0,
      "proj": 70.7,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "STAN": {
      "rk": 15,
@@ -1164,7 +1164,7 @@
      "avg": 108.3,
      "proj": 119.9,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "UK": {
      "rk": 13,
@@ -1176,7 +1176,7 @@
      "avg": 45.0,
      "proj": 50.8,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "MOST": {
      "rk": 14,
@@ -1188,10 +1188,10 @@
      "avg": 61.4,
      "proj": 72.8,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "SYR": {
-     "rk": 9,
+     "rk": 7,
      "name": "Ahmad Miller",
      "pos": "RB",
      "opp": "NCSU",
@@ -1200,10 +1200,10 @@
      "avg": 68.4,
      "proj": 86.9,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "WKU": {
-     "rk": 16,
+     "rk": 10,
      "name": "Ajay Allen",
      "pos": "RB",
      "opp": "JVST",
@@ -1212,10 +1212,10 @@
      "avg": 71.3,
      "proj": 86.3,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "KSU": {
-     "rk": 17,
+     "rk": 16,
      "name": "Jaron Tibbs",
      "pos": "WR",
      "opp": "TCU",
@@ -1224,7 +1224,7 @@
      "avg": 46.8,
      "proj": 59.6,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "OHIO": {
      "rk": 18,
@@ -1241,7 +1241,7 @@
      "res": "beat"
     },
     "WYO": {
-     "rk": 18,
+     "rk": 17,
      "name": "Markell Holman",
      "pos": "RB",
      "opp": "UTEP",
@@ -1250,10 +1250,10 @@
      "avg": 71.8,
      "proj": 92.7,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "ARST": {
-     "rk": 19,
+     "rk": 18,
      "name": "Chauncy Cobb",
      "pos": "WR",
      "opp": "CCU",
@@ -1262,22 +1262,10 @@
      "avg": 49.2,
      "proj": 62.7,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
-    },
-    "TROY": {
-     "rk": 20,
-     "name": "Gavin Griffin",
-     "pos": "RB",
-     "opp": "USA",
-     "log": "TROY|5388754",
-     "kind": "scrim",
-     "avg": 58.6,
-     "proj": 67.4,
-     "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
     "TXST": {
-     "rk": 21,
+     "rk": 19,
      "name": "Chris Dawn Jr.",
      "pos": "WR",
      "opp": "FRES",
@@ -1286,19 +1274,31 @@
      "avg": 57.2,
      "proj": 67.8,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
     },
-    "TULN": {
-     "rk": 22,
-     "name": "Johnnie Daniels",
+    "AFA": {
+     "rk": 20,
+     "name": "Owen Allen",
      "pos": "RB",
-     "opp": "RICE",
-     "log": "TULN|5218820",
+     "opp": "SJSU",
+     "log": "AFA|5223119",
      "kind": "scrim",
-     "avg": 63.0,
-     "proj": 76.6,
+     "avg": 50.0,
+     "proj": 62.2,
      "v": "board",
-     "at": "2026-11-14T16:42Z"
+     "at": "2026-11-14T16:46Z"
+    },
+    "WSU": {
+     "rk": 22,
+     "name": "Daniel Blood",
+     "pos": "WR",
+     "opp": "CSU",
+     "log": "WSU|5119307",
+     "kind": "rec",
+     "avg": 46.0,
+     "proj": 67.4,
+     "v": "board",
+     "at": "2026-11-14T16:46Z"
     }
    }
   }
