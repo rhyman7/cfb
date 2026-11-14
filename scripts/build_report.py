@@ -211,11 +211,18 @@ RUNG_NAMES = ("Main line", "1 rung down", "2 rungs down", "3 rungs down")
 # Backtest of the rebuilt lists on DraftKings/FanDuel closing ladders (Project doc
 # claude/best-overall-lower-rungs-check-2026-11-14.md): per rung (typical price, hit %, needed %, return %,
 # other regulars' return %), then by position (picks, return at the main line, return two rungs down).
+# `boost` (Project doc claude/best-overall-boosts-on-rungs-2026-11-14.md): per rung, the return with a 30% and a
+# 50% profit boost, the boost that brings the return to zero, and the same for other regulars; `pos_be` is that
+# break-even boost by position at the main line and two rungs down. None = profitable with no boost.
 LADDER_BACKTEST = {
     "nfl": dict(span="2025", n=218, rungs=((-112, 45.6, 52.9, -13.7, -7.9), (-150, 54.6, 60.6, -9.5, -8.0), (-264, 67.1, 73.0, -8.1, -5.4), (-437, 76.0, 81.9, -7.2, -4.2)),
-                pos=(("QB", 6, 57.6, 22.6), ("RB", 91, -14.8, -14.3), ("WR", 51, -5.3, -2.8), ("TE", 70, -24.3, -6.7))),
+                pos=(("QB", 6, 57.6, 22.6), ("RB", 91, -14.8, -14.3), ("WR", 51, -5.3, -2.8), ("TE", 70, -24.3, -6.7)),
+                boost=((-1.5, 6.7, 34, 18), (1.2, 8.4, 27, 22), (-0.7, 4.3, 33, 21), (-2.1, 1.2, 43, 23)),
+                pos_be=(("QB", None, None), ("RB", 37, 63), ("WR", 12, 10), ("TE", 68, 27))),
     "cfb": dict(span="2024–2025", n=133, rungs=((-112, 53.4, 52.9, 0.9, -13.1), (-144, 55.8, 59.0, -6.1, -11.2), (-220, 64.8, 69.1, -6.6, -9.7), (-340, 76.5, 77.6, -1.7, -8.5)),
-                pos=(("QB", 16, 41.5, 11.5), ("RB", 68, -8.3, -10.2), ("WR", 29, -2.2, -3.7), ("TE", 20, 3.9, -10.2))),
+                pos=(("QB", 16, 41.5, 11.5), ("RB", 68, -8.3, -10.2), ("WR", 29, -2.2, -3.7), ("TE", 20, 3.9, -10.2)),
+                boost=((15.1, 24.6, None, 32), (5.3, 13.0, 16, 32), (2.0, 7.7, 23, 36), (4.9, 9.3, 8, 44)),
+                pos_be=(("QB", None, None), ("RB", 19, 36), ("WR", 5, 12), ("TE", None, 37))),
 }
 
 
@@ -298,7 +305,7 @@ def ladder_stats(picks):
     """Per rung 0-3: picks, hit rate, break-even rate and flat-bet return on overs. A pick's books are averaged."""
     out = []
     for r in range(4):
-        hit = need = ret = n = 0
+        hit = need = ret = n = prof = loss = 0
         for k in picks:
             rows = [(k["ly"] > b[r][0], dec_odds(b[r][1])) for b in (k.get("lad") or {}).values() if len(b) > r and k["ly"] != b[r][0]]
             if not rows:
@@ -307,7 +314,10 @@ def ladder_stats(picks):
             hit += sum(h for h, d in rows) / len(rows)
             need += sum(1 / d for h, d in rows) / len(rows)
             ret += sum((d - 1) if h else -1 for h, d in rows) / len(rows)
-        out.append(dict(n=n, hit=100 * hit / n, need=100 * need / n, ret=100 * ret / n) if n else dict(n=0))
+            prof += sum((d - 1) for h, d in rows if h) / len(rows)   # a profit boost multiplies this
+            loss += sum(1 for h, d in rows if not h) / len(rows)
+        out.append(dict(n=n, hit=100 * hit / n, need=100 * need / n, ret=100 * ret / n, b30=100 * (prof * 1.3 - loss) / n, b50=100 * (prof * 1.5 - loss) / n,
+                        be=(100 * (loss / prof - 1) if prof > 0 else float("inf"))) if n else dict(n=0))
     return out
 
 
@@ -358,12 +368,15 @@ def best_ladder_html(log, league, league_name):
     """Best Overall on the ladder: the live record by rung, and the backtest it should be read against."""
     pct = lambda x: f"{x:.1f}%"
     sg = lambda x: f'{"+" if x >= 0 else MINUS}{abs(x):.1f}%'
+    be = lambda x: "None" if x is None or x <= 0 else "No wins yet" if x == float("inf") else f"{x:.0f}%"
     graded = [k for w in log["weeks"].values() for k in w.get("picks", {}).values() if k.get("res") in ("beat", "miss") and k.get("lad") and "ly" in k]
     wks = sorted(int(wk) for wk, w in log["weeks"].items() if any(k.get("res") in ("beat", "miss") and k.get("lad") and "ly" in k for k in w.get("picks", {}).values()))
     if graded:
         st = ladder_stats(graded)
         live = "".join(f'<tr><td><b>{RUNG_NAMES[r]}</b></td><td class="r">{v["n"]}</td><td class="r">{pct(v["hit"])}</td><td class="r">{pct(v["need"])}</td><td class="r"><b>{sg(v["ret"])}</b></td></tr>'
                        for r, v in enumerate(st) if v["n"])
+        liveb = "".join(f'<tr><td><b>{RUNG_NAMES[r]}</b></td><td class="r">{sg(v["b30"])}</td><td class="r">{sg(v["b50"])}</td><td class="r"><b>{be(v["be"])}</b></td></tr>'
+                        for r, v in enumerate(st) if v["n"])
         bypos = ""
         for pos in ("QB", "RB", "WR", "TE"):
             ps = ladder_stats([k for k in graded if (k["pos"] if k["pos"] != "FB" else "RB") == pos])
@@ -371,6 +384,7 @@ def best_ladder_html(log, league, league_name):
                 bypos += (f'<tr><td><b>{pos}</b></td><td class="r">{ps[0]["n"]}</td><td class="r">{pct(ps[0]["hit"])}</td><td class="r">{sg(ps[0]["ret"])}</td>'
                           f'<td class="r">{pct(ps[2]["hit"]) if ps[2]["n"] else "—"}</td><td class="r">{sg(ps[2]["ret"]) if ps[2]["n"] else "—"}</td></tr>')
         live_html = (f'<table class="tdt bo-l"><thead><tr><th>Rung</th><th class="r">Picks</th><th class="r">Hit</th><th class="r">Needed</th><th class="r">Return</th></tr></thead><tbody>{live}</tbody></table>'
+                     f'<table class="tdt bo-l"><thead><tr><th>With a profit boost</th><th class="r">30% boost</th><th class="r">50% boost</th><th class="r">Boost to break even</th></tr></thead><tbody>{liveb}</tbody></table>'
                      f'<table class="tdt bo-l"><thead><tr><th>Position</th><th class="r">Picks</th><th class="r">Main: hit</th><th class="r">Return</th><th class="r">2 down: hit</th><th class="r">Return</th></tr></thead><tbody>{bypos}</tbody></table>'
                      f'<p class="tk-note">Week{"s" if len(wks) > 1 else ""} {wks[0]}{"–" + str(wks[-1]) if len(wks) > 1 else ""}: picks that had a ladder at DraftKings or FanDuel when they were logged. With this few picks the returns swing widely from week to week.</p>')
     else:
@@ -379,17 +393,20 @@ def best_ladder_html(log, league, league_name):
     price = lambda p: f'{"+" if p > 0 else MINUS}{abs(p)}'
     bt = "".join(f'<tr><td><b>{RUNG_NAMES[r]}</b></td><td class="r">{price(a)}</td><td class="r">{pct(h)}</td><td class="r">{pct(nd)}</td><td class="r"><b>{sg(rt)}</b></td><td class="r">{sg(o)}</td></tr>'
                  for r, (a, h, nd, rt, o) in enumerate(T["rungs"]))
-    bp = "".join(f'<tr><td><b>{pos}</b></td><td class="r">{n}</td><td class="r">{sg(m)}</td><td class="r">{sg(t2)}</td></tr>' for pos, n, m, t2 in T["pos"])
+    pbe = {pos: (m, t2) for pos, m, t2 in T["pos_be"]}
+    bp = "".join(f'<tr><td><b>{pos}</b></td><td class="r">{n}</td><td class="r">{sg(m)}</td><td class="r">{sg(t2)}</td><td class="r">{be(pbe[pos][0])}</td><td class="r">{be(pbe[pos][1])}</td></tr>' for pos, n, m, t2 in T["pos"])
+    bb = "".join(f'<tr><td><b>{RUNG_NAMES[r]}</b></td><td class="r">{sg(a)}</td><td class="r">{sg(b)}</td><td class="r"><b>{be(c)}</b></td><td class="r">{be(o)}</td></tr>' for r, (a, b, c, o) in enumerate(T["boost"]))
     return f'''<section class="tdsec tk bo" id="bestladder">
   <div class="kicker">{league_name} · Best Overall on the ladder</div>
   <h1 class="h1s">Lower rungs win more often, not more money</h1>
-  <p class="lede">How Best Overall picks do as overs at the main line and one to three rungs below it at DraftKings and FanDuel. "Needed" is the break-even rate at the posted prices; return is a flat bet on every over.</p>
+  <p class="lede">How Best Overall picks do as overs at the main line and one to three rungs below it at DraftKings and FanDuel. "Needed" is the break-even rate at the posted prices; return is a flat bet on every over, then the same bets with a profit boost.</p>
   <div class="tk-grid">
     <div><div class="tk-sec">This season, as logged</div>{live_html}</div>
     <div><div class="tk-sec">Backtest · {T["span"]} closing ladders · {T["n"]} picks</div>
       <table class="tdt bo-l"><thead><tr><th>Rung</th><th class="r">Price</th><th class="r">Hit</th><th class="r">Needed</th><th class="r">Return</th><th class="r">Other regulars</th></tr></thead><tbody>{bt}</tbody></table>
-      <table class="tdt bo-l"><thead><tr><th>Position</th><th class="r">Picks</th><th class="r">Return, main line</th><th class="r">Return, 2 down</th></tr></thead><tbody>{bp}</tbody></table>
-      <p class="tk-note">At every rung the price moves at least as far as the hit rate. Quarterbacks are the only winning group, on very few picks. A back is graded on his rushing-yards ladder: the books post none for rushing + receiving, which is what the list picks him on. Closing prices; a player's two books are averaged.</p>
+      <table class="tdt bo-l"><thead><tr><th>With a profit boost</th><th class="r">30% boost</th><th class="r">50% boost</th><th class="r">Boost to break even</th><th class="r">Other regulars</th></tr></thead><tbody>{bb}</tbody></table>
+      <table class="tdt bo-l"><thead><tr><th>Position</th><th class="r">Picks</th><th class="r">Return, main</th><th class="r">Return, 2 down</th><th class="r">Break-even boost, main</th><th class="r">2 down</th></tr></thead><tbody>{bp}</tbody></table>
+      <p class="tk-note">At every rung the price moves at least as far as the hit rate. Quarterbacks are the only winning group, on very few picks. A back is graded on his rushing-yards ladder: the books post none for rushing + receiving, which is what the list picks him on. Closing prices; a player's two books are averaged. <b>Boosts:</b> a profit boost multiplies the profit on a win, so it does the most at the main line and the least on the low rungs, where there is little profit to multiply. "Boost to break even" is the size at which a flat bet on every pick returns zero ("None" means the bets were ahead with no boost); a boost's minimum-odds rule or stake cap is not counted.</p>
     </div>
   </div>
 </section>'''
