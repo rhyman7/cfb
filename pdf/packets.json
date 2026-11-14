@@ -4,7 +4,7 @@
  "league": "cfb",
  "title": "CFB Week 11 Matchup Report",
  "dataGeneratedAt": "2026-11-14T14:51:18.774236+00:00",
- "generatedAt": "2026-11-14T16:37:20Z",
+ "generatedAt": "2026-11-14T16:43:23Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -21,17 +21,16 @@
   "best": [
    57,
    58,
-   59,
-   60
+   59
   ],
   "td": [
+   60,
    61,
-   62,
-   63
+   62
   ],
   "floors": [
-   64,
-   65
+   63,
+   64
   ]
  },
  "games": [
