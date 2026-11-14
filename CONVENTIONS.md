@@ -240,6 +240,12 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   averaged) next to the fixed backtest table `LADDER_BACKTEST` (Project doc
   `claude/best-overall-lower-rungs-check-2026-11-14.md`). Ladders for NFL Weeks 8-10 and college
   Weeks 10-11 were added from the board's prop logs (latest pull before kickoff).
+- **How this week's picks did when they made the list** (the page right after the list, same
+  packet row; Nov 14, 2026). One row per pick on this week's list, from `data/best_overall.json`:
+  the weeks he was listed, and in **those weeks only** how often he beat his average, beat the
+  board's projection, and went over the main line and each of the three rungs below it. A week he
+  was not on the list never counts (Ryan's rule). A player with no graded listing reads "First
+  time on the list this season".
 - When the value board's feed isn't there at build time, Best Overall Matchups prints a
   **Fallback version** note (ranked by defense rank, which has little record of predicting who
   beats his average).

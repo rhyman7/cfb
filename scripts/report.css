@@ -182,4 +182,9 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 .ladb i { font-style: normal; color: #8d9199; }
 .bo-l { margin-top: 0; margin-bottom: 9pt; font-size: 9pt; }
 .bo-l td { padding: 3.2pt 8pt 3.2pt 0; }
-
+/* How this week's picks did when they made the list */
+.bo-tr td { padding: 3.4pt 10pt 3.4pt 0; }
+.bo-tr th.r, .bo-tr td.r { text-align: right; }
+.bo-first { color: #8d9199; font-style: italic; }
+.bo-tr tr.bo-tot td { border-top: 1.2pt solid #14161a; background: #f6f7f8; }
+.bo-tr.bo-long td { padding: 1.9pt 10pt 1.9pt 0; }

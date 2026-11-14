@@ -311,6 +311,49 @@ def ladder_stats(picks):
     return out
 
 
+def best_track_html(log, top, league_name):
+    """How this week's picks did in the earlier weeks they made the list. Only those weeks count: a week
+    he was not on the list is not in his numbers."""
+    frac = lambda h, n: "—" if not n else f'{int(h) if float(h).is_integer() else (str(int(h)) if int(h) else "") + "½"} of {n}'
+    past = {}
+    for wk, w in sorted(log["weeks"].items(), key=lambda kv: int(kv[0])):
+        for k in w.get("picks", {}).values():
+            if k.get("res") in ("beat", "miss"):
+                past.setdefault(k["log"], []).append((int(wk), k))
+    rows, tot = "", dict(n=0, avg=0, pn=0, pb=0, r=[[0, 0] for _ in range(4)])
+    for i, (c, x) in enumerate(top, 1):
+        who = f'<td class="n">{i}</td><td><b>{E(c["name"])}</b> <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
+        ps = past.get(c["log"], [])
+        if not ps:
+            rows += f'<tr>{who}<td colspan="7" class="bo-first">First time on the list this season</td></tr>'
+            continue
+        pj = [k for _, k in ps if k.get("proj")]
+        rung = []
+        for r in range(4):
+            hs = []
+            for _, k in ps:
+                b = [k["ly"] > lad[r][0] for lad in (k.get("lad") or {}).values() if len(lad) > r and "ly" in k and k["ly"] != lad[r][0]]
+                if b:
+                    hs.append(sum(b) / len(b))
+            rung.append((sum(hs), len(hs)))
+            tot["r"][r][0] += sum(hs); tot["r"][r][1] += len(hs)
+        nb, pb = sum(k["res"] == "beat" for _, k in ps), sum(k["y"] > k["proj"] for k in pj)
+        tot["n"] += len(ps); tot["avg"] += nb; tot["pn"] += len(pj); tot["pb"] += pb
+        rows += (f'<tr>{who}<td>{", ".join(str(wk) for wk, _ in ps)}</td><td class="r"><b>{frac(nb, len(ps))}</b></td><td class="r">{frac(pb, len(pj))}</td>'
+                 + "".join(f'<td class="r">{frac(h, n)}</td>' for h, n in rung) + '</tr>')
+    if not tot["n"]:
+        return ""
+    rows += (f'<tr class="bo-tot"><td></td><td><b>All of this week\'s picks</b></td><td></td><td class="r"><b>{frac(tot["avg"], tot["n"])}</b></td><td class="r"><b>{frac(tot["pb"], tot["pn"])}</b></td>'
+             + "".join(f'<td class="r"><b>{frac(round(h * 2) / 2, n)}</b></td>' for h, n in tot["r"]) + '</tr>')
+    return f'''<section class="tdsec bo" id="besttrack">
+  <div class="kicker">{league_name} · Best Overall Matchups</div>
+  <h1 class="h1s">How this week's picks did when they made the list</h1>
+  <p class="lede">Each player's record in the earlier weeks he was on this list, and only those weeks: against his own average going in, against the value board's projection, and as an over at the main line and one to three rungs below it.</p>
+  <table class="tdt bo-tr{" bo-long" if len(top) > 16 else ""}"><thead><tr><th></th><th>Player</th><th>Weeks listed</th><th class="r">Beat his average</th><th class="r">Beat the projection</th><th class="r">Over main line</th><th class="r">1 rung down</th><th class="r">2 rungs down</th><th class="r">3 rungs down</th></tr></thead><tbody>{rows}</tbody></table>
+  <p class="tk-note">Graded on his main yardage stat (passing for quarterbacks, rushing + receiving for backs, receiving for wide receivers and tight ends) for the average and the projection, and on his ladder stat for the rungs (a back's is rushing yards). A half is a rung he cleared at one book and not the other. A dash means no ladder was posted for him that week. A few weeks is not a record: read these as a log, not a rate.</p>
+</section>'''
+
+
 def best_ladder_html(log, league, league_name):
     """Best Overall on the ladder: the live record by rung, and the backtest it should be read against."""
     pct = lambda x: f"{x:.1f}%"
@@ -1338,6 +1381,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 {index_html}
 {"".join(cards)}
 {best_html}
+{best_track_html(best_log, top, league_name)}
 {best_record_html(best_log, league_name, D.week)}
 {best_ladder_html(best_log, D.league, league_name)}
 {td_html}
