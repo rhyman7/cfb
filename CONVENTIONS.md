@@ -245,7 +245,8 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **Late games read the board's previous-week feed** (Nov 14, 2026). The value board moves on to
   the next week before this week's last game, so `load_feed` tries `docs/feed/<league>.json`, then
   `docs/feed/<league>_prev.json` (the board's last feed for the week it left, written by
-  `nflmodel/dashfeed.py`). Report only: the site's pages still hide the board's numbers for that game.
+  `nflmodel/dashfeed.py`). The site's pages do the same (`loadBoard` in `app.js`), and drop the bets
+  the old feed flagged, since their prices are from the board's last build of that week.
 - The **Weekly Matchup Report** is rule-based and built from `data/data.json` plus the injury
   tags in `data/injuries.json` (good and tough spots per game, Best Overall Matchups, Most Likely
   to Score a TD). Players listed out, doubtful, IR, PUP or suspended are left out of the picks and
