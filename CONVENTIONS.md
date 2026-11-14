@@ -237,6 +237,15 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   in it. `build_report.py`'s `roster()` fills in his catches and receiving yards per game from his
   log, so "scrimmage yds/G" (and the catches part of his production) counts both, as the value
   board's projection does. Before this a back's lift was overstated by his receiving yards.
+- **A quarterback's passing average in the report counts his starts only** (Nov 14, 2026): the
+  games in which he threw at least half his team's passes (`roster()`, `team_att()`). The value
+  board projects a start, so relief appearances overstated a new starter's lift. Shown as
+  "156.3 pass yds/G in 6 starts" when it differs from his games played. Used for the lift and the
+  Best Overall record; the production score still uses the passing table.
+- **Late games read the board's previous-week feed** (Nov 14, 2026). The value board moves on to
+  the next week before this week's last game, so `load_feed` tries `docs/feed/<league>.json`, then
+  `docs/feed/<league>_prev.json` (the board's last feed for the week it left, written by
+  `nflmodel/dashfeed.py`). Report only: the site's pages still hide the board's numbers for that game.
 - The **Weekly Matchup Report** is rule-based and built from `data/data.json` plus the injury
   tags in `data/injuries.json` (good and tough spots per game, Best Overall Matchups, Most Likely
   to Score a TD). Players listed out, doubtful, IR, PUP or suspended are left out of the picks and
