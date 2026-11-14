@@ -187,13 +187,18 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   report buttons). Pressing one puts a checkbox to the left of every game that has a packet
   (all unticked), **Select all** above the list (it ticks the games the filters show) and a
   **Print / Save** button at the bottom left, under the checkboxes. Ticks survive filtering
-  and live redraws. That button opens a dialog listing seven reports, all unticked: the four
-  per-game parts, then the report's three whole-week rankings, **Best Overall Matchups**,
-  **Likeliest TD Scorers** ("Most Likely to Score a TD" in the report, with the TD tracker after it)
-  and **Highest Floors** (Nov 7, 2026), added once at the end.
+  and live redraws. That button opens a dialog listing eight reports, all unticked: the four
+  per-game parts, then the report's four whole-week pages, **Best Overall Matchups**,
+  **Likeliest TD Scorers** ("Most Likely to Score a TD" in the report, with the TD tracker after it),
+  **Highest Floors** (Nov 7, 2026) and **Coming Off a Bye** (Nov 13, 2026), added once at the end.
   **Print / Save** builds the ticked reports for the ticked games; **Print All / Save All**
-  builds all seven. `build_packets.py` records the rankings' report pages in `packets.json`
-  under `slate` (`best`, `td`, `floors`); until a build has written one, its row is disabled.
+  builds all eight (leaving out any whole-week page that isn't in the week's files).
+  `build_packets.py` records those pages in `packets.json` under `slate` (`best`, `td`, `floors`,
+  `bye`), finding each by its heading; until a build has written one, its row is disabled.
+- **Coming Off a Bye** (Nov 13, 2026) is **NFL only**: Ryan decided to leave it off the CFB
+  report. It is built from `data.json`'s `byeTrends` (rhyman7/nfl `scripts/bye_trends.py`). This
+  site's data has no `byeTrends`, so the shared `build_report.py` leaves the page out and
+  `packets.js` doesn't list the row; the CFB dialog shows seven reports as before.
   `build_packets.py` writes `pdf/report.pdf`, `pdf/matchups.pdf`, `pdf/value-board.pdf` and
   `pdf/packets.json` (which pages of each file belong to each game); `packets.js` assembles the
   packet in the browser with pdf-lib, so each week's pages are stored once. The buttons only
