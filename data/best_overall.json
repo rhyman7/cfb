@@ -16,6 +16,7 @@
      "v": "board",
      "at": "2026-10-24T16:00Z",
      "y": 83,
+     "ly": 83,
      "res": "beat"
     },
     "EMU": {
@@ -30,6 +31,7 @@
      "v": "board",
      "at": "2026-10-24T20:00Z",
      "y": 17,
+     "ly": 17,
      "res": "miss"
     },
     "UK": {
@@ -44,6 +46,7 @@
      "v": "board",
      "at": "2026-10-24T23:30Z",
      "y": 67,
+     "ly": 67,
      "res": "beat"
     },
     "NIU": {
@@ -58,21 +61,23 @@
      "v": "board",
      "at": "2026-10-24T19:30Z",
      "y": 63,
+     "ly": 63,
      "res": "miss"
     },
-    "USU": {
+    "ARST": {
      "rk": 3,
-     "name": "Grady Brosterhous",
-     "pos": "QB",
-     "opp": "TXST",
-     "log": "USU|5081197",
-     "kind": "pass",
-     "avg": 152.3,
-     "proj": 204.7,
+     "name": "Chauncy Cobb",
+     "pos": "WR",
+     "opp": "GAST",
+     "log": "ARST|5085496",
+     "kind": "rec",
+     "avg": 51.0,
+     "proj": 65.2,
      "v": "board",
-     "at": "2026-10-24T23:30Z",
-     "y": 206,
-     "res": "beat"
+     "at": "2026-10-24T23:00Z",
+     "y": 25,
+     "ly": 25,
+     "res": "miss"
     },
     "MINN": {
      "rk": 4,
@@ -86,20 +91,7 @@
      "v": "board",
      "at": "2026-10-24T19:30Z",
      "y": 31,
-     "res": "miss"
-    },
-    "ARST": {
-     "rk": 4,
-     "name": "Chauncy Cobb",
-     "pos": "WR",
-     "opp": "GAST",
-     "log": "ARST|5085496",
-     "kind": "rec",
-     "avg": 51.0,
-     "proj": 65.2,
-     "v": "board",
-     "at": "2026-10-24T23:00Z",
-     "y": 25,
+     "ly": 20,
      "res": "miss"
     },
     "ARMY": {
@@ -114,6 +106,7 @@
      "v": "board",
      "at": "2026-10-24T00:30Z",
      "y": 64,
+     "ly": 64,
      "res": "beat"
     },
     "ULM": {
@@ -129,6 +122,21 @@
      "at": "2026-10-24T20:00Z",
      "res": "dnp"
     },
+    "UTSA": {
+     "rk": 5,
+     "name": "David Amador II",
+     "pos": "WR",
+     "opp": "TULN",
+     "log": "UTSA|4917054",
+     "kind": "rec",
+     "avg": 41.1,
+     "proj": 56.8,
+     "v": "board",
+     "at": "2026-10-25T00:00Z",
+     "y": 47,
+     "ly": 47,
+     "res": "beat"
+    },
     "SJSU": {
      "rk": 6,
      "name": "Carson Clark",
@@ -141,21 +149,23 @@
      "v": "board",
      "at": "2026-10-24T21:00Z",
      "y": 42,
+     "ly": 42,
      "res": "miss"
     },
-    "UTSA": {
+    "HOU": {
      "rk": 6,
-     "name": "David Amador II",
+     "name": "Trent Walker",
      "pos": "WR",
-     "opp": "TULN",
-     "log": "UTSA|4917054",
+     "opp": "UTAH",
+     "log": "HOU|4879567",
      "kind": "rec",
-     "avg": 41.1,
-     "proj": 56.8,
+     "avg": 51.7,
+     "proj": 65.4,
      "v": "board",
-     "at": "2026-10-25T00:00Z",
-     "y": 47,
-     "res": "beat"
+     "at": "2026-10-25T02:15Z",
+     "y": 20,
+     "ly": 20,
+     "res": "miss"
     },
     "STAN": {
      "rk": 7,
@@ -169,6 +179,7 @@
      "v": "board",
      "at": "2026-10-24T02:30Z",
      "y": 208,
+     "ly": 150,
      "res": "beat"
     },
     "USM": {
@@ -183,21 +194,23 @@
      "v": "board",
      "at": "2026-10-24T21:00Z",
      "y": 162,
+     "ly": 145,
      "res": "beat"
     },
-    "HOU": {
+    "USU": {
      "rk": 7,
-     "name": "Trent Walker",
-     "pos": "WR",
-     "opp": "UTAH",
-     "log": "HOU|4879567",
-     "kind": "rec",
-     "avg": 51.7,
-     "proj": 65.4,
+     "name": "Grady Brosterhous",
+     "pos": "QB",
+     "opp": "TXST",
+     "log": "USU|5081197",
+     "kind": "pass",
+     "avg": 152.3,
+     "proj": 204.7,
      "v": "board",
-     "at": "2026-10-25T02:15Z",
-     "y": 20,
-     "res": "miss"
+     "at": "2026-10-24T23:30Z",
+     "y": 206,
+     "ly": 206,
+     "res": "beat"
     },
     "KENN": {
      "rk": 8,
@@ -211,10 +224,11 @@
      "v": "board",
      "at": "2026-10-22T23:00Z",
      "y": 59,
+     "ly": 38,
      "res": "beat"
     },
     "BUFF": {
-     "rk": 9,
+     "rk": 8,
      "name": "Clint Walker",
      "pos": "TE",
      "opp": "BGSU",
@@ -225,6 +239,7 @@
      "v": "board",
      "at": "2026-10-24T19:30Z",
      "y": 40,
+     "ly": 40,
      "res": "beat"
     },
     "TULN": {
@@ -239,6 +254,7 @@
      "v": "board",
      "at": "2026-10-25T00:00Z",
      "y": 105,
+     "ly": 104,
      "res": "beat"
     },
     "AFA": {
@@ -253,6 +269,22 @@
      "v": "board",
      "at": "2026-10-24T01:00Z",
      "y": 42,
+     "ly": 42,
+     "res": "miss"
+    },
+    "MSU": {
+     "rk": 10,
+     "name": "Jayden Savoury",
+     "pos": "TE",
+     "opp": "UCLA",
+     "log": "MSU|5214448",
+     "kind": "rec",
+     "avg": 37.3,
+     "proj": 43.5,
+     "v": "board",
+     "at": "2026-10-24T19:30Z",
+     "y": 10,
+     "ly": 10,
      "res": "miss"
     },
     "TEX": {
@@ -267,6 +299,7 @@
      "v": "board",
      "at": "2026-10-24T23:30Z",
      "y": 157,
+     "ly": 157,
      "res": "beat"
     },
     "FIU": {
@@ -281,20 +314,22 @@
      "v": "board",
      "at": "2026-10-20T23:00Z",
      "y": 12,
+     "ly": 12,
      "res": "miss"
     },
-    "MSU": {
+    "BGSU": {
      "rk": 11,
-     "name": "Jayden Savoury",
-     "pos": "TE",
-     "opp": "UCLA",
-     "log": "MSU|5214448",
-     "kind": "rec",
-     "avg": 37.3,
-     "proj": 43.5,
+     "name": "Austyn Dendy",
+     "pos": "RB",
+     "opp": "BUFF",
+     "log": "BGSU|5147347",
+     "kind": "scrim",
+     "avg": 48.4,
+     "proj": 75.2,
      "v": "board",
      "at": "2026-10-24T19:30Z",
-     "y": 10,
+     "y": 42,
+     "ly": 39,
      "res": "miss"
     },
     "TXST": {
@@ -309,24 +344,11 @@
      "v": "board",
      "at": "2026-10-24T23:30Z",
      "y": 48,
-     "res": "miss"
-    },
-    "BGSU": {
-     "rk": 12,
-     "name": "Austyn Dendy",
-     "pos": "RB",
-     "opp": "BUFF",
-     "log": "BGSU|5147347",
-     "kind": "scrim",
-     "avg": 48.4,
-     "proj": 75.2,
-     "v": "board",
-     "at": "2026-10-24T19:30Z",
-     "y": 42,
+     "ly": 48,
      "res": "miss"
     },
     "GAST": {
-     "rk": 13,
+     "rk": 12,
      "name": "Cameran Brown",
      "pos": "QB",
      "opp": "ARST",
@@ -337,6 +359,50 @@
      "v": "board",
      "at": "2026-10-24T23:00Z",
      "y": 65,
+     "ly": 65,
+     "res": "miss"
+    },
+    "RICE": {
+     "rk": 13,
+     "name": "Jacurri Brown",
+     "pos": "QB",
+     "opp": "FAU",
+     "log": "RICE|4685291",
+     "kind": "pass",
+     "avg": 68.3,
+     "proj": 113.1,
+     "v": "board",
+     "at": "2026-10-24T16:00Z",
+     "res": "dnp"
+    },
+    "AKR": {
+     "rk": 13,
+     "name": "Jordan Gant",
+     "pos": "RB",
+     "opp": "KENT",
+     "log": "AKR|5084582",
+     "kind": "scrim",
+     "avg": 81.9,
+     "proj": 97.0,
+     "v": "board",
+     "at": "2026-10-24T17:00Z",
+     "y": 180,
+     "ly": 162,
+     "res": "beat"
+    },
+    "TROY": {
+     "rk": 13,
+     "name": "Gavin Griffin",
+     "pos": "RB",
+     "opp": "ULM",
+     "log": "TROY|5388754",
+     "kind": "scrim",
+     "avg": 65.8,
+     "proj": 78.9,
+     "v": "board",
+     "at": "2026-10-24T20:00Z",
+     "y": 49,
+     "ly": 39,
      "res": "miss"
     },
     "MOST": {
@@ -351,51 +417,11 @@
      "v": "board",
      "at": "2026-10-20T23:00Z",
      "y": 85,
+     "ly": 85,
      "res": "beat"
-    },
-    "RICE": {
-     "rk": 14,
-     "name": "Jacurri Brown",
-     "pos": "QB",
-     "opp": "FAU",
-     "log": "RICE|4685291",
-     "kind": "pass",
-     "avg": 68.3,
-     "proj": 113.1,
-     "v": "board",
-     "at": "2026-10-24T16:00Z",
-     "res": "dnp"
-    },
-    "AKR": {
-     "rk": 14,
-     "name": "Jordan Gant",
-     "pos": "RB",
-     "opp": "KENT",
-     "log": "AKR|5084582",
-     "kind": "scrim",
-     "avg": 81.9,
-     "proj": 97.0,
-     "v": "board",
-     "at": "2026-10-24T17:00Z",
-     "y": 180,
-     "res": "beat"
-    },
-    "TROY": {
-     "rk": 14,
-     "name": "Gavin Griffin",
-     "pos": "RB",
-     "opp": "ULM",
-     "log": "TROY|5388754",
-     "kind": "scrim",
-     "avg": 65.8,
-     "proj": 78.9,
-     "v": "board",
-     "at": "2026-10-24T20:00Z",
-     "y": 49,
-     "res": "miss"
     },
     "NDSU": {
-     "rk": 15,
+     "rk": 14,
      "name": "Myles Mitchell",
      "pos": "RB",
      "opp": "UNM",
@@ -406,6 +432,7 @@
      "v": "board",
      "at": "2026-10-25T02:20Z",
      "y": 34,
+     "ly": 34,
      "res": "miss"
     },
     "BC": {
@@ -420,6 +447,7 @@
      "v": "board",
      "at": "2026-10-24T19:30Z",
      "y": 3,
+     "ly": 3,
      "res": "miss"
     },
     "LT": {
@@ -434,6 +462,7 @@
      "v": "board",
      "at": "2026-10-24T21:00Z",
      "y": 80,
+     "ly": 63,
      "res": "beat"
     },
     "CMU": {
@@ -461,21 +490,23 @@
      "v": "board",
      "at": "2026-10-24T19:45Z",
      "y": 36,
+     "ly": 36,
      "res": "miss"
     },
-    "UNM": {
-     "rk": 18,
-     "name": "Toa Fa'avae",
-     "pos": "QB",
-     "opp": "NDSU",
-     "log": "UNM|5261479",
-     "kind": "pass",
-     "avg": 115.8,
-     "proj": 142.2,
+    "SYR": {
+     "rk": 20,
+     "name": "Ahmad Miller",
+     "pos": "RB",
+     "opp": "UNC",
+     "log": "SYR|5154420",
+     "kind": "scrim",
+     "avg": 49.2,
+     "proj": 56.8,
      "v": "board",
-     "at": "2026-10-25T02:20Z",
-     "y": 92,
-     "res": "miss"
+     "at": "2026-10-24T23:30Z",
+     "y": 138,
+     "ly": 125,
+     "res": "beat"
     },
     "BAY": {
      "rk": 21,
@@ -489,21 +520,38 @@
      "v": "board",
      "at": "2026-10-24T17:00Z",
      "y": 4,
+     "ly": 4,
      "res": "miss"
     },
-    "SYR": {
+    "COLO": {
      "rk": 21,
-     "name": "Ahmad Miller",
+     "name": "JaQuail Smith",
      "pos": "RB",
-     "opp": "UNC",
-     "log": "SYR|5154420",
+     "opp": "OKST",
+     "log": "COLO|5301028",
      "kind": "scrim",
-     "avg": 49.2,
-     "proj": 56.8,
+     "avg": 54.7,
+     "proj": 62.7,
      "v": "board",
-     "at": "2026-10-24T23:30Z",
-     "y": 138,
-     "res": "beat"
+     "at": "2026-10-24T23:00Z",
+     "y": 43,
+     "ly": 39,
+     "res": "miss"
+    },
+    "USA": {
+     "rk": 22,
+     "name": "Keenan Phillips",
+     "pos": "RB",
+     "opp": "MRSH",
+     "log": "USA|5295070",
+     "kind": "scrim",
+     "avg": 81.7,
+     "proj": 96.1,
+     "v": "board",
+     "at": "2026-10-20T23:30Z",
+     "y": 70,
+     "ly": 70,
+     "res": "miss"
     },
     "NMSU": {
      "rk": 22,
@@ -517,6 +565,7 @@
      "v": "board",
      "at": "2026-10-22T00:00Z",
      "y": 178,
+     "ly": 178,
      "res": "beat"
     },
     "RUTG": {
@@ -531,20 +580,22 @@
      "v": "board",
      "at": "2026-10-24T16:00Z",
      "y": 177,
+     "ly": 150,
      "res": "beat"
     },
-    "COLO": {
+    "ISU": {
      "rk": 22,
-     "name": "JaQuail Smith",
-     "pos": "RB",
-     "opp": "OKST",
-     "log": "COLO|5301028",
-     "kind": "scrim",
-     "avg": 54.7,
-     "proj": 62.7,
+     "name": "Jaylen Raynor",
+     "pos": "QB",
+     "opp": "ARIZ",
+     "log": "ISU|5080403",
+     "kind": "pass",
+     "avg": 166.8,
+     "proj": 184.9,
      "v": "board",
-     "at": "2026-10-24T23:00Z",
-     "y": 43,
+     "at": "2026-10-24T23:30Z",
+     "y": 106,
+     "ly": 106,
      "res": "miss"
     }
    },
@@ -902,6 +953,7 @@
      "v": "board",
      "at": "2026-10-29T23:30Z",
      "y": 220,
+     "ly": 193,
      "res": "beat"
     },
     "USM": {
@@ -916,6 +968,7 @@
      "v": "board",
      "at": "2026-10-31T19:30Z",
      "y": 156,
+     "ly": 151,
      "res": "beat"
     },
     "UNLV": {
@@ -930,6 +983,7 @@
      "v": "board",
      "at": "2026-11-01T02:30Z",
      "y": 141,
+     "ly": 114,
      "res": "beat"
     },
     "NIU": {
@@ -944,6 +998,7 @@
      "v": "board",
      "at": "2026-11-01T02:30Z",
      "y": 96,
+     "ly": 96,
      "res": "beat"
     },
     "USF": {
@@ -958,6 +1013,7 @@
      "v": "board",
      "at": "2026-10-31T16:00Z",
      "y": 79,
+     "ly": 60,
      "res": "miss"
     },
     "STAN": {
@@ -972,6 +1028,7 @@
      "v": "board",
      "at": "2026-10-31T19:15Z",
      "y": 120,
+     "ly": 72,
      "res": "beat"
     },
     "WKU": {
@@ -986,6 +1043,7 @@
      "v": "board",
      "at": "2026-10-27T23:00Z",
      "y": 64,
+     "ly": 64,
      "res": "beat"
     },
     "PSU": {
@@ -1000,6 +1058,7 @@
      "v": "board",
      "at": "2026-10-31T20:15Z",
      "y": 45,
+     "ly": 45,
      "res": "beat"
     },
     "MOST": {
@@ -1014,6 +1073,7 @@
      "v": "board",
      "at": "2026-10-28T00:00Z",
      "y": 102,
+     "ly": 102,
      "res": "beat"
     },
     "ARMY": {
@@ -1028,6 +1088,7 @@
      "v": "board",
      "at": "2026-11-01T00:00Z",
      "y": 40,
+     "ly": 40,
      "res": "miss"
     },
     "CAL": {
@@ -1042,6 +1103,7 @@
      "v": "board",
      "at": "2026-10-31T16:00Z",
      "y": 67,
+     "ly": 67,
      "res": "beat"
     },
     "LOU": {
@@ -1056,6 +1118,7 @@
      "v": "board",
      "at": "2026-10-31T19:15Z",
      "y": 172,
+     "ly": 139,
      "res": "beat"
     },
     "MINN": {
@@ -1070,6 +1133,22 @@
      "v": "board",
      "at": "2026-10-31T19:30Z",
      "y": 44,
+     "ly": 43,
+     "res": "miss"
+    },
+    "GT": {
+     "rk": 10,
+     "name": "Kevin Roche Jr.",
+     "pos": "TE",
+     "opp": "PITT",
+     "log": "GT|5215629",
+     "kind": "rec",
+     "avg": 39.0,
+     "proj": 45.6,
+     "v": "board",
+     "at": "2026-10-31T23:30Z",
+     "y": 25,
+     "ly": 25,
      "res": "miss"
     },
     "KENN": {
@@ -1084,38 +1163,11 @@
      "v": "board",
      "at": "2026-10-28T23:00Z",
      "y": 68,
+     "ly": 67,
      "res": "beat"
     },
-    "TEM": {
-     "rk": 11,
-     "name": "Ajani Sheppard",
-     "pos": "QB",
-     "opp": "ECU",
-     "log": "TEM|5078166",
-     "kind": "pass",
-     "avg": 161.0,
-     "proj": 201.3,
-     "v": "board",
-     "at": "2026-10-31T19:00Z",
-     "y": 118,
-     "res": "miss"
-    },
-    "GT": {
-     "rk": 11,
-     "name": "Kevin Roche Jr.",
-     "pos": "TE",
-     "opp": "PITT",
-     "log": "GT|5215629",
-     "kind": "rec",
-     "avg": 39.0,
-     "proj": 45.6,
-     "v": "board",
-     "at": "2026-10-31T23:30Z",
-     "y": 25,
-     "res": "miss"
-    },
     "USU": {
-     "rk": 12,
+     "rk": 11,
      "name": "Javen Jacobs",
      "pos": "RB",
      "opp": "CSU",
@@ -1126,10 +1178,11 @@
      "v": "board",
      "at": "2026-10-31T19:30Z",
      "y": 71,
+     "ly": 56,
      "res": "miss"
     },
     "GASO": {
-     "rk": 12,
+     "rk": 11,
      "name": "Josh Dallas",
      "pos": "WR",
      "opp": "APP",
@@ -1140,6 +1193,7 @@
      "v": "board",
      "at": "2026-10-31T22:30Z",
      "y": 86,
+     "ly": 86,
      "res": "beat"
     },
     "MTSU": {
@@ -1154,10 +1208,11 @@
      "v": "board",
      "at": "2026-10-28T23:00Z",
      "y": 67,
+     "ly": 36,
      "res": "miss"
     },
     "MRSH": {
-     "rk": 16,
+     "rk": 15,
      "name": "Toby Payne",
      "pos": "TE",
      "opp": "ODU",
@@ -1168,10 +1223,11 @@
      "v": "board",
      "at": "2026-10-31T17:00Z",
      "y": 13,
+     "ly": 13,
      "res": "miss"
     },
     "NDSU": {
-     "rk": 16,
+     "rk": 15,
      "name": "Myles Mitchell",
      "pos": "RB",
      "opp": "UTEP",
@@ -1182,10 +1238,11 @@
      "v": "board",
      "at": "2026-10-31T19:30Z",
      "y": 8,
+     "ly": 10,
      "res": "miss"
     },
     "APP": {
-     "rk": 16,
+     "rk": 15,
      "name": "Jaquari Lewis",
      "pos": "RB",
      "opp": "GASO",
@@ -1196,10 +1253,11 @@
      "v": "board",
      "at": "2026-10-31T22:30Z",
      "y": 11,
+     "ly": 11,
      "res": "miss"
     },
     "ORST": {
-     "rk": 16,
+     "rk": 15,
      "name": "DeCorion Temple",
      "pos": "TE",
      "opp": "FRES",
@@ -1210,10 +1268,11 @@
      "v": "board",
      "at": "2026-11-01T03:00Z",
      "y": 97,
+     "ly": 97,
      "res": "beat"
     },
     "AFA": {
-     "rk": 18,
+     "rk": 17,
      "name": "Owen Allen",
      "pos": "RB",
      "opp": "CONN",
@@ -1224,10 +1283,11 @@
      "v": "board",
      "at": "2026-10-31T19:00Z",
      "y": 70,
+     "ly": 70,
      "res": "beat"
     },
     "NEB": {
-     "rk": 19,
+     "rk": 18,
      "name": "Luke Lindenmeyer",
      "pos": "TE",
      "opp": "WASH",
@@ -1238,10 +1298,11 @@
      "v": "board",
      "at": "2026-11-01T00:00Z",
      "y": 61,
+     "ly": 61,
      "res": "beat"
     },
     "WMU": {
-     "rk": 20,
+     "rk": 19,
      "name": "Jalen Buckley",
      "pos": "RB",
      "opp": "BGSU",
@@ -1252,10 +1313,11 @@
      "v": "board",
      "at": "2026-10-31T16:00Z",
      "y": 77,
+     "ly": 77,
      "res": "miss"
     },
     "ODU": {
-     "rk": 22,
+     "rk": 21,
      "name": "Devin Roche",
      "pos": "RB",
      "opp": "MRSH",
@@ -1266,7 +1328,21 @@
      "v": "board",
      "at": "2026-10-31T17:00Z",
      "y": 54,
+     "ly": 13,
      "res": "miss"
+    },
+    "BGSU": {
+     "rk": 22,
+     "name": "Austyn Dendy",
+     "pos": "RB",
+     "opp": "WMU",
+     "log": "BGSU|5147347",
+     "kind": "scrim",
+     "avg": 47.6,
+     "proj": 69.4,
+     "v": "board",
+     "at": "2026-10-31T16:00Z",
+     "res": "dnp"
     }
    },
    "printed": {
@@ -1593,6 +1669,7 @@
      "v": "board",
      "at": "2026-11-08T03:30Z",
      "y": 96,
+     "ly": 96,
      "res": "miss"
     },
     "UNT": {
@@ -1607,6 +1684,7 @@
      "v": "board",
      "at": "2026-11-07T21:00Z",
      "y": 170,
+     "ly": 139,
      "res": "beat"
     },
     "SJSU": {
@@ -1621,6 +1699,7 @@
      "v": "board",
      "at": "2026-11-07T21:00Z",
      "y": 41,
+     "ly": 33,
      "res": "miss"
     },
     "WYO": {
@@ -1635,6 +1714,7 @@
      "v": "board",
      "at": "2026-11-08T03:30Z",
      "y": 110,
+     "ly": 110,
      "res": "beat",
      "lad": {
       "fd": [
@@ -1643,8 +1723,7 @@
         -118
        ]
       ]
-     },
-     "ly": 110
+     }
     },
     "UTSA": {
      "rk": 4,
@@ -1658,6 +1737,7 @@
      "v": "board",
      "at": "2026-11-06T00:30Z",
      "y": 42,
+     "ly": 18,
      "res": "miss"
     },
     "MOST": {
@@ -1672,6 +1752,7 @@
      "v": "board",
      "at": "2026-11-07T21:00Z",
      "y": 93,
+     "ly": 93,
      "res": "beat"
     },
     "TXST": {
@@ -1686,6 +1767,7 @@
      "v": "board",
      "at": "2026-11-08T03:30Z",
      "y": 48,
+     "ly": 48,
      "res": "miss",
      "lad": {
       "fd": [
@@ -1694,8 +1776,7 @@
         -118
        ]
       ]
-     },
-     "ly": 48
+     }
     },
     "PUR": {
      "rk": 6,
@@ -1709,6 +1790,7 @@
      "v": "board",
      "at": "2026-11-07T17:30Z",
      "y": 67,
+     "ly": 32,
      "res": "miss",
      "lad": {
       "fd": [
@@ -1729,8 +1811,7 @@
         -270
        ]
       ]
-     },
-     "ly": 32
+     }
     },
     "KENN": {
      "rk": 6,
@@ -1744,6 +1825,7 @@
      "v": "board",
      "at": "2026-11-07T20:00Z",
      "y": 102,
+     "ly": 90,
      "res": "beat"
     },
     "MRSH": {
@@ -1771,6 +1853,7 @@
      "v": "board",
      "at": "2026-11-08T00:30Z",
      "y": 38,
+     "ly": 38,
      "res": "miss",
      "lad": {
       "fd": [
@@ -1779,8 +1862,7 @@
         -114
        ]
       ]
-     },
-     "ly": 38
+     }
     },
     "UTEP": {
      "rk": 9,
@@ -1794,6 +1876,7 @@
      "v": "board",
      "at": "2026-11-08T02:30Z",
      "y": 29,
+     "ly": 29,
      "res": "miss",
      "lad": {
       "fd": [
@@ -1814,8 +1897,7 @@
         -350
        ]
       ]
-     },
-     "ly": 29
+     }
     },
     "NEB": {
      "rk": 10,
@@ -1829,6 +1911,7 @@
      "v": "board",
      "at": "2026-11-07T01:00Z",
      "y": 34,
+     "ly": 34,
      "res": "beat"
     },
     "NIU": {
@@ -1843,6 +1926,7 @@
      "v": "board",
      "at": "2026-11-07T21:00Z",
      "y": 76,
+     "ly": 55,
      "res": "miss"
     },
     "AFA": {
@@ -1857,6 +1941,7 @@
      "v": "board",
      "at": "2026-11-08T00:30Z",
      "y": 4,
+     "ly": 4,
      "res": "miss",
      "lad": {
       "fd": [
@@ -1865,8 +1950,7 @@
         -114
        ]
       ]
-     },
-     "ly": 4
+     }
     },
     "MINN": {
      "rk": 12,
@@ -1880,6 +1964,7 @@
      "v": "board",
      "at": "2026-11-07T17:00Z",
      "y": 64,
+     "ly": 46,
      "res": "beat",
      "lad": {
       "fd": [
@@ -1900,8 +1985,7 @@
         -420
        ]
       ]
-     },
-     "ly": 46
+     }
     },
     "USU": {
      "rk": 12,
@@ -1915,6 +1999,7 @@
      "v": "board",
      "at": "2026-11-08T02:30Z",
      "y": 50,
+     "ly": 36,
      "res": "miss"
     },
     "AKR": {
@@ -1929,6 +2014,7 @@
      "v": "board",
      "at": "2026-11-04T00:00Z",
      "y": 129,
+     "ly": 112,
      "res": "beat"
     },
     "MTSU": {
@@ -1943,23 +2029,11 @@
      "v": "board",
      "at": "2026-11-07T20:30Z",
      "y": 56,
+     "ly": 46,
      "res": "miss"
     },
-    "TEM": {
-     "rk": 15,
-     "name": "Ajani Sheppard",
-     "pos": "QB",
-     "opp": "NAVY",
-     "log": "TEM|5078166",
-     "kind": "pass",
-     "avg": 155.6,
-     "proj": 209.4,
-     "v": "board",
-     "at": "2026-11-07T20:30Z",
-     "res": "dnp"
-    },
     "UK": {
-     "rk": 15,
+     "rk": 14,
      "name": "Willie Rodriguez",
      "pos": "TE",
      "opp": "TENN",
@@ -1970,7 +2044,23 @@
      "v": "board",
      "at": "2026-11-07T23:15Z",
      "y": 81,
+     "ly": 81,
      "res": "beat"
+    },
+    "KSU": {
+     "rk": 15,
+     "name": "Jaron Tibbs",
+     "pos": "WR",
+     "opp": "OKST",
+     "log": "KSU|5078225",
+     "kind": "rec",
+     "avg": 47.4,
+     "proj": 62.0,
+     "v": "board",
+     "at": "2026-11-07T18:00Z",
+     "y": 42,
+     "ly": 42,
+     "res": "miss"
     },
     "FRES": {
      "rk": 15,
@@ -1984,24 +2074,11 @@
      "v": "board",
      "at": "2026-11-08T02:30Z",
      "y": 19,
-     "res": "miss"
-    },
-    "KSU": {
-     "rk": 16,
-     "name": "Jaron Tibbs",
-     "pos": "WR",
-     "opp": "OKST",
-     "log": "KSU|5078225",
-     "kind": "rec",
-     "avg": 47.4,
-     "proj": 62.0,
-     "v": "board",
-     "at": "2026-11-07T18:00Z",
-     "y": 42,
+     "ly": 15,
      "res": "miss"
     },
     "TULN": {
-     "rk": 18,
+     "rk": 17,
      "name": "Johnnie Daniels",
      "pos": "RB",
      "opp": "TLSA",
@@ -2012,10 +2089,11 @@
      "v": "board",
      "at": "2026-11-07T17:00Z",
      "y": 49,
+     "ly": 49,
      "res": "miss"
     },
     "BUFF": {
-     "rk": 19,
+     "rk": 18,
      "name": "Clint Walker",
      "pos": "TE",
      "opp": "M-OH",
@@ -2028,7 +2106,7 @@
      "res": "dnp"
     },
     "PSU": {
-     "rk": 19,
+     "rk": 18,
      "name": "Benjamin Brahmer",
      "pos": "TE",
      "opp": "WASH",
@@ -2039,10 +2117,11 @@
      "v": "board",
      "at": "2026-11-07T20:30Z",
      "y": 36,
+     "ly": 36,
      "res": "beat"
     },
     "EMU": {
-     "rk": 20,
+     "rk": 19,
      "name": "Joshua Long",
      "pos": "TE",
      "opp": "CMU",
@@ -2053,10 +2132,11 @@
      "v": "board",
      "at": "2026-11-05T00:30Z",
      "y": 1,
+     "ly": 1,
      "res": "miss"
     },
     "WKU": {
-     "rk": 20,
+     "rk": 19,
      "name": "Brock Glenn",
      "pos": "QB",
      "opp": "MTSU",
@@ -2067,7 +2147,21 @@
      "v": "board",
      "at": "2026-11-07T20:30Z",
      "y": 152,
+     "ly": 152,
      "res": "beat"
+    },
+    "TEM": {
+     "rk": 20,
+     "name": "Ajani Sheppard",
+     "pos": "QB",
+     "opp": "NAVY",
+     "log": "TEM|5078166",
+     "kind": "pass",
+     "avg": 155.6,
+     "proj": 209.4,
+     "v": "board",
+     "at": "2026-11-07T20:30Z",
+     "res": "dnp"
     },
     "APP": {
      "rk": 21,
@@ -2081,6 +2175,7 @@
      "v": "board",
      "at": "2026-11-07T19:30Z",
      "y": 43,
+     "ly": 31,
      "res": "miss"
     },
     "HOU": {
@@ -2095,6 +2190,7 @@
      "v": "board",
      "at": "2026-11-07T20:30Z",
      "y": 97,
+     "ly": 90,
      "res": "beat",
      "lad": {
       "fd": [
@@ -2103,8 +2199,7 @@
         -114
        ]
       ]
-     },
-     "ly": 90
+     }
     }
    },
    "printed": {
@@ -2469,7 +2564,27 @@
      "avg": 214.5,
      "proj": 274.1,
      "v": "board",
-     "at": "2026-11-14T17:58Z"
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        235.5,
+        -114
+       ],
+       [
+        224.5,
+        -144
+       ],
+       [
+        199.5,
+        -235
+       ],
+       [
+        174.5,
+        -400
+       ]
+      ]
+     }
     },
     "USF": {
      "rk": 3,
@@ -2494,7 +2609,7 @@
      "avg": 135.4,
      "proj": 158.5,
      "v": "board",
-     "at": "2026-11-14T16:46Z",
+     "at": "2026-11-14T17:00Z",
      "lad": {
       "fd": [
        [
@@ -2540,6 +2655,7 @@
      "v": "board",
      "at": "2026-11-11T00:00Z",
      "y": 137,
+     "ly": 121,
      "res": "beat",
      "lad": {
       "fd": [
@@ -2548,8 +2664,7 @@
         -114
        ]
       ]
-     },
-     "ly": 121
+     }
     },
     "SJSU": {
      "rk": 5,
@@ -2583,9 +2698,9 @@
      "log": "SYR|5154420",
      "kind": "scrim",
      "avg": 68.4,
-     "proj": 86.9,
+     "proj": 87.3,
      "v": "board",
-     "at": "2026-11-14T16:46Z",
+     "at": "2026-11-14T17:00Z",
      "lad": {
       "fd": [
        [
@@ -2629,7 +2744,27 @@
      "avg": 62.8,
      "proj": 74.3,
      "v": "board",
-     "at": "2026-11-14T17:58Z"
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        57.5,
+        -114
+       ],
+       [
+        49.5,
+        -166
+       ],
+       [
+        39.5,
+        -280
+       ],
+       [
+        29.5,
+        -550
+       ]
+      ]
+     }
     },
     "WKU": {
      "rk": 10,
@@ -2653,7 +2788,27 @@
      "avg": 33.3,
      "proj": 41.7,
      "v": "board",
-     "at": "2026-11-14T17:58Z"
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        32.5,
+        -114
+       ],
+       [
+        29.5,
+        -138
+       ],
+       [
+        24.5,
+        -200
+       ],
+       [
+        19.5,
+        -300
+       ]
+      ]
+     }
     },
     "MINN": {
      "rk": 12,
@@ -2665,19 +2820,27 @@
      "avg": 56.0,
      "proj": 70.7,
      "v": "board",
-     "at": "2026-11-14T17:58Z"
-    },
-    "UK": {
-     "rk": 15,
-     "name": "Willie Rodriguez",
-     "pos": "TE",
-     "opp": "FLA",
-     "log": "UK|5136838",
-     "kind": "rec",
-     "avg": 45.0,
-     "proj": 50.7,
-     "v": "board",
-     "at": "2026-11-14T17:58Z"
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        36.5,
+        -114
+       ],
+       [
+        29.5,
+        -182
+       ],
+       [
+        24.5,
+        -270
+       ],
+       [
+        19.5,
+        -420
+       ]
+      ]
+     }
     },
     "MOST": {
      "rk": 13,
@@ -2691,6 +2854,38 @@
      "v": "board",
      "at": "2026-11-14T17:58Z"
     },
+    "STAN": {
+     "rk": 14,
+     "name": "Micah Ford",
+     "pos": "RB",
+     "opp": "VT",
+     "log": "STAN|5143191",
+     "kind": "scrim",
+     "avg": 108.3,
+     "proj": 119.9,
+     "v": "board",
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        68.5,
+        -114
+       ],
+       [
+        59.5,
+        -166
+       ],
+       [
+        49.5,
+        -260
+       ],
+       [
+        39.5,
+        -450
+       ]
+      ]
+     }
+    },
     "PITT": {
      "rk": 15,
      "name": "Damon Ferguson Jr.",
@@ -2703,19 +2898,40 @@
      "v": "board",
      "at": "2026-11-14T00:00Z",
      "y": 37,
+     "ly": 32,
      "res": "miss"
     },
-    "STAN": {
-     "rk": 14,
-     "name": "Micah Ford",
-     "pos": "RB",
-     "opp": "VT",
-     "log": "STAN|5143191",
-     "kind": "scrim",
-     "avg": 108.3,
-     "proj": 119.9,
+    "UK": {
+     "rk": 15,
+     "name": "Willie Rodriguez",
+     "pos": "TE",
+     "opp": "FLA",
+     "log": "UK|5136838",
+     "kind": "rec",
+     "avg": 45.0,
+     "proj": 50.7,
      "v": "board",
-     "at": "2026-11-14T17:58Z"
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        48.5,
+        -112
+       ],
+       [
+        39.5,
+        -180
+       ],
+       [
+        29.5,
+        -320
+       ],
+       [
+        24.5,
+        -470
+       ]
+      ]
+     }
     },
     "KSU": {
      "rk": 16,
@@ -2727,7 +2943,27 @@
      "avg": 46.8,
      "proj": 59.6,
      "v": "board",
-     "at": "2026-11-14T17:58Z"
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        29.5,
+        -114
+       ],
+       [
+        24.5,
+        -154
+       ],
+       [
+        19.5,
+        -210
+       ],
+       [
+        14.5,
+        -300
+       ]
+      ]
+     }
     },
     "TOL": {
      "rk": 17,
@@ -2741,6 +2977,7 @@
      "v": "board",
      "at": "2026-11-12T00:30Z",
      "y": 85,
+     "ly": 83,
      "res": "miss"
     },
     "WYO": {
@@ -2767,6 +3004,7 @@
      "v": "board",
      "at": "2026-11-11T01:00Z",
      "y": 74,
+     "ly": 74,
      "res": "beat"
     },
     "ARST": {
@@ -2817,6 +3055,7 @@
      "v": "board",
      "at": "2026-11-11T00:00Z",
      "y": 61,
+     "ly": 61,
      "res": "miss",
      "lad": {
       "fd": [
@@ -2825,8 +3064,7 @@
         -114
        ]
       ]
-     },
-     "ly": 61
+     }
     },
     "UTSA": {
      "rk": 21,
@@ -2850,7 +3088,27 @@
      "avg": 46.0,
      "proj": 67.4,
      "v": "board",
-     "at": "2026-11-14T17:58Z"
+     "at": "2026-11-14T17:58Z",
+     "lad": {
+      "fd": [
+       [
+        55.5,
+        -114
+       ],
+       [
+        49.5,
+        -154
+       ],
+       [
+        39.5,
+        -260
+       ],
+       [
+        29.5,
+        -470
+       ]
+      ]
+     }
     }
    },
    "printed": {
