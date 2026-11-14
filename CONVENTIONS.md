@@ -222,7 +222,13 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   about 41% of the time) is `BEST_BAR`, from the Project doc
   `claude/best-overall-matchups-analysis-2026-11-14.md`. The **Build PDFs** Action commits the file
   with `pdf/`; don't hand-edit it. Weeks before Nov 14, 2026 were read back from the printed
-  reports (`"source": "printed"`). A new season starts a new file.
+  reports, then on Nov 14, 2026 **rebuilt with the rules as they stand after the running-back fix**
+  (`"source": "rebuilt"`): today's `build_report.py` run on `data/` and the value board's
+  projections as they stood before each kickoff (the board's last same-week projections for a late
+  game it had already moved past). The lists printed at the time are kept under each week's
+  `printed`. A week holds more picks than the list's length because the list is redrawn as games
+  finish and projections move, and each team's pick is taken at its own kickoff; the page's table
+  shows the first `BEST_ROWS` (32). A new season starts a new file.
 - When the value board's feed isn't there at build time, Best Overall Matchups prints a
   **Fallback version** note (ranked by defense rank, which has little record of predicting who
   beats his average).

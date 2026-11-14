@@ -200,6 +200,7 @@ def tracker_html(T, league_name, week):
 # (every week from Week 4, NFL 2013-2025 and college 2017-2025; Project doc
 # claude/best-overall-matchups-analysis-2026-11-14.md).
 BEST_BAR = 41
+BEST_ROWS = 32   # rows of the last week's list that fit the record page
 BEST_YDS = {"pass": ("pYds",), "scrim": ("rYds", "recYds"), "rec": ("recYds",)}
 
 
@@ -275,7 +276,9 @@ def best_record_html(log, league_name, week):
         f'<td class="r">{num(k["avg"])}</td><td class="r">{num(round(k["proj"])) if k.get("proj") else "—"}</td>'
         + (f'<td class="r"><b>{num(k["y"])}</b></td><td class="bo-res">{"✓ Beat it" if k["res"] == "beat" else "Under"}</td>' if k["res"] != "dnp"
            else '<td class="r">—</td><td class="bo-res">Did not play</td>') + '</tr>'
-        for ab, k in lps)
+        for ab, k in lps[:BEST_ROWS])
+    more = (f'<p class="tk-note">Plus {len(lps) - BEST_ROWS} more lower on the list ({sum(k["res"] == "beat" for _, k in lps[BEST_ROWS:])} beat their average). '
+            f'A week runs past {"15" if league_name == "NFL" else "22"} because the list is redrawn as games finish and projections move, and each team\'s pick is taken at its own kickoff.</p>') if len(lps) > BEST_ROWS else ""
     rows = ""
     for wk, w, ps in done:
         g = [k for _, k in ps if k["res"] != "dnp"]
@@ -286,19 +289,22 @@ def best_record_html(log, league_name, week):
                  + (f' <span>{"fallback" if vs == {"rank"} else "part fallback"}</span>' if "rank" in vs else "") + '</div></div>')
     bd, fb = [k for k in graded if k["v"] == "board"], [k for k in graded if k["v"] == "rank"]
     bp = [k for k in bd if k.get("proj")]
-    chips = f'<div class="tk-chip"><b>{rate(bd)}</b><div>Value board version ({len(bd)} picks)</div></div>'
-    chips += f'<div class="tk-chip"><b>{rate(fb)}</b><div>Fallback version, by defense rank ({len(fb)} picks)</div></div>' if fb else \
-             f'<div class="tk-chip"><b>{sgn(tot(graded))}</b><div>Their total yards against their averages</div></div>'
+    chips = (f'<div class="tk-chip"><b>{rate(bd)}</b><div>Value board version ({len(bd)} picks)</div></div>'
+             f'<div class="tk-chip"><b>{rate(fb)}</b><div>Fallback version, by defense rank ({len(fb)} picks)</div></div>') if fb else \
+            ("" if bp else f'<div class="tk-chip"><b>{sgn(tot(graded))}</b><div>Their total yards against their averages</div></div>')
     if bp:
         chips += (f'<div class="tk-chip"><b>{sgn(tot(bp))}</b><div>What the value board\'s picks did against their averages; the board projected '
                   f'{sgn(tot(bp, "proj"))}.' + (f' All {len(graded)} picks: {sgn(tot(graded))}.' if fb else "") + '</div></div>')
     printed = [wk for wk, w, _ in done if w.get("source") == "printed"]
+    rebuilt = [wk for wk, w, _ in done if w.get("source") == "rebuilt"]
+    span = lambda ws: f"Week{'s' if len(ws) > 1 else ''} {ws[0]}{'–' + str(ws[-1]) if len(ws) > 1 else ''} {'were' if len(ws) > 1 else 'was'}"
     dnp = sum(k["res"] == "dnp" for _, _, ps in done for _, k in ps)
     note = (f"Each pick is the list as it stood at his team's kickoff, graded on his main yardage stat (passing for quarterbacks, rushing + receiving for backs, "
             f"receiving for wide receivers and tight ends) against his per-game average going in. Each dot is one spot on that week's list, from #1; green means he beat his average"
             + (f", a dashed dot did not play ({dnp} this season, not counted)" if dnp else "") + ". "
             f"The bar is about {BEST_BAR}%, not 50%: that is how often every other regular beats his own average. "
-            + (f"Week{'s' if len(printed) > 1 else ''} {printed[0]}{'–' + str(printed[-1]) if len(printed) > 1 else ''} {'were' if len(printed) > 1 else 'was'} read back from the printed reports. " if printed else "")
+            + (f"{span(printed)} read back from the printed reports. " if printed else "")
+            + (f"{span(rebuilt)} rebuilt with today's rules (the value board version, with backs' receiving yards counted) from the stats and board projections as they stood before each kickoff. " if rebuilt else "")
             + ("Fallback weeks ranked the list by how soft the defense is, because the value board's projections weren't there when the report was built." if fb else ""))
     nb = sum(k["res"] == "beat" for k in graded)
     return f'''<section class="tdsec tk bo" id="bestrecord">
@@ -307,7 +313,7 @@ def best_record_html(log, league_name, week):
   <p class="lede">How each week's Best Overall list did against the players' own season averages. Other regulars beat theirs about {BEST_BAR}% of the time.</p>
   <div class="tk-grid">
     <div><div class="tk-sec">Week {lw} list · {sum(k["res"] == "beat" for _, k in lps)} of {sum(k["res"] != "dnp" for _, k in lps)} beat their average</div>
-      <table class="tdt bo-t{" bo-long" if len(lps) > 16 else ""}"><thead><tr><th></th><th>Player</th><th>Opp</th><th class="r">His avg</th><th class="r">Board</th><th class="r">Actual</th><th></th></tr></thead><tbody>{body}</tbody></table></div>
+      <table class="tdt bo-t{" bo-xl" if len(lps) > 23 else " bo-long" if len(lps) > 16 else ""}"><thead><tr><th></th><th>Player</th><th>Opp</th><th class="r">His avg</th><th class="r">Board</th><th class="r">Actual</th><th></th></tr></thead><tbody>{body}</tbody></table>{more}</div>
     <div><div class="tk-sec">Season</div>
       <div class="tk-score"><div class="tk-big">{rate(graded)}</div><div class="tk-exp">beat their own average<br>{nb} of {len(graded)} picks · the bar is about {BEST_BAR}%</div></div>
       {rows}
