@@ -60,12 +60,17 @@ def vb_norm(n):  # same as vbNorm() in the sites' JS and nflmodel/dashfeed.norm 
 
 
 def load_feed(vb, league, season, week):
-    """The value board's feed for this league and week, or None."""
-    try:
-        f = json.loads((Path(vb) / "docs" / "feed" / f"{league}.json").read_text(encoding="utf-8"))
-    except Exception:
-        return None
-    return f if f.get("season") == season and f.get("week") == week and f.get("players") else None
+    """The value board's feed for this league and week, or None. The board moves on to the next week
+    before this week's last game, so its last feed for the week it left (`<league>_prev.json`) is
+    tried second (Nov 14, 2026)."""
+    for name in (f"{league}.json", f"{league}_prev.json"):
+        try:
+            f = json.loads((Path(vb) / "docs" / "feed" / name).read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if f.get("season") == season and f.get("week") == week and f.get("players"):
+            return f
+    return None
 
 
 def load_tracker(vb, league, season):
@@ -235,9 +240,10 @@ def best_log_update(log, D, top, board, now=None):
                 continue
             i, c = cur[ab]
             # his average from his own game log, so the grade doesn't depend on which of the team's tables list him
+            # (a quarterback's is his per-start average, already worked out for the list)
             gl = [sum(x.get(f, 0) or 0 for f in BEST_YDS[c["kind"]]) for x in D.GL.get(c["log"], []) if x.get("w", 0) < D.week]
             picks[ab] = dict(rk=i, name=c["name"], pos=c["pos"], opp=g[o]["abbr"], log=c["log"], kind=c["kind"],
-                             avg=round(sum(gl) / len(gl), 1) if gl else round(c["avg"], 1), proj=round(c["proj"], 1) if board and c.get("proj") else None,
+                             avg=round(sum(gl) / len(gl), 1) if gl and c["kind"] != "pass" else round(c["avg"], 1), proj=round(c["proj"], 1) if board and c.get("proj") else None,
                              v="board" if board else "rank", at=now.strftime("%Y-%m-%dT%H:%MZ"))
     for wk, w in log["weeks"].items():
         for ab, k in w.get("picks", {}).items():
@@ -474,6 +480,16 @@ class Report:
     def m_of(self, rank):  # -1 (stingiest) .. +1 (softest)
         return (rank - (self.NT + 1) / 2) / ((self.NT - 1) / 2)
 
+    def team_att(self):
+        """Pass attempts by (team, week), summed over the team's listed passers' game logs."""
+        if not hasattr(self, "_team_att"):
+            self._team_att = {}
+            for k, logs in self.GL.items():
+                for x in logs:
+                    if x.get("att"):
+                        self._team_att[(k.split("|", 1)[0], x["w"])] = self._team_att.get((k.split("|", 1)[0], x["w"]), 0) + x["att"]
+        return self._team_att
+
     def roster(self, key):
         t = self.T[key]
         tg_ = self.D.team_games(key)
@@ -497,6 +513,12 @@ class Report:
             # the receiving table lists only the team's top receivers by yards, so most backs aren't in it:
             # take a back's catches and receiving yards from his own game log (Nov 14, 2026). Without this
             # his "scrimmage yds/G" was rushing only while the value board's projection counted both.
+            # a quarterback's passing average counts his starts only (the games he threw at least half his
+            # team's passes), as the value board's projection is for a start (Nov 14, 2026). Relief
+            # appearances pulled a new starter's average down and overstated his lift.
+            if p["pos"] == "QB" and "passing" in p and logs:
+                st = [x for x in logs if x.get("att", 0) > 0 and x["att"] >= 0.5 * self.team_att().get((t["abbr"], x["w"]), 0)]
+                p["starts"], p["startYdsG"] = len(st), (sum(x.get("pYds", 0) for x in st) / len(st) if st else None)
             if p["pos"] in ("RB", "FB") and "rushing" in p and "receiving" not in p and logs:
                 p["receiving"] = dict(player=p["name"], pos=p["pos"], log=p["log"], rec=round(p["recg"], 2), fromlog=True,
                                       ydsG=round(sum(x.get("recYds", 0) for x in logs) / len(logs), 1), td=round(p["ctd"] / len(logs), 2))
@@ -573,6 +595,8 @@ class Report:
             # his main yardage stat (QB passing, backs rushing + receiving, WR/TE receiving) per game
             stat = {"QB": ("pass_yds",), "RB": ("rush_yds", "rec_yds"), "FB": ("rush_yds", "rec_yds")}.get(pos, ("rec_yds",))
             avg = sum((p.get(sec) or {}).get("ydsG", 0) for sec, st_ in (("passing", "pass_yds"), ("rushing", "rush_yds"), ("receiving", "rec_yds")) if st_ in stat)
+            if pos == "QB" and p.get("startYdsG"):
+                avg = p["startYdsG"]
             c.update(avg=avg, kind="pass" if pos == "QB" else "scrim" if pos in ("RB", "FB") else "rec", log=p["log"])
             if self.F is not None:   # the value board's projection against his season average
                 bp = self.F.get(f"{ab}|{vb_norm(p['name'])}")
@@ -585,7 +609,8 @@ class Report:
                 bt0 = f'board {num(round(proj))} ({"+" if lift >= 0 else MINUS}{abs(lift) * 100:.0f}%)'
                 bt = bt0 + (f": {'; '.join(why_)}" if why_ else "")
                 c["mx"] = bt0 + (f": {why_[0]}" if why_ and why_[0][0].isdigit() or why_ and why_[0].startswith("rushing") else "")   # Best Overall's shorter cell
-                head_ = f"{num(avg)} {what_} yds/G" + (f' ({p["gp"]} of {tgp} gms)' if pos != "QB" and p["gp"] <= tgp - 2 else "")
+                head_ = f"{num(round(avg, 1))} {what_} yds/G" + (f' ({p["gp"]} of {tgp} gms)' if pos != "QB" and p["gp"] <= tgp - 2 else "") \
+                        + (f' in {p["starts"]} start{"s" if p["starts"] != 1 else ""}' if pos == "QB" and p.get("startYdsG") and p["starts"] < p["gp"] else "")
                 c.update(m=clip(lift / LIFT_FULL, -1, 1), lift=lift, proj=proj, board=True,
                          good=f"{head_}; {bt}.", tough=f"{head_}; {bt}.")
                 if not o:
