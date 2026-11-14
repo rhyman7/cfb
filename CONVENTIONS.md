@@ -238,7 +238,10 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   The **Best Overall on the ladder** page (after the record, same packet row) shows the live
   record by rung (picks, hit rate, break-even rate, flat return on overs; a pick's two books are
   averaged) next to the fixed backtest table `LADDER_BACKTEST` (Project doc
-  `claude/best-overall-lower-rungs-check-2026-11-14.md`). Ladders for NFL Weeks 8-10 and college
+  `claude/best-overall-lower-rungs-check-2026-11-14.md`). Both sides also show the same bets with a
+  **profit boost** (return at 30% and 50%, and the boost that brings the return to zero; a boost
+  multiplies the profit on a win; backtest figures from
+  `claude/best-overall-boosts-on-rungs-2026-11-14.md`). Ladders for NFL Weeks 8-10 and college
   Weeks 10-11 were added from the board's prop logs (latest pull before kickoff).
 - **How this week's picks did when they made the list** (the page right after the list, same
   packet row; Nov 14, 2026). One row per pick on this week's list, from `data/best_overall.json`:
