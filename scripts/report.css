@@ -135,3 +135,24 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 .flt td { padding: 2.6pt 6pt 2.6pt 0; }
 .flt td:nth-child(2) { white-space: normal; }
 
+/* Coming Off a Bye (bye_page): this week's cards and the records table, with the season's post-bye games beside them */
+.slab.sm { min-width: 30pt; height: 17pt; font-size: 8.4pt; border-radius: 2.5pt; padding: 0 4pt; }
+.bygrid { display: grid; grid-template-columns: 1.75fr 1fr; gap: 0 0.3in; margin-top: 8pt; }
+.bysec { font-size: 8.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: #6a6f78; font-weight: 700; padding-bottom: 4pt; border-bottom: 1.5pt solid #17181b; margin: 0 0 2pt; }
+.bycards { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; margin: 4pt 0 12pt; }
+.bycard { display: grid; grid-template-columns: auto 1fr; gap: 9pt; align-items: start; border: 0.75pt solid #d9dbdf; border-left: 3pt solid #2c3a78; border-radius: 5pt; padding: 6pt 9pt; break-inside: avoid; }
+.bycard .slab.sm { margin-top: 1pt; }
+.bycard .tname { font-size: 12pt; }
+.bln { font-weight: 800; margin-left: 4pt; }
+.sub2 { font-size: 8.6pt; color: #3a3e45; margin-top: 1.5pt; }
+.byt { margin-top: 4pt; font-size: 9pt; }
+.byt td, .byt th { padding-left: 7pt; white-space: nowrap; }
+.byt td { padding-top: 4.2pt; padding-bottom: 4.2pt; }
+.byt td:first-child { padding-left: 0; }
+.byt thead tr:first-child th { color: #17181b; font-size: 7.8pt; border-bottom: 0.5pt solid #d9dbdf; }
+.byt tr.sep td { border-top: 1pt solid #9a9ea6; }
+.byl { margin-top: 4pt; font-size: 8.8pt; }
+.byl td { padding: 2.2pt 6pt 2.2pt 0; vertical-align: middle; white-space: nowrap; }
+.cw { color: #17603a; }
+.cl { color: #94321f; }
+.bynote { margin-top: 9pt; font-size: 7.8pt; color: #6a6f78; }

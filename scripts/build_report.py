@@ -1,6 +1,7 @@
 """Build the Weekly Matchup Report: who is set up for a good game, and who is not, in every
-game of the current week, plus two rankings across the slate (Best Overall Matchups and
-Most Likely to Score a TD). The stats come from data/data.json and data/epa.json; the player
+game of the current week, plus rankings across the slate (Best Overall Matchups, Most Likely
+to Score a TD, Highest Floors) and, when a team is coming off a bye, the Coming Off a Bye page
+(data.json's byeTrends). The stats come from data/data.json and data/epa.json; the player
 projections, matchup lifts and touchdown chances come from the value board's feed
 (rhyman7/fb-value-board, docs/feed/<league>.json) when a checkout of it is next to this repo or
 passed in (build_packets.py --value-board). Without the feed the report falls back to ranking each
@@ -727,6 +728,100 @@ def team_colors(root, league):
         return {}
 
 
+def bye_page(d, D, games, COL, league_name):
+    """The Coming Off a Bye page (one landscape page, after Highest Floors): this week's teams off a
+    bye with the matching historical record, post-bye records by split for this season, the last 10
+    seasons and since 2002, and this season's post-bye games. From data.json's byeTrends (NFL:
+    scripts/bye_trends.py). Returns "" (page left out) without byeTrends for this week or when no
+    team is off a bye."""
+    B = d.get("byeTrends") or {}
+    tw = B.get("thisWeek") or {}
+    if B.get("season") != d.get("season") or tw.get("week") != D.week or not tw.get("teams"):
+        return ""
+    S, P = B["splits"], B["periods"]
+    by_id = {g["id"]: g for g in games}
+    raw = {g["id"]: g for g in (d.get("schedule") or {}).get("games", [])}
+
+    def slab(abbr):
+        c = COL.get(abbr) or {"bg": "#3A3F47", "on2": "#F2F1EE"}
+        return f'<span class="slab sm" style="background:{c["bg"]};color:{c["on2"]}">{E(abbr)}</span>'
+
+    def ln(x):
+        return "PK" if x == 0 else ("+" if x > 0 else MINUS) + num(abs(x))
+
+    def pct(a, b):
+        return f"{a / (a + b):.3f}".lstrip("0") if a + b else "—"
+
+    def su(r):
+        return f'{r["w"]}-{r["l"]}' + (f'-{r["t"]}' if r["t"] else "")
+
+    def ats(r):
+        return f'{r["aw"]}-{r["al"]}' + (f'-{r["ap"]}' if r["ap"] else "")
+
+    def cell(r):
+        if not (r["w"] + r["l"] + r["t"]):
+            return '<td class="r dimc">—</td><td class="r dimc">—</td>'
+        return (f'<td class="r">{su(r)} <span class="dimc">{pct(r["w"], r["l"])}</span></td>'
+                f'<td class="r"><b>{ats(r)}</b> <span class="dimc">{pct(r["aw"], r["al"])}</span></td>')
+
+    all_lab = next(p["label"] for p in P if p["key"] == "all")
+    cards = []
+    for x in sorted(tw["teams"], key=lambda x: (by_id[x["id"]]["start"], x["team"]) if x["id"] in by_id else ("~", "")):
+        g = by_id.get(x["id"])
+        if not g:
+            continue
+        side = "home" if g["home"]["abbr"] == x["team"] else "away"
+        us, them = g[side], g["away" if side == "home" else "home"]
+        line = None if g["spread"] is None else (g["spread"] if side == "home" else -g["spread"])
+        if x.get("oppBye"):
+            key, what = "both", "Post-bye teams facing another team off a bye"
+        else:
+            fd = None if not line else ("fav" if line < 0 else "dog")
+            hr = None if g["neutral"] else ("home" if side == "home" else "road")
+            key = "_".join(k for k in (fd, hr) if k) or "rested"
+            what = "Post-bye " + {"fav": "favorites", "dog": "underdogs", None: "teams"}[fd] + \
+                   {"home": " at home", "road": " on the road", None: ""}[hr]
+        r = S[key]["all"]
+        rest = (raw.get(x["id"]) or {}).get(f'{"away" if side == "home" else "home"}Rest')
+        dt = datetime.fromisoformat(g["start"].replace("Z", "+00:00")).astimezone(ET)
+        sub = (f'{E(them["abbr"])} on {rest} days\' rest · ' if rest else "") + f'{dt.strftime("%a")} {dt.strftime("%I:%M %p").lstrip("0")} ET'
+        cards.append(
+            f'<div class="bycard">{slab(us["abbr"])}<div><div class="tname">{E(us["abbr"])} {"vs" if side == "home" or g["neutral"] else "at"} {E(them["abbr"])}'
+            f' <span class="bln">{ln(line) if line is not None else "no line yet"}</span></div><div class="sub2">{sub}</div>'
+            f'<div class="sub2">{what}, {all_lab}: <b>{ats(r)} ATS</b> ({pct(r["aw"], r["al"])}), {su(r)} SU</div></div></div>')
+    if not cards:
+        return ""
+
+    rows = [("All teams off a bye", "all"), ("Opponent not off a bye", "rested"), ("Both teams off a bye", "both"),
+            ("As favorite", "fav"), ("As underdog", "dog"), ("At home", "home"), ("On the road", "road")]
+    head = "".join(f'<th class="r" colspan="2">{E(p["label"])}</th>' for p in P)
+    sub = '<th class="r">SU</th><th class="r">ATS</th>' * len(P)
+    body = "".join(f'<tr{" class=sep" if i == 3 else ""}><td><b>{lab}</b></td>' + "".join(cell(S[k][p["key"]]) for p in P) + "</tr>"
+                   for i, (lab, k) in enumerate(rows))
+    res = {"W": ("cw", "Covered"), "L": ("cl", "Missed"), "P": ("", "Push")}
+    log = "".join(
+        f'<tr><td class="n">{x["w"]}</td><td>{slab(x["team"])}</td><td>{"vs" if x["home"] or x.get("neutral") else "at"} {E(x["opp"])}</td>'
+        f'<td class="r">{ln(x["line"])}</td><td class="r">{x["pf"]}-{x["pa"]} {"W" if x["pf"] > x["pa"] else "L" if x["pf"] < x["pa"] else "T"}</td>'
+        f'<td class="r"><b class="{res[x["ats"]][0]}">{res[x["ats"]][1]}</b></td></tr>' for x in B.get("games") or []) \
+        or '<tr><td></td><td colspan="5" class="dimc">No post-bye games yet this season.</td></tr>'
+    season = d.get("season", "")
+    return f'''<section class="tdsec" id="bye">
+  <div class="kicker">{league_name} Week {D.week} · {season}</div>
+  <h1 class="h1s">Coming Off a Bye</h1>
+  <p class="lede">How teams do in their first game after a bye week, straight up and against the spread: this season so far, the last 10 seasons and since {B["since"]}. Regular season only, against nflverse closing lines. Information, not a bet.</p>
+  <div class="bygrid"><div>
+    <h2 class="bysec">Off a bye this week</h2>
+    <div class="bycards">{"".join(cards)}</div>
+    <h2 class="bysec">Records</h2>
+    <table class="tdt byt"><thead><tr><th></th>{head}</tr><tr><th></th>{sub}</tr></thead><tbody>{body}</tbody></table>
+    <p class="bynote">SU: straight up (win-loss), ATS: against the spread (win-loss-push), each with its winning percentage. The favorite, underdog, home and road rows leave out games where both teams were off a bye; neutral-site games count in the totals only. This week's cards use the same records since {B["since"]} for the team's spot.</p>
+  </div><div>
+    <h2 class="bysec">{season} post-bye games</h2>
+    <table class="tdt byl"><thead><tr><th>Wk</th><th>Team</th><th>Opponent</th><th class="r">Line</th><th class="r">Score</th><th class="r">ATS</th></tr></thead><tbody>{log}</tbody></table>
+  </div></div>
+</section>'''
+
+
 def build(root=ROOT, out=None, font_css=None, vb=None):
     """Write report.html and report-games.json into `out`; return (path, game ids, title)."""
     out = Path(out or root / "pdf")
@@ -927,6 +1022,8 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
   <div class="flgrid">{"".join(floor_table(*x) for x in FLOOR_LISTS[3:])}</div>
 </section>''') if floors else ""
     print(f"  report: Highest Floors {'added' if floors else 'left out (no value board floors for this week)'}")
+    bye_html = bye_page(d, D, games, COL, league_name)
+    print(f"  report: Coming Off a Bye {'added' if bye_html else 'left out (no byeTrends for this week, or no team off a bye)'}")
 
     third = math.ceil(NG / 3) if NG > 20 else NG
     def idx_table(rows):
@@ -964,7 +1061,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 <header class="cover">
   <div class="kicker">{league_name} Week {D.week} · {d.get("season", "")}</div>
   <h1>{E(title_txt)}</h1>
-  <p class="lede">Who is set up for a good game, and who is not, in all {NG} games of Week {D.week}{", from " + rng if rng else ""}. After the game pages come {"three rankings" if floors else "two rankings"} across the whole slate: the best overall matchups, the players most likely to score a touchdown{" and the highest every-game floors at each position" if floors else ""}.</p>
+  <p class="lede">Who is set up for a good game, and who is not, in all {NG} games of Week {D.week}{", from " + rng if rng else ""}. After the game pages come {"three rankings" if floors else "two rankings"} across the whole slate: the best overall matchups, the players most likely to score a touchdown{" and the highest every-game floors at each position" if floors else ""}{", then how teams coming off a bye week have done" if bye_html else ""}.</p>
   <div class="notes"><h2>How to read this</h2><ul>
     <li><b>Method.</b> Each player's per-game production is compared with how the opposing defense ranks against his position (backs, receivers, tight ends) and against the pass. Ranks are out of {D.NT}; #1 is the stingiest defense.</li>
     <li><b>Source.</b> Every number comes from the {L} dashboard ({site}), with stats through Week {D.through}{f" and lines as of {gen.strftime('%b')} {gen.day}" if gen else ""}. The report is built automatically after each data update.</li>
@@ -978,6 +1075,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
 {td_html}
 {tracker_html(tracker, league_name, D.week) if tracker else ""}
 {floors_html}
+{bye_html}
 </body></html>'''
     (out / "report.html").write_text(doc, encoding="utf-8")
     ids = [g["id"] for g in games]
