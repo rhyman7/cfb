@@ -1003,9 +1003,9 @@
      "log": "NMSU|5220253",
      "kind": "scrim",
      "avg": 110.9,
-     "proj": 130.0,
+     "proj": 129.9,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "UNT": {
      "rk": 2,
@@ -1015,9 +1015,9 @@
      "log": "UNT|4911971",
      "kind": "scrim",
      "avg": 165.6,
-     "proj": 185.0,
+     "proj": 185.7,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "KU": {
      "rk": 3,
@@ -1027,9 +1027,9 @@
      "log": "KU|5079604",
      "kind": "pass",
      "avg": 214.5,
-     "proj": 274.0,
+     "proj": 274.3,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "USF": {
      "rk": 4,
@@ -1052,9 +1052,9 @@
      "log": "ISU|5219258",
      "kind": "scrim",
      "avg": 135.4,
-     "proj": 157.0,
+     "proj": 158.5,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "WMU": {
      "rk": 5,
@@ -1078,9 +1078,9 @@
      "log": "SJSU|5161012",
      "kind": "rec",
      "avg": 68.9,
-     "proj": 85.0,
+     "proj": 84.8,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "UNM": {
      "rk": 6,
@@ -1090,9 +1090,9 @@
      "log": "UNM|5166161",
      "kind": "scrim",
      "avg": 74.0,
-     "proj": 91.0,
+     "proj": 90.9,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "UTSA": {
      "rk": 7,
@@ -1102,9 +1102,9 @@
      "log": "UTSA|5223167",
      "kind": "scrim",
      "avg": 87.6,
-     "proj": 101.0,
+     "proj": 101.4,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "KENN": {
      "rk": 8,
@@ -1114,57 +1114,57 @@
      "log": "KENN|5220641",
      "kind": "scrim",
      "avg": 63.4,
-     "proj": 102.0,
+     "proj": 101.3,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "CAL": {
-     "rk": 9,
+     "rk": 10,
      "name": "Chase Hendricks",
      "pos": "WR",
      "opp": "UVA",
      "log": "CAL|4921110",
      "kind": "rec",
      "avg": 62.8,
-     "proj": 74.0,
+     "proj": 74.3,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "PSU": {
-     "rk": 10,
+     "rk": 11,
      "name": "Benjamin Brahmer",
      "pos": "TE",
      "opp": "MINN",
      "log": "PSU|4870608",
      "kind": "rec",
      "avg": 33.3,
-     "proj": 42.0,
+     "proj": 41.7,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "MINN": {
-     "rk": 11,
+     "rk": 12,
      "name": "Darius Taylor",
      "pos": "RB",
      "opp": "PSU",
      "log": "MINN|4920901",
      "kind": "scrim",
      "avg": 56.0,
-     "proj": 70.0,
+     "proj": 70.7,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "STAN": {
-     "rk": 12,
+     "rk": 15,
      "name": "Micah Ford",
      "pos": "RB",
      "opp": "VT",
      "log": "STAN|5143191",
      "kind": "scrim",
      "avg": 108.3,
-     "proj": 120.0,
+     "proj": 119.9,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "UK": {
      "rk": 13,
@@ -1174,9 +1174,9 @@
      "log": "UK|5136838",
      "kind": "rec",
      "avg": 45.0,
-     "proj": 51.0,
+     "proj": 50.8,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "MOST": {
      "rk": 14,
@@ -1186,21 +1186,21 @@
      "log": "MOST|4837193",
      "kind": "rec",
      "avg": 61.4,
-     "proj": 73.0,
+     "proj": 72.8,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "SYR": {
-     "rk": 15,
+     "rk": 9,
      "name": "Ahmad Miller",
      "pos": "RB",
      "opp": "NCSU",
      "log": "SYR|5154420",
      "kind": "scrim",
      "avg": 68.4,
-     "proj": 79.0,
+     "proj": 86.9,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "WKU": {
      "rk": 16,
@@ -1210,9 +1210,9 @@
      "log": "WKU|4878394",
      "kind": "scrim",
      "avg": 71.3,
-     "proj": 86.0,
+     "proj": 86.3,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "KSU": {
      "rk": 17,
@@ -1222,9 +1222,9 @@
      "log": "KSU|5078225",
      "kind": "rec",
      "avg": 46.8,
-     "proj": 60.0,
+     "proj": 59.6,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "OHIO": {
      "rk": 18,
@@ -1248,9 +1248,9 @@
      "log": "WYO|5227257",
      "kind": "scrim",
      "avg": 71.8,
-     "proj": 92.0,
+     "proj": 92.7,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "ARST": {
      "rk": 19,
@@ -1260,21 +1260,45 @@
      "log": "ARST|5085496",
      "kind": "rec",
      "avg": 49.2,
-     "proj": 62.0,
+     "proj": 62.7,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
     },
     "TROY": {
-     "rk": 21,
+     "rk": 20,
      "name": "Gavin Griffin",
      "pos": "RB",
      "opp": "USA",
      "log": "TROY|5388754",
      "kind": "scrim",
      "avg": 58.6,
-     "proj": 67.0,
+     "proj": 67.4,
      "v": "board",
-     "at": "2026-11-14T07:39Z"
+     "at": "2026-11-14T16:36Z"
+    },
+    "TXST": {
+     "rk": 21,
+     "name": "Chris Dawn Jr.",
+     "pos": "WR",
+     "opp": "FRES",
+     "log": "TXST|5077873",
+     "kind": "rec",
+     "avg": 57.2,
+     "proj": 67.8,
+     "v": "board",
+     "at": "2026-11-14T16:36Z"
+    },
+    "TULN": {
+     "rk": 22,
+     "name": "Johnnie Daniels",
+     "pos": "RB",
+     "opp": "RICE",
+     "log": "TULN|5218820",
+     "kind": "scrim",
+     "avg": 63.0,
+     "proj": 76.6,
+     "v": "board",
+     "at": "2026-11-14T16:36Z"
     }
    }
   }
