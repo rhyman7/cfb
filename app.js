@@ -84,14 +84,25 @@ async function init() {
 // The board publishes a small feed for this site (docs/feed/cfb.json), keyed by the ESPN game id:
 // each game's projected line and total and the bets it flags, and each player's projection.
 // Same site, so it loads directly. Missing or for another week: everything it feeds just hides.
+// The board moves on to the next week before this week's last game, so its last feed for the week
+// it left (cfb_prev.json) is tried second. That one is frozen at the board's last build of the
+// week, so the bets it flagged then are dropped (their prices are old); the projections stay.
 const VB_ROOT = "/fb-value-board/docs/";
 let BOARD = null;
 async function loadBoard() {
-  try {
-    const r = await fetch(VB_ROOT + "feed/cfb.json", { cache: "no-cache" });
-    const b = r.ok ? await r.json() : null;
-    if (b && b.season === DATA.season && b.week === LIVE_WEEK) BOARD = b;
-  } catch (e) { /* the board is optional */ }
+  for (const name of ["cfb.json", "cfb_prev.json"]) {
+    try {
+      const r = await fetch(VB_ROOT + "feed/" + name, { cache: "no-cache" });
+      const b = r.ok ? await r.json() : null;
+      if (!(b && b.season === DATA.season && b.week === LIVE_WEEK)) continue;
+      if (name !== "cfb.json") {
+        b.prev = true;
+        Object.values(b.games || {}).forEach(g => { g.bets = []; });
+      }
+      BOARD = b;
+      return;
+    } catch (e) { /* the board is optional */ }
+  }
 }
 function vbNorm(name) {
   return String(name).toLowerCase().replace(/-/g, " ").replace(/[^a-z ]/g, "").split(/\s+/)
