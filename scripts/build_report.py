@@ -1236,7 +1236,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
         if not items:
             return f'<li class="none"><div class="why">{empty}</div></li>'
         mark = lambda c: ' <span class="amb" title="Long plays carry more of his average than for 90% of regulars">▲</span>' if (c["name"], c["team"]) in amb else ""
-        return "".join(f'<li><span class="pl">{E(c["name"])}</span>{mark(c)}{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span><div class="why">{E(c["text"])}</div></li>' for c in items)
+        return "".join(f'<li>{bo_name(c["name"], c["team"], "pl")}{bo_chip(c["name"], c["team"])}{mark(c)}{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span><div class="why">{E(c["text"])}</div></li>' for c in items)
 
     G = []
     for i, g in enumerate(games, 1):
@@ -1247,15 +1247,50 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
             tough = tough[:3] if len(good) + len(tough) > 7 else tough
         G.append(dict(g=g, n=i, good=good, tough=tough, read=read, td=R.td_rows(g), amb=R.amber_rows(g)))
 
+    # Best Overall Matchups: one per team, players who have played nearly every game
+    allgood = sorted([(c, x) for x in G for c in x["good"] if c.get("gs", 0) > 0 and c["gp"] >= c["tgp"] - 1], key=lambda cx: -cx[0]["gs"])
+    TOPN = 22 if L == "CFB" else 15
+    top, seen = [], set()
+    for c, x in allgood:
+        if c["team"] in seen:
+            continue
+        seen.add(c["team"]); top.append((c, x))
+        if len(top) == TOPN:
+            break
+    # Players on the Best Overall list get a green name wherever they appear in the report (Nov 15, 2026)
+    best_rank = {(c["name"], c["team"]): i for i, (c, x) in enumerate(top, 1)}
+    best_norm = {(vb_norm(c["name"]), c["team"]): i for i, (c, x) in enumerate(top, 1)}
+
+    def bo_name(name, team, cls="", tag="span"):
+        i = best_rank.get((name, team)) or best_norm.get((vb_norm(name), team))
+        k = " ".join(([cls] if cls else []) + (["bo"] if i else []))
+        attrs = (f' class="{k}"' if k else "") + (f' title="Best Overall Matchups #{i}"' if i else "")
+        return f'<{tag}{attrs}>{E(name)}</{tag}>'
+
+    def bo_chip(name, team):
+        i = best_rank.get((name, team))
+        return f' <span class="bochip">Best Overall #{i}</span>' if i else ""
+
+    alltd = sorted([dict(r, x=x) for x in G for r in x["td"]], key=lambda r: -r["lam"])
+    TDN = 40 if L == "CFB" else 20
+    # Touchdown watch marks the players on the Most Likely to Score a TD list (green, with their rank), not Best Overall (Nov 15, 2026)
+    td_rank = {(r["name"], r["team"]): i for i, r in enumerate(alltd[:TDN], 1)}
+
+    def td_name(r):
+        i = td_rank.get((r["name"], r["team"]))
+        if not i:
+            return f'<b>{E(r["name"])}</b>'
+        return f'<b class="bo" title="Most Likely to Score a TD #{i}">{E(r["name"])}</b> <span class="bochip">TD List #{i}</span>'
+
     cards = []
     for x in G:
         g = x["g"]
         ambset = frozenset((a[0], a[1]) for a in x["amb"])
-        amb = ("; ".join(f'<b>{E(a[0])}</b> <span class="tag">{E(a[1])}</span> {a[2]} {num(a[3])} → {num(a[4])}' for a in x["amb"][:6])
+        amb = ("; ".join(f'{bo_name(a[0], a[1], tag="b")} <span class="tag">{E(a[1])}</span> {a[2]} {num(a[3])} → {num(a[4])}' for a in x["amb"][:6])
                + (f"; and {len(x['amb']) - 6} more" if len(x["amb"]) > 6 else ""))
         _, day, tm = when(g)
         tv = f' · {g["tv"]}' if g["tv"] else ""
-        tdw = "; ".join(f'<b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> '
+        tdw = "; ".join(f'{td_name(r)}{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> '
                         + (f'{r["ptd"] * 100:.0f}% chance, ' if r.get("ptd") is not None else "")
                         + f'{r["tds"]} TD{"s" if r["tds"] != 1 else ""} in {r["gp"]} games' for r in x["td"][:3]) or "No one qualifies."
         cards.append(f'''<section class="game" id="g{E(g["id"])}" data-game="{E(g["id"])}">
@@ -1271,16 +1306,6 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     <p class="tdw ambw"><span class="tdl ambl">▲ Long plays</span> {amb} <span class="dim">(yds/G, then capped: every long play counted at the league's 97.5th percentile)</span></p>""" if amb else ""}
   </div></section>''')
 
-    # Best Overall Matchups: one per team, players who have played nearly every game
-    allgood = sorted([(c, x) for x in G for c in x["good"] if c.get("gs", 0) > 0 and c["gp"] >= c["tgp"] - 1], key=lambda cx: -cx[0]["gs"])
-    TOPN = 22 if L == "CFB" else 15
-    top, seen = [], set()
-    for c, x in allgood:
-        if c["team"] in seen:
-            continue
-        seen.add(c["team"]); top.append((c, x))
-        if len(top) == TOPN:
-            break
     top_rows = "".join(
         f'<tr{" class=haslad" if c.get("lad") else ""}><td class="n">{i}</td><td><b>{E(c["name"])}</b>{itag(c)} <span class="tag">{E(c["team"])} {c["pos"]}</span></td>'
         f'<td><a href="#g{E(x["g"]["id"])}">{E(gtitle(x["g"]))}</a></td><td>{E(c["good"].split("; ", 1)[0])}</td><td>{E(c.get("mx") or c["good"].split("; ", 1)[1])}</td></tr>'
@@ -1291,12 +1316,10 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     best_log = best_log_update(load_best_log(root, D.league, d.get("season")), D, top, R.F is not None)
     (Path(root) / "data" / "best_overall.json").write_text(json.dumps(best_log, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    alltd = sorted([dict(r, x=x) for x in G for r in x["td"]], key=lambda r: -r["lam"])
-    TDN = 40 if L == "CFB" else 20
 
     def td_table(rows, start):
         body = "".join(
-            f'<tr><td class="n">{i}</td><td><b>{E(r["name"])}</b>{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span></td>'
+            f'<tr><td class="n">{i}</td><td>{bo_name(r["name"], r["team"], tag="b")}{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span></td>'
             f'<td><a href="#g{E(r["gid"])}">{E(gtitle(r["x"]["g"]))}</a></td><td>{r["tds"]} in {r["gp"]} ({r["split"]})</td>'
             f'<td>{E(r["oab"])} allows {E(r["allowed"] if r.get("ptd") is None else r["allowed"].replace(" rushing to backs", " to RBs").replace(" (all rushers)", ""))}</td>'
             + (f'<td class="r"><b>{r["ptd"] * 100:.0f}%</b></td>' if r.get("ptd") is not None   # the board's chance already counts team points
@@ -1332,7 +1355,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     # Highest Floors: two pages, three lists side by side on each
     def floor_table(pos, key, head):
         rows = floors.get((pos, key)) or []
-        body = "".join(f'<tr><td class="n">{i}</td><td><b>{E(r["name"])}</b></td><td>{E(r["team"])}</td>'
+        body = "".join(f'<tr><td class="n">{i}</td><td>{bo_name(r["name"], r["team"], tag="b")}</td><td>{E(r["team"])}</td>'
                        f'<td class="r"><b>{r["floor"]}</b></td><td class="r dimc">{r["g"]}</td></tr>' for i, r in enumerate(rows, 1)) \
             or '<tr><td></td><td colspan="4" class="dimc">No one qualifies.</td></tr>'
         return (f'<div class="flcol"><h3 class="flh">{E(head)}</h3><table class="tdt flt"><thead><tr><th></th><th>Player</th><th>Team</th>'
@@ -1393,6 +1416,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     <li><b>Source.</b> Every number comes from the {L} dashboard ({site}), with stats through Week {D.through}{f" and lines as of {gen.strftime('%b')} {gen.day}" if gen else ""}. The report is built automatically after each data update.</li>
     <li><b>Lines.</b> {"Every game has a spread and total in the data." if nlines == NG else f"{nlines} of the {NG} games have a spread and total so far; the rest show No line yet, and their team points in the TD ranking are estimates (est.)."}</li>
     {inj_note}
+    <li><b>Green names.</b> Players on this week's Best Overall Matchups list are highlighted in green wherever they appear in the report, with their spot on the list beside them under Good spots. Under Touchdown watch, green marks players on the Most Likely to Score a TD list instead, with their spot on that list.</li>
   </ul></div>
 </header>
 {index_html}
