@@ -1271,6 +1271,17 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
         i = best_rank.get((name, team))
         return f' <span class="bochip">Best Overall #{i}</span>' if i else ""
 
+    alltd = sorted([dict(r, x=x) for x in G for r in x["td"]], key=lambda r: -r["lam"])
+    TDN = 40 if L == "CFB" else 20
+    # Touchdown watch marks the players on the Most Likely to Score a TD list (green, with their rank), not Best Overall (Nov 15, 2026)
+    td_rank = {(r["name"], r["team"]): i for i, r in enumerate(alltd[:TDN], 1)}
+
+    def td_name(r):
+        i = td_rank.get((r["name"], r["team"]))
+        if not i:
+            return f'<b>{E(r["name"])}</b>'
+        return f'<b class="bo" title="Most Likely to Score a TD #{i}">{E(r["name"])}</b> <span class="bochip">TD List #{i}</span>'
+
     cards = []
     for x in G:
         g = x["g"]
@@ -1279,7 +1290,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
                + (f"; and {len(x['amb']) - 6} more" if len(x["amb"]) > 6 else ""))
         _, day, tm = when(g)
         tv = f' · {g["tv"]}' if g["tv"] else ""
-        tdw = "; ".join(f'{bo_name(r["name"], r["team"], tag="b")}{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> '
+        tdw = "; ".join(f'{td_name(r)}{itag(r)} <span class="tag">{E(r["team"])} {r["pos"]}</span> '
                         + (f'{r["ptd"] * 100:.0f}% chance, ' if r.get("ptd") is not None else "")
                         + f'{r["tds"]} TD{"s" if r["tds"] != 1 else ""} in {r["gp"]} games' for r in x["td"][:3]) or "No one qualifies."
         cards.append(f'''<section class="game" id="g{E(g["id"])}" data-game="{E(g["id"])}">
@@ -1305,8 +1316,6 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     best_log = best_log_update(load_best_log(root, D.league, d.get("season")), D, top, R.F is not None)
     (Path(root) / "data" / "best_overall.json").write_text(json.dumps(best_log, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    alltd = sorted([dict(r, x=x) for x in G for r in x["td"]], key=lambda r: -r["lam"])
-    TDN = 40 if L == "CFB" else 20
 
     def td_table(rows, start):
         body = "".join(
@@ -1407,7 +1416,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
     <li><b>Source.</b> Every number comes from the {L} dashboard ({site}), with stats through Week {D.through}{f" and lines as of {gen.strftime('%b')} {gen.day}" if gen else ""}. The report is built automatically after each data update.</li>
     <li><b>Lines.</b> {"Every game has a spread and total in the data." if nlines == NG else f"{nlines} of the {NG} games have a spread and total so far; the rest show No line yet, and their team points in the TD ranking are estimates (est.)."}</li>
     {inj_note}
-    <li><b>Green names.</b> Players on this week's Best Overall Matchups list are highlighted in green wherever they appear in the report, with their spot on the list beside them under Good spots.</li>
+    <li><b>Green names.</b> Players on this week's Best Overall Matchups list are highlighted in green wherever they appear in the report, with their spot on the list beside them under Good spots. Under Touchdown watch, green marks players on the Most Likely to Score a TD list instead, with their spot on that list.</li>
   </ul></div>
 </header>
 {index_html}

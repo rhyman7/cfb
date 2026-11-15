@@ -251,9 +251,12 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   time on the list this season".
 - **Green names for Best Overall picks** (Nov 15, 2026). A player on this week's Best Overall
   Matchups list has his name highlighted in green (`.bo`, the Good spots label's green) wherever
-  he appears in the report: Good spots (with a **Best Overall #N** chip), Touchdown watch, Long
-  plays, the TD list and Highest Floors (matched on name and team). The list is worked out before
+  he appears in the report: Good spots (with a **Best Overall #N** chip), Long plays,
+  the TD list and Highest Floors (matched on name and team). The list is worked out before
   the game pages are written so they can mark it. The cover's How to read this explains it.
+  **Touchdown watch is the exception**: there green marks players on the Most Likely to Score a
+  TD list, with a **TD List #N** chip (`td_rank`), and Best Overall picks aren't marked unless
+  they are on that list too.
 - When the value board's feed isn't there at build time, Best Overall Matchups prints a
   **Fallback version** note (ranked by defense rank, which has little record of predicting who
   beats his average).
