@@ -1,14 +1,14 @@
 {
  "season": 2026,
- "fetched": "2026-11-14T23:00:28Z",
+ "fetched": "2026-11-15T02:44:08Z",
  "source": "Conference availability reports (SEC, ACC, Big 12, Big Ten) via app.hdintelligence.com",
  "today": "2026-11-14",
  "failed": [],
  "conferences": {
   "SEC": {
-   "reports": 6,
-   "teams": 12,
-   "live": 12
+   "reports": 7,
+   "teams": 14,
+   "live": 14
   },
   "ACC": {
    "reports": 8,
@@ -16,9 +16,9 @@
    "live": 14
   },
   "Big 12": {
-   "reports": 6,
-   "teams": 12,
-   "live": 10
+   "reports": 8,
+   "teams": 16,
+   "live": 14
   },
   "Big Ten": {
    "reports": 9,
@@ -31,9 +31,9 @@
    "live": 0
   },
   "American": {
-   "reports": 5,
-   "teams": 10,
-   "live": 8
+   "reports": 6,
+   "teams": 12,
+   "live": 10
   }
  },
  "teams": {
@@ -120,6 +120,82 @@
     }
    ]
   },
+  "Arizona": {
+   "conf": "Big 12",
+   "report_id": "10003179",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "20:00:00",
+   "game_date": "2026-11-14",
+   "game_time": "21:30:00",
+   "location": "Tucson, AZ",
+   "opponent": "Utah",
+   "players": [
+    {
+     "name": "Max Harris",
+     "pos": "LB",
+     "number": "5",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Shane King",
+     "pos": "TE",
+     "number": "8",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Cam Chapa",
+     "pos": "S",
+     "number": "13",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Malcolm Hartzog Jr.",
+     "pos": "S",
+     "number": "15",
+     "status": "Game Time Decision",
+     "season_out": false
+    },
+    {
+     "name": "Ismail Mahdi",
+     "pos": "RB",
+     "number": "21",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Keytrin Harris",
+     "pos": "DL",
+     "number": "27",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Swayde Griffin",
+     "pos": "CB",
+     "number": "28",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Kevin Moorer Jr.",
+     "pos": "DL",
+     "number": "38",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Ezra Funa",
+     "pos": "DL",
+     "number": "92",
+     "status": "Out",
+     "season_out": false
+    }
+   ]
+  },
   "Arizona State": {
    "conf": "Big 12",
    "report_id": "10003146",
@@ -144,6 +220,33 @@
      "number": "89",
      "status": "Out",
      "season_out": false
+    }
+   ]
+  },
+  "Arkansas": {
+   "conf": "SEC",
+   "report_id": "10003195",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "17:15:00",
+   "game_date": "2026-11-14",
+   "game_time": "18:45:00",
+   "location": "Fayetteville, AR",
+   "opponent": "South Carolina",
+   "players": [
+    {
+     "name": "Braydon Lee",
+     "pos": "DB",
+     "number": "3",
+     "status": "Out",
+     "season_out": true
+    },
+    {
+     "name": "Maddox Lassiter",
+     "pos": "TE",
+     "number": "47",
+     "status": "Out",
+     "season_out": true
     }
    ]
   },
@@ -2363,6 +2466,131 @@
     }
    ]
   },
+  "North Texas": {
+   "conf": "American",
+   "report_id": "10003196",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "18:00:00",
+   "game_date": "2026-11-14",
+   "game_time": "20:00:00",
+   "location": "San Antonio, TX",
+   "opponent": "UTSA",
+   "players": [
+    {
+     "name": "Corri Milliner",
+     "pos": "WR",
+     "number": "0",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Taye Seymore",
+     "pos": "S",
+     "number": "2",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Josiah Martin",
+     "pos": "WR",
+     "number": "6",
+     "status": "Questionable",
+     "season_out": false
+    },
+    {
+     "name": "Shandon King",
+     "pos": "WR",
+     "number": "8",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Caden Jenkins",
+     "pos": "CB",
+     "number": "8",
+     "status": "Out",
+     "season_out": true
+    },
+    {
+     "name": "Chaston Ditta",
+     "pos": "QB",
+     "number": "9",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Kyle Koch",
+     "pos": "WR",
+     "number": "14",
+     "status": "Questionable",
+     "season_out": false
+    },
+    {
+     "name": "Julian Knox Sr.",
+     "pos": "S",
+     "number": "22",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Colin Page",
+     "pos": "RB",
+     "number": "22",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Zach Johnson",
+     "pos": "CB",
+     "number": "27",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Aaden Little",
+     "pos": "S",
+     "number": "31",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Kailer Pettijohn",
+     "pos": "LB",
+     "number": "40",
+     "status": "Out",
+     "season_out": true
+    },
+    {
+     "name": "Drew Clemens",
+     "pos": "TE",
+     "number": "85",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Roberto Rodriguez",
+     "pos": "OL",
+     "number": "97",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Amarion Berry",
+     "pos": "OL",
+     "number": "98",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Avion Carter",
+     "pos": "DL",
+     "number": "99",
+     "status": "Out",
+     "season_out": false
+    }
+   ]
+  },
   "Northwestern": {
    "conf": "Big Ten",
    "report_id": "10003083",
@@ -2551,6 +2779,54 @@
     {
      "name": "Maxence LeBlanc",
      "pos": "TE",
+     "number": "88",
+     "status": "Out",
+     "season_out": false
+    }
+   ]
+  },
+  "Oklahoma State": {
+   "conf": "Big 12",
+   "report_id": "10003200",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "19:00:00",
+   "game_date": "2026-11-14",
+   "game_time": "20:30:00",
+   "location": "Stillwater, OK",
+   "opponent": "Texas Tech",
+   "players": [
+    {
+     "name": "Tate Romney",
+     "pos": "LB",
+     "number": "3",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Dayvon Standard",
+     "pos": "WR",
+     "number": "19",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Carson Kolb",
+     "pos": "TE",
+     "number": "44",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Desmond Magiya",
+     "pos": "OL",
+     "number": "76",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Landon Dean",
+     "pos": "DT",
      "number": "88",
      "status": "Out",
      "season_out": false
@@ -3022,6 +3298,82 @@
      "name": "Evan Goodwin",
      "pos": "OL",
      "number": "60",
+     "status": "Out",
+     "season_out": false
+    }
+   ]
+  },
+  "South Carolina": {
+   "conf": "SEC",
+   "report_id": "10003195",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "17:15:00",
+   "game_date": "2026-11-14",
+   "game_time": "18:45:00",
+   "location": "Fayetteville, AR",
+   "opponent": "Arkansas",
+   "players": [
+    {
+     "name": "Nitro Tuggle",
+     "pos": "WR",
+     "number": "1",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Nyck Harbor",
+     "pos": "WR",
+     "number": "8",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "J’Zavien Currence",
+     "pos": "DB",
+     "number": "14",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Jayden Sellers",
+     "pos": "WR",
+     "number": "17",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Matt Fuller",
+     "pos": "RB",
+     "number": "28",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Kobby Sakyi-Prah",
+     "pos": "EDG",
+     "number": "41",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Josiah Thompson",
+     "pos": "OL",
+     "number": "74",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Dayne Arnett",
+     "pos": "OL",
+     "number": "75",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Seth Smith",
+     "pos": "OL",
+     "number": "78",
      "status": "Out",
      "season_out": false
     }
@@ -3650,6 +4002,61 @@
     }
    ]
   },
+  "Texas Tech": {
+   "conf": "Big 12",
+   "report_id": "10003200",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "19:00:00",
+   "game_date": "2026-11-14",
+   "game_time": "20:30:00",
+   "location": "Stillwater, OK",
+   "opponent": "Oklahoma State",
+   "players": [
+    {
+     "name": "Quinten Joyner",
+     "pos": "RB",
+     "number": "0",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Coy Eakin",
+     "pos": "WR",
+     "number": "3",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Jalen Jones",
+     "pos": "WR",
+     "number": "6",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Leyton Stone",
+     "pos": "WR",
+     "number": "17",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Miquel Dingle Jr.",
+     "pos": "S",
+     "number": "21",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Ansel Nedore",
+     "pos": "OLB",
+     "number": "33",
+     "status": "Out",
+     "season_out": false
+    }
+   ]
+  },
   "Tulane": {
    "conf": "American",
    "report_id": "10003122",
@@ -4068,6 +4475,102 @@
      "pos": "OL",
      "number": "68",
      "status": "Out",
+     "season_out": false
+    }
+   ]
+  },
+  "UTSA": {
+   "conf": "American",
+   "report_id": "10003196",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "18:00:00",
+   "game_date": "2026-11-14",
+   "game_time": "20:00:00",
+   "location": "San Antonio, TX",
+   "opponent": "North Texas",
+   "players": [
+    {
+     "name": "Brandon Tucker",
+     "pos": "LB",
+     "number": "4",
+     "status": "Questionable",
+     "season_out": false
+    },
+    {
+     "name": "Marcellus Wilkerson",
+     "pos": "S",
+     "number": "12",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "DJ Allen Jr.",
+     "pos": "WR",
+     "number": "15",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "Chris Bryson II",
+     "pos": "MB",
+     "number": "16",
+     "status": "Out",
+     "season_out": true
+    },
+    {
+     "name": "Johnny Bowens III",
+     "pos": "DL",
+     "number": "19",
+     "status": "Out",
+     "season_out": true
+    },
+    {
+     "name": "Bryson Donnell",
+     "pos": "RB",
+     "number": "22",
+     "status": "Out",
+     "season_out": true
+    },
+    {
+     "name": "Mykha Green",
+     "pos": "RB",
+     "number": "23",
+     "status": "Out",
+     "season_out": false
+    },
+    {
+     "name": "James Walley Jr.",
+     "pos": "LB",
+     "number": "34",
+     "status": "Questionable",
+     "season_out": false
+    },
+    {
+     "name": "Darrell Jones",
+     "pos": "OL",
+     "number": "74",
+     "status": "Questionable",
+     "season_out": false
+    }
+   ]
+  },
+  "Utah": {
+   "conf": "Big 12",
+   "report_id": "10003179",
+   "report": "Game Day",
+   "published": "2026-11-14",
+   "posted": "20:00:00",
+   "game_date": "2026-11-14",
+   "game_time": "21:30:00",
+   "location": "Tucson, AZ",
+   "opponent": "Arizona",
+   "players": [
+    {
+     "name": "Karson Kaufusi",
+     "pos": "DT",
+     "number": "51",
+     "status": "Game Time Decision",
      "season_out": false
     }
    ]
