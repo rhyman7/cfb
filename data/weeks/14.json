@@ -1,1 +1,2 @@
-{"season":2026,"week":14,"generatedAt":"2026-10-04T22:23:17.459993+00:00","weekGames":[]}
+{"season":2026,"week":14,"generatedAt":"2026-11-15T14:37:27.741352+00:00","weekGames":[
+{"id":"401869542","week":14,"start":"2026-12-05T01:00Z","timeTbd":false,"neutral":false,"conferenceGame":false,"status":"STATUS_SCHEDULED","statusDetail":"12/4 - 8:00 PM EST","completed":false,"venue":"Albertsons Stadium","city":"Boise, ID","tv":"CBS","note":"Pac-12 Championship","indoor":false,"spread":null,"total":null,"away":{"name":"TBD","key":null,"rank":null,"record":"0-0","conference":"FCS","score":null,"abbr":"TBD","qb":null},"home":{"name":"Boise State","key":"Boise State","rank":24,"record":"9-1","conference":"Pac-12","score":null,"abbr":"BOIS","qb":"Max Cutforth"},"lineOpen":null}]}
