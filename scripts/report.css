@@ -191,3 +191,6 @@ td.r, th.r { text-align: right; padding-right: 0; padding-left: 8pt; }
 .bo-first { color: #8d9199; font-style: italic; }
 .bo-tr tr.bo-tot td { border-top: 1.2pt solid #14161a; background: #f6f7f8; }
 .bo-tr.bo-long td { padding: 1.9pt 10pt 1.9pt 0; }
+
+/* Kickoff forecast under the venue, outdoor games only (Nov 16, 2026) */
+.sub.wx { color: #d5d8dd; margin-top: 1.5pt; }

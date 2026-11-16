@@ -580,8 +580,110 @@ class Data:
                                 lineOpen=dict(spread=None if lo.get("spread") is None else -lo["spread"], total=lo.get("total")),
                                 venue=g.get("stadium") or "", city=g.get("city") or "",
                                 indoor=bool(g.get("indoor")) or g.get("roof") in ("dome", "closed"),
-                                neutral=bool(g.get("neutral")), flag="Division game" if g.get("divisional") else "", tv=""))
+                                neutral=bool(g.get("neutral")), flag="Division game" if g.get("divisional") else "", tv="",
+                                lat=g.get("lat"), lon=g.get("lon")))
         return out
+
+
+# ---------------------------------------------------------------- kickoff forecast
+# Outdoor games get the kickoff-hour forecast from Open-Meteo (free, no key), the same source and
+# wording as the sites' weather.js: "Partly cloudy, 48° at kickoff, 10% chance of rain, wind 12 mph".
+# Best-effort: any failure leaves the game without a forecast. Indoor games are skipped.
+WX_API = "https://api.open-meteo.com/v1/forecast"
+WX_GEO = "https://geocoding-api.open-meteo.com/v1/search"
+
+
+def wx_code(c):
+    if c == 0: return "Clear"
+    if c == 1: return "Mostly clear"
+    if c == 2: return "Partly cloudy"
+    if c == 3: return "Cloudy"
+    if c in (45, 48): return "Fog"
+    if 51 <= c <= 57: return "Drizzle"
+    if 61 <= c <= 67 or 80 <= c <= 82: return "Rain"
+    if 71 <= c <= 77 or c in (85, 86): return "Snow"
+    if c >= 95: return "Thunderstorms"
+    return "Forecast"
+
+
+def _get_json(url, params):
+    import urllib.parse
+    import urllib.request
+    with urllib.request.urlopen(url + "?" + urllib.parse.urlencode(params), timeout=20) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+
+US_STATES = dict(AL="Alabama", AK="Alaska", AZ="Arizona", AR="Arkansas", CA="California", CO="Colorado", CT="Connecticut",
+                 DE="Delaware", DC="District of Columbia", FL="Florida", GA="Georgia", HI="Hawaii", ID="Idaho", IL="Illinois",
+                 IN="Indiana", IA="Iowa", KS="Kansas", KY="Kentucky", LA="Louisiana", ME="Maine", MD="Maryland",
+                 MA="Massachusetts", MI="Michigan", MN="Minnesota", MS="Mississippi", MO="Missouri", MT="Montana",
+                 NE="Nebraska", NV="Nevada", NH="New Hampshire", NJ="New Jersey", NM="New Mexico", NY="New York",
+                 NC="North Carolina", ND="North Dakota", OH="Ohio", OK="Oklahoma", OR="Oregon", PA="Pennsylvania",
+                 RI="Rhode Island", SC="South Carolina", SD="South Dakota", TN="Tennessee", TX="Texas", UT="Utah",
+                 VT="Vermont", VA="Virginia", WA="Washington", WV="West Virginia", WI="Wisconsin", WY="Wyoming", PR="Puerto Rico")
+
+
+def _geocode(city, fetch=None):  # "Blacksburg, VA" -> (lat, lon); same rule as the CFB site's wxGeocode()
+    name, _, region = (x.strip() for x in city.partition(","))
+    state = US_STATES.get(region.upper())
+    params = {"name": name, "count": 10, "language": "en", "format": "json"}
+    if state:
+        params["countryCode"] = "US"
+    hits = (fetch or _get_json)(WX_GEO, params).get("results") or []
+    hit = next((h for h in hits if h.get("admin1") == state), None) if state else (hits[0] if hits else None)
+    return (round(hit["latitude"], 3), round(hit["longitude"], 3)) if hit else None
+
+
+def kickoff_wx(games, fetch=_get_json):
+    """{game id: "Partly cloudy, 48° at kickoff, 10% chance of rain, wind 12 mph"} for outdoor games."""
+    out, now = {}, datetime.now(timezone.utc)
+    todo = []
+    for g in games:
+        if g.get("indoor") or not g.get("start"):
+            continue
+        t = datetime.fromisoformat(g["start"].replace("Z", "+00:00"))
+        if not (now.timestamp() - 6 * 3600 < t.timestamp() < now.timestamp() + 15 * 86400):
+            continue
+        ll = (g.get("lat"), g.get("lon"))
+        if None in ll:
+            try:
+                ll = _geocode(g["city"], fetch) if g.get("city") else None
+            except Exception:
+                ll = None
+        if ll:
+            todo.append((g, ll, t))
+    places = list({ll for _, ll, _ in todo})
+    fc = {}
+    for i in range(0, len(places), 20):
+        chunk = places[i:i + 20]
+        try:
+            body = fetch(WX_API, {"latitude": ",".join(str(p[0]) for p in chunk), "longitude": ",".join(str(p[1]) for p in chunk),
+                                  "hourly": "temperature_2m,precipitation_probability,weather_code,wind_speed_10m",
+                                  "temperature_unit": "fahrenheit", "wind_speed_unit": "mph", "timezone": "GMT", "forecast_days": 16})
+        except Exception as e:
+            print(f"  report: forecast lookup failed ({e})")
+            continue
+        body = body if isinstance(body, list) else [body]
+        for p, b in zip(chunk, body):
+            if b and b.get("hourly"):
+                fc[p] = b["hourly"]
+    for g, ll, t in todo:
+        h = fc.get(ll)
+        if not h:
+            continue
+        key = datetime.fromtimestamp(round(t.timestamp() / 3600) * 3600, timezone.utc).strftime("%Y-%m-%dT%H:%M")
+        try:
+            i = h["time"].index(key)
+        except ValueError:
+            continue
+        if h["temperature_2m"][i] is None:
+            continue
+        pop, wind = h["precipitation_probability"][i], h["wind_speed_10m"][i]
+        out[g["id"]] = ", ".join(x for x in [wx_code(h["weather_code"][i]), f'{round(h["temperature_2m"][i])}° at kickoff',
+                                             f"{pop}% chance of rain" if pop is not None else None,
+                                             f"wind {round(wind)} mph" if wind is not None else None] if x)
+    print(f"  report: kickoff forecast for {len(out)} of {len(todo)} outdoor games")
+    return out
 
 
 # ---------------------------------------------------------------- analysis
@@ -1138,7 +1240,7 @@ def bye_page(d, D, games, COL, league_name):
 </section>'''
 
 
-def build(root=ROOT, out=None, font_css=None, vb=None):
+def build(root=ROOT, out=None, font_css=None, vb=None, wx_fetch=_get_json):
     """Write report.html and report-games.json into `out`; return (path, game ids, title)."""
     out = Path(out or root / "pdf")
     out.mkdir(parents=True, exist_ok=True)
@@ -1175,6 +1277,7 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
                          {g[s]["abbr"] for g in D.games for s in ("away", "home")})
     print(f"  report: value board feed {'used' if feed else 'not found, raw matchups'}; adjusted EPA {'used' if epa else 'not found'}")
     COL = team_colors(root, D.league)
+    WX = kickoff_wx(D.games, wx_fetch) if wx_fetch is not False else {}
     L = D.league.upper()
     games = D.games
     NG = len(games)
@@ -1226,8 +1329,10 @@ def build(root=ROOT, out=None, font_css=None, vb=None):
                      '<div class="cell"><div class="lbl">Total</div><div class="big dim">—</div></div>'
                      '<div class="cell"><div class="lbl">Implied score</div><div class="imp dim">No line yet</div></div>')
         bits = [g["city"]] + (["Indoors"] if g["indoor"] else []) + (["Neutral site"] if g["neutral"] else []) + ([g["flag"]] if g["flag"] else [])
+        w = WX.get(g["id"])
         return (f'<div class="strip">{team_html(g["away"])}<div class="at">{vs(g)}</div>{team_html(g["home"])}{cells}'
-                f'<div class="cell where"><div class="stad">{E(g["venue"])}</div><div class="sub">{E(". ".join(b for b in bits if b))}</div></div></div>')
+                f'<div class="cell where"><div class="stad">{E(g["venue"])}</div><div class="sub">{E(". ".join(b for b in bits if b))}</div>'
+                + (f'<div class="sub wx">{E(w)}</div>' if w else "") + '</div></div>')
 
     def itag(c):
         return f' <span class="inj">{E(c["inj"])}</span>' if c.get("inj") else ""
