@@ -174,7 +174,9 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   in the Weekly Matchup Report's game header (under the venue; `kickoff_wx()` in the shared
   `build_report.py`, fetched at build time, venue city geocoded like `wxGeocode()`) and in the printed matchup's info bar
   (`print.html` loads `weather.js`; `initPrintAll()` waits up to 8 seconds for `startWeather()`, which now returns a
-  promise). Best-effort: a failed lookup leaves the forecast out, never fails the build.
+  promise). Best-effort: a failed lookup leaves the forecast out, never fails the build. Every browser lookup
+  in `weather.js` goes through `wxFetch()`, which gives up after 6 seconds, so a slow service can't stall
+  the build's wait for the network to go quiet.
 - Anything screen-only gets `class="no-print"`; print rules live in `@media print` in
   `style.css`.
 - A matchup prints on **two landscape pages** (header, Head to Head and pace; then both team

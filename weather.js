@@ -22,6 +22,14 @@ const US_STATES = {
   PR: "Puerto Rico",
 };
 
+// Every lookup gives up after 6 seconds, so a slow weather service can't hold up a page (the PDF
+// build waits for the network to go quiet before printing; Nov 16, 2026).
+function wxFetch(url) {
+  const ctl = typeof AbortController === "function" ? new AbortController() : null;
+  const t = ctl ? setTimeout(() => ctl.abort(), 6000) : null;
+  return fetch(url, ctl ? { signal: ctl.signal } : undefined).finally(() => t && clearTimeout(t));
+}
+
 // WMO weather codes → icon + short label
 function wxCode(c) {
   if (c === 0) return ["☀️", "Clear"];
@@ -49,7 +57,7 @@ async function wxGeocode(city) {
   const state = region && US_STATES[region.toUpperCase()];
   const params = new URLSearchParams({ name, count: "10", language: "en", format: "json" });
   if (state) params.set("countryCode", "US");
-  const res = await fetch(`${WX_GEO}?${params}`);
+  const res = await wxFetch(`${WX_GEO}?${params}`);
   if (!res.ok) throw new Error("geocode HTTP " + res.status);
   const hits = (await res.json()).results || [];
   const hit = state ? hits.find(h => h.admin1 === state) : hits[0];
@@ -96,7 +104,7 @@ function startWeather(games, rerender) {
         forecast_days: String(WX_DAYS),
       });
       try {
-        const res = await fetch(`${WX_API}?${params}`);
+        const res = await wxFetch(`${WX_API}?${params}`);
         if (!res.ok) continue;
         let body = await res.json();
         if (!Array.isArray(body)) body = [body];
