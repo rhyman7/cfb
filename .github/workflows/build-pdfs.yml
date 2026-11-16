@@ -16,6 +16,7 @@ on:
       - "teamcolors.js"
       - "style.css"
       - "print.html"
+      - "weather.js"
       - "scripts/build_pdfs.py"
       - "scripts/build_report.py"
       - "scripts/build_packets.py"
