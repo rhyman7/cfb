@@ -577,7 +577,7 @@ class Data:
                 out.append(dict(id=g["id"], start=g["start"], away=self._side(g, "away"), home=self._side(g, "home"),
                                 # the NFL file stores the spread with home favored positive; flip to the CFB convention
                                 spread=None if sp is None else -sp, total=g.get("total"),
-                                lineOpen=dict(spread=None if lo.get("spread") is None else -lo["spread"], total=lo.get("total")),
+                                lineOpen=dict(spread=None if lo.get("spread") is None else -lo["spread"], total=lo.get("total"), at=lo.get("at")),
                                 venue=g.get("stadium") or "", city=g.get("city") or "",
                                 indoor=bool(g.get("indoor")) or g.get("roof") in ("dome", "closed"),
                                 neutral=bool(g.get("neutral")), flag="Division game" if g.get("divisional") else "", tv="",
@@ -1272,6 +1272,15 @@ def build(root=ROOT, out=None, font_css=None, vb=None, wx_fetch=_get_json):
                 if b and b["n"] != g[side]["qb"]:
                     print(f"  report: {g[side]['abbr']} QB {g[side]['qb'] or 'n/a'} -> {b['n']} (value board's projected starter)")
                     g[side]["qb"] = b["n"]
+    if feed and D.league == "nfl":
+        # The opener, as on the NFL site (openFor() in common.js): the value board's first line for the
+        # game when it is older than the dashboard's first price of the week (Nov 16, 2026). The board
+        # stores + = home favored; the report's NFL games use the CFB sign (- = home favored).
+        for g in D.games:
+            o = ((feed.get("games") or {}).get(g["id"]) or {}).get("open") or {}
+            lo = g["lineOpen"] or {}
+            if o.get("at") and (not lo.get("at") or o["at"] < lo["at"]):
+                g["lineOpen"] = dict(spread=None if o.get("spread") is None else -o["spread"], total=o.get("total"), at=o["at"])
     R = Report(D, feed, epa, cap)
     floors = load_floors(vb or Path(root).parent / "fb-value-board", D.league, d.get("season"), D.week,
                          {g[s]["abbr"] for g in D.games for s in ("away", "home")})
