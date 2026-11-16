@@ -169,6 +169,12 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 
 ## Printing and PDFs
 
+- **Kickoff forecast in the PDFs** (Nov 16, 2026): outdoor games show the kickoff-hour forecast
+  (Open-Meteo, same wording as the site: "Partly cloudy, 45° at kickoff, 15% chance of rain, wind 11 mph")
+  in the Weekly Matchup Report's game header (under the venue; `kickoff_wx()` in the shared
+  `build_report.py`, fetched at build time, venue city geocoded like `wxGeocode()`) and in the printed matchup's info bar
+  (`print.html` loads `weather.js`; `initPrintAll()` waits up to 8 seconds for `startWeather()`, which now returns a
+  promise). Best-effort: a failed lookup leaves the forecast out, never fails the build.
 - Anything screen-only gets `class="no-print"`; print rules live in `@media print` in
   `style.css`.
 - A matchup prints on **two landscape pages** (header, Head to Head and pace; then both team
