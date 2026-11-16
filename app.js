@@ -576,7 +576,7 @@ function renderMatchupParts(g) {
       <div class="empty-note">No head-to-head comparison: ${escapeHtml(other.name)} isn't an FBS team, so its stats aren't tracked.</div>`;
   }
   const cards = `<h3 class="section-title">Full team stats</h3>` + [g.away, g.home]
-    .map(s => s.key && DATA.teams[s.key] ? renderTeamCard(DATA.teams[s.key]) : nonFbsCard(s)).join("");
+    .map(s => s.key && DATA.teams[s.key] ? renderTeamCard(DATA.teams[s.key], s.qb) : nonFbsCard(s)).join("");
   return { head: renderHero(g, away, home), edges: edges + renderBetting(away, home), cards };
 }
 
@@ -963,8 +963,26 @@ function populateSelect(select, names) {
   select.innerHTML = confs;
 }
 
-function renderTeamCard(t) {
+// A starter who joined mid-season has no stats in his new team's tables, so the matchup card adds
+// his rows from his old team's tables, tagged "with ABBR" (Nov 16, 2026; same as the NFL site).
+function newQbRows(t, qb) {
+  const out = { passing: null, rushing: null };
+  const nn = n => String(n || "").toLowerCase().replace(/\b(jr|sr|ii|iii|iv|v)\b\.?/g, "").replace(/[^a-z]/g, "");
+  if (!qb || (t.passing || []).some(r => nn(r.player) === nn(qb))) return out;
+  for (const o of Object.values(DATA.teams)) {
+    if (o === t) continue;
+    for (const k of ["passing", "rushing"]) {
+      const r = (o[k] || []).find(x => nn(x.player) === nn(qb));
+      if (r && !out[k]) out[k] = { ...r, from: o.abbr };
+    }
+  }
+  return out;
+}
+
+function renderTeamCard(t, qb) {
   if (!t) return "";
+  const nq = newQbRows(t, qb);
+  const addQb = (rows, r) => r ? [r, ...(rows || [])] : rows;
   const avg = DATA.leagueAverage;
   const gr = DATA.gaugeRanges;
   const pop = kind => (dpHas(t) ? { team: t.team, kind } : null);
@@ -1026,7 +1044,7 @@ function renderTeamCard(t) {
     </div>
 
     <div class="tables-row">
-      ${playerTable("Passing", withAvgC(t.passing), [
+      ${playerTable("Passing", withAvgC(addQb(t.passing, nq.passing)), [
         ["Player", "player", "text"],
         ["Yds/G", "ydsG", "num"],
         ["TD", "td", "num"],
@@ -1034,7 +1052,7 @@ function renderTeamCard(t) {
         ["Cmp/G", "cmp", "num"],
         ["Pass<br>Yds /<br>Comp", "ypc", "num"],
       ])}
-      ${playerTable("Rushing", t.rushing, [
+      ${playerTable("Rushing", addQb(t.rushing, nq.rushing), [
         ["Player", "player", "text"],
         ["Yds/G", "ydsG", "num"],
         ["TD", "td", "num"],
@@ -1102,7 +1120,8 @@ function withAvgC(rows) {
 }
 
 // Position after the player's name in the Rushing and Receiving tables (Passing is all QBs)
-const posTag = (r, kind) => kind !== "passing" && r.pos ? ` <span class="pt-pos">${escapeHtml(r.pos)}</span>` : "";
+const posTag = (r, kind) => (kind !== "passing" && r.pos ? ` <span class="pt-pos">${escapeHtml(r.pos)}</span>` : "")
+  + (r.from ? ` <span class="pt-pos pt-from" title="Season stats with ${escapeHtml(r.from)}; starting here">with ${escapeHtml(r.from)}</span>` : "");
 
 function playerTable(title, rows, cols) {
   if (!rows || rows.length === 0) {

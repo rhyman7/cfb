@@ -156,6 +156,10 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - **Position tags:** in the Rushing and Receiving tables each player's name is followed by his
   position (`posTag()`, class `pt-pos`, small and gray, from the row's `pos`). Passing has none
   (every row is a QB).
+- **A starter new to the team** (Nov 16, 2026): when the header's QB (`qb`) has no row in his
+  team's Passing table, `newQbRows()` finds his rows in another team's Passing and Rushing tables
+  and puts them first, tagged "with ABBR" (`r.from`; season stats with his old team). Matchup
+  page and print only. Same on the NFL site, which uses `heroQb()`.
 
 ## This Week's Matchups filters
 
