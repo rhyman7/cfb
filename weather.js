@@ -71,9 +71,10 @@ function startWeather(games, rerender) {
   const horizon = now + (WX_DAYS - 1) * 24 * 3600 * 1000;
   const todo = games.filter(g => !g.completed && g.indoor !== true && g.city &&
     new Date(g.start).getTime() > now - 6 * 3600 * 1000 && new Date(g.start).getTime() < horizon);
-  if (!todo.length) return;
+  if (!todo.length) return Promise.resolve();
 
-  (async () => {
+  // returns a promise so the print page can wait for the forecast before laying out
+  return (async () => {
     const geo = wxLoadGeo();
     const cities = [...new Set(todo.map(g => g.city))];
     await wxPool(cities.filter(c => !(c in geo)), 4, async c => { geo[c] = await wxGeocode(c); });

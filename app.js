@@ -582,7 +582,7 @@ function renderMatchupParts(g) {
 
 /* ---------------- Print all (print.html) ---------------- */
 
-function initPrintAll() {
+async function initPrintAll() {
   const all = DATA.weekGames || [];
   const ids = (new URLSearchParams(location.search).get("games") || "").split(",").filter(Boolean);
   const games = ids.length ? ids.map(id => all.find(g => g.id === id)).filter(Boolean) : all;
@@ -593,6 +593,10 @@ function initPrintAll() {
   if (!games.length) {
     status.textContent = "No games to print.";
     return;
+  }
+  // kickoff forecast for outdoor games (the header's info bar), waited for up to 8 seconds
+  if (typeof startWeather === "function") {
+    await Promise.race([startWeather(games, () => {}), new Promise(r => setTimeout(r, 8000))]).catch(() => {});
   }
   wrap.innerHTML = games.map(g => {
     const p = renderMatchupParts(g);
