@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T14:37:34.391802+00:00",
+ "generatedAt": "2026-11-16T14:44:59.576079+00:00",
  "season": 2026,
  "throughWeek": 11,
  "gamesCounted": 752,
@@ -69232,7 +69232,7 @@
     "conference": "Mountain West",
     "score": null,
     "abbr": "AFA",
-    "qb": "Evan Medders"
+    "qb": "Kemper Hodges"
    },
    "lineOpen": {
     "spread": -22.5,
@@ -69781,7 +69781,7 @@
     "conference": "American",
     "score": null,
     "abbr": "UNT",
-    "qb": "Tayven Jackson"
+    "qb": "Chris Jimerson Jr."
    },
    "home": {
     "name": "Tulane",
@@ -69877,7 +69877,7 @@
     "conference": "SEC",
     "score": null,
     "abbr": "MSST",
-    "qb": "Parker Puckett"
+    "qb": "AJ Swann"
    },
    "lineOpen": {
     "spread": null,
@@ -70254,7 +70254,7 @@
     "conference": "Sun Belt",
     "score": null,
     "abbr": "ULM",
-    "qb": "Aidan Armenta"
+    "qb": "Austin Carlisle"
    },
    "home": {
     "name": "App State",
@@ -73695,7 +73695,7 @@
  },
  "hasTargets": true,
  "notes": [
-  "overrides/qb_starters.json is for Week 11, not Week 12: not applied",
+  "starting QBs for 136 teams applied from overrides/qb_starters.json",
   "lineOpen kept for 66 of 70 Week 12 games from the week's first build"
  ],
  "leagueAverage": {
