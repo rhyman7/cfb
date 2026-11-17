@@ -1,28 +1,28 @@
 {
  "season": 2026,
- "fetched": "2026-11-15T06:50:22Z",
+ "fetched": "2026-11-17T09:14:46Z",
  "source": "Conference availability reports (SEC, ACC, Big 12, Big Ten) via app.hdintelligence.com",
- "today": "2026-11-15",
+ "today": "2026-11-17",
  "failed": [],
  "conferences": {
   "SEC": {
-   "reports": 7,
-   "teams": 14,
+   "reports": 0,
+   "teams": 0,
    "live": 0
   },
   "ACC": {
-   "reports": 8,
-   "teams": 16,
+   "reports": 0,
+   "teams": 0,
    "live": 0
   },
   "Big 12": {
-   "reports": 8,
-   "teams": 16,
+   "reports": 0,
+   "teams": 0,
    "live": 0
   },
   "Big Ten": {
-   "reports": 9,
-   "teams": 18,
+   "reports": 0,
+   "teams": 0,
    "live": 0
   },
   "MAC": {
@@ -31,8 +31,8 @@
    "live": 0
   },
   "American": {
-   "reports": 6,
-   "teams": 12,
+   "reports": 0,
+   "teams": 0,
    "live": 0
   }
  },
