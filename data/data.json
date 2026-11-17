@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T14:44:59.576079+00:00",
+ "generatedAt": "2026-11-17T14:37:32.371440+00:00",
  "season": 2026,
  "throughWeek": 11,
  "gamesCounted": 752,
@@ -68782,7 +68782,7 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": -14.5,
+   "spread": -15.5,
    "total": 46.5,
    "away": {
     "name": "Eastern Michigan",
@@ -68825,8 +68825,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": -11.0,
-   "total": 49.5,
+   "spread": -11.5,
+   "total": 50.0,
    "away": {
     "name": "Ball State",
     "key": "Ball State",
@@ -68869,7 +68869,7 @@
    "note": "",
    "indoor": false,
    "spread": 9.5,
-   "total": 46.0,
+   "total": 45.0,
    "away": {
     "name": "Miami (OH)",
     "key": "Miami (OH)",
@@ -68954,8 +68954,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": -2.0,
-   "total": 43.5,
+   "spread": -1.5,
+   "total": 45.0,
    "away": {
     "name": "Central Michigan",
     "key": "Central Michigan",
@@ -68998,7 +68998,7 @@
    "note": "",
    "indoor": false,
    "spread": -3.0,
-   "total": 48.5,
+   "total": 50.5,
    "away": {
     "name": "Rice",
     "key": "Rice",
@@ -69041,7 +69041,7 @@
    "note": "",
    "indoor": false,
    "spread": -2.5,
-   "total": 53.5,
+   "total": 53.0,
    "away": {
     "name": "Iowa State",
     "key": "Iowa State",
@@ -69083,8 +69083,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -12.0,
-   "total": 43.5,
+   "spread": -13.5,
+   "total": 41.0,
    "away": {
     "name": "Clemson",
     "key": "Clemson",
@@ -69169,8 +69169,8 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": 14.0,
-   "total": 44.0,
+   "spread": 16.0,
+   "total": 46.0,
    "away": {
     "name": "Oregon",
     "key": "Oregon",
@@ -69212,8 +69212,8 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": -22.5,
-   "total": 45.5,
+   "spread": -23.0,
+   "total": 47.0,
    "away": {
     "name": "UTEP",
     "key": "UTEP",
@@ -69255,8 +69255,8 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": 7.0,
-   "total": 37.0,
+   "spread": 7.5,
+   "total": 37.5,
    "away": {
     "name": "New Mexico",
     "key": "New Mexico",
@@ -69298,7 +69298,7 @@
    "tv": "SEC Network",
    "note": "",
    "indoor": false,
-   "spread": -14.0,
+   "spread": -13.5,
    "total": 47.0,
    "away": {
     "name": "Vanderbilt",
@@ -69366,7 +69366,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-11-16"
+    "at": "2026-11-17"
    }
   },
   {
@@ -69384,8 +69384,8 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": 5.5,
-   "total": 48.0,
+   "spread": 6.0,
+   "total": 47.5,
    "away": {
     "name": "BYU",
     "key": "BYU",
@@ -69428,7 +69428,7 @@
    "note": "",
    "indoor": false,
    "spread": -3.0,
-   "total": 60.0,
+   "total": 58.5,
    "away": {
     "name": "Colorado",
     "key": "Colorado",
@@ -69470,7 +69470,7 @@
    "tv": "ACC Network",
    "note": "",
    "indoor": false,
-   "spread": 3.0,
+   "spread": 2.5,
    "total": 51.0,
    "away": {
     "name": "Syracuse",
@@ -69557,7 +69557,7 @@
    "note": "",
    "indoor": false,
    "spread": 3.0,
-   "total": 43.0,
+   "total": 42.5,
    "away": {
     "name": "Northwestern",
     "key": "Northwestern",
@@ -69599,8 +69599,8 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": 2.5,
-   "total": 42.5,
+   "spread": 3.0,
+   "total": 42.0,
    "away": {
     "name": "Ohio State",
     "key": "Ohio State",
@@ -69643,7 +69643,7 @@
    "note": "",
    "indoor": false,
    "spread": 6.0,
-   "total": 44.5,
+   "total": 46.0,
    "away": {
     "name": "Wisconsin",
     "key": "Wisconsin",
@@ -69685,8 +69685,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": -4.5,
-   "total": 44.0,
+   "spread": -5.0,
+   "total": 44.5,
    "away": {
     "name": "East Carolina",
     "key": "East Carolina",
@@ -69729,7 +69729,7 @@
    "note": "",
    "indoor": false,
    "spread": 3.5,
-   "total": 66.0,
+   "total": 66.5,
    "away": {
     "name": "Memphis",
     "key": "Memphis",
@@ -69771,7 +69771,7 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": 7.0,
+   "spread": 6.5,
    "total": 57.0,
    "away": {
     "name": "North Texas",
@@ -69814,7 +69814,7 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": 0.0,
+   "spread": -1.5,
    "total": 43.5,
    "away": {
     "name": "North Carolina",
@@ -69882,7 +69882,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-11-16"
+    "at": "2026-11-17"
    }
   },
   {
@@ -69900,7 +69900,7 @@
    "tv": "TNT",
    "note": "",
    "indoor": false,
-   "spread": 7.0,
+   "spread": 8.0,
    "total": 70.5,
    "away": {
     "name": "Houston",
@@ -69943,8 +69943,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -16.5,
-   "total": 53.5,
+   "spread": -17.0,
+   "total": 53.0,
    "away": {
     "name": "Western Kentucky",
     "key": "Western Kentucky",
@@ -70011,7 +70011,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-11-16"
+    "at": "2026-11-17"
    }
   },
   {
@@ -70029,7 +70029,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -22.5,
+   "spread": -23.0,
    "total": 52.5,
    "away": {
     "name": "Charlotte",
@@ -70072,7 +70072,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -10.5,
+   "spread": -11.0,
    "total": 52.5,
    "away": {
     "name": "Missouri State",
@@ -70116,7 +70116,7 @@
    "note": "",
    "indoor": false,
    "spread": 6.0,
-   "total": 49.0,
+   "total": 48.0,
    "away": {
     "name": "Middle Tennessee",
     "key": "Middle Tennessee",
@@ -70158,8 +70158,8 @@
    "tv": "BTN",
    "note": "",
    "indoor": false,
-   "spread": 7.0,
-   "total": 42.5,
+   "spread": 8.5,
+   "total": 41.0,
    "away": {
     "name": "Iowa",
     "key": "Iowa",
@@ -70201,8 +70201,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": 0.0,
-   "total": 66.0,
+   "spread": 1.0,
+   "total": 64.5,
    "away": {
     "name": "South Florida",
     "key": "South Florida",
@@ -70245,7 +70245,7 @@
    "note": "",
    "indoor": false,
    "spread": -14.0,
-   "total": 50.5,
+   "total": 50.0,
    "away": {
     "name": "UL Monroe",
     "key": "UL Monroe",
@@ -70330,7 +70330,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": 3.0,
+   "spread": 3.5,
    "total": 53.5,
    "away": {
     "name": "Delaware",
@@ -70374,7 +70374,7 @@
    "note": "",
    "indoor": false,
    "spread": -3.5,
-   "total": 45.0,
+   "total": 44.5,
    "away": {
     "name": "Florida International",
     "key": "Florida International",
@@ -70441,7 +70441,7 @@
    "lineOpen": {
     "spread": null,
     "total": null,
-    "at": "2026-11-16"
+    "at": "2026-11-17"
    }
   },
   {
@@ -70459,7 +70459,7 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": 0.0,
+   "spread": 1.0,
    "total": 46.0,
    "away": {
     "name": "LSU",
@@ -70631,8 +70631,8 @@
    "tv": "CBS",
    "note": "",
    "indoor": false,
-   "spread": 5.0,
-   "total": 38.5,
+   "spread": 3.5,
+   "total": 38.0,
    "away": {
     "name": "UCLA",
     "key": "UCLA",
@@ -70717,7 +70717,7 @@
    "tv": "Peacock",
    "note": "",
    "indoor": false,
-   "spread": 8.0,
+   "spread": 7.5,
    "total": 44.0,
    "away": {
     "name": "Indiana",
@@ -70803,8 +70803,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": -7.5,
-   "total": 39.5,
+   "spread": -7.0,
+   "total": 38.5,
    "away": {
     "name": "Texas A&M",
     "key": "Texas A&M",
@@ -70846,7 +70846,7 @@
    "tv": "CW",
    "note": "",
    "indoor": true,
-   "spread": -26.0,
+   "spread": -25.0,
    "total": 45.5,
    "away": {
     "name": "Northern Illinois",
@@ -70889,7 +70889,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": 8.0,
+   "spread": 9.0,
    "total": 48.0,
    "away": {
     "name": "Georgia Southern",
@@ -70932,8 +70932,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": 1.0,
-   "total": 58.0,
+   "spread": -1.5,
+   "total": 57.0,
    "away": {
     "name": "Georgia State",
     "key": "Georgia State",
@@ -70975,8 +70975,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": 4.5,
-   "total": 63.5,
+   "spread": 4.0,
+   "total": 66.0,
    "away": {
     "name": "South Alabama",
     "key": "South Alabama",
@@ -71019,7 +71019,7 @@
    "note": "",
    "indoor": false,
    "spread": -11.0,
-   "total": 60.5,
+   "total": 61.5,
    "away": {
     "name": "Washington State",
     "key": "Washington State",
@@ -71104,7 +71104,7 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": 7.5,
+   "spread": 7.0,
    "total": 52.5,
    "away": {
     "name": "Arizona",
@@ -71190,8 +71190,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": 6.0,
-   "total": 46.0,
+   "spread": 7.0,
+   "total": 47.0,
    "away": {
     "name": "UNLV",
     "key": "UNLV",
@@ -71233,7 +71233,7 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -14.0,
+   "spread": -13.5,
    "total": 53.0,
    "away": {
     "name": "Arkansas State",
@@ -71449,7 +71449,7 @@
    "note": "",
    "indoor": false,
    "spread": 2.5,
-   "total": 56.0,
+   "total": 56.5,
    "away": {
     "name": "Stanford",
     "key": "Stanford",
@@ -71491,8 +71491,8 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": -21.0,
-   "total": 64.0,
+   "spread": -20.5,
+   "total": 65.5,
    "away": {
     "name": "Colorado State",
     "key": "Colorado State",
@@ -71534,8 +71534,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": 5.5,
-   "total": 53.0,
+   "spread": 6.0,
+   "total": 52.5,
    "away": {
     "name": "UTSA",
     "key": "UTSA",
@@ -71577,7 +71577,7 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": 6.5,
+   "spread": 7.0,
    "total": 46.5,
    "away": {
     "name": "Utah",
@@ -71621,7 +71621,7 @@
    "note": "",
    "indoor": false,
    "spread": -17.0,
-   "total": 62.5,
+   "total": 62.0,
    "away": {
     "name": "San Diego State",
     "key": "San Diego State",
@@ -71750,7 +71750,7 @@
    "note": "",
    "indoor": false,
    "spread": -4.0,
-   "total": 40.0,
+   "total": 40.5,
    "away": {
     "name": "Hawai'i",
     "key": "Hawai'i",
