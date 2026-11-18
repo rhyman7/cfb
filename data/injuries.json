@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-18T02:28:27.901304+00:00",
+ "generatedAt": "2026-11-18T08:34:21.837531+00:00",
  "source": "Conference availability reports where a team has one; otherwise Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [],
  "checked": {
@@ -162,6 +162,15 @@
    "opponent": "Clemson",
    "listed": 20
   },
+  "Iowa State": {
+   "conf": "Big 12",
+   "report": "Initial",
+   "published": "2026-11-17",
+   "posted": "21:00:00",
+   "game_date": "2026-11-20",
+   "opponent": "UCF",
+   "listed": 6
+  },
   "Michigan State": {
    "conf": "Big Ten",
    "report": "Initial",
@@ -179,6 +188,15 @@
    "game_date": "2026-11-20",
    "opponent": "Michigan State",
    "listed": 10
+  },
+  "UCF": {
+   "conf": "Big 12",
+   "report": "Initial",
+   "published": "2026-11-17",
+   "posted": "21:00:00",
+   "game_date": "2026-11-20",
+   "opponent": "Iowa State",
+   "listed": 8
   }
  },
  "players": {
@@ -1226,24 +1244,24 @@
    "s": "O",
    "status": "Out",
    "injury": "",
-   "date": "2026-11-14",
+   "date": "2026-11-17",
    "src": "Big 12 report",
    "name": "Cody Jackson",
    "team": "Iowa State",
    "pos": "WR",
-   "note": "Undisclosed · Big 12 report, Nov 14",
+   "note": "Big 12 availability report, Initial (Nov 17)",
    "player": "Cody Jackson"
   },
   "ISU|5140620": {
    "s": "O",
    "status": "Out",
    "injury": "",
-   "date": "2026-11-14",
+   "date": "2026-11-17",
    "src": "Big 12 report",
    "name": "Connor Moberly",
    "team": "Iowa State",
    "pos": "QB",
-   "note": "Undisclosed · Big 12 report, Nov 14",
+   "note": "Big 12 availability report, Initial (Nov 17)",
    "player": "Connor Moberly"
   },
   "IU|5142140": {
@@ -2652,69 +2670,41 @@
    "playedSince": 11,
    "player": "Davian Jackson"
   },
-  "UCF|4911929": {
-   "s": "O",
-   "status": "Out",
-   "injury": "Hamstring",
-   "date": "2026-10-20",
-   "src": "Covers",
-   "name": "A. Barnett III",
-   "team": "UCF",
-   "pos": "QB",
-   "note": "Hamstring · Covers, Oct 20",
-   "stale": true,
-   "playedSince": 11,
-   "player": "Alonza Barnett III"
-  },
-  "UCF|4922996": {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "Shoulder",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "D. Wade",
-   "team": "UCF",
-   "pos": "TE",
-   "note": "Shoulder · Covers, Oct 10",
-   "stale": true,
-   "playedSince": 10,
-   "player": "Dylan Wade"
-  },
-  "UCF|5085337": {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Keyone Jenkins",
-   "team": "UCF",
-   "pos": "QB",
-   "note": "Undisclosed · Big 12 report, Nov 14",
-   "player": "Keyone Jenkins"
-  },
   "UCF|5136049": {
-   "s": "O",
-   "status": "Out",
+   "s": "P",
+   "status": "Probable",
    "injury": "",
-   "date": "2026-11-14",
+   "date": "2026-11-17",
    "src": "Big 12 report",
    "name": "Duke Watson",
    "team": "UCF",
    "pos": "RB",
-   "note": "Undisclosed · Big 12 report, Nov 14",
+   "note": "Big 12 availability report, Initial (Nov 17)",
    "player": "Duke Watson"
   },
   "UCF|5142600": {
-   "s": "O",
-   "status": "Out",
+   "s": "Q",
+   "status": "Questionable",
    "injury": "",
-   "date": "2026-11-14",
+   "date": "2026-11-17",
    "src": "Big 12 report",
    "name": "Waden Charles",
    "team": "UCF",
    "pos": "WR",
-   "note": "Undisclosed · Big 12 report, Nov 14",
+   "note": "Big 12 availability report, Initial (Nov 17)",
    "player": "Waden Charles"
+  },
+  "UCF|5148656": {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Caden Piening",
+   "team": "UCF",
+   "pos": "TE",
+   "note": "Big 12 availability report, Initial (Nov 17)",
+   "player": "Caden Piening"
   },
   "UCLA|4870799": {
    "s": "O",
@@ -4553,72 +4543,6 @@
    "note": "Undisclosed · Covers, Aug 11"
   },
   {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "Knee",
-   "date": "2026-10-11",
-   "src": "Covers",
-   "name": "D. Overby",
-   "team": "Iowa State",
-   "pos": "WR",
-   "note": "Knee · Covers, Oct 11"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "E. Miller",
-   "team": "Iowa State",
-   "pos": "RB",
-   "note": "Undisclosed · Covers, Oct 10"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "L. Galer",
-   "team": "Iowa State",
-   "pos": "TE",
-   "note": "Undisclosed · Covers, Oct 10"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "J. Singletary",
-   "team": "Iowa State",
-   "pos": "CB",
-   "note": "Undisclosed · Covers, Oct 10"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "C. Crawford",
-   "team": "Iowa State",
-   "pos": "DL",
-   "note": "Undisclosed · Covers, Oct 10"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "R. Barnes",
-   "team": "Iowa State",
-   "pos": "TE",
-   "note": "Undisclosed · Covers, Oct 10"
-  },
-  {
    "s": "O",
    "status": "Out",
    "injury": "Knee",
@@ -4628,17 +4552,6 @@
    "team": "Iowa State",
    "pos": "WR",
    "note": "Knee · Covers, Oct 3 · out for the season"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-09-01",
-   "src": "Covers",
-   "name": "J. Bailey",
-   "team": "Iowa State",
-   "pos": "WR",
-   "note": "Undisclosed · Covers, Sep 1"
   },
   {
    "s": "Q",
@@ -7125,28 +7038,6 @@
    "team": "Tulsa",
    "pos": "WR",
    "note": "Undisclosed · Covers, Oct 18"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "D. Thomas Jr.",
-   "team": "UCF",
-   "pos": "WR",
-   "note": "Undisclosed · Covers, Oct 10 · will miss an extended period"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-10-10",
-   "src": "Covers",
-   "name": "L. Carter",
-   "team": "UCF",
-   "pos": "LB",
-   "note": "Undisclosed · Covers, Oct 10"
   },
   {
    "s": "O",
@@ -9998,17 +9889,6 @@
    "note": "Undisclosed · Big Ten report, Nov 14"
   },
   {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Ka'Mori Moore",
-   "team": "Iowa State",
-   "pos": "DT",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
    "s": "Q",
    "status": "Questionable",
    "injury": "",
@@ -12697,83 +12577,6 @@
    "status": "Out",
    "injury": "",
    "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "DJ Bell",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Demari Henderson",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Kahmel Johnson",
-   "team": "UCF",
-   "pos": "DB",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Matthew Occhipinti",
-   "team": "UCF",
-   "pos": "LB",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Jacob Maiava",
-   "team": "UCF",
-   "pos": "OL",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Tyler Gibson",
-   "team": "UCF",
-   "pos": "OL",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-14",
-   "src": "Big 12 report",
-   "name": "Dylan Burk",
-   "team": "UCF",
-   "pos": "TE",
-   "note": "Undisclosed · Big 12 report, Nov 14"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-14",
    "src": "Big Ten report",
    "name": "Terrell Anderson",
    "team": "USC",
@@ -13893,6 +13696,50 @@
   },
   {
    "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Carson Willich",
+   "team": "Iowa State",
+   "pos": "LB",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Maasai King",
+   "team": "Iowa State",
+   "pos": "OL",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Malcolm Watkins",
+   "team": "Iowa State",
+   "pos": "WR",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Ka'Mori Moore",
+   "team": "Iowa State",
+   "pos": "DT",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "O",
    "status": "Out for season",
    "injury": "",
    "date": "2026-11-17",
@@ -14077,6 +13924,61 @@
    "team": "Oregon",
    "pos": "OL",
    "note": "Big Ten availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Horace Lockett",
+   "team": "UCF",
+   "pos": "DT",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "DJ Bell",
+   "team": "UCF",
+   "pos": "DB",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Demari Henderson",
+   "team": "UCF",
+   "pos": "DB",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Kahmel Johnson",
+   "team": "UCF",
+   "pos": "DB",
+   "note": "Big 12 availability report, Initial (Nov 17)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-17",
+   "src": "Big 12 report",
+   "name": "Jayden Jennings",
+   "team": "UCF",
+   "pos": "LB",
+   "note": "Big 12 availability report, Initial (Nov 17)"
   }
  ]
 }
