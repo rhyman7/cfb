@@ -3,8 +3,8 @@
  "week": 12,
  "league": "cfb",
  "title": "CFB Week 12 Matchup Report",
- "dataGeneratedAt": "2026-11-18T14:36:39.453862+00:00",
- "generatedAt": "2026-11-18T14:41:11Z",
+ "dataGeneratedAt": "2026-11-18T14:50:28.216498+00:00",
+ "generatedAt": "2026-11-18T14:56:01Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -19,20 +19,20 @@
  ],
  "slate": {
   "best": [
-   72,
    73,
    74,
    75,
-   76
+   76,
+   77
   ],
   "td": [
-   77,
    78,
-   79
+   79,
+   80
   ],
   "floors": [
-   80,
-   81
+   81,
+   82
   ]
  },
  "games": [
@@ -642,7 +642,7 @@
    "file": "CFB_Week12_IOWA-ILL_packet",
    "pages": {
     "report": [
-     32
+     33
     ],
     "matchup": [
      58,
@@ -663,7 +663,7 @@
    "file": "CFB_Week12_USF-FAU_packet",
    "pages": {
     "report": [
-     33
+     34
     ],
     "matchup": [
      60,
@@ -684,7 +684,7 @@
    "file": "CFB_Week12_ULM-APP_packet",
    "pages": {
     "report": [
-     34
+     35
     ],
     "matchup": [
      62,
@@ -705,7 +705,7 @@
    "file": "CFB_Week12_CCU-UL_packet",
    "pages": {
     "report": [
-     36
+     37
     ],
     "matchup": [
      64,
@@ -726,7 +726,7 @@
    "file": "CFB_Week12_DEL-NMSU_packet",
    "pages": {
     "report": [
-     37
+     38
     ],
     "matchup": [
      66,
@@ -747,7 +747,7 @@
    "file": "CFB_Week12_FIU-KENN_packet",
    "pages": {
     "report": [
-     38
+     39
     ],
     "matchup": [
      68,
@@ -768,7 +768,7 @@
    "file": "CFB_Week12_SAM-AUB_packet",
    "pages": {
     "report": [
-     39
+     40
     ],
     "matchup": [
      70,
@@ -786,7 +786,7 @@
    "file": "CFB_Week12_LSU-TENN_packet",
    "pages": {
     "report": [
-     40
+     41
     ],
     "matchup": [
      72,
@@ -807,7 +807,7 @@
    "file": "CFB_Week12_ARK-TEX_packet",
    "pages": {
     "report": [
-     41
+     42
     ],
     "matchup": [
      74,
@@ -828,7 +828,7 @@
    "file": "CFB_Week12_TTU-BAY_packet",
    "pages": {
     "report": [
-     42
+     43
     ],
     "matchup": [
      76,
@@ -849,7 +849,7 @@
    "file": "CFB_Week12_NCSU-FSU_packet",
    "pages": {
     "report": [
-     43
+     44
     ],
     "matchup": [
      78,
@@ -870,7 +870,7 @@
    "file": "CFB_Week12_UCLA-MICH_packet",
    "pages": {
     "report": [
-     44
+     45
     ],
     "matchup": [
      80,
@@ -891,7 +891,7 @@
    "file": "CFB_Week12_RUTG-PSU_packet",
    "pages": {
     "report": [
-     45
+     46
     ],
     "matchup": [
      82,
@@ -912,7 +912,7 @@
    "file": "CFB_Week12_IU-WASH_packet",
    "pages": {
     "report": [
-     46
+     47
     ],
     "matchup": [
      84,
@@ -933,7 +933,7 @@
    "file": "CFB_Week12_ODU-CONN_packet",
    "pages": {
     "report": [
-     47
+     48
     ],
     "matchup": [
      86,
@@ -954,7 +954,7 @@
    "file": "CFB_Week12_TAM-OU_packet",
    "pages": {
     "report": [
-     48
+     49
     ],
     "matchup": [
      88,
@@ -975,7 +975,7 @@
    "file": "CFB_Week12_NIU-NDSU_packet",
    "pages": {
     "report": [
-     49
+     50
     ],
     "matchup": [
      90,
@@ -996,7 +996,7 @@
    "file": "CFB_Week12_GASO-TROY_packet",
    "pages": {
     "report": [
-     50
+     51
     ],
     "matchup": [
      92,
@@ -1017,7 +1017,7 @@
    "file": "CFB_Week12_GAST-MRSH_packet",
    "pages": {
     "report": [
-     51
+     52
     ],
     "matchup": [
      94,
@@ -1038,7 +1038,7 @@
    "file": "CFB_Week12_USA-USM_packet",
    "pages": {
     "report": [
-     53
+     54
     ],
     "matchup": [
      96,
@@ -1059,7 +1059,7 @@
    "file": "CFB_Week12_WSU-TXST_packet",
    "pages": {
     "report": [
-     54
+     55
     ],
     "matchup": [
      98,
@@ -1080,7 +1080,7 @@
    "file": "CFB_Week12_MD-USC_packet",
    "pages": {
     "report": [
-     55
+     56
     ],
     "matchup": [
      100,
@@ -1101,7 +1101,7 @@
    "file": "CFB_Week12_ARIZ-KSU_packet",
    "pages": {
     "report": [
-     56
+     57
     ],
     "matchup": [
      102,
@@ -1122,7 +1122,7 @@
    "file": "CFB_Week12_VT-MIA_packet",
    "pages": {
     "report": [
-     57
+     58
     ],
     "matchup": [
      104,
@@ -1143,7 +1143,7 @@
    "file": "CFB_Week12_UNLV-SJSU_packet",
    "pages": {
     "report": [
-     58
+     59
     ],
     "matchup": [
      106,
@@ -1164,7 +1164,7 @@
    "file": "CFB_Week12_ARST-LT_packet",
    "pages": {
     "report": [
-     59
+     60
     ],
     "matchup": [
      108,
@@ -1185,7 +1185,7 @@
    "file": "CFB_Week12_UK-MIZ_packet",
    "pages": {
     "report": [
-     60
+     61
     ],
     "matchup": [
      110,
@@ -1206,7 +1206,7 @@
    "file": "CFB_Week12_UGA-SC_packet",
    "pages": {
     "report": [
-     61
+     62
     ],
     "matchup": [
      112,
@@ -1227,7 +1227,7 @@
    "file": "CFB_Week12_PITT-LOU_packet",
    "pages": {
     "report": [
-     62
+     63
     ],
     "matchup": [
      114,
@@ -1248,7 +1248,7 @@
    "file": "CFB_Week12_SMU-ND_packet",
    "pages": {
     "report": [
-     63
+     64
     ],
     "matchup": [
      116,
@@ -1269,7 +1269,7 @@
    "file": "CFB_Week12_STAN-CAL_packet",
    "pages": {
     "report": [
-     64
+     65
     ],
     "matchup": [
      118,
@@ -1290,7 +1290,7 @@
    "file": "CFB_Week12_CSU-FRES_packet",
    "pages": {
     "report": [
-     65
+     66
     ],
     "matchup": [
      120,
@@ -1311,7 +1311,7 @@
    "file": "CFB_Week12_UTSA-UAB_packet",
    "pages": {
     "report": [
-     66
+     67
     ],
     "matchup": [
      122,
@@ -1332,7 +1332,7 @@
    "file": "CFB_Week12_UTAH-TCU_packet",
    "pages": {
     "report": [
-     67
+     68
     ],
     "matchup": [
      124,
@@ -1353,7 +1353,7 @@
    "file": "CFB_Week12_SDSU-BOIS_packet",
    "pages": {
     "report": [
-     68
+     69
     ],
     "matchup": [
      126,
@@ -1374,7 +1374,7 @@
    "file": "CFB_Week12_OKST-ASU_packet",
    "pages": {
     "report": [
-     69
+     70
     ],
     "matchup": [
      128,
@@ -1395,7 +1395,7 @@
    "file": "CFB_Week12_USU-ORST_packet",
    "pages": {
     "report": [
-     70
+     71
     ],
     "matchup": [
      130,
@@ -1416,7 +1416,7 @@
    "file": "CFB_Week12_HAW-NEV_packet",
    "pages": {
     "report": [
-     71
+     72
     ],
     "matchup": [
      132,
