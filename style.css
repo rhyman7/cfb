@@ -573,6 +573,10 @@ td.num, th.num { text-align: right; }
 .table-block h4 { margin: 0 0 4px 8px; font-size: 0.9375rem; font-weight: 600; }
 .tables-row th, .tables-row td { padding: 7px 6px; }
 .tables-row td:first-child { white-space: normal; }
+/* a table carrying the value board's Typical column (Nov 18, 2026) has one more column to fit */
+.tables-row .has-typ th, .tables-row .has-typ td { padding: 7px 3px; }
+.tables-row .has-typ th { font-size: 0.72rem; }
+td.typ { color: var(--text); font-weight: 600; }
 .defpos-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .defpos-block {
   display: grid;
