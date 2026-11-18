@@ -369,6 +369,20 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   site has none yet. When they come here, follow the NFL repo's setup (an Action with the key
   as a repository secret, credit budget checked first) and update this section.
 
+## Typical (Nov 18, 2026)
+
+- **Typical** is the value board's 50/50 yardage for a player this week (its feed, `t`; built by
+  `nflmodel/typical.py` in rhyman7/fb-value-board): he is as likely to finish above it as below
+  it, and the board's projection, an average, sits a little higher. The label is "Typical"
+  (Ryan's choice).
+- **On screen:** the team card's Passing, Rushing and Receiving tables get a Typical column after
+  Yds/G (`typicalOf` and `playerTable` in `app.js`) in the current week, whenever the board has it
+  for anyone in the table. No feed, another week, or nobody with a number: the column is left
+  out. The same tables print in the matchup PDFs and packets.
+- **Weekly report:** wherever a player line says "board N", it reads "board N, typical M" (a
+  back's is his rushing and receiving typicals added, like his projection).
+- Display only. Same change on both dashboards.
+
 ## Testing a change
 
 - Serve the repo root locally (`python -m http.server 8000`) and load the pages you touched at

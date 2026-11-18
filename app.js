@@ -1055,21 +1055,21 @@ function renderTeamCard(t, qb) {
         ["Int", "int", "num"],
         ["Cmp/G", "cmp", "num"],
         ["Pass<br>Yds /<br>Comp", "ypc", "num"],
-      ])}
+      ], t.abbr)}
       ${playerTable("Rushing", addQb(t.rushing, nq.rushing), [
         ["Player", "player", "text"],
         ["Yds/G", "ydsG", "num"],
         ["TD", "td", "num"],
         ["Y/A", "ya", "num"],
         ["A/G", "ag", "num"],
-      ])}
+      ], t.abbr)}
       ${playerTable("Receiving", t.receiving, [
         ["Player", "player", "text"],
         ["Yds/G", "ydsG", "num"],
         ["TD", "td", "num"],
         ["Y/R", "yr", "num"],
         ["Rec/G", "rec", "num"],
-      ])}
+      ], t.abbr)}
     </div>
 
     ${injuryReport(t)}
@@ -1127,15 +1127,33 @@ function withAvgC(rows) {
 const posTag = (r, kind) => (kind !== "passing" && r.pos ? ` <span class="pt-pos">${escapeHtml(r.pos)}</span>` : "")
   + (r.from ? ` <span class="pt-pos pt-from" title="Season stats with ${escapeHtml(r.from)}; starting here">with ${escapeHtml(r.from)}</span>` : "");
 
-function playerTable(title, rows, cols) {
+// Typical (the value board's feed, `t`): the model's 50/50 yardage for the player this week. Shown
+// after Yds/G in the current week when the board has it for anyone in the table; otherwise the
+// column is left out. Display only (Nov 18, 2026).
+const TYPICAL_STAT = { passing: "pass_yds", rushing: "rush_yds", receiving: "rec_yds" };
+const TYPICAL_TITLE = "The value board's 50/50 number for him this week: he is as likely to finish above it as below it. Its projection is an average and sits a little higher.";
+function typicalOf(abbr, r, kind) {
+  if (!abbr || !BOARD || weekMode() !== "current" || !TYPICAL_STAT[kind]) return null;
+  const bp = boardPlayer(abbr, r.player);
+  const v = bp && bp.t ? bp.t[TYPICAL_STAT[kind]] : null;
+  return v == null ? null : v;
+}
+
+function playerTable(title, rows, cols, abbr) {
   if (!rows || rows.length === 0) {
     return `<div class="table-block"><h4>${title}</h4><div class="empty-note">No data</div></div>`;
   }
   const kind = title.toLowerCase();
   const capOn = !!CAPPED && kind in CAP_KIND;
+  const hasTyp = rows.some(r => typicalOf(abbr, r, kind) != null);
+  if (hasTyp) {
+    const i = cols.findIndex(c => c[1] === "ydsG");
+    cols = [...cols.slice(0, i + 1), [`<span title="${escapeHtml(TYPICAL_TITLE)}">Typical</span>`, "__typical", "num"], ...cols.slice(i + 1)];
+  }
   const head = cols.map(([label, key, type]) => `<th class="${type === "num" ? "num" : ""}">${label}${capOn && key === "ydsG" ? `<span class="capd-h" title="Yards per game with every long play counted at no more than the FBS 97.5th percentile">Capped</span>` : ""}</th>`).join("");
   const body = rows.map(r => {
     const cells = cols.map(([, key, type]) => {
+      if (key === "__typical") { const v = typicalOf(abbr, r, kind); return `<td class="num typ">${v == null ? "—" : Math.round(v)}</td>`; }
       const txt = escapeHtml(type === "num" ? dispNum(r[key] ?? "—") : String(r[key] ?? "—"));
       const val = key === "player" && r.log && DATA.gameLogs && DATA.gameLogs[r.log]
         ? `<span class="pn"><button type="button" class="plink" data-log="${escapeHtml(r.log)}" data-kind="${kind}" data-pos="${escapeHtml(r.pos || "")}" data-name="${txt}">${txt}</button>${posTag(r, kind)}${injTag(r.log)}</span>`
@@ -1144,7 +1162,7 @@ function playerTable(title, rows, cols) {
     }).join("");
     return `<tr>${cells}</tr>`;
   }).join("");
-  return `<div class="table-block">
+  return `<div class="table-block${hasTyp ? " has-typ" : ""}">
     <h4>${title}</h4>
     <table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
   </div>`;

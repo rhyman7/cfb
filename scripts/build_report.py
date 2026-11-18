@@ -860,7 +860,11 @@ class Report:
                 lift = proj / avg - 1
                 why_ = self.drivers(pos, self.GL.get(p["log"], []), bp, on, p["log"])
                 what_ = "pass" if pos == "QB" else "scrimmage" if pos in ("RB", "FB") else "rec"
-                bt0 = f'board {num(round(proj))} ({"+" if lift >= 0 else MINUS}{abs(lift) * 100:.0f}%)'
+                # Typical: the board's 50/50 yardage (feed `t`), summed over the same stats as the projection
+                tyv = [(bp.get("t") or {}).get(x) for x in stat if (bp.get("p") or {}).get(x)]
+                typ = sum(tyv) if tyv and all(v is not None for v in tyv) else None
+                c["typ"] = typ
+                bt0 = f'board {num(round(proj))}' + (f', typical {num(round(typ))}' if typ is not None else '') + f' ({"+" if lift >= 0 else MINUS}{abs(lift) * 100:.0f}%)'
                 bt = bt0 + (f": {'; '.join(why_)}" if why_ else "")
                 c["mx"] = bt0 + (f": {why_[0]}" if why_ and why_[0][0].isdigit() or why_ and why_[0].startswith("rushing") else "")   # Best Overall's shorter cell
                 head_ = f"{num(round(avg, 1))} {what_} yds/G" + (f' ({p["gp"]} of {tgp} gms)' if pos != "QB" and p["gp"] <= tgp - 2 else "") \
