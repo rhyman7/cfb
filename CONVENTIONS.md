@@ -91,7 +91,14 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   EPA sits left of Weekly Edges and EPA Explained sits right of EPA.
 - Each link has a full and a short label (`nav-full` / `nav-short`); the short ones show when
   the bar is narrow. The current page's link gets `class="active"`.
-- The top bar's right side links to the other dashboard (`league-link`, `/nfl/`).
+- **Site bar (Nov 20, 2026).** Every page loads the Weekly Gridiron Board's site bar as the first
+  thing in `<body>`: `<script src="/site-bar.js"></script>`. The script lives in
+  rhyman7/rhyman7.github.io and writes the strip that links the hub, both matchup dashboards,
+  both value boards, Parlays and the Weekly Review (Basketball as a side link). Change the bar
+  there, not here; a new page gets the same line. It is hidden in print, and a page opened from
+  disk or a local server simply has no bar.
+  It replaced the top bar's own link to the other dashboard (`league-link`), whose CSS is still in
+  `style.css` unused.
 - The NFL site uses the same order and labels. Change both together.
 
 ## Look
