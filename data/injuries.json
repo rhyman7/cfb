@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-22T07:07:19.350174+00:00",
+ "generatedAt": "2026-11-22T14:49:50.128426+00:00",
  "source": "Conference availability reports where a team has one; otherwise Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [],
  "checked": {
@@ -198,15 +198,15 @@
    "player": "Cibastian Broughton"
   },
   "ALA|5141629": {
-   "s": "Q",
-   "status": "Questionable",
+   "s": "P",
+   "status": "Probable",
    "injury": "Ankle",
-   "date": "2026-11-15",
-   "src": "RotoWire",
+   "date": "2026-11-21",
+   "src": "Alabama Fan Site (DeBoer)",
    "name": "Keelon Russell",
    "team": "Alabama",
    "pos": "QB",
-   "note": "Ankle · RotoWire, Nov 15",
+   "note": "Ankle · Alabama Fan Site (DeBoer), Nov 21 · rested vs Chattanooga; expected full go",
    "player": "Keelon Russell"
   },
   "ALA|5141711": {
@@ -873,6 +873,18 @@
    "note": "ACC availability report, Game Day (Nov 21)",
    "player": "Malachi Hosley"
   },
+  "GT|5207610": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Collarbone",
+   "date": "2026-11-21",
+   "src": "CBS Sports (Zenitz) via RotoWire",
+   "name": "Grady Adamson",
+   "team": "Georgia Tech",
+   "pos": "QB",
+   "note": "Collarbone · CBS Sports (Zenitz) via RotoWire, Nov 21 · believed broken collarbone; not confirmed by school",
+   "player": "Grady Adamson"
+  },
   "GT|5215629": {
    "s": "O",
    "status": "Out",
@@ -888,13 +900,15 @@
   "HAW|5101124": {
    "s": "Q",
    "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-15",
-   "src": "Hawaii Sports Radio Network",
+   "injury": "Knee",
+   "date": "2026-11-21",
+   "src": "RotoWire",
    "name": "Micah Alejado",
    "team": "Hawai'i",
    "pos": "QB",
-   "note": "Undisclosed · Hawaii Sports Radio Network, Nov 15",
+   "note": "Knee · RotoWire, Nov 21 · carted off at Nevada; Bjorn Jurgensen expected to start",
+   "stale": true,
+   "playedSince": 12,
    "player": "Micah Alejado"
   },
   "HOU|4685574": {
@@ -1016,6 +1030,18 @@
    "pos": "QB",
    "note": "Undisclosed · Big 12 report, Nov 17",
    "player": "Connor Moberly"
+  },
+  "IU|4685401": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Shoulder",
+   "date": "2026-11-21",
+   "src": "Inside the Hall",
+   "name": "Josh Hoover",
+   "team": "Indiana",
+   "pos": "QB",
+   "note": "Shoulder · Inside the Hall, Nov 21 · came off bench at Washington; Grant Wilson started",
+   "player": "Josh Hoover"
   },
   "IU|5146724": {
    "s": "O",
@@ -1696,13 +1722,13 @@
   "OSU|5079712": {
    "s": "O",
    "status": "Out",
-   "injury": "",
+   "injury": "Elbow",
    "date": "2026-11-21",
-   "src": "Big Ten report",
+   "src": "news via QB check",
    "name": "Julian Sayin",
    "team": "Ohio State",
    "pos": "QB",
-   "note": "Big Ten availability report, Game Day (Nov 21)",
+   "note": "Elbow · news via QB check, Nov 21 · fractured elbow, out indefinitely; Luke Fahey starts",
    "player": "Julian Sayin"
   },
   "OSU|5151892": {
@@ -2001,6 +2027,18 @@
    "note": "ACC availability report, Initial (Nov 18)",
    "player": "Nico Brown"
   },
+  "SYR|4685694": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Right arm",
+   "date": "2026-11-21",
+   "src": "Orange Fizz / Heavy",
+   "name": "Steve Angeli",
+   "team": "Syracuse",
+   "pos": "QB",
+   "note": "Right arm · Orange Fizz / Heavy, Nov 21 · left BC game, arm in sling; no update",
+   "player": "Steve Angeli"
+  },
   "SYR|5079537": {
    "s": "O",
    "status": "Out",
@@ -2134,6 +2172,18 @@
    "pos": "WR",
    "note": "SEC availability report, Game Day (Nov 21)",
    "player": "Mike Matthews"
+  },
+  "TENN|5141571": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "Knee",
+   "date": "2026-11-21",
+   "src": "A to Z Sports",
+   "name": "George MacIntyre",
+   "team": "Tennessee",
+   "pos": "QB",
+   "note": "Knee · A to Z Sports, Nov 21 · limited vs LSU; Faizon Brandon started",
+   "player": "George MacIntyre"
   },
   "TENN|5141598": {
    "s": "O",
