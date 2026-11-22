@@ -4,7 +4,7 @@
  "league": "cfb",
  "title": "CFB Week 13 Matchup Report",
  "dataGeneratedAt": "2026-11-22T14:46:40.047141+00:00",
- "generatedAt": "2026-11-22T14:54:25Z",
+ "generatedAt": "2026-11-22T20:46:52Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -19,20 +19,20 @@
  ],
  "slate": {
   "best": [
-   71,
    72,
    73,
    74,
-   75
+   75,
+   76
   ],
   "td": [
-   76,
    77,
-   78
+   78,
+   79
   ],
   "floors": [
-   79,
-   80
+   80,
+   81
   ]
  },
  "games": [
@@ -50,11 +50,12 @@
     ],
     "epa": [
      0
+    ],
+    "value": [
+     0
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401866471",
@@ -70,11 +71,12 @@
     ],
     "epa": [
      1
+    ],
+    "value": [
+     1
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856879",
@@ -90,11 +92,12 @@
     ],
     "epa": [
      2
+    ],
+    "value": [
+     2
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856762",
@@ -110,11 +113,12 @@
     ],
     "epa": [
      3
+    ],
+    "value": [
+     4
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858536",
@@ -130,11 +134,12 @@
     ],
     "epa": [
      4
+    ],
+    "value": [
+     5
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401862840",
@@ -150,11 +155,12 @@
     ],
     "epa": [
      5
+    ],
+    "value": [
+     6
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401866472",
@@ -170,11 +176,12 @@
     ],
     "epa": [
      6
+    ],
+    "value": [
+     3
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401866473",
@@ -190,11 +197,12 @@
     ],
     "epa": [
      7
+    ],
+    "value": [
+     7
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401869930",
@@ -210,11 +218,12 @@
     ],
     "epa": [
      8
+    ],
+    "value": [
+     8
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856759",
@@ -230,11 +239,12 @@
     ],
     "epa": [
      9
+    ],
+    "value": [
+     9
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401862838",
@@ -250,11 +260,12 @@
     ],
     "epa": [
      10
+    ],
+    "value": [
+     11
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401864549",
@@ -270,11 +281,12 @@
     ],
     "epa": [
      11
+    ],
+    "value": [
+     10
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401864546",
@@ -290,11 +302,12 @@
     ],
     "epa": [
      12
+    ],
+    "value": [
+     12
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856756",
@@ -310,11 +323,12 @@
     ],
     "epa": [
      13
+    ],
+    "value": [
+     14
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858544",
@@ -330,11 +344,12 @@
     ],
     "epa": [
      14
+    ],
+    "value": [
+     13
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856880",
@@ -350,11 +365,12 @@
     ],
     "epa": [
      15
+    ],
+    "value": [
+     15
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856761",
@@ -370,11 +386,12 @@
     ],
     "epa": [
      16
+    ],
+    "value": [
+     19
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858311",
@@ -390,11 +407,12 @@
     ],
     "epa": [
      17
+    ],
+    "value": [
+     16
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858313",
@@ -410,11 +428,12 @@
     ],
     "epa": [
      18
+    ],
+    "value": [
+     23
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858314",
@@ -430,11 +449,12 @@
     ],
     "epa": [
      19
+    ],
+    "value": [
+     24
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858540",
@@ -450,11 +470,12 @@
     ],
     "epa": [
      20
+    ],
+    "value": [
+     21
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401861969",
@@ -470,11 +491,12 @@
     ],
     "epa": [
      21
+    ],
+    "value": [
+     18
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401862842",
@@ -490,11 +512,12 @@
     ],
     "epa": [
      22
+    ],
+    "value": [
+     22
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401866474",
@@ -510,11 +533,12 @@
     ],
     "epa": [
      23
+    ],
+    "value": [
+     17
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401869954",
@@ -530,11 +554,12 @@
     ],
     "epa": [
      24
+    ],
+    "value": [
+     20
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858537",
@@ -550,11 +575,12 @@
     ],
     "epa": [
      25
+    ],
+    "value": [
+     25
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856758",
@@ -570,11 +596,12 @@
     ],
     "epa": [
      26
+    ],
+    "value": [
+     26
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401862837",
@@ -590,11 +617,12 @@
     ],
     "epa": [
      27
+    ],
+    "value": [
+     27
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401870804",
@@ -610,11 +638,12 @@
     ],
     "epa": [
      28
+    ],
+    "value": [
+     28
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401871102",
@@ -630,11 +659,12 @@
     ],
     "epa": [
      29
+    ],
+    "value": [
+     29
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401871103",
@@ -650,11 +680,12 @@
     ],
     "epa": [
      30
+    ],
+    "value": [
+     30
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856875",
@@ -670,11 +701,12 @@
     ],
     "epa": [
      31
+    ],
+    "value": [
+     37
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856878",
@@ -690,11 +722,12 @@
     ],
     "epa": [
      32
+    ],
+    "value": [
+     33
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401862841",
@@ -710,11 +743,12 @@
     ],
     "epa": [
      33
+    ],
+    "value": [
+     31
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401869947",
@@ -730,11 +764,12 @@
     ],
     "epa": [
      34
+    ],
+    "value": [
+     32
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401869959",
@@ -750,11 +785,12 @@
     ],
     "epa": [
      35
+    ],
+    "value": [
+     38
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401871063",
@@ -770,11 +806,12 @@
     ],
     "epa": [
      36
+    ],
+    "value": [
+     34
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401871082",
@@ -790,11 +827,12 @@
     ],
     "epa": [
      37
+    ],
+    "value": [
+     36
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401871083",
@@ -810,11 +848,12 @@
     ],
     "epa": [
      38
+    ],
+    "value": [
+     35
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856764",
@@ -830,11 +869,12 @@
     ],
     "epa": [
      39
+    ],
+    "value": [
+     39
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858317",
@@ -850,11 +890,12 @@
     ],
     "epa": [
      40
+    ],
+    "value": [
+     41
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401869939",
@@ -870,11 +911,12 @@
     ],
     "epa": [
      41
+    ],
+    "value": [
+     40
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856760",
@@ -890,11 +932,12 @@
     ],
     "epa": [
      42
+    ],
+    "value": [
+     44
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856876",
@@ -910,11 +953,12 @@
     ],
     "epa": [
      43
+    ],
+    "value": [
+     42
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858312",
@@ -930,11 +974,12 @@
     ],
     "epa": [
      44
+    ],
+    "value": [
+     43
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858316",
@@ -950,11 +995,12 @@
     ],
     "epa": [
      45
+    ],
+    "value": [
+     48
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858539",
@@ -970,11 +1016,12 @@
     ],
     "epa": [
      46
+    ],
+    "value": [
+     47
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858543",
@@ -990,11 +1037,12 @@
     ],
     "epa": [
      47
+    ],
+    "value": [
+     50
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401862839",
@@ -1010,11 +1058,12 @@
     ],
     "epa": [
      48
+    ],
+    "value": [
+     49
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401864550",
@@ -1030,11 +1079,12 @@
     ],
     "epa": [
      49
+    ],
+    "value": [
+     51
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401866475",
@@ -1050,11 +1100,12 @@
     ],
     "epa": [
      50
+    ],
+    "value": [
+     46
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401871062",
@@ -1070,11 +1121,12 @@
     ],
     "epa": [
      51
+    ],
+    "value": [
+     45
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401862843",
@@ -1090,11 +1142,12 @@
     ],
     "epa": [
      52
+    ],
+    "value": [
+     52
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856763",
@@ -1110,11 +1163,12 @@
     ],
     "epa": [
      53
+    ],
+    "value": [
+     54
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858542",
@@ -1130,11 +1184,12 @@
     ],
     "epa": [
      54
+    ],
+    "value": [
+     53
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401860926",
@@ -1142,7 +1197,7 @@
    "file": "CFB_Week13_BOIS-CSU_packet",
    "pages": {
     "report": [
-     57
+     58
     ],
     "matchup": [
      110,
@@ -1150,11 +1205,12 @@
     ],
     "epa": [
      55
+    ],
+    "value": [
+     55
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856877",
@@ -1162,7 +1218,7 @@
    "file": "CFB_Week13_KU-OKST_packet",
    "pages": {
     "report": [
-     58
+     59
     ],
     "matchup": [
      112,
@@ -1170,11 +1226,12 @@
     ],
     "epa": [
      56
+    ],
+    "value": [
+     56
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401860929",
@@ -1182,7 +1239,7 @@
    "file": "CFB_Week13_SDSU-WSU_packet",
    "pages": {
     "report": [
-     59
+     60
     ],
     "matchup": [
      114,
@@ -1190,11 +1247,12 @@
     ],
     "epa": [
      57
+    ],
+    "value": [
+     57
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856765",
@@ -1202,7 +1260,7 @@
    "file": "CFB_Week13_TENN-VAN_packet",
    "pages": {
     "report": [
-     60
+     61
     ],
     "matchup": [
      116,
@@ -1210,11 +1268,12 @@
     ],
     "epa": [
      58
+    ],
+    "value": [
+     59
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858538",
@@ -1222,7 +1281,7 @@
    "file": "CFB_Week13_PUR-IU_packet",
    "pages": {
     "report": [
-     61
+     62
     ],
     "matchup": [
      118,
@@ -1230,11 +1289,12 @@
     ],
     "epa": [
      59
+    ],
+    "value": [
+     58
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856757",
@@ -1242,7 +1302,7 @@
    "file": "CFB_Week13_AUB-ALA_packet",
    "pages": {
     "report": [
-     62
+     63
     ],
     "matchup": [
      120,
@@ -1250,11 +1310,12 @@
     ],
     "epa": [
      60
+    ],
+    "value": [
+     60
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858315",
@@ -1262,7 +1323,7 @@
    "file": "CFB_Week13_PITT-CAL_packet",
    "pages": {
     "report": [
-     63
+     64
     ],
     "matchup": [
      122,
@@ -1270,11 +1331,12 @@
     ],
     "epa": [
      61
+    ],
+    "value": [
+     61
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401858541",
@@ -1282,7 +1344,7 @@
    "file": "CFB_Week13_WASH-ORE_packet",
    "pages": {
     "report": [
-     64
+     65
     ],
     "matchup": [
      124,
@@ -1290,11 +1352,12 @@
     ],
     "epa": [
      62
+    ],
+    "value": [
+     62
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856873",
@@ -1302,7 +1365,7 @@
    "file": "CFB_Week13_ASU-ARIZ_packet",
    "pages": {
     "report": [
-     65
+     66
     ],
     "matchup": [
      126,
@@ -1310,11 +1373,12 @@
     ],
     "epa": [
      63
+    ],
+    "value": [
+     63
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401864548",
@@ -1322,7 +1386,7 @@
    "file": "CFB_Week13_NEV-UNLV_packet",
    "pages": {
     "report": [
-     66
+     67
     ],
     "matchup": [
      128,
@@ -1330,11 +1394,12 @@
     ],
     "epa": [
      64
+    ],
+    "value": [
+     64
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401856874",
@@ -1342,7 +1407,7 @@
    "file": "CFB_Week13_BAY-HOU_packet",
    "pages": {
     "report": [
-     67
+     68
     ],
     "matchup": [
      130,
@@ -1350,11 +1415,12 @@
     ],
     "epa": [
      65
+    ],
+    "value": [
+     65
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401860928",
@@ -1362,7 +1428,7 @@
    "file": "CFB_Week13_TXST-USU_packet",
    "pages": {
     "report": [
-     68
+     69
     ],
     "matchup": [
      132,
@@ -1370,11 +1436,12 @@
     ],
     "epa": [
      66
+    ],
+    "value": [
+     66
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401860927",
@@ -1382,7 +1449,7 @@
    "file": "CFB_Week13_ORST-FRES_packet",
    "pages": {
     "report": [
-     69
+     70
     ],
     "matchup": [
      134,
@@ -1390,11 +1457,12 @@
     ],
     "epa": [
      67
+    ],
+    "value": [
+     67
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   },
   {
    "id": "401864547",
@@ -1402,7 +1470,7 @@
    "file": "CFB_Week13_SAC-HAW_packet",
    "pages": {
     "report": [
-     70
+     71
     ],
     "matchup": [
      136,
@@ -1410,11 +1478,12 @@
     ],
     "epa": [
      68
+    ],
+    "value": [
+     68
     ]
    },
-   "missing": [
-    "Value board"
-   ]
+   "missing": []
   }
  ]
 }
