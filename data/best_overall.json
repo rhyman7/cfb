@@ -3453,7 +3453,10 @@
         -320
        ]
       ]
-     }
+     },
+     "y": 35,
+     "ly": 35,
+     "res": "miss"
     },
     "SJSU": {
      "rk": 2,
@@ -3465,7 +3468,10 @@
      "avg": 67.8,
      "proj": 84.0,
      "v": "board",
-     "at": "2026-11-21T23:14Z"
+     "at": "2026-11-21T23:14Z",
+     "y": 102,
+     "ly": 102,
+     "res": "beat"
     },
     "UK": {
      "rk": 11,
@@ -3485,7 +3491,10 @@
         -114
        ]
       ]
-     }
+     },
+     "y": 93,
+     "ly": 93,
+     "res": "beat"
     },
     "STAN": {
      "rk": 1,
@@ -3497,7 +3506,10 @@
      "avg": 112.5,
      "proj": 148.7,
      "v": "board",
-     "at": "2026-11-22T00:25Z"
+     "at": "2026-11-22T00:25Z",
+     "y": 156,
+     "ly": 151,
+     "res": "beat"
     },
     "CAL": {
      "rk": 8,
@@ -3517,7 +3529,10 @@
         -114
        ]
       ]
-     }
+     },
+     "y": 51,
+     "ly": 51,
+     "res": "miss"
     },
     "FRES": {
      "rk": 17,
@@ -3529,7 +3544,10 @@
      "avg": 58.4,
      "proj": 91.3,
      "v": "board",
-     "at": "2026-11-22T00:25Z"
+     "at": "2026-11-22T00:25Z",
+     "y": 94,
+     "ly": 68,
+     "res": "beat"
     },
     "AFA": {
      "rk": 16,
@@ -3681,24 +3699,15 @@
      "avg": 53.6,
      "proj": 64.0,
      "v": "board",
-     "at": "2026-11-21T23:14Z"
+     "at": "2026-11-21T23:14Z",
+     "y": 16,
+     "ly": 16,
+     "res": "miss"
     }
    }
   },
   "13": {
    "picks": {
-    "TCU": {
-     "rk": 21,
-     "name": "Ed Small",
-     "pos": "WR",
-     "opp": "TTU",
-     "log": "TCU|5200482",
-     "kind": "rec",
-     "avg": 63.3,
-     "proj": null,
-     "v": "rank",
-     "at": "2026-11-22T14:42Z"
-    },
     "MISS": {
      "rk": 19,
      "name": "Trinidad Chambliss",
@@ -3709,7 +3718,7 @@
      "avg": 259.4,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "BUFF": {
      "rk": 3,
@@ -3721,10 +3730,10 @@
      "avg": 120.3,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "FLA": {
-     "rk": 13,
+     "rk": 11,
      "name": "Jadan Baugh",
      "pos": "RB",
      "opp": "FSU",
@@ -3733,7 +3742,7 @@
      "avg": 95.7,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "MEM": {
      "rk": 8,
@@ -3745,55 +3754,31 @@
      "avg": 126.4,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
-    },
-    "WVU": {
-     "rk": 11,
-     "name": "Michael Hawkins Jr.",
-     "pos": "QB",
-     "opp": "UTAH",
-     "log": "WVU|5079465",
-     "kind": "pass",
-     "avg": 205.3,
-     "proj": null,
-     "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "UTAH": {
-     "rk": 6,
+     "rk": 5,
      "name": "Devon Dampier",
      "pos": "QB",
      "opp": "WVU",
      "log": "UTAH|5105849",
      "kind": "pass",
-     "avg": 225.7,
+     "avg": 230.5,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "UK": {
-     "rk": 5,
+     "rk": 4,
      "name": "Willie Rodriguez",
      "pos": "TE",
      "opp": "LOU",
      "log": "UK|5136838",
      "kind": "rec",
-     "avg": 46.7,
+     "avg": 50.9,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
-    },
-    "NCSU": {
-     "rk": 22,
-     "name": "Davion Gause",
-     "pos": "RB",
-     "opp": "UNC",
-     "log": "NCSU|5079468",
-     "kind": "scrim",
-     "avg": 83.9,
-     "proj": null,
-     "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "UNC": {
      "rk": 17,
@@ -3805,10 +3790,10 @@
      "avg": 77.5,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "NAVY": {
-     "rk": 9,
+     "rk": 7,
      "name": "Jackson Gutierrez",
      "pos": "QB",
      "opp": "CLT",
@@ -3817,10 +3802,10 @@
      "avg": 114.2,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "CLT": {
-     "rk": 15,
+     "rk": 14,
      "name": "Jaden Barnes",
      "pos": "WR",
      "opp": "NAVY",
@@ -3829,7 +3814,7 @@
      "avg": 58.1,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "ODU": {
      "rk": 20,
@@ -3841,10 +3826,10 @@
      "avg": 62.0,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "ISU": {
-     "rk": 2,
+     "rk": 9,
      "name": "Aiden Flora",
      "pos": "RB",
      "opp": "KSU",
@@ -3853,10 +3838,10 @@
      "avg": 149.9,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "FIU": {
-     "rk": 14,
+     "rk": 13,
      "name": "Devonte Lyons",
      "pos": "RB",
      "opp": "SHSU",
@@ -3865,22 +3850,22 @@
      "avg": 84.3,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "BYU": {
      "rk": 18,
-     "name": "Walker Lyons",
-     "pos": "TE",
+     "name": "Bear Bachmeier",
+     "pos": "QB",
      "opp": "CIN",
-     "log": "BYU|5221043",
-     "kind": "rec",
-     "avg": 41.8,
+     "log": "BYU|5141367",
+     "kind": "pass",
+     "avg": 209.0,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "DUKE": {
-     "rk": 16,
+     "rk": 15,
      "name": "Jeremiah Hasley",
      "pos": "TE",
      "opp": "WAKE",
@@ -3889,22 +3874,22 @@
      "avg": 41.1,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "SMU": {
-     "rk": 10,
+     "rk": 12,
      "name": "Kevin Jennings",
      "pos": "QB",
      "opp": "STAN",
      "log": "SMU|5084084",
      "kind": "pass",
-     "avg": 299.2,
+     "avg": 291.6,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "JVST": {
-     "rk": 7,
+     "rk": 6,
      "name": "Caden Creel",
      "pos": "QB",
      "opp": "DEL",
@@ -3913,7 +3898,7 @@
      "avg": 233.7,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "BOIS": {
      "rk": 1,
@@ -3922,34 +3907,70 @@
      "opp": "CSU",
      "log": "BOIS|5146712",
      "kind": "scrim",
-     "avg": 151.9,
+     "avg": 152.5,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "ARIZ": {
-     "rk": 12,
+     "rk": 10,
      "name": "Isaiah Mizell",
      "pos": "WR",
      "opp": "ASU",
      "log": "ARIZ|5198318",
      "kind": "rec",
-     "avg": 96.4,
+     "avg": 99.0,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
     },
     "ORST": {
-     "rk": 4,
+     "rk": 2,
      "name": "Jesse Legree",
      "pos": "WR",
      "opp": "FRES",
      "log": "ORST|5289510",
      "kind": "rec",
-     "avg": 134.9,
+     "avg": 128.9,
      "proj": null,
      "v": "rank",
-     "at": "2026-11-22T14:42Z"
+     "at": "2026-11-22T14:53Z"
+    },
+    "OU": {
+     "rk": 16,
+     "name": "Rocky Beers",
+     "pos": "TE",
+     "opp": "MIZ",
+     "log": "OU|4907786",
+     "kind": "rec",
+     "avg": 56.9,
+     "proj": null,
+     "v": "rank",
+     "at": "2026-11-22T14:53Z"
+    },
+    "CAL": {
+     "rk": 22,
+     "name": "Chase Hendricks",
+     "pos": "WR",
+     "opp": "PITT",
+     "log": "CAL|4921110",
+     "kind": "rec",
+     "avg": 58.9,
+     "proj": null,
+     "v": "rank",
+     "at": "2026-11-22T14:53Z"
+    },
+    "FRES": {
+     "rk": 21,
+     "name": "Josiah Freeman",
+     "pos": "WR",
+     "opp": "ORST",
+     "log": "FRES|5092483",
+     "kind": "rec",
+     "avg": 79.9,
+     "proj": null,
+     "v": "rank",
+     "at": "2026-11-22T14:53Z"
     }
    }
   }
