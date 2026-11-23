@@ -3716,9 +3716,9 @@
      "log": "BUFF|5151369",
      "kind": "scrim",
      "avg": 120.3,
-     "proj": 161.1,
+     "proj": 160.9,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "FLA": {
      "rk": 10,
@@ -3730,31 +3730,31 @@
      "avg": 95.7,
      "proj": 111.8,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "MEM": {
-     "rk": 8,
+     "rk": 7,
      "name": "Jaylin Carter",
      "pos": "RB",
      "opp": "TEM",
      "log": "MEM|5222671",
      "kind": "scrim",
      "avg": 126.4,
-     "proj": 145.9,
+     "proj": 146.1,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "UTAH": {
-     "rk": 7,
+     "rk": 8,
      "name": "Devon Dampier",
      "pos": "QB",
      "opp": "WVU",
      "log": "UTAH|5105849",
      "kind": "pass",
      "avg": 230.5,
-     "proj": 273.4,
+     "proj": 272.5,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "UNC": {
      "rk": 13,
@@ -3764,9 +3764,9 @@
      "log": "UNC|5079687",
      "kind": "rec",
      "avg": 77.5,
-     "proj": 90.6,
+     "proj": 90.4,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "NAVY": {
      "rk": 14,
@@ -3778,43 +3778,43 @@
      "avg": 114.2,
      "proj": 129.8,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "CLT": {
-     "rk": 18,
+     "rk": 19,
      "name": "Jaden Barnes",
      "pos": "WR",
      "opp": "NAVY",
      "log": "CLT|5153730",
      "kind": "rec",
      "avg": 58.1,
-     "proj": 68.9,
+     "proj": 68.7,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "ODU": {
-     "rk": 21,
+     "rk": 20,
      "name": "Devin Roche",
      "pos": "RB",
      "opp": "USM",
      "log": "ODU|4922993",
      "kind": "scrim",
      "avg": 62.0,
-     "proj": 82.4,
+     "proj": 82.8,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "ISU": {
-     "rk": 3,
+     "rk": 4,
      "name": "Aiden Flora",
      "pos": "RB",
      "opp": "KSU",
      "log": "ISU|5219258",
      "kind": "scrim",
      "avg": 149.9,
-     "proj": 171.3,
+     "proj": 171.2,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "FIU": {
      "rk": 9,
@@ -3824,45 +3824,45 @@
      "log": "FIU|5146722",
      "kind": "scrim",
      "avg": 84.3,
-     "proj": 112.8,
+     "proj": 113.0,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "EMU": {
-     "rk": 11,
+     "rk": 12,
      "name": "Joshua Long",
      "pos": "TE",
      "opp": "KENT",
      "log": "EMU|5295532",
      "kind": "rec",
      "avg": 38.5,
-     "proj": 45.9,
+     "proj": 45.8,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "UTSA": {
-     "rk": 20,
+     "rk": 21,
      "name": "Will Henderson III",
      "pos": "RB",
      "opp": "TLSA",
      "log": "UTSA|5223167",
      "kind": "scrim",
      "avg": 85.5,
-     "proj": 100.4,
+     "proj": 100.0,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "AKR": {
-     "rk": 4,
+     "rk": 3,
      "name": "Jordan Gant",
      "pos": "RB",
      "opp": "BUFF",
      "log": "AKR|5084582",
      "kind": "scrim",
      "avg": 100.8,
-     "proj": 132.5,
+     "proj": 132.6,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "LSU": {
      "rk": 17,
@@ -3872,9 +3872,9 @@
      "log": "LSU|5079482",
      "kind": "scrim",
      "avg": 105.9,
-     "proj": 115.3,
+     "proj": 115.1,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "KENN": {
      "rk": 6,
@@ -3884,33 +3884,33 @@
      "log": "KENN|5220641",
      "kind": "scrim",
      "avg": 75.3,
-     "proj": 108.9,
+     "proj": 109.2,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "KSU": {
-     "rk": 12,
+     "rk": 11,
      "name": "Rodney Fields Jr.",
      "pos": "RB",
      "opp": "ISU",
      "log": "KSU|5125335",
      "kind": "scrim",
      "avg": 75.4,
-     "proj": 101.6,
+     "proj": 101.5,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "MOST": {
-     "rk": 19,
+     "rk": 18,
      "name": "Jmariyae Robinson",
      "pos": "WR",
      "opp": "LIB",
      "log": "MOST|4837193",
      "kind": "rec",
      "avg": 56.0,
-     "proj": 66.8,
+     "proj": 66.7,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "NMSU": {
      "rk": 2,
@@ -3920,9 +3920,9 @@
      "log": "NMSU|5220253",
      "kind": "scrim",
      "avg": 113.5,
-     "proj": 136.9,
+     "proj": 137.0,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "PSU": {
      "rk": 16,
@@ -3934,7 +3934,7 @@
      "avg": 30.3,
      "proj": 37.2,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "NIU": {
      "rk": 15,
@@ -3944,21 +3944,9 @@
      "log": "NIU|5193302",
      "kind": "scrim",
      "avg": 73.5,
-     "proj": 103.1,
+     "proj": 102.6,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
-    },
-    "BGSU": {
-     "rk": 22,
-     "name": "Nakai Amachree",
-     "pos": "RB",
-     "opp": "MASS",
-     "log": "BGSU|5219017",
-     "kind": "scrim",
-     "avg": 62.5,
-     "proj": 84.5,
-     "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
     },
     "IU": {
      "rk": 5,
@@ -3970,7 +3958,19 @@
      "avg": 81.6,
      "proj": 104.2,
      "v": "board",
-     "at": "2026-11-22T20:45Z"
+     "at": "2026-11-23T14:41Z"
+    },
+    "STAN": {
+     "rk": 22,
+     "name": "Micah Ford",
+     "pos": "RB",
+     "opp": "SMU",
+     "log": "STAN|5143191",
+     "kind": "scrim",
+     "avg": 116.5,
+     "proj": 125.0,
+     "v": "board",
+     "at": "2026-11-23T14:41Z"
     }
    }
   }
