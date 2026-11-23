@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-23T14:37:44.032639+00:00",
+ "generatedAt": "2026-11-23T14:50:10.712268+00:00",
  "season": 2026,
  "throughWeek": 12,
  "gamesCounted": 822,
@@ -72588,7 +72588,7 @@
     "conference": "American",
     "score": null,
     "abbr": "UNT",
-    "qb": "Chris Jimerson Jr."
+    "qb": "James Tyre"
    },
    "lineOpen": {
     "spread": -4.0,
@@ -75223,7 +75223,7 @@
  "hasTargets": true,
  "notes": [
   "starting QBs for 138 teams applied from overrides/qb_starters.json",
-  "lineOpen kept for 22 of 69 Week 13 games from the week's first build"
+  "lineOpen kept for 69 of 69 Week 13 games from the week's first build"
  ],
  "leagueAverage": {
   "rushTdG": 1.7,
