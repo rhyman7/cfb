@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-22T14:49:50.128426+00:00",
+ "generatedAt": "2026-11-23T14:50:26.011783+00:00",
  "source": "Conference availability reports where a team has one; otherwise Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [],
  "checked": {
@@ -913,14 +913,14 @@
   },
   "HOU|4685574": {
    "s": "Q",
-   "status": "Game-time decision",
-   "injury": "",
+   "status": "Questionable",
+   "injury": "Shoulder",
    "date": "2026-11-21",
-   "src": "Big 12 report",
+   "src": "ESPN / Houston Chronicle",
    "name": "Conner Weigman",
    "team": "Houston",
    "pos": "QB",
-   "note": "Big 12 availability report, Game Day (Nov 21)",
+   "note": "Shoulder · ESPN / Houston Chronicle, Nov 21 · game-time decision; Keisean Henderson started at WVU",
    "player": "Conner Weigman"
   },
   "HOU|5292032": {
@@ -1422,13 +1422,13 @@
   "MSU|4700135": {
    "s": "Q",
    "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-17",
-   "src": "Big Ten report",
+   "injury": "Leg",
+   "date": "2026-11-23",
+   "src": "SI",
    "name": "Cam Fancher",
    "team": "Michigan State",
    "pos": "QB",
-   "note": "Undisclosed · Big Ten report, Nov 17",
+   "note": "Leg · SI, Nov 23 · Fitzgerald hopeful; no starter named",
    "player": "Cam Fancher"
   },
   "MSU|4894451": {
@@ -1458,13 +1458,13 @@
   "MSU|5146670": {
    "s": "O",
    "status": "Out",
-   "injury": "",
-   "date": "2026-11-17",
-   "src": "Big Ten report",
+   "injury": "Arm",
+   "date": "2026-11-23",
+   "src": "SI",
    "name": "Alessio Milivojevic",
    "team": "Michigan State",
    "pos": "QB",
-   "note": "Undisclosed · Big Ten report, Nov 17",
+   "note": "Arm · SI, Nov 23",
    "player": "Alessio Milivojevic"
   },
   "MSU|5214448": {
@@ -2397,6 +2397,18 @@
    "note": "Big Ten availability report, Game Day (Nov 21) · out for the season",
    "player": "Nico Iamaleava"
   },
+  "UCLA|5092275": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-21",
+   "src": "On3 via RotoWire",
+   "name": "Ty Dieffenbach",
+   "team": "UCLA",
+   "pos": "QB",
+   "note": "Undisclosed · On3 via RotoWire, Nov 21 · carted off in OT vs Michigan, appears serious; Madden Iamaleava next",
+   "player": "Ty Dieffenbach"
+  },
   "UK|4699866": {
    "s": "Q",
    "status": "Questionable",
@@ -2423,14 +2435,14 @@
   },
   "UNC|4592532": {
    "s": "Q",
-   "status": "Game-time decision",
+   "status": "Questionable",
    "injury": "",
-   "date": "2026-11-21",
-   "src": "ACC report",
+   "date": "2026-11-22",
+   "src": "Yahoo Sports",
    "name": "Billy Edwards Jr.",
    "team": "North Carolina",
    "pos": "QB",
-   "note": "ACC availability report, Game Day (Nov 21)",
+   "note": "Undisclosed · Yahoo Sports, Nov 22 · missed Virginia game; Travis Burgess started",
    "player": "Billy Edwards Jr."
   },
   "UNLV|5149831": {
@@ -2470,6 +2482,18 @@
    "pos": "WR",
    "note": "American availability report, Game Day (Nov 21)",
    "player": "Corri Milliner"
+  },
+  "UNT|5175092": {
+   "s": "D",
+   "status": "Doubtful",
+   "injury": "Knee",
+   "date": "2026-11-22",
+   "src": "Denton Record-Chronicle",
+   "name": "Chris Jimerson Jr.",
+   "team": "North Texas",
+   "pos": "QB",
+   "note": "Knee · Denton Record-Chronicle, Nov 22 · carted off vs Tulane; Neal Brown not optimistic; James Tyre likely starts",
+   "player": "Chris Jimerson Jr."
   },
   "UNT|5215310": {
    "s": "O",
