@@ -569,7 +569,7 @@ function renderMatchupParts(g) {
         ${edgePanel(home, away)}
       </div>
       ${pacePanel(away, home)}
-      <p class="edge-key">Longer bar, better rank. Ranks are out of ${n} FBS teams. The edge goes to whichever side is better by at least one FBS standard deviation (so it counts how big the gap is, not just rank spots).${hasAdj() ? " Adj. rows are adjusted for the offenses and defenses each team has faced, as on the EPA page; the per-game rows are not, so a soft or hard schedule shows in them." : ""} INT compares interceptions thrown by the offense with interceptions made by the defense.${hasRushYpa() ? " Rush Yds / Att is season rushing yards divided by rushing attempts, with sacks counted as rushes the way college box scores do." : ""}${hasEff() ? " EPA / play (expected points added per play) and Success % (share of plays with positive EPA) use every run and pass play from cfbfastR play-by-play; for a defense they're what it allowed, so lower is better." : ""}${hasSitu() ? "<span class=\"edge-key-x\"> Pts / trip (40) counts every drive that reached the opponent's 40, at 7 for a touchdown and 3 for a field goal. Explosive % counts passes of 20+ yards and runs of 10+ per play. Sack rate is per pass play; havoc rate is plays with a tackle for loss, sack, interception, fumble or pass breakup, per play. For both, lower is better for an offense and higher for a defense.</span>" : ""}</p>`;
+      <p class="edge-key">Longer bar, better rank. Ranks are out of ${n} FBS teams. The edge goes to whichever side is better by at least one FBS standard deviation (so it counts how big the gap is, not just rank spots).${hasAdj() ? " Adj. rows are adjusted for the offenses and defenses each team has faced, as on the EPA page; the per-game rows are not, so a soft or hard schedule shows in them." : ""} INT compares interceptions thrown by the offense with interceptions made by the defense.${hasRushYpa() ? " Rush Yds / Att is season rushing yards divided by rushing attempts, with sacks counted as rushes the way college box scores do." : ""}${hasEff() ? " EPA / play (expected points added per play) and Success % (share of plays with positive EPA) use every run and pass play from cfbfastR play-by-play; for a defense they're what it allowed, so lower is better." : ""}${hasSitu() ? "<span class=\"edge-key-x\"> A red zone trip is a drive that ran a play inside the 20: RZ trips / G is how many a team makes (or allows) per game, Red zone TD % is the share that ended in a touchdown, and Pts / RZ trip is the points per trip at 7 for a touchdown and 3 for a field goal. Explosive % counts passes of 20+ yards and runs of 10+ per play. Sack rate is per pass play; havoc rate is plays with a tackle for loss, sack, interception, fumble or pass breakup, per play. For both, lower is better for an offense and higher for a defense.</span>" : ""}</p>`;
   } else {
     const other = away ? g.home : g.away;
     edges = `<h3 class="section-title">Head to head</h3>
@@ -792,7 +792,9 @@ function hasAdj() { return Object.values(DATA.teams).every(t => t.adj && t.adj.o
 const sv = (side, key) => t => t.situ && t.situ[side][key] ? t.situ[side][key].v : null;
 const SITU_GROUPS = [
   ["Finishing drives", [
-    ["Pts / trip (40)", sv("off", "ptsTrip"), sv("def", "ptsTrip"), true, false, v => v.toFixed(2)],
+    ["RZ trips / G", sv("off", "rzTripsG"), sv("def", "rzTripsG"), true, false, v => v.toFixed(1)],
+    ["Red zone TD %", sv("off", "rzTd"), sv("def", "rzTd"), true, false, v => v.toFixed(1)],
+    ["Pts / RZ trip", sv("off", "rzPts"), sv("def", "rzPts"), true, false, v => v.toFixed(2)],
     ["3rd down %", sv("off", "third"), sv("def", "third"), true, false, v => v.toFixed(1)],
   ]],
   ["Big plays", [

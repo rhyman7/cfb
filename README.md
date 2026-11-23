@@ -317,8 +317,8 @@ Built by `scripts/situational.py` (called from `build_data.py`, from the play-by
 each team's `situ`, `pace` and `usage` keys, plus `ts`/`ts3` on receiving rows and `cs` on
 rushing rows.
 
-- **Head to head** gains three groups under the existing rows: Finishing drives (points per trip
-  inside the 40 at 7 per TD and 3 per FG, 3rd down %), Big plays (explosive %: passes of 20+ yards
+- **Head to head** gains three groups under the existing rows: Finishing drives (red zone trips per
+  game, red zone TD %, points per red zone trip at 7 per TD and 3 per FG, 3rd down %), Big plays (explosive %: passes of 20+ yards
   and runs of 10+) and Pass rush and havoc (sack rate per pass play; havoc rate = tackles for loss,
   sacks, interceptions, fumbles and pass breakups per play). Same bars and edge rule as the rows above.
 - **Pace and tendency** under Head to head: plays per game and early-down pass rate.

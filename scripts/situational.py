@@ -5,8 +5,13 @@ are among FBS teams.
 
 Per team (data.json -> teams[name]):
     situ.off / situ.def   each value is {"v": number, "rank": 1..N}
+        rzTripsG      red zone trips per game: drives that ran a play inside the 20, per game played
+                      (defense: trips allowed)
+        rzTd          red zone TD %: red zone trips that ended in a touchdown
+        rzPts         points per red zone trip, scored as 7 for a touchdown and 3 for a field goal
         ptsTrip       points per trip inside the 40: drives that reached the opponent's 40, scored as
-                      7 for a touchdown and 3 for a field goal
+                      7 for a touchdown and 3 for a field goal (still built, no longer shown: the
+                      page switched to the red zone rows on Nov 23, 2026)
         third         3rd down conversion %: 3rd-down runs and passes that gained the distance
         explosive     explosive play %: passes of 20+ yards and runs of 10+, per run/pass play
         sackRate      sacks per pass play (sacks count as pass plays)
@@ -57,6 +62,8 @@ def build(pbp, game_ids, fbs_ids, pg, results, athlete_names):
     r = trips["res"].astype(str).str.upper()
     trips["pts"] = np.where(r.isin(["TD", "TOUCHDOWN"]), 7, np.where(r.isin(["FG", "FIELD GOAL", "FG GOOD"]), 3, 0))
     trips["off"], trips["dfn"] = trips["off"].astype("int64"), trips["dfn"].astype("int64")
+    rz = trips[trips["ytg"] <= 20].copy()   # red zone: the same drives, cut at the 20
+    rz["td"] = (rz["pts"] == 7).astype(float)
 
     third = plays[plays["down"] == 3].copy()
     third["conv"] = (third["yds"] >= pd.to_numeric(third["start.distance"], errors="coerce")).astype(float)
@@ -68,12 +75,20 @@ def build(pbp, game_ids, fbs_ids, pg, results, athlete_names):
     passes = plays[is_pass]
     early = plays[plays["down"].isin([1, 2])]
 
-    off = {"ptsTrip": (trips.groupby("off")["pts"].mean(), True, 2),
+    # trips per game: games counted from each side's run/pass plays, as the pace numbers do
+    gp_off, gp_def = plays.groupby("off")["game_id"].nunique(), plays.groupby("dfn")["game_id"].nunique()
+    off = {"rzTripsG": (rz.groupby("off").size().reindex(gp_off.index, fill_value=0) / gp_off, True, 1),
+           "rzTd": (rz.groupby("off")["td"].mean() * 100, True, 1),
+           "rzPts": (rz.groupby("off")["pts"].mean(), True, 2),
+           "ptsTrip": (trips.groupby("off")["pts"].mean(), True, 2),
            "third": (third.groupby("off")["conv"].mean() * 100, True, 1),
            "explosive": (plays.groupby("off")["exp"].mean() * 100, True, 1),
            "sackRate": (passes.groupby("off")["sk"].mean() * 100, False, 1),
            "havoc": (plays.groupby("off")["hav"].mean() * 100, False, 1)}
-    dfn = {"ptsTrip": (trips.groupby("dfn")["pts"].mean(), False, 2),
+    dfn = {"rzTripsG": (rz.groupby("dfn").size().reindex(gp_def.index, fill_value=0) / gp_def, False, 1),
+           "rzTd": (rz.groupby("dfn")["td"].mean() * 100, False, 1),
+           "rzPts": (rz.groupby("dfn")["pts"].mean(), False, 2),
+           "ptsTrip": (trips.groupby("dfn")["pts"].mean(), False, 2),
            "third": (third.groupby("dfn")["conv"].mean() * 100, False, 1),
            "explosive": (plays.groupby("dfn")["exp"].mean() * 100, False, 1),
            "sackRate": (passes.groupby("dfn")["sk"].mean() * 100, True, 1),
