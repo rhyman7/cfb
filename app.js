@@ -1258,13 +1258,45 @@ function teamOfLog(key) {
 }
 function gamesText(n) { return `${n} game${n === 1 ? "" : "s"}`; }
 
-function tooltipHtml(name, kind, log, key) {
+// Rnk column in the hover popup: where the opponent's defense ranked against the player's position
+// COMING INTO that week (yds/G allowed in its games before week w), not where it ranks now.
+// Passing popups get the pass defense rank (allowed.pass, the Pass Yds/G dial's number).
+// Same per-game lines and the same ranking rule as defVsPosition (ties share the lower number),
+// so with every game counted it gives the blocks' ranks. No rank before a defense's first game.
+const RANK_INTO = {};
+function logRankKind(kind, pos) {
+  const P = (pos || "").toUpperCase(), rb = P === "RB" || P === "FB";
+  if (kind === "passing") return "pass";   // pass defense rank (pass yds/G allowed, the Defense dial's number)
+  if (kind === "rushing") return rb ? "rb" : null;
+  if (kind === "receiving") return P === "TE" ? "te" : rb ? "recRb" : P === "WR" ? "wr" : null;
+  return null;
+}
+function rankInto(oppAbbr, week, rk) {
+  const id = rk + "|" + week;
+  if (!RANK_INTO[id]) {
+    const c = DP_POS[rk], rows = [];
+    for (const t of Object.values(DATA.teams)) {
+      const gs = dpGames(t).filter(e => e.w < week);
+      if (!gs.length || gs.some(e => !e.allowed || (c && !e.allowed[c.list]))) continue;
+      rows.push([t.abbr, gs.reduce((s, e) => s + (c ? dpSum(dpPosLines(e, c), "yds") : e.allowed.pass || 0), 0) / gs.length]);
+    }
+    const m = RANK_INTO[id] = {};
+    for (const [a, v] of rows) m[a] = 1 + rows.filter(x => x[1] < v - 1e-9).length;
+  }
+  return RANK_INTO[id][oppAbbr] || null;
+}
+const RANK_WHO = { pass: "pass defense rank (pass yds/G)", rb: "rank vs RBs (rush yds/G)", recRb: "rank vs RBs (rec yds/G)", te: "rank vs TEs (rec yds/G)", wr: "rank vs WRs (rec yds/G)" };
+
+function tooltipHtml(name, kind, log, key, pos) {
   const cols = LOG_GROUPS[kind] || [];
-  const head = `<th>Wk</th><th>Opp</th>${cols.map(([l]) => `<th class="num">${l}</th>`).join("")}`;
-  const body = log.map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>${cols.map(([, f]) => `<td class="num">${f(e)}</td>`).join("")}</tr>`).join("");
+  if (pos === undefined && key) pos = (playerIndex()[key] || {}).pos;
+  const rk = logRankKind(kind, pos);
+  const head = `<th>Wk</th><th>Opp</th>${rk ? `<th class="num" title="Opponent's ${RANK_WHO[rk]} coming into that week">Rnk</th>` : ""}${cols.map(([l]) => `<th class="num">${l}</th>`).join("")}`;
+  const body = log.map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>${rk ? `<td class="num rnk">${rankInto(e.opp, e.w, rk) || "—"}</td>` : ""}${cols.map(([, f]) => `<td class="num">${f(e)}</td>`).join("")}</tr>`).join("");
   return `<div class="ptip-head"><b>${name}</b><span>${GROUP_LABEL[kind] || ""}, ${gamesText(log.length)}</span></div>
     ${injLine(key, "ptip-inj")}
     <table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
+    ${rk ? `<div class="ptip-foot ptip-rnk">Rnk = the opponent's FBS ${RANK_WHO[rk]} coming into that week. #1 allows the fewest; a dash = not FBS or no games yet.</div>` : ""}
     <div class="ptip-foot">Click for full game log and prop check</div>`;
 }
 

@@ -685,6 +685,9 @@ footer { padding: 20px 28px 28px; text-align: center; font-size: 0.78rem; color:
 .ptip-head b { font-size: 1.125rem; font-stretch: 68%; font-weight: 700; }
 .ptip-head span { font-size: 0.78rem; color: var(--text-dim); }
 .ptip-foot { margin-top: 6px; font-size: 0.75rem; color: var(--text-dim); }
+.ptip td.rnk { color: var(--text-dim); }
+.ptip-rnk { width: 0; min-width: 100%; }
+.learn-tip .ptip-rnk { display: block; width: auto; }
 td.fp { font-weight: 700; }
 .ttip td { white-space: nowrap; }
 
