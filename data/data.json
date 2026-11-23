@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-22T14:46:40.047141+00:00",
+ "generatedAt": "2026-11-23T14:37:44.032639+00:00",
  "season": 2026,
  "throughWeek": 12,
  "gamesCounted": 822,
@@ -70332,8 +70332,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": -6.5,
-   "total": 46.5,
+   "spread": -5.5,
+   "total": 45.5,
    "away": {
     "name": "Kent State",
     "key": "Kent State",
@@ -70376,7 +70376,7 @@
    "note": "",
    "indoor": false,
    "spread": -7.5,
-   "total": 46.5,
+   "total": 45.5,
    "away": {
     "name": "Miami (OH)",
     "key": "Miami (OH)",
@@ -70418,8 +70418,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -10.5,
-   "total": 47.5,
+   "spread": -13.0,
+   "total": 46.5,
    "away": {
     "name": "TCU",
     "key": "TCU",
@@ -70461,8 +70461,8 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": -20.5,
-   "total": 57.5,
+   "spread": -19.0,
+   "total": 56.5,
    "away": {
     "name": "Mississippi State",
     "key": "Mississippi State",
@@ -70504,8 +70504,8 @@
    "tv": "CBS",
    "note": "",
    "indoor": false,
-   "spread": -6.0,
-   "total": 38.5,
+   "spread": -5.0,
+   "total": 39.5,
    "away": {
     "name": "Nebraska",
     "key": "Nebraska",
@@ -70547,8 +70547,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": true,
-   "spread": null,
-   "total": null,
+   "spread": -1.5,
+   "total": 59.0,
    "away": {
     "name": "Tulsa",
     "key": "Tulsa",
@@ -70570,9 +70570,9 @@
     "qb": "Owen McCown"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -1.5,
+    "total": 59.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -70590,8 +70590,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": 10.0,
-   "total": 49.5,
+   "spread": 7.5,
+   "total": 50.5,
    "away": {
     "name": "Buffalo",
     "key": "Buffalo",
@@ -70633,8 +70633,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 3.5,
+   "total": 49.0,
    "away": {
     "name": "Toledo",
     "key": "Toledo",
@@ -70656,9 +70656,9 @@
     "qb": "Nick Poulos"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 3.5,
+    "total": 49.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -70676,8 +70676,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.0,
+   "total": 56.5,
    "away": {
     "name": "App State",
     "key": "App State",
@@ -70699,9 +70699,9 @@
     "qb": "Bishop Davenport"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -3.0,
+    "total": 56.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -70719,8 +70719,8 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": 4.5,
-   "total": 54.5,
+   "spread": 5.0,
+   "total": 52.5,
    "away": {
     "name": "Florida",
     "key": "Florida",
@@ -70762,8 +70762,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -17.5,
+   "total": 64.5,
    "away": {
     "name": "Temple",
     "key": "Temple",
@@ -70785,9 +70785,9 @@
     "qb": "Marcus Stokes"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -17.5,
+    "total": 64.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -70805,8 +70805,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 9.0,
+   "total": 39.5,
    "away": {
     "name": "North Dakota State",
     "key": "North Dakota State",
@@ -70828,9 +70828,9 @@
     "qb": "Luke Weaver"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 9.0,
+    "total": 39.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -70848,8 +70848,8 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -6.5,
+   "total": 41.5,
    "away": {
     "name": "Air Force",
     "key": "Air Force",
@@ -70871,9 +70871,9 @@
     "qb": "Luke Moga"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -6.5,
+    "total": 41.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -70891,8 +70891,8 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": 9.5,
-   "total": 39.5,
+   "spread": 12.0,
+   "total": 40.5,
    "away": {
     "name": "Texas",
     "key": "Texas",
@@ -70934,8 +70934,8 @@
    "tv": "NBC",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -7.0,
+   "total": 37.5,
    "away": {
     "name": "Minnesota",
     "key": "Minnesota",
@@ -70957,9 +70957,9 @@
     "qb": "Colton Joseph"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -7.0,
+    "total": 37.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -70977,8 +70977,8 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -21.0,
+   "total": 68.5,
    "away": {
     "name": "West Virginia",
     "key": "West Virginia",
@@ -71000,9 +71000,9 @@
     "qb": "Devon Dampier"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -21.0,
+    "total": 68.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71020,7 +71020,7 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": 1.5,
+   "spread": 3.0,
    "total": 54.5,
    "away": {
     "name": "Louisville",
@@ -71063,8 +71063,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -26.0,
+   "total": 53.5,
    "away": {
     "name": "Boston College",
     "key": "Boston College",
@@ -71086,9 +71086,9 @@
     "qb": "Darian Mensah"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -26.0,
+    "total": 53.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71106,8 +71106,8 @@
    "tv": "ACC Network",
    "note": "",
    "indoor": false,
-   "spread": 1.5,
-   "total": 55.5,
+   "spread": -5.5,
+   "total": 55.0,
    "away": {
     "name": "NC State",
     "key": "NC State",
@@ -71150,7 +71150,7 @@
    "note": "",
    "indoor": true,
    "spread": 24.5,
-   "total": 52.5,
+   "total": 53.0,
    "away": {
     "name": "Notre Dame",
     "key": "Notre Dame",
@@ -71192,7 +71192,7 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": -11.5,
+   "spread": -10.0,
    "total": 38.5,
    "away": {
     "name": "Michigan",
@@ -71235,8 +71235,8 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 3.0,
+   "total": 48.0,
    "away": {
     "name": "UConn",
     "key": "UConn",
@@ -71258,9 +71258,9 @@
     "qb": "Landon Sims"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 3.0,
+    "total": 48.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71278,8 +71278,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 17.0,
+   "total": 55.5,
    "away": {
     "name": "Navy",
     "key": "Navy",
@@ -71301,9 +71301,9 @@
     "qb": "Conner Harrell"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 17.0,
+    "total": 55.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71321,8 +71321,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 4.0,
+   "total": 47.5,
    "away": {
     "name": "Central Michigan",
     "key": "Central Michigan",
@@ -71344,9 +71344,9 @@
     "qb": "Keldric Luster"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 4.0,
+    "total": 47.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71364,8 +71364,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -2.5,
+   "total": 52.5,
    "away": {
     "name": "Louisiana Tech",
     "key": "Louisiana Tech",
@@ -71387,9 +71387,9 @@
     "qb": "Max Johnson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -2.5,
+    "total": 52.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71407,8 +71407,8 @@
    "tv": "BTN",
    "note": "",
    "indoor": false,
-   "spread": -4.0,
-   "total": 47.5,
+   "spread": -3.0,
+   "total": 49.5,
    "away": {
     "name": "Illinois",
     "key": "Illinois",
@@ -71450,8 +71450,8 @@
    "tv": "SEC Network",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 13.5,
+   "total": 48.0,
    "away": {
     "name": "LSU",
     "key": "LSU",
@@ -71473,9 +71473,9 @@
     "qb": "KJ Jackson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 13.5,
+    "total": 48.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71493,8 +71493,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -2.0,
+   "total": 55.5,
    "away": {
     "name": "Florida Atlantic",
     "key": "Florida Atlantic",
@@ -71516,9 +71516,9 @@
     "qb": "Emory Williams"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -2.0,
+    "total": 55.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71536,8 +71536,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 3.0,
+   "total": 54.5,
    "away": {
     "name": "Kennesaw State",
     "key": "Kennesaw State",
@@ -71559,9 +71559,9 @@
     "qb": "Brock Glenn"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 3.0,
+    "total": 54.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71579,8 +71579,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 5.0,
+   "total": 51.0,
    "away": {
     "name": "Marshall",
     "key": "Marshall",
@@ -71602,9 +71602,9 @@
     "qb": "Austin Carlisle"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 5.0,
+    "total": 51.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71622,8 +71622,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -6.0,
+   "total": 51.0,
    "away": {
     "name": "Southern Miss",
     "key": "Southern Miss",
@@ -71645,9 +71645,9 @@
     "qb": "Jaxon Potter"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -6.0,
+    "total": 51.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71665,8 +71665,8 @@
    "tv": "TNT",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -2.0,
+   "total": 51.5,
    "away": {
     "name": "UCF",
     "key": "UCF",
@@ -71688,9 +71688,9 @@
     "qb": "Isaac Wilson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -2.0,
+    "total": 51.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71708,8 +71708,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -4.0,
+   "total": 55.0,
    "away": {
     "name": "Kansas State",
     "key": "Kansas State",
@@ -71731,9 +71731,9 @@
     "qb": "Jaylen Raynor"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -4.0,
+    "total": 55.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71751,8 +71751,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 6.5,
+   "total": 48.5,
    "away": {
     "name": "Army",
     "key": "Army",
@@ -71774,9 +71774,9 @@
     "qb": "Gael Ochoa"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 6.5,
+    "total": 48.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71794,8 +71794,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -16.0,
+   "total": 56.0,
    "away": {
     "name": "Coastal Carolina",
     "key": "Coastal Carolina",
@@ -71817,9 +71817,9 @@
     "qb": "JC Evans"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -16.0,
+    "total": 56.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71837,8 +71837,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 5.0,
+   "total": 56.5,
    "away": {
     "name": "Louisiana",
     "key": "Louisiana",
@@ -71860,9 +71860,9 @@
     "qb": "Ayden Pereira"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 5.0,
+    "total": 56.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71880,8 +71880,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 15.5,
+   "total": 52.0,
    "away": {
     "name": "Liberty",
     "key": "Liberty",
@@ -71903,9 +71903,9 @@
     "qb": "Henry Belin IV"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 15.5,
+    "total": 52.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71923,8 +71923,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -11.0,
+   "total": 41.5,
    "away": {
     "name": "Sam Houston",
     "key": "Sam Houston",
@@ -71946,9 +71946,9 @@
     "qb": "JJ Kohl"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -11.0,
+    "total": 41.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -71966,8 +71966,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.0,
+   "total": 52.5,
    "away": {
     "name": "New Mexico State",
     "key": "New Mexico State",
@@ -71989,9 +71989,9 @@
     "qb": "Roman Gagliano"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -3.0,
+    "total": 52.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72009,8 +72009,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": 3.5,
-   "total": 42.5,
+   "spread": 5.0,
+   "total": 41.0,
    "away": {
     "name": "South Carolina",
     "key": "South Carolina",
@@ -72053,7 +72053,7 @@
    "note": "",
    "indoor": false,
    "spread": -3.0,
-   "total": 53.5,
+   "total": 52.0,
    "away": {
     "name": "Virginia",
     "key": "Virginia",
@@ -72095,8 +72095,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -4.0,
+   "total": 46.5,
    "away": {
     "name": "Troy",
     "key": "Troy",
@@ -72118,9 +72118,9 @@
     "qb": "Trey Owens"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -4.0,
+    "total": 46.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72138,8 +72138,8 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -35.5,
+   "total": 56.0,
    "away": {
     "name": "Georgia Tech",
     "key": "Georgia Tech",
@@ -72161,9 +72161,9 @@
     "qb": "Gunner Stockton"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -35.5,
+    "total": 56.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72181,8 +72181,8 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -15.0,
+   "total": 56.0,
    "away": {
     "name": "Cincinnati",
     "key": "Cincinnati",
@@ -72204,9 +72204,9 @@
     "qb": "Bear Bachmeier"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -15.0,
+    "total": 56.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72224,8 +72224,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": -13.5,
-   "total": 55.5,
+   "spread": -14.0,
+   "total": 56.0,
    "away": {
     "name": "Duke",
     "key": "Duke",
@@ -72267,8 +72267,8 @@
    "tv": "ACC Network",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 8.0,
+   "total": 61.0,
    "away": {
     "name": "SMU",
     "key": "SMU",
@@ -72290,9 +72290,9 @@
     "qb": "Davis Warren"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 8.0,
+    "total": 61.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72310,8 +72310,8 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 7.0,
+   "total": 50.5,
    "away": {
     "name": "Penn State",
     "key": "Penn State",
@@ -72333,9 +72333,9 @@
     "qb": "Malik Washington"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 7.0,
+    "total": 50.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72354,7 +72354,7 @@
    "note": "",
    "indoor": false,
    "spread": 6.5,
-   "total": 47.5,
+   "total": 46.0,
    "away": {
     "name": "USC",
     "key": "USC",
@@ -72396,8 +72396,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -6.5,
+   "total": 43.5,
    "away": {
     "name": "Tulane",
     "key": "Tulane",
@@ -72419,9 +72419,9 @@
     "qb": "Luke Kromenhoek"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -6.5,
+    "total": 43.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72439,8 +72439,8 @@
    "tv": "MW+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -4.0,
+   "total": 48.5,
    "away": {
     "name": "UTEP",
     "key": "UTEP",
@@ -72462,9 +72462,9 @@
     "qb": "Taron Dickens"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -4.0,
+    "total": 48.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72482,8 +72482,8 @@
    "tv": "ESPN+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.0,
+   "total": 44.0,
    "away": {
     "name": "Massachusetts",
     "key": "Massachusetts",
@@ -72505,9 +72505,9 @@
     "qb": "Austin Novosad"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -3.0,
+    "total": 44.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72525,8 +72525,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.0,
+   "total": 58.0,
    "away": {
     "name": "Jacksonville State",
     "key": "Jacksonville State",
@@ -72548,9 +72548,9 @@
     "qb": "Nick Minicucci"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -3.0,
+    "total": 58.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72568,8 +72568,8 @@
    "tv": "ESPNU",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -4.0,
+   "total": 48.0,
    "away": {
     "name": "UAB",
     "key": "UAB",
@@ -72591,9 +72591,9 @@
     "qb": "Chris Jimerson Jr."
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -4.0,
+    "total": 48.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72611,8 +72611,8 @@
    "tv": "SEC Network",
    "note": "",
    "indoor": false,
-   "spread": -1.5,
-   "total": 42.5,
+   "spread": -2.0,
+   "total": 41.5,
    "away": {
     "name": "Oklahoma",
     "key": "Oklahoma",
@@ -72654,8 +72654,8 @@
    "tv": "BTN",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 3.5,
+   "total": 47.5,
    "away": {
     "name": "Michigan State",
     "key": "Michigan State",
@@ -72677,9 +72677,9 @@
     "qb": "AJ Surace"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 3.5,
+    "total": 47.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72697,8 +72697,8 @@
    "tv": "USA Net",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 21.0,
+   "total": 77.0,
    "away": {
     "name": "Boise State",
     "key": "Boise State",
@@ -72720,9 +72720,9 @@
     "qb": "Hauss Hejny"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 21.0,
+    "total": 77.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72740,8 +72740,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -7.0,
+   "total": 67.0,
    "away": {
     "name": "Kansas",
     "key": "Kansas",
@@ -72763,9 +72763,9 @@
     "qb": "Drew Mestemaker"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -7.0,
+    "total": 67.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72783,8 +72783,8 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -2.0,
+   "total": 45.5,
    "away": {
     "name": "San Diego State",
     "key": "San Diego State",
@@ -72806,9 +72806,9 @@
     "qb": "Owen Eshelman"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -2.0,
+    "total": 45.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72826,8 +72826,8 @@
    "tv": "ESPN",
    "note": "",
    "indoor": false,
-   "spread": 13.5,
-   "total": 44.5,
+   "spread": 11.5,
+   "total": 43.0,
    "away": {
     "name": "Tennessee",
     "key": "Tennessee",
@@ -72869,8 +72869,8 @@
    "tv": "FS1",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -22.0,
+   "total": 52.0,
    "away": {
     "name": "Purdue",
     "key": "Purdue",
@@ -72892,9 +72892,9 @@
     "qb": "Grant Wilson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -22.0,
+    "total": 52.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72912,8 +72912,8 @@
    "tv": "ABC",
    "note": "",
    "indoor": false,
-   "spread": -14.0,
-   "total": 50.5,
+   "spread": -17.0,
+   "total": 49.0,
    "away": {
     "name": "Auburn",
     "key": "Auburn",
@@ -72955,8 +72955,8 @@
    "tv": "ACC Network",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 9.5,
+   "total": 47.5,
    "away": {
     "name": "Pittsburgh",
     "key": "Pittsburgh",
@@ -72978,9 +72978,9 @@
     "qb": "Jaron-Keawe Sagapolutele"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 9.5,
+    "total": 47.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -72998,7 +72998,7 @@
    "tv": "NBC",
    "note": "",
    "indoor": false,
-   "spread": -12.5,
+   "spread": -14.0,
    "total": 49.5,
    "away": {
     "name": "Washington",
@@ -73041,8 +73041,8 @@
    "tv": "Fox",
    "note": "",
    "indoor": false,
-   "spread": -4.5,
-   "total": 52.5,
+   "spread": -7.5,
+   "total": 54.0,
    "away": {
     "name": "Arizona State",
     "key": "Arizona State",
@@ -73084,8 +73084,8 @@
    "tv": "CBSSN",
    "note": "",
    "indoor": true,
-   "spread": null,
-   "total": null,
+   "spread": -4.5,
+   "total": 43.5,
    "away": {
     "name": "Nevada",
     "key": "Nevada",
@@ -73107,9 +73107,9 @@
     "qb": "Jackson Arnold"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -4.5,
+    "total": 43.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -73127,8 +73127,8 @@
    "tv": "ESPN2",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -6.0,
+   "total": 55.5,
    "away": {
     "name": "Baylor",
     "key": "Baylor",
@@ -73150,9 +73150,9 @@
     "qb": "Keisean Henderson"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -6.0,
+    "total": 55.5,
+    "at": "2026-11-23"
    }
   },
   {
@@ -73170,8 +73170,8 @@
    "tv": "USA Net",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": 7.0,
+   "total": 52.0,
    "away": {
     "name": "Texas State",
     "key": "Texas State",
@@ -73193,9 +73193,9 @@
     "qb": "McCae Hillstead"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": 7.0,
+    "total": 52.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -73213,8 +73213,8 @@
    "tv": "CW",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -3.0,
+   "total": 57.0,
    "away": {
     "name": "Oregon State",
     "key": "Oregon State",
@@ -73236,9 +73236,9 @@
     "qb": "Jayden Mandal"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -3.0,
+    "total": 57.0,
+    "at": "2026-11-23"
    }
   },
   {
@@ -73256,8 +73256,8 @@
    "tv": "MW+",
    "note": "",
    "indoor": false,
-   "spread": null,
-   "total": null,
+   "spread": -13.5,
+   "total": 39.0,
    "away": {
     "name": "Sacramento State",
     "key": "Sacramento State",
@@ -73279,9 +73279,9 @@
     "qb": "Bjorn Jurgensen"
    },
    "lineOpen": {
-    "spread": null,
-    "total": null,
-    "at": "2026-11-22"
+    "spread": -13.5,
+    "total": 39.0,
+    "at": "2026-11-23"
    }
   }
  ],
