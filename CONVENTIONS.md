@@ -168,8 +168,9 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   per completion, the row's `ypc`; `withAvgC()` works it out for data built without it).
 - **Rnk column in the player hover popup** (Nov 23, 2026): right of Opp, the opponent's FBS rank against the
   player's position **coming into that week** (yds/G allowed in its games before that week), never its rank now.
-  Receiving popups: WR = vs WR, TE = vs TE, RB/FB = vs receiving RB; rushing popups: RB/FB = vs RB. Other positions
-  and passing popups have no column. A dash = no games yet or a non-FBS opponent. Code: `logRankKind()` and `rankInto()` in
+  Receiving popups: WR = vs WR, TE = vs TE, RB/FB = vs receiving RB; rushing popups: RB/FB = vs RB. Passing
+  popups: the opponent's pass defense rank (pass yds/G allowed, `allowed.pass`, the Pass Yds/G dial's rank). Other
+  positions have no column. A dash = no games yet or a non-FBS opponent. Code: `logRankKind()` and `rankInto()` in
   `app.js`, worked out in the browser from the same `allowed` lines and ranking rule as `defVsPosition`, so with
   every game counted it equals the blocks' ranks; change both together. Same column on the NFL site.
 - **Position tags:** in the Rushing and Receiving tables each player's name is followed by his

@@ -90,7 +90,7 @@ and how each defense performs against RBs, receiving RBs, TEs and WRs.
 Rushing and Receiving tables is clickable. Hovering (on a computer) shows a
 tooltip with that player's week-by-week stats for that table and the opponent;
 clicking or tapping opens a panel with the full game log (result, then the
-passing, rushing and receiving columns the player has stats in). Close it with
+passing, rushing and receiving columns the player has stats in). The tooltip's **Rnk** column is the opponent's rank against the player's position coming into that week (vs WR, TE, receiving RB, rushing RB, or pass defense for a quarterback), not its rank now; see CONVENTIONS.md. Close it with
 Esc, the ✕ button or a click outside. On phones a tap opens the panel directly
 and wide tables scroll sideways inside it. Neither shows up when printing. A log
 only includes games played for the team on that card, so it matches the table
