@@ -228,7 +228,7 @@ function learnSections(g, a, h) {
     parts.push(section(6, "Player tables and game logs", "Per-game averages and every game a player has played",
       `<div class="learn-split">
         <div class="team-card learn-card" style="${style}">${playerTable("Receiving", a.receiving.slice(0, 3), [["Player", "player", "text"], ["Yds/G", "ydsG", "num"], ["TD", "td", "num"], ["Y/R", "yr", "num"], ["Rec/G", "rec", "num"]]).replace('class="table-block"', 'class="table-block learn-table"')}</div>
-        <div class="learn-tip">${tooltipHtml(escapeHtml(r.player), "receiving", log)}
+        <div class="learn-tip">${tooltipHtml(escapeHtml(r.player), "receiving", log, null, r.pos)}
           <p class="learn-prop">Rec yds line ${line}: <b>over in ${over} of ${log.length} games</b></p></div>
       </div>`,
       [["Per-game averages", `Yards, touchdowns and catches per game the player actually played for this team. Regulars (half the team's games or more) are listed first.${missed > 0 ? ` ${escapeHtml(r.player)} has missed ${plural(missed, "game")}, so his averages cover ${log.length}.` : ""}`],
