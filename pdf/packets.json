@@ -3,8 +3,8 @@
  "week": 13,
  "league": "cfb",
  "title": "CFB Week 13 Matchup Report",
- "dataGeneratedAt": "2026-11-23T21:58:08.669517+00:00",
- "generatedAt": "2026-11-24T11:01:09Z",
+ "dataGeneratedAt": "2026-11-24T14:37:32.714515+00:00",
+ "generatedAt": "2026-11-24T14:42:04Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -19,20 +19,20 @@
  ],
  "slate": {
   "best": [
-   71,
-   72,
    73,
    74,
-   75
+   75,
+   76,
+   77
   ],
   "td": [
-   76,
-   77,
-   78
-  ],
-  "floors": [
+   78,
    79,
    80
+  ],
+  "floors": [
+   81,
+   82
   ]
  },
  "games": [
@@ -861,7 +861,7 @@
    "file": "CFB_Week13_SC-CLEM_packet",
    "pages": {
     "report": [
-     41
+     42
     ],
     "matchup": [
      78,
@@ -882,7 +882,7 @@
    "file": "CFB_Week13_UVA-VT_packet",
    "pages": {
     "report": [
-     42
+     43
     ],
     "matchup": [
      80,
@@ -903,7 +903,7 @@
    "file": "CFB_Week13_TROY-ARST_packet",
    "pages": {
     "report": [
-     43
+     44
     ],
     "matchup": [
      82,
@@ -924,7 +924,7 @@
    "file": "CFB_Week13_GT-UGA_packet",
    "pages": {
     "report": [
-     44
+     45
     ],
     "matchup": [
      84,
@@ -945,7 +945,7 @@
    "file": "CFB_Week13_CIN-BYU_packet",
    "pages": {
     "report": [
-     45
+     46
     ],
     "matchup": [
      86,
@@ -966,7 +966,7 @@
    "file": "CFB_Week13_DUKE-WAKE_packet",
    "pages": {
     "report": [
-     46
+     47
     ],
     "matchup": [
      88,
@@ -987,7 +987,7 @@
    "file": "CFB_Week13_SMU-STAN_packet",
    "pages": {
     "report": [
-     47
+     48
     ],
     "matchup": [
      90,
@@ -1008,7 +1008,7 @@
    "file": "CFB_Week13_PSU-MD_packet",
    "pages": {
     "report": [
-     48
+     49
     ],
     "matchup": [
      92,
@@ -1029,7 +1029,7 @@
    "file": "CFB_Week13_USC-UCLA_packet",
    "pages": {
     "report": [
-     49
+     50
     ],
     "matchup": [
      94,
@@ -1050,7 +1050,7 @@
    "file": "CFB_Week13_TULN-USF_packet",
    "pages": {
     "report": [
-     50
+     51
     ],
     "matchup": [
      96,
@@ -1071,7 +1071,7 @@
    "file": "CFB_Week13_UTEP-NIU_packet",
    "pages": {
     "report": [
-     51
+     52
     ],
     "matchup": [
      98,
@@ -1092,7 +1092,7 @@
    "file": "CFB_Week13_MASS-BGSU_packet",
    "pages": {
     "report": [
-     52
+     53
     ],
     "matchup": [
      100,
@@ -1113,7 +1113,7 @@
    "file": "CFB_Week13_JVST-DEL_packet",
    "pages": {
     "report": [
-     53
+     54
     ],
     "matchup": [
      102,
@@ -1134,7 +1134,7 @@
    "file": "CFB_Week13_UAB-UNT_packet",
    "pages": {
     "report": [
-     54
+     55
     ],
     "matchup": [
      104,
@@ -1155,7 +1155,7 @@
    "file": "CFB_Week13_OU-MIZ_packet",
    "pages": {
     "report": [
-     55
+     56
     ],
     "matchup": [
      106,
@@ -1176,7 +1176,7 @@
    "file": "CFB_Week13_MSU-RUTG_packet",
    "pages": {
     "report": [
-     56
+     57
     ],
     "matchup": [
      108,
@@ -1197,7 +1197,7 @@
    "file": "CFB_Week13_BOIS-CSU_packet",
    "pages": {
     "report": [
-     57
+     59
     ],
     "matchup": [
      110,
@@ -1218,7 +1218,7 @@
    "file": "CFB_Week13_KU-OKST_packet",
    "pages": {
     "report": [
-     58
+     60
     ],
     "matchup": [
      112,
@@ -1239,7 +1239,7 @@
    "file": "CFB_Week13_SDSU-WSU_packet",
    "pages": {
     "report": [
-     59
+     61
     ],
     "matchup": [
      114,
@@ -1260,7 +1260,7 @@
    "file": "CFB_Week13_TENN-VAN_packet",
    "pages": {
     "report": [
-     60
+     62
     ],
     "matchup": [
      116,
@@ -1281,7 +1281,7 @@
    "file": "CFB_Week13_PUR-IU_packet",
    "pages": {
     "report": [
-     61
+     63
     ],
     "matchup": [
      118,
@@ -1302,7 +1302,7 @@
    "file": "CFB_Week13_AUB-ALA_packet",
    "pages": {
     "report": [
-     62
+     64
     ],
     "matchup": [
      120,
@@ -1323,7 +1323,7 @@
    "file": "CFB_Week13_PITT-CAL_packet",
    "pages": {
     "report": [
-     63
+     65
     ],
     "matchup": [
      122,
@@ -1344,7 +1344,7 @@
    "file": "CFB_Week13_WASH-ORE_packet",
    "pages": {
     "report": [
-     64
+     66
     ],
     "matchup": [
      124,
@@ -1365,7 +1365,7 @@
    "file": "CFB_Week13_ASU-ARIZ_packet",
    "pages": {
     "report": [
-     65
+     67
     ],
     "matchup": [
      126,
@@ -1386,7 +1386,7 @@
    "file": "CFB_Week13_NEV-UNLV_packet",
    "pages": {
     "report": [
-     66
+     68
     ],
     "matchup": [
      128,
@@ -1407,7 +1407,7 @@
    "file": "CFB_Week13_BAY-HOU_packet",
    "pages": {
     "report": [
-     67
+     69
     ],
     "matchup": [
      130,
@@ -1428,7 +1428,7 @@
    "file": "CFB_Week13_TXST-USU_packet",
    "pages": {
     "report": [
-     68
+     70
     ],
     "matchup": [
      132,
@@ -1449,7 +1449,7 @@
    "file": "CFB_Week13_ORST-FRES_packet",
    "pages": {
     "report": [
-     69
+     71
     ],
     "matchup": [
      134,
@@ -1470,7 +1470,7 @@
    "file": "CFB_Week13_SAC-HAW_packet",
    "pages": {
     "report": [
-     70
+     72
     ],
     "matchup": [
      136,
