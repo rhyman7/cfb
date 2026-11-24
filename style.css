@@ -686,6 +686,9 @@ footer { padding: 20px 28px 28px; text-align: center; font-size: 0.78rem; color:
 .ptip-head span { font-size: 0.78rem; color: var(--text-dim); }
 .ptip-foot { margin-top: 6px; font-size: 0.75rem; color: var(--text-dim); }
 .ptip td.rnk { color: var(--text-dim); }
+.ptip tr.ptip-next td { border-top: 1px solid var(--border); }
+.ptip tr.ptip-next td.rnk { color: var(--text); font-weight: 700; }
+.ptip-next-note { color: var(--text-dim); font-style: italic; }
 .ptip-rnk { width: 0; min-width: 100%; }
 .learn-tip .ptip-rnk { display: block; width: auto; }
 td.fp { font-weight: 700; }

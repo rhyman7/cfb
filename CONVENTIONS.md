@@ -173,6 +173,10 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   positions have no column. A dash = no games yet or a non-FBS opponent. Code: `logRankKind()` and `rankInto()` in
   `app.js`, worked out in the browser from the same `allowed` lines and ranking rule as `defVsPosition`, so with
   every game counted it equals the blocks' ranks; change both together. Same column on the NFL site.
+- **This week's row in the player hover popup** (Nov 23, 2026): the popup's last row is the current week's game:
+  week, opponent, that defense's Rnk coming into this week (the same number its Defense block shows now, bold) and
+  "This week" across the stat columns. Left out on a bye, when the popup has no Rnk column, and once the game is in
+  the player's log. Code: `nextGameOf()` and `nextRowHtml()`. Same row on the NFL site.
 - **Position tags:** in the Rushing and Receiving tables each player's name is followed by his
   position (`posTag()`, class `pt-pos`, small and gray, from the row's `pos`). Passing has none
   (every row is a QB).
