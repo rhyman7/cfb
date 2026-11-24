@@ -1287,12 +1287,28 @@ function rankInto(oppAbbr, week, rk) {
 }
 const RANK_WHO = { pass: "pass defense rank (pass yds/G)", rb: "rank vs RBs (rush yds/G)", recRb: "rank vs RBs (rec yds/G)", te: "rank vs TEs (rec yds/G)", wr: "rank vs WRs (rec yds/G)" };
 
+// This week's game for the team in a log key, for the popup's last row: { w, at, opp } or null.
+function nextGameOf(key) {
+  const team = teamOfLog(key), g = team && weekGameFor(team.team);
+  if (!g || !LIVE_WEEK) return null;
+  const away = g.away.key === team.team, o = away ? g.home : g.away;
+  return { w: LIVE_WEEK, at: away && !g.neutral, opp: o.abbr || o.name };
+}
+// The popup's "this week" row: the coming opponent and its rank coming into this week (the number
+// the Defense vs position block shows now; a dash for a non-FBS opponent). Left out once the game
+// is in the player's log.
+function nextRowHtml(nx, rk, log, span) {
+  if (!nx || !rk || log.some(e => e.w >= nx.w)) return "";
+  return `<tr class="ptip-next"><td>${nx.w}</td><td>${escapeHtml(oppText(nx))}</td><td class="num rnk">${rankInto(nx.opp, nx.w, rk) || "—"}</td><td colspan="${span}" class="ptip-next-note">This week</td></tr>`;
+}
+
 function tooltipHtml(name, kind, log, key, pos) {
   const cols = LOG_GROUPS[kind] || [];
   if (pos === undefined && key) pos = (playerIndex()[key] || {}).pos;
   const rk = logRankKind(kind, pos);
   const head = `<th>Wk</th><th>Opp</th>${rk ? `<th class="num" title="Opponent's ${RANK_WHO[rk]} coming into that week">Rnk</th>` : ""}${cols.map(([l]) => `<th class="num">${l}</th>`).join("")}`;
-  const body = log.map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>${rk ? `<td class="num rnk">${rankInto(e.opp, e.w, rk) || "—"}</td>` : ""}${cols.map(([, f]) => `<td class="num">${f(e)}</td>`).join("")}</tr>`).join("");
+  const body = log.map(e => `<tr><td>${e.w}</td><td>${escapeHtml(oppText(e))}</td>${rk ? `<td class="num rnk">${rankInto(e.opp, e.w, rk) || "—"}</td>` : ""}${cols.map(([, f]) => `<td class="num">${f(e)}</td>`).join("")}</tr>`).join("")
+    + nextRowHtml(key ? nextGameOf(key) : null, rk, log, cols.length);
   return `<div class="ptip-head"><b>${name}</b><span>${GROUP_LABEL[kind] || ""}, ${gamesText(log.length)}</span></div>
     ${injLine(key, "ptip-inj")}
     <table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
