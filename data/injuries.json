@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "generatedAt": "2026-11-23T14:50:26.011783+00:00",
+ "generatedAt": "2026-11-24T10:57:29.226172+00:00",
  "source": "Conference availability reports where a team has one; otherwise Covers.com team injury pages, plus news reports where noted",
  "teamsRead": [],
  "checked": {
@@ -109,13 +109,13 @@
   "Southern Miss": "2026-11-21",
   "Stanford": "2026-11-18",
   "Syracuse": "2026-11-21",
-  "TCU": "2026-11-18",
+  "TCU": "2026-11-23",
   "Temple": "2026-11-19",
   "Tennessee": "2026-11-21",
   "Texas": "2026-11-21",
   "Texas A&M": "2026-11-21",
   "Texas State": "2026-11-21",
-  "Texas Tech": "2026-11-21",
+  "Texas Tech": "2026-11-23",
   "Toledo": "2026-11-19",
   "Troy": "2026-11-21",
   "Tulane": "2026-11-21",
@@ -143,7 +143,26 @@
   "Wisconsin": "2026-11-21",
   "Wyoming": "2026-11-20"
  },
- "reports": {},
+ "reports": {
+  "TCU": {
+   "conf": "Big 12",
+   "report": "Initial",
+   "published": "2026-11-23",
+   "posted": "21:00:00",
+   "game_date": "2026-11-26",
+   "opponent": "Texas Tech",
+   "listed": 6
+  },
+  "Texas Tech": {
+   "conf": "Big 12",
+   "report": "Initial",
+   "published": "2026-11-23",
+   "posted": "21:00:00",
+   "game_date": "2026-11-26",
+   "opponent": "TCU",
+   "listed": 12
+  }
+ },
  "players": {
   "AFA|5238868": {
    "s": "O",
@@ -2088,16 +2107,28 @@
    "player": "TK Norman"
   },
   "TCU|5083569": {
-   "s": "P",
-   "status": "Probable",
+   "s": "O",
+   "status": "Out",
    "injury": "",
-   "date": "2026-11-18",
+   "date": "2026-11-23",
    "src": "Big 12 report",
    "name": "Jaden Craig",
    "team": "TCU",
    "pos": "QB",
-   "note": "Big 12 availability report, Initial (Nov 18)",
+   "note": "Big 12 availability report, Initial (Nov 23)",
    "player": "Jaden Craig"
+  },
+  "TCU|5391236": {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Kari Ashley",
+   "team": "TCU",
+   "pos": "TE",
+   "note": "Big 12 availability report, Initial (Nov 23)",
+   "player": "Kari Ashley"
   },
   "TEM|4685695": {
    "s": "Q",
@@ -2271,28 +2302,52 @@
    "playedSince": 11,
    "player": "Goose Crowder"
   },
+  "TTU|4916941": {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Coy Eakin",
+   "team": "Texas Tech",
+   "pos": "WR",
+   "note": "Big 12 availability report, Initial (Nov 23)",
+   "player": "Coy Eakin"
+  },
   "TTU|4917949": {
    "s": "O",
    "status": "Out",
    "injury": "",
-   "date": "2026-11-21",
+   "date": "2026-11-23",
    "src": "Big 12 report",
    "name": "Quinten Joyner",
    "team": "Texas Tech",
    "pos": "RB",
-   "note": "Big 12 availability report, Game Day (Nov 21)",
+   "note": "Big 12 availability report, Initial (Nov 23)",
    "player": "Quinten Joyner"
+  },
+  "TTU|4923295": {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Kenny Johnson",
+   "team": "Texas Tech",
+   "pos": "WR",
+   "note": "Big 12 availability report, Initial (Nov 23)",
+   "player": "Kenny Johnson"
   },
   "TTU|5079492": {
    "s": "Q",
-   "status": "Game-time decision",
+   "status": "Questionable",
    "injury": "",
-   "date": "2026-11-21",
+   "date": "2026-11-23",
    "src": "Big 12 report",
    "name": "Micah Hudson",
    "team": "Texas Tech",
    "pos": "WR",
-   "note": "Big 12 availability report, Game Day (Nov 21)",
+   "note": "Big 12 availability report, Initial (Nov 23)",
    "player": "Micah Hudson"
   },
   "TULN|5091744": {
@@ -5632,50 +5687,6 @@
    "team": "Stanford",
    "pos": "DL",
    "note": "ACC availability report, Initial (Nov 18)"
-  },
-  {
-   "s": "Q",
-   "status": "Questionable",
-   "injury": "",
-   "date": "2026-11-18",
-   "src": "Big 12 report",
-   "name": "G'Ivori Graham",
-   "team": "TCU",
-   "pos": "RB",
-   "note": "Big 12 availability report, Initial (Nov 18)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-18",
-   "src": "Big 12 report",
-   "name": "Cheta Ofili",
-   "team": "TCU",
-   "pos": "EDG",
-   "note": "Big 12 availability report, Initial (Nov 18)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-18",
-   "src": "Big 12 report",
-   "name": "Ansel Din-Mbuh",
-   "team": "TCU",
-   "pos": "DT",
-   "note": "Big 12 availability report, Initial (Nov 18)"
-  },
-  {
-   "s": "P",
-   "status": "Probable",
-   "injury": "",
-   "date": "2026-11-18",
-   "src": "Big 12 report",
-   "name": "Markis Deal",
-   "team": "TCU",
-   "pos": "DT",
-   "note": "Big 12 availability report, Initial (Nov 18)"
   },
   {
    "s": "Q",
@@ -10577,39 +10588,6 @@
    "status": "Out",
    "injury": "",
    "date": "2026-11-21",
-   "src": "Big 12 report",
-   "name": "Jalen Jones",
-   "team": "Texas Tech",
-   "pos": "WR",
-   "note": "Big 12 availability report, Game Day (Nov 21)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-21",
-   "src": "Big 12 report",
-   "name": "Miquel Dingle Jr.",
-   "team": "Texas Tech",
-   "pos": "S",
-   "note": "Big 12 availability report, Game Day (Nov 21)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-21",
-   "src": "Big 12 report",
-   "name": "LaDamion Guyton",
-   "team": "Texas Tech",
-   "pos": "OLB",
-   "note": "Big 12 availability report, Game Day (Nov 21)"
-  },
-  {
-   "s": "O",
-   "status": "Out",
-   "injury": "",
-   "date": "2026-11-21",
    "src": "American report",
    "name": "Jack Tchienchou",
    "team": "Tulane",
@@ -11550,6 +11528,138 @@
    "team": "Wisconsin",
    "pos": "TE",
    "note": "Big Ten availability report, Game Day (Nov 21)"
+  },
+  {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Lafayette Kaiuway",
+   "team": "TCU",
+   "pos": "TE",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "G'Ivori Graham",
+   "team": "TCU",
+   "pos": "RB",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Keylan Abrams",
+   "team": "TCU",
+   "pos": "LB",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Ansel Din-Mbuh",
+   "team": "TCU",
+   "pos": "DT",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Peyton Morgan",
+   "team": "Texas Tech",
+   "pos": "S",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Jalen Jones",
+   "team": "Texas Tech",
+   "pos": "WR",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "P",
+   "status": "Probable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Brice Pollock",
+   "team": "Texas Tech",
+   "pos": "CB",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "O",
+   "status": "Out",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Miquel Dingle Jr.",
+   "team": "Texas Tech",
+   "pos": "S",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Marcus Ramon-Edwards",
+   "team": "Texas Tech",
+   "pos": "S",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "D",
+   "status": "Doubtful",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "LaDamion Guyton",
+   "team": "Texas Tech",
+   "pos": "OLB",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Cash Cleveland",
+   "team": "Texas Tech",
+   "pos": "OL",
+   "note": "Big 12 availability report, Initial (Nov 23)"
+  },
+  {
+   "s": "Q",
+   "status": "Questionable",
+   "injury": "",
+   "date": "2026-11-23",
+   "src": "Big 12 report",
+   "name": "Bryce Butler",
+   "team": "Texas Tech",
+   "pos": "DL",
+   "note": "Big 12 availability report, Initial (Nov 23)"
   }
  ]
 }
