@@ -3,8 +3,8 @@
  "week": 13,
  "league": "cfb",
  "title": "CFB Week 13 Matchup Report",
- "dataGeneratedAt": "2026-11-24T14:46:20.168137+00:00",
- "generatedAt": "2026-11-25T09:58:10Z",
+ "dataGeneratedAt": "2026-11-25T14:37:25.180440+00:00",
+ "generatedAt": "2026-11-25T14:42:09Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -19,27 +19,26 @@
  ],
  "slate": {
   "best": [
-   73,
-   74,
-   75,
-   76,
-   77
+   69,
+   70,
+   71,
+   72
   ],
   "td": [
-   78,
-   79,
-   80
+   73,
+   74,
+   75
   ],
   "floors": [
-   81,
-   82
+   76,
+   77
   ]
  },
  "games": [
   {
-   "id": "401866470",
-   "label": "KENT @ EMU",
-   "file": "CFB_Week13_KENT-EMU_packet",
+   "id": "401856879",
+   "label": "TCU @ TTU",
+   "file": "CFB_Week13_TCU-TTU_packet",
    "pages": {
     "report": [
      2
@@ -49,52 +48,10 @@
      1
     ],
     "epa": [
-     0
-    ],
-    "value": [
-     0
-    ]
-   },
-   "missing": []
-  },
-  {
-   "id": "401866471",
-   "label": "M-OH @ WMU",
-   "file": "CFB_Week13_M-OH-WMU_packet",
-   "pages": {
-    "report": [
-     3
-    ],
-    "matchup": [
-     2,
-     3
-    ],
-    "epa": [
-     1
-    ],
-    "value": [
-     1
-    ]
-   },
-   "missing": []
-  },
-  {
-   "id": "401856879",
-   "label": "TCU @ TTU",
-   "file": "CFB_Week13_TCU-TTU_packet",
-   "pages": {
-    "report": [
-     4
-    ],
-    "matchup": [
-     4,
-     5
-    ],
-    "epa": [
      2
     ],
     "value": [
-     2
+     0
     ]
    },
    "missing": []
@@ -105,17 +62,17 @@
    "file": "CFB_Week13_MSST-MISS_packet",
    "pages": {
     "report": [
-     5
+     3
     ],
     "matchup": [
-     6,
-     7
+     2,
+     3
     ],
     "epa": [
      3
     ],
     "value": [
-     4
+     2
     ]
    },
    "missing": []
@@ -126,17 +83,17 @@
    "file": "CFB_Week13_NEB-IOWA_packet",
    "pages": {
     "report": [
-     6
+     4
     ],
     "matchup": [
-     8,
-     9
+     4,
+     5
     ],
     "epa": [
      4
     ],
     "value": [
-     5
+     3
     ]
    },
    "missing": []
@@ -147,17 +104,17 @@
    "file": "CFB_Week13_TLSA-UTSA_packet",
    "pages": {
     "report": [
-     7
+     5
     ],
     "matchup": [
-     10,
-     11
+     6,
+     7
     ],
     "epa": [
      5
     ],
     "value": [
-     6
+     4
     ]
    },
    "missing": []
@@ -168,17 +125,17 @@
    "file": "CFB_Week13_BUFF-AKR_packet",
    "pages": {
     "report": [
-     8
+     6
     ],
     "matchup": [
-     12,
-     13
+     8,
+     9
     ],
     "epa": [
      6
     ],
     "value": [
-     3
+     1
     ]
    },
    "missing": []
@@ -189,17 +146,17 @@
    "file": "CFB_Week13_TOL-OHIO_packet",
    "pages": {
     "report": [
-     9
+     7
     ],
     "matchup": [
-     14,
-     15
+     10,
+     11
     ],
     "epa": [
      7
     ],
     "value": [
-     7
+     5
     ]
    },
    "missing": []
@@ -210,17 +167,17 @@
    "file": "CFB_Week13_APP-USA_packet",
    "pages": {
     "report": [
-     10
+     8
     ],
     "matchup": [
-     16,
-     17
+     12,
+     13
     ],
     "epa": [
      8
     ],
     "value": [
-     8
+     6
     ]
    },
    "missing": []
@@ -231,17 +188,17 @@
    "file": "CFB_Week13_FLA-FSU_packet",
    "pages": {
     "report": [
-     11
+     9
     ],
     "matchup": [
-     18,
-     19
+     14,
+     15
     ],
     "epa": [
      9
     ],
     "value": [
-     9
+     7
     ]
    },
    "missing": []
@@ -252,17 +209,17 @@
    "file": "CFB_Week13_TEM-MEM_packet",
    "pages": {
     "report": [
-     12
+     10
     ],
     "matchup": [
-     20,
-     21
+     16,
+     17
     ],
     "epa": [
      10
     ],
     "value": [
-     11
+     9
     ]
    },
    "missing": []
@@ -273,17 +230,17 @@
    "file": "CFB_Week13_NDSU-SJSU_packet",
    "pages": {
     "report": [
-     13
+     11
     ],
     "matchup": [
-     22,
-     23
+     18,
+     19
     ],
     "epa": [
      11
     ],
     "value": [
-     10
+     8
     ]
    },
    "missing": []
@@ -294,17 +251,17 @@
    "file": "CFB_Week13_AFA-UNM_packet",
    "pages": {
     "report": [
-     14
+     12
     ],
     "matchup": [
-     24,
-     25
+     20,
+     21
     ],
     "epa": [
      12
     ],
     "value": [
-     12
+     10
     ]
    },
    "missing": []
@@ -315,17 +272,17 @@
    "file": "CFB_Week13_TEX-TAM_packet",
    "pages": {
     "report": [
-     15
+     13
     ],
     "matchup": [
-     26,
-     27
+     22,
+     23
     ],
     "epa": [
      13
     ],
     "value": [
-     14
+     12
     ]
    },
    "missing": []
@@ -336,17 +293,17 @@
    "file": "CFB_Week13_MINN-WIS_packet",
    "pages": {
     "report": [
-     16
+     14
     ],
     "matchup": [
-     28,
-     29
+     24,
+     25
     ],
     "epa": [
      14
     ],
     "value": [
-     13
+     11
     ]
    },
    "missing": []
@@ -357,17 +314,17 @@
    "file": "CFB_Week13_WVU-UTAH_packet",
    "pages": {
     "report": [
-     17
+     15
     ],
     "matchup": [
-     30,
-     31
+     26,
+     27
     ],
     "epa": [
      15
     ],
     "value": [
-     15
+     13
     ]
    },
    "missing": []
@@ -378,17 +335,17 @@
    "file": "CFB_Week13_LOU-UK_packet",
    "pages": {
     "report": [
-     18
+     16
     ],
     "matchup": [
-     32,
-     33
+     28,
+     29
     ],
     "epa": [
      16
     ],
     "value": [
-     19
+     17
     ]
    },
    "missing": []
@@ -399,17 +356,17 @@
    "file": "CFB_Week13_BC-MIA_packet",
    "pages": {
     "report": [
-     19
+     17
     ],
     "matchup": [
-     34,
-     35
+     30,
+     31
     ],
     "epa": [
      17
     ],
     "value": [
-     16
+     14
     ]
    },
    "missing": []
@@ -420,17 +377,17 @@
    "file": "CFB_Week13_NCSU-UNC_packet",
    "pages": {
     "report": [
-     20
+     18
     ],
     "matchup": [
-     36,
-     37
+     32,
+     33
     ],
     "epa": [
      18
     ],
     "value": [
-     23
+     21
     ]
    },
    "missing": []
@@ -441,17 +398,17 @@
    "file": "CFB_Week13_ND-SYR_packet",
    "pages": {
     "report": [
-     21
+     19
     ],
     "matchup": [
-     38,
-     39
+     34,
+     35
     ],
     "epa": [
      19
     ],
     "value": [
-     24
+     22
     ]
    },
    "missing": []
@@ -462,17 +419,17 @@
    "file": "CFB_Week13_MICH-OSU_packet",
    "pages": {
     "report": [
-     22
+     20
     ],
     "matchup": [
-     40,
-     41
+     36,
+     37
     ],
     "epa": [
      20
     ],
     "value": [
-     21
+     19
     ]
    },
    "missing": []
@@ -483,17 +440,17 @@
    "file": "CFB_Week13_CONN-WYO_packet",
    "pages": {
     "report": [
-     23
+     21
     ],
     "matchup": [
-     42,
-     43
+     38,
+     39
     ],
     "epa": [
      21
     ],
     "value": [
-     18
+     16
     ]
    },
    "missing": []
@@ -504,17 +461,17 @@
    "file": "CFB_Week13_NAVY-CLT_packet",
    "pages": {
     "report": [
-     24
+     22
     ],
     "matchup": [
-     44,
-     45
+     40,
+     41
     ],
     "epa": [
      22
     ],
     "value": [
-     22
+     20
     ]
    },
    "missing": []
@@ -525,17 +482,17 @@
    "file": "CFB_Week13_CMU-BALL_packet",
    "pages": {
     "report": [
-     25
+     23
     ],
     "matchup": [
-     46,
-     47
+     42,
+     43
     ],
     "epa": [
      23
     ],
     "value": [
-     17
+     15
     ]
    },
    "missing": []
@@ -546,17 +503,17 @@
    "file": "CFB_Week13_LT-GASO_packet",
    "pages": {
     "report": [
-     26
+     24
     ],
     "matchup": [
-     48,
-     49
+     44,
+     45
     ],
     "epa": [
      24
     ],
     "value": [
-     20
+     18
     ]
    },
    "missing": []
@@ -567,17 +524,17 @@
    "file": "CFB_Week13_ILL-NU_packet",
    "pages": {
     "report": [
-     27
+     25
     ],
     "matchup": [
-     50,
-     51
+     46,
+     47
     ],
     "epa": [
      25
     ],
     "value": [
-     25
+     23
     ]
    },
    "missing": []
@@ -588,17 +545,17 @@
    "file": "CFB_Week13_LSU-ARK_packet",
    "pages": {
     "report": [
-     28
+     26
     ],
     "matchup": [
-     52,
-     53
+     48,
+     49
     ],
     "epa": [
      26
     ],
     "value": [
-     26
+     24
     ]
    },
    "missing": []
@@ -609,17 +566,17 @@
    "file": "CFB_Week13_FAU-ECU_packet",
    "pages": {
     "report": [
-     29
+     27
     ],
     "matchup": [
-     54,
-     55
+     50,
+     51
     ],
     "epa": [
      27
     ],
     "value": [
-     27
+     25
     ]
    },
    "missing": []
@@ -630,17 +587,17 @@
    "file": "CFB_Week13_KENN-WKU_packet",
    "pages": {
     "report": [
-     30
+     28
     ],
     "matchup": [
-     56,
-     57
+     52,
+     53
     ],
     "epa": [
      28
     ],
     "value": [
-     28
+     26
     ]
    },
    "missing": []
@@ -651,17 +608,17 @@
    "file": "CFB_Week13_MRSH-ULM_packet",
    "pages": {
     "report": [
-     31
+     29
     ],
     "matchup": [
-     58,
-     59
+     54,
+     55
     ],
     "epa": [
      29
     ],
     "value": [
-     29
+     27
     ]
    },
    "missing": []
@@ -672,17 +629,17 @@
    "file": "CFB_Week13_USM-ODU_packet",
    "pages": {
     "report": [
-     32
+     30
     ],
     "matchup": [
-     60,
-     61
+     56,
+     57
     ],
     "epa": [
      30
     ],
     "value": [
-     30
+     28
     ]
    },
    "missing": []
@@ -693,17 +650,17 @@
    "file": "CFB_Week13_UCF-COLO_packet",
    "pages": {
     "report": [
-     33
+     31
     ],
     "matchup": [
-     62,
-     63
+     58,
+     59
     ],
     "epa": [
      31
     ],
     "value": [
-     37
+     35
     ]
    },
    "missing": []
@@ -714,17 +671,17 @@
    "file": "CFB_Week13_KSU-ISU_packet",
    "pages": {
     "report": [
-     34
+     32
     ],
     "matchup": [
-     64,
-     65
+     60,
+     61
     ],
     "epa": [
      32
     ],
     "value": [
-     33
+     31
     ]
    },
    "missing": []
@@ -735,17 +692,17 @@
    "file": "CFB_Week13_ARMY-RICE_packet",
    "pages": {
     "report": [
-     35
+     33
     ],
     "matchup": [
-     66,
-     67
+     62,
+     63
     ],
     "epa": [
      33
     ],
     "value": [
-     31
+     29
     ]
    },
    "missing": []
@@ -756,17 +713,17 @@
    "file": "CFB_Week13_CCU-JMU_packet",
    "pages": {
     "report": [
-     36
+     34
     ],
     "matchup": [
-     68,
-     69
+     64,
+     65
     ],
     "epa": [
      34
     ],
     "value": [
-     32
+     30
     ]
    },
    "missing": []
@@ -777,17 +734,17 @@
    "file": "CFB_Week13_UL-GAST_packet",
    "pages": {
     "report": [
-     37
+     35
     ],
     "matchup": [
-     70,
-     71
+     66,
+     67
     ],
     "epa": [
      35
     ],
     "value": [
-     38
+     36
     ]
    },
    "missing": []
@@ -798,17 +755,17 @@
    "file": "CFB_Week13_LIB-MOST_packet",
    "pages": {
     "report": [
-     38
+     36
     ],
     "matchup": [
-     72,
-     73
+     68,
+     69
     ],
     "epa": [
      36
     ],
     "value": [
-     34
+     32
     ]
    },
    "missing": []
@@ -819,17 +776,17 @@
    "file": "CFB_Week13_SHSU-FIU_packet",
    "pages": {
     "report": [
-     39
+     37
     ],
     "matchup": [
-     74,
-     75
+     70,
+     71
     ],
     "epa": [
      37
     ],
     "value": [
-     36
+     34
     ]
    },
    "missing": []
@@ -840,17 +797,17 @@
    "file": "CFB_Week13_NMSU-MTSU_packet",
    "pages": {
     "report": [
-     40
+     38
     ],
     "matchup": [
-     76,
-     77
+     72,
+     73
     ],
     "epa": [
      38
     ],
     "value": [
-     35
+     33
     ]
    },
    "missing": []
@@ -861,17 +818,17 @@
    "file": "CFB_Week13_SC-CLEM_packet",
    "pages": {
     "report": [
-     42
+     39
     ],
     "matchup": [
-     78,
-     79
+     74,
+     75
     ],
     "epa": [
      39
     ],
     "value": [
-     39
+     37
     ]
    },
    "missing": []
@@ -882,17 +839,17 @@
    "file": "CFB_Week13_UVA-VT_packet",
    "pages": {
     "report": [
-     43
+     40
     ],
     "matchup": [
-     80,
-     81
+     76,
+     77
     ],
     "epa": [
      40
     ],
     "value": [
-     41
+     39
     ]
    },
    "missing": []
@@ -903,17 +860,17 @@
    "file": "CFB_Week13_TROY-ARST_packet",
    "pages": {
     "report": [
-     44
+     41
     ],
     "matchup": [
-     82,
-     83
+     78,
+     79
     ],
     "epa": [
      41
     ],
     "value": [
-     40
+     38
     ]
    },
    "missing": []
@@ -924,17 +881,17 @@
    "file": "CFB_Week13_GT-UGA_packet",
    "pages": {
     "report": [
-     45
+     42
     ],
     "matchup": [
-     84,
-     85
+     80,
+     81
     ],
     "epa": [
      42
     ],
     "value": [
-     44
+     42
     ]
    },
    "missing": []
@@ -945,17 +902,17 @@
    "file": "CFB_Week13_CIN-BYU_packet",
    "pages": {
     "report": [
-     46
+     43
     ],
     "matchup": [
-     86,
-     87
+     82,
+     83
     ],
     "epa": [
      43
     ],
     "value": [
-     42
+     40
     ]
    },
    "missing": []
@@ -966,17 +923,17 @@
    "file": "CFB_Week13_DUKE-WAKE_packet",
    "pages": {
     "report": [
-     47
+     44
     ],
     "matchup": [
-     88,
-     89
+     84,
+     85
     ],
     "epa": [
      44
     ],
     "value": [
-     43
+     41
     ]
    },
    "missing": []
@@ -987,17 +944,17 @@
    "file": "CFB_Week13_SMU-STAN_packet",
    "pages": {
     "report": [
-     48
+     45
     ],
     "matchup": [
-     90,
-     91
+     86,
+     87
     ],
     "epa": [
      45
     ],
     "value": [
-     48
+     46
     ]
    },
    "missing": []
@@ -1008,17 +965,17 @@
    "file": "CFB_Week13_PSU-MD_packet",
    "pages": {
     "report": [
-     49
+     46
     ],
     "matchup": [
-     92,
-     93
+     88,
+     89
     ],
     "epa": [
      46
     ],
     "value": [
-     47
+     45
     ]
    },
    "missing": []
@@ -1029,17 +986,17 @@
    "file": "CFB_Week13_USC-UCLA_packet",
    "pages": {
     "report": [
-     50
+     47
     ],
     "matchup": [
-     94,
-     95
+     90,
+     91
     ],
     "epa": [
      47
     ],
     "value": [
-     50
+     48
     ]
    },
    "missing": []
@@ -1050,17 +1007,17 @@
    "file": "CFB_Week13_TULN-USF_packet",
    "pages": {
     "report": [
-     51
+     48
     ],
     "matchup": [
-     96,
-     97
+     92,
+     93
     ],
     "epa": [
      48
     ],
     "value": [
-     49
+     47
     ]
    },
    "missing": []
@@ -1071,17 +1028,17 @@
    "file": "CFB_Week13_UTEP-NIU_packet",
    "pages": {
     "report": [
-     52
+     49
     ],
     "matchup": [
-     98,
-     99
+     94,
+     95
     ],
     "epa": [
      49
     ],
     "value": [
-     51
+     49
     ]
    },
    "missing": []
@@ -1092,17 +1049,17 @@
    "file": "CFB_Week13_MASS-BGSU_packet",
    "pages": {
     "report": [
-     53
+     50
     ],
     "matchup": [
-     100,
-     101
+     96,
+     97
     ],
     "epa": [
      50
     ],
     "value": [
-     46
+     44
     ]
    },
    "missing": []
@@ -1113,17 +1070,17 @@
    "file": "CFB_Week13_JVST-DEL_packet",
    "pages": {
     "report": [
-     54
+     51
     ],
     "matchup": [
-     102,
-     103
+     98,
+     99
     ],
     "epa": [
      51
     ],
     "value": [
-     45
+     43
     ]
    },
    "missing": []
@@ -1134,17 +1091,17 @@
    "file": "CFB_Week13_UAB-UNT_packet",
    "pages": {
     "report": [
-     55
+     52
     ],
     "matchup": [
-     104,
-     105
+     100,
+     101
     ],
     "epa": [
      52
     ],
     "value": [
-     52
+     50
     ]
    },
    "missing": []
@@ -1155,17 +1112,17 @@
    "file": "CFB_Week13_OU-MIZ_packet",
    "pages": {
     "report": [
-     56
+     53
     ],
     "matchup": [
-     106,
-     107
+     102,
+     103
     ],
     "epa": [
      53
     ],
     "value": [
-     54
+     52
     ]
    },
    "missing": []
@@ -1176,17 +1133,17 @@
    "file": "CFB_Week13_MSU-RUTG_packet",
    "pages": {
     "report": [
-     57
+     54
     ],
     "matchup": [
-     108,
-     109
+     104,
+     105
     ],
     "epa": [
      54
     ],
     "value": [
-     53
+     51
     ]
    },
    "missing": []
@@ -1197,17 +1154,17 @@
    "file": "CFB_Week13_BOIS-CSU_packet",
    "pages": {
     "report": [
-     59
+     55
     ],
     "matchup": [
-     110,
-     111
+     106,
+     107
     ],
     "epa": [
      55
     ],
     "value": [
-     55
+     53
     ]
    },
    "missing": []
@@ -1218,17 +1175,17 @@
    "file": "CFB_Week13_KU-OKST_packet",
    "pages": {
     "report": [
-     60
+     56
     ],
     "matchup": [
-     112,
-     113
+     108,
+     109
     ],
     "epa": [
      56
     ],
     "value": [
-     56
+     54
     ]
    },
    "missing": []
@@ -1239,17 +1196,17 @@
    "file": "CFB_Week13_SDSU-WSU_packet",
    "pages": {
     "report": [
-     61
+     57
     ],
     "matchup": [
-     114,
-     115
+     110,
+     111
     ],
     "epa": [
      57
     ],
     "value": [
-     57
+     55
     ]
    },
    "missing": []
@@ -1260,17 +1217,17 @@
    "file": "CFB_Week13_TENN-VAN_packet",
    "pages": {
     "report": [
-     62
+     58
     ],
     "matchup": [
-     116,
-     117
+     112,
+     113
     ],
     "epa": [
      58
     ],
     "value": [
-     59
+     57
     ]
    },
    "missing": []
@@ -1281,17 +1238,17 @@
    "file": "CFB_Week13_PUR-IU_packet",
    "pages": {
     "report": [
-     63
+     59
     ],
     "matchup": [
-     118,
-     119
+     114,
+     115
     ],
     "epa": [
      59
     ],
     "value": [
-     58
+     56
     ]
    },
    "missing": []
@@ -1302,17 +1259,17 @@
    "file": "CFB_Week13_AUB-ALA_packet",
    "pages": {
     "report": [
-     64
+     60
     ],
     "matchup": [
-     120,
-     121
+     116,
+     117
     ],
     "epa": [
      60
     ],
     "value": [
-     60
+     58
     ]
    },
    "missing": []
@@ -1323,17 +1280,17 @@
    "file": "CFB_Week13_PITT-CAL_packet",
    "pages": {
     "report": [
-     65
+     61
     ],
     "matchup": [
-     122,
-     123
+     118,
+     119
     ],
     "epa": [
      61
     ],
     "value": [
-     61
+     59
     ]
    },
    "missing": []
@@ -1344,17 +1301,17 @@
    "file": "CFB_Week13_WASH-ORE_packet",
    "pages": {
     "report": [
-     66
+     62
     ],
     "matchup": [
-     124,
-     125
+     120,
+     121
     ],
     "epa": [
      62
     ],
     "value": [
-     62
+     60
     ]
    },
    "missing": []
@@ -1365,17 +1322,17 @@
    "file": "CFB_Week13_ASU-ARIZ_packet",
    "pages": {
     "report": [
-     67
+     63
     ],
     "matchup": [
-     126,
-     127
+     122,
+     123
     ],
     "epa": [
      63
     ],
     "value": [
-     63
+     61
     ]
    },
    "missing": []
@@ -1386,17 +1343,17 @@
    "file": "CFB_Week13_NEV-UNLV_packet",
    "pages": {
     "report": [
-     68
+     64
     ],
     "matchup": [
-     128,
-     129
+     124,
+     125
     ],
     "epa": [
      64
     ],
     "value": [
-     64
+     62
     ]
    },
    "missing": []
@@ -1407,17 +1364,17 @@
    "file": "CFB_Week13_BAY-HOU_packet",
    "pages": {
     "report": [
-     69
+     65
     ],
     "matchup": [
-     130,
-     131
+     126,
+     127
     ],
     "epa": [
      65
     ],
     "value": [
-     65
+     63
     ]
    },
    "missing": []
@@ -1428,17 +1385,17 @@
    "file": "CFB_Week13_TXST-USU_packet",
    "pages": {
     "report": [
-     70
+     66
     ],
     "matchup": [
-     132,
-     133
+     128,
+     129
     ],
     "epa": [
      66
     ],
     "value": [
-     66
+     64
     ]
    },
    "missing": []
@@ -1449,17 +1406,17 @@
    "file": "CFB_Week13_ORST-FRES_packet",
    "pages": {
     "report": [
-     71
+     67
     ],
     "matchup": [
-     134,
-     135
+     130,
+     131
     ],
     "epa": [
      67
     ],
     "value": [
-     67
+     65
     ]
    },
    "missing": []
@@ -1470,17 +1427,17 @@
    "file": "CFB_Week13_SAC-HAW_packet",
    "pages": {
     "report": [
-     72
+     68
     ],
     "matchup": [
-     136,
-     137
+     132,
+     133
     ],
     "epa": [
      68
     ],
     "value": [
-     68
+     66
     ]
    },
    "missing": []
