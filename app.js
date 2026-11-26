@@ -949,6 +949,7 @@ function initDashboard() {
     try { localStorage.setItem("cfb_team1", t1); localStorage.setItem("cfb_team2", t2); } catch (e) {}
     teamCards.innerHTML = [t1, t2].map(name => renderTeamCard(DATA.teams[name])).join("")
       + renderBetting(DATA.teams[t1], DATA.teams[t2]);
+    try { if (typeof initPhoneMatchup === "function") initPhoneMatchup(); } catch (e) { /* the full page still shows */ }
   };
   team1Select.addEventListener("change", render);
   team2Select.addEventListener("change", render);

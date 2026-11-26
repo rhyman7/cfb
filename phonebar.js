@@ -65,7 +65,9 @@ function phoneBarSearchReady() {
 }
 try { initPhoneBar(); } catch (e) { /* the plain top bar still works */ }
 
-// A player's game log on a phone (760px and under): one block per game with no sideways
+// Phone-only helpers for any page (760px and under). They label what the page already drew;
+// style.css lays it out. Wider screens are left alone.
+// A player's game log: one block per game with no sideways
 // scrolling. The log is drawn when a name is tapped, so this watches for it and labels each
 // stat cell from the log's own two header rows (group, then column); style.css lays the
 // labelled cells out. Wider screens are left alone.
@@ -89,7 +91,91 @@ try { initPhoneBar(); } catch (e) { /* the plain top bar still works */ }
     tb.querySelectorAll("tbody tr").forEach(tr => [...tr.children].forEach((td, i) => { if (i > 2 && labels[i] && !td.classList.contains("prop-cell")) td.dataset.label = labels[i]; }));
     tb.classList.add("m-log");
   };
-  const scan = () => { if (mq.matches) document.querySelectorAll(".plog-card").forEach(c => { try { label(c); } catch (e) { /* the plain table still shows */ } }); };
+  // Wide tables as cards (Weekly Edges' game board and prop tables, EPA's line-vs-market
+  // table): each cell is labelled from the table's header and style.css stacks every row as a
+  // card (table.m-cards). The first column is the card's title and takes no label.
+  const CARD_TABLES = "#gameBoard > table, #propBoards .table-block > table, #epaBoard";
+  const cardify = tb => {
+    if (tb.classList.contains("m-cards") && tb.querySelector("tbody tr:first-child td[data-label]")) return;
+    const ths = [...tb.querySelectorAll("thead tr:last-child th")].map(text);
+    // EPA's table has two "Market" columns: the line's and the total's
+    const labels = ths.map((l, i) => (l === "Market" ? (/total/i.test(ths[i - 1] || "") ? "Market total" : "Market line") : l));
+    if (!labels.length) return;
+    tb.querySelectorAll("tbody tr").forEach(tr => [...tr.children].forEach((td, i) => { if (i > 0 && labels[i] && !td.querySelector(".board-link")) td.dataset.label = labels[i]; }));
+    tb.classList.add("m-cards");
+    // a long list (college has 60+ games a week) shows its first dozen cards, then a button for the rest
+    const n = tb.querySelectorAll("tbody tr").length;
+    const next = tb.nextElementSibling;
+    if (next && next.classList.contains("m-more-rows")) next.remove();
+    tb.classList.toggle("m-fold", n > 20);
+    if (n > 20 && !tb.classList.contains("m-open")) {
+      const more = document.createElement("button");
+      more.type = "button";
+      more.className = "print-btn m-more-rows no-print";
+      more.textContent = `Show all ${n}`;
+      more.addEventListener("click", () => { tb.classList.add("m-open"); more.remove(); });
+      tb.insertAdjacentElement("afterend", more);
+    }
+  };
+  // Weekly Edges' prop tables: one position's table at a time, picked from a row of chips.
+  let propShown = 0;
+  const propChips = box => {
+    const blocks = [...box.querySelectorAll(":scope > .table-block")];
+    let chips = box.previousElementSibling && box.previousElementSibling.classList.contains("m-prop-chips") ? box.previousElementSibling : null;
+    if (blocks.length < 2) { if (chips) chips.remove(); return; }
+    const names = blocks.map(b => text(b.querySelector("h4")));
+    if (!chips || chips.dataset.names !== names.join("|")) {
+      if (chips) chips.remove();
+      chips = document.createElement("div");
+      chips.className = "m-cats m-prop-chips no-print";
+      chips.setAttribute("role", "group");
+      chips.setAttribute("aria-label", "Prop table");
+      chips.dataset.names = names.join("|");
+      names.forEach((n, i) => { const b = document.createElement("button"); b.type = "button"; b.dataset.v = i; b.textContent = n; chips.appendChild(b); });
+      chips.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { propShown = +b.dataset.v; scan(); } });
+      box.insertAdjacentElement("beforebegin", chips);
+    }
+    if (propShown >= blocks.length) propShown = 0;
+    blocks.forEach((b, i) => b.classList.toggle("m-off", i !== propShown));
+    [...chips.children].forEach((b, i) => b.setAttribute("aria-pressed", i === propShown ? "true" : "false"));
+  };
+  // EPA's two offense-vs-defense panels: one at a time, with a switch (as on the matchup page).
+  // The page redraws them when another game is picked; the chosen side carries over.
+  let epaSide = 0;
+  const epaSwitch = grid => {
+    const panels = [...grid.querySelectorAll(":scope > .edge-panel")];
+    if (panels.length !== 2 || (grid.previousElementSibling && grid.previousElementSibling.classList.contains("m-epa-switch"))) return;
+    const sw = document.createElement("div");
+    sw.className = "m-switch m-side m-epa-switch no-print";
+    sw.setAttribute("role", "group");
+    sw.setAttribute("aria-label", "Which offense");
+    panels.forEach((p, i) => {
+      const parts = text(p.querySelector("h4")).split(/\s+against\s+/);
+      const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.v = i;
+      b.innerHTML = "<b></b><span></span>";
+      b.firstChild.textContent = parts[0];
+      b.lastChild.textContent = parts[1] ? "vs " + parts[1] : "";
+      sw.appendChild(b);
+    });
+    const show = i => { epaSide = i; grid.dataset.show = i; [...sw.children].forEach((b, j) => b.setAttribute("aria-pressed", j === i ? "true" : "false")); };
+    sw.addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(+b.dataset.v); });
+    grid.insertAdjacentElement("beforebegin", sw);
+    show(epaSide);
+  };
+  let queued = false;
+  const run = () => {
+    queued = false;
+    if (!mq.matches) return;
+    const each = (sel, fn) => document.querySelectorAll(sel).forEach(el => { try { fn(el); } catch (e) { /* the plain page still shows */ } });
+    each(".plog-card", label);
+    each(CARD_TABLES, cardify);
+    each("#epaGame > .edge-grid", epaSwitch);
+    each("#propBoards", propChips);
+  };
+  const scan = () => { if (!queued) { queued = true; (window.requestAnimationFrame || setTimeout)(run); } };
   new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
   mq.addEventListener("change", scan);
+  scan();
 })();

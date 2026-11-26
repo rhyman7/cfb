@@ -137,6 +137,22 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   the two buttons come back on the page while games are being picked. The matchup page's phone layout is under "Matchup page".
 - **Favicon:** the RH monogram, as `favicon.ico`, `favicon-192.png` and `apple-touch-icon.png` at the repo root (the same three files in rhyman7/nfl, rhyman7/cfb, rhyman7.github.io and rhyman7/fb-value-board). Every page links all three in `<head>`, right after the viewport meta; a new page gets the same three lines.
 
+## Other pages on a phone (Nov 25, 2026; 760px and under)
+
+- **Compare Any Two Teams** uses the matchup page's tabs (`phonematchup.js`, called after each
+  redraw; `body.m-compare`): Team stats, Players, Trends. The reader's tab, team and table
+  carry over a redraw.
+- **Wide tables as cards.** Weekly Edges' Game board and prop tables and EPA's "EPA line vs.
+  the market" table show one card per row (`table.m-cards`). `phonebar.js` labels each cell
+  from the table's header, so a new column is labelled automatically; the first column is the
+  card's title. To give another table the same treatment, add its selector to `CARD_TABLES` in
+  `phonebar.js`. More than 20 rows: the first 12 show, then a "Show all N" button.
+- **Weekly Edges' prop tables** show one at a time, picked from chips built from each table's
+  heading. **EPA's Head to head** shows one panel at a time with a switch.
+- Phone-only; desktop and print must stay pixel-identical (see "Testing a change"). A very long
+  page (EPA in print) has to be compared screen by screen, because a full-page capture shrinks
+  the window to 1px and trips the phone code.
+
 ## Matchup page
 
 - **On a phone, added Nov 25, 2026 (later the same day).** A **Box score** tab appears first in
