@@ -207,6 +207,9 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   cards with usage). `print.html` is every game this week, two pages each (`?games=<ids>`
   for some). **It has no button anymore, but don't remove it**: the Build PDFs Action renders
   it into `pdf/matchups.pdf`, the packets' "Printed matchup".
+- The **EPA page's quarterback line is this week's starter**: the build writes him into
+  `data/epa.json` from `overrides/qb_starters.json` (`build_data.epa_ratings`). The shared part of
+  `epa.js` also accepts a `SITE.qb` hook (Nov 25, 2026), which only the NFL site defines.
 - The **EPA page always has both "Print all" and "Download PDF"** buttons (`epaPrintBtn`,
   `epaPdfBtn`). Print all is every game (one landscape page each), then the board, the
   ratings and the method; Download PDF is `pdf/epa.pdf`.
