@@ -1,6 +1,7 @@
 // Matchup page on a phone (760px and under; style.css shows these controls only there).
 // The page's sections sit behind four tabs: Head to head (one offense-vs-defense panel at a
-// time), Players (one team, one of Passing / Rushing / Receiving), Team stats (one team) and
+// time), Players (one team, one of Passing / Rushing / Receiving, a card per player), Team
+// stats (one team, dials shown as rank bars) and
 // Trends (pace, betting trends, box score). Print matchup, Download PDF and the packet
 // buttons fold behind one button. Nothing is re-rendered: this only tags the sections the
 // page already drew and sets which ones show (`data-m*` on <body>). The sections are hidden
@@ -31,6 +32,56 @@ function buildPhoneMatchup() {
       const name = text(b.querySelector("h4"));
       b.dataset.mcat = name.toLowerCase();
       if (name && !cats.includes(name)) cats.push(name);
+    });
+  });
+
+  // Players tab: each table row becomes a card. The cells are labelled from the table's own
+  // header so the card can name each number; the first two cells (player, yards per game)
+  // make the card's top line.
+  const headLabel = th => { const c = th.cloneNode(true); c.querySelectorAll(".capd-h").forEach(x => x.remove()); return text(c); };
+  tcards.forEach(c => c.querySelectorAll(":scope > .tables-row > .table-block > table").forEach(tb => {
+    const labels = [...tb.querySelectorAll("thead th")].map(headLabel);
+    tb.querySelectorAll("tbody tr").forEach(tr => [...tr.children].forEach((td, i) => { if (labels[i]) td.dataset.label = labels[i]; }));
+    tb.classList.add("m-ptable");
+  }));
+  // ...and each table opens with what the other team's defense allows to that position,
+  // read from the other team's card (its Defense vs position blocks and passing dial).
+  const note = lines => { const el = document.createElement("p"); el.className = "m-defnote no-print"; el.innerHTML = lines.map(esc).join("<br>"); return el; };
+  tcards.forEach((c, i) => {
+    const opp = tcards[1 - i], who = text(opp.querySelector(".team-card-header .slab")) || "Opponent";
+    const dvp = [...opp.querySelectorAll(":scope > .defpos-row > .defpos-block")].map(b => ({
+      title: text(b.querySelector("h4")).replace(/^Defense\s+/i, ""),
+      stats: [...b.querySelectorAll(".defpos-stats .item")].map(it => [...it.children].map(text).join(" ")),
+    }));
+    const line = d => `${who} defense ${d.title}: ${d.stats.join(" · ")}`;
+    const passDial = [...opp.querySelectorAll(".stat-col.defense .gauge-block")].find(g => /^pass/i.test(text(g.querySelector(".gauge-label"))));
+    const lines = {
+      passing: passDial ? [`${who} defense allows ${text(passDial.querySelector(".gauge-value"))} pass yds/G (${text(passDial.querySelector(".gauge-rank"))})`] : [],
+      rushing: dvp.filter(d => /^vs RB$/i.test(d.title)).map(line),
+      receiving: dvp.filter(d => !/^vs RB$/i.test(d.title)).map(line),
+    };
+    c.querySelectorAll(":scope > .tables-row > .table-block").forEach(b => {
+      const ls = lines[b.dataset.mcat];
+      const h = b.querySelector("h4");
+      if (ls && ls.length && h) h.insertAdjacentElement("afterend", note(ls));
+    });
+  });
+  // Team stats tab: each dial also gets a rank bar (the dial itself is hidden on a phone),
+  // and the Usage table drops its Pos column so it fits without scrolling sideways.
+  const nTeams = typeof DATA !== "undefined" && DATA && DATA.teams ? Object.keys(DATA.teams).length : 32;
+  tcards.forEach(c => {
+    c.querySelectorAll(".gauge-block").forEach(g => {
+      const m = /#(\d+)/.exec(text(g.querySelector(".gauge-rank")));
+      if (!m || g.querySelector(".m-rankbar")) return;
+      const el = document.createElement("span");
+      el.className = "m-rankbar no-print";
+      el.innerHTML = `<i style="width:${Math.max(4, Math.round((nTeams + 1 - +m[1]) / nTeams * 100))}%"></i>`;
+      g.appendChild(el);
+    });
+    c.querySelectorAll(":scope > .usage-block table").forEach(tb => {
+      const i = [...tb.querySelectorAll("thead th")].findIndex(th => text(th) === "Pos");
+      if (i < 0) return;
+      tb.querySelectorAll("tr").forEach(tr => { if (tr.children[i]) tr.children[i].classList.add("m-hide"); });
     });
   });
 
