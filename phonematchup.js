@@ -11,16 +11,25 @@ function initPhoneMatchup() {
   // built only at phone width (or when the window first narrows to it), so the desktop page is left exactly as drawn
   const mq = window.matchMedia("(max-width: 760px)");
   if (mq.matches) { buildPhoneMatchup(); return; }
-  const once = () => { if (mq.matches) { mq.removeEventListener("change", once); try { buildPhoneMatchup(); } catch (e) { /* the full page still shows */ } } };
+  if (initPhoneMatchup.waiting) return;   // Compare calls this on every redraw
+  initPhoneMatchup.waiting = true;
+  const once = () => { if (mq.matches) { mq.removeEventListener("change", once); initPhoneMatchup.waiting = false; try { buildPhoneMatchup(); } catch (e) { /* the full page still shows */ } } };
   mq.addEventListener("change", once);
 }
 function buildPhoneMatchup() {
   const body = document.body;
-  const head = document.querySelector(".m-head"), edges = document.getElementById("edges"), cards = document.getElementById("teamCards");
-  if (!head || !edges || !cards || document.querySelector(".m-tabs")) return;
-  const panels = [...edges.querySelectorAll(":scope > .edge-grid > .edge-panel")];
+  // Compare Any Two Teams has the two team cards and betting trends but no header or head to
+  // head, and redraws its cards on every pick: there the tabs are Team stats, Players and
+  // Trends, they sit under the team pickers, and this runs again after each redraw.
+  const head = document.querySelector(".m-head") || document.querySelector(".matchup-picker");
+  const edges = document.getElementById("edges"), cards = document.getElementById("teamCards");
+  if (!head || !cards) return;
+  const panels = edges ? [...edges.querySelectorAll(":scope > .edge-grid > .edge-panel")] : [];
   const tcards = [...cards.querySelectorAll(":scope > .team-card")];
-  if (panels.length !== 2 || tcards.length !== 2) return;
+  const compare = !edges;
+  if (tcards.length !== 2 || (!compare && panels.length !== 2)) return;
+  if (!compare && document.querySelector(".m-tabs")) return;
+  document.querySelectorAll(".m-tabs, .m-switch, .m-cats").forEach(el => el.remove());
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const text = el => (el ? el.textContent.trim() : "");
 
@@ -63,7 +72,7 @@ function buildPhoneMatchup() {
     c.querySelectorAll(":scope > .tables-row > .table-block").forEach(b => {
       const ls = lines[b.dataset.mcat];
       const h = b.querySelector("h4");
-      if (ls && ls.length && h) h.insertAdjacentElement("afterend", note(ls));
+      if (ls && ls.length && h && !b.querySelector(".m-defnote")) h.insertAdjacentElement("afterend", note(ls));
     });
   });
   // Team stats tab: each dial also gets a rank bar (the dial itself is hidden on a phone),
@@ -93,15 +102,17 @@ function buildPhoneMatchup() {
     el.innerHTML = items.map(it => `<button type="button" data-k="${key}" data-v="${esc(it.v)}"${it.style ? ` style="${esc(it.style)}"` : ""}>${it.html}</button>`).join("");
     return el;
   };
-  const tabs = bar("m-tabs", "Sections", "mtab", [
-    { v: "box", html: "Box score" }, { v: "h2h", html: "Head to head" }, { v: "players", html: "Players" }, { v: "team", html: "Team stats" }, { v: "trends", html: "Trends" }]);
+  const tabList = compare
+    ? [{ v: "team", html: "Team stats" }, { v: "players", html: "Players" }].concat(cards.querySelector(":scope > .bet-section") ? [{ v: "trends", html: "Trends" }] : [])
+    : [{ v: "box", html: "Box score" }, { v: "h2h", html: "Head to head" }, { v: "players", html: "Players" }, { v: "team", html: "Team stats" }, { v: "trends", html: "Trends" }];
+  const tabs = bar("m-tabs", "Sections", "mtab", tabList);
   head.insertAdjacentElement("afterend", tabs);
   // "GB offense against LA defense" reads as two lines on the switch
   const sides = bar("m-switch m-side", "Which offense", "mside", panels.map((p, i) => {
     const parts = text(p.querySelector("h4")).split(/\s+against\s+/);
     return { v: i, html: `<b>${esc(parts[0])}</b>${parts[1] ? `<span>vs ${esc(parts[1])}</span>` : ""}` };
   }));
-  panels[0].parentElement.insertAdjacentElement("beforebegin", sides);
+  if (!compare) panels[0].parentElement.insertAdjacentElement("beforebegin", sides);
   // each team's button carries its colors (the vars sit on the card's abbreviation block)
   const teams = bar("m-switch m-team", "Team", "mteam", tcards.map((c, i) => {
     const slab = c.querySelector(".team-card-header .slab");
@@ -137,15 +148,19 @@ function buildPhoneMatchup() {
     // a new tab starts at its top when the reader had scrolled down the old one
     if (b.dataset.k === "mtab" && head.getBoundingClientRect().bottom < 0) window.scrollTo(0, window.scrollY + head.getBoundingClientRect().bottom);
   }));
-  set("mtab", "h2h");
-  set("mside", 0);
-  set("mteam", 0);
-  if (cats.length) set("mcat", cats[0].toLowerCase());
+  // a redraw (Compare) keeps the tab, team and table the reader was on
+  const was = (k, ok, d) => (ok(body.dataset[k]) ? body.dataset[k] : d);
+  set("mtab", was("mtab", v => tabList.some(t => t.v === v && v !== "box"), compare ? "team" : "h2h"));
+  set("mside", was("mside", v => v === "0" || v === "1", 0));
+  set("mteam", was("mteam", v => v === "0" || v === "1", 0));
+  if (cats.length) set("mcat", was("mcat", v => cats.some(c => c.toLowerCase() === v), cats[0].toLowerCase()));
+  body.classList.toggle("m-compare", compare);
   // The box score gets a tab of its own, first in the row, only while the page is showing one
   // (live.js un-hides #boxscore once the game is on or over). The page opens on it then,
   // unless the reader has already picked a tab.
   const box = document.getElementById("boxscore"), boxBtn = tabs.querySelector('button[data-v="box"]');
   const syncBox = () => {
+    if (!boxBtn) return;
     const on = !!box && !box.hidden;
     boxBtn.hidden = !on;
     tabs.classList.toggle("has-box", on);
