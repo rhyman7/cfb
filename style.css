@@ -1323,3 +1323,59 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
 .bet-fold-note { font-size: 0.875rem; color: var(--accent); }
 .bet-fold[open] .bet-fold-note { visibility: hidden; }
 .bet-fold .bet-caution { margin: 10px 0 14px; }
+
+/* ---------- Phone layout (760px and under), screen only ----------
+   Top bar: the page links fold into a menu button and the player search opens from a
+   search button (phonebar.js); the week strip stays on screen. The links are hidden only
+   once phonebar.js has run (.has-phone-bar). This Week's Matchups: one card per game.
+   Desktop and print are not touched by anything in this block. */
+.phone-tools, .phone-extra { display: none; }
+@media screen and (max-width: 760px) {
+  .topbar.has-phone-bar { padding: 4px 8px 0 16px; align-items: center; }
+  .has-phone-bar .phone-tools { display: flex; grid-column: 2; grid-row: 1; }
+  .pt-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: none; border: 0; border-radius: 8px; color: var(--text); cursor: pointer; }
+  .pt-btn[aria-expanded="true"] { background: var(--panel-alt); }
+  .has-phone-bar .topnav { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 0; padding-right: 8px; }
+  .has-phone-bar .topnav > a { display: none; order: 0; height: 48px; font-size: 1rem; border: 0; border-top: 1px solid var(--hair); }
+  .has-phone-bar .topnav > a.active { font-weight: 700; }
+  .has-phone-bar.menu-open .topnav > a { display: flex; }
+  .has-phone-bar .topnav .nav-full, .has-phone-bar .topnav.nav-tight .nav-full { display: inline; }
+  .has-phone-bar .topnav .nav-short, .has-phone-bar .topnav.nav-tight .nav-short { display: none; }
+  .has-phone-bar.menu-open .phone-extra:not(:empty) { display: flex; order: 1; gap: 8px; padding: 10px 0 12px; border-top: 1px solid var(--hair); }
+  .has-phone-bar .navtools { order: 2; flex: 0 0 auto; width: 100%; }
+  .has-phone-bar .weeknav { flex: 0 0 auto; width: 100%; }
+  .has-phone-bar .topnav .weeknav a { min-width: 40px; height: 40px; }
+  .has-phone-bar .psearch, .has-phone-bar .navtools .psearch { display: none; }
+  .has-phone-bar.search-open .psearch, .has-phone-bar.search-open .navtools .psearch { display: block; }
+
+  .week-head { gap: 12px; margin-bottom: 4px; }
+  .week-title { font-size: 2.75rem; }
+  /* Print / Save Packets start from the menu; the buttons come back while games are being picked */
+  .has-phone-bar ~ main .week-filters .packet-actions { display: none; }
+  .has-phone-bar ~ main .week-filters .packet-actions:has(.pk-active),
+  .has-phone-bar ~ main .week-filters .packet-actions:has(.packet-status:not(:empty)) { display: inline-flex; }
+  .week-filters .packet-actions[hidden] { display: none; }
+
+  .day-label { padding: 22px 0 0; }
+  .game-row {
+    margin-top: 10px;
+    padding: 12px 14px;
+    gap: 8px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .game-row:hover { background: var(--panel); }
+  .game-row:active { background: var(--panel-alt); }
+  .gr-sub { font-size: 0.8125rem; }
+  .gr-spread::before, .gr-total::before { display: block; font-size: 0.75rem; line-height: 1.2; color: var(--text-dim); }
+  .gr-spread::before { content: "Spread"; }
+  .gr-total::before { content: "Total"; }
+  .ou-pre { display: none; }
+  .gr-spread .gr-big, .gr-total .gr-big { font-size: 1.375rem; color: inherit; }
+  .gr-implied { margin-top: 4px; padding-top: 8px; border-top: 1px solid var(--hair); font-size: 0.8125rem; color: var(--text); }
+  .gr-implied:empty { display: none; }
+  .gr-where { font-size: 0.8125rem; }
+  .gr-board { font-size: 0.8125rem; }
+  .gr-board .vb-bet { font-size: 0.75rem; }
+}

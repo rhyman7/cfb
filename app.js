@@ -70,6 +70,7 @@ async function init() {
   setMeta();
   try { initPlayerSearch(); } catch (e) { /* search is optional */ }
   try { initWeekNav(); } catch (e) { /* so is the week strip */ }
+  try { if (typeof phoneBarSearchReady === "function") phoneBarSearchReady(); } catch (e) { /* the search button is optional */ }
   if (PAGE === "week") initWeek();
   else if (PAGE === "matchup") initMatchup();
   else if (PAGE === "printall") initPrintAll();
