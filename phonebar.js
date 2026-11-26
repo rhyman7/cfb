@@ -99,9 +99,9 @@ try { initPhoneBar(); } catch (e) { /* the plain top bar still works */ }
     tb.classList.add("m-log");
   };
   // Wide tables as cards (Weekly Edges' game board and prop tables, EPA's line-vs-market
-  // table): each cell is labelled from the table's header and style.css stacks every row as a
+  // table and its all-teams table): each cell is labelled from the table's header and style.css stacks every row as a
   // card (table.m-cards). The first column is the card's title and takes no label.
-  const CARD_TABLES = "#gameBoard > table, #propBoards .table-block > table, #epaBoard";
+  const CARD_TABLES = "#gameBoard > table, #propBoards .table-block > table, #epaBoard, #epaLeague";
   const cardify = tb => {
     if (tb.classList.contains("m-cards") && tb.querySelector("tbody tr:first-child td[data-label]")) return;
     const ths = [...tb.querySelectorAll("thead tr:last-child th")].map(text);

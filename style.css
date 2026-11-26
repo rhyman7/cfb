@@ -1586,3 +1586,22 @@ html.wgb-shell-on .topnav { min-height: 0; }
   html.wgb-shell-on .has-phone-bar.menu-open .topnav > a { display: none; }
   html.wgb-shell-on .has-phone-bar .pt-menu:not(.pt-packets) { display: none; }
 }
+
+/* Narrow phones: the matchup tabs' labels shrink a step so "Head to head" stays inside its tab. */
+@media screen and (max-width: 380px) {
+  .m-tabs button { font-size: 0.8125rem; font-stretch: 75%; }
+  .m-tabs.has-box button { font-size: 0.75rem; font-stretch: 72%; }
+}
+
+/* EPA's all-teams table on a phone: one card per team (phonebar.js labels the cells). Its
+   headings stay as a strip of sort buttons; rank and team share the card's first line. */
+@media screen and (max-width: 760px) {
+  #epaLeague.m-cards > thead { display: block; }
+  #epaLeague.m-cards > thead > tr { display: flex; gap: 6px; margin: 0; padding: 0 0 2px; background: none; border: 0; border-radius: 0; overflow-x: auto; }
+  #epaLeague.m-cards > thead th { flex: none; padding: 0; border: 0; background: none; position: static; }
+  #epaLeague.m-cards > thead th button { min-height: 36px; padding: 0 12px; border: 1px solid var(--border); border-radius: 18px; background: var(--panel); color: var(--text); font-size: 0.8125rem; white-space: nowrap; }
+  #epaLeague.m-cards > tbody > tr > td:first-child { grid-row: 1; grid-column: 1; align-self: center; font-size: 0.8125rem; font-weight: 400; color: var(--text-dim); }
+  #epaLeague.m-cards > tbody > tr > td:nth-child(2) { grid-row: 1; grid-column: 1 / -1; padding-left: 30px; font-size: 1.0625rem; }
+  #epaLeague.m-cards > tbody > tr > td:nth-child(2)::before { content: none; }
+  #epaLeague.m-cards > tbody > tr > td:last-child { grid-column: 1 / -1; font-size: 0.875rem; font-weight: 400; }
+}

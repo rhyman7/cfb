@@ -156,6 +156,11 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   from the table's header, so a new column is labelled automatically; the first column is the
   card's title. To give another table the same treatment, add its selector to `CARD_TABLES` in
   `phonebar.js`. More than 20 rows: the first 12 show, then a "Show all N" button.
+- **EPA's all-teams table on a phone (Nov 26, 2026).** `#epaLeague` is in `CARD_TABLES`: one card
+  per team, rank and team on the first line, the nine numbers under it. Its column headings
+  stay as a strip of sort buttons. The rules are the last block of `style.css`.
+- **Narrow phones (380px and under).** The matchup tabs' labels shrink a step so "Head to head"
+  stays inside its tab.
 - **Weekly Edges' prop tables** show one at a time, picked from chips built from each table's
   heading. **EPA's Head to head** shows one panel at a time with a switch.
 - Phone-only; desktop and print must stay pixel-identical (see "Testing a change"). A very long
