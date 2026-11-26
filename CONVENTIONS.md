@@ -151,9 +151,13 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   `data-mteam` on `<body>`; the last block of `style.css` shows one tab's sections. Nothing is
   re-rendered, so a new section added to the page must be given a tab in that CSS block or it
   shows on every tab. The sections are hidden only once the script has run
-  (`body.m-phone-tabs`). A past or later week's game page has no tabs. Next step (not built):
-  player cards, dials as bars and a full-screen game log, per the CFB/NFL Model project doc
-  `claude/plan-phone-layout-matchups-2026-11-25.md`.
+  (`body.m-phone-tabs`). A past or later week's game page has no tabs. On the Players tab each
+  table row shows as a card (the script labels every cell from the table's own header, so a new
+  column gets its label automatically; the first two columns must stay player, then yards per
+  game) under a note of what the other team's defense allows to that position, read from the
+  other team's card. On Team stats each dial shows as its number with a rank bar, and the Usage
+  table drops its Pos column so it fits. A player's game log fills the screen. Plan and status:
+  CFB/NFL Model project doc `claude/plan-phone-layout-matchups-2026-11-25.md`.
 
 - Game header is a scorebug: each team's name on its block (with AP rank), the current line
   between them.
