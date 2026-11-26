@@ -4,7 +4,7 @@
  "league": "cfb",
  "title": "CFB Week 13 Matchup Report",
  "dataGeneratedAt": "2026-11-26T14:43:31.665851+00:00",
- "generatedAt": "2026-11-26T14:53:25Z",
+ "generatedAt": "2026-11-26T23:03:28Z",
  "files": {
   "report": "report.pdf",
   "matchup": "matchups.pdf",
@@ -22,16 +22,17 @@
    69,
    70,
    71,
-   72
+   72,
+   73
   ],
   "td": [
-   73,
    74,
-   75
+   75,
+   76
   ],
   "floors": [
-   76,
-   77
+   77,
+   78
   ]
  },
  "games": [
