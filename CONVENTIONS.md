@@ -134,12 +134,26 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   the desktop or printed page: compare both before and after (see "Testing a change"). On This
   Week's Matchups each game is a card (team blocks and names, Spread and Total labelled on the
   right, implied score and venue below), and Print Packets / Save Packets start from the menu;
-  the two buttons come back on the page while games are being picked. The matchup page's phone
-  layout (tabs) is the next step: plan in the CFB/NFL Model project doc
-  `claude/plan-phone-layout-matchups-2026-11-25.md`.
+  the two buttons come back on the page while games are being picked. The matchup page's phone layout is under "Matchup page".
 - **Favicon:** the RH monogram, as `favicon.ico`, `favicon-192.png` and `apple-touch-icon.png` at the repo root (the same three files in rhyman7/nfl, rhyman7/cfb, rhyman7.github.io and rhyman7/fb-value-board). Every page links all three in `<head>`, right after the viewport meta; a new page gets the same three lines.
 
 ## Matchup page
+
+- **On a phone (Nov 25, 2026; 760px and under).** The header puts the two team blocks side by
+  side with the line in one strip under them. The rest of the page sits behind four tabs:
+  **Head to head** (one offense-vs-defense panel at a time, with a switch), **Players** (one
+  team; Passing, Rushing or Receiving, then the injury report), **Team stats** (one team:
+  ratings, dials, usage, defense vs position) and **Trends** (box score, pace and tendency,
+  betting trends). Print matchup and the packet buttons fold behind one button in the page's
+  top row. `phonematchup.js` (the same file on both sites) does it: `app.js` calls
+  `initPhoneMatchup()` after drawing this week's matchup; it builds the controls only at phone
+  width, tags the sections the page already drew and sets `data-mtab` / `data-mside` /
+  `data-mteam` on `<body>`; the last block of `style.css` shows one tab's sections. Nothing is
+  re-rendered, so a new section added to the page must be given a tab in that CSS block or it
+  shows on every tab. The sections are hidden only once the script has run
+  (`body.m-phone-tabs`). A past or later week's game page has no tabs. Next step (not built):
+  player cards, dials as bars and a full-screen game log, per the CFB/NFL Model project doc
+  `claude/plan-phone-layout-matchups-2026-11-25.md`.
 
 - Game header is a scorebug: each team's name on its block (with AP rank), the current line
   between them.
