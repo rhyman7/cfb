@@ -507,3 +507,8 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   height can differ between loads on its own.
 - For anything touching print: print a matchup and the EPA page to PDF and check the page count.
 - Do the same check on the NFL site for the matching change.
+
+- **Value board link (Nov 26, 2026).** "Open on the value board" on a matchup opens the board's
+  game page for that game (`#<board game id>`: how the spread is built and every book's price), not
+  the board's copy of the matchup. The board's game page links back with "Full matchup on the
+  dashboard".
