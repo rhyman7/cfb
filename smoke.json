@@ -1,0 +1,14 @@
+{
+  "base": "/cfb/",
+  "pages": [
+    {"path": "index.html", "need": {"a.game-row": 1, "#confFilter > *": 2},
+     "follow": {"link": "a.game-row", "need": {".matchup-header > *": 1, "#teamCards table tbody tr": 10, "#edges table tbody tr": 5}}},
+    {"path": "edges.html", "need": {"table.board-table tbody tr": 1, "#propBoards table tbody tr": 10}},
+    {"path": "epa.html", "need": {"#epaLeague tbody tr": 100, "#epaBoard tbody tr": 1, "#epaGame > *": 1}},
+    {"path": "dashboard.html", "need": {"#team1Select option": 100, "#teamCards table tbody tr": 10}},
+    {"path": "how-to-read.html", "need": {"#learn table tbody tr": 10}},
+    {"path": "epa-explained.html", "need": {"table tbody tr": 6}},
+    {"path": "ratings.html", "need": {"#exampleGrid > *": 4}},
+    {"path": "print.html", "need": {"#printAll > *": 1}, "wait": 90}
+  ]
+}
