@@ -100,6 +100,12 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   It replaced the top bar's own link to the other dashboard (`league-link`), whose CSS is still in
   `style.css` unused.
 - The NFL site uses the same order and labels. Change both together.
+- **Phone top bar (Nov 25, 2026).** At 760px and under the page links fold into a menu button
+  and the player search opens from a search button; the week strip stays on screen.
+  `phonebar.js` (the same file as the NFL site's) builds the two buttons and is loaded on every
+  page with a top bar, right after `</header>` (it does not need `app.js`); a new page gets the
+  same line. The links are hidden only once it has run (`.has-phone-bar` on the top bar), so a
+  page where it fails keeps its links. The menu always shows the full labels.
 
 ## Look
 
@@ -123,6 +129,14 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - Team color as text, bars and dials on the dark page uses `--tc-ink`; in print, `--tc-inkp`.
 - Pages must work from phone width up: nothing cut off or overlapping, wide tables scroll
   sideways inside their container.
+- **Phone layout (Nov 25, 2026).** Phone-only rules live in the last block of `style.css`,
+  `@media screen and (max-width: 760px)`, the same block as the NFL site's. They must not change
+  the desktop or printed page: compare both before and after (see "Testing a change"). On This
+  Week's Matchups each game is a card (team blocks and names, Spread and Total labelled on the
+  right, implied score and venue below), and Print Packets / Save Packets start from the menu;
+  the two buttons come back on the page while games are being picked. The matchup page's phone
+  layout (tabs) is the next step: plan in the CFB/NFL Model project doc
+  `claude/plan-phone-layout-matchups-2026-11-25.md`.
 - **Favicon:** the RH monogram, as `favicon.ico`, `favicon-192.png` and `apple-touch-icon.png` at the repo root (the same three files in rhyman7/nfl, rhyman7/cfb, rhyman7.github.io and rhyman7/fb-value-board). Every page links all three in `<head>`, right after the viewport meta; a new page gets the same three lines.
 
 ## Matchup page
@@ -424,5 +438,8 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 - Serve the repo root locally (`python -m http.server 8000`) and load the pages you touched at
   desktop and phone widths with no console errors. ESPN and Open-Meteo may be unreachable in a
   sandbox; the pages should still load. WEEKLY_PROMPT.md step 5 has a fuller page checklist.
+- For a phone-layout change: screenshot the pages at 390px wide, and confirm the desktop (1280px)
+  and print renderings are pixel-identical to `main`. How to Read opens a random game, so its
+  height can differ between loads on its own.
 - For anything touching print: print a matchup and the EPA page to PDF and check the page count.
 - Do the same check on the NFL site for the matching change.
