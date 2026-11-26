@@ -19,6 +19,13 @@ function initPhoneBar() {
   extra.className = "phone-extra no-print";
   nav.appendChild(extra);
   const searchBtn = tools.querySelector(".pt-search"), menuBtn = tools.querySelector(".pt-menu");
+  // With the one-site bar on the page (html.wgb-shell-on) its menu holds the page links, so this
+  // button is only kept where it also opens the packets (This Week's Matchups), as a print button.
+  if (document.documentElement.classList.contains("wgb-shell-on") && document.body.dataset.page === "week") {
+    menuBtn.classList.add("pt-packets");
+    menuBtn.setAttribute("aria-label", "Print or save packets");
+    menuBtn.innerHTML = icon('<path d="M7 9V4h10v5M7 17H5a1 1 0 0 1-1-1v-5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a1 1 0 0 1-1 1h-2M7 14h10v6H7z"></path>');
+  }
   const set = (menu, search) => {
     bar.classList.toggle("menu-open", menu);
     bar.classList.toggle("search-open", search);

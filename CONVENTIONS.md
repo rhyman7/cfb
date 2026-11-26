@@ -100,6 +100,15 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   It replaced the top bar's own link to the other dashboard (`league-link`), whose CSS is still in
   `style.css` unused.
 - The NFL site uses the same order and labels. Change both together.
+- **The one-site bar (Nov 25, 2026).** Every page now loads the site bar as
+  `<script src="/site-bar.js" data-shell="2"></script>`. Its second row carries this site's page
+  links (in the order above, with a College / NFL switch), so the links in this site's own top bar
+  are hidden once the shared bar is on the page (`html.wgb-shell-on`, last block of `style.css`).
+  The site name, the week strip and the player search stay in the top bar. **The links stay in
+  each page's markup** as the fallback when the shared bar can't load, and `class="active"` is
+  still set on them. A new or renamed page is added here and to `SECTIONS` in rhyman7.github.io's
+  `site-bar.js`. On a phone the shared bar's menu replaces this bar's menu button, except on This
+  Week's Matchups, where the button stays as the way to the packets, with a print icon.
 - **Phone top bar (Nov 25, 2026).** At 760px and under the page links fold into a menu button
   and the player search opens from a search button; the week strip stays on screen.
   `phonebar.js` (the same file as the NFL site's) builds the two buttons and is loaded on every

@@ -1573,3 +1573,16 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
   #gameBoard table.m-cards td.move { order: 1; grid-column: 1 / -1; font-size: 0.875rem; font-weight: 600; color: var(--text); }
   #gameBoard table.m-cards td.proe-cell { font-size: 0.875rem; white-space: normal; }
 }
+
+/* ---- The one-site bar (rhyman7.github.io/site-bar.js, Nov 25, 2026). The shared bar's second row
+   now carries this site's page links, so the links here are hidden once that bar is on the page
+   (it sets html.wgb-shell-on). The site name, the week strip and the player search stay. If the
+   shared bar fails to load, the class is never set and these links show as before. On a phone the
+   shared bar's menu replaces this bar's menu button, except on This Week's Matchups, where the
+   button stays as the way to the packets (phonebar.js gives it a print icon there). */
+html.wgb-shell-on .topnav > a { display: none; }
+html.wgb-shell-on .topnav { min-height: 0; }
+@media screen and (max-width: 760px) {
+  html.wgb-shell-on .has-phone-bar.menu-open .topnav > a { display: none; }
+  html.wgb-shell-on .has-phone-bar .pt-menu:not(.pt-packets) { display: none; }
+}
