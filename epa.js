@@ -147,15 +147,17 @@ function rankShift(raw, adj) {
   if (Math.abs(s) < 3) return `<span class="ep-shift">#${raw} → #${adj}</span>`;
   return `<span class="ep-shift ${s > 0 ? "up" : "down"}">#${raw} → #${adj} ${s > 0 ? "▲" : "▼"}${Math.abs(s)}</span>`;
 }
-function teamCardEpa(k) {
-  const x = EPA.teams[k], q = x.qb;
+// The quarterback line: this week's starter when the site knows him (SITE.qb), else the team's
+// passer with the most dropbacks. The CFB build already writes the starter into data/epa.json.
+function teamCardEpa(k, g) {
+  const x = EPA.teams[k], q = (SITE.qb && g && SITE.qb(g, k)) || x.qb;
   const flags = x.flags.length ? x.flags.map(f => `<li>${SITE.esc(f)}</li>`).join("")
     : `<li class="none">Nothing unusual: record, turnovers and close games are in line with the efficiency.</li>`;
   return `<div class="ep-card" style="${SITE.vars(k)}"><h4><span class="tc">${SITE.esc(SITE.name(k))}</span> <span class="ep-dim">${x.rec}</span></h4>
     <div class="ep-kv">
       <span>Offense rank, raw → adjusted</span><span>${rankShift(x.rk.o_raw, x.rk.o_adj)}</span>
       <span>Defense rank, raw → adjusted</span><span>${rankShift(x.rk.d_raw, x.rk.d_adj)}</span>
-      ${q ? `<span>${SITE.esc(q.name)}, EPA / dropback</span><span>${sg(q.epa)}${q.cpoe != null ? ` <span class="rk">CPOE ${sg(q.cpoe, 1)}</span>` : ""}</span>` : ""}
+      ${q ? `<span>${SITE.esc(q.name)}, EPA / dropback</span><span>${sg(q.epa)}${q.cpoe != null ? ` <span class="rk">CPOE ${sg(q.cpoe, 1)}</span>` : ""}${q.note ? ` <span class="rk">${SITE.esc(q.note)}</span>` : ""}</span>` : ""}
       <span>Plays per game</span><span>${x.ppg}</span>
       <span>Neutral early-down pass rate</span><span>${x.npr == null ? "—" : x.npr + "%"}</span>
       <span>Turnover margin</span><span>${x.to > 0 ? "+" : ""}${x.to}</span>
@@ -181,7 +183,7 @@ function gameHeadEpa(x) {
 function gameBlock(x) {
   return `${gameHeadEpa(x)}
     <div class="edge-grid ep-edges">${edgePanelEpa(x.away, x.home)}${edgePanelEpa(x.home, x.away)}</div>
-    <div class="ep-cards">${teamCardEpa(x.away)}${teamCardEpa(x.home)}</div>`;
+    <div class="ep-cards">${teamCardEpa(x.away, x)}${teamCardEpa(x.home, x)}</div>`;
 }
 function pickLabel(x) { return `${SITE.esc(SITE.abbr(x.away))} @ ${SITE.esc(SITE.abbr(x.home))}`; }
 function drawGame() {
