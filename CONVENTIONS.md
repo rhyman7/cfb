@@ -359,20 +359,27 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
   `data/epa.json` (via `scripts/epa_ratings.py`, when play-by-play downloads),
   `data/season.json` and the `data/weeks/<N>.json` that changed. `scripts/situational.py`
   is called from it. Run with the default `--out` so it can keep this week's `lineOpen`.
-- **The data update is a daily scheduled task** (9:47 AM ET, August–December) following
+- **The data update is a daily scheduled task** (9:35 AM ET, August–December) following
   **WEEKLY_PROMPT.md**, which lists the steps and the checks before publishing: it rebuilds
   the data, refreshes the injury tags (`data/injuries.json`) and the starting-QB list, and
-  reports injury, QB and weather news. WEEKLY_PROMPT.md is the task's exact text: when you
-  change the scheduled task, put the same text here in the same PR, and the other way round.
+  reports injury, QB and weather news. **WEEKLY_PROMPT.md is the task's instructions** (Nov
+  25, 2026): the scheduled task's own prompt only gets the repo, says to read that file and
+  follow it, and lists the addresses it may fetch. So a change to what the task does is an
+  ordinary pull request on WEEKLY_PROMPT.md; nobody retypes the task.
 - **Web addresses in the task.** In scheduled runs WebFetch only opens an address that
   appears word for word in the conversation (the task text or a search result); an address
   built from a pattern, or one a subagent reads from a file, is refused with
-  PROVENANCE_REQUIRED. So WEEKLY_PROMPT.md lists every Covers team page as a full address,
+  PROVENANCE_REQUIRED. So the task's prompt repeats every Covers team page as a full address
+  (the list at the end of WEEKLY_PROMPT.md, which is the copy to edit and review), plus the
+  two weather pages and the live `data/data.json`. **If a Covers address or a weather page
+  changes, change it in WEEKLY_PROMPT.md and in the task's prompt**; nothing else in the
+  prompt needs touching. The Value Boards daily check's prompt carries the same Covers list.
+  In the run,
   the main session reads Covers itself (subagents only do web searches), and the weather
   comes from the cleatz page named in the task, not from built Open-Meteo addresses.
 - **WEEKLY_PROMPT.md must match the site.** When a change adds, renames or removes a page, a
   data file or a `data.json` key, update WEEKLY_PROMPT.md in the same PR (its page list,
-  "data.json shape" and checks), and check the scheduled task's wording still matches.
+  "data.json shape" and checks). The task reads the file, so that is the whole change.
 - `data.json` keys are read by the pages. Adding a key is fine; renaming or removing one
   needs `app.js` (and WEEKLY_PROMPT.md) updated in the same PR.
 - `currentWeek` is the first regular-season week that still has an unplayed game.
