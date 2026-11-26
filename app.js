@@ -554,6 +554,7 @@ function initMatchup() {
   if (typeof startWeather === "function") startWeather([g], refreshExtras);
   document.getElementById("edges").innerHTML = parts.edges;
   teamCards.innerHTML = parts.cards;
+  try { if (typeof initPhoneMatchup === "function") initPhoneMatchup(); } catch (e) { /* the full page still shows */ }
 }
 
 // Header, Head to Head and team cards for one game (used by the matchup page and Print all).
