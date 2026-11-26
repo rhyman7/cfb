@@ -2,7 +2,7 @@
 // The page's sections sit behind four tabs: Head to head (one offense-vs-defense panel at a
 // time), Players (one team, one of Passing / Rushing / Receiving, a card per player), Team
 // stats (one team, dials shown as rank bars) and
-// Trends (pace, betting trends, box score). Print matchup, Download PDF and the packet
+// Trends (pace, betting trends), plus a Box score tab once the game is on or over. Print matchup, Download PDF and the packet
 // buttons fold behind one button. Nothing is re-rendered: this only tags the sections the
 // page already drew and sets which ones show (`data-m*` on <body>). The sections are hidden
 // only once this has run (`body.m-phone-tabs`), so a page where it fails shows everything.
@@ -94,7 +94,7 @@ function buildPhoneMatchup() {
     return el;
   };
   const tabs = bar("m-tabs", "Sections", "mtab", [
-    { v: "h2h", html: "Head to head" }, { v: "players", html: "Players" }, { v: "team", html: "Team stats" }, { v: "trends", html: "Trends" }]);
+    { v: "box", html: "Box score" }, { v: "h2h", html: "Head to head" }, { v: "players", html: "Players" }, { v: "team", html: "Team stats" }, { v: "trends", html: "Trends" }]);
   head.insertAdjacentElement("afterend", tabs);
   // "GB offense against LA defense" reads as two lines on the switch
   const sides = bar("m-switch m-side", "Which offense", "mside", panels.map((p, i) => {
@@ -123,6 +123,7 @@ function buildPhoneMatchup() {
     acts.insertAdjacentElement("beforebegin", more);
   }
 
+  let picked = false;
   const set = (k, v) => {
     body.dataset[k] = v;
     document.querySelectorAll(`button[data-k="${k}"]`).forEach(b => b.setAttribute("aria-pressed", b.dataset.v === String(v) ? "true" : "false"));
@@ -131,6 +132,7 @@ function buildPhoneMatchup() {
   [tabs, sides, teams, chips].forEach(el => el.addEventListener("click", e => {
     const b = e.target.closest("button[data-k]");
     if (!b) return;
+    if (b.dataset.k === "mtab") picked = true;
     set(b.dataset.k, b.dataset.v);
     // a new tab starts at its top when the reader had scrolled down the old one
     if (b.dataset.k === "mtab" && head.getBoundingClientRect().bottom < 0) window.scrollTo(0, window.scrollY + head.getBoundingClientRect().bottom);
@@ -139,5 +141,18 @@ function buildPhoneMatchup() {
   set("mside", 0);
   set("mteam", 0);
   if (cats.length) set("mcat", cats[0].toLowerCase());
+  // The box score gets a tab of its own, first in the row, only while the page is showing one
+  // (live.js un-hides #boxscore once the game is on or over). The page opens on it then,
+  // unless the reader has already picked a tab.
+  const box = document.getElementById("boxscore"), boxBtn = tabs.querySelector('button[data-v="box"]');
+  const syncBox = () => {
+    const on = !!box && !box.hidden;
+    boxBtn.hidden = !on;
+    tabs.classList.toggle("has-box", on);
+    if (on && !picked) set("mtab", "box");
+    else if (!on && body.dataset.mtab === "box") set("mtab", "h2h");
+  };
+  syncBox();
+  if (box) new MutationObserver(syncBox).observe(box, { attributes: true, attributeFilter: ["hidden"] });
   body.classList.add("m-phone-tabs");
 }
