@@ -1424,6 +1424,8 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
   }
   .m-tabs button { height: 48px; padding: 0; white-space: nowrap; font-stretch: 82%; background: none; border: 0; border-bottom: 3px solid transparent; color: var(--text-dim); font-size: 0.875rem; font-weight: 700; cursor: pointer; }
   .m-tabs button[aria-pressed="true"] { color: var(--text); border-bottom-color: var(--text); }
+  .m-phone-tabs .m-tabs.has-box { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .m-tabs.has-box button { font-size: 0.8125rem; font-stretch: 75%; }
 
   .m-phone-tabs .m-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; margin: 14px 0 12px; padding: 3px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
   .m-switch button { min-height: 46px; padding: 4px 6px; background: none; border: 0; border-radius: 8px; color: var(--text-dim); font-size: 0.875rem; line-height: 1.2; cursor: pointer; }
@@ -1440,11 +1442,12 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
   .m-phone-tabs:not([data-mtab="h2h"]) #edges > .m-side,
   .m-phone-tabs:not([data-mtab="h2h"]) #edges > .edge-grid,
   .m-phone-tabs:not([data-mtab="h2h"]) #edges > p.edge-key,
-  .m-phone-tabs:not([data-mtab="trends"]) #boxscore,
+  .m-phone-tabs:not([data-mtab="box"]) #boxscore,
   .m-phone-tabs:not([data-mtab="trends"]) #edges > .pace-panel,
   .m-phone-tabs:not([data-mtab="trends"]) #edges > .bet-section,
   .m-phone-tabs[data-mtab="h2h"] #teamCards,
   .m-phone-tabs[data-mtab="trends"] #teamCards,
+  .m-phone-tabs[data-mtab="box"] #teamCards,
   .m-phone-tabs[data-mside="0"] .edge-panel[data-mside="1"],
   .m-phone-tabs[data-mside="1"] .edge-panel[data-mside="0"],
   .m-phone-tabs[data-mteam="0"] .team-card[data-mteam="1"],
@@ -1454,7 +1457,7 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
   .m-phone-tabs[data-mtab="players"] .table-block.m-cat-off,
   .m-phone-tabs[data-mtab="team"] .team-card > .tables-row { display: none; }
   .m-phone-tabs[data-mtab="trends"] #edges > .pace-panel { margin-top: 14px; }
-  .m-phone-tabs[data-mtab="trends"] #boxscore .section-title, .m-phone-tabs .bet-section .section-title { margin-top: 20px; }
+  .m-phone-tabs[data-mtab="box"] #boxscore .section-title, .m-phone-tabs .bet-section .section-title { margin-top: 20px; }
   .m-phone-tabs[data-mtab="players"] .team-card { padding: 14px 14px 8px; }
   .m-phone-tabs[data-mtab="players"] .tables-row { margin: 0; }
   .m-phone-tabs .team-card { margin-top: 0; }
@@ -1510,4 +1513,27 @@ sup.inj { margin-left: 3px; padding: 0 3px; font-size: 0.625rem; line-height: 1.
   .plog-card { width: 100%; max-height: none; border: 0; border-radius: 0; box-shadow: none; }
   .plog-scroll { flex: 1 1 auto; }
   .plog-close { width: 44px; height: 44px; }
+}
+
+/* ---------- Phone layout: a player's game log (760px and under), screen only ----------
+   The line tool sits above the games; each game is one block: week, opponent, result and the
+   chosen stat against the line on the first row, every other number labelled under it.
+   phonebar.js labels the cells (table.m-log); without it the plain table shows. */
+@media screen and (max-width: 760px) {
+  .plog-card:not(.tg-card) > .plog-top { order: 0; }
+  .plog-card:not(.tg-card) > .prop-tool { order: 1; margin: 4px 12px 0; }
+  .plog-card:not(.tg-card) > .plog-scroll { order: 2; }
+  .plog-card:not(.tg-card) > .plog-note { order: 3; }
+  .plog-card:not(.tg-card) .prop-result { font-size: 1rem; line-height: 1.4; }
+  .plog-scroll > table.m-log, table.m-log > tbody { display: block; }
+  table.m-log > thead { display: none; }
+  table.m-log tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 8px; padding: 12px 0; border-bottom: 1px solid var(--hair); }
+  table.m-log td { display: block; padding: 0; border: 0; text-align: left; white-space: normal; font-size: 0.9375rem; font-weight: 700; }
+  table.m-log td.gstart { border-left: 0; }
+  table.m-log td:nth-child(1) { grid-row: 1; grid-column: 1; font-weight: 400; color: var(--text-dim); }
+  table.m-log td:nth-child(1)::before { content: "Wk "; }
+  table.m-log td:nth-child(2) { grid-row: 1; grid-column: 2; }
+  table.m-log td:nth-child(3) { grid-row: 1; grid-column: 3; font-weight: 600; }
+  table.m-log td.prop-cell { grid-row: 1; grid-column: 4; text-align: right; font-size: 1.125rem; font-weight: 800; }
+  table.m-log td[data-label]::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 400; line-height: 1.3; color: var(--text-dim); }
 }

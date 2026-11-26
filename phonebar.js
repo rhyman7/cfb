@@ -64,3 +64,32 @@ function phoneBarSearchReady() {
   if (b && document.querySelector(".topbar .psearch")) b.hidden = false;
 }
 try { initPhoneBar(); } catch (e) { /* the plain top bar still works */ }
+
+// A player's game log on a phone (760px and under): one block per game with no sideways
+// scrolling. The log is drawn when a name is tapped, so this watches for it and labels each
+// stat cell from the log's own two header rows (group, then column); style.css lays the
+// labelled cells out. Wider screens are left alone.
+(function () {
+  if (!window.MutationObserver || !window.matchMedia) return;
+  const mq = window.matchMedia("(max-width: 760px)");
+  const text = el => (el ? el.textContent.trim() : "");
+  const label = card => {
+    const tb = card.querySelector(".plog-scroll > table");
+    if (!tb || tb.classList.contains("m-log") || card.classList.contains("tg-card")) return;
+    const rows = tb.querySelectorAll("thead tr");
+    if (rows.length !== 2) return;
+    const groups = [];   // the group name over each column
+    [...rows[0].children].forEach(th => { for (let i = 0; i < (th.colSpan || 1); i++) groups.push(text(th)); });
+    const named = new Set(groups.filter(g => g && g !== "Prop"));
+    const short = { Passing: "Pass", Rushing: "Rush", Receiving: "Rec" };
+    const labels = [...rows[1].children].map((th, i) => {
+      const g = groups[i];
+      return named.size > 1 && g && short[g] ? `${short[g]} ${text(th)}` : text(th);
+    });
+    tb.querySelectorAll("tbody tr").forEach(tr => [...tr.children].forEach((td, i) => { if (i > 2 && labels[i] && !td.classList.contains("prop-cell")) td.dataset.label = labels[i]; }));
+    tb.classList.add("m-log");
+  };
+  const scan = () => { if (mq.matches) document.querySelectorAll(".plog-card").forEach(c => { try { label(c); } catch (e) { /* the plain table still shows */ } }); };
+  new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
+  mq.addEventListener("change", scan);
+})();

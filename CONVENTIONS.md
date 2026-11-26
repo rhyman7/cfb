@@ -139,6 +139,15 @@ has its own CONVENTIONS.md; the shared rules below are the same in both files.
 
 ## Matchup page
 
+- **On a phone, added Nov 25, 2026 (later the same day).** A **Box score** tab appears first in
+  the row, and the page opens on it, once the page is showing a box score (`live.js` un-hides
+  `#boxscore` when the game is on or over); Trends keeps pace and betting trends. A player's
+  game log shows the line tool first, then one block per game: week, opponent, result and the
+  chosen stat against the line on the first row, every other number labelled under it.
+  `phonebar.js` labels the log's cells when it opens, from the log's own two header rows, so a
+  new log column is labelled automatically; the first three columns must stay Wk, Opp, Result
+  and the last the prop cell.
+
 - **On a phone (Nov 25, 2026; 760px and under).** The header puts the two team blocks side by
   side with the line in one strip under them. The rest of the page sits behind four tabs:
   **Head to head** (one offense-vs-defense panel at a time, with a switch), **Players** (one
