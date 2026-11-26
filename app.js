@@ -111,7 +111,8 @@ function vbNorm(name) {
 }
 function boardGame(g) { return BOARD && weekMode() === "current" && g ? BOARD.games[String(g.id)] || null : null; }
 function boardPlayer(abbr, name) { return BOARD ? BOARD.players[`${abbr}|${vbNorm(name)}`] || null : null; }
-function boardGameUrl(bg) { return `${VB_ROOT}cfb/#matchups/${encodeURIComponent(bg.id)}`; }
+// The board's game page (how the spread is built, every book's price), not its copy of this matchup.
+function boardGameUrl(bg) { return `${VB_ROOT}cfb/#${encodeURIComponent(bg.id)}`; }
 const PARLAY_URL = VB_ROOT + "parlays.html";
 // "OHIO −11.7": the board's projected margin as a spread, favorite first.
 function boardSpreadText(g, bg) {
