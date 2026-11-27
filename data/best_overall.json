@@ -3718,7 +3718,7 @@
      "avg": 120.3,
      "proj": 159.1,
      "v": "board",
-     "at": "2026-11-27T02:59Z",
+     "at": "2026-11-27T09:44Z",
      "lad": {
       "fd": [
        [
@@ -3741,7 +3741,7 @@
      }
     },
     "FLA": {
-     "rk": 14,
+     "rk": 12,
      "name": "Jadan Baugh",
      "pos": "RB",
      "opp": "FSU",
@@ -3750,7 +3750,7 @@
      "avg": 95.7,
      "proj": 112.5,
      "v": "board",
-     "at": "2026-11-27T02:59Z",
+     "at": "2026-11-27T09:44Z",
      "lad": {
       "fd": [
        [
@@ -3780,9 +3780,9 @@
      "log": "MEM|5222671",
      "kind": "scrim",
      "avg": 126.4,
-     "proj": 146.8,
+     "proj": 146.5,
      "v": "board",
-     "at": "2026-11-27T02:59Z",
+     "at": "2026-11-27T09:44Z",
      "lad": {
       "fd": [
        [
@@ -3805,16 +3805,16 @@
      }
     },
     "UTAH": {
-     "rk": 12,
+     "rk": 10,
      "name": "Devon Dampier",
      "pos": "QB",
      "opp": "WVU",
      "log": "UTAH|5105849",
      "kind": "pass",
      "avg": 230.5,
-     "proj": 271.1,
+     "proj": 270.5,
      "v": "board",
-     "at": "2026-11-27T02:59Z",
+     "at": "2026-11-27T09:44Z",
      "lad": {
       "fd": [
        [
@@ -3837,31 +3837,31 @@
      }
     },
     "UNC": {
-     "rk": 5,
+     "rk": 15,
      "name": "Jordan Shipp",
      "pos": "WR",
      "opp": "NCSU",
      "log": "UNC|5079687",
      "kind": "rec",
      "avg": 77.5,
-     "proj": 98.5,
+     "proj": 90.0,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "NAVY": {
-     "rk": 13,
+     "rk": 11,
      "name": "Jackson Gutierrez",
      "pos": "QB",
      "opp": "CLT",
      "log": "NAVY|5220473",
      "kind": "pass",
      "avg": 114.2,
-     "proj": 134.0,
+     "proj": 134.1,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "CLT": {
-     "rk": 21,
+     "rk": 20,
      "name": "Jaden Barnes",
      "pos": "WR",
      "opp": "NAVY",
@@ -3870,10 +3870,10 @@
      "avg": 58.1,
      "proj": 68.3,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "ODU": {
-     "rk": 18,
+     "rk": 19,
      "name": "Devin Roche",
      "pos": "RB",
      "opp": "USM",
@@ -3882,31 +3882,31 @@
      "avg": 62.0,
      "proj": 83.2,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "ISU": {
-     "rk": 4,
+     "rk": 5,
      "name": "Aiden Flora",
      "pos": "RB",
      "opp": "KSU",
      "log": "ISU|5219258",
      "kind": "scrim",
      "avg": 149.9,
-     "proj": 171.4,
+     "proj": 169.9,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "FIU": {
-     "rk": 11,
+     "rk": 9,
      "name": "Devonte Lyons",
      "pos": "RB",
      "opp": "SHSU",
      "log": "FIU|5146722",
      "kind": "scrim",
      "avg": 84.3,
-     "proj": 113.1,
+     "proj": 112.7,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "EMU": {
      "rk": 11,
@@ -3924,7 +3924,7 @@
      "res": "miss"
     },
     "UTSA": {
-     "rk": 22,
+     "rk": 21,
      "name": "Will Henderson III",
      "pos": "RB",
      "opp": "TLSA",
@@ -3933,10 +3933,10 @@
      "avg": 85.5,
      "proj": 99.5,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "AKR": {
-     "rk": 6,
+     "rk": 4,
      "name": "Jordan Gant",
      "pos": "RB",
      "opp": "BUFF",
@@ -3945,7 +3945,7 @@
      "avg": 100.8,
      "proj": 131.2,
      "v": "board",
-     "at": "2026-11-27T02:59Z",
+     "at": "2026-11-27T09:44Z",
      "lad": {
       "fd": [
        [
@@ -3968,40 +3968,40 @@
      }
     },
     "LSU": {
-     "rk": 10,
+     "rk": 18,
      "name": "Dilin Jones",
      "pos": "RB",
      "opp": "ARK",
      "log": "LSU|5079482",
      "kind": "scrim",
      "avg": 105.9,
-     "proj": 120.9,
+     "proj": 115.2,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "KENN": {
-     "rk": 9,
+     "rk": 8,
      "name": "Boogie Woods III",
      "pos": "RB",
      "opp": "WKU",
      "log": "KENN|5220641",
      "kind": "scrim",
      "avg": 75.3,
-     "proj": 108.7,
+     "proj": 108.4,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "KSU": {
-     "rk": 15,
+     "rk": 13,
      "name": "Rodney Fields Jr.",
      "pos": "RB",
      "opp": "ISU",
      "log": "KSU|5125335",
      "kind": "scrim",
      "avg": 75.4,
-     "proj": 104.7,
+     "proj": 100.4,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "MOST": {
      "rk": 17,
@@ -4011,9 +4011,9 @@
      "log": "MOST|4837193",
      "kind": "rec",
      "avg": 56.0,
-     "proj": 67.0,
+     "proj": 67.1,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "NMSU": {
      "rk": 3,
@@ -4023,45 +4023,45 @@
      "log": "NMSU|5220253",
      "kind": "scrim",
      "avg": 113.5,
-     "proj": 136.8,
+     "proj": 136.7,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "PSU": {
-     "rk": 19,
-     "name": "Benjamin Brahmer",
+     "rk": 16,
+     "name": "Andrew Rappleyea",
      "pos": "TE",
      "opp": "MD",
-     "log": "PSU|4870608",
+     "log": "PSU|4899484",
      "kind": "rec",
-     "avg": 31.8,
-     "proj": 47.2,
+     "avg": 30.3,
+     "proj": 37.1,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "NIU": {
-     "rk": 16,
+     "rk": 14,
      "name": "Telly Johnson Jr.",
      "pos": "RB",
      "opp": "UTEP",
      "log": "NIU|5193302",
      "kind": "scrim",
      "avg": 73.5,
-     "proj": 103.2,
+     "proj": 103.1,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "IU": {
-     "rk": 8,
+     "rk": 6,
      "name": "Lee Beebe Jr.",
      "pos": "RB",
      "opp": "PUR",
      "log": "IU|5091725",
      "kind": "scrim",
      "avg": 81.6,
-     "proj": 112.1,
+     "proj": 104.3,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
     "BOIS": {
      "rk": 1,
@@ -4073,19 +4073,19 @@
      "avg": 152.5,
      "proj": 205.0,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     },
-    "ASU": {
-     "rk": 20,
-     "name": "Cardae Mack",
-     "pos": "RB",
-     "opp": "ARIZ",
-     "log": "ASU|5209382",
-     "kind": "scrim",
-     "avg": 93.2,
-     "proj": 113.3,
+    "MIA": {
+     "rk": 22,
+     "name": "Cooper Barkate",
+     "pos": "WR",
+     "opp": "BC",
+     "log": "MIA|4804878",
+     "kind": "rec",
+     "avg": 60.9,
+     "proj": 72.9,
      "v": "board",
-     "at": "2026-11-27T02:59Z"
+     "at": "2026-11-27T09:44Z"
     }
    }
   }
